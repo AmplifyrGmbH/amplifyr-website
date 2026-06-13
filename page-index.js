@@ -136,6 +136,8 @@ if (window.location.hash === '#ki-check') {
       setTimeout(function () {
         if (philL1)  { philL1.style.transition  = 'none'; philL1.style.opacity  = '1'; philL1.style.transform  = 'none'; }
         if (philSub) { philSub.style.transition = 'none'; philSub.style.opacity = '1'; philSub.style.transform = 'none'; }
+        var philBg = document.querySelector('.hero-phil-bg');
+        if (philBg) { philBg.style.transition = 'opacity 600ms ' + EASE; philBg.style.opacity = '1'; }
       }, OUT);
 
       // Headline-Text vorab setzen (kein Typewriter)
@@ -170,6 +172,8 @@ if (window.location.hash === '#ki-check') {
       if (phase2)  { phase2.style.opacity = '1'; phase2.style.transform = 'none'; }
       if (philL1)  { philL1.style.opacity = '1'; philL1.style.transform = 'none'; }
       if (philSub) { philSub.style.opacity = '1'; philSub.style.transform = 'none'; }
+      var philBgR = document.querySelector('.hero-phil-bg');
+      if (philBgR) philBgR.style.opacity = '1';
       if (philEyebrow)  philEyebrow.style.opacity  = '1';
       if (philHeadline) { philHeadline.textContent = HEADLINE_TEXT; philHeadline.style.opacity = '1'; }
       if (philBlocksEl) philBlocksEl.style.opacity = '1';
