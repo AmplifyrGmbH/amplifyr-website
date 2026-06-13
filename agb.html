@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="de-CH">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>AGB | Amplifyr</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Favicons -->
+  <link rel="icon"             href="/Favicon/favicon.ico">
+  <link rel="icon"             href="/Favicon/favicon_32x32.png" sizes="32x32" type="image/png">
+  <link rel="icon"             href="/Favicon/favicon_16x16.png" sizes="16x16" type="image/png">
+  <link rel="apple-touch-icon" href="/Favicon/favicon_180x180.png">
+  <link rel="manifest"         href="/site.webmanifest">
+  <meta name="theme-color" content="#1a2744">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap">
+  <link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap"></noscript>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/style.css?v=2">
+  <link rel="stylesheet" href="/page-legal.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       HEADER — legal-mode (immer weiss)
+  ============================================================ -->
+  <header id="site-header" class="legal-mode">
+    <div class="container header-inner">
+
+      <a href="/" class="site-logo" aria-label="Amplifyr – Startseite">
+        <span>ampli</span><span class="logo-fyr">fyr</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Hauptnavigation">
+        <ul class="site-nav__list">
+          <li class="site-nav__item">
+            <a href="/it-solutions" class="site-nav__link nav-link">IT-Lösungen</a>
+          </li>
+          <li class="site-nav__item">
+            <a href="/branchen-software" class="site-nav__link nav-link">Betriebs-Software</a>
+          </li>
+          <li class="site-nav__item">
+            <a href="/ki-prozesse" class="site-nav__link nav-link">KI &amp; Automatisierung</a>
+          </li>
+          <li class="site-nav__item">
+            <a href="/webdesign" class="site-nav__link nav-link">Digitaler Auftritt</a>
+          </li>
+          <li class="site-nav__item">
+            <a href="/ueber-uns" class="site-nav__link nav-link" aria-haspopup="true">
+              Über uns
+              <svg class="site-nav__chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <div class="nav-dropdown" role="menu">
+              <a href="/blog" class="nav-dropdown__link" role="menuitem">Blog</a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="site-header__cta">
+        <a href="https://portal.amplifyr.ch/" target="_blank" rel="noopener" class="btn btn--secondary btn--sm">
+          Kundenportal
+        </a>
+      </div>
+
+      <button id="burger-btn" class="burger-btn" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- ============================================================
+       MOBILE MENU
+  ============================================================ -->
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile Navigation">
+
+    <div class="mobile-menu__header">
+      <a href="/" class="mobile-menu__logo" aria-label="Amplifyr – Startseite">
+        <span>ampli</span><span class="logo-fyr">fyr</span>
+      </a>
+      <button id="mobile-menu-close" class="mobile-menu__close" aria-label="Menü schliessen">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="mobile-menu__nav">
+
+      <div class="mobile-nav-group">
+        <div class="mobile-nav-group__row">
+          <a href="/it-solutions" class="mobile-nav-link">IT-Lösungen</a>
+          <button class="mobile-nav-group__chevron-btn" aria-label="IT-Lösungen Untermenü">
+            <svg class="mobile-nav-group__chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+        <div class="mobile-nav-group__sub">
+          <a href="/it-solutions#sec-outsourcing">IT-Outsourcing</a>
+          <a href="/it-solutions#sec-managed">Managed Services</a>
+          <a href="/it-solutions#sec-cloud">Cloud</a>
+        </div>
+      </div>
+
+      <div class="mobile-nav-group">
+        <div class="mobile-nav-group__row">
+          <a href="/branchen-software" class="mobile-nav-link">Betriebs-Software</a>
+          <button class="mobile-nav-group__chevron-btn" aria-label="Betriebs-Software Untermenü">
+            <svg class="mobile-nav-group__chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+        <div class="mobile-nav-group__sub">
+          <a href="/branchen-software#bs-ansatz">Ansatz</a>
+          <a href="/branchen-software#bs-vorgehen">Vorgehen</a>
+          <a href="/branchen-software#bs-branchen">Branchen</a>
+        </div>
+      </div>
+
+      <div class="mobile-nav-group">
+        <div class="mobile-nav-group__row">
+          <a href="/ki-prozesse" class="mobile-nav-link">KI &amp; Automatisierung</a>
+          <button class="mobile-nav-group__chevron-btn" aria-label="KI & Automatisierung Untermenü">
+            <svg class="mobile-nav-group__chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+        <div class="mobile-nav-group__sub">
+          <a href="/ki-prozesse#sec-chatbot">Chatbots</a>
+          <a href="/ki-prozesse#sec-telefonie">KI-Telefonie</a>
+          <a href="/ki-prozesse#sec-automation">Workflows</a>
+        </div>
+      </div>
+
+      <div class="mobile-nav-group">
+        <div class="mobile-nav-group__row">
+          <a href="/webdesign" class="mobile-nav-link">Digitaler Auftritt</a>
+          <button class="mobile-nav-group__chevron-btn" aria-label="Digitaler Auftritt Untermenü">
+            <svg class="mobile-nav-group__chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+        <div class="mobile-nav-group__sub">
+          <a href="/webdesign#sec-website">Websites &amp; Webshops</a>
+          <a href="/webdesign#sec-seo">SEO</a>
+          <a href="/webdesign#sec-rebranding">Rebrandings</a>
+        </div>
+      </div>
+
+      <div class="mobile-nav-group">
+        <div class="mobile-nav-group__row">
+          <a href="/ueber-uns" class="mobile-nav-link">Über uns</a>
+          <button class="mobile-nav-group__chevron-btn" aria-label="Über uns Untermenü">
+            <svg class="mobile-nav-group__chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+        <div class="mobile-nav-group__sub">
+          <a href="/blog">Blog</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="mobile-menu__cta">
+      <a href="https://portal.amplifyr.ch/" target="_blank" rel="noopener" class="btn btn--primary">
+        Kundenportal
+      </a>
+    </div>
+
+  </nav>
+
+  <!-- ============================================================
+       MAIN
+  ============================================================ -->
+  <main class="legal-main" data-nosnippet>
+    <div class="legal-container">
+
+      <p class="legal-eyebrow">Rechtliches</p>
+      <h1 class="legal-heading">Allgemeine Geschäftsbedingungen</h1>
+
+      <div class="legal-body">
+
+        <h2>§ 1 Geltungsbereich</h2>
+        <p>Diese Allgemeinen Geschäftsbedingungen gelten für alle Verträge, die zwischen Amplifyr GmbH (nachfolgend «Amplifyr») und ihren Kunden (nachfolgend «Auftraggeber») geschlossen werden. Abweichende Bedingungen des Auftraggebers sind nur wirksam, wenn Amplifyr diesen ausdrücklich schriftlich zugestimmt hat.</p>
+
+        <h2>§ 2 Vertragsschluss und Leistungsumfang</h2>
+        <p>Ein Vertrag kommt durch die schriftliche Auftragsbestätigung von Amplifyr oder die Erbringung der Leistung zustande. Der Leistungsumfang ergibt sich ausschliesslich aus dem schriftlichen Angebot oder der Auftragsbestätigung. Mündliche Nebenabreden sind nur wirksam, wenn sie schriftlich bestätigt werden.</p>
+
+        <h2>§ 3 Preise und Zahlungsbedingungen</h2>
+        <p>Alle Preise verstehen sich in Schweizer Franken (CHF) zuzüglich der gesetzlichen Mehrwertsteuer. Rechnungen sind innerhalb von 30 Tagen nach Rechnungsdatum ohne Abzug zahlbar. Bei Zahlungsverzug ist Amplifyr berechtigt, Verzugszinsen von 5 % p.a. zu berechnen und die Leistungserbringung bis zum Ausgleich der offenen Forderungen einzustellen.</p>
+
+        <h2>§ 4 Mitwirkungspflichten des Auftraggebers</h2>
+        <p>Der Auftraggeber stellt Amplifyr rechtzeitig alle für die Leistungserbringung notwendigen Informationen, Zugänge und Materialien zur Verfügung. Verzögerungen, die aus unzureichender Mitwirkung des Auftraggebers entstehen, gehen nicht zu Lasten von Amplifyr und berechtigen zur entsprechenden Anpassung von Fristen und Kosten.</p>
+
+        <h2>§ 5 Geistiges Eigentum</h2>
+        <p>Alle von Amplifyr erstellten Werke, Konzepte und Materialien bleiben bis zur vollständigen Bezahlung Eigentum von Amplifyr. Nach vollständiger Bezahlung erhält der Auftraggeber ein nicht-exklusives Nutzungsrecht am vereinbarten Leistungsergebnis.</p>
+
+        <h2>§ 6 Vertraulichkeit</h2>
+        <p>Beide Parteien verpflichten sich, vertrauliche Informationen der jeweils anderen Partei nicht an Dritte weiterzugeben und nur für die Durchführung des Auftrags zu nutzen. Diese Verpflichtung gilt auch nach Beendigung des Vertragsverhältnisses.</p>
+
+        <h2>§ 7 Haftungsbeschränkung</h2>
+        <p>Amplifyr haftet nur für Schäden, die auf grober Fahrlässigkeit oder Vorsatz beruhen. Die Haftung für leichte Fahrlässigkeit sowie für entgangenen Gewinn, mittelbare Schäden und Folgeschäden ist ausgeschlossen, soweit gesetzlich zulässig. Die Gesamthaftung von Amplifyr ist auf den Wert des jeweiligen Auftrags begrenzt.</p>
+
+        <h2>§ 8 Kündigung</h2>
+        <p>Laufende Projekte können von beiden Parteien mit einer Frist von 30 Tagen schriftlich gekündigt werden. Bereits erbrachte Leistungen sind in jedem Fall zu vergüten.</p>
+
+        <h2>§ 9 Anwendbares Recht und Gerichtsstand</h2>
+        <p>Es gilt ausschliesslich Schweizer Recht. Gerichtsstand für alle Streitigkeiten aus oder im Zusammenhang mit diesem Vertrag ist Zürich, Schweiz.</p>
+
+        <h2>§ 10 Salvatorische Klausel</h2>
+        <p>Sollten einzelne Bestimmungen dieser AGB unwirksam sein oder werden, bleibt die Wirksamkeit der übrigen Bestimmungen davon unberührt. Die unwirksame Bestimmung ist durch eine wirksame zu ersetzen, die dem wirtschaftlichen Zweck möglichst nahekommt.</p>
+
+        <p class="legal-stand">Stand: März 2026</p>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <a href="/" class="footer-logo" aria-label="Amplifyr – Startseite">
+          <span>ampli</span><span class="logo-fyr">fyr</span>
+        </a>
+        <p class="footer-copy">© 2026 Amplifyr GmbH. Alle Rechte vorbehalten.</p>
+        <nav class="footer-links" aria-label="Rechtliches">
+          <a href="/impressum">Impressum</a>
+          <a href="/datenschutz">Datenschutz</a>
+          <a href="/agb">AGB</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating CTA: Raketen-Teaser -->
+  <div id="ba-chat-teaser" aria-hidden="true">
+    <button class="ba-teaser-pill" id="ba-teaser-btn" type="button"
+            aria-label="KI-Potenzialcheck starten">
+      <div class="ba-teaser-rocket-wrap" aria-hidden="true">
+        <img class="ba-teaser-rocket" src="/Bilder/rakete_teaser.png" alt="" loading="lazy" decoding="async">
+      </div>
+      <span class="ba-teaser-label">2-Min-Check gefällig?</span>
+    </button>
+  </div>
+
+  <script src="/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,409 @@
+/* ============================================================
+   AMPLIFYR — page-formular.css
+   Seitenspezifische Styles für formular.html
+============================================================ */
+
+/* ============================================================
+   AUSWAHL-BEREICH
+============================================================ */
+.fs-top {
+  background: var(--bg-white);
+  padding: calc(var(--header-h, 86px) + clamp(32px, 5vh, 56px)) clamp(16px, 5vw, 40px) clamp(40px, 6vh, 64px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.fs-top-inner {
+  width: 100%;
+  max-width: 680px;
+}
+
+.fs-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--steel);
+  margin-bottom: var(--space-2);
+}
+
+.fs-heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2vw, 1.8rem);
+  font-weight: 900;
+  color: var(--navy);
+  margin-bottom: var(--space-6);
+  line-height: 1.15;
+}
+
+/* ============================================================
+   OPTIONSKARTEN — mobile-first (1 Spalte)
+============================================================ */
+.fs-options {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+@media (min-width: 560px) {
+  .fs-options {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.fs-option-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: 24px 22px;
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  text-align: left;
+  cursor: pointer;
+  font-family: var(--font-body);
+  transition:
+    transform var(--duration) var(--ease),
+    box-shadow var(--duration) var(--ease),
+    border-color var(--duration) var(--ease);
+}
+
+/* Helle Karte */
+.fs-option-card--light {
+  background: var(--bg-white);
+  border: 1.5px solid var(--border-light);
+  box-shadow: var(--shadow);
+  color: inherit;
+}
+
+.fs-option-card--light:hover {
+  border-color: var(--navy);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+/* Dunkle Karte */
+.fs-option-card--dark {
+  background: var(--navy);
+  border: 1.5px solid var(--navy);
+  box-shadow: 0 4px 20px rgba(26, 39, 68, 0.22);
+}
+
+.fs-option-card--dark:hover {
+  box-shadow: 0 8px 32px rgba(26, 39, 68, 0.32);
+  transform: translateY(-2px);
+}
+
+.fs-option-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.fs-option-icon--light { background: var(--steel-light); }
+.fs-option-icon--dark  { background: rgba(176, 196, 222, 0.18); }
+
+.fs-option-title {
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.fs-option-title--light { color: var(--navy); }
+.fs-option-title--dark  { color: #fff; }
+
+.fs-option-desc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.fs-option-desc--dark { color: rgba(176, 196, 222, 0.8); }
+
+.fs-option-cta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: 0.72rem;
+  font-weight: 700;
+  margin-top: auto;
+}
+
+.fs-option-cta--light { color: var(--navy); }
+.fs-option-cta--dark  { color: var(--steel); }
+
+/* ============================================================
+   EINKLAPPBARES FORMULAR
+============================================================ */
+.fs-form-collapse {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.5s var(--ease), opacity 0.4s var(--ease);
+  text-align: left;
+}
+
+.fs-form-collapse.is-open {
+  opacity: 1;
+  /* max-height wird per JS auf scrollHeight gesetzt */
+}
+
+.fs-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding-top: var(--space-6);
+}
+
+/* 2-Spalten-Zeile im Formular — mobile 1 Spalte */
+.fs-form-2col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+
+@media (min-width: 560px) {
+  .fs-form-2col {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ============================================================
+   CALLBACK-CHECKBOX
+============================================================ */
+.fs-callback-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: 16px 20px;
+  background: var(--bg-white);
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  margin-bottom: var(--space-4);
+  transition: border-color var(--duration) var(--ease);
+}
+
+.fs-callback-label:has(input:checked) {
+  border-color: var(--navy);
+}
+
+.fs-checkbox-box {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--border);
+  border-radius: 5px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--duration) var(--ease), border-color var(--duration) var(--ease);
+}
+
+.fs-callback-label:has(input:checked) .fs-checkbox-box {
+  background: var(--navy);
+  border-color: var(--navy);
+}
+
+/* JS-Fallback für Browser ohne :has() */
+.fs-callback-label.is-checked .fs-checkbox-box {
+  background: var(--navy);
+  border-color: var(--navy);
+}
+
+.fs-checkbox-check {
+  opacity: 0;
+  transition: opacity var(--duration) var(--ease);
+}
+
+.fs-callback-label:has(input:checked) .fs-checkbox-check,
+.fs-callback-label.is-checked .fs-checkbox-check {
+  opacity: 1;
+}
+
+.fs-callback-label span {
+  font-size: 0.9rem;
+  color: var(--navy);
+  font-weight: 500;
+}
+
+/* Screenreader-only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ============================================================
+   FORMULAR-FELDER
+============================================================ */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.form-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--navy);
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 14px 16px;
+  background: var(--bg-white);
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--navy);
+  outline: none;
+  transition: border-color var(--duration) var(--ease), box-shadow var(--duration) var(--ease);
+  box-sizing: border-box;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: var(--navy);
+  box-shadow: 0 0 0 3px rgba(26,39,68,0.08);
+}
+
+.form-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%231a2744' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 38px;
+  cursor: pointer;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.6;
+}
+
+.form-submit-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  flex-wrap: wrap;
+  margin-top: var(--space-2);
+}
+
+.form-micro {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* Submit */
+.fs-submit {
+  border-radius: var(--radius-pill);
+  padding: 13px 32px;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   DIREKTKONTAKT-BEREICH
+============================================================ */
+.fs-contact {
+  background: var(--bg-white);
+  padding: 0 clamp(16px, 5vw, 80px) clamp(48px, 6vh, 64px);
+}
+
+.fs-contact-inner {
+  max-width: 680px;
+  margin-inline: auto;
+}
+
+.fs-contact .fs-eyebrow {
+  text-align: center;
+  margin-bottom: var(--space-4);
+}
+
+/* Kontaktkarten — mobile 1 Spalte */
+.fs-contact-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+}
+
+@media (min-width: 560px) {
+  .fs-contact-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.fs-contact-card {
+  background: var(--bg-white);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-xl);
+  padding: 28px 24px;
+}
+
+.fs-contact-card-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: var(--space-5);
+}
+
+.fs-contact-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--navy);
+  text-decoration: none;
+  margin-bottom: var(--space-4);
+  font-size: 0.9rem;
+  transition: color var(--duration) var(--ease);
+}
+
+.fs-contact-link:hover { color: var(--steel); }
+
+.fs-address {
+  font-style: normal;
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+}
+
+/* ============================================================
+   REDUCED MOTION
+============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .fs-option-card,
+  .fs-form-collapse,
+  .fs-checkbox-box,
+  .fs-checkbox-check {
+    transition: none;
+  }
+}

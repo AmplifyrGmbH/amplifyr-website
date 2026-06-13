@@ -1,0 +1,518 @@
+/* ============================================================
+   AMPLIFYR — page-ki-prozesse.css
+   Seitenspezifische Styles für ki-prozesse.html
+============================================================ */
+
+/* ============================================================
+   SHARED HELPERS (FSH + Utilities)
+============================================================ */
+.section--white {
+  background: var(--bg-white);
+}
+
+.section-label--steel {
+  color: var(--steel);
+  opacity: 0.85;
+}
+
+.its-section-header {
+  max-width: 720px;
+  margin-inline: auto;
+  margin-bottom: var(--space-12);
+  text-align: center;
+}
+
+.its-intro {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  margin-top: var(--space-5);
+}
+
+/* ============================================================
+   HERO (FSH — Full-Screen Hero)
+============================================================ */
+.fsh {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  background: var(--navy);
+  overflow: hidden;
+}
+
+.fsh-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.fsh-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(10,18,40,0.72) 0%, rgba(10,18,40,0.55) 100%);
+  z-index: 1;
+}
+
+.fsh-inner {
+  position: relative;
+  z-index: 2;
+  padding-block: var(--space-24);
+}
+
+.fsh-content {
+  text-align: center;
+  max-width: 720px;
+  margin-inline: auto;
+}
+
+.fsh-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.05;
+  margin: 0;
+}
+
+.fsh-em {
+  font-style: italic;
+  color: var(--steel);
+}
+
+.fsh-sub {
+  color: rgba(255,255,255,0.82);
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
+  line-height: 1.7;
+  margin-top: var(--space-6);
+}
+
+.fsh-actions {
+  margin-top: var(--space-8);
+  display: flex;
+  justify-content: center;
+}
+
+.fsh-subnav {
+  margin-top: var(--space-8);
+  display: flex;
+  gap: var(--space-3);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.fsh-subnav-btn {
+  font-size: 0.82rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  color: rgba(255,255,255,0.7);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: var(--radius-pill);
+  padding: 10px 16px;
+  text-decoration: none;
+  transition:
+    color var(--duration) var(--ease),
+    border-color var(--duration) var(--ease),
+    background var(--duration) var(--ease);
+}
+
+.fsh-subnav-btn:hover {
+  color: #fff;
+  border-color: rgba(255,255,255,0.6);
+  background: rgba(255,255,255,0.08);
+}
+
+/* ============================================================
+   CHECKLIST (reused from branchen-software)
+============================================================ */
+.bs-checklist {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.bs-checklist-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.bs-check-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--accent-light);
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   CHATBOT SPLIT
+============================================================ */
+.ki-split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-12);
+  margin-top: var(--space-12);
+  align-items: start;
+}
+
+@media (min-width: 768px) {
+  .ki-split {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.ki-split-note {
+  margin-top: var(--space-6);
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.ki-split-visual {
+  background: var(--navy);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.ki-mockup-label {
+  font-size: 0.68rem;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0;
+}
+
+.ai-chat-mockup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  flex: 1;
+  min-height: 220px;
+}
+
+.ai-chat-bubble,
+.ai-typing {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 300ms ease, transform 300ms ease;
+}
+
+.chat-visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+.ai-chat-bubble {
+  padding: 12px 16px;
+  border-radius: 16px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  max-width: 85%;
+}
+
+.ai-chat-bubble--user {
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+}
+
+.ai-chat-bubble--bot {
+  background: rgba(176,196,222,0.18);
+  color: #fff;
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+  border: 1px solid rgba(176,196,222,0.2);
+}
+
+.ai-typing {
+  display: flex;
+  gap: 4px;
+  padding: 12px 16px;
+  align-self: flex-start;
+}
+
+.ai-typing span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(176,196,222,0.6);
+  animation: typingDot 1.2s ease-in-out infinite;
+}
+
+.ai-typing span:nth-child(2) { animation-delay: 0.2s; }
+.ai-typing span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typingDot {
+  0%, 80%, 100% {
+    transform: scale(0.7);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.ki-mockup-status {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: var(--space-4);
+}
+
+.ki-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 6px rgba(74,222,128,0.6);
+  flex-shrink: 0;
+}
+
+.ki-mockup-status span:last-child {
+  font-size: 0.72rem;
+  color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ai-typing span { animation: none; }
+}
+
+/* ============================================================
+   FEATURE CARDS (Telefonie)
+============================================================ */
+.ki-feature-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+  margin-top: var(--space-10);
+}
+
+@media (min-width: 600px) {
+  .ki-feature-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.ki-feature-card {
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  transition:
+    border-color var(--duration) var(--ease),
+    box-shadow var(--duration) var(--ease),
+    transform var(--duration) var(--ease);
+}
+
+.ki-feature-card:hover {
+  border-color: var(--navy);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.ki-feature-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background: var(--accent-light);
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ki-feature-card h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.ki-feature-card p {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ============================================================
+   WORKFLOW GRID
+============================================================ */
+.ki-workflow-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+  margin-top: var(--space-10);
+}
+
+@media (min-width: 600px) {
+  .ki-workflow-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .ki-workflow-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.ki-workflow-bullets {
+  list-style: disc;
+  padding-left: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+  margin-top: var(--space-4);
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   CTA
+============================================================ */
+.ki-cta {
+  position: relative;
+  background: var(--navy);
+  padding-block: clamp(3rem, 6vw, 4.5rem);
+  overflow: hidden;
+}
+
+.ki-cta-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.ki-cta-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10,14,35,0.60);
+}
+
+.ki-cta-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 600px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  align-items: center;
+}
+
+.ki-cta-content h2 {
+  color: #fff;
+  margin: 0;
+}
+
+.ki-cta-content > p {
+  color: rgba(255,255,255,0.75);
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* ── Gemini Aurora Blobs ───────────────────────────────── */
+.ki-cta-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.55;
+  will-change: transform;
+}
+
+.ki-cta-blob--1 {
+  width: 480px;
+  height: 360px;
+  background: rgba(99, 102, 241, 0.72);   /* indigo */
+  top: -10%;
+  left: -10%;
+  animation: blobDrift1 20s ease-in-out infinite alternate;
+}
+
+.ki-cta-blob--2 {
+  width: 420px;
+  height: 320px;
+  background: rgba(6, 182, 212, 0.60);    /* teal */
+  bottom: -15%;
+  right: 5%;
+  animation: blobDrift2 17s ease-in-out infinite alternate;
+}
+
+.ki-cta-blob--3 {
+  width: 380px;
+  height: 300px;
+  background: rgba(168, 85, 247, 0.55);   /* violet */
+  top: 25%;
+  left: 38%;
+  animation: blobDrift3 24s ease-in-out infinite alternate;
+}
+
+.ki-cta-blob--4 {
+  width: 300px;
+  height: 250px;
+  background: rgba(59, 130, 246, 0.50);   /* blue */
+  top: -5%;
+  right: 18%;
+  animation: blobDrift4 22s ease-in-out infinite alternate;
+}
+
+@keyframes blobDrift1 {
+  from { transform: translate(0, 0)       scale(1); }
+  to   { transform: translate(60px, 40px) scale(1.1); }
+}
+
+@keyframes blobDrift2 {
+  from { transform: translate(0, 0)         scale(1); }
+  to   { transform: translate(-50px, -30px) scale(1.08); }
+}
+
+@keyframes blobDrift3 {
+  from { transform: translate(0, 0)        scale(1); }
+  to   { transform: translate(30px, -50px) scale(0.92); }
+}
+
+@keyframes blobDrift4 {
+  from { transform: translate(0, 0)        scale(1); }
+  to   { transform: translate(-40px, 35px) scale(1.05); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ki-cta-blob { animation: none; }
+}
+
+/* Mobile: reduce blob performance impact */
+@media (max-width: 640px) {
+  .ki-cta-blob {
+    filter: blur(50px);
+    animation-duration: 35s;
+  }
+
+  .ki-cta-blob--1 { width: 240px; height: 180px; }
+  .ki-cta-blob--2 { width: 210px; height: 160px; }
+  .ki-cta-blob--3 { width: 190px; height: 150px; }
+  .ki-cta-blob--4 { width: 150px; height: 125px; }
+}
