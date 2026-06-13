@@ -100,6 +100,14 @@
       closeBtn.addEventListener('click', closeMenu);
     }
 
+    // Sub-Links: Menü schliessen bei Klick
+    var subLinks = menu.querySelectorAll('.mobile-nav-group__sub a');
+    subLinks.forEach(function (link) {
+      link.addEventListener('click', function () {
+        closeMenu();
+      });
+    });
+
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && menu.classList.contains('is-open')) {
         closeMenu();

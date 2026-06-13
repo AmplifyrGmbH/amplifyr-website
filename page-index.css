@@ -190,8 +190,13 @@
   line-height: 1.1;
   color: #fff;
   text-align: center;
-  white-space: nowrap;
   margin: 0;
+}
+
+@media (min-width: 641px) {
+  .hero-phil-headline {
+    white-space: nowrap;
+  }
 }
 
 .hero-phil-sub {
@@ -437,6 +442,23 @@
 .ansatz-brace img {
   width: 100%;
   height: auto;
+}
+
+@media (max-width: 767px) {
+  .ansatz-visual {
+    gap: 0;
+  }
+
+  .ansatz-left,
+  .ansatz-right {
+    text-align: center;
+  }
+
+  .ansatz-brace {
+    width: 220px;
+    transform: rotate(90deg);
+    margin-block: -40px;
+  }
 }
 
 .ansatz-left img,
@@ -799,14 +821,25 @@
   #team .team-col--data  { border-left-color: var(--steel); }
   #team .team-col--eng   { border-left-color: var(--navy); }
 
-  #team .team-col-role {
-    font-size: 0.65rem;
+  #team .team-col-person-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
     margin-bottom: 6px;
   }
 
-  #team .team-col-person-row {
-    gap: var(--space-3);
-    margin-bottom: 6px;
+  #team .team-col-person-row .team-col-role {
+    flex: 0 0 100%;
+    order: -1;
+    background: none;
+    color: var(--text-muted);
+    padding: 0;
+    border-radius: 0;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 2px;
   }
 
   #team .team-avatar,
@@ -828,7 +861,45 @@
 
 .team-col {
   padding-top: var(--space-6);
+  border-top: 3px solid transparent;
   transition: transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (max-width: 639px) {
+  .team-col {
+    border-top: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .team-col-person-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .team-col-role {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: var(--radius-pill);
+  }
+
+  .team-col--markt .team-col-role {
+    background: #b8af9c;
+    color: #fff;
+  }
+
+  .team-col--data .team-col-role {
+    background: var(--steel);
+    color: var(--navy);
+  }
+
+  .team-col--eng .team-col-role {
+    background: var(--navy);
+    color: #fff;
+  }
 }
 
 .team-col.hover-ready:hover {

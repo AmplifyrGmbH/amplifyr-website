@@ -4,112 +4,10 @@
 ============================================================ */
 
 /* ============================================================
-   SHARED HELPERS (FSH + Utilities)
+   HERO OVERLAY (page-specific)
 ============================================================ */
-.section--white {
-  background: var(--bg-white);
-}
-
-.section-label--steel {
-  color: var(--steel);
-  opacity: 0.85;
-}
-
-/* ============================================================
-   HERO (FSH — Full-Screen Hero)
-============================================================ */
-.fsh {
-  position: relative;
-  min-height: 100vh;
-  min-height: 100svh;
-  display: flex;
-  align-items: center;
-  background: var(--navy);
-  overflow: hidden;
-}
-
-.fsh-video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0;
-}
-
 .fsh-overlay {
-  position: absolute;
-  inset: 0;
   background: radial-gradient(ellipse 80% 60% at center, rgba(10,18,40,0.70) 0%, rgba(10,18,40,0.40) 100%);
-  z-index: 1;
-}
-
-.fsh-inner {
-  position: relative;
-  z-index: 2;
-  padding-block: var(--space-24);
-}
-
-.fsh-content {
-  text-align: center;
-  max-width: 720px;
-  margin-inline: auto;
-}
-
-.fsh-heading {
-  font-family: var(--font-display);
-  font-size: clamp(2.8rem, 6vw, 5.5rem);
-  font-weight: 900;
-  color: #fff;
-  line-height: 1.05;
-  margin: 0;
-}
-
-.fsh-em {
-  font-style: italic;
-  color: var(--steel);
-}
-
-.fsh-sub {
-  color: rgba(255,255,255,0.82);
-  font-size: clamp(1rem, 1.4vw, 1.2rem);
-  line-height: 1.7;
-  margin-top: var(--space-6);
-}
-
-.fsh-actions {
-  margin-top: var(--space-8);
-  display: flex;
-  justify-content: center;
-}
-
-.fsh-subnav {
-  margin-top: var(--space-8);
-  display: flex;
-  gap: var(--space-3);
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.fsh-subnav-btn {
-  font-size: 0.82rem;
-  font-weight: 600;
-  font-family: var(--font-body);
-  color: rgba(255,255,255,0.7);
-  border: 1px solid rgba(255,255,255,0.25);
-  border-radius: var(--radius-pill);
-  padding: 10px 16px;
-  text-decoration: none;
-  transition:
-    color var(--duration) var(--ease),
-    border-color var(--duration) var(--ease),
-    background var(--duration) var(--ease);
-}
-
-.fsh-subnav-btn:hover {
-  color: #fff;
-  border-color: rgba(255,255,255,0.6);
-  background: rgba(255,255,255,0.08);
 }
 
 /* ============================================================
@@ -127,34 +25,11 @@
   font-size: 1.05rem;
 }
 
-.bs-checklist {
-  list-style: none;
+/* Page-specific checklist overrides */
+.bs-ansatz-inner .bs-checklist {
   margin-top: var(--space-6);
-  padding: 0;
   display: inline-flex;
-  flex-direction: column;
-  gap: 13px;
   text-align: left;
-}
-
-.bs-checklist-item {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  font-size: 0.95rem;
-  color: var(--text);
-}
-
-.bs-check-icon {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: var(--accent-light);
-  color: var(--navy);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
 }
 
 /* ============================================================

@@ -28,12 +28,12 @@ if (window.location.hash === '#ki-check') {
     var phase1    = document.getElementById('hero-phase-1');
     var divider   = document.getElementById('hero-divider');
     var phase2    = document.getElementById('hero-phase-2');
-    var heroPhil   = document.getElementById('hero-phil');
-    var philL1     = heroPhil && heroPhil.querySelector('.hero-phil-l1');
-    var philSub    = heroPhil && heroPhil.querySelector('.hero-phil-sub');
+    var heroPhil     = document.getElementById('hero-phil');
+    var philL1       = heroPhil && heroPhil.querySelector('.hero-phil-l1');
+    var philSub      = heroPhil && heroPhil.querySelector('.hero-phil-sub');
     var philEyebrow  = document.getElementById('phil-eyebrow');
     var philHeadline = document.getElementById('phil-headline');
-    var philBlocks   = heroPhil && heroPhil.querySelectorAll('.phil-block');
+    var philBlocksEl = document.getElementById('phil-blocks');
     var philBody     = document.getElementById('phil-body');
     var philBtb      = document.getElementById('phil-btb');
     var philLtr      = document.getElementById('phil-ltr');
@@ -142,7 +142,6 @@ if (window.location.hash === '#ki-check') {
       if (philHeadline) philHeadline.textContent = HEADLINE_TEXT;
 
       var t = OUT + 20;
-      var philBlocksEl = document.getElementById('phil-blocks');
 
       // Delays basierend auf Wortanzahl (×220ms) des vorherigen Elements
       // (1) Eyebrow — 5 Wörter → 800ms Pause
@@ -173,7 +172,6 @@ if (window.location.hash === '#ki-check') {
       if (philSub) { philSub.style.opacity = '1'; philSub.style.transform = 'none'; }
       if (philEyebrow)  philEyebrow.style.opacity  = '1';
       if (philHeadline) { philHeadline.textContent = HEADLINE_TEXT; philHeadline.style.opacity = '1'; }
-      var philBlocksEl = document.getElementById('phil-blocks');
       if (philBlocksEl) philBlocksEl.style.opacity = '1';
       if (philBody)     philBody.style.opacity      = '1';
       if (philBtb)      philBtb.style.opacity       = '1';
@@ -679,16 +677,20 @@ if (window.location.hash === '#ki-check') {
 
       showTier(3);
 
-      // Lead form
-      if (leadBtn && emailIn) {
+      // Lead form — bind once, store data reference
+      if (leadBtn && emailIn && !leadBtn._bound) {
+        leadBtn._bound = true;
+        leadBtn._data = data;
         leadBtn.addEventListener('click', function () {
           var email = (emailIn.value || '').trim();
           if (!email || !email.includes('@')) {
             emailIn.focus();
             return;
           }
-          submitLead(email, data);
+          submitLead(email, leadBtn._data);
         });
+      } else if (leadBtn) {
+        leadBtn._data = data;
       }
     }
 

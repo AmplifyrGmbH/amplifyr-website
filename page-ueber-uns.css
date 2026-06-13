@@ -12,7 +12,7 @@
   min-height: 100svh;
   overflow: hidden;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
 }
 
 .ua-hero-photo {

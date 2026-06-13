@@ -20,6 +20,14 @@ $allowed_origins = ['https://www.amplifyr.ch', 'https://amplifyr.ch', 'http://lo
 $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
 if (in_array($origin, $allowed_origins)) {
     header('Access-Control-Allow-Origin: ' . $origin);
+    header('Access-Control-Allow-Methods: POST, OPTIONS');
+    header('Access-Control-Allow-Headers: Content-Type, Accept');
+}
+
+// Preflight-Request beantworten
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(204);
+    exit;
 }
 
 // JSON-Body einlesen
@@ -43,11 +51,11 @@ if (!$env || empty($env['ODOO_USER']) || empty($env['ODOO_API_KEY'])) {
 define('ODOO_USER', $env['ODOO_USER']);
 define('ODOO_PASS', $env['ODOO_API_KEY']);
 
-// Formulardaten
-$name    = trim($input['name']    ?? '');
+// Formulardaten (mit Längenbegrenzung)
+$name    = mb_substr(trim($input['name']    ?? ''), 0, 200);
 $email   = trim($input['email']   ?? '');
-$topic   = trim($input['topic']   ?? '');
-$message = trim($input['message'] ?? '');
+$topic   = mb_substr(trim($input['topic']   ?? ''), 0, 200);
+$message = mb_substr(trim($input['message'] ?? ''), 0, 5000);
 
 // Basis-Validierung
 if (!$name || !$email || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -147,6 +155,6 @@ if (isset($create['result']) && is_int($create['result'])) {
     echo json_encode(['success' => true, 'lead_id' => $create['result']]);
 } else {
     http_response_code(500);
-    $err = $create['error']['data']['message'] ?? 'Lead creation failed';
+    $err = (isset($create['error']['data']['message']) ? $create['error']['data']['message'] : 'Lead creation failed');
     echo json_encode(['success' => false, 'message' => $err]);
 }

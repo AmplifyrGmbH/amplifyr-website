@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /Prompt New Website/
+Disallow: /.env
 
 Sitemap: https://www.amplifyr.ch/sitemap.xml
