@@ -1,0 +1,32 @@
+name: Deploy to Hostpoint
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  ftp-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: .env aus GitHub Secrets generieren
+        run: |
+          echo "ODOO_USER=${{ secrets.ODOO_USER }}" > .env
+          echo "ODOO_API_KEY=${{ secrets.ODOO_API_KEY }}" >> .env
+          echo "ANTHROPIC_API_KEY=${{ secrets.ANTHROPIC_API_KEY }}" >> .env
+
+      - name: Upload via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          local-dir: ./
+          server-dir: /www/amplifyr.ch/
+          server-state-name: .ftp-deploy-sync-state-v3.json
