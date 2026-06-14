@@ -166,41 +166,60 @@ if (window.location.hash === '#ki-check') {
       }, OUT + 4200);
     }
 
-    if (reduced) {
-      if (phase1)  { phase1.style.opacity = '1'; phase1.style.transform = 'none'; }
-      if (divider) { divider.style.opacity = '1'; divider.style.transform = 'none'; }
-      if (phase2)  { phase2.style.opacity = '1'; phase2.style.transform = 'none'; }
-      if (philL1)  { philL1.style.opacity = '1'; philL1.style.transform = 'none'; }
-      if (philSub) { philSub.style.opacity = '1'; philSub.style.transform = 'none'; }
-      var philBlobsR = document.querySelector('.hero-phil-blobs');
-      if (philBlobsR) philBlobsR.style.opacity = '1';
+    /* ── Sofort-Endstate (reduced-motion, sessionStorage, Skip) ── */
+    function showEndState() {
+      if (philStarted) return;
+      philStarted = true;
+      sloganDone  = true;
+      if (video) { video.pause(); video.currentTime = video.duration || 0; }
+      if (fadeout) { fadeout.style.transition = 'none'; fadeout.style.opacity = '1'; }
+      if (phase1)  { phase1.style.transition = 'none'; phase1.style.opacity = '0'; }
+      if (divider) { divider.style.transition = 'none'; divider.style.opacity = '0'; }
+      if (phase2)  { phase2.style.transition = 'none'; phase2.style.opacity = '0'; }
+      if (philL1)  { philL1.style.transition  = 'none'; philL1.style.opacity  = '1'; philL1.style.transform  = 'none'; }
+      if (philSub) { philSub.style.transition = 'none'; philSub.style.opacity = '1'; philSub.style.transform = 'none'; }
+      var philBlobsE = document.querySelector('.hero-phil-blobs');
+      if (philBlobsE) { philBlobsE.style.transition = 'none'; philBlobsE.style.opacity = '1'; }
       if (heroPhil) heroPhil.classList.add('is-revealed');
-      if (philEyebrow)  philEyebrow.style.opacity  = '1';
-      if (philHeadline) { philHeadline.innerHTML = HEADLINE_TEXT; philHeadline.style.opacity = '1'; }
-      if (philBlocksEl) philBlocksEl.style.opacity = '1';
-      if (philBody)     philBody.style.opacity      = '1';
-      if (philDivider)  philDivider.style.opacity    = '1';
-      if (philBtb)      philBtb.style.opacity       = '1';
-      if (philLtr)      philLtr.style.opacity       = '1';
+      if (philEyebrow)  { philEyebrow.style.transition = 'none'; philEyebrow.style.opacity  = '1'; }
+      if (philHeadline) { philHeadline.innerHTML = HEADLINE_TEXT; philHeadline.style.transition = 'none'; philHeadline.style.opacity = '1'; }
+      if (philBlocksEl) { philBlocksEl.style.transition = 'none'; philBlocksEl.style.opacity = '1'; }
+      if (philBody)     { philBody.style.transition = 'none'; philBody.style.opacity      = '1'; }
+      if (philDivider)  { philDivider.style.transition = 'none'; philDivider.style.opacity    = '1'; }
+      if (philBtb)      { philBtb.style.transition = 'none'; philBtb.style.opacity       = '1'; }
+      if (philLtr)      { philLtr.style.transition = 'none'; philLtr.style.opacity       = '1'; }
       if (scrollCue) scrollCue.classList.add('is-visible');
+      sessionStorage.setItem('heroSeen', '1');
+    }
+
+    if (reduced || sessionStorage.getItem('heroSeen')) {
+      showEndState();
     } else {
       showSlogan();
-      video.addEventListener('ended', onVideoEnd);
+      video.addEventListener('ended', function () {
+        onVideoEnd();
+        sessionStorage.setItem('heroSeen', '1');
+      });
       // Fallback: falls Video nicht endet (kein File, etc.)
       setTimeout(function () {
         if (!sloganDone) onVideoEnd();
       }, 9000);
     }
 
-    // Hero fade on first scroll (nur wenn Phil-Text schon sichtbar)
+    // Hero fade on first scroll — Skip wenn Animation noch läuft
     function onHeroScroll() {
       if (heroScrolled) return;
       heroScrolled = true;
       window.removeEventListener('scroll', onHeroScroll);
       window.removeEventListener('wheel',  onHeroScroll);
-      if (fadeout) {
-        fadeout.style.transition = 'opacity 500ms ' + EASE;
-        fadeout.style.opacity    = '1';
+      if (!sloganDone) {
+        // Animation noch nicht fertig → direkt zum Endstate springen
+        showEndState();
+      } else {
+        if (fadeout) {
+          fadeout.style.transition = 'opacity 500ms ' + EASE;
+          fadeout.style.opacity    = '1';
+        }
       }
     }
 
