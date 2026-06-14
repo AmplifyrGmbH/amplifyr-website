@@ -205,13 +205,12 @@
   setTimeout(function () {
     teaser.classList.add('ba-teaser-visible');
 
-    // Wiggle alle 8 Sekunden starten (1.8s nach Erscheinen)
+    // Wiggle einmalig starten (1.8s nach Erscheinen)
     function startWiggle() {
       teaser.classList.add('ba-teaser-wiggle');
       setTimeout(function () {
         teaser.classList.remove('ba-teaser-wiggle');
       }, 600);
-      wiggleTimer = setTimeout(startWiggle, 8000);
     }
     setTimeout(startWiggle, 1800);
   }, 10000);
