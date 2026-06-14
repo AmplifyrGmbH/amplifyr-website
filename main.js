@@ -11,11 +11,11 @@
   ============================================================ */
   function setActiveNavLinks() {
     var path = window.location.pathname.replace(/\/$/, '') || '/';
-    var links = document.querySelectorAll('.nav-link, .mobile-nav-link, .mobile-nav-group__main-link');
+    var links = document.querySelectorAll('.nav-link, .mobile-nav-link');
     links.forEach(function (link) {
       var href = (link.getAttribute('href') || '').replace(/\/$/, '');
       if (href && href !== '#' && path === href) {
-        link.classList.add('active');
+        link.classList.add('is-active');
       }
     });
   }

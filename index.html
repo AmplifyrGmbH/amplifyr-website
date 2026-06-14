@@ -14,13 +14,14 @@
   <meta property="og:url"         content="https://www.amplifyr.ch/">
   <meta property="og:title"       content="Amplifyr | Digitale Transformation &amp; IT für KMU">
   <meta property="og:description" content="IT-Fundament, Betriebs-Software, KI &amp; Automatisierung und digitaler Auftritt für Schweizer KMU.">
-  <meta property="og:image"       content="https://www.amplifyr.ch/Bilder/og-image.webp">
+  <meta property="og:image"       content="https://www.amplifyr.ch/Logos/Open_Graph_Image_Amplifyr.webp">
+  <meta property="og:locale"      content="de_CH">
 
   <!-- Twitter Card -->
   <meta name="twitter:card"        content="summary_large_image">
   <meta name="twitter:title"       content="Amplifyr | Digitale Transformation &amp; IT für KMU">
   <meta name="twitter:description" content="IT-Fundament, Betriebs-Software, KI &amp; Automatisierung und digitaler Auftritt für Schweizer KMU.">
-  <meta name="twitter:image"       content="https://www.amplifyr.ch/Bilder/og-image.webp">
+  <meta name="twitter:image"       content="https://www.amplifyr.ch/Logos/Open_Graph_Image_Amplifyr.webp">
 
   <!-- Favicons -->
   <link rel="icon"             href="/Favicon/favicon.ico">
@@ -44,11 +45,13 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": ["LocalBusiness", "ProfessionalService"],
     "name": "Amplifyr GmbH",
     "url": "https://www.amplifyr.ch",
     "logo": "https://www.amplifyr.ch/Favicon/favicon_192x192.png",
     "description": "IT-Fundament, Betriebs-Software, KI & Automatisierung und digitaler Auftritt für Schweizer KMU.",
+    "telephone": "+41447985842",
+    "email": "info@amplifyr.ch",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Mettlenstrasse 11",
@@ -56,10 +59,18 @@
       "postalCode": "8142",
       "addressCountry": "CH"
     },
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "08:00",
+      "closes": "19:00"
+    }],
     "contactPoint": {
       "@type": "ContactPoint",
+      "telephone": "+41447985842",
       "email": "info@amplifyr.ch",
-      "contactType": "customer service"
+      "contactType": "customer service",
+      "availableLanguage": "German"
     },
     "founder": [
       { "@type": "Person", "name": "Timo Steinfort" },
@@ -71,7 +82,7 @@
 
   <!-- CSS -->
   <link rel="stylesheet" href="/style.css?v=2">
-  <link rel="stylesheet" href="/page-index.css">
+  <link rel="stylesheet" href="/page-index.css?v=1">
 </head>
 <body>
 
@@ -264,7 +275,6 @@
         <div class="hero-phil-blobs" aria-hidden="true">
           <div class="hero-phil-blob hero-phil-blob--1"></div>
           <div class="hero-phil-blob hero-phil-blob--2"></div>
-          <div class="hero-phil-blob hero-phil-blob--3"></div>
         </div>
         <div class="hero-phil-l1">
           <p class="hero-phil-eyebrow" id="phil-eyebrow"></p>
@@ -275,7 +285,8 @@
             <span class="phil-block">Was Ihr Unternehmen trägt, wird skaliert.</span>
             <span class="phil-block"> Was Sie bremst, wird eliminiert.</span>
           </p>
-          <p class="hero-phil-l2" id="phil-body">Das Ergebnis? Ein massiver Wettbewerbsvorteil, während die Konkurrenz am Boden bleibt.</p>
+          <p class="hero-phil-l2" id="phil-body"><em class="phil-body-lead">Das Ergebnis?</em> Ein massiver Wettbewerbsvorteil, während die Konkurrenz am Boden bleibt.</p>
+          <hr class="hero-phil-divider" id="phil-divider">
           <p class="hero-phil-slogan">
             <span id="phil-btb">BUILD THE BASE.</span>
             <em id="phil-ltr"> LEAD THE RACE.</em>
@@ -623,7 +634,7 @@
         <a href="/" class="footer-logo" aria-label="Amplifyr – Startseite">
           <span>ampli</span><span class="logo-fyr">fyr</span>
         </a>
-        <p class="footer-copy">© 2026 Amplifyr GmbH. Alle Rechte vorbehalten.</p>
+        <p class="footer-copy">© 2026 Amplifyr GmbH. Alle Rechte vorbehalten.<a href="tel:+41447985842" class="footer-tel"> · 044 798 58 42</a></p>
         <nav class="footer-links" aria-label="Rechtliches">
           <a href="/impressum">Impressum</a>
           <a href="/datenschutz">Datenschutz</a>

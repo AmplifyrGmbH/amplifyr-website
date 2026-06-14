@@ -179,10 +179,6 @@ input, textarea, select {
   background: var(--bg-fog);
 }
 
-.section--navy {
-  background: var(--navy);
-  color: #fff;
-}
 
 /* ============================================================
    4. TYPOGRAPHY
@@ -326,16 +322,6 @@ p {
   background: var(--accent-light);
 }
 
-.btn--ghost {
-  background: transparent;
-  color: var(--accent);
-  border-color: transparent;
-  padding-inline: var(--space-2);
-}
-
-.btn--ghost:hover {
-  text-decoration: underline;
-}
 
 .btn--sm {
   padding: 9px 18px;
@@ -748,26 +734,6 @@ p {
   transform: rotate(180deg);
 }
 
-.mobile-nav-group__trigger {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: var(--space-3) var(--space-4);
-  border-radius: var(--radius);
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--navy);
-  background: none;
-  border: none;
-  cursor: pointer;
-  text-align: left;
-  transition: background var(--duration) var(--ease);
-}
-
-.mobile-nav-group__trigger:hover {
-  background: var(--accent-light);
-}
 
 .mobile-nav-group__chevron {
   width: 16px;
@@ -912,15 +878,6 @@ p {
   color: #fff;
 }
 
-.nav-dropdown__divider {
-  height: 1px;
-  background: var(--border-light);
-  margin: var(--space-2) var(--space-4);
-}
-
-#site-header.hero-mode .nav-dropdown__divider {
-  background: rgba(255,255,255,0.15);
-}
 
 /* ============================================================
    9. FOOTER
@@ -932,16 +889,6 @@ footer {
   padding-block: var(--space-6);
 }
 
-footer.footer-light {
-  background: var(--bg-fog);
-  color: var(--text-muted);
-  border-top: 1px solid var(--border-light);
-}
-
-footer.on-image {
-  background: rgba(26,39,68,0.85);
-  backdrop-filter: blur(8px);
-}
 
 .footer-inner {
   display: flex;
@@ -975,22 +922,19 @@ footer.on-image {
   color: var(--steel);
 }
 
-footer.footer-light .footer-logo {
-  color: var(--navy);
-}
-
-footer.footer-light .footer-logo .logo-fyr {
-  color: var(--navy);
-  opacity: 0.6;
-}
-
 .footer-copy {
   font-size: 0.85rem;
   color: var(--text-muted);
 }
 
-footer.footer-light .footer-copy {
-  color: var(--text-muted);
+.footer-tel {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .footer-tel {
+    display: block;
+  }
 }
 
 .footer-links {
@@ -1011,13 +955,6 @@ footer.footer-light .footer-copy {
   color: var(--navy);
 }
 
-footer.footer-light .footer-links a {
-  color: var(--text-muted);
-}
-
-footer.footer-light .footer-links a:hover {
-  color: var(--navy);
-}
 
 /* ============================================================
    10. UTILITY CLASSES
@@ -1191,6 +1128,10 @@ footer.footer-light .footer-links a:hover {
 
 /* Mobile: Header height reduction */
 @media (max-width: 640px) {
+  :root {
+    --header-h: 64px;
+  }
+
   #site-header {
     height: 64px;
   }
@@ -1221,7 +1162,7 @@ footer.footer-light .footer-links a:hover {
   #ba-chat-teaser {
     transform: scale(0.70);
     transform-origin: bottom right;
-    transition: opacity 600ms ease, transform 300ms ease;
+    transition: opacity 600ms ease;
   }
 }
 

@@ -14,13 +14,14 @@
   <meta property="og:url"         content="https://www.amplifyr.ch/it-solutions">
   <meta property="og:title"       content="IT-Solutions für KMU — Outsourcing, Managed Services &amp; Cloud | Amplifyr">
   <meta property="og:description" content="Zuverlässige IT-Infrastruktur, Outsourcing und Managed Services für Schweizer KMU.">
-  <meta property="og:image"       content="https://www.amplifyr.ch/Bilder/og-image.webp">
+  <meta property="og:image"       content="https://www.amplifyr.ch/Logos/Open_Graph_Image_Amplifyr.webp">
+  <meta property="og:locale"      content="de_CH">
 
   <!-- Twitter Card -->
   <meta name="twitter:card"        content="summary_large_image">
   <meta name="twitter:title"       content="IT-Solutions für KMU — Outsourcing, Managed Services &amp; Cloud | Amplifyr">
   <meta name="twitter:description" content="Zuverlässige IT-Infrastruktur, Outsourcing und Managed Services für Schweizer KMU.">
-  <meta name="twitter:image"       content="https://www.amplifyr.ch/Bilder/og-image.webp">
+  <meta name="twitter:image"       content="https://www.amplifyr.ch/Logos/Open_Graph_Image_Amplifyr.webp">
 
   <!-- Favicons -->
   <link rel="icon"             href="/Favicon/favicon.ico">
@@ -40,9 +41,32 @@
   <link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap"></noscript>
 
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "IT-Outsourcing & Managed Services",
+    "description": "Zuverlässige IT-Infrastruktur, Outsourcing und Managed Services für Schweizer KMU. Amplifyr ist Ihr IT-Partner in der Region Zürich.",
+    "provider": { "@type": "Organization", "name": "Amplifyr GmbH", "url": "https://www.amplifyr.ch" },
+    "areaServed": { "@type": "Country", "name": "Switzerland" },
+    "serviceType": ["IT-Outsourcing", "Managed Services", "Cloud", "Microsoft 365"]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://www.amplifyr.ch/" },
+      { "@type": "ListItem", "position": 2, "name": "IT-Lösungen", "item": "https://www.amplifyr.ch/it-solutions" }
+    ]
+  }
+  </script>
+
   <!-- CSS -->
   <link rel="stylesheet" href="/style.css?v=2">
-  <link rel="stylesheet" href="/page-it-solutions.css">
+  <link rel="stylesheet" href="/page-it-solutions.css?v=1">
 </head>
 <body>
 
@@ -219,7 +243,8 @@
       <div class="fsh-overlay" aria-hidden="true"></div>
       <div class="container fsh-inner">
         <div class="fsh-content">
-          <h1 class="fsh-heading">IT <em class="fsh-em">amplified</em></h1>
+          <h1 class="sr-only">IT-Outsourcing &amp; Managed Services für KMU</h1>
+          <p class="fsh-heading">IT <em class="fsh-em">amplified</em></p>
           <p class="fsh-sub">Wir schaffen die technologische Grundlage für stabile, sichere und skalierbare Unternehmenssysteme — eine rundum funktionierende und zukunftsgerichtete IT.</p>
           <div class="fsh-actions">
             <a class="btn btn--hero-pill" href="/formular">IT-Audit anfragen</a>
@@ -682,7 +707,7 @@
         <a href="/" class="footer-logo" aria-label="Amplifyr – Startseite">
           <span>ampli</span><span class="logo-fyr">fyr</span>
         </a>
-        <p class="footer-copy">© 2026 Amplifyr GmbH. Alle Rechte vorbehalten.</p>
+        <p class="footer-copy">© 2026 Amplifyr GmbH. Alle Rechte vorbehalten.<a href="tel:+41447985842" class="footer-tel"> · 044 798 58 42</a></p>
         <nav class="footer-links" aria-label="Rechtliches">
           <a href="/impressum">Impressum</a>
           <a href="/datenschutz">Datenschutz</a>

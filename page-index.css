@@ -184,9 +184,6 @@
   right: 10%;
 }
 
-.hero-phil-blob--3 {
-  display: none;
-}
 
 .hero-phil::before {
   content: '';
@@ -243,7 +240,7 @@
 
 .hero-phil-headline {
   font-family: var(--font-display);
-  font-size: clamp(1rem, 2.4vw, 2rem);
+  font-size: clamp(1.2rem, 2.8vw, 2.4rem);
   font-weight: 800;
   line-height: 1.1;
   color: #fff;
@@ -251,35 +248,61 @@
   margin: 0;
 }
 
-@media (min-width: 641px) {
-  .hero-phil-headline {
-    white-space: nowrap;
-  }
+.phil-headline-accent {
+  font-style: italic;
+  color: var(--steel);
 }
 
 .hero-phil-sub {
   display: flex;
   flex-direction: column;
-  gap: var(--space-6);
+  gap: var(--space-5);
   padding-top: var(--space-2);
 }
 
-.hero-phil-l2 {
-  font-family: var(--font-body);
-  font-size: clamp(0.88rem, 1.45vw, 1.05rem);
-  line-height: 1.8;
-  color: rgba(255,255,255,0.75);
+/* Blocks: Serif-Italic — editorial, elegant */
+#phil-blocks {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1rem, 1.65vw, 1.25rem);
+  line-height: 1.6;
+  color: #fff;
   text-align: center;
+  margin: 0;
+}
+
+/* Body: kleiner, gedimmt, mit Hellblau-Eyebrow */
+#phil-body {
+  font-family: var(--font-body);
+  font-size: clamp(0.85rem, 1.3vw, 1rem);
+  line-height: 1.8;
+  color: rgba(255,255,255,0.65);
+  text-align: center;
+  margin: 0;
+}
+
+.phil-body-lead {
+  font-style: italic;
+  font-weight: 600;
+  color: var(--steel);
+}
+
+.hero-phil-divider {
+  opacity: 0;
+  border: none;
+  border-top: 1px solid rgba(176,196,222,0.2);
+  width: 100%;
   margin: 0;
 }
 
 .hero-phil-slogan {
   font-family: var(--font-display);
-  font-size: clamp(0.9rem, 1.4vw, 1.1rem);
+  font-size: clamp(1rem, 1.55vw, 1.25rem);
   font-weight: 700;
   color: #fff;
   text-align: center;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
   margin: 0;
 }
 
@@ -303,127 +326,10 @@
   .hero-phil {
     padding-inline: var(--space-5);
     padding-top: calc(var(--header-h) + var(--space-4));
+    gap: var(--space-6);
   }
 }
 
-/* ============================================================
-   PHILOSOPHIE (wird nicht mehr als eigene Sektion verwendet)
-============================================================ */
-#philosophie {
-  min-height: 100vh;
-  min-height: 100svh;
-  background: var(--navy);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  padding: var(--space-16) var(--space-4);
-}
-
-.phil-inner {
-  max-width: 800px;
-  width: 100%;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-6);
-}
-
-.phil-l1 {
-  font-family: var(--font-display);
-  font-size: clamp(1.6rem, 3vw, 2.6rem);
-  font-weight: 900;
-  color: #fff;
-  margin: 0;
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.phil-sub {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.phil-l2,
-.phil-l3 {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: clamp(1.2rem, 2.2vw, 1.9rem);
-  font-weight: 400;
-  color: rgba(255,255,255,0.85);
-  margin: 0;
-}
-
-.phil-l4 {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: clamp(1.6rem, 3vw, 2.6rem);
-  font-weight: 400;
-  margin: 0;
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.phil-white {
-  color: #fff;
-  font-style: normal;
-  font-weight: 900;
-}
-
-.phil-steel {
-  color: var(--steel);
-}
-
-/* Scroll hint (double chevron) */
-.phil-scroll-hint {
-  position: absolute;
-  bottom: 28px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: -4px;
-  opacity: 0;
-  transition: opacity 600ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.phil-scroll-hint.is-visible {
-  opacity: 1;
-}
-
-.phil-scroll-hint svg {
-  width: 24px;
-  height: 24px;
-  color: rgba(255,255,255,0.4);
-  animation: philChevron 2s cubic-bezier(0.22, 1, 0.36, 1) infinite;
-}
-
-.phil-scroll-hint svg:last-child {
-  animation-delay: 200ms;
-}
-
-@keyframes philChevron {
-  0%, 100% { transform: translateY(0);  opacity: 0.4; }
-  50%       { transform: translateY(4px); opacity: 0.8; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .phil-scroll-hint svg { animation: none; }
-}
-
-/* Animated state */
-.phil-l1.is-visible,
-.phil-sub.is-visible,
-.phil-l4.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 700ms cubic-bezier(0.22, 1, 0.36, 1), transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
-}
 
 /* ============================================================
    ANSATZ
@@ -1117,6 +1023,7 @@
   position: absolute;
   top: 8px;
   left: 0;
+  text-overflow: ellipsis;
   font-family: inherit;
   font-size: 0.975rem;
   color: rgba(176,196,222,0.32);
@@ -1991,7 +1898,7 @@
   font-size: 1rem;
   line-height: 1.6;
   resize: none;
-  min-height: 48px;
+  min-height: 60px;
 }
 
 .kic-submit-btn {
@@ -2442,4 +2349,10 @@
   .kic-status-dot,
   .kic-dot { animation: none; }
   .kic-ring-fill { transition: none; }
+}
+
+@media (max-width: 400px) {
+  #ki-check {
+    padding-block: var(--space-10);
+  }
 }

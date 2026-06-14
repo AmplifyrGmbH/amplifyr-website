@@ -16,7 +16,6 @@ if (window.location.hash === '#ki-check') {
 
   var EASE = 'cubic-bezier(0.22, 1, 0.36, 1)';
   var AI_CHECK_URL = 'ai-check.php';
-  var WF3_KEY = '1f1c6035-3bd1-4011-89ec-68c781a2ac8a'; // web3forms.com Access Key
 
   /* ============================================================
      HERO ANIMATION
@@ -35,12 +34,13 @@ if (window.location.hash === '#ki-check') {
     var philHeadline = document.getElementById('phil-headline');
     var philBlocksEl = document.getElementById('phil-blocks');
     var philBody     = document.getElementById('phil-body');
+    var philDivider  = document.getElementById('phil-divider');
     var philBtb      = document.getElementById('phil-btb');
     var philLtr      = document.getElementById('phil-ltr');
     var fadeout    = document.getElementById('hero-fadeout');
     var scrollCue  = document.getElementById('hero-scroll-cue');
 
-    var HEADLINE_TEXT = 'Amplifyr schafft die Startrampe für Ihren Aufstieg!';
+    var HEADLINE_TEXT = 'Amplifyr schafft die Startrampe für Ihren <em class="phil-headline-accent">Aufstieg!</em>';
 
     if (!hero || !video) return;
 
@@ -133,25 +133,37 @@ if (window.location.hash === '#ki-check') {
       }
 
       // Headline-Text vorab setzen
-      if (philHeadline) philHeadline.textContent = HEADLINE_TEXT;
+      if (philHeadline) philHeadline.innerHTML = HEADLINE_TEXT;
 
-      // Phil-Container sichtbar machen — direkt nach Overlay-Fade
+      // Phil-Container + Blobs sichtbar machen — direkt nach Overlay-Fade
       setTimeout(function () {
         if (philL1)  { philL1.style.transition  = 'none'; philL1.style.opacity  = '1'; philL1.style.transform  = 'none'; }
         if (philSub) { philSub.style.transition = 'none'; philSub.style.opacity = '1'; philSub.style.transform = 'none'; }
         var philBlobs = document.querySelector('.hero-phil-blobs');
         if (philBlobs) { philBlobs.style.transition = 'opacity 800ms ' + EASE; philBlobs.style.opacity = '1'; }
         if (heroPhil) heroPhil.classList.add('is-revealed');
-
         show(philEyebrow);
         show(philHeadline);
+      }, OUT);
+
+      setTimeout(function () {
         if (philBlocksEl) { philBlocksEl.style.transition = 'opacity 300ms ease'; philBlocksEl.style.opacity = '1'; }
+      }, OUT + 1200);
+
+      setTimeout(function () {
         show(philBody);
+      }, OUT + 2500);
+
+      setTimeout(function () {
+        show(philDivider);
+      }, OUT + 3800);
+
+      setTimeout(function () {
         show(philBtb);
         show(philLtr);
         if (scrollCue) scrollCue.classList.add('is-visible');
         sloganDone = true;
-      }, OUT);
+      }, OUT + 4200);
     }
 
     if (reduced) {
@@ -164,9 +176,10 @@ if (window.location.hash === '#ki-check') {
       if (philBlobsR) philBlobsR.style.opacity = '1';
       if (heroPhil) heroPhil.classList.add('is-revealed');
       if (philEyebrow)  philEyebrow.style.opacity  = '1';
-      if (philHeadline) { philHeadline.textContent = HEADLINE_TEXT; philHeadline.style.opacity = '1'; }
+      if (philHeadline) { philHeadline.innerHTML = HEADLINE_TEXT; philHeadline.style.opacity = '1'; }
       if (philBlocksEl) philBlocksEl.style.opacity = '1';
       if (philBody)     philBody.style.opacity      = '1';
+      if (philDivider)  philDivider.style.opacity    = '1';
       if (philBtb)      philBtb.style.opacity       = '1';
       if (philLtr)      philLtr.style.opacity       = '1';
       if (scrollCue) scrollCue.classList.add('is-visible');
@@ -193,52 +206,6 @@ if (window.location.hash === '#ki-check') {
 
     window.addEventListener('scroll', onHeroScroll, { passive: true });
     window.addEventListener('wheel',  onHeroScroll, { passive: true });
-  }
-
-  /* ============================================================
-     PHILOSOPHIE ANIMATION
-  ============================================================ */
-  function initPhilosophie() {
-    var section = document.getElementById('philosophie');
-    if (!section) return;
-
-    var l1   = section.querySelector('.phil-l1');
-    var sub  = section.querySelector('.phil-sub');
-    var l4   = section.querySelector('.phil-l4');
-    var hint = document.getElementById('phil-scroll-hint');
-
-    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduced) {
-      if (l1)  { l1.style.opacity  = '1'; l1.style.transform  = 'none'; }
-      if (sub) { sub.style.opacity = '1'; sub.style.transform = 'none'; }
-      if (l4)  { l4.style.opacity  = '1'; l4.style.transform  = 'none'; }
-      if (hint) hint.classList.add('is-visible');
-      return;
-    }
-
-    var triggered = false;
-    var obs = new IntersectionObserver(function (entries) {
-      if (triggered || !entries[0].isIntersecting) return;
-      triggered = true;
-      obs.disconnect();
-
-      if (l1) l1.classList.add('is-visible');
-
-      setTimeout(function () {
-        if (sub) sub.classList.add('is-visible');
-      }, 700);
-
-      setTimeout(function () {
-        if (l4) l4.classList.add('is-visible');
-      }, 1400);
-
-      setTimeout(function () {
-        if (hint) hint.classList.add('is-visible');
-      }, 1900);
-
-    }, { threshold: 0.3 });
-
-    obs.observe(section);
   }
 
   /* ============================================================

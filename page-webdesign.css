@@ -61,10 +61,11 @@
   .wd-split--rev {
     grid-template-columns: 1fr;
     direction: ltr;
+    gap: var(--space-8);
   }
 
   .wd-split-visual {
-    min-height: auto;
+    display: none;
   }
 }
 
