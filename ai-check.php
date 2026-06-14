@@ -1,6 +1,6 @@
 <?php
 // ── Configuration ─────────────────────────────────────────────────────────────
-define('CLAUDE_MODEL',    'claude-opus-4-5');
+define('CLAUDE_MODEL',    'claude-sonnet-4-6');
 define('MAX_TOKENS',      1000);
 define('API_TIMEOUT',       28);
 define('API_CONNECT_TIMEOUT', 8);
