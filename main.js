@@ -201,8 +201,8 @@
 
   var wiggleTimer;
 
-  // Nach 10 Sekunden einblenden (Bounce-In via CSS)
-  setTimeout(function () {
+  function showTeaser() {
+    if (teaser.classList.contains('ba-teaser-visible')) return;
     teaser.classList.add('ba-teaser-visible');
 
     // Wiggle alle 8 Sekunden starten (1.8s nach Erscheinen)
@@ -214,7 +214,22 @@
       wiggleTimer = setTimeout(startWiggle, 8000);
     }
     setTimeout(startWiggle, 1800);
-  }, 10000);
+  }
+
+  // Seiten mit Hero (.fsh): IntersectionObserver
+  var heroEl = document.querySelector('.fsh');
+  if (heroEl && 'IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function (entries) {
+      if (!entries[0].isIntersecting) {
+        showTeaser();
+        obs.disconnect();
+      }
+    }, { threshold: 0 });
+    obs.observe(heroEl);
+  } else {
+    // Seiten ohne Hero: 5 Sekunden
+    setTimeout(showTeaser, 5000);
+  }
 
   // Beim Scrollen: kurz ausblenden, nach 600ms wieder einblenden
   var scrollTimer = null;
