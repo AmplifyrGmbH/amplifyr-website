@@ -931,11 +931,6 @@ footer {
   display: none;
 }
 
-@media (max-width: 640px) {
-  .footer-tel {
-    display: block;
-  }
-}
 
 .footer-links {
   display: flex;

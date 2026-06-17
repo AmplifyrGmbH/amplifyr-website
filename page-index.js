@@ -40,7 +40,7 @@ if (window.location.hash === '#ki-check') {
     var fadeout    = document.getElementById('hero-fadeout');
     var scrollCue  = document.getElementById('hero-scroll-cue');
 
-    var HEADLINE_TEXT = 'Amplifyr schafft die Startrampe für Ihren <em class="phil-headline-accent">Aufstieg!</em>';
+    var HEADLINE_TEXT = '<span class="phil-logo"><span class="phil-logo-ampli">ampli</span><em class="phil-logo-fyr">fyr</em></span> schafft die technologische Startrampe für Ihren <em class="phil-blue">Aufstieg!</em>';
 
     if (!hero || !video) return;
 
@@ -137,33 +137,31 @@ if (window.location.hash === '#ki-check') {
 
       // Phil-Container + Blobs sichtbar machen — direkt nach Overlay-Fade
       setTimeout(function () {
-        if (philL1)  { philL1.style.transition  = 'none'; philL1.style.opacity  = '1'; philL1.style.transform  = 'none'; }
         if (philSub) { philSub.style.transition = 'none'; philSub.style.opacity = '1'; philSub.style.transform = 'none'; }
         var philBlobs = document.querySelector('.hero-phil-blobs');
         if (philBlobs) { philBlobs.style.transition = 'opacity 800ms ' + EASE; philBlobs.style.opacity = '1'; }
         if (heroPhil) heroPhil.classList.add('is-revealed');
-        show(philEyebrow);
         show(philHeadline);
       }, OUT);
 
       setTimeout(function () {
-        if (philBlocksEl) { philBlocksEl.style.transition = 'opacity 300ms ease'; philBlocksEl.style.opacity = '1'; }
-      }, OUT + 1200);
+        show(philBody);
+      }, OUT + 150);
 
       setTimeout(function () {
-        show(philBody);
-      }, OUT + 2500);
+        if (philBlocksEl) { philBlocksEl.style.transition = 'opacity 300ms ease'; philBlocksEl.style.opacity = '1'; }
+      }, OUT + 300);
 
       setTimeout(function () {
         show(philDivider);
-      }, OUT + 3800);
+      }, OUT + 450);
 
       setTimeout(function () {
         show(philBtb);
         show(philLtr);
         if (scrollCue) scrollCue.classList.add('is-visible');
         sloganDone = true;
-      }, OUT + 4200);
+      }, OUT + 600);
     }
 
     /* ── Sofort-Endstate (reduced-motion, sessionStorage, Skip) ── */
@@ -181,7 +179,6 @@ if (window.location.hash === '#ki-check') {
       var philBlobsE = document.querySelector('.hero-phil-blobs');
       if (philBlobsE) { philBlobsE.style.transition = 'none'; philBlobsE.style.opacity = '1'; }
       if (heroPhil) heroPhil.classList.add('is-revealed');
-      if (philEyebrow)  { philEyebrow.style.transition = 'none'; philEyebrow.style.opacity  = '1'; }
       if (philHeadline) { philHeadline.innerHTML = HEADLINE_TEXT; philHeadline.style.transition = 'none'; philHeadline.style.opacity = '1'; }
       if (philBlocksEl) { philBlocksEl.style.transition = 'none'; philBlocksEl.style.opacity = '1'; }
       if (philBody)     { philBody.style.transition = 'none'; philBody.style.opacity      = '1'; }
