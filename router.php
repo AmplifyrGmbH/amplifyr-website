@@ -22,6 +22,9 @@ $map = [
     '/agb'               => 'agb.html',
     '/datenschutz'       => 'datenschutz.html',
     '/impressum'         => 'impressum.html',
+    '/business-amplification' => 'business-amplification.html',
+    '/digitalisierung-kmu'           => 'digitalisierung-kmu.html',
+    '/digitalisierung-handwerker'    => 'digitalisierung-handwerker.html',
 ];
 
 $path = rtrim($uri, '/') ?: '/';

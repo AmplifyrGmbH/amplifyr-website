@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="de-CH">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Handwerker | Business Amplification | Amplifyr</title>
+  <meta name="description" content="Business Amplification für Handwerksbetriebe – vom Zettelchaos zur digitalen Baustelle. IT, Software, KI und digitaler Auftritt für Handwerker.">
+  <link rel="canonical" href="https://www.amplifyr.ch/digitalisierung-handwerker">
+  <meta name="robots" content="index, follow">
+
+  <!-- Favicons -->
+  <link rel="icon"             href="/Favicon/favicon.ico">
+  <link rel="icon"             href="/Favicon/favicon_32x32.png" sizes="32x32" type="image/png">
+  <link rel="icon"             href="/Favicon/favicon_16x16.png" sizes="16x16" type="image/png">
+  <link rel="apple-touch-icon" href="/Favicon/favicon_180x180.png">
+  <link rel="manifest"         href="/site.webmanifest">
+  <meta name="theme-color" content="#1a2744">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap">
+  <link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap"></noscript>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/style.css?v=2">
+
+  <style>
+    /* ── Hero ─────────────────────────────────────────────── */
+    .hw-hero {
+      min-height: 100vh;
+      background: var(--navy) url('/Bilder/BA_Handwerk.jpg') center center / cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: calc(var(--header-h) + var(--space-12)) var(--space-6) var(--space-16);
+      position: relative;
+      overflow: hidden;
+    }
+    .hw-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    .hw-hero-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--steel);
+      margin: 0 0 var(--space-5) 0;
+    }
+    .hw-hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.1;
+      margin: 0 0 var(--space-5) 0;
+    }
+    .hw-hero-title em {
+      font-style: italic;
+      color: var(--steel);
+    }
+    .hw-hero-sub {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.55);
+      max-width: 500px;
+      line-height: 1.7;
+      margin: 0 0 var(--space-8) 0;
+    }
+    .hw-hero-btn {
+      display: inline-block;
+      padding: 14px 32px;
+      background: #fff;
+      color: var(--navy);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 9999px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+      transition: box-shadow 220ms ease, transform 220ms ease;
+    }
+    .hw-hero-btn:hover {
+      box-shadow: 0 6px 32px rgba(0,0,0,0.28);
+      transform: translateY(-2px);
+    }
+
+    /* ── Problem / Lösung ─────────────────────────────────── */
+    .hw-split {
+      background: #fff;
+      padding: var(--space-16) 0;
+    }
+    .hw-split-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .hw-split-col {
+      padding: var(--space-10) var(--space-8);
+    }
+    .hw-split-col--left {
+      background: var(--navy);
+    }
+    .hw-split-col--right {
+      background: #f7f9fc;
+    }
+    .hw-split-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      font-weight: 700;
+      margin: 0 0 var(--space-7) 0;
+    }
+    .hw-split-col--left .hw-split-title {
+      color: rgba(255,255,255,0.5);
+    }
+    .hw-split-col--right .hw-split-title {
+      color: var(--navy);
+    }
+    .hw-split-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+    .hw-split-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    .hw-split-col--left .hw-split-list li {
+      color: rgba(255,255,255,0.7);
+    }
+    .hw-split-col--right .hw-split-list li {
+      color: var(--text-body);
+    }
+    .hw-split-list li::before {
+      content: '';
+      display: block;
+      flex-shrink: 0;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      margin-top: 7px;
+    }
+    .hw-split-col--left .hw-split-list li::before {
+      background: rgba(176,196,222,0.4);
+    }
+    .hw-split-col--right .hw-split-list li::before {
+      background: var(--steel);
+    }
+
+    /* ── 4 Stufen ─────────────────────────────────────────── */
+    .hw-stufen {
+      background: var(--navy);
+      padding: var(--space-16) 0;
+    }
+    .hw-stufen-header {
+      text-align: center;
+      margin-bottom: var(--space-12);
+    }
+    .hw-stufen-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      color: #fff;
+      margin: 0 0 var(--space-3) 0;
+    }
+    .hw-stufen-header h2 em {
+      font-style: italic;
+      color: var(--steel);
+    }
+    .hw-stufen-sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.45);
+    }
+    .hw-stufen-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-6);
+    }
+    .hw-stufe {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(176,196,222,0.1);
+      border-radius: var(--radius-lg);
+      padding: var(--space-8);
+    }
+    .hw-stufe-num {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: rgba(176,196,222,0.15);
+      line-height: 1;
+      margin-bottom: var(--space-3);
+    }
+    .hw-stufe-phase {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--steel);
+      margin: 0 0 var(--space-2) 0;
+    }
+    .hw-stufe-title {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+      margin: 0 0 var(--space-5) 0;
+    }
+    .hw-stufe-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+    .hw-stufe-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.5;
+    }
+    .hw-stufe-list li::before {
+      content: '→';
+      color: var(--steel);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── CTA ──────────────────────────────────────────────── */
+    .hw-cta {
+      background: #fff;
+      padding: var(--space-16) 0;
+      text-align: center;
+    }
+    .hw-cta h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 800;
+      color: var(--navy);
+      margin: 0 0 var(--space-4) 0;
+    }
+    .hw-cta p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin: 0 0 var(--space-7) 0;
+    }
+
+    /* ── Responsive ───────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .hw-split-grid {
+        grid-template-columns: 1fr;
+      }
+      .hw-stufen-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       HEADER
+  ============================================================ -->
+  <header id="site-header" class="hero-mode">
+    <div class="container header-inner">
+
+      <a href="/" class="site-logo" aria-label="Amplifyr – Startseite">
+        <span>ampli</span><span class="logo-fyr">fyr</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Hauptnavigation">
+        <ul class="site-nav__list">
+          <li class="site-nav__item">
+            <a href="/it-solutions" class="site-nav__link nav-link">IT-Lösungen</a>
+          </li>
+          <li class="site-nav__item">
+            <a href="/branchen-software" class="site-nav__link nav-link">Betriebs-Software</a>
+          </li>
+          <li class="site-nav__item">
+            <a href="/ki-prozesse" class="site-nav__link nav-link">KI &amp; Automatisierung</a>
+          </li>
+          <li class="site-nav__item">
+            <a href="/webdesign" class="site-nav__link nav-link">Digitaler Auftritt</a>
+          </li>
+          <li class="site-nav__item">
+            <a href="/ueber-uns" class="site-nav__link nav-link" aria-haspopup="true">
+              Über uns
+              <svg class="site-nav__chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <div class="nav-dropdown" role="menu">
+              <a href="/blog" class="nav-dropdown__link" role="menuitem">Blog</a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="site-header__cta">
+        <div class="header-ba-wrap">
+          <a href="/business-amplification" class="header-ba-link" aria-haspopup="true">
+            Business <em>Amplification</em>
+            <svg class="site-nav__chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <div class="nav-dropdown" role="menu">
+            <a href="/digitalisierung-kmu" class="nav-dropdown__link" role="menuitem">Allgemein</a>
+            <a href="/digitalisierung-handwerker" class="nav-dropdown__link" role="menuitem">Handwerker</a>
+          </div>
+        </div>
+      </div>
+
+      <button id="burger-btn" class="burger-btn" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- ============================================================
+       MOBILE MENU
+  ============================================================ -->
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile Navigation">
+
+    <div class="mobile-menu__header">
+      <a href="/" class="mobile-menu__logo" aria-label="Amplifyr – Startseite">
+        <span>ampli</span><span class="logo-fyr">fyr</span>
+      </a>
+      <button id="mobile-menu-close" class="mobile-menu__close" aria-label="Menü schliessen">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="mobile-menu__nav">
+
+      <div class="mobile-nav-group">
+        <div class="mobile-nav-group__row">
+          <a href="/business-amplification" class="mobile-nav-link">Business Amplification</a>
+          <button class="mobile-nav-group__chevron-btn" aria-label="Business Amplification Untermenü">
+            <svg class="mobile-nav-group__chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+        <div class="mobile-nav-group__sub">
+          <a href="/digitalisierung-kmu">Allgemein</a>
+          <a href="/digitalisierung-handwerker">Handwerker</a>
+        </div>
+      </div>
+
+      <div class="mobile-nav-group">
+        <div class="mobile-nav-group__row">
+          <a href="/it-solutions" class="mobile-nav-link">IT-Lösungen</a>
+          <button class="mobile-nav-group__chevron-btn" aria-label="IT-Lösungen Untermenü">
+            <svg class="mobile-nav-group__chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+        <div class="mobile-nav-group__sub">
+          <a href="/it-solutions#sec-outsourcing">IT-Outsourcing</a>
+          <a href="/it-solutions#sec-managed">Managed Services</a>
+          <a href="/it-solutions#sec-cloud">Cloud</a>
+        </div>
+      </div>
+
+      <div class="mobile-nav-group">
+        <div class="mobile-nav-group__row">
+          <a href="/branchen-software" class="mobile-nav-link">Betriebs-Software</a>
+          <button class="mobile-nav-group__chevron-btn" aria-label="Betriebs-Software Untermenü">
+            <svg class="mobile-nav-group__chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+        <div class="mobile-nav-group__sub">
+          <a href="/branchen-software#bs-ansatz">Ansatz</a>
+          <a href="/branchen-software#bs-vorgehen">Vorgehen</a>
+          <a href="/branchen-software#bs-branchen">Branchen</a>
+        </div>
+      </div>
+
+      <div class="mobile-nav-group">
+        <div class="mobile-nav-group__row">
+          <a href="/ki-prozesse" class="mobile-nav-link">KI &amp; Automatisierung</a>
+          <button class="mobile-nav-group__chevron-btn" aria-label="KI & Automatisierung Untermenü">
+            <svg class="mobile-nav-group__chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+        <div class="mobile-nav-group__sub">
+          <a href="/ki-prozesse#sec-chatbot">Chatbots</a>
+          <a href="/ki-prozesse#sec-telefonie">KI-Telefonie</a>
+          <a href="/ki-prozesse#sec-automation">Workflows</a>
+        </div>
+      </div>
+
+      <div class="mobile-nav-group">
+        <div class="mobile-nav-group__row">
+          <a href="/webdesign" class="mobile-nav-link">Digitaler Auftritt</a>
+          <button class="mobile-nav-group__chevron-btn" aria-label="Digitaler Auftritt Untermenü">
+            <svg class="mobile-nav-group__chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+        <div class="mobile-nav-group__sub">
+          <a href="/webdesign#sec-website">Websites &amp; Webshops</a>
+          <a href="/webdesign#sec-seo">SEO</a>
+          <a href="/webdesign#sec-rebranding">Rebrandings</a>
+        </div>
+      </div>
+
+      <div class="mobile-nav-group">
+        <div class="mobile-nav-group__row">
+          <a href="/ueber-uns" class="mobile-nav-link">Über uns</a>
+          <button class="mobile-nav-group__chevron-btn" aria-label="Über uns Untermenü">
+            <svg class="mobile-nav-group__chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+        <div class="mobile-nav-group__sub">
+          <a href="/blog">Blog</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="mobile-menu__cta">
+      <a href="/business-amplification" class="btn btn--primary">Business Amplification</a>
+    </div>
+
+  </nav>
+
+  <!-- ============================================================
+       MAIN
+  ============================================================ -->
+  <main>
+
+    <!-- ── Hero ──────────────────────────────────────────────── -->
+    <section class="hw-hero" aria-label="Hero">
+      <p class="hw-hero-eyebrow">Business Amplification · Handwerker</p>
+      <h1 class="hw-hero-title">Vom Zettelchaos zur<br><em>digitalen Baustelle.</em></h1>
+      <p class="hw-hero-sub">Weniger Büroarbeit. Mehr Zeit für das Handwerk. Wir digitalisieren Ihren Betrieb — Schritt für Schritt, ohne Chaos.</p>
+      <a href="/formular" class="hw-hero-btn">Kostenloses Erstgespräch →</a>
+    </section>
+
+    <!-- ── Problem / Lösung ───────────────────────────────────── -->
+    <section class="hw-split" aria-label="Herausforderungen und Lösungen">
+      <div class="container">
+        <div class="hw-split-grid">
+
+          <div class="hw-split-col hw-split-col--left">
+            <p class="hw-split-title">Das kostet Sie täglich Zeit und Geld.</p>
+            <ul class="hw-split-list">
+              <li>Stundenzettel auf Papier, Stunden manuell übertragen</li>
+              <li>Anrufe ohne System — Aufträge gehen vergessen</li>
+              <li>Angebote dauern Stunden, Rechnungen kommen zu spät</li>
+              <li>Disposition per WhatsApp und Zuruf</li>
+              <li>Urlaubsplanung im Kopf, Abwesenheiten unklar</li>
+              <li>Kundendaten verstreut auf Zetteln, Mails und Handy</li>
+            </ul>
+          </div>
+
+          <div class="hw-split-col hw-split-col--right">
+            <p class="hw-split-title">So gewinnen Sie beides zurück.</p>
+            <ul class="hw-split-list">
+              <li>GPS-Zeiterfassung mobil, automatisch und DSGVO-konform</li>
+              <li>KI-Telefonassistent nimmt an, qualifiziert und trägt ein</li>
+              <li>Angebot per Klick, Rechnung per Knopfdruck</li>
+              <li>Digitale Plantafel mit KI-gestützten Dispositionsvorschlägen</li>
+              <li>Urlaubskalender und Abwesenheiten zentral im System</li>
+              <li>Vollständige Kundenhistorie, überall abrufbar</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 4 Stufen ───────────────────────────────────────────── -->
+    <section class="hw-stufen" aria-label="Die 4 Stufen für Handwerker">
+      <div class="container">
+
+        <div class="hw-stufen-header">
+          <h2>Business <em>Amplification</em><br>für Handwerker.</h2>
+          <p class="hw-stufen-sub">Vier Stufen. Ein System. Alles aus einer Hand.</p>
+        </div>
+
+        <div class="hw-stufen-grid">
+
+          <div class="hw-stufe">
+            <div class="hw-stufe-num">01</div>
+            <p class="hw-stufe-phase">Fundament</p>
+            <h3 class="hw-stufe-title">IT-Lösungen</h3>
+            <ul class="hw-stufe-list">
+              <li>Stabile Geräte für Büro und Baustelle</li>
+              <li>Mobile-first: App läuft auch offline, synchronisiert automatisch</li>
+              <li>Sichere Datensicherung — Kundendaten, Aufträge, Dokumente</li>
+              <li>Netzwerk und Hardware, die im Alltag einfach funktionieren</li>
+            </ul>
+          </div>
+
+          <div class="hw-stufe">
+            <div class="hw-stufe-num">02</div>
+            <p class="hw-stufe-phase">Struktur</p>
+            <h3 class="hw-stufe-title">Betriebs-Software</h3>
+            <ul class="hw-stufe-list">
+              <li>Digitale Auftragsverwaltung von der Anfrage bis zur Abrechnung</li>
+              <li>Angebote aus digitalem Produktkatalog (DATANORM/GAEB-Import)</li>
+              <li>Ein Klick: Auftrag wird zur Rechnung — direkt an Lexoffice, sevDesk oder Bexio</li>
+              <li>Fotos, Pläne und Notizen mit Zeitstempel im Auftrag gespeichert</li>
+              <li>Digitale Formulare und Unterschrift direkt auf der Baustelle</li>
+              <li>Urlaubs- und Abwesenheitsverwaltung mit Teamkalender</li>
+            </ul>
+          </div>
+
+          <div class="hw-stufe">
+            <div class="hw-stufe-num">03</div>
+            <p class="hw-stufe-phase">Effizienz</p>
+            <h3 class="hw-stufe-title">KI &amp; Automatisierung</h3>
+            <ul class="hw-stufe-list">
+              <li>KI-Telefonassistent: nimmt Anrufe an, qualifiziert Anfragen und trägt Termine automatisch ein</li>
+              <li>KI-Planungsassistent: Dispositionsvorschläge per Drag &amp; Drop</li>
+              <li>KI-Spracheingabe für freihändige Baudokumentation auf der Baustelle</li>
+              <li>Automatische Überstundenberechnung aus Zeiterfassungsdaten</li>
+            </ul>
+          </div>
+
+          <div class="hw-stufe">
+            <div class="hw-stufe-num">04</div>
+            <p class="hw-stufe-phase">Wirkung</p>
+            <h3 class="hw-stufe-title">Digitaler Auftritt</h3>
+            <ul class="hw-stufe-list">
+              <li>Professionelle Website, die Vertrauen schafft und Aufträge bringt</li>
+              <li>Lokales SEO: gefunden werden, wenn Kunden einen Handwerker suchen</li>
+              <li>Strategie für Google-Bewertungen — mehr Sterne, mehr Anfragen</li>
+              <li>Online-Terminbuchung direkt über die Website</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CTA ───────────────────────────────────────────────── -->
+    <section class="hw-cta" aria-label="Kontaktaufnahme">
+      <div class="container">
+        <h2>Bereit für den nächsten Schritt?</h2>
+        <p>Wir zeigen Ihnen in einem kostenlosen Erstgespräch, was in Ihrem Betrieb möglich ist.</p>
+        <a href="/formular" class="btn btn--primary">Jetzt Gespräch anfragen</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <a href="/" class="footer-logo" aria-label="Amplifyr – Startseite">
+          <span>ampli</span><span class="logo-fyr">fyr</span>
+        </a>
+        <p class="footer-copy">© 2026 Amplifyr GmbH. Alle Rechte vorbehalten.<a href="tel:+41447985842" class="footer-tel"> · 044 798 58 42</a></p>
+        <nav class="footer-links" aria-label="Rechtliches">
+          <a href="/impressum">Impressum</a>
+          <a href="/datenschutz">Datenschutz</a>
+          <a href="/agb">AGB</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Side Widgets -->
+  <div class="side-widgets">
+    <a href="https://portal.amplifyr.ch/" target="_blank" rel="noopener" class="side-widget side-widget--portal" aria-label="Kundenportal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="22" height="22">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+        <circle cx="12" cy="7" r="4"/>
+      </svg>
+      <span class="side-widget-label">Kundenportal</span>
+    </a>
+    <a href="https://www.teamviewer.com/de/download/" target="_blank" rel="noopener" class="side-widget side-widget--tv" aria-label="TeamViewer herunterladen">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="22" height="22">
+        <rect x="2" y="3" width="20" height="14" rx="2"/>
+        <path d="M8 21h8M12 17v4"/>
+      </svg>
+      <span class="side-widget-label">TeamViewer</span>
+    </a>
+  </div>
+
+  <script src="/main.js"></script>
+</body>
+</html>

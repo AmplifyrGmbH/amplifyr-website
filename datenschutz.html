@@ -67,9 +67,18 @@
       </nav>
 
       <div class="site-header__cta">
-        <a href="https://portal.amplifyr.ch/" target="_blank" rel="noopener" class="btn btn--secondary btn--sm">
-          Kundenportal
-        </a>
+        <div class="header-ba-wrap">
+          <a href="/business-amplification" class="header-ba-link" aria-haspopup="true">
+            Business <em>Amplification</em>
+            <svg class="site-nav__chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <div class="nav-dropdown" role="menu">
+            <a href="/digitalisierung-kmu" class="nav-dropdown__link" role="menuitem">Allgemein</a>
+            <a href="/digitalisierung-handwerker" class="nav-dropdown__link" role="menuitem">Handwerker</a>
+          </div>
+        </div>
       </div>
 
       <button id="burger-btn" class="burger-btn" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu">
@@ -98,6 +107,21 @@
     </div>
 
     <div class="mobile-menu__nav">
+
+      <div class="mobile-nav-group">
+        <div class="mobile-nav-group__row">
+          <a href="/business-amplification" class="mobile-nav-link">Business Amplification</a>
+          <button class="mobile-nav-group__chevron-btn" aria-label="Business Amplification Untermenü">
+            <svg class="mobile-nav-group__chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+        <div class="mobile-nav-group__sub">
+          <a href="/digitalisierung-kmu">Allgemein</a>
+          <a href="/digitalisierung-handwerker">Handwerker</a>
+        </div>
+      </div>
 
       <div class="mobile-nav-group">
         <div class="mobile-nav-group__row">
@@ -180,9 +204,7 @@
     </div>
 
     <div class="mobile-menu__cta">
-      <a href="https://portal.amplifyr.ch/" target="_blank" rel="noopener" class="btn btn--primary">
-        Kundenportal
-      </a>
+      <a href="/business-amplification" class="btn btn--primary">Business Amplification</a>
     </div>
 
   </nav>
@@ -284,5 +306,23 @@
   </div>
 
   <script src="/main.js"></script>
+  <!-- Floating Side Widgets -->
+  <div class="side-widgets">
+    <a href="https://portal.amplifyr.ch/" target="_blank" rel="noopener" class="side-widget side-widget--portal" aria-label="Kundenportal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="22" height="22">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+        <circle cx="12" cy="7" r="4"/>
+      </svg>
+      <span class="side-widget-label">Kundenportal</span>
+    </a>
+    <a href="https://www.teamviewer.com/de/download/" target="_blank" rel="noopener" class="side-widget side-widget--tv" aria-label="TeamViewer herunterladen">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="22" height="22">
+        <rect x="2" y="3" width="20" height="14" rx="2"/>
+        <path d="M8 21h8M12 17v4"/>
+      </svg>
+      <span class="side-widget-label">TeamViewer</span>
+    </a>
+  </div>
+
 </body>
 </html>
