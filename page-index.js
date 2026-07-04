@@ -27,20 +27,14 @@ if (window.location.hash === '#ki-check') {
     var phase1    = document.getElementById('hero-phase-1');
     var divider   = document.getElementById('hero-divider');
     var phase2    = document.getElementById('hero-phase-2');
-    var heroPhil     = document.getElementById('hero-phil');
-    var philL1       = heroPhil && heroPhil.querySelector('.hero-phil-l1');
-    var philSub      = heroPhil && heroPhil.querySelector('.hero-phil-sub');
-    var philEyebrow  = document.getElementById('phil-eyebrow');
-    var philHeadline = document.getElementById('phil-headline');
-    var philBlocksEl = document.getElementById('phil-blocks');
-    var philBody     = document.getElementById('phil-body');
-    var philDivider  = document.getElementById('phil-divider');
-    var philBtb      = document.getElementById('phil-btb');
-    var philLtr      = document.getElementById('phil-ltr');
+    var heroPhil   = document.getElementById('hero-phil');
+    var pbsL1      = document.getElementById('pbs-l1');
+    var pbsL2      = document.getElementById('pbs-l2');
+    var pbsL3      = document.getElementById('pbs-l3');
+    var pbsL4      = document.getElementById('pbs-l4');
+    var pbsSubWrap = document.getElementById('pbs-sub-wrap');
     var fadeout    = document.getElementById('hero-fadeout');
     var scrollCue  = document.getElementById('hero-scroll-cue');
-
-    var HEADLINE_TEXT = '<span class="phil-logo"><span class="phil-logo-ampli">ampli</span><em class="phil-logo-fyr">fyr</em></span> schafft die technologische Startrampe für Ihren <em class="phil-blue">Aufstieg!</em>';
 
     if (!hero || !video) return;
 
@@ -115,7 +109,7 @@ if (window.location.hash === '#ki-check') {
       el.style.opacity = '1';
     }
 
-    /* ── video.ended → neue Sequenz ── */
+    /* ── video.ended → PBS-Sequenz ── */
     function onVideoEnd() {
       if (philStarted) return;
       philStarted = true;
@@ -132,36 +126,29 @@ if (window.location.hash === '#ki-check') {
         fadeout.style.opacity    = '1';
       }
 
-      // Headline-Text vorab setzen
-      if (philHeadline) philHeadline.innerHTML = HEADLINE_TEXT;
-
-      // Phil-Container + Blobs sichtbar machen — direkt nach Overlay-Fade
       setTimeout(function () {
-        if (philSub) { philSub.style.transition = 'none'; philSub.style.opacity = '1'; philSub.style.transform = 'none'; }
-        var philBlobs = document.querySelector('.hero-phil-blobs');
-        if (philBlobs) { philBlobs.style.transition = 'opacity 800ms ' + EASE; philBlobs.style.opacity = '1'; }
         if (heroPhil) heroPhil.classList.add('is-revealed');
-        show(philHeadline);
+        function pbsShow(el) { if (el) el.classList.add('pbs-show'); }
+        function pbsHide(el) { if (el) el.classList.remove('pbs-show'); }
+        pbsShow(pbsL1);
+        setTimeout(function () { pbsShow(pbsL2); }, 500);
+        setTimeout(function () { pbsShow(pbsL3); }, 1100);
+        setTimeout(function () {
+          pbsHide(pbsL2);
+          pbsHide(pbsL3);
+          if (pbsSubWrap) {
+            pbsSubWrap.style.transition = 'min-height 0.4s ease, height 0.4s ease';
+            pbsSubWrap.style.minHeight  = '0';
+            pbsSubWrap.style.height     = '0';
+            pbsSubWrap.style.overflow   = 'hidden';
+          }
+        }, 2600);
+        setTimeout(function () {
+          pbsShow(pbsL4);
+          if (scrollCue) scrollCue.classList.add('is-visible');
+          sloganDone = true;
+        }, 3200);
       }, OUT);
-
-      setTimeout(function () {
-        show(philBody);
-      }, OUT + 150);
-
-      setTimeout(function () {
-        if (philBlocksEl) { philBlocksEl.style.transition = 'opacity 300ms ease'; philBlocksEl.style.opacity = '1'; }
-      }, OUT + 300);
-
-      setTimeout(function () {
-        show(philDivider);
-      }, OUT + 450);
-
-      setTimeout(function () {
-        show(philBtb);
-        show(philLtr);
-        if (scrollCue) scrollCue.classList.add('is-visible');
-        sloganDone = true;
-      }, OUT + 600);
     }
 
     /* ── Sofort-Endstate (reduced-motion, sessionStorage, Skip) ── */
@@ -170,21 +157,18 @@ if (window.location.hash === '#ki-check') {
       philStarted = true;
       sloganDone  = true;
       if (video) { video.pause(); video.currentTime = video.duration || 0; }
-      if (fadeout) { fadeout.style.transition = 'none'; fadeout.style.opacity = '1'; }
-      if (phase1)  { phase1.style.transition = 'none'; phase1.style.opacity = '0'; }
-      if (divider) { divider.style.transition = 'none'; divider.style.opacity = '0'; }
-      if (phase2)  { phase2.style.transition = 'none'; phase2.style.opacity = '0'; }
-      if (philL1)  { philL1.style.transition  = 'none'; philL1.style.opacity  = '1'; philL1.style.transform  = 'none'; }
-      if (philSub) { philSub.style.transition = 'none'; philSub.style.opacity = '1'; philSub.style.transform = 'none'; }
-      var philBlobsE = document.querySelector('.hero-phil-blobs');
-      if (philBlobsE) { philBlobsE.style.transition = 'none'; philBlobsE.style.opacity = '1'; }
-      if (heroPhil) heroPhil.classList.add('is-revealed');
-      if (philHeadline) { philHeadline.innerHTML = HEADLINE_TEXT; philHeadline.style.transition = 'none'; philHeadline.style.opacity = '1'; }
-      if (philBlocksEl) { philBlocksEl.style.transition = 'none'; philBlocksEl.style.opacity = '1'; }
-      if (philBody)     { philBody.style.transition = 'none'; philBody.style.opacity      = '1'; }
-      if (philDivider)  { philDivider.style.transition = 'none'; philDivider.style.opacity    = '1'; }
-      if (philBtb)      { philBtb.style.transition = 'none'; philBtb.style.opacity       = '1'; }
-      if (philLtr)      { philLtr.style.transition = 'none'; philLtr.style.opacity       = '1'; }
+      if (fadeout)   { fadeout.style.transition = 'none'; fadeout.style.opacity = '1'; }
+      if (phase1)    { phase1.style.transition  = 'none'; phase1.style.opacity  = '0'; }
+      if (divider)   { divider.style.transition = 'none'; divider.style.opacity = '0'; }
+      if (phase2)    { phase2.style.transition  = 'none'; phase2.style.opacity  = '0'; }
+      if (heroPhil)  heroPhil.classList.add('is-revealed');
+      if (pbsL1)     pbsL1.classList.add('pbs-show');
+      if (pbsSubWrap) {
+        pbsSubWrap.style.minHeight = '0';
+        pbsSubWrap.style.height    = '0';
+        pbsSubWrap.style.overflow  = 'hidden';
+      }
+      if (pbsL4)     pbsL4.classList.add('pbs-show');
       if (scrollCue) scrollCue.classList.add('is-visible');
       sessionStorage.setItem('heroSeen', '1');
     }
@@ -1383,3 +1367,402 @@ if (window.location.hash === '#ki-check') {
   io.observe(section);
 
 })();
+
+/* ============================================================
+   KI GEAR ANIMATION v3 — Ansatz Section (KIZahnrad)
+============================================================ */
+(function () {
+  'use strict';
+
+  var wrap = document.getElementById('ki-gear-anim');
+  if (!wrap) return;
+
+  var NS  = 'http://www.w3.org/2000/svg';
+  var DEG = Math.PI / 180;
+  var F   = 'Helvetica Neue, Helvetica, Arial, sans-serif';
+  var EASE = 'cubic-bezier(.2,.62,.25,1)';
+
+  // ── Geometry ─────────────────────────────────────────────
+  var cx0 = 1300, cy0 = 640;
+  var orbit = 378, satRO = 172;
+  var Nc = 15, Ns = 11;
+  var th0 = -90 * DEG;
+  var OUT = 215;
+  var OMEGA = 360 / 40;   // deg/s for center gear
+  var RATIO = 15 / 11;    // tooth mesh ratio
+
+  // ── Timing (speed = 1.6×) ────────────────────────────────
+  var SPD      = 1.6;
+  var travelMs = Math.round(800  / SPD);  // ~500ms
+  var bStepMs  = Math.round(320  / SPD);  // ~200ms
+  var pauseMs  = Math.round(350  / SPD);  // ~219ms
+  var startMs  = Math.round(400  / SPD);  // ~250ms
+  var stageDur = travelMs + bStepMs + pauseMs;
+  function areaStart(i) { return startMs + i * stageDur; }
+
+  // Pre-computed dock times (seconds from clock0) for satellite RAf sync
+  var tDocks = [0, 1, 2, 3, 4].map(function(i) {
+    return (areaStart(i) + travelMs) / 1000;
+  });
+
+  // ── Area data ────────────────────────────────────────────
+  var AREAS = [
+    { name: 'Vertrieb',    b: ['Lead-Generierung vollautomatisiert.'] },
+    { name: 'Marketing',   b: ['Sichtbar im Web – und dort, wo KI antwortet.'] },
+    { name: 'Buchhaltung', b: ['Schluss mit manueller Rechnungserfassung.'] },
+    { name: 'HR',          b: ['Wir automatisieren HR-Prozesse vollumfänglich.'] },
+    { name: 'IT',          b: ['IT-Prozesse, die mitdenken – optimiert & effizient.'] }
+  ];
+
+  // ── SVG helper ───────────────────────────────────────────
+  function el(tag, attrs) {
+    var e = document.createElementNS(NS, tag);
+    if (attrs) { for (var k in attrs) e.setAttribute(k, attrs[k]); }
+    return e;
+  }
+
+  // ── Gear path (flat-trapezoid teeth, from KIZahnrad) ─────
+  function gearPath(cx, cy, rO, rR, N, phase) {
+    var step = 2 * Math.PI / N;
+    var tw = step * 0.155, rw = step * 0.300;
+    function P(r, a) { return (cx + r * Math.cos(a)).toFixed(2) + ' ' + (cy + r * Math.sin(a)).toFixed(2); }
+    var d = '';
+    for (var i = 0; i < N; i++) {
+      var c = i * step + phase;
+      if (i === 0) d += 'M' + P(rR, c - rw) + ' ';
+      d += 'L' + P(rO, c - tw) + ' ';
+      d += 'Q' + P(rO * 1.004, c) + ' ' + P(rO, c + tw) + ' ';
+      d += 'L' + P(rR, c + rw) + ' ';
+      d += 'L' + P(rR, c + step - rw) + ' ';
+    }
+    return d + 'Z';
+  }
+
+  // ── Tagline (HTML, above the diagram) ─────────────────────
+  var tagEl = document.createElement('div');
+  tagEl.className = 'ki-gear-tagline';
+  tagEl.innerHTML = 'Ein System. Alle Bereiche. <em>KI im Zentrum.</em>';
+  wrap.appendChild(tagEl);
+
+  // ── Build SVG ────────────────────────────────────────────
+  var svg = el('svg', {
+    viewBox: '-230 -120 2990 1510', xmlns: NS, role: 'img',
+    'aria-label': 'KI verbindet alle Geschäftsbereiche zu einem System'
+  });
+  svg.style.cssText = 'width:100%;height:auto;display:block;';
+
+  var styleEl = el('style');
+  styleEl.textContent =
+    '@keyframes kg2-orbit  { to { transform: rotate(360deg); } }' +
+    '@keyframes kg2-accent { 0%,100%{opacity:.8} 50%{opacity:.3} }' +
+    '@keyframes kg2-sys    { from { transform: scale(1); opacity: .5; } to { transform: scale(2.6); opacity: 0; } }' +
+    '.kg2-orbitA { transform-box: fill-box; transform-origin: center; animation: kg2-orbit 150s linear infinite; }' +
+    '.kg2-orbitB { transform-box: fill-box; transform-origin: center; animation: kg2-orbit 185s linear infinite reverse; }';
+  svg.appendChild(styleEl);
+
+  // ── Defs ─────────────────────────────────────────────────
+  var defs = el('defs');
+
+  function linGrad(id, stops) {
+    var g = el('linearGradient', { id: id, x1: '0', y1: '0', x2: '0', y2: '1' });
+    stops.forEach(function(s) { g.appendChild(el('stop', { offset: s[0], 'stop-color': s[1] })); });
+    return g;
+  }
+  function radGrad(id, gcx, gcy, gr, stops) {
+    var g = el('radialGradient', { id: id, cx: gcx, cy: gcy, r: gr });
+    stops.forEach(function(s) { g.appendChild(el('stop', { offset: s[0], 'stop-color': s[1] })); });
+    return g;
+  }
+  function mkFlt(id, sd, x, y, w, h) {
+    var f = el('filter', { id: id, x: x, y: y, width: w, height: h });
+    f.appendChild(el('feGaussianBlur', { stdDeviation: sd })); return f;
+  }
+
+  defs.appendChild(linGrad('kg2-gN',  [['0%','#d3e0f0'],['52%','#b7cae2'],['100%','#9db6d6']]));
+  defs.appendChild(linGrad('kg2-gKI', [['0%','#7d96bf'],['50%','#41598c'],['100%','#1d2e54']]));
+  defs.appendChild(radGrad('kg2-fN',  '50%','34%','78%', [['0%','#d8e3f2'],['100%','#aec3de']]));
+  defs.appendChild(radGrad('kg2-fKI', '50%','32%','80%', [['0%','#5e7aae'],['100%','#243a6a']]));
+
+  var mkr = el('marker', { id:'kg2-arw', markerWidth:'9', markerHeight:'9', refX:'6.5', refY:'4.5', orient:'auto' });
+  mkr.appendChild(el('path', { d:'M1,1 L7,4.5 L1,8', fill:'none', stroke:'#42598c', 'stroke-width':'1.5', 'stroke-linecap':'round', 'stroke-linejoin':'round' }));
+  defs.appendChild(mkr);
+  defs.appendChild(mkFlt('kg2-bs', '7', '-45%','-45%','190%','190%'));
+  defs.appendChild(mkFlt('kg2-bh', '9', '-60%','-60%','220%','220%'));
+  svg.appendChild(defs);
+
+  // ── Orbit circles (slow decorative rotation) ──────────────
+  var orbitA = el('circle', { cx:cx0, cy:cy0, r:'576', fill:'none', stroke:'#7f97c2', 'stroke-width':'1', 'stroke-dasharray':'2 15', opacity:'0.6' });
+  orbitA.setAttribute('class', 'kg2-orbitA');
+  var orbitB = el('circle', { cx:cx0, cy:cy0, r:'620', fill:'none', stroke:'#8ba2ca', 'stroke-width':'1', 'stroke-dasharray':'2 19', opacity:'0.55' });
+  orbitB.setAttribute('class', 'kg2-orbitB');
+  svg.appendChild(orbitA);
+  svg.appendChild(orbitB);
+
+  // ── Satellite definitions ────────────────────────────────
+  var stepC = 2 * Math.PI / Nc;
+  var satDefs = AREAS.map(function(a, i) {
+    var th = th0 + i * 72 * DEG;
+    var cos = Math.cos(th), sin = Math.sin(th);
+    return {
+      cx: +(cx0 + orbit * cos).toFixed(2),
+      cy: +(cy0 + orbit * sin).toFixed(2),
+      rO: satRO, rR: 144, rFace: 123, teeth: Ns, isCenter: false,
+      phase: th + Math.PI,
+      dx: +(cos * OUT).toFixed(2), dy: +(sin * OUT).toFixed(2),
+      name: a.name, idx: i, cos: cos, sin: sin
+    };
+  });
+  var centerDef = {
+    cx: cx0, cy: cy0, rO: 230, rR: 200, rFace: 182, teeth: Nc, isCenter: true,
+    phase: th0 - stepC / 2, dx: 0, dy: 0
+  };
+
+  // ── Pentagon connection lines ─────────────────────────────
+  var connLines = satDefs.map(function(s, i) {
+    var n = satDefs[(i + 1) % satDefs.length];
+    var len = Math.hypot(+n.cx - +s.cx, +n.cy - +s.cy).toFixed(1);
+    var line = el('line', { x1:s.cx, y1:s.cy, x2:n.cx, y2:n.cy, stroke:'#4a6396', 'stroke-width':'1.4' });
+    line.style.opacity = '0';
+    line.style.strokeDasharray = len;
+    line.style.strokeDashoffset = len;
+    line.style.transition = 'stroke-dashoffset 700ms ease ' + (i * 120) + 'ms, opacity 500ms ease ' + (i * 120) + 'ms';
+    return line;
+  });
+  connLines.forEach(function(l) { svg.appendChild(l); });
+
+  // One-shot "system complete" pulse — plays once when the last gear docks.
+  var syspulse = el('circle', { cx:cx0, cy:cy0, r:'230', fill:'none', stroke:'#4a6396', 'stroke-width':'2.4' });
+  syspulse.style.cssText = 'transform-box:fill-box;transform-origin:center;opacity:0;';
+  svg.appendChild(syspulse);
+
+  // ── Callout groups ────────────────────────────────────────
+  var rEdge = orbit + satRO + 8;
+  var rAx = 760, rAy = 570;
+  var nudge = [{dx:0,dy:0},{dx:0,dy:-6},{dx:24,dy:14},{dx:-24,dy:14},{dx:0,dy:-6}];
+
+  var callouts = satDefs.map(function(s, i) {
+    var cos = s.cos, sin = s.sin;
+    var ex = +(cx0 + rEdge * cos).toFixed(2);
+    var ey = +(cy0 + rEdge * sin).toFixed(2);
+    var side = cos > 0.25 ? 'right' : (cos < -0.25 ? 'left' : 'top');
+    var ax, ay, tx, anchor, ty;
+    if (side === 'top') {
+      ax = cx0;
+      ay = +(cy0 + (orbit + satRO + 90) * sin).toFixed(2);
+      tx = cx0; anchor = 'middle';
+      ty = ay - 44;
+    } else {
+      ax = +(cx0 + rAx * cos + nudge[i].dx).toFixed(2);
+      ay = +(cy0 + rAy * sin + nudge[i].dy).toFixed(2);
+      anchor = side === 'right' ? 'start' : 'end';
+      tx = +(ax + (side === 'right' ? 18 : -18)).toFixed(2);
+      ty = ay;
+    }
+    var len = Math.hypot(ax - ex, ay - ey).toFixed(1);
+
+    var g = el('g');
+    g.style.opacity = '0';
+    g.style.transition = 'opacity 450ms ease';
+
+    var leader = el('line', { x1:ex, y1:ey, x2:ax, y2:ay, stroke:'#42598c', 'stroke-width':'1.3', opacity:'0.8', 'marker-end':'url(#kg2-arw)' });
+    leader.style.strokeDasharray = len;
+    leader.style.strokeDashoffset = len;
+    leader.style.transition = 'stroke-dashoffset 650ms ease 80ms';
+    g.appendChild(leader);
+
+    var bulletEl = el('text', { x:tx, y:+ty.toFixed(2), 'text-anchor':anchor, 'font-family':F, 'font-size':'32', 'font-weight':'700', fill:'#0f1f45' });
+    bulletEl.textContent = AREAS[i].b[0];
+    bulletEl.style.opacity = '0';
+    bulletEl.style.transition = 'opacity 380ms ease';
+    g.appendChild(bulletEl);
+
+    svg.appendChild(g);
+    return { g: g, leader: leader, bulletEls: [bulletEl] };
+  });
+
+  // ── Build one gear ────────────────────────────────────────
+  function buildGear(gd, gi) {
+    var rFace = gd.rFace;
+    var rRing   = +(rFace - (gd.isCenter ? 9 : 6)).toFixed(2);
+    var rGroove = +(rRing - 7).toFixed(2);
+    var rHub    = +(rFace * (gd.isCenter ? 0.52 : 0.56)).toFixed(2);
+    var glY     = +(gd.cy - rFace * 0.40).toFixed(2);
+    var glRx    = +(rFace * 0.74).toFixed(2);
+    var glRy    = +(rFace * 0.48).toFixed(2);
+
+    var posG = el('g');  // position / fly-in group
+
+    posG.appendChild(el('circle', {  // shadow
+      cx: (gd.cx + 4).toFixed(2), cy: (gd.cy + 18).toFixed(2), r: gd.rO,
+      fill: '#2a3c66', opacity: '0.28', filter: 'url(#kg2-bs)'
+    }));
+
+    var spinG = el('g');
+    spinG.setAttribute('class', 'spin');
+    spinG.setAttribute('data-gi', gi);
+    spinG.style.cssText = 'transform-box:fill-box;transform-origin:center;';
+
+    spinG.appendChild(el('path', {
+      d: gearPath(gd.cx, gd.cy, gd.rO, gd.rR, gd.teeth, gd.phase),
+      fill: gd.isCenter ? 'url(#kg2-gKI)' : 'url(#kg2-gN)',
+      stroke: gd.isCenter ? '#101d38' : '#5c79a8', 'stroke-width': '1.1'
+    }));
+    spinG.appendChild(el('circle', { cx:gd.cx, cy:gd.cy, r:rFace, fill: gd.isCenter ? 'url(#kg2-fKI)' : 'url(#kg2-fN)' }));
+    spinG.appendChild(el('circle', { cx:gd.cx, cy:gd.cy, r:rGroove, fill:'none', stroke:'#7d93bd', 'stroke-width':'1', opacity:'0.28' }));
+    spinG.appendChild(el('circle', { cx:gd.cx, cy:gd.cy, r:rHub,   fill: gd.isCenter ? '#16264a' : '#c2d4ea', opacity: gd.isCenter ? '0.55' : '0.75' }));
+    posG.appendChild(spinG);
+
+    var ringEl = el('circle', { cx:gd.cx, cy:gd.cy, r:rRing, fill:'none', stroke: gd.isCenter ? '#b1c4dc' : '#5f7cb2', 'stroke-width': gd.isCenter ? '2.2' : '1.8' });
+    ringEl.style.opacity = gd.isCenter ? '0.55' : '0';
+    ringEl.style.transition = 'opacity 700ms ease';
+    if (gd.isCenter) ringEl.style.animation = 'kg2-accent 3.6s ease-in-out infinite';
+    posG.appendChild(ringEl);
+
+    posG.appendChild(el('ellipse', { cx:gd.cx, cy:glY, rx:glRx, ry:glRy, fill:'#ffffff', opacity:'0.08', filter:'url(#kg2-bh)' }));
+
+    var lbl = el('text', {
+      x: gd.cx, y: gd.cy, 'text-anchor': 'middle', 'dominant-baseline': 'middle',
+      'font-family': F, 'font-size': gd.isCenter ? '92' : '31',
+      'font-weight': '700', fill: gd.isCenter ? '#ffffff' : '#1b2c52',
+      'letter-spacing': gd.isCenter ? '3' : '0', 'pointer-events': 'none'
+    });
+    lbl.textContent = gd.isCenter ? 'KI' : gd.name;
+    posG.appendChild(lbl);
+
+    return { posG: posG, spinG: spinG, ringEl: ringEl };
+  }
+
+  // Build satellites (rendered below center in Z-order)
+  var satBuilts = satDefs.map(function(gd, i) {
+    var built = buildGear(gd, i);
+    built.posG.style.cssText = 'transform-box:fill-box;transform-origin:center;' +
+      'transform:translate(' + gd.dx + 'px,' + gd.dy + 'px) scale(0.6);opacity:0;transition:none;';
+    svg.appendChild(built.posG);
+    return built;
+  });
+
+  // Build center gear (rendered on top)
+  var centerBuilt = buildGear(centerDef, 5);
+  svg.appendChild(centerBuilt.posG);
+
+  wrap.appendChild(svg);
+
+  // ── Reduced-motion: show everything instantly ─────────────
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) {
+    satBuilts.forEach(function(b, i) {
+      b.posG.style.cssText = 'transform-box:fill-box;transform-origin:center;transform:translate(0,0) scale(1);opacity:1;';
+      b.ringEl.style.opacity = '0.8';
+    });
+    callouts.forEach(function(c) {
+      c.g.style.opacity = '1';
+      c.leader.style.strokeDashoffset = '0';
+      c.bulletEls.forEach(function(b) { b.style.opacity = '1'; });
+    });
+    connLines.forEach(function(l) { l.style.opacity = '0.6'; l.style.strokeDashoffset = '0'; });
+    tagEl.style.opacity   = '1';
+    tagEl.style.transform = 'translateY(0)';
+    return;
+  }
+
+  // ── Animation runtime ────────────────────────────────────
+  var timers = [];
+  var clock0 = 0;
+  var raf    = null;
+
+  function clearTimers() { timers.forEach(clearTimeout); timers = []; }
+
+  function tick(now) {
+    var t = (now - clock0) / 1000;
+    var kiAng = OMEGA * t;
+    svg.querySelectorAll('g.spin').forEach(function(node) {
+      var gi  = +node.getAttribute('data-gi');
+      var ang = (gi === 5) ? kiAng : -OMEGA * RATIO * Math.max(t, tDocks[gi]);
+      node.style.transform = 'rotate(' + ang.toFixed(3) + 'deg)';
+    });
+    raf = requestAnimationFrame(tick);
+  }
+
+  function onAllDone() {
+    connLines.forEach(function(l) { l.style.opacity = '0.6'; l.style.strokeDashoffset = '0'; });
+    syspulse.style.animation = 'kg2-sys 1.4s cubic-bezier(.2,.6,.3,1) forwards';
+    centerBuilt.ringEl.style.animation = 'kg2-accent 2.4s ease-in-out infinite';
+    centerBuilt.ringEl.style.opacity   = '1';
+    tagEl.style.opacity   = '1';
+    tagEl.style.transform = 'translateY(0)';
+  }
+
+  function runSequence() {
+    clearTimers();
+    if (raf) { cancelAnimationFrame(raf); raf = null; }
+    clock0 = performance.now();
+    raf = requestAnimationFrame(tick);
+
+    // Reset satellites
+    satBuilts.forEach(function(b, i) {
+      b.posG.style.transition = 'none';
+      b.posG.style.transform  = 'translate(' + satDefs[i].dx + 'px,' + satDefs[i].dy + 'px) scale(0.6)';
+      b.posG.style.opacity    = '0';
+      b.ringEl.style.opacity  = '0';
+    });
+    // Reset callouts
+    callouts.forEach(function(c) {
+      c.g.style.opacity = '0';
+      c.leader.style.transition = 'none';
+      c.leader.style.strokeDashoffset = c.leader.getAttribute('data-len') || c.leader.style.strokeDasharray;
+      c.bulletEls.forEach(function(b) { b.style.opacity = '0'; });
+    });
+    connLines.forEach(function(l) { l.style.opacity = '0'; l.style.strokeDashoffset = l.style.strokeDasharray; });
+    syspulse.style.animation = 'none';
+    syspulse.style.opacity   = '0';
+    tagEl.style.opacity   = '0';
+    tagEl.style.transform = 'translateY(-10px)';
+    centerBuilt.ringEl.style.animation = 'kg2-accent 3.6s ease-in-out infinite';
+    centerBuilt.ringEl.style.opacity   = '0.55';
+    void wrap.offsetWidth;
+
+    var dockedCount = 0;
+    satDefs.forEach(function(gd, i) {
+      var a0 = areaStart(i);
+      var b  = satBuilts[i];
+      var c  = callouts[i];
+
+      // Fly in
+      timers.push(setTimeout(function() {
+        b.posG.style.transition = 'transform ' + travelMs + 'ms ' + EASE + ', opacity ' + travelMs + 'ms ease';
+        b.posG.style.transform  = 'translate(0px,0px) scale(1)';
+        b.posG.style.opacity    = '1';
+      }, a0));
+
+      // Dock
+      timers.push(setTimeout(function() {
+        b.ringEl.style.opacity            = '0.8';
+        c.leader.style.transition         = 'stroke-dashoffset 650ms ease 80ms';
+        c.leader.style.strokeDashoffset   = '0';
+        c.g.style.opacity                 = '1';
+        dockedCount++;
+        if (dockedCount === satDefs.length) onAllDone();
+      }, a0 + travelMs));
+
+      // Single bullet
+      timers.push(setTimeout(function() {
+        if (c.bulletEls[0]) c.bulletEls[0].style.opacity = '1';
+      }, a0 + travelMs + 200));
+    });
+  }
+
+  // Trigger once on scroll into view
+  var triggered = false;
+  var io = new IntersectionObserver(function(entries) {
+    if (entries[0].isIntersecting && !triggered) {
+      triggered = true;
+      io.disconnect();
+      runSequence();
+    }
+  }, { threshold: 0.2 });
+  io.observe(wrap);
+
+  // Replay on click
+  wrap.addEventListener('click', function() { runSequence(); });
+
+}());

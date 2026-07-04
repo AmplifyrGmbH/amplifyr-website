@@ -291,6 +291,44 @@ p {
   box-shadow: 0 8px 30px rgba(176,196,222,0.3);
 }
 
+.btn--outline {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255,255,255,0.65);
+}
+.btn--outline:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: #fff;
+}
+#site-header.scrolled .btn--outline {
+  color: var(--navy);
+  border-color: var(--navy);
+}
+#site-header.scrolled .btn--outline:hover {
+  background: rgba(26,39,68,0.06);
+}
+
+/* Desktop only */
+.header-portal-btn {
+  display: none;
+}
+@media (min-width: 1024px) {
+  .header-portal-btn {
+    display: inline-flex;
+    justify-self: end;
+  }
+}
+
+/* Mobile-Menu CTA */
+.mobile-menu__cta {
+  padding: var(--space-6) var(--space-5) var(--space-8);
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+.mobile-menu__cta .btn {
+  width: 100%;
+  justify-content: center;
+}
+
 /* Focus-visible for all buttons */
 .btn:focus-visible {
   outline: 2px solid var(--navy);
@@ -1168,8 +1206,8 @@ footer {
 ============================================================ */
 #ba-chat-teaser {
   position: fixed;
-  right: 12px;
-  bottom: 12px;
+  right: 20px;
+  bottom: 28px;
   opacity: 0;
   pointer-events: none;
   z-index: 1000;
@@ -1213,23 +1251,23 @@ footer {
 }
 /* Äussere Flamme */
 .ba-teaser-rocket-wrap::before {
-  width: 24px;
-  height: 38px;
-  top: 70px;
-  left: 47px;
-  background: linear-gradient(to bottom, #ff8800 0%, #ff4400 40%, #ff1100 70%, transparent 100%);
-  filter: blur(2.5px);
+  width: 22px;
+  height: 90px;
+  top: 84px;
+  left: 31px;
+  background: linear-gradient(to bottom, #B0C4DE 0%, #B0C4DE 30%, rgba(176,196,222,0.55) 58%, rgba(176,196,222,0.15) 80%, transparent 100%);
+  filter: blur(4px);
   transform: rotate(45deg);
   animation: ba-flame-a 0.5s ease-in-out infinite alternate;
 }
 /* Innere Flamme */
 .ba-teaser-rocket-wrap::after {
   width: 12px;
-  height: 24px;
-  top: 72px;
-  left: 50px;
-  background: linear-gradient(to bottom, #ffffff 0%, #ffee66 30%, #ffaa00 70%, transparent 100%);
-  filter: blur(1px);
+  height: 64px;
+  top: 87px;
+  left: 36px;
+  background: linear-gradient(to bottom, #ffffff 0%, #eaf2fb 18%, #B0C4DE 50%, rgba(176,196,222,0.3) 78%, transparent 100%);
+  filter: blur(1.5px);
   transform: rotate(45deg);
   animation: ba-flame-b 0.65s ease-in-out infinite alternate;
 }
@@ -1292,17 +1330,17 @@ footer {
 
 /* Flammen-Animationen */
 @keyframes ba-flame-a {
-  0%   { transform: rotate(45deg) scaleY(1.0);  opacity: 0.9; }
-  25%  { transform: rotate(45deg) scaleY(1.06); opacity: 1;   }
-  50%  { transform: rotate(45deg) scaleY(0.97); opacity: 0.93;}
-  75%  { transform: rotate(45deg) scaleY(1.04); opacity: 1;   }
-  100% { transform: rotate(45deg) scaleY(1.0);  opacity: 0.92;}
+  0%   { transform: rotate(45deg) scaleY(1.0)  scaleX(1.0);  opacity: 0.92; }
+  25%  { transform: rotate(45deg) scaleY(1.12) scaleX(1.05); opacity: 1;    }
+  50%  { transform: rotate(45deg) scaleY(0.94) scaleX(0.97); opacity: 0.88; }
+  75%  { transform: rotate(45deg) scaleY(1.08) scaleX(1.03); opacity: 1;    }
+  100% { transform: rotate(45deg) scaleY(1.0)  scaleX(1.0);  opacity: 0.90; }
 }
 @keyframes ba-flame-b {
-  0%   { transform: rotate(45deg) scaleY(0.97); opacity: 0.85;}
-  30%  { transform: rotate(45deg) scaleY(1.05); opacity: 0.98;}
-  60%  { transform: rotate(45deg) scaleY(0.99); opacity: 0.88;}
-  100% { transform: rotate(45deg) scaleY(1.03); opacity: 0.95;}
+  0%   { transform: rotate(45deg) scaleY(0.95) scaleX(0.96); opacity: 0.90; }
+  30%  { transform: rotate(45deg) scaleY(1.10) scaleX(1.04); opacity: 1;    }
+  60%  { transform: rotate(45deg) scaleY(0.97) scaleX(0.98); opacity: 0.88; }
+  100% { transform: rotate(45deg) scaleY(1.06) scaleX(1.02); opacity: 0.96; }
 }
 
 /* Mobile: Header height reduction */

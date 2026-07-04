@@ -216,7 +216,7 @@
     setTimeout(startWiggle, 1800);
   }
 
-  // Seiten mit Hero (.fsh): IntersectionObserver
+  // Seiten mit Hero (.fsh): IntersectionObserver + 3s-Fallback
   var heroEl = document.querySelector('.fsh');
   if (heroEl && 'IntersectionObserver' in window) {
     var obs = new IntersectionObserver(function (entries) {
@@ -226,9 +226,10 @@
       }
     }, { threshold: 0 });
     obs.observe(heroEl);
+    setTimeout(function () { showTeaser(); obs.disconnect(); }, 3000);
   } else {
-    // Seiten ohne Hero: 5 Sekunden
-    setTimeout(showTeaser, 5000);
+    // Seiten ohne Hero: 3 Sekunden
+    setTimeout(showTeaser, 3000);
   }
 
   // Beim Scrollen: kurz ausblenden, nach 600ms wieder einblenden

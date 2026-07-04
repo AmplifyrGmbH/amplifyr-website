@@ -29,14 +29,41 @@
     /* Managed Services Tiles */
     initCardGrid('.ms-tile', 100);
 
-    /* Cloud Bento Cards */
-    initCardGrid('.cloud-card', 150);
+
+    /* M365 Showcase Tabs */
+    initM365Tabs();
 
     /* CTA Content */
     window.animateOnScroll('.its-cta-content > *', { stagger: 100, duration: 500 });
 
     /* Partner Ticker */
     initTicker();
+
+    /* Support-Cards — Click-to-flip & einmalige Tease-Animation */
+    var supCards = document.querySelectorAll('.sup-card');
+
+    supCards.forEach(function (card) {
+      card.addEventListener('click', function () {
+        card.classList.toggle('is-flipped');
+      });
+    });
+
+    if (supCards.length) {
+      var teaseFired = false;
+      var teaseObserver = new IntersectionObserver(function (entries) {
+        if (teaseFired) return;
+        if (!entries.some(function (e) { return e.isIntersecting; })) return;
+        teaseFired = true;
+        teaseObserver.disconnect();
+        supCards.forEach(function (card, i) {
+          setTimeout(function () {
+            card.classList.add('is-teasing');
+            setTimeout(function () { card.classList.remove('is-teasing'); }, 800);
+          }, i * 110);
+        });
+      }, { threshold: 0.4 });
+      supCards.forEach(function (card) { teaseObserver.observe(card); });
+    }
   });
 
   /* Karten mit Entrance-Animation + Hover nach Abschluss */
@@ -76,6 +103,26 @@
     }, { threshold: 0.1 });
 
     obs.observe(anchor);
+  }
+
+  function initM365Tabs() {
+    var tabs  = document.querySelectorAll('.m365-nav-btn');
+    var panes = document.querySelectorAll('.m365-pane');
+    if (!tabs.length) return;
+
+    function activate(idx) {
+      tabs.forEach(function (t, i) {
+        t.classList.toggle('is-active', i === idx);
+        t.setAttribute('aria-selected', i === idx ? 'true' : 'false');
+      });
+      panes.forEach(function (p, i) {
+        p.classList.toggle('is-active', i === idx);
+      });
+    }
+
+    tabs.forEach(function (btn, idx) {
+      btn.addEventListener('click', function () { activate(idx); });
+    });
   }
 
   function initTicker() {

@@ -10,6 +10,12 @@
   background: radial-gradient(ellipse 80% 60% at center, rgba(10,18,40,0.70) 0%, rgba(10,18,40,0.40) 100%);
 }
 
+/* "Software amplified" is longer than the other hero titles (IT/KI amplified) —
+   scale it down slightly so it stays on one line like the other service pages. */
+#bs-h1 {
+  font-size: clamp(2.15rem, 4.9vw, 4.45rem);
+}
+
 /* ============================================================
    ANSATZ
 ============================================================ */

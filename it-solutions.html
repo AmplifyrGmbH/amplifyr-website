@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="de-CH">
 <head>
   <meta charset="UTF-8">
@@ -108,20 +108,7 @@
         </ul>
       </nav>
 
-      <div class="site-header__cta">
-        <div class="header-ba-wrap">
-          <a href="/business-amplification" class="header-ba-link" aria-haspopup="true">
-            Business <em>Amplification</em>
-            <svg class="site-nav__chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-          <div class="nav-dropdown" role="menu">
-            <a href="/digitalisierung-kmu" class="nav-dropdown__link" role="menuitem">Allgemein</a>
-            <a href="/digitalisierung-handwerker" class="nav-dropdown__link" role="menuitem">Handwerker</a>
-          </div>
-        </div>
-      </div>
+      <a href="https://portal.amplifyr.ch/" class="btn btn--outline header-portal-btn" target="_blank" rel="noopener">Kundenportal</a>
 
       <button id="burger-btn" class="burger-btn" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu">
         <span></span>
@@ -152,21 +139,6 @@
 
       <div class="mobile-nav-group">
         <div class="mobile-nav-group__row">
-          <a href="/business-amplification" class="mobile-nav-link">Business Amplification</a>
-          <button class="mobile-nav-group__chevron-btn" aria-label="Business Amplification Untermenü">
-            <svg class="mobile-nav-group__chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
-        </div>
-        <div class="mobile-nav-group__sub">
-          <a href="/digitalisierung-kmu">Allgemein</a>
-          <a href="/digitalisierung-handwerker">Handwerker</a>
-        </div>
-      </div>
-
-      <div class="mobile-nav-group">
-        <div class="mobile-nav-group__row">
           <a href="/it-solutions" class="mobile-nav-link">IT-Lösungen</a>
           <button class="mobile-nav-group__chevron-btn" aria-label="IT-Lösungen Untermenü">
             <svg class="mobile-nav-group__chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -175,9 +147,10 @@
           </button>
         </div>
         <div class="mobile-nav-group__sub">
-          <a href="/it-solutions#sec-outsourcing">IT-Outsourcing</a>
+          <a href="/it-solutions#sec-support">Support &amp; Beratung</a>
+          <a href="/it-solutions#sec-cloud">Microsoft 365</a>
           <a href="/it-solutions#sec-managed">Managed Services</a>
-          <a href="/it-solutions#sec-cloud">Cloud</a>
+          <a href="/it-solutions#sec-outsourcing">IT-Outsourcing</a>
         </div>
       </div>
 
@@ -243,10 +216,8 @@
         </div>
       </div>
 
-    </div>
-
     <div class="mobile-menu__cta">
-      <a href="/business-amplification" class="btn btn--primary">Business Amplification</a>
+      <a href="https://portal.amplifyr.ch/" class="btn btn--primary" target="_blank" rel="noopener">Kundenportal</a>
     </div>
 
   </nav>
@@ -269,274 +240,432 @@
           <p class="fsh-heading">IT <em class="fsh-em">amplified</em></p>
           <p class="fsh-sub">Wir schaffen die technologische Grundlage für stabile, sichere und skalierbare Unternehmenssysteme — eine rundum funktionierende und zukunftsgerichtete IT.</p>
           <div class="fsh-actions">
-            <a class="btn btn--hero-pill" href="/formular">IT-Audit anfragen</a>
+            <a class="btn btn--hero-pill" href="/formular">Kostenlose IT-Bestandsaufnahme anfragen</a>
           </div>
           <nav class="fsh-subnav" aria-label="Seitennavigation">
+            <a class="fsh-subnav-btn" href="#sec-support">Support &amp; Beratung</a>
+            <a class="fsh-subnav-btn" href="#sec-cloud">Microsoft 365</a>
+            <a class="fsh-subnav-btn" href="#sec-managed">IT-Betrieb &amp; Wartung</a>
             <a class="fsh-subnav-btn" href="#sec-outsourcing">IT-Outsourcing</a>
-            <a class="fsh-subnav-btn" href="#sec-managed">Managed Services</a>
-            <a class="fsh-subnav-btn" href="#sec-cloud">Cloud &amp; Microsoft 365</a>
+            <a class="fsh-subnav-btn" href="#sec-relocation">IT-Umzug &amp; Verkabelungen</a>
           </nav>
         </div>
       </div>
       <div class="fsh-scroll-cue" aria-hidden="true"></div>
     </section>
 
-    <!-- ── Section 2: IT-Outsourcing ─────────────────────────── -->
-    <section id="sec-outsourcing" class="section" aria-labelledby="ito-h">
+    <!-- ── 1. Support & IT Beratung ─────────────────────────── -->
+    <section id="sec-support" class="section" aria-labelledby="support-h">
       <div class="container">
 
         <div class="its-section-header">
-          <p class="section-label">IT-Outsourcing</p>
-          <h2 id="ito-h">Wir übernehmen Ihre IT.</h2>
-          <p class="its-intro">Stellen Sie sich vor: Ihre IT funktioniert einwandfrei — keine Ausfälle, kein Stress und keine unerwarteten Kosten. Als Ihr externer IT-Partner übernehmen wir die komplette Verantwortung für Ihre gesamte IT-Infrastruktur. Klar, verlässlich, modern.</p>
-          <p class="its-intro-em">Amplifyr ist Ihr vertrauenswürdiger IT-Dienstleister für Wartung, Störungsbehebung und zukunftsgerichtete Beratung.</p>
+          <p class="section-label">IT-Support · Alles aus einer Hand</p>
+          <h2 id="support-h">Ihr IT-Problem. Unser Job.</h2>
+          <p class="its-intro">Ob Cloud-Umgebung, E-Mail, Unternehmens-Software, IT-Sicherheit oder digitale Prozesse — kein Thema ist zu gross oder zu klein. Als Ihre externe IT-Abteilung sind wir für alles da: direkt erreichbar, ohne Callcenter und mit einem Ansprechpartner, der Ihren Betrieb bereits kennt.</p>
+          <p class="its-intro its-intro--audit">Damit wir von Anfang an wissen wo der Schuh drückt, bieten wir Ihnen eine kostenlose IT-Bestandsaufnahme an. Wir schauen uns Ihre aktuelle IT-Situation an, zeigen Ihnen wo Risiken oder unnötige Kosten lauern – und was man dagegen tun kann. Unverbindlich, verständlich erklärt, ohne Fachbegriffe.</p>
+          <div class="its-audit-cta">
+            <a href="/formular" class="btn btn--primary">Kostenlose IT-Bestandsaufnahme anfragen</a>
+          </div>
         </div>
 
-        <div class="ito-grid">
+        <!-- Support-Cards -->
+        <div class="sup-cards-wrap">
+          <div class="sup-flip-hint" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M3 2v5h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.05 13A9 9 0 1 0 6 5.3L3 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="sup-cards">
 
-          <div class="ito-card">
-            <span class="ito-card-num">01</span>
-            <div class="ito-card-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <rect x="2" y="3" width="20" height="14" rx="2" stroke="white" stroke-width="1.5"/>
-                <path d="M8 21h8M12 17v4" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-              </svg>
+          <div class="sup-card">
+            <div class="sup-card-inner">
+              <div class="sup-card-front sup-card-front--phone">
+                <h3>Telefon &amp; Fernwartung</h3>
+              </div>
+              <div class="sup-card-back">
+                <h3>Telefon &amp; Fernwartung</h3>
+                <p>Meist innert Minuten gelöst — ohne dass jemand den Schreibtisch verlassen muss.</p>
+              </div>
             </div>
-            <h3>Komplette IT-Übernahme</h3>
-            <p>Als externer IT-Partner arbeiten wir Hand in Hand mit Ihrem Betrieb und gehen auf Ihre Bedürfnisse ein. Sie benötigen kein IT-Fachpersonal. Wir kümmern uns um:</p>
-            <ul class="ito-bullets">
-              <li>Geräte, Netzwerk, Server &amp; Peripherie</li>
-              <li>Benutzerkonten &amp; Zugriffsrechte</li>
-              <li>Software-Lizenzen &amp; Updates</li>
-              <li>Vollständige IT-Dokumentation</li>
-            </ul>
-            <p class="ito-card-em">Amplifyr wird zu Ihrem Partner und Berater für pragmatische und kosteneffiziente Lösungen.</p>
           </div>
 
-          <div class="ito-card">
-            <span class="ito-card-num">02</span>
-            <div class="ito-card-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M3 11a9 9 0 1 1 18 0" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-                <rect x="1" y="11" width="4" height="6" rx="1" stroke="white" stroke-width="1.5"/>
-                <rect x="19" y="11" width="4" height="6" rx="1" stroke="white" stroke-width="1.5"/>
-              </svg>
+          <div class="sup-card">
+            <div class="sup-card-inner">
+              <div class="sup-card-front sup-card-front--office">
+                <h3>Vor-Ort-Einsatz</h3>
+              </div>
+              <div class="sup-card-back">
+                <h3>Vor-Ort-Einsatz</h3>
+                <p>Wenn nötig, kommen wir zu Ihnen — in der Region Zürich schnell und unkompliziert.</p>
+              </div>
             </div>
-            <h3>IT Support mit individuellem Service Level Agreement (SLA)</h3>
-            <p>Wenn etwas nicht funktioniert, sind wir da — schnell und zuverlässig. Wir vereinbaren mit Ihnen Verbindlichkeiten, die zu Ihrem Unternehmen passen.</p>
-            <ul class="ito-bullets">
-              <li>Reaktionszeit bei Störungen unter 2 Stunden (Standard)</li>
-              <li>Telefonischer Support &amp; Fernwartung</li>
-              <li>Vor-Ort-Einsatz bei Bedarf</li>
-              <li>SLA-Pakete individuell wählbar</li>
-            </ul>
-            <p class="ito-card-em">Mit einem SLA klären wir gegenseitige Erwartungen und Machbarkeiten.</p>
           </div>
 
-          <div class="ito-card">
-            <span class="ito-card-num">03</span>
-            <div class="ito-card-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" stroke="white" stroke-width="1.5"/>
-              </svg>
+          <div class="sup-card">
+            <div class="sup-card-inner">
+              <div class="sup-card-front sup-card-front--person">
+                <h3>Fester Ansprechpartner</h3>
+              </div>
+              <div class="sup-card-back">
+                <h3>Fester Ansprechpartner</h3>
+                <p>Kein Weiterleiten, kein Erklären von vorne — jemand der Ihr Unternehmen kennt.</p>
+              </div>
             </div>
-            <h3>IT-Projekte &amp; Digitalisierung</h3>
-            <p>Stehen räumliche oder geographische Veränderungen an? Werden neue digitale Prozesse notwendig? Wir planen und setzen Ihre IT-Projekte um: gut organisiert, termin- und budgetgerecht.</p>
-            <ul class="ito-bullets">
-              <li>Infrastruktur-Aufbau/Anpassungen &amp; Migrationen</li>
-              <li>Digitalisierung von Arbeitsprozessen</li>
-              <li>Büroumzüge &amp; Standorterweiterungen</li>
-              <li>Einführung neuer Softwarelösungen</li>
-            </ul>
-            <p class="ito-card-em">Mit Amplifyr können Sie sorglos Veränderungen entgegensteuern.</p>
           </div>
 
-          <div class="ito-card">
-            <span class="ito-card-num">04</span>
-            <div class="ito-card-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.35C16.5 22.15 20 17.25 20 12V6l-8-4z" stroke="white" stroke-width="1.5"/>
-              </svg>
+          <div class="sup-card">
+            <div class="sup-card-inner">
+              <div class="sup-card-front sup-card-front--portal">
+                <h3>Strukturiertes Ticketsystem</h3>
+              </div>
+              <div class="sup-card-back">
+                <h3>Strukturiertes Ticketsystem</h3>
+                <p>Nichts geht vergessen — Sie sehen jederzeit den Status Ihrer Anfrage.</p>
+              </div>
             </div>
-            <h3>Managed Services</h3>
-            <p>Unsere Managed Services überwachen und optimieren Ihre Systeme vollautomatisch — rund um die Uhr, ohne dass Sie etwas tun müssen.</p>
-            <ul class="ito-bullets">
-              <li>24/7 Monitoring aller Systeme</li>
-              <li>Automatische Updates &amp; Patches</li>
-              <li>Backup-Überwachung &amp; Wiederherstellung</li>
-              <li>Endpoint Security &amp; Virenschutz</li>
-            </ul>
-            <p class="ito-card-em">Amplifyr überwacht, verwaltet, wartet und optimiert Ihre IT-Prozesse und Infrastrukturen.</p>
           </div>
 
-          <div class="ito-card">
-            <span class="ito-card-num">05</span>
-            <div class="ito-card-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" stroke="white" stroke-width="1.5"/>
-              </svg>
-            </div>
-            <h3>Cloud &amp; Microsoft 365</h3>
-            <p>Arbeiten von überall — sicher und mit modernsten Tools. Wir migrieren Ihr Unternehmen in die Cloud und betreuen Ihre Microsoft 365 Umgebung laufend.</p>
-            <ul class="ito-bullets">
-              <li>Microsoft 365 Setup &amp; Migration</li>
-              <li>Teams, SharePoint &amp; Exchange Online</li>
-              <li>Sicherer Zugriff von unterwegs</li>
-              <li>Automatische Cloud-Backups</li>
-            </ul>
-            <p class="ito-card-em">Damit Cloud nicht einfach nur eine Wolke ist, sondern Ressourcenoptimierung.</p>
+          </div><!-- /sup-cards -->
+          <div class="sup-flip-hint sup-flip-hint--right" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M21 2v5h-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M20.95 13A9 9 0 1 1 18 5.3L21 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
+        </div><!-- /sup-cards-wrap -->
 
-          <div class="ito-card">
-            <span class="ito-card-num">06</span>
-            <div class="ito-card-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 1 0 0 7h5a3.5 3.5 0 1 1 0 7H6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <h3>Kosteneinsparungen</h3>
-            <p>IT muss nicht teuer sein — wenn sie richtig geplant ist und das Fundament stimmt. Wir ersetzen unerwartete Rechnungen durch transparente Pauschalen und helfen, Ressourcen optimal zu nutzen.</p>
-            <ul class="ito-bullets">
-              <li>Fixe, planbare Monatspauschalen</li>
-              <li>Keine teuren Notfall-Einsätze mehr</li>
-              <li>Lizenz-Optimierung &amp; Kostenkontrolle</li>
-            </ul>
-            <p class="ito-card-em">Nutzen Sie Ihr Geld für wichtige Investitionen statt für überteuerte IT-Notfallübungen.</p>
+        <!-- Beratung-Block -->
+        <div class="sup-beratung">
+          <div class="sup-beratung-left">
+            <p class="sup-beratung-label">Beratung, die weiterhilft</p>
+            <p class="sup-beratung-text">IT entwickelt sich schnell. Wir helfen Ihnen den Überblick zu behalten – ob es um neue Software, Lizenzen, Sicherheit oder die Frage geht, ob sich eine Investition wirklich lohnt. Sie bekommen eine ehrliche Einschätzung, keine Verkaufsstrategie.</p>
+            <p class="sup-beratung-closing">Schnelle Hilfe, klare Antworten – ohne Umwege.</p>
           </div>
-
+          <div class="sup-beratung-right">
+            <div class="sup-question">
+              <span class="sup-q-mark">?</span>
+              <p>Welche Tools passen zu meinem Unternehmen?</p>
+            </div>
+            <div class="sup-question">
+              <span class="sup-q-mark">?</span>
+              <p>Wie schütze ich meine Daten richtig?</p>
+            </div>
+            <div class="sup-question">
+              <span class="sup-q-mark">?</span>
+              <p>Was kostet mich meine IT wirklich – und wo spare ich?</p>
+            </div>
+          </div>
         </div>
+
+
       </div>
     </section>
 
-    <!-- ── Section 3: Managed Services ──────────────────────── -->
+    <!-- ── 2. Microsoft 365 & Cloud ──────────────────────────── -->
+    <section id="sec-cloud" class="section section--fog" aria-labelledby="cloud-h">
+      <div class="container">
+
+        <div class="its-section-header">
+          <p class="section-label">Microsoft 365 &amp; Cloud</p>
+          <h2 id="cloud-h">Zusammenarbeit. Sicher. Einfach. Überall.</h2>
+          <p class="its-intro">Microsoft 365 ist heute der Standard für moderne KMU. Wir kümmern uns um alles – von der Einrichtung bis zum laufenden Betrieb. Ihr Team arbeitet, die Technik läuft.</p>
+        </div>
+
+        <div class="m365-showcase" id="m365-tabs">
+
+          <!-- ── Linke Navigation ── -->
+          <nav class="m365-nav" role="tablist" aria-label="Microsoft 365 Leistungen">
+
+            <button class="m365-nav-btn is-active" role="tab" aria-selected="true"
+                    aria-controls="m365-pane-0" id="m365-tab-0" data-pane="0" type="button">
+              <span class="m365-nav-num" aria-hidden="true">01</span>
+              <span class="m365-nav-icon" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                  <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.6"/>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <span class="m365-nav-title">Zusammenarbeit &amp; Tools</span>
+            </button>
+
+            <button class="m365-nav-btn" role="tab" aria-selected="false"
+                    aria-controls="m365-pane-1" id="m365-tab-1" data-pane="1" type="button">
+              <span class="m365-nav-num" aria-hidden="true">02</span>
+              <span class="m365-nav-icon" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/>
+                  <path d="M8 21h8M12 17v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <span class="m365-nav-title">Geräte-Verwaltung</span>
+            </button>
+
+            <button class="m365-nav-btn" role="tab" aria-selected="false"
+                    aria-controls="m365-pane-2" id="m365-tab-2" data-pane="2" type="button">
+              <span class="m365-nav-num" aria-hidden="true">03</span>
+              <span class="m365-nav-icon" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span class="m365-nav-title">Sicherheit</span>
+            </button>
+
+            <button class="m365-nav-btn" role="tab" aria-selected="false"
+                    aria-controls="m365-pane-3" id="m365-tab-3" data-pane="3" type="button">
+              <span class="m365-nav-num" aria-hidden="true">04</span>
+              <span class="m365-nav-icon" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <polyline points="16 16 12 12 8 16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                  <line x1="12" y1="12" x2="12" y2="21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                  <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span class="m365-nav-title">Umzug in die Cloud</span>
+            </button>
+
+            <button class="m365-nav-btn" role="tab" aria-selected="false"
+                    aria-controls="m365-pane-4" id="m365-tab-4" data-pane="4" type="button">
+              <span class="m365-nav-num" aria-hidden="true">05</span>
+              <span class="m365-nav-icon" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span class="m365-nav-title">Schulung</span>
+            </button>
+
+          </nav>
+
+          <!-- ── Rechter Inhaltsbereich ── -->
+          <div class="m365-content">
+
+            <div class="m365-pane is-active" role="tabpanel" id="m365-pane-0" aria-labelledby="m365-tab-0">
+              <span class="m365-pane-watermark" aria-hidden="true">01</span>
+              <div class="m365-pane-top">
+                <div class="m365-pane-iconbox" aria-hidden="true">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                </div>
+                <h3>Zusammenarbeit &amp; Tools</h3>
+              </div>
+              <p>Alle in einer Umgebung – egal wo Ihr Team sitzt. Gemeinsam an Dokumenten arbeiten, Termine planen, telefonieren und kommunizieren.</p>
+              <ul class="m365-chips">
+                <li>Teams &amp; Telefonie</li>
+                <li>Outlook &amp; Exchange</li>
+                <li>SharePoint &amp; OneDrive</li>
+                <li>Bookings</li>
+                <li>Planner</li>
+              </ul>
+              <p class="m365-em">Weniger Abstimmungsaufwand. Mehr Zeit fürs Wesentliche.</p>
+            </div>
+
+            <div class="m365-pane" role="tabpanel" id="m365-pane-1" aria-labelledby="m365-tab-1">
+              <span class="m365-pane-watermark" aria-hidden="true">02</span>
+              <div class="m365-pane-top">
+                <div class="m365-pane-iconbox" aria-hidden="true">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                    <rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M8 21h8M12 17v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                </div>
+                <h3>Geräte-Verwaltung</h3>
+              </div>
+              <p>Neues Gerät, sauber eingerichtet – vom ersten Tag an bereit. Ob Laptop, Handy oder Tablet.</p>
+              <ul class="m365-chips">
+                <li>Einrichtung &amp; Konfiguration</li>
+                <li>Zentrale Updates</li>
+                <li>Remote-Sperre bei Verlust</li>
+              </ul>
+              <p class="m365-em">Ihre Geräte in guten Händen.</p>
+            </div>
+
+            <div class="m365-pane" role="tabpanel" id="m365-pane-2" aria-labelledby="m365-tab-2">
+              <span class="m365-pane-watermark" aria-hidden="true">03</span>
+              <div class="m365-pane-top">
+                <div class="m365-pane-iconbox" aria-hidden="true">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <h3>Sicherheit</h3>
+              </div>
+              <p>Nur wer darf, kommt rein – von jedem Gerät, aber sicher. Schutz vor Phishing und unbefugtem Zugriff inklusive.</p>
+              <ul class="m365-chips">
+                <li>Conditional Access</li>
+                <li>Zwei-Faktor-Anmeldung</li>
+                <li>Phishing-Schutz</li>
+                <li>DSGVO-konform</li>
+              </ul>
+              <p class="m365-em">Sicherheit die funktioniert – unbemerkt im Hintergrund.</p>
+            </div>
+
+            <div class="m365-pane" role="tabpanel" id="m365-pane-3" aria-labelledby="m365-tab-3">
+              <span class="m365-pane-watermark" aria-hidden="true">04</span>
+              <div class="m365-pane-top">
+                <div class="m365-pane-iconbox" aria-hidden="true">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                    <polyline points="16 16 12 12 8 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <line x1="12" y1="12" x2="12" y2="21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <h3>Umzug in die Cloud</h3>
+              </div>
+              <p>Von Ihrem alten System zu Microsoft 365 – ohne Unterbruch. Daten, E-Mails und Dokumente kommen vollständig und sicher an. Ihr Betrieb läuft während dem Umzug normal weiter.</p>
+              <ul class="m365-chips">
+                <li>Analyse vorab</li>
+                <li>Schrittweise Migration</li>
+                <li>Keine Datenverluste</li>
+              </ul>
+              <p class="m365-em">Kein Datenverlust. Kein Ausfall. Einfach fertig.</p>
+            </div>
+
+            <div class="m365-pane" role="tabpanel" id="m365-pane-4" aria-labelledby="m365-tab-4">
+              <span class="m365-pane-watermark" aria-hidden="true">05</span>
+              <div class="m365-pane-top">
+                <div class="m365-pane-iconbox" aria-hidden="true">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <h3>Schulung</h3>
+              </div>
+              <p>Neue Tools nützen nichts, wenn sie niemand verwendet. Wir schulen Ihr Team praxisnah – direkt an Ihren eigenen Geräten, mit Ihren eigenen Daten. Kein Theoriekurs, sondern echte Produktivität ab Tag 1.</p>
+              <ul class="m365-chips">
+                <li>Individuelle Schulung</li>
+                <li>Anleitungen zum Nachschlagen</li>
+                <li>Begleitung bis alle sicher sind</li>
+              </ul>
+              <p class="m365-em">Ihr Team arbeitet nach der Schulung effizienter – garantiert.</p>
+            </div>
+
+          </div><!-- /.m365-content -->
+
+        </div>
+
+        <div class="cloud-hosting-note">
+          <div class="cloud-hosting-note-inner">
+            <div>
+              <p class="cloud-hosting-note-label">Cloud Hosting</p>
+              <p>Benötigen Sie mehr als Microsoft 365 – zum Beispiel eigene Server in der Cloud oder spezifische Hosting-Lösungen? Das bieten wir ebenfalls an. Sprechen Sie uns an, wir finden die passende Lösung für Ihr Unternehmen.</p>
+            </div>
+            <a href="/formular" class="btn btn--primary">Jetzt beraten lassen</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── 3. IT-Betrieb & Wartung — Managed Services ────────── -->
     <section id="sec-managed" class="section" aria-labelledby="managed-h">
       <div class="container">
 
         <div class="its-section-header its-section-header--light">
-          <p class="section-label section-label--steel">Managed Services</p>
+          <p class="section-label section-label--steel">IT-Betrieb &amp; Wartung</p>
           <h2 id="managed-h">IT, die proaktiv läuft. Störungen erkannt, bevor sie den Betrieb treffen.</h2>
           <p class="its-intro">Unser Managed Services Modell überwacht, wartet und optimiert Ihre IT-Umgebung kontinuierlich — damit Ihre Systeme 24/7 laufen.</p>
         </div>
 
-        <div class="ms-grid">
+        <div class="ms-bridge">
 
-          <div class="ms-tile">
-            <div class="ms-tile-bg" style="--tile-img: url('/Bilder/IT Widget Bilder/Managed_Workplace.jpg')"></div>
-            <div class="ms-tile-glass"></div>
-            <div class="ms-tile-content">
-              <div class="ms-tile-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <rect x="2" y="3" width="20" height="14" rx="2" stroke="white" stroke-width="1.5"/>
-                  <path d="M8 21h8M12 17v4" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-                </svg>
-              </div>
-              <div class="ms-tile-bottom">
-                <h3>Managed Workplace</h3>
-                <p>Einrichtung, Software &amp; Helpdesk-Support.</p>
-              </div>
+          <div class="ms-bridge-header">
+            <span class="ms-bridge-col-label">Das kennen Sie</span>
+            <span class="ms-bridge-col-label ms-bridge-col-label--right">Was wir dafür tun</span>
+          </div>
+
+          <div class="ms-bridge-row">
+            <div class="ms-bridge-problem">
+              <h3>„Habe ich einen Virus? Wurde ich gephisht?"</h3>
+              <p>Viele Bedrohungen bleiben unbemerkt – und Mitarbeitende wissen oft nicht, woran sie eine gefährliche E-Mail oder einen Angriff erkennen.</p>
+            </div>
+
+            <div class="ms-bridge-solution">
+              <h3>Schutz + Schulung – damit es gar nicht so weit kommt</h3>
+              <p>Wir schützen Ihre Geräte technisch und schulen Ihr Team, Bedrohungen zu erkennen – bevor ein Klick zum Problem wird.</p>
+              <span class="ms-bridge-tag">Endpoint Security</span>
+              <span class="ms-bridge-tag">Security Awareness</span>
             </div>
           </div>
 
-          <div class="ms-tile">
-            <div class="ms-tile-bg" style="--tile-img: url('/Bilder/IT Widget Bilder/Managed_Server.avif')"></div>
-            <div class="ms-tile-glass"></div>
-            <div class="ms-tile-content">
-              <div class="ms-tile-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <rect x="2" y="2" width="20" height="8" rx="2" stroke="white" stroke-width="1.5"/>
-                  <rect x="2" y="14" width="20" height="8" rx="2" stroke="white" stroke-width="1.5"/>
-                  <circle cx="6" cy="6" r="1" fill="white"/>
-                  <circle cx="6" cy="18" r="1" fill="white"/>
-                </svg>
-              </div>
-              <div class="ms-tile-bottom">
-                <h3>Managed Server</h3>
-                <p>Monitoring, Updates &amp; Patching.</p>
-              </div>
+          <div class="ms-bridge-row">
+            <div class="ms-bridge-problem">
+              <h3>Neue Mitarbeitende warten tagelang auf ihre Zugänge</h3>
+              <p>IT-Onboarding läuft oft chaotisch – zu viel Aufwand, zu viele vergessene Schritte.</p>
+            </div>
+
+            <div class="ms-bridge-solution">
+              <h3>Startklar am ersten Tag – garantiert</h3>
+              <p>Geräte, Zugänge, E-Mail – alles eingerichtet bevor die Person durch die Tür kommt.</p>
+              <span class="ms-bridge-tag">Onboarding &amp; Offboarding</span>
             </div>
           </div>
 
-          <div class="ms-tile">
-            <div class="ms-tile-bg" style="--tile-img: url('/Bilder/IT Widget Bilder/Managed Network.avif')"></div>
-            <div class="ms-tile-glass"></div>
-            <div class="ms-tile-content">
-              <div class="ms-tile-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-                </svg>
-              </div>
-              <div class="ms-tile-bottom">
-                <h3>Managed Network</h3>
-                <p>WLAN, VPN &amp; Firewalls.</p>
-              </div>
+          <div class="ms-bridge-row">
+            <div class="ms-bridge-problem">
+              <h3>„Wurde das eigentlich gesichert?"</h3>
+              <p>Datenverlust durch Ransomware, Hardwaredefekt oder menschliches Versehen ist oft existenzbedrohend.</p>
+            </div>
+
+            <div class="ms-bridge-solution">
+              <h3>Automatische Datensicherung täglich</h3>
+              <p>Ihre Daten werden verschlüsselt gesichert und sind im Ernstfall in Minuten wiederhergestellt.</p>
+              <span class="ms-bridge-tag">Cloud Backup</span>
             </div>
           </div>
 
-          <div class="ms-tile">
-            <div class="ms-tile-bg" style="--tile-img: url('/Bilder/IT Widget Bilder/Managed_Security.avif')"></div>
-            <div class="ms-tile-glass"></div>
-            <div class="ms-tile-content">
-              <div class="ms-tile-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.35C16.5 22.15 20 17.25 20 12V6l-8-4z" stroke="white" stroke-width="1.5"/>
-                  <path d="M9 12l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-              <div class="ms-tile-bottom">
-                <h3>Managed Security</h3>
-                <p>Endpoint Detection &amp; Threat Monitoring.</p>
-              </div>
+          <div class="ms-bridge-row">
+            <div class="ms-bridge-problem">
+              <h3>Das WLAN ist wieder langsam – oder weg</h3>
+              <p>Verbindungsprobleme kosten Nerven, Arbeitszeit und im schlimmsten Fall Kundentermine.</p>
+            </div>
+
+            <div class="ms-bridge-solution">
+              <h3>Stabiles, sicheres Netzwerk – ohne Ausfall</h3>
+              <p>Wir betreiben und überwachen Ihr WLAN, sperren unbefugte Zugriffe und halten alles aktuell.</p>
+              <span class="ms-bridge-tag">WLAN &amp; Firewall</span>
             </div>
           </div>
 
-          <div class="ms-tile">
-            <div class="ms-tile-bg" style="--tile-img: url('/Bilder/IT Widget Bilder/Managed_CloudBackuo.avif')"></div>
-            <div class="ms-tile-glass"></div>
-            <div class="ms-tile-content">
-              <div class="ms-tile-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" stroke="white" stroke-width="1.5"/>
-                  <path d="M12 13v5M9.5 15.5l2.5 2.5 2.5-2.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-              <div class="ms-tile-bottom">
-                <h3>Managed Cloud Backup</h3>
-                <p>Vollautomatische Datensicherung &amp; Disaster Recovery.</p>
-              </div>
+          <div class="ms-bridge-row">
+            <div class="ms-bridge-problem">
+              <h3>Microsoft 365 ist eingerichtet – aber niemand nutzt es richtig</h3>
+              <p>Lizenzen bezahlt, Potenzial ungenutzt – Teams, SharePoint und Co. liegen brach.</p>
+            </div>
+
+            <div class="ms-bridge-solution">
+              <h3>Cloud-Umgebung sauber aufgesetzt – und wirklich genutzt</h3>
+              <p>Wir konfigurieren Ihre Microsoft 365 Umgebung professionell, schulen Ihr Team und sorgen dafür, dass die Cloud Ihren Betrieb spürbar vereinfacht.</p>
+              <span class="ms-bridge-tag">Microsoft 365 &amp; Cloud</span>
             </div>
           </div>
 
-          <div class="ms-tile">
-            <div class="ms-tile-bg" style="--tile-img: url('/Bilder/IT Widget Bilder/Managed_Telefonie.jpg')"></div>
-            <div class="ms-tile-glass"></div>
-            <div class="ms-tile-content">
-              <div class="ms-tile-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" stroke="white" stroke-width="1.5"/>
-                </svg>
-              </div>
-              <div class="ms-tile-bottom">
-                <h3>Managed Telefonie</h3>
-                <p>MS Teams Phone &amp; VoIP-Lösungen, KI-Telefonie.</p>
-              </div>
+          <div class="ms-bridge-row">
+            <div class="ms-bridge-problem">
+              <h3>Dieselben Aufgaben – täglich, von Hand, immer wieder</h3>
+              <p>Repetitive Prozesse fressen Arbeitszeit, die Ihr Team für wichtigere Dinge braucht.</p>
+            </div>
+
+            <div class="ms-bridge-solution">
+              <h3>KI übernimmt, was sich wiederholt</h3>
+              <p>Wir analysieren Ihre Abläufe und automatisieren mit KI gezielt die Prozesse, die Zeit kosten – damit Ihr Team sich auf das Wesentliche konzentriert.</p>
+              <span class="ms-bridge-tag">KI-Automation</span>
             </div>
           </div>
 
-          <div class="ms-tile ms-tile--wide">
-            <div class="ms-tile-bg" style="--tile-img: url('/Bilder/IT Widget Bilder/Managed_Website.jpg')"></div>
-            <div class="ms-tile-glass"></div>
-            <div class="ms-tile-content">
-              <div class="ms-tile-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <circle cx="12" cy="12" r="10" stroke="white" stroke-width="1.5"/>
-                  <line x1="2" y1="12" x2="22" y2="12" stroke="white" stroke-width="1.5"/>
-                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke="white" stroke-width="1.5"/>
-                </svg>
-              </div>
-              <div class="ms-tile-bottom">
-                <h3>Website</h3>
-                <p>Hosting, Wartung und Anpassungen.</p>
-              </div>
+          <div class="ms-bridge-row">
+            <div class="ms-bridge-problem">
+              <h3>Eine neue digitale Lösung soll her – aber wo anfangen?</h3>
+              <p>Ideen sind da, doch Umsetzung, Auswahl und Koordination überfordern den laufenden Betrieb.</p>
+            </div>
+
+            <div class="ms-bridge-solution">
+              <h3>Von der Idee zur fertigen IT-Lösung</h3>
+              <p>Wir begleiten Ihr Digitalisierungsprojekt von der Analyse bis zum Go-live – strukturiert, termingerecht und ohne unnötigen Aufwand für Ihr Team.</p>
+              <span class="ms-bridge-tag">Digitalisierungsprojekte</span>
             </div>
           </div>
 
@@ -547,103 +676,149 @@
       </div>
     </section>
 
-    <!-- ── Section 4: Cloud & Microsoft 365 ──────────────────── -->
-    <section id="sec-cloud" class="section section--fog" aria-labelledby="cloud-h">
+    <!-- ── 4. Skalierbare Kosten — SLA ───────────────────────── -->
+    <section id="sec-sla" class="section section--fog" aria-labelledby="sla-h">
       <div class="container">
 
         <div class="its-section-header">
-          <p class="section-label">Cloud &amp; Microsoft 365</p>
-          <h2 id="cloud-h">Microsoft 365. Eingerichtet. Gesichert. Betrieben.</h2>
-          <p class="its-intro">Microsoft 365 ist heute der Standard für moderne KMU. Wir kümmern uns um alles — von der initialen Einrichtung bis zum laufenden Betrieb. Ihr Team arbeitet, die Technik läuft.</p>
+          <p class="section-label">Skalierbare Kosten · SLA</p>
+          <h2 id="sla-h">Planbare IT-Kosten. Verbindliche Service-Vereinbarungen.</h2>
+          <p class="its-intro">IT muss nicht teuer sein — wenn sie richtig geplant ist. Wir ersetzen unerwartete Rechnungen durch transparente Monatspauschalen und vereinbaren mit Ihnen ein Service Level Agreement, das zu Ihrem Betrieb passt.</p>
         </div>
 
-        <div class="cloud-bento">
-
-          <div class="cloud-card cloud-card--wide">
-            <div class="cloud-card-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-                <circle cx="9" cy="7" r="4" stroke="white" stroke-width="1.5"/>
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <h3>Zusammenarbeit &amp; Remote</h3>
-            <p>Moderne Tools ermöglichen nahtlose Zusammenarbeit innerhalb von Teams — vollkommen ortsunabhängig. Absprachen erfolgen in Echtzeit-Kommunikation, keine Leerläufe mehr durch Synchronisation von Terminen – das Ende der Mailflut.</p>
-            <ul class="cloud-bullets">
-              <li>Microsoft Teams für Meetings, Chat &amp; Telefonie</li>
-              <li>SharePoint als zentrales Dokumenten-Hub</li>
-              <li>Exchange Online für professionelle E-Mails mit eigener Domain</li>
-              <li>OneDrive für sicheres Speichern &amp; Teilen von Dateien</li>
-            </ul>
-            <p class="cloud-card-em">Hohe Effizienz, da Absprachen / Entscheidungen jederzeit rasch getroffen werden können.</p>
+        <div class="sla-info-panel">
+          <div class="sla-info-text">
+            <p>Mit einem SLA klären wir gegenseitige Erwartungen und Machbarkeiten — keine bösen Überraschungen, keine versteckten Kosten. Sie wissen genau, was Sie erhalten, und wir wissen genau, was von uns erwartet wird.</p>
+            <blockquote class="sla-info-quote">Nutzen Sie Ihr Geld für wichtige Investitionen statt für überteuerte IT-Notfallübungen.</blockquote>
           </div>
-
-          <div class="cloud-card">
-            <div class="cloud-card-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <rect x="3" y="11" width="18" height="11" rx="2" stroke="white" stroke-width="1.5"/>
-                <path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <h3>Sicherheit &amp; Compliance</h3>
-            <p>Unsere Sicherheitsdienstleistungen erfüllen die Compliance-Anforderungen und schützen Ihr Unternehmen vor Bedrohungen — DSGVO-konform nach Schweizer Standard.</p>
-            <ul class="cloud-bullets">
-              <li>Conditional Access &amp; Zero Trust</li>
-              <li>DSGVO-konform &amp; Swiss Data Protection</li>
+          <div class="sla-info-checks">
+            <ul>
+              <li>Reaktionszeit bei Störungen unter 2 Stunden</li>
+              <li>SLA-Pakete individuell wählbar</li>
+              <li>Fixe, planbare Monatspauschalen</li>
+              <li>Keine teuren Notfall-Einsätze mehr</li>
+              <li>Lizenz-Optimierung &amp; Kostenkontrolle</li>
             </ul>
-            <p class="cloud-card-em">Amplifyr garantiert Ihnen professionellen Schutz und automatisierte Bedrohungserkennungen.</p>
           </div>
-
-          <div class="cloud-card">
-            <div class="cloud-card-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M5 12h14M12 5l7 7-7 7" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <h3>Migration ohne Unterbruch</h3>
-            <p>Wir migrieren Ihre bestehenden Systeme strukturiert in die Cloud — Ihr Betrieb läuft weiter.</p>
-            <ul class="cloud-bullets">
-              <li>Analyse &amp; Migrationsplan vorab</li>
-              <li>Stufenweise Umstellung</li>
-              <li>Rollback-Plan inklusive</li>
-            </ul>
-            <p class="cloud-card-em">Amplifyr bietet Ihnen ein Sorglos-Paket für das Arbeiten von verschiedenen Standorten.</p>
-          </div>
-
-          <div class="cloud-card">
-            <div class="cloud-card-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <rect x="5" y="2" width="14" height="20" rx="2" stroke="white" stroke-width="1.5"/>
-                <path d="M12 18h.01" stroke="white" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <h3>Device Management</h3>
-            <p>Microsoft Intune und Autopilot ermöglichen die zentrale Verwaltung aller Geräte — automatisch konfiguriert ab Tag 1.</p>
-            <ul class="cloud-bullets">
-              <li>Neue Geräte in Minuten einsatzbereit</li>
-              <li>Zentrale Software-Verteilung</li>
-              <li>Remote-Wipe bei Verlust</li>
-            </ul>
-            <p class="cloud-card-em">Schutz vor Datenverlust und Sicherheit durch jederzeitige Fernverwaltung.</p>
-          </div>
-
-          <div class="cloud-card">
-            <div class="cloud-card-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" stroke="white" stroke-width="1.5"/>
-                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" stroke="white" stroke-width="1.5"/>
-              </svg>
-            </div>
-            <h3>Schulung &amp; Adoption</h3>
-            <p>Technologie bringt nur Nutzen, wenn Ihr Team diese wirklich nutzt. Wir schulen praxisnah — kein Theoriekurs, sondern echte Produktivität.</p>
-            <ul class="cloud-bullets">
-              <li>Individuelle Schritt-für-Schritt Anleitungen</li>
-              <li>Laufende Begleitung nach Go-Live</li>
-            </ul>
-            <p class="cloud-card-em">Hoher Nutzen durch praxisnahe Schulung.</p>
-          </div>
-
         </div>
+
+        <!-- ── SLA Preistabelle ────────────────────────────────── -->
+        <div class="sla-pricing-grid">
+
+          <!-- ESSENTIAL -->
+          <div class="sla-card">
+            <div class="sla-plan-name">Essential</div>
+            <div class="sla-plan-tagline">Ihre IT läuft – wir schauen drauf.</div>
+            <div class="sla-price-row">
+              <span class="sla-price">CHF 590</span>
+              <span class="sla-price-unit">/Mo</span>
+            </div>
+            <div class="sla-seats">Bis 5 Mitarbeitende</div>
+            <div class="sla-hours-box">
+              <div class="sla-hours-row">
+                <span class="sla-hours-label">Inkludierte Support-Stunden</span>
+                <span class="sla-hours-value">2h / Mo</span>
+              </div>
+              <div class="sla-hours-divider"></div>
+              <div class="sla-hours-row">
+                <span class="sla-hours-label">Zusatzstunden danach</span>
+                <span class="sla-extra-wrap">
+                  <span class="sla-extra-price">CHF 170/h</span>
+                  <span class="sla-extra-orig">200</span>
+                </span>
+              </div>
+            </div>
+            <div class="sla-section-label">Support</div>
+            <ul class="sla-features">
+              <li><span class="sla-check">&#10003;</span><span>Antwort noch am selben Tag<br><span class="sla-sub">Werktage, Remote oder Telefon</span></span></li>
+            </ul>
+            <div class="sla-section-label">Proaktive Betreuung</div>
+            <ul class="sla-features">
+              <li><span class="sla-check">&#10003;</span><span>Cloud-Umgebung laufend überwacht und betreut</span></li>
+              <li><span class="sla-check">&#10003;</span><span>Updates überwacht und sichergestellt<br><span class="sla-sub">Drittanbieter, Router, Drucker, NAS</span></span></li>
+              <li><span class="sla-check">&#10003;</span><span>Monatlicher Kurzbericht<br><span class="sla-sub">Was lief, was erledigt wurde</span></span></li>
+            </ul>
+            <a href="/formular" class="sla-btn sla-btn--outline">Jetzt anfragen</a>
+          </div>
+
+          <!-- PROFESSIONAL -->
+          <div class="sla-card sla-card--featured">
+            <div class="sla-plan-name">Professional</div>
+            <div class="sla-plan-tagline">IT als verlässlicher Hintergrund – Sie an der Front.</div>
+            <div class="sla-price-row">
+              <span class="sla-price">CHF 990</span>
+              <span class="sla-price-unit">/Mo</span>
+            </div>
+            <div class="sla-seats">Bis 20 Mitarbeitende</div>
+            <div class="sla-hours-box">
+              <div class="sla-hours-row">
+                <span class="sla-hours-label">Inkludierte Support-Stunden</span>
+                <span class="sla-hours-value">4h / Mo</span>
+              </div>
+              <div class="sla-hours-divider"></div>
+              <div class="sla-hours-row">
+                <span class="sla-hours-label">Zusatzstunden danach</span>
+                <span class="sla-extra-wrap">
+                  <span class="sla-extra-price">CHF 160/h</span>
+                  <span class="sla-extra-orig">200</span>
+                </span>
+              </div>
+            </div>
+            <div class="sla-section-label">Support</div>
+            <ul class="sla-features">
+              <li><span class="sla-check">&#10003;</span><span>Antwort innerhalb 4 Stunden<br><span class="sla-sub">Werktage, Remote oder Telefon</span></span></li>
+            </ul>
+            <div class="sla-section-label">Proaktive Betreuung</div>
+            <ul class="sla-features">
+              <li><span class="sla-check">&#10003;</span><span>Cloud- und lokale IT-Umgebung vollständig betreut</span></li>
+              <li><span class="sla-check">&#10003;</span><span>Updates überwacht und sichergestellt<br><span class="sla-sub">Drittanbieter, Router, Drucker, NAS</span></span></li>
+              <li><span class="sla-check">&#10003;</span><span>Monatlicher IT-Bericht mit Empfehlungen<br><span class="sla-sub">Wir rapportieren nicht nur – wir denken mit</span></span></li>
+              <li><span class="sla-check">&#10003;</span><span>Onboarding und Offboarding inklusive</span></li>
+            </ul>
+            <a href="/formular" class="sla-btn sla-btn--primary">Jetzt anfragen</a>
+          </div>
+
+          <!-- BUSINESS -->
+          <div class="sla-card">
+            <div class="sla-plan-name">Business</div>
+            <div class="sla-plan-tagline">Ihr IT-Team – ohne Festanstellung.</div>
+            <div class="sla-price-row">
+              <span class="sla-price">CHF 1'800</span>
+              <span class="sla-price-unit">/Mo</span>
+            </div>
+            <div class="sla-seats">Bis 50 Mitarbeitende</div>
+            <div class="sla-hours-box">
+              <div class="sla-hours-row">
+                <span class="sla-hours-label">Inkludierte Support-Stunden</span>
+                <span class="sla-hours-value">8h / Mo</span>
+              </div>
+              <div class="sla-hours-divider"></div>
+              <div class="sla-hours-row">
+                <span class="sla-hours-label">Zusatzstunden danach</span>
+                <span class="sla-extra-wrap">
+                  <span class="sla-extra-price">CHF 150/h</span>
+                  <span class="sla-extra-orig">200</span>
+                </span>
+              </div>
+            </div>
+            <div class="sla-section-label">Support</div>
+            <ul class="sla-features">
+              <li><span class="sla-check">&#10003;</span><span>Antwort innerhalb 2 Stunden<br><span class="sla-sub">Werktage, remote oder vor Ort</span></span></li>
+              <li><span class="sla-check">&#10003;</span><span>Wochenend-Bereitschaft <span class="sla-exclusive-badge">exklusiv</span><br><span class="sla-sub">Bei kritischen Ausfällen, Reaktion in 4h</span></span></li>
+              <li><span class="sla-check">&#10003;</span><span>Persönlicher Ansprechpartner<br><span class="sla-sub">Immer dieselbe Person – kein Ticketsystem</span></span></li>
+            </ul>
+            <div class="sla-section-label">Proaktive Betreuung</div>
+            <ul class="sla-features">
+              <li><span class="sla-check">&#10003;</span><span>Gesamte IT-Umgebung – inkl. On-Premise-Infrastruktur – vor Ort betreut</span></li>
+              <li><span class="sla-check">&#10003;</span><span>Updates überwacht und sichergestellt<br><span class="sla-sub">Drittanbieter, Router, Drucker, NAS</span></span></li>
+              <li><span class="sla-check">&#10003;</span><span>Onboarding und Offboarding inklusive</span></li>
+              <li><span class="sla-check">&#10003;</span><span>Vierteljährliches Strategiegespräch<br><span class="sla-sub">Mit Bericht und Massnahmenplan</span></span></li>
+            </ul>
+            <a href="/formular" class="sla-btn sla-btn--outline">Jetzt anfragen</a>
+          </div>
+
+        </div><!-- /sla-pricing-grid -->
+
       </div>
     </section>
 
@@ -701,6 +876,66 @@
       </div>
     </aside>
 
+    <!-- ── 5. Komplette IT Übernahme — Outsourcing ───────────── -->
+    <section id="sec-outsourcing" class="section section--fog" aria-labelledby="ito-h">
+      <div class="container">
+
+        <div class="its-section-header">
+          <p class="section-label">IT-Outsourcing · Externe IT-Abteilung</p>
+          <h2 id="ito-h">Ihre IT läuft. Dafür sorgen wir.</h2>
+          <p class="its-intro">Stellen Sie sich vor: Ihre IT läuft zuverlässig, sicher und ohne ungeplante Unterbrüche. Als Ihr externer IT-Partner übernehmen wir die Verantwortung für Ihre gesamte IT-Infrastruktur — transparent, verlässlich und zukunftssicher.</p>
+          <p class="its-intro-em">Sie benötigen kein eigenes IT-Fachpersonal — Amplifyr übernimmt alles.</p>
+        </div>
+
+        <div class="ito-info-panel">
+          <div class="ito-info-text">
+            <p>Als externer IT-Partner arbeiten wir Hand in Hand mit Ihrem Betrieb und gehen auf Ihre individuellen Bedürfnisse ein. Wir kennen Ihre Systeme, Ihre Prozesse und Ihre Anforderungen — und handeln entsprechend.</p>
+            <blockquote class="ito-info-quote">Amplifyr wird zu Ihrem Partner und Berater für pragmatische und kosteneffiziente Lösungen.</blockquote>
+          </div>
+          <div class="ito-info-checks">
+            <ul>
+              <li>Geräte, Netzwerk, Server &amp; Peripherie</li>
+              <li>Benutzerkonten &amp; Zugriffsrechte</li>
+              <li>Software-Lizenzen &amp; Updates</li>
+              <li>Vollständige IT-Dokumentation</li>
+              <li>24/7 Monitoring &amp; proaktive Wartung</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── Section 5.5: Büroumzug IT-Einrichtung ───────────────── -->
+    <section id="sec-relocation" class="section" aria-labelledby="relocation-h">
+      <div class="container">
+
+        <div class="its-section-header">
+          <p class="section-label">IT-Umzug · Einrichtung &amp; Rackverkabelung</p>
+          <h2 id="relocation-h">Heute Umzug. Morgen verkabelt &amp; einsatzbereit.</h2>
+          <p class="its-intro">Sie ziehen um – die Umzugsfirma bringt alles von A nach B. Den Rest übernimmt unser Team. Wir kümmern uns um die gesamte IT-Infrastruktur Ihres neuen Büros: von der Stromverkabelung durch unseren zertifizierten Elektriker-Meister über die strukturierte Rack- und Netzwerkverkabelung bis zum fertig eingerichteten Arbeitsplatz – damit Ihre Mitarbeitenden am nächsten Morgen einfach hinsetzen und loslegen können.</p>
+        </div>
+
+        <div class="ito-info-panel">
+          <div class="ito-info-text">
+            <p>Ob 5 oder 50 Arbeitsplätze – wir koordinieren den gesamten IT-Aufbau im neuen Büro und arbeiten direkt mit Ihrer Umzugsfirma zusammen. So greifen Logistik und IT-Aufbau nahtlos ineinander, ohne Leerlauf und ohne, dass Sie den Überblick verlieren. Auch Ihr Serverrack wird bei uns fachgerecht verkabelt: strukturiert, sauber beschriftet und dokumentiert, damit spätere Erweiterungen oder die Fehlersuche kein Rätselraten sind.</p>
+            <blockquote class="ito-info-quote">Am Tag des Einzugs ist jeder Platz verkabelt, eingerichtet und bereit – kein Chaos, kein Warten auf den IT-Mann.</blockquote>
+          </div>
+          <div class="ito-info-checks">
+            <ul>
+              <li>Stromverkabelung durch zertifizierten Elektriker-Meister</li>
+              <li>Strukturierte Rack- &amp; Netzwerkverkabelung, beschriftet &amp; dokumentiert</li>
+              <li>Tische, Monitore &amp; Docking Stations angeschlossen</li>
+              <li>Laptops &amp; Peripheriegeräte eingerichtet und getestet</li>
+              <li>Koordination direkt mit Ihrer Umzugsfirma</li>
+              <li>Alle Arbeitsplätze am nächsten Tag vollständig einsatzbereit</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
     <!-- ── Section 5: CTA ─────────────────────────────────────── -->
     <section class="its-cta" aria-label="Call to Action">
       <div class="its-cta-bg" aria-hidden="true">
@@ -749,7 +984,7 @@
           <img class="ba-teaser-rocket" src="/Bilder/rakete_teaser.png" alt="" loading="lazy" decoding="async">
         </picture>
       </div>
-      <span class="ba-teaser-label">2-Min-Check gefällig?</span>
+      <span class="ba-teaser-label">Ihr Problem? Unsere KI-Lösung!</span>
     </button>
   </div>
 
@@ -775,3 +1010,5 @@
 
 </body>
 </html>
+
+

@@ -124,20 +124,7 @@
         </ul>
       </nav>
 
-      <div class="site-header__cta">
-        <div class="header-ba-wrap">
-          <a href="/business-amplification" class="header-ba-link" aria-haspopup="true">
-            Business <em>Amplification</em>
-            <svg class="site-nav__chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-          <div class="nav-dropdown" role="menu">
-            <a href="/digitalisierung-kmu" class="nav-dropdown__link" role="menuitem">Allgemein</a>
-            <a href="/digitalisierung-handwerker" class="nav-dropdown__link" role="menuitem">Handwerker</a>
-          </div>
-        </div>
-      </div>
+      <a href="https://portal.amplifyr.ch/" class="btn btn--outline header-portal-btn" target="_blank" rel="noopener">Kundenportal</a>
 
       <button id="burger-btn" class="burger-btn" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu">
         <span></span>
@@ -165,21 +152,6 @@
     </div>
 
     <div class="mobile-menu__nav">
-
-      <div class="mobile-nav-group">
-        <div class="mobile-nav-group__row">
-          <a href="/business-amplification" class="mobile-nav-link">Business Amplification</a>
-          <button class="mobile-nav-group__chevron-btn" aria-label="Business Amplification Untermenü">
-            <svg class="mobile-nav-group__chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
-        </div>
-        <div class="mobile-nav-group__sub">
-          <a href="/digitalisierung-kmu">Allgemein</a>
-          <a href="/digitalisierung-handwerker">Handwerker</a>
-        </div>
-      </div>
 
       <div class="mobile-nav-group">
         <div class="mobile-nav-group__row">
@@ -262,7 +234,7 @@
     </div>
 
     <div class="mobile-menu__cta">
-      <a href="/business-amplification" class="btn btn--primary">Business Amplification</a>
+      <a href="https://portal.amplifyr.ch/" class="btn btn--primary" target="_blank" rel="noopener">Kundenportal</a>
     </div>
 
   </nav>
@@ -292,25 +264,14 @@
         </div>
       </div>
 
-      <!-- Manifest-Text (erscheint nach Slogan-Animation) -->
+      <!-- PBS: KI-Zeitalter-Statement (erscheint nach Video-Ende) -->
       <div class="hero-phil" id="hero-phil" aria-hidden="true">
-        <div class="hero-phil-blobs" aria-hidden="true">
-          <div class="hero-phil-blob hero-phil-blob--1"></div>
-          <div class="hero-phil-blob hero-phil-blob--2"></div>
+        <p class="pbs-l1" id="pbs-l1">Das KI-Zeitalter ist da.</p>
+        <div class="pbs-sub-wrap" id="pbs-sub-wrap">
+          <p class="pbs-l2" id="pbs-l2">Ihre Konkurrenz automatisiert bereits.</p>
+          <p class="pbs-l3" id="pbs-l3">Worauf warten Sie noch?</p>
         </div>
-        <div class="hero-phil-sub">
-          <p class="hero-phil-headline" id="phil-headline"></p>
-          <p class="hero-phil-l2" id="phil-body">Einen massiven <em class="phil-blue">Wettbewerbsvorteil</em>, während die Konkurrenz am Boden bleibt.</p>
-          <p class="hero-phil-l2" id="phil-blocks">
-            <span class="phil-block">Was Ihr Unternehmen trägt, wird <em class="phil-blue">skaliert.</em></span>
-            <span class="phil-block"> Was es bremst, wird <em class="phil-blue">eliminiert.</em></span>
-          </p>
-          <hr class="hero-phil-divider" id="phil-divider">
-          <p class="hero-phil-slogan">
-            <span id="phil-btb" class="phil-white">Build The Base.</span>
-            <em id="phil-ltr" class="phil-blue"> Lead The Race.</em>
-          </p>
-        </div>
+        <p class="pbs-l4" id="pbs-l4"><span class="pbs-wh">Build the base.</span> <em class="pbs-bl">Lead the race.</em></p>
       </div>
 
       <div class="hero-fadeout" id="hero-fadeout" aria-hidden="true"></div>
@@ -327,20 +288,10 @@
     <section id="ansatz" aria-label="Unser Ansatz">
       <div class="container">
 
-        <div class="ansatz-visual">
-          <div class="ansatz-left">
-            <p class="ansatz-hl1">Das kostet Sie täglich<br><span class="ansatz-hl2--steel">Zeit und Geld.</span></p>
-            <p class="ansatz-label">Insellösungen</p>
-            <img src="/Bilder/Chaos.webp" alt="Insellösungen – Chaos" width="1536" height="1024" loading="lazy" decoding="async">
-          </div>
-          <div class="ansatz-brace">
-            <img src="/Bilder/Klammer_fein.webp" alt="" aria-hidden="true" width="1024" height="1536" loading="lazy" decoding="async">
-          </div>
-          <div class="ansatz-right">
-            <p class="ansatz-hl1">So gewinnen Sie<br><span class="ansatz-hl2--steel">beides zurück.</span></p>
-            <p class="ansatz-label ansatz-label--right">Unser Ansatz</p>
-            <img src="/Bilder/Zahnräder.webp" alt="Business Amplification System" width="1536" height="1024" loading="lazy" decoding="async">
-          </div>
+        <div class="ansatz-visual ansatz-visual--solo">
+          <p class="ansatz-label">Amplifyr · KI-Integration für Ihr KMU</p>
+          <p class="ansatz-hl1">Mehr Effizienz. Weniger Aufwand.<br><span class="ansatz-hl2--steel">Wir setzen KI als Werkzeug ein.</span></p>
+          <div class="ki-gear-wrap" id="ki-gear-anim" role="img" aria-label="KI verbindet alle Geschäftsbereiche zu einem System"></div>
         </div>
 
       </div>
@@ -366,7 +317,7 @@
             <div class="leis-step-num">01</div>
             <p class="leis-step-phase">Fundament</p>
             <h3 class="leis-step-title">IT-Lösungen</h3>
-            <p>Stabile Technik, die einfach funktioniert. Wir sichern Ihr Netzwerk und Ihre Daten, damit Ihr Betrieb jederzeit reibungslos läuft.</p>
+            <p>Stabile Technik, die einfach funktioniert. Ihre IT-Infrastruktur ist das Fundament Ihres Betriebs – wir betreuen und optimieren diese, damit bei Ihnen alles reibungslos läuft.</p>
           </div>
 
           <div class="leis-step">
@@ -437,16 +388,10 @@
 
           <div class="team-col team-col--eng">
             <div class="team-col-person-row">
-              <div class="team-avatar team-avatar--placeholder" aria-hidden="true">
-                <svg viewBox="0 0 80 80" fill="none">
-                  <circle cx="40" cy="40" r="40" fill="#2b4274"/>
-                  <circle cx="40" cy="32" r="12" fill="rgba(176,196,222,0.5)"/>
-                  <path d="M16 68c0-13.255 10.745-24 24-24s24 10.745 24 24" fill="rgba(176,196,222,0.35)"/>
-                </svg>
-              </div>
+              <img class="team-avatar" src="/Bilder/Bild_Sinan.jpg" alt="Sinan Sen" width="80" height="80" loading="lazy" decoding="async">
               <p class="team-col-role">Systeme &amp; Engineering</p>
             </div>
-            <p class="team-col-name">Sinus Cosinus</p>
+            <p class="team-col-name">Sinan Sen</p>
             <p class="team-col-desc">Mehr als 10 Jahre Praxis in System Engineering, Cloud-Infrastruktur und KMU-IT.</p>
           </div>
 
@@ -673,7 +618,7 @@
           <img class="ba-teaser-rocket" src="/Bilder/rakete_teaser.png" alt="" loading="lazy" decoding="async">
         </picture>
       </div>
-      <span class="ba-teaser-label">2-Min-Check gefällig?</span>
+      <span class="ba-teaser-label">Ihr Problem? Unsere KI-Lösung!</span>
     </button>
   </div>
 
