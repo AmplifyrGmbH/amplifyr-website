@@ -1382,6 +1382,13 @@ if (window.location.hash === '#ki-check') {
   var F   = 'Helvetica Neue, Helvetica, Arial, sans-serif';
   var EASE = 'cubic-bezier(.2,.62,.25,1)';
 
+  // On narrow screens the desktop viewBox (tuned for far-flung side callouts)
+  // leaves gears and labels only a few px tall. Mobile hides the tiny SVG
+  // callouts (see .kg2-callout / .ki-gear-legend in CSS) and uses a viewBox
+  // cropped tightly to just the gear cluster instead, so the same elements
+  // render roughly 2.4× larger; a real HTML legend below covers the reading.
+  var isMobile = window.matchMedia('(max-width: 680px)').matches;
+
   // ── Geometry ─────────────────────────────────────────────
   var cx0 = 1300, cy0 = 640;
   var orbit = 378, satRO = 172;
@@ -1446,7 +1453,7 @@ if (window.location.hash === '#ki-check') {
 
   // ── Build SVG ────────────────────────────────────────────
   var svg = el('svg', {
-    viewBox: '-230 -120 2990 1510', xmlns: NS, role: 'img',
+    viewBox: isMobile ? '720 40 1160 1120' : '-230 -120 2990 1510', xmlns: NS, role: 'img',
     'aria-label': 'KI verbindet alle Geschäftsbereiche zu einem System'
   });
   svg.style.cssText = 'width:100%;height:auto;display:block;';
@@ -1491,9 +1498,9 @@ if (window.location.hash === '#ki-check') {
   svg.appendChild(defs);
 
   // ── Orbit circles (slow decorative rotation) ──────────────
-  var orbitA = el('circle', { cx:cx0, cy:cy0, r:'576', fill:'none', stroke:'#7f97c2', 'stroke-width':'1', 'stroke-dasharray':'2 15', opacity:'0.6' });
+  var orbitA = el('circle', { cx:cx0, cy:cy0, r: isMobile ? '460' : '576', fill:'none', stroke:'#7f97c2', 'stroke-width':'1', 'stroke-dasharray':'2 15', opacity:'0.6' });
   orbitA.setAttribute('class', 'kg2-orbitA');
-  var orbitB = el('circle', { cx:cx0, cy:cy0, r:'620', fill:'none', stroke:'#8ba2ca', 'stroke-width':'1', 'stroke-dasharray':'2 19', opacity:'0.55' });
+  var orbitB = el('circle', { cx:cx0, cy:cy0, r: isMobile ? '500' : '620', fill:'none', stroke:'#8ba2ca', 'stroke-width':'1', 'stroke-dasharray':'2 19', opacity:'0.55' });
   orbitB.setAttribute('class', 'kg2-orbitB');
   svg.appendChild(orbitA);
   svg.appendChild(orbitB);
@@ -1561,6 +1568,7 @@ if (window.location.hash === '#ki-check') {
     var len = Math.hypot(ax - ex, ay - ey).toFixed(1);
 
     var g = el('g');
+    g.setAttribute('class', 'kg2-callout');
     g.style.opacity = '0';
     g.style.transition = 'opacity 450ms ease';
 
@@ -1622,7 +1630,7 @@ if (window.location.hash === '#ki-check') {
 
     var lbl = el('text', {
       x: gd.cx, y: gd.cy, 'text-anchor': 'middle', 'dominant-baseline': 'middle',
-      'font-family': F, 'font-size': gd.isCenter ? '92' : '31',
+      'font-family': F, 'font-size': gd.isCenter ? (isMobile ? '104' : '92') : (isMobile ? '38' : '31'),
       'font-weight': '700', fill: gd.isCenter ? '#ffffff' : '#1b2c52',
       'letter-spacing': gd.isCenter ? '3' : '0', 'pointer-events': 'none'
     });
@@ -1646,6 +1654,22 @@ if (window.location.hash === '#ki-check') {
   svg.appendChild(centerBuilt.posG);
 
   wrap.appendChild(svg);
+
+  // ── Mobile legend: the SVG callouts (.kg2-callout) are hidden below the
+  // 680px breakpoint since they'd render only a few px tall — this real,
+  // properly-sized HTML text is what mobile readers actually read.
+  var legend = document.createElement('div');
+  legend.className = 'ki-gear-legend';
+  AREAS.forEach(function(a) {
+    var item = document.createElement('p');
+    item.className = 'ki-gear-legend-item';
+    var strong = document.createElement('strong');
+    strong.textContent = a.name;
+    item.appendChild(strong);
+    item.appendChild(document.createTextNode(' ' + a.b[0]));
+    legend.appendChild(item);
+  });
+  wrap.appendChild(legend);
 
   // ── Reduced-motion: show everything instantly ─────────────
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

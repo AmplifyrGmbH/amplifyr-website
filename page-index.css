@@ -311,6 +311,48 @@
   color: var(--steel);
 }
 
+.ki-gear-legend {
+  display: none;
+}
+
+@media (max-width: 680px) {
+  /* The SVG callouts render only a few px tall once compressed into a
+     mobile-width viewBox — hide them and read the same copy from real,
+     properly-sized HTML text instead. */
+  .kg2-callout {
+    display: none;
+  }
+
+  .ki-gear-legend {
+    display: block;
+    width: 100%;
+    padding: var(--space-2) var(--space-5) var(--space-4);
+    text-align: left;
+  }
+
+  .ki-gear-legend-item {
+    margin: 0;
+    padding-top: var(--space-3);
+    border-top: 1px solid rgba(26, 39, 68, 0.1);
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--text-muted);
+  }
+
+  .ki-gear-legend-item:first-child {
+    padding-top: 0;
+    border-top: none;
+  }
+
+  .ki-gear-legend-item strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: var(--navy);
+    margin-bottom: 2px;
+  }
+}
+
 .ansatz-label {
   font-family: var(--font-body);
   font-size: 0.8rem;
