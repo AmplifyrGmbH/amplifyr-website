@@ -340,17 +340,20 @@
   .ki-gear-legend {
     display: block;
     width: 100%;
-    padding: var(--space-2) var(--space-5) var(--space-4);
+    margin-top: var(--space-2);
+    padding: var(--space-5);
+    background: var(--accent-light);
     text-align: left;
   }
 
   .ki-gear-legend-item {
     margin: 0;
     padding-top: var(--space-3);
-    border-top: 1px solid rgba(26, 39, 68, 0.1);
+    border-top: 1px solid var(--steel);
     font-size: 0.95rem;
     line-height: 1.55;
-    color: var(--text-muted);
+    color: var(--navy);
+    opacity: 0.75;
   }
 
   .ki-gear-legend-item:first-child {
@@ -363,6 +366,7 @@
     font-family: var(--font-display);
     font-size: 1.05rem;
     color: var(--navy);
+    opacity: 1;
     margin-bottom: 2px;
   }
 }

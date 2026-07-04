@@ -32,7 +32,6 @@ if (window.location.hash === '#ki-check') {
     var pbsL2      = document.getElementById('pbs-l2');
     var pbsL3      = document.getElementById('pbs-l3');
     var pbsL4      = document.getElementById('pbs-l4');
-    var pbsSubWrap = document.getElementById('pbs-sub-wrap');
     var fadeout    = document.getElementById('hero-fadeout');
     var scrollCue  = document.getElementById('hero-scroll-cue');
 
@@ -129,28 +128,16 @@ if (window.location.hash === '#ki-check') {
       setTimeout(function () {
         if (heroPhil) heroPhil.classList.add('is-revealed');
         function pbsShow(el) { if (el) el.classList.add('pbs-show'); }
-        function pbsHide(el) { if (el) el.classList.remove('pbs-show'); }
+        // pbsL1, pbsL2 and pbsL3 all stay on screen — the slogan (pbsL4)
+        // simply fades in below them, smaller, once all three have appeared.
         pbsShow(pbsL1);
         setTimeout(function () { pbsShow(pbsL2); }, 500);
         setTimeout(function () { pbsShow(pbsL3); }, 1100);
-        // "Ihre Konkurrenz automatisiert bereits." (pbsL2) stays on screen —
-        // only pbsL3 ("Worauf warten Sie noch?") fades out to make room for
-        // the slogan below it.
-        setTimeout(function () {
-          pbsHide(pbsL3);
-          if (pbsSubWrap) {
-            pbsSubWrap.style.transition = 'min-height 0.4s ease';
-            pbsSubWrap.style.minHeight  = '0';
-          }
-        }, 2600);
-        setTimeout(function () {
-          if (pbsL3) pbsL3.style.display = 'none';
-        }, 3300);
         setTimeout(function () {
           pbsShow(pbsL4);
           if (scrollCue) scrollCue.classList.add('is-visible');
           sloganDone = true;
-        }, 3400);
+        }, 2800);
       }, OUT);
     }
 
@@ -167,8 +154,7 @@ if (window.location.hash === '#ki-check') {
       if (heroPhil)  heroPhil.classList.add('is-revealed');
       if (pbsL1)     pbsL1.classList.add('pbs-show');
       if (pbsL2)     pbsL2.classList.add('pbs-show');
-      if (pbsL3)     pbsL3.style.display = 'none';
-      if (pbsSubWrap) pbsSubWrap.style.minHeight = '0';
+      if (pbsL3)     pbsL3.classList.add('pbs-show');
       if (pbsL4)     pbsL4.classList.add('pbs-show');
       if (scrollCue) scrollCue.classList.add('is-visible');
       sessionStorage.setItem('heroSeen', '1');
