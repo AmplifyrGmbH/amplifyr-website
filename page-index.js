@@ -1371,18 +1371,16 @@ if (window.location.hash === '#ki-check') {
 
   // On narrow screens the desktop viewBox (tuned for far-flung side callouts)
   // leaves gears and labels only a few px tall. Mobile hides the tiny SVG
-  // callouts (see .kg2-callout / .ki-gear-legend in CSS) and uses a viewBox
-  // cropped tightly to just the gear cluster instead, so the same elements
-  // render roughly 2.4× larger; a real HTML legend below covers the reading.
-  var isMobile = window.matchMedia('(max-width: 680px)').matches;
+  // callouts (see .kg2-callout / .ki-gear-legend in CSS), crops the viewBox
+  // tightly to just the gear cluster (same gear geometry as desktop — only
+  // the crop changes, so teeth keep meshing normally), and shows a synced
+  // HTML block list below that lights up as each area docks.
+  var MOBILE_BP = 760;
+  var isMobile = window.innerWidth < MOBILE_BP;
 
   // ── Geometry ─────────────────────────────────────────────
-  // Mobile gears are drawn much larger (bigger satRO) than desktop. The
-  // orbit distance must grow to match — center-to-center distance minus
-  // (centerRO+satRO) must keep the same small deficit desktop uses (~6%
-  // of satRO) so teeth mesh normally instead of the gear faces overlapping.
   var cx0 = 1300, cy0 = 640;
-  var orbit = isMobile ? 498 : 378, satRO = isMobile ? 240 : 172;
+  var orbit = 378, satRO = 172;
   var Nc = 15, Ns = 11;
   var th0 = -90 * DEG;
   var OUT = 215;
@@ -1443,11 +1441,16 @@ if (window.location.hash === '#ki-check') {
   wrap.appendChild(tagEl);
 
   // ── Build SVG ────────────────────────────────────────────
+  // Mobile crops to the gear cluster only (same gears, tighter frame) and
+  // caps the rendered width so it doesn't blow up on phablet-sized screens.
+  function viewBoxFor(mobile) { return mobile ? '700 40 1200 1200' : '-230 -120 2990 1510'; }
   var svg = el('svg', {
-    viewBox: isMobile ? '560 -125 1480 1435' : '-230 -120 2990 1510', xmlns: NS, role: 'img',
+    viewBox: viewBoxFor(isMobile), xmlns: NS, role: 'img',
     'aria-label': 'KI verbindet alle Geschäftsbereiche zu einem System'
   });
-  svg.style.cssText = 'width:100%;height:auto;display:block;';
+  svg.style.cssText = isMobile
+    ? 'width:100%;max-width:460px;height:auto;display:block;'
+    : 'width:100%;max-width:3000px;height:auto;display:block;';
 
   var styleEl = el('style');
   styleEl.textContent =
@@ -1489,9 +1492,9 @@ if (window.location.hash === '#ki-check') {
   svg.appendChild(defs);
 
   // ── Orbit circles (slow decorative rotation) ──────────────
-  var orbitA = el('circle', { cx:cx0, cy:cy0, r: isMobile ? '560' : '576', fill:'none', stroke:'#7f97c2', 'stroke-width':'1', 'stroke-dasharray':'2 15', opacity:'0.6' });
+  var orbitA = el('circle', { cx:cx0, cy:cy0, r:'576', fill:'none', stroke:'#7f97c2', 'stroke-width':'1', 'stroke-dasharray':'2 15', opacity:'0.6' });
   orbitA.setAttribute('class', 'kg2-orbitA');
-  var orbitB = el('circle', { cx:cx0, cy:cy0, r: isMobile ? '600' : '620', fill:'none', stroke:'#8ba2ca', 'stroke-width':'1', 'stroke-dasharray':'2 19', opacity:'0.55' });
+  var orbitB = el('circle', { cx:cx0, cy:cy0, r:'620', fill:'none', stroke:'#8ba2ca', 'stroke-width':'1', 'stroke-dasharray':'2 19', opacity:'0.55' });
   orbitB.setAttribute('class', 'kg2-orbitB');
   svg.appendChild(orbitA);
   svg.appendChild(orbitB);
@@ -1504,16 +1507,14 @@ if (window.location.hash === '#ki-check') {
     return {
       cx: +(cx0 + orbit * cos).toFixed(2),
       cy: +(cy0 + orbit * sin).toFixed(2),
-      rO: satRO, rR: isMobile ? 201 : 144, rFace: isMobile ? 172 : 123, teeth: Ns, isCenter: false,
+      rO: satRO, rR: 144, rFace: 123, teeth: Ns, isCenter: false,
       phase: th + Math.PI,
       dx: +(cos * OUT).toFixed(2), dy: +(sin * OUT).toFixed(2),
       name: a.name, idx: i, cos: cos, sin: sin
     };
   });
   var centerDef = {
-    cx: cx0, cy: cy0,
-    rO: isMobile ? 290 : 230, rR: isMobile ? 252 : 200, rFace: isMobile ? 229 : 182,
-    teeth: Nc, isCenter: true,
+    cx: cx0, cy: cy0, rO: 230, rR: 200, rFace: 182, teeth: Nc, isCenter: true,
     phase: th0 - stepC / 2, dx: 0, dy: 0
   };
 
@@ -1623,7 +1624,7 @@ if (window.location.hash === '#ki-check') {
 
     var lbl = el('text', {
       x: gd.cx, y: gd.cy, 'text-anchor': 'middle', 'dominant-baseline': 'middle',
-      'font-family': F, 'font-size': gd.isCenter ? (isMobile ? '131' : '92') : (isMobile ? '53' : '31'),
+      'font-family': F, 'font-size': gd.isCenter ? '92' : '31',
       'font-weight': '700', fill: gd.isCenter ? '#ffffff' : '#1b2c52',
       'letter-spacing': gd.isCenter ? '3' : '0', 'pointer-events': 'none'
     });
@@ -1649,18 +1650,25 @@ if (window.location.hash === '#ki-check') {
   wrap.appendChild(svg);
 
   // ── Mobile legend: the SVG callouts (.kg2-callout) are hidden below the
-  // 680px breakpoint since they'd render only a few px tall — this real,
-  // properly-sized HTML text is what mobile readers actually read.
+  // mobile breakpoint since they'd render only a few px tall — this real,
+  // properly-sized HTML list is what mobile readers actually read. Each
+  // block lights up in sync with its satellite gear docking, just like the
+  // SVG callouts do on desktop.
   var legend = document.createElement('div');
   legend.className = 'ki-gear-legend';
-  AREAS.forEach(function(a) {
-    var item = document.createElement('p');
+  var legendItems = AREAS.map(function(a) {
+    var item = document.createElement('div');
     item.className = 'ki-gear-legend-item';
-    var strong = document.createElement('strong');
-    strong.textContent = a.name;
-    item.appendChild(strong);
-    item.appendChild(document.createTextNode(' ' + a.b[0]));
+    var name = document.createElement('div');
+    name.className = 'ki-gear-legend-name';
+    name.textContent = a.name;
+    var text = document.createElement('div');
+    text.className = 'ki-gear-legend-text';
+    text.textContent = a.b[0];
+    item.appendChild(name);
+    item.appendChild(text);
     legend.appendChild(item);
+    return item;
   });
   wrap.appendChild(legend);
 
@@ -1677,6 +1685,7 @@ if (window.location.hash === '#ki-check') {
       c.bulletEls.forEach(function(b) { b.style.opacity = '1'; });
     });
     connLines.forEach(function(l) { l.style.opacity = '0.6'; l.style.strokeDashoffset = '0'; });
+    legendItems.forEach(function(item) { item.classList.add('is-on'); });
     tagEl.style.opacity   = '1';
     tagEl.style.transform = 'translateY(0)';
     return;
@@ -1730,6 +1739,7 @@ if (window.location.hash === '#ki-check') {
       c.bulletEls.forEach(function(b) { b.style.opacity = '0'; });
     });
     connLines.forEach(function(l) { l.style.opacity = '0'; l.style.strokeDashoffset = l.style.strokeDasharray; });
+    legendItems.forEach(function(item) { item.classList.remove('is-on'); });
     syspulse.style.animation = 'none';
     syspulse.style.opacity   = '0';
     tagEl.style.opacity   = '0';
@@ -1757,6 +1767,7 @@ if (window.location.hash === '#ki-check') {
         c.leader.style.transition         = 'stroke-dashoffset 650ms ease 80ms';
         c.leader.style.strokeDashoffset   = '0';
         c.g.style.opacity                 = '1';
+        legendItems[i].classList.add('is-on');
         dockedCount++;
         if (dockedCount === satDefs.length) onAllDone();
       }, a0 + travelMs));
@@ -1781,5 +1792,19 @@ if (window.location.hash === '#ki-check') {
 
   // Replay on click
   wrap.addEventListener('click', function() { runSequence(); });
+
+  // Keep the crop/size reactive across the mobile breakpoint (e.g. tablet
+  // rotation) without re-running the whole build.
+  var resizeTimer = null;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function() {
+      var mobile = window.innerWidth < MOBILE_BP;
+      if (mobile === isMobile) return;
+      isMobile = mobile;
+      svg.setAttribute('viewBox', viewBoxFor(isMobile));
+      svg.style.maxWidth = isMobile ? '460px' : '3000px';
+    }, 150);
+  });
 
 }());
