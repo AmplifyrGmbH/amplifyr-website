@@ -133,21 +133,24 @@ if (window.location.hash === '#ki-check') {
         pbsShow(pbsL1);
         setTimeout(function () { pbsShow(pbsL2); }, 500);
         setTimeout(function () { pbsShow(pbsL3); }, 1100);
+        // "Ihre Konkurrenz automatisiert bereits." (pbsL2) stays on screen —
+        // only pbsL3 ("Worauf warten Sie noch?") fades out to make room for
+        // the slogan below it.
         setTimeout(function () {
-          pbsHide(pbsL2);
           pbsHide(pbsL3);
           if (pbsSubWrap) {
-            pbsSubWrap.style.transition = 'min-height 0.4s ease, height 0.4s ease';
+            pbsSubWrap.style.transition = 'min-height 0.4s ease';
             pbsSubWrap.style.minHeight  = '0';
-            pbsSubWrap.style.height     = '0';
-            pbsSubWrap.style.overflow   = 'hidden';
           }
         }, 2600);
+        setTimeout(function () {
+          if (pbsL3) pbsL3.style.display = 'none';
+        }, 3300);
         setTimeout(function () {
           pbsShow(pbsL4);
           if (scrollCue) scrollCue.classList.add('is-visible');
           sloganDone = true;
-        }, 3200);
+        }, 3400);
       }, OUT);
     }
 
@@ -163,11 +166,9 @@ if (window.location.hash === '#ki-check') {
       if (phase2)    { phase2.style.transition  = 'none'; phase2.style.opacity  = '0'; }
       if (heroPhil)  heroPhil.classList.add('is-revealed');
       if (pbsL1)     pbsL1.classList.add('pbs-show');
-      if (pbsSubWrap) {
-        pbsSubWrap.style.minHeight = '0';
-        pbsSubWrap.style.height    = '0';
-        pbsSubWrap.style.overflow  = 'hidden';
-      }
+      if (pbsL2)     pbsL2.classList.add('pbs-show');
+      if (pbsL3)     pbsL3.style.display = 'none';
+      if (pbsSubWrap) pbsSubWrap.style.minHeight = '0';
       if (pbsL4)     pbsL4.classList.add('pbs-show');
       if (scrollCue) scrollCue.classList.add('is-visible');
       sessionStorage.setItem('heroSeen', '1');
@@ -1390,10 +1391,12 @@ if (window.location.hash === '#ki-check') {
   var isMobile = window.matchMedia('(max-width: 680px)').matches;
 
   // ── Geometry ─────────────────────────────────────────────
-  // Mobile gears sit closer together (smaller orbit) but are drawn much
-  // larger (bigger satRO) — same overall footprint, far bigger ink per gear.
+  // Mobile gears are drawn much larger (bigger satRO) than desktop. The
+  // orbit distance must grow to match — center-to-center distance minus
+  // (centerRO+satRO) must keep the same small deficit desktop uses (~6%
+  // of satRO) so teeth mesh normally instead of the gear faces overlapping.
   var cx0 = 1300, cy0 = 640;
-  var orbit = isMobile ? 380 : 378, satRO = isMobile ? 240 : 172;
+  var orbit = isMobile ? 498 : 378, satRO = isMobile ? 240 : 172;
   var Nc = 15, Ns = 11;
   var th0 = -90 * DEG;
   var OUT = 215;
@@ -1450,12 +1453,12 @@ if (window.location.hash === '#ki-check') {
   // ── Tagline (HTML, above the diagram) ─────────────────────
   var tagEl = document.createElement('div');
   tagEl.className = 'ki-gear-tagline';
-  tagEl.innerHTML = 'Ein System. Alle Bereiche. <em>KI im Zentrum.</em>';
+  tagEl.innerHTML = 'Business Amplification für alle Bereiche. <em>KI im Zentrum.</em>';
   wrap.appendChild(tagEl);
 
   // ── Build SVG ────────────────────────────────────────────
   var svg = el('svg', {
-    viewBox: isMobile ? '670 -10 1260 1220' : '-230 -120 2990 1510', xmlns: NS, role: 'img',
+    viewBox: isMobile ? '560 -125 1480 1435' : '-230 -120 2990 1510', xmlns: NS, role: 'img',
     'aria-label': 'KI verbindet alle Geschäftsbereiche zu einem System'
   });
   svg.style.cssText = 'width:100%;height:auto;display:block;';
@@ -1500,9 +1503,9 @@ if (window.location.hash === '#ki-check') {
   svg.appendChild(defs);
 
   // ── Orbit circles (slow decorative rotation) ──────────────
-  var orbitA = el('circle', { cx:cx0, cy:cy0, r: isMobile ? '480' : '576', fill:'none', stroke:'#7f97c2', 'stroke-width':'1', 'stroke-dasharray':'2 15', opacity:'0.6' });
+  var orbitA = el('circle', { cx:cx0, cy:cy0, r: isMobile ? '560' : '576', fill:'none', stroke:'#7f97c2', 'stroke-width':'1', 'stroke-dasharray':'2 15', opacity:'0.6' });
   orbitA.setAttribute('class', 'kg2-orbitA');
-  var orbitB = el('circle', { cx:cx0, cy:cy0, r: isMobile ? '520' : '620', fill:'none', stroke:'#8ba2ca', 'stroke-width':'1', 'stroke-dasharray':'2 19', opacity:'0.55' });
+  var orbitB = el('circle', { cx:cx0, cy:cy0, r: isMobile ? '600' : '620', fill:'none', stroke:'#8ba2ca', 'stroke-width':'1', 'stroke-dasharray':'2 19', opacity:'0.55' });
   orbitB.setAttribute('class', 'kg2-orbitB');
   svg.appendChild(orbitA);
   svg.appendChild(orbitB);
