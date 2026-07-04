@@ -1437,7 +1437,7 @@ if (window.location.hash === '#ki-check') {
   // ── Tagline (HTML, above the diagram) ─────────────────────
   var tagEl = document.createElement('div');
   tagEl.className = 'ki-gear-tagline';
-  tagEl.innerHTML = 'Business Amplification für alle Bereiche. <em>KI im Zentrum.</em>';
+  tagEl.innerHTML = 'Business Amplification für alle Bereiche.<br><em>KI im Zentrum.</em>';
   wrap.appendChild(tagEl);
 
   // ── Build SVG ────────────────────────────────────────────

@@ -583,15 +583,6 @@
   line-height: 1.5;
 }
 
-.ms-closing {
-  font-size: 0.88rem;
-  font-weight: 600;
-  text-align: center;
-  color: rgba(255,255,255,0.7);
-  margin-top: var(--space-8);
-  margin-bottom: 0;
-}
-
 /* ============================================================
    CLOUD & MICROSOFT 365 — Showcase Tab Panel
 ============================================================ */
