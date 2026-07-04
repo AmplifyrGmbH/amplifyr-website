@@ -1390,8 +1390,10 @@ if (window.location.hash === '#ki-check') {
   var isMobile = window.matchMedia('(max-width: 680px)').matches;
 
   // ── Geometry ─────────────────────────────────────────────
+  // Mobile gears sit closer together (smaller orbit) but are drawn much
+  // larger (bigger satRO) — same overall footprint, far bigger ink per gear.
   var cx0 = 1300, cy0 = 640;
-  var orbit = 378, satRO = 172;
+  var orbit = isMobile ? 380 : 378, satRO = isMobile ? 240 : 172;
   var Nc = 15, Ns = 11;
   var th0 = -90 * DEG;
   var OUT = 215;
@@ -1453,7 +1455,7 @@ if (window.location.hash === '#ki-check') {
 
   // ── Build SVG ────────────────────────────────────────────
   var svg = el('svg', {
-    viewBox: isMobile ? '720 40 1160 1120' : '-230 -120 2990 1510', xmlns: NS, role: 'img',
+    viewBox: isMobile ? '670 -10 1260 1220' : '-230 -120 2990 1510', xmlns: NS, role: 'img',
     'aria-label': 'KI verbindet alle Geschäftsbereiche zu einem System'
   });
   svg.style.cssText = 'width:100%;height:auto;display:block;';
@@ -1498,9 +1500,9 @@ if (window.location.hash === '#ki-check') {
   svg.appendChild(defs);
 
   // ── Orbit circles (slow decorative rotation) ──────────────
-  var orbitA = el('circle', { cx:cx0, cy:cy0, r: isMobile ? '460' : '576', fill:'none', stroke:'#7f97c2', 'stroke-width':'1', 'stroke-dasharray':'2 15', opacity:'0.6' });
+  var orbitA = el('circle', { cx:cx0, cy:cy0, r: isMobile ? '480' : '576', fill:'none', stroke:'#7f97c2', 'stroke-width':'1', 'stroke-dasharray':'2 15', opacity:'0.6' });
   orbitA.setAttribute('class', 'kg2-orbitA');
-  var orbitB = el('circle', { cx:cx0, cy:cy0, r: isMobile ? '500' : '620', fill:'none', stroke:'#8ba2ca', 'stroke-width':'1', 'stroke-dasharray':'2 19', opacity:'0.55' });
+  var orbitB = el('circle', { cx:cx0, cy:cy0, r: isMobile ? '520' : '620', fill:'none', stroke:'#8ba2ca', 'stroke-width':'1', 'stroke-dasharray':'2 19', opacity:'0.55' });
   orbitB.setAttribute('class', 'kg2-orbitB');
   svg.appendChild(orbitA);
   svg.appendChild(orbitB);
@@ -1513,14 +1515,16 @@ if (window.location.hash === '#ki-check') {
     return {
       cx: +(cx0 + orbit * cos).toFixed(2),
       cy: +(cy0 + orbit * sin).toFixed(2),
-      rO: satRO, rR: 144, rFace: 123, teeth: Ns, isCenter: false,
+      rO: satRO, rR: isMobile ? 201 : 144, rFace: isMobile ? 172 : 123, teeth: Ns, isCenter: false,
       phase: th + Math.PI,
       dx: +(cos * OUT).toFixed(2), dy: +(sin * OUT).toFixed(2),
       name: a.name, idx: i, cos: cos, sin: sin
     };
   });
   var centerDef = {
-    cx: cx0, cy: cy0, rO: 230, rR: 200, rFace: 182, teeth: Nc, isCenter: true,
+    cx: cx0, cy: cy0,
+    rO: isMobile ? 290 : 230, rR: isMobile ? 252 : 200, rFace: isMobile ? 229 : 182,
+    teeth: Nc, isCenter: true,
     phase: th0 - stepC / 2, dx: 0, dy: 0
   };
 
@@ -1630,7 +1634,7 @@ if (window.location.hash === '#ki-check') {
 
     var lbl = el('text', {
       x: gd.cx, y: gd.cy, 'text-anchor': 'middle', 'dominant-baseline': 'middle',
-      'font-family': F, 'font-size': gd.isCenter ? (isMobile ? '104' : '92') : (isMobile ? '38' : '31'),
+      'font-family': F, 'font-size': gd.isCenter ? (isMobile ? '131' : '92') : (isMobile ? '53' : '31'),
       'font-weight': '700', fill: gd.isCenter ? '#ffffff' : '#1b2c52',
       'letter-spacing': gd.isCenter ? '3' : '0', 'pointer-events': 'none'
     });

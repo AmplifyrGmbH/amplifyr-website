@@ -323,6 +323,17 @@
     display: none;
   }
 
+  /* Full-bleed: break out of .container's side padding so the diagram gets
+     the full viewport width instead of width-minus-32px. The card has no
+     visible background/border against the page (both --bg-white), so this
+     is a pure size gain with no visual seam. */
+  .ki-gear-wrap {
+    width: 100vw;
+    max-width: 100vw;
+    margin-inline: calc(50% - 50vw);
+    border-radius: 0;
+  }
+
   .ki-gear-legend {
     display: block;
     width: 100%;

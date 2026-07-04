@@ -170,14 +170,14 @@
   box-shadow: var(--shadow-md);
 }
 
-/* Akzentfarben pro Bereich — horizontale Linie oben */
-.ua-acc-item:nth-child(1) { border-top-color: #b8af9c; }
-.ua-acc-item:nth-child(2) { border-top-color: var(--steel); }
+/* Akzentfarbe — horizontale Linie oben (einheitlich dunkelblau) */
+.ua-acc-item:nth-child(1) { border-top-color: var(--navy); }
+.ua-acc-item:nth-child(2) { border-top-color: var(--navy); }
 .ua-acc-item:nth-child(3) { border-top-color: var(--navy); }
 
 /* Titelfarbe im offenen Zustand passend zur Akzentfarbe */
-.ua-acc-item:nth-child(1).is-open .ua-acc-title { color: #b8af9c; }
-.ua-acc-item:nth-child(2).is-open .ua-acc-title { color: var(--steel); }
+.ua-acc-item:nth-child(1).is-open .ua-acc-title { color: var(--navy); }
+.ua-acc-item:nth-child(2).is-open .ua-acc-title { color: var(--navy); }
 .ua-acc-item:nth-child(3).is-open .ua-acc-title { color: var(--navy); }
 
 /* Akkordeon Header (Button) */
@@ -347,8 +347,8 @@
   margin-top: 0;
 }
 
-.ua-acc-item:nth-child(1) .ua-acc-prof-role { color: #b8af9c; }
-.ua-acc-item:nth-child(2) .ua-acc-prof-role { color: var(--steel); }
+.ua-acc-item:nth-child(1) .ua-acc-prof-role { color: var(--navy); }
+.ua-acc-item:nth-child(2) .ua-acc-prof-role { color: var(--navy); }
 .ua-acc-item:nth-child(3) .ua-acc-prof-role { color: var(--navy); }
 
 .ua-acc-prof-bio {
