@@ -4,6 +4,27 @@
 ============================================================ */
 
 /* ============================================================
+   DREI PERSPEKTIVEN
+============================================================ */
+.ua-perspectives {
+  padding-block: var(--space-10);
+  background: var(--bg-white);
+}
+
+@media (min-width: 768px) {
+  .ua-perspectives { padding-block: var(--space-16); }
+}
+
+.ua-perspectives img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 1400px;
+  margin-inline: auto;
+  border-radius: var(--radius-lg);
+}
+
+/* ============================================================
    HERO — Vollbild
 ============================================================ */
 .ua-hero {

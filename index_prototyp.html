@@ -23,7 +23,7 @@
   <!-- CSS -->
   <link rel="stylesheet" href="/style.css?v=2">
   <link rel="stylesheet" href="/page-index.css?v=1">
-  <link rel="stylesheet" href="/page-index-prototyp.css?v=1">
+  <link rel="stylesheet" href="/page-index-prototyp.css?v=2">
 </head>
 <body>
 
@@ -234,82 +234,16 @@
           <p class="peis-sub">ChatGPT zu öffnen ist wie ein Auto zu besitzen, aber nie den Motor zu starten.</p>
         </div>
 
-        <div class="peis-iceberg">
-
-          <!-- Über dem Wasser -->
-          <div class="peis-above">
-            <div class="peis-above-inner">
-              <div class="peis-above-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                </svg>
-              </div>
-              <span class="peis-above-label">ChatGPT Chatfenster</span>
-              <span class="peis-above-badge">Was die meisten nutzen</span>
-            </div>
-          </div>
-
-          <!-- Wasserlinie -->
-          <div class="peis-waterline" aria-hidden="true">
-            <span class="peis-waterline-label">Wasseroberfläche</span>
-          </div>
-
-          <!-- Unter dem Wasser -->
-          <div class="peis-below">
-            <div class="peis-below-grid">
-
-              <div class="peis-below-item">
-                <div class="peis-below-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-                  </svg>
-                </div>
-                <p class="peis-below-title">KI-Agent</p>
-                <p class="peis-below-desc">Aufgaben selbstständig ausführen und Entscheidungen treffen</p>
-              </div>
-
-              <div class="peis-below-item">
-                <div class="peis-below-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="17 1 21 5 17 9"/>
-                    <path d="M3 11V9a4 4 0 0 1 4-4h14"/>
-                    <polyline points="7 23 3 19 7 15"/>
-                    <path d="M21 13v2a4 4 0 0 1-4 4H3"/>
-                  </svg>
-                </div>
-                <p class="peis-below-title">KI-Workflow</p>
-                <p class="peis-below-desc">Ganze Geschäftsprozesse vollständig automatisiert</p>
-              </div>
-
-              <div class="peis-below-item">
-                <div class="peis-below-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                  </svg>
-                </div>
-                <p class="peis-below-title">KI-Chatbot</p>
-                <p class="peis-below-desc">Kundenanfragen rund um die Uhr automatisch beantworten</p>
-              </div>
-
-              <div class="peis-below-item">
-                <div class="peis-below-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.49 12 19.79 19.79 0 0 1 1.41 3.37 2 2 0 0 1 3.41 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.38a16 16 0 0 0 5.61 5.61l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-                  </svg>
-                </div>
-                <p class="peis-below-title">KI-Telefonie</p>
-                <p class="peis-below-desc">Anrufe automatisch entgegennehmen, qualifizieren und weiterleiten</p>
-              </div>
-
-            </div>
-            <p class="peis-below-badge">Was tatsächlich möglich ist</p>
-          </div>
-
-        </div><!-- /peis-iceberg -->
-
-        <p class="peis-closing">Der Unterschied zwischen Ihnen und Ihrer Konkurrenz liegt <em>unter der Wasseroberfläche.</em></p>
-
       </div>
+
+      <div class="icb-frame-wrap" id="icb-frame-wrap">
+        <iframe id="icb-frame" class="icb-frame" src="/eisberg-artifact.html?v=4" title="Eisbergmodell — Sichtbares vs. tatsächliches KI-Potenzial" loading="lazy" scrolling="no"></iframe>
+      </div>
+
+      <div class="container">
+        <p class="peis-closing">Der Unterschied zwischen Ihnen und Ihrer Konkurrenz liegt <em>unter der Wasseroberfläche.</em></p>
+      </div>
+
     </section>
 
     <!-- ── Section 4: Praxis-Beispiele ──────────────────────── -->
@@ -327,147 +261,171 @@
           <p class="pprax-more-text">Diese 5 Beispiele zeigen, was heute möglich ist — <strong>die Möglichkeiten sind nahezu unbegrenzt.</strong><br>Fast jeder Geschäftsprozess in Ihrem KMU lässt sich mit KI optimieren oder vollständig automatisieren.</p>
         </div>
 
-        <div class="pprax-grid">
+        <div class="pprax-cards-wrap">
+          <div class="pprax-flip-hint" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M3 2v5h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.05 13A9 9 0 1 0 6 5.3L3 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="pprax-grid">
 
           <!-- Kundenservice -->
           <div class="pprax-card">
-            <div class="pprax-card-head">
-              <div class="pprax-card-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.49 12 19.79 19.79 0 0 1 1.41 3.37 2 2 0 0 1 3.41 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.38a16 16 0 0 0 5.61 5.61l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-                </svg>
+            <div class="pprax-card-inner">
+              <div class="pprax-card-front">
+                <div class="pprax-card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.49 12 19.79 19.79 0 0 1 1.41 3.37 2 2 0 0 1 3.41 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.38a16 16 0 0 0 5.61 5.61l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                  </svg>
+                </div>
+                <div class="pprax-card-front-content">
+                  <p class="pprax-card-area">Kundenservice</p>
+                  <p class="pprax-card-name">Telefonannahme</p>
+                  <span class="pprax-row-label pprax-row-label--before">Ohne KI</span>
+                  <p class="pprax-front-text">Mitarbeiter nimmt ab, notiert manuell und leitet weiter. Fehleranfällig, zeitintensiv.</p>
+                </div>
               </div>
-              <div>
-                <p class="pprax-card-area">Kundenservice</p>
-                <p class="pprax-card-name">Telefonannahme</p>
-              </div>
-            </div>
-            <div class="pprax-card-body">
-              <div class="pprax-row pprax-row--before">
-                <span class="pprax-row-label">Ohne KI</span>
-                <p>Mitarbeiter nimmt ab, notiert manuell und leitet weiter. Fehleranfällig, zeitintensiv.</p>
-              </div>
-              <div class="pprax-divider" aria-hidden="true"></div>
-              <div class="pprax-row pprax-row--after">
-                <span class="pprax-row-label">Mit KI</span>
-                <p>KI nimmt ab, qualifiziert und bucht Termine — rund um die Uhr, kein Personaleinsatz.</p>
+              <div class="pprax-card-back">
+                <div class="pprax-card-back-content">
+                  <p class="pprax-card-area">Kundenservice</p>
+                  <p class="pprax-card-name">Telefonannahme</p>
+                  <span class="pprax-row-label pprax-row-label--after">Mit KI</span>
+                  <p class="pprax-back-text">KI nimmt ab, qualifiziert und bucht Termine — rund um die Uhr, kein Personaleinsatz.</p>
+                </div>
               </div>
             </div>
           </div>
 
           <!-- Vertrieb -->
           <div class="pprax-card">
-            <div class="pprax-card-head">
-              <div class="pprax-card-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                  <polyline points="14 2 14 8 20 8"/>
-                  <line x1="16" y1="13" x2="8" y2="13"/>
-                  <line x1="16" y1="17" x2="8" y2="17"/>
-                  <polyline points="10 9 9 9 8 9"/>
-                </svg>
+            <div class="pprax-card-inner">
+              <div class="pprax-card-front">
+                <div class="pprax-card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                    <line x1="16" y1="13" x2="8" y2="13"/>
+                    <line x1="16" y1="17" x2="8" y2="17"/>
+                    <polyline points="10 9 9 9 8 9"/>
+                  </svg>
+                </div>
+                <div class="pprax-card-front-content">
+                  <p class="pprax-card-area">Vertrieb</p>
+                  <p class="pprax-card-name">Angebotserstellung</p>
+                  <span class="pprax-row-label pprax-row-label--before">Ohne KI</span>
+                  <p class="pprax-front-text">Mail lesen, Angebot manuell erstellen, ins CRM eintragen. 30–90 Minuten pro Anfrage.</p>
+                </div>
               </div>
-              <div>
-                <p class="pprax-card-area">Vertrieb</p>
-                <p class="pprax-card-name">Angebotserstellung</p>
-              </div>
-            </div>
-            <div class="pprax-card-body">
-              <div class="pprax-row pprax-row--before">
-                <span class="pprax-row-label">Ohne KI</span>
-                <p>Mail lesen, Angebot manuell erstellen, ins CRM eintragen. 30–90 Minuten pro Anfrage.</p>
-              </div>
-              <div class="pprax-divider" aria-hidden="true"></div>
-              <div class="pprax-row pprax-row--after">
-                <span class="pprax-row-label">Mit KI</span>
-                <p>KI liest, erstellt den Entwurf und legt ihn im CRM ab. Nur noch freigeben.</p>
+              <div class="pprax-card-back">
+                <div class="pprax-card-back-content">
+                  <p class="pprax-card-area">Vertrieb</p>
+                  <p class="pprax-card-name">Angebotserstellung</p>
+                  <span class="pprax-row-label pprax-row-label--after">Mit KI</span>
+                  <p class="pprax-back-text">KI liest, erstellt den Entwurf und legt ihn im CRM ab. Nur noch freigeben.</p>
+                </div>
               </div>
             </div>
           </div>
 
           <!-- Buchhaltung -->
           <div class="pprax-card">
-            <div class="pprax-card-head">
-              <div class="pprax-card-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="9 11 12 14 22 4"/>
-                  <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
-                </svg>
+            <div class="pprax-card-inner">
+              <div class="pprax-card-front">
+                <div class="pprax-card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 11 12 14 22 4"/>
+                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+                  </svg>
+                </div>
+                <div class="pprax-card-front-content">
+                  <p class="pprax-card-area">Buchhaltung</p>
+                  <p class="pprax-card-name">Rechnungsprüfung</p>
+                  <span class="pprax-row-label pprax-row-label--before">Ohne KI</span>
+                  <p class="pprax-front-text">Rechnung manuell prüfen, mit Bestellung abgleichen. Fehleranfällig und zeitintensiv.</p>
+                </div>
               </div>
-              <div>
-                <p class="pprax-card-area">Buchhaltung</p>
-                <p class="pprax-card-name">Rechnungsprüfung</p>
-              </div>
-            </div>
-            <div class="pprax-card-body">
-              <div class="pprax-row pprax-row--before">
-                <span class="pprax-row-label">Ohne KI</span>
-                <p>Rechnung manuell prüfen, mit Bestellung abgleichen. Fehleranfällig und zeitintensiv.</p>
-              </div>
-              <div class="pprax-divider" aria-hidden="true"></div>
-              <div class="pprax-row pprax-row--after">
-                <span class="pprax-row-label">Mit KI</span>
-                <p>KI gleicht automatisch ab und markiert Abweichungen. Das Team prüft nur Ausnahmen.</p>
+              <div class="pprax-card-back">
+                <div class="pprax-card-back-content">
+                  <p class="pprax-card-area">Buchhaltung</p>
+                  <p class="pprax-card-name">Rechnungsprüfung</p>
+                  <span class="pprax-row-label pprax-row-label--after">Mit KI</span>
+                  <p class="pprax-back-text">KI gleicht automatisch ab und markiert Abweichungen. Das Team prüft nur Ausnahmen.</p>
+                </div>
               </div>
             </div>
           </div>
 
           <!-- HR -->
           <div class="pprax-card">
-            <div class="pprax-card-head">
-              <div class="pprax-card-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                  <circle cx="9" cy="7" r="4"/>
-                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                </svg>
+            <div class="pprax-card-inner">
+              <div class="pprax-card-front">
+                <div class="pprax-card-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                    <circle cx="9" cy="7" r="4"/>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                  </svg>
+                </div>
+                <div class="pprax-card-front-content">
+                  <p class="pprax-card-area">HR</p>
+                  <p class="pprax-card-name">Bewerbungseingang</p>
+                  <span class="pprax-row-label pprax-row-label--before">Ohne KI</span>
+                  <p class="pprax-front-text">CVs einzeln lesen, bewerten, Absagen schreiben. Stunden für hunderte Bewerbungen.</p>
+                </div>
               </div>
-              <div>
-                <p class="pprax-card-area">HR</p>
-                <p class="pprax-card-name">Bewerbungseingang</p>
-              </div>
-            </div>
-            <div class="pprax-card-body">
-              <div class="pprax-row pprax-row--before">
-                <span class="pprax-row-label">Ohne KI</span>
-                <p>CVs einzeln lesen, bewerten, Absagen schreiben. Stunden für hunderte Bewerbungen.</p>
-              </div>
-              <div class="pprax-divider" aria-hidden="true"></div>
-              <div class="pprax-row pprax-row--after">
-                <span class="pprax-row-label">Mit KI</span>
-                <p>KI screent alle CVs nach Kriterien, erstellt Shortlist und verfasst Absagen automatisch.</p>
+              <div class="pprax-card-back">
+                <div class="pprax-card-back-content">
+                  <p class="pprax-card-area">HR</p>
+                  <p class="pprax-card-name">Bewerbungseingang</p>
+                  <span class="pprax-row-label pprax-row-label--after">Mit KI</span>
+                  <p class="pprax-back-text">KI screent alle CVs nach Kriterien, erstellt Shortlist und verfasst Absagen automatisch.</p>
+                </div>
               </div>
             </div>
           </div>
 
           <!-- Marketing -->
           <div class="pprax-card">
-            <div class="pprax-card-head">
-              <div class="pprax-card-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-                </svg>
+            <div class="pprax-card-inner">
+              <div class="pprax-card-front">
+                <div class="pprax-card-icon pprax-card-icon--multi" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5"/>
+                    <circle cx="12" cy="12" r="4.2"/>
+                    <circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"/>
+                  </svg>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="9" width="4" height="12"/>
+                    <circle cx="4" cy="4" r="2"/>
+                    <path d="M10 21v-8a2 2 0 0 1 2-2 2 2 0 0 1 2 2v8"/>
+                    <path d="M14 13a4 4 0 0 1 8 0v8h-4v-8"/>
+                  </svg>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 18a4 4 0 1 0 4 4V2a5 5 0 0 0 5 5"/>
+                  </svg>
+                </div>
+                <div class="pprax-card-front-content">
+                  <p class="pprax-card-area">Marketing</p>
+                  <p class="pprax-card-name">Social Media</p>
+                  <span class="pprax-row-label pprax-row-label--before">Ohne KI</span>
+                  <p class="pprax-front-text">Inhalte brainstormen, texten, formatieren, manuell planen. Wochenstunden für Content.</p>
+                </div>
               </div>
-              <div>
-                <p class="pprax-card-area">Marketing</p>
-                <p class="pprax-card-name">Social Media</p>
-              </div>
-            </div>
-            <div class="pprax-card-body">
-              <div class="pprax-row pprax-row--before">
-                <span class="pprax-row-label">Ohne KI</span>
-                <p>Inhalte brainstormen, texten, formatieren, manuell planen. Wochenstunden für Content.</p>
-              </div>
-              <div class="pprax-divider" aria-hidden="true"></div>
-              <div class="pprax-row pprax-row--after">
-                <span class="pprax-row-label">Mit KI</span>
-                <p>KI erstellt kanalgerechte Beiträge in Ihrem Ton — direkt zur Freigabe bereit.</p>
+              <div class="pprax-card-back">
+                <div class="pprax-card-back-content">
+                  <p class="pprax-card-area">Marketing</p>
+                  <p class="pprax-card-name">Social Media</p>
+                  <span class="pprax-row-label pprax-row-label--after">Mit KI</span>
+                  <p class="pprax-back-text">KI erstellt kanalgerechte Beiträge in Ihrem Ton — direkt zur Freigabe bereit.</p>
+                </div>
               </div>
             </div>
           </div>
 
-        </div><!-- /pprax-grid -->
+          </div><!-- /pprax-grid -->
+          <div class="pprax-flip-hint pprax-flip-hint--right" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M21 2v5h-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M20.95 13A9 9 0 1 1 18 5.3L21 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div><!-- /pprax-cards-wrap -->
 
       </div>
     </section>
@@ -492,20 +450,32 @@
 
             <div class="ansatz-steps">
               <div class="ansatz-step">
-                <span class="ansatz-step-label">Fundament</span>
-                <span class="ansatz-step-name">IT-Lösungen</span>
+                <span class="ansatz-step-num">01</span>
+                <div class="ansatz-step-copy">
+                  <span class="ansatz-step-label">Fundament</span>
+                  <span class="ansatz-step-name">IT-Lösungen</span>
+                </div>
               </div>
               <div class="ansatz-step">
-                <span class="ansatz-step-label">Struktur</span>
-                <span class="ansatz-step-name">Betriebs-Software</span>
+                <span class="ansatz-step-num">02</span>
+                <div class="ansatz-step-copy">
+                  <span class="ansatz-step-label">Struktur</span>
+                  <span class="ansatz-step-name">Betriebs-Software</span>
+                </div>
               </div>
               <div class="ansatz-step">
-                <span class="ansatz-step-label">Effizienz</span>
-                <span class="ansatz-step-name">KI &amp; Automatisierung</span>
+                <span class="ansatz-step-num">03</span>
+                <div class="ansatz-step-copy">
+                  <span class="ansatz-step-label">Effizienz</span>
+                  <span class="ansatz-step-name">Automatisierung</span>
+                </div>
               </div>
               <div class="ansatz-step">
-                <span class="ansatz-step-label">Wirkung</span>
-                <span class="ansatz-step-name">Digitaler Auftritt</span>
+                <span class="ansatz-step-num">04</span>
+                <div class="ansatz-step-copy">
+                  <span class="ansatz-step-label">Wirkung</span>
+                  <span class="ansatz-step-name">Digitaler Auftritt</span>
+                </div>
               </div>
             </div>
 
@@ -524,7 +494,7 @@
         <div class="ptl-header">
           <p class="ptl-label">Partnerschaft</p>
           <h2>So sieht eine Partnerschaft<br>mit Amplifyr aus.</h2>
-          <p class="ptl-sub">Einmal entschieden — nie mehr KI-Stress.</p>
+          <p class="ptl-sub">Einmal entschieden. Dauerhaft entlastet.</p>
         </div>
 
         <div class="ptl-timeline">
@@ -574,13 +544,39 @@
             </div>
           </div>
 
+          <div class="ptl-growth" id="ptl-growth" aria-hidden="true">
+            <svg class="ptl-growth-svg" id="ptl-growth-svg">
+              <defs>
+                <linearGradient id="ptlGrowthGrad" x1="0" y1="1" x2="1" y2="0">
+                  <stop offset="0%" stop-color="var(--steel)" stop-opacity="0.15"/>
+                  <stop offset="100%" stop-color="#6ec1ff" stop-opacity="0.9"/>
+                </linearGradient>
+              </defs>
+              <path class="ptl-growth-path" id="ptl-growth-path" fill="none" stroke="url(#ptlGrowthGrad)"/>
+            </svg>
+            <div class="ptl-growth-rocket" id="ptl-growth-rocket">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#6ec1ff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2c2.5 2 4 5.5 4 9 0 2-.5 4-1 5.5l-3-1.5-3 1.5c-.5-1.5-1-3.5-1-5.5 0-3.5 1.5-7 4-9z" fill="#0d1526"/>
+                <circle cx="12" cy="9.5" r="1.6" fill="#6ec1ff" stroke="none"/>
+                <path d="M8 13.5 5.5 16l1 3 2.2-2.2M16 13.5l2.5 2.5-1 3-2.2-2.2"/>
+                <path d="M10.3 17.8 9 21l1.5 1 1.5-2M13.7 17.8 15 21l-1.5 1-1.5-2" opacity="0"/>
+              </svg>
+              <span class="ptl-growth-flame" aria-hidden="true"></span>
+            </div>
+          </div>
+
         </div><!-- /ptl-timeline -->
 
-        <p class="ptl-closing">Sie müssen KI nicht verstehen.<br><em>Das ist unser Job.</em></p>
-
-        <a href="/formular" class="btn btn--primary ptl-cta">Potenzialanalyse anfragen &rarr;</a>
-
       </div>
+
+      <div class="ptl-closing-panel">
+        <div class="container">
+          <p class="ptl-closing">Sie müssen KI nicht verstehen.<br><em>Das ist unser Job.</em></p>
+          <p class="ptl-closing-sub">Und falls gewünscht: Wir machen auch gleich Ihr Team fit dafür.</p>
+          <a href="/formular" class="btn btn--primary ptl-cta">Potenzialanalyse anfragen &rarr;</a>
+        </div>
+      </div>
+
     </section>
 
     <!-- ── Section 7: KI-Potenzial-Check ────────────────────── -->
@@ -794,7 +790,7 @@
   </div>
 
   <script src="/main.js"></script>
-  <script src="/page-index-prototyp.js"></script>
+  <script src="/page-index-prototyp.js?v=2"></script>
   <script src="/ki-check-prototyp.js"></script>
 
   <!-- Floating Side Widgets -->

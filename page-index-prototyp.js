@@ -9,6 +9,14 @@
 
   var EASE = 'cubic-bezier(0.22, 1, 0.36, 1)';
 
+  /* Markiert echte Touch-Nutzung auf <html>, damit CSS Hover-Effekte
+     (z. B. Flip-Karten) auf Touch-Geräten zuverlässig deaktivieren kann —
+     robuster als eine reine hover/pointer-Media-Query. */
+  document.addEventListener('touchstart', function onFirstTouch() {
+    document.documentElement.classList.add('has-touch');
+    document.removeEventListener('touchstart', onFirstTouch);
+  }, { passive: true });
+
   /* ============================================================
      HERO ANIMATION (1:1 von page-index.js)
   ============================================================ */
@@ -238,27 +246,16 @@
       }
     }
 
-    /* Eisberg-Items ─────────────────────────────────────────── */
-    var eisbergItems = Array.prototype.slice.call(document.querySelectorAll('.peis-below-item'));
-    if (eisbergItems.length) {
-      if (reduced) {
-        eisbergItems.forEach(function (el) { el.classList.add('is-visible'); });
-      } else {
-        var eisTriggered = false;
-        var eisIO = new IntersectionObserver(function (entries) {
-          if (eisTriggered || !entries[0].isIntersecting) return;
-          eisTriggered = true;
-          eisIO.disconnect();
-          eisbergItems.forEach(function (el, i) {
-            setTimeout(function () { el.classList.add('is-visible'); }, i * 110);
-          });
-        }, { threshold: 0.15 });
-        eisIO.observe(eisbergItems[0].closest('.peis-below') || eisbergItems[0]);
-      }
-    }
+    /* Eisberg-Grafik — iframe-Höhe an Inhalt anpassen ─────────── */
+    initIcebergFrame();
 
     /* Praxis-Karten ─────────────────────────────────────────── */
     var praxisCards = Array.prototype.slice.call(document.querySelectorAll('.pprax-card'));
+    praxisCards.forEach(function (card) {
+      card.addEventListener('click', function () {
+        card.classList.toggle('is-flipped');
+      });
+    });
     if (praxisCards.length) {
       if (reduced) {
         praxisCards.forEach(function (el) { el.classList.add('is-visible'); });
@@ -286,12 +283,158 @@
           var io = new IntersectionObserver(function (entries) {
             if (!entries[0].isIntersecting) return;
             io.disconnect();
-            setTimeout(function () { el.classList.add('is-visible'); }, i * 120);
+            setTimeout(function () {
+              el.classList.add('is-visible');
+              setTimeout(layoutTimelineArrows, 600);
+            }, i * 120);
           }, { threshold: 0.3 });
           io.observe(el);
         });
       }
     }
+    layoutTimelineArrows();
+    window.addEventListener('resize', debounce(layoutTimelineArrows, 150));
+  }
+
+  /* Das Eisberg-Artifact skaliert sich seit der "Real"-Version (echtes
+     Eisberg-Foto) intern selbst anhand der Fensterbreite (deskScale) —
+     hier wird nur noch die Höhe des iframes an den tatsächlichen Inhalt
+     angepasst und der graue Rahmen ums Bild entfernt (gleiche Origin,
+     daher zugreifbar). */
+  function initIcebergFrame() {
+    var frame = document.getElementById('icb-frame');
+    if (!frame) return;
+
+    function injectStyleOverrides(doc) {
+      if (doc.getElementById('icb-style-overrides')) return;
+      var style = doc.createElement('style');
+      style.id = 'icb-style-overrides';
+      style.textContent =
+        /* Grauer Rahmen kam vom body-Hintergrund hinter der Grafik; overflow
+           verhindert eine interne iframe-Scrollbar, die die verfügbare
+           Breite verringern und die Grafik rechts abschneiden würde. */
+        'html,body{background:transparent!important;overflow:hidden!important;}' +
+        /* Karten aufhellen + hellblauer Rahmen für mehr Kontrast */
+        '[style*="background: rgba(26,39,68,0.62)"]{background:rgba(74,116,182,0.8)!important;border-color:rgba(200,230,255,0.75)!important;}' +
+        '[style*="background: rgba(20,32,58,0.62)"]{background:rgba(60,98,160,0.82)!important;border-color:rgba(200,230,255,0.6)!important;}' +
+        /* "In der Tiefe"-Titel gleich hell wie der Titel darüber (Desktop
+           nutzt eine eigene, dunklere Farbe; Mobile grenzt sich zusätzlich
+           per font-weight vom gleichfarbigen Footer-Tagline ab). */
+        '[style*="color: #a8bcdd"]{color:#dbe7f9!important;}' +
+        '[style*="color: #6f84ab; font-size: 11px; font-weight: 700"]{color:#dbe7f9!important;}';
+      doc.head.appendChild(style);
+    }
+
+    /* Die "Real"-Version skaliert sich selbst anhand der Fensterbreite,
+       deckelt aber bei ihrer nativen Grösse (1320px) — auf breiten Screens
+       bliebe sie also klein und zentriert statt die Breite auszufüllen.
+       Direkte .style-Zuweisungen auf die React/DCLogic-Elemente wurden bei
+       jedem internen Re-Render (z. B. Hover auf einer Karte) sofort wieder
+       überschrieben — daher wie bei den Farb-Overrides eine CSS-Regel mit
+       !important verwenden, die IMMER gewinnt, egal wie oft die Komponente
+       neu rendert. Die drei Elemente werden per Klasse markiert (Klassen
+       werden von den Re-Renders nicht angefasst, da im Original-Template
+       kein class-Attribut auf ihnen liegt) statt per Style-Text-Selektor,
+       der bei kleinsten Formatierungsabweichungen brechen könnte. */
+    function forceFullWidth(doc) {
+      var box = doc.querySelector('div[style*="width: 1320px; height: 1660px"]');
+      if (!box) return;
+      var reserve = box.parentElement;
+      var wrapper = reserve ? reserve.parentElement : null;
+      box.classList.add('icb-box');
+      if (reserve) reserve.classList.add('icb-reserve');
+      if (wrapper) wrapper.classList.add('icb-wrapper');
+
+      var scale = frame.clientWidth / 1320;
+      var h = Math.round(1660 * scale);
+
+      var style = doc.getElementById('icb-scale-override');
+      if (!style) {
+        style = doc.createElement('style');
+        style.id = 'icb-scale-override';
+        doc.head.appendChild(style);
+      }
+      style.textContent =
+        '.icb-wrapper{display:block!important;padding:0!important;}' +
+        '.icb-reserve{position:relative!important;width:100%!important;height:' + h + 'px!important;overflow:hidden!important;}' +
+        '.icb-box{position:absolute!important;left:0!important;top:0!important;transform:scale(' + scale.toFixed(4) + ')!important;}';
+    }
+
+    function measure() {
+      try {
+        var doc = frame.contentDocument;
+        if (!doc || !doc.body) return;
+        injectStyleOverrides(doc);
+        forceFullWidth(doc);
+        var h = doc.body.scrollHeight;
+        if (h > 0) frame.style.height = h + 'px';
+      } catch (e) { /* cross-origin — Fallback-Höhe aus CSS bleibt */ }
+    }
+
+    frame.addEventListener('load', function () {
+      measure();
+      setTimeout(measure, 300);
+      setTimeout(measure, 1000);
+      setInterval(measure, 500);
+    });
+
+    window.addEventListener('resize', debounce(measure, 200));
+  }
+
+  /* Zeichnet eine Wachstumskurve exakt durch die 5 Zeitstrahl-Punkte
+     (Desktop: Treppenform, Mobile: senkrecht — dieselbe Geometrie-Berechnung,
+     nur die Punkt-Anordnung unterscheidet sich) und lässt eine Rakete per
+     CSS Motion-Path entlang dieser Kurve fliegen. */
+  function layoutTimelineArrows() {
+    var timeline = document.querySelector('.ptl-timeline');
+    if (!timeline) return;
+    var svg    = document.getElementById('ptl-growth-svg');
+    var path   = document.getElementById('ptl-growth-path');
+    var rocket = document.getElementById('ptl-growth-rocket');
+    if (!svg || !path || !rocket) return;
+
+    var dots = Array.prototype.slice.call(timeline.querySelectorAll('.ptl-step-dot'));
+    if (dots.length < 2) return;
+
+    var tRect = timeline.getBoundingClientRect();
+    var centers = dots.map(function (d) {
+      var r = d.getBoundingClientRect();
+      return { x: r.left + r.width / 2 - tRect.left, y: r.top + r.height / 2 - tRect.top };
+    });
+
+    /* Die 5 Punkte selbst sind bereits exponentiell gestaffelt (siehe CSS-
+       Treppe). Eine glatte Catmull-Rom-Spline durch alle Punkte (in Bezier
+       umgerechnet) verbindet sie organisch — jeder Punkt wird exakt
+       getroffen, und weil die zugrunde liegende Staffelung schon
+       exponentiell ist, wirkt auch die Kurve klar exponentiell statt wie
+       künstlich gebogene Einzelsegmente. */
+    var d = 'M ' + centers[0].x.toFixed(1) + ' ' + centers[0].y.toFixed(1);
+    for (var i = 0; i < centers.length - 1; i++) {
+      var p0 = centers[i === 0 ? 0 : i - 1];
+      var p1 = centers[i];
+      var p2 = centers[i + 1];
+      var p3 = centers[i + 2 < centers.length ? i + 2 : centers.length - 1];
+      var cp1x = p1.x + (p2.x - p0.x) / 6;
+      var cp1y = p1.y + (p2.y - p0.y) / 6;
+      var cp2x = p2.x - (p3.x - p1.x) / 6;
+      var cp2y = p2.y - (p3.y - p1.y) / 6;
+      d += ' C ' + cp1x.toFixed(1) + ' ' + cp1y.toFixed(1) + ', ' +
+                   cp2x.toFixed(1) + ' ' + cp2y.toFixed(1) + ', ' +
+                   p2.x.toFixed(1) + ' ' + p2.y.toFixed(1);
+    }
+
+    svg.setAttribute('viewBox', '0 0 ' + tRect.width + ' ' + tRect.height);
+    path.setAttribute('d', d);
+    rocket.style.offsetPath = 'path("' + d + '")';
+  }
+
+  function debounce(fn, wait) {
+    var t;
+    return function () {
+      clearTimeout(t);
+      var args = arguments;
+      t = setTimeout(function () { fn.apply(null, args); }, wait);
+    };
   }
 
   /* ============================================================
@@ -572,17 +715,24 @@
 
   var legend = document.createElement('div');
   legend.className = 'ki-gear-legend';
-  var legendItems = AREAS.map(function (a) {
+  var legendItems = AREAS.map(function (a, i) {
     var item = document.createElement('div');
     item.className = 'ki-gear-legend-item';
+    var num = document.createElement('span');
+    num.className = 'ki-gear-legend-num';
+    num.textContent = (i + 1 < 10 ? '0' : '') + (i + 1);
+    var copy = document.createElement('div');
+    copy.className = 'ki-gear-legend-copy';
     var name = document.createElement('div');
     name.className = 'ki-gear-legend-name';
     name.textContent = a.name;
     var text = document.createElement('div');
     text.className = 'ki-gear-legend-text';
     text.textContent = a.b[0];
-    item.appendChild(name);
-    item.appendChild(text);
+    copy.appendChild(name);
+    copy.appendChild(text);
+    item.appendChild(num);
+    item.appendChild(copy);
     legend.appendChild(item);
     return item;
   });
