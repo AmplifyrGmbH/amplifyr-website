@@ -1,36 +1,33 @@
 <?php
-// Router für php -S localhost:8080 router.php
-$uri  = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-$file = __DIR__ . urldecode($uri);
+$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-// Statische Dateien direkt ausliefern
-if ($uri !== '/' && file_exists($file) && !is_dir($file)) {
+// Serve static files directly
+if ($uri !== '/' && file_exists(__DIR__ . $uri)) {
     return false;
 }
 
-// Clean-URL → HTML-Datei
+// Map clean URLs to .html files
 $map = [
-    '/'                  => 'index.html',
-    '/ueber-uns'         => 'ueber-uns.html',
-    '/it-solutions'      => 'it-solutions.html',
-    '/ki-prozesse'       => 'ki-prozesse.html',
-    '/branchen-software' => 'branchen-software.html',
-    '/webdesign'         => 'webdesign.html',
-    '/formular'          => 'formular.html',
-    '/blog'              => 'blog.html',
-    '/blog-post'         => 'blog-post.html',
-    '/agb'               => 'agb.html',
-    '/datenschutz'       => 'datenschutz.html',
-    '/impressum'         => 'impressum.html',
-    '/business-amplification' => 'business-amplification.html',
-    '/digitalisierung-kmu'           => 'digitalisierung-kmu.html',
-    '/digitalisierung-handwerker'    => 'digitalisierung-handwerker.html',
+    '/it-solutions'               => 'it-solutions.html',
+    '/ki-prozesse'                => 'ki-prozesse.html',
+    '/webdesign'                  => 'webdesign.html',
+    '/ueber-uns'                  => 'ueber-uns.html',
+    '/branchen-software'          => 'branchen-software.html',
+    '/blog'                       => 'blog.html',
+    '/blog-post'                  => 'blog-post.html',
+    '/formular'                   => 'formular.html',
+    '/impressum'                  => 'impressum.html',
+    '/datenschutz'                => 'datenschutz.html',
+    '/agb'                        => 'agb.html',
+    '/business-amplification'     => 'business-amplification.html',
+    '/digitalisierung-kmu'        => 'digitalisierung-kmu.html',
+    '/digitalisierung-handwerker' => 'digitalisierung-handwerker.html',
 ];
 
-$path = rtrim($uri, '/') ?: '/';
+$path = rtrim($uri, '/');
 if (isset($map[$path])) {
     include __DIR__ . '/' . $map[$path];
-} else {
-    http_response_code(404);
-    include __DIR__ . '/404.html';
+    exit;
 }
+
+include __DIR__ . '/index.html';
