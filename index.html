@@ -21,9 +21,9 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap"></noscript>
 
   <!-- CSS -->
-  <link rel="stylesheet" href="/style.css?v=2">
-  <link rel="stylesheet" href="/page-index.css?v=1">
-  <link rel="stylesheet" href="/page-index-prototyp.css?v=2">
+  <link rel="stylesheet" href="/style.css?v=4">
+  <link rel="stylesheet" href="/page-index.css?v=2">
+  <link rel="stylesheet" href="/page-index-prototyp.css?v=9">
 </head>
 <body>
 
@@ -57,15 +57,7 @@
       <nav class="site-nav site-nav--right header-portal-btn" aria-label="Weitere Navigation">
         <ul class="site-nav__list">
           <li class="site-nav__item">
-            <a href="/ueber-uns" class="site-nav__link nav-link" aria-haspopup="true">
-              Über uns
-              <svg class="site-nav__chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </a>
-            <div class="nav-dropdown" role="menu">
-              <a href="/blog" class="nav-dropdown__link" role="menuitem">Blog</a>
-            </div>
+            <a href="/ueber-uns" class="site-nav__link nav-link">Über uns</a>
           </li>
         </ul>
       </nav>
@@ -115,22 +107,6 @@
 
       <div class="mobile-nav-group">
         <div class="mobile-nav-group__row">
-          <a href="/branchen-software" class="mobile-nav-link">Betriebs-Software</a>
-          <button class="mobile-nav-group__chevron-btn" aria-label="Betriebs-Software Untermenü">
-            <svg class="mobile-nav-group__chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
-        </div>
-        <div class="mobile-nav-group__sub">
-          <a href="/branchen-software#bs-ansatz">Ansatz</a>
-          <a href="/branchen-software#bs-vorgehen">Vorgehen</a>
-          <a href="/branchen-software#bs-branchen">Branchen</a>
-        </div>
-      </div>
-
-      <div class="mobile-nav-group">
-        <div class="mobile-nav-group__row">
           <a href="/ki-prozesse" class="mobile-nav-link">KI &amp; Automatisierung</a>
           <button class="mobile-nav-group__chevron-btn" aria-label="KI & Automatisierung Untermenü">
             <svg class="mobile-nav-group__chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -161,19 +137,7 @@
         </div>
       </div>
 
-      <div class="mobile-nav-group">
-        <div class="mobile-nav-group__row">
-          <a href="/ueber-uns" class="mobile-nav-link">Über uns</a>
-          <button class="mobile-nav-group__chevron-btn" aria-label="Über uns Untermenü">
-            <svg class="mobile-nav-group__chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
-        </div>
-        <div class="mobile-nav-group__sub">
-          <a href="/blog">Blog</a>
-        </div>
-      </div>
+      <a href="/ueber-uns" class="mobile-nav-link">Über uns</a>
 
     </div>
 
@@ -213,7 +177,7 @@
         <p class="pbs-l1" id="pbs-l1">Das KI-Zeitalter ist da.</p>
 
         <div class="pbs-ki-quote-wrap" id="pbs-ki-quote-wrap" aria-hidden="true">
-          <p class="pbs-ki-quote">&#8222;Noch 2023 sch&#228;tzte McKinsey das Automatisierungspotenzial bis 2030 auf rund <strong>30&nbsp;%</strong> &#8212; Ende 2025 liegt es dank agentischer KI bereits bei <strong>57&nbsp;%</strong> der Arbeitsstunden.&#8220;</p>
+          <p class="pbs-ki-quote">Noch 2023 sch&#228;tzte McKinsey das Automatisierungspotenzial bis 2030 auf rund <strong>30&nbsp;%</strong> &#8212; Ende 2025 liegt es dank agentischer KI bereits bei <strong>57&nbsp;%</strong> der Arbeitsstunden.</p>
           <span class="pbs-ki-sources">
             <a class="pbs-ki-link" href="https://www.mckinsey.com/mgi/our-research/generative-ai-and-the-future-of-work-in-america" target="_blank" rel="noopener">McKinsey, 2023 (30&nbsp;%)</a>
             <span class="pbs-ki-sources-sep">&middot;</span>
@@ -222,7 +186,7 @@
         </div>
 
         <div class="pbs-ki-fomo-wrap" id="pbs-ki-fomo-wrap" aria-hidden="true">
-          <p class="pbs-ki-fomo">Nutzen Sie die technischen M&#246;glichkeiten bereits&nbsp;&#8212;<br>oder verlieren Sie den Anschluss?</p>
+          <p class="pbs-ki-fomo">Nutzen Sie die technischen M&#246;glichkeiten bereits&nbsp;&#8212; oder verlieren Sie den Anschluss?</p>
         </div>
 
 
@@ -230,9 +194,9 @@
 
       <div class="hero-fadeout" id="hero-fadeout" aria-hidden="true"></div>
 
-      <div class="hero-scroll-cue" id="hero-scroll-cue" aria-hidden="true">
-        <div class="scroll-mouse">
-          <div class="scroll-wheel"></div>
+      <div class="hero-cta-banner" id="hero-cta-banner">
+        <div class="hero-cta-banner-inner">
+          <a href="/formular" class="hero-cta-banner-link">Potenzialanalyse anfragen &rarr;</a>
         </div>
       </div>
 
@@ -240,27 +204,100 @@
 
     <!-- ── Section 3: Eisberg ────────────────────────────────── -->
     <section id="proto-eisberg" aria-label="KI-Illusionen">
-      <div class="container">
-
-        <div class="peis-header">
-          <p class="peis-label">KI-Illusionen</p>
-          <h2>Sie nutzen KI? <em>Wirklich?</em></h2>
-          <p class="peis-sub">ChatGPT zu öffnen ist wie ein Auto zu besitzen, aber nie den Motor zu starten.</p>
-        </div>
-
-      </div>
 
       <div class="icb-frame-wrap" id="icb-frame-wrap">
-        <iframe id="icb-frame" class="icb-frame" src="/eisberg-artifact.html?v=4" title="Eisbergmodell — Sichtbares vs. tatsächliches KI-Potenzial" loading="lazy" scrolling="no"></iframe>
+        <iframe id="icb-frame" class="icb-frame" src="/eisberg-artifact-v2.html" title="Eisbergmodell — Sichtbares vs. tatsächliches KI-Potenzial" loading="lazy" scrolling="no"></iframe>
       </div>
 
-      <div class="container">
-        <p class="peis-closing">Der Unterschied zwischen Ihnen und Ihrer Konkurrenz liegt <em>unter der Wasseroberfläche.</em></p>
-      </div>
+      <script>
+        (function () {
+          var frame = document.getElementById('icb-frame');
+          if (!frame) return;
+
+          function resize() {
+            try {
+              var doc = frame.contentDocument || frame.contentWindow.document;
+              var h = Math.max(doc.documentElement.scrollHeight, doc.body.scrollHeight);
+              if (h) frame.style.height = h + 'px';
+            } catch (e) { /* cross-origin fallback: keep last known height */ }
+          }
+
+          frame.addEventListener('load', function () {
+            resize();
+            [150, 400, 900, 1800].forEach(function (t) { setTimeout(resize, t); });
+
+            try {
+              var doc = frame.contentDocument || frame.contentWindow.document;
+              if (window.ResizeObserver) {
+                new ResizeObserver(resize).observe(doc.documentElement);
+              }
+            } catch (e) {}
+          });
+
+          window.addEventListener('resize', resize);
+        })();
+      </script>
 
     </section>
 
-    <!-- ── Section 4: Praxis-Beispiele ──────────────────────── -->
+    <!-- ── Section 3b: Ansatz / Zahnrad ──────────────────────── -->
+    <section id="ansatz" aria-label="So wird 2026 gearbeitet">
+      <div class="container">
+
+        <div class="ansatz-split">
+
+          <!-- Links: Zahnrad -->
+          <div class="ansatz-split-gear">
+            <div class="ki-gear-wrap" id="ki-gear-anim" role="img" aria-label="KI verbindet alle Geschäftsbereiche zu einem System"></div>
+          </div>
+
+          <!-- Rechts: Text + 4 Stufen -->
+          <div class="ansatz-split-text">
+            <p class="ansatz-split-label">Geschäftsbereiche mit KI vernetzen</p>
+            <h2 class="ansatz-split-hl">Ein System.<br>Vier Bereiche.<br>Alles verbunden.</h2>
+            <p class="ansatz-split-sub">Wir bauen KI nicht punktuell — sondern als Fundament für Ihren gesamten Betrieb.</p>
+            <p class="ansatz-split-tagline">Unternehmerisch. Ganzheitlich. Strukturiert.</p>
+
+            <div class="ansatz-steps">
+              <div class="ansatz-step">
+                <span class="ansatz-step-num">01</span>
+                <div class="ansatz-step-copy">
+                  <span class="ansatz-step-label">Fundament</span>
+                  <span class="ansatz-step-name">IT-Lösungen</span>
+                </div>
+              </div>
+              <div class="ansatz-step">
+                <span class="ansatz-step-num">02</span>
+                <div class="ansatz-step-copy">
+                  <span class="ansatz-step-label">Struktur</span>
+                  <span class="ansatz-step-name">Betriebs-Software</span>
+                </div>
+              </div>
+              <div class="ansatz-step">
+                <span class="ansatz-step-num">03</span>
+                <div class="ansatz-step-copy">
+                  <span class="ansatz-step-label">Effizienz</span>
+                  <span class="ansatz-step-name">Automatisierung</span>
+                </div>
+              </div>
+              <div class="ansatz-step">
+                <span class="ansatz-step-num">04</span>
+                <div class="ansatz-step-copy">
+                  <span class="ansatz-step-label">Wirkung</span>
+                  <span class="ansatz-step-name">Digitaler Auftritt</span>
+                </div>
+              </div>
+            </div>
+
+            <p class="ansatz-split-closing"><em>Wer KI als System aufbaut, hat einen Vorsprung, den man nicht mehr einholt.</em></p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── Section 5: Praxis-Beispiele ──────────────────────── -->
     <section id="proto-praxis" aria-label="KI in der Praxis">
       <div class="container">
 
@@ -444,63 +481,6 @@
       </div>
     </section>
 
-    <!-- ── Section 5: Ansatz / Zahnrad ──────────────────────── -->
-    <section id="ansatz" aria-label="So wird 2026 gearbeitet">
-      <div class="container">
-
-        <div class="ansatz-split">
-
-          <!-- Links: Zahnrad -->
-          <div class="ansatz-split-gear">
-            <div class="ki-gear-wrap" id="ki-gear-anim" role="img" aria-label="KI verbindet alle Geschäftsbereiche zu einem System"></div>
-          </div>
-
-          <!-- Rechts: Text + 4 Stufen -->
-          <div class="ansatz-split-text">
-            <p class="ansatz-split-label">Die 4 Stufen zur ganzheitlichen KI-Transformation</p>
-            <h2 class="ansatz-split-hl">Ein System.<br>Vier Bereiche.<br>Alles verbunden.</h2>
-            <p class="ansatz-split-sub">Wir bauen KI nicht punktuell — sondern als Fundament für Ihren gesamten Betrieb.</p>
-            <p class="ansatz-split-tagline">Unternehmerisch. Ganzheitlich. Strukturiert.</p>
-
-            <div class="ansatz-steps">
-              <div class="ansatz-step">
-                <span class="ansatz-step-num">01</span>
-                <div class="ansatz-step-copy">
-                  <span class="ansatz-step-label">Fundament</span>
-                  <span class="ansatz-step-name">IT-Lösungen</span>
-                </div>
-              </div>
-              <div class="ansatz-step">
-                <span class="ansatz-step-num">02</span>
-                <div class="ansatz-step-copy">
-                  <span class="ansatz-step-label">Struktur</span>
-                  <span class="ansatz-step-name">Betriebs-Software</span>
-                </div>
-              </div>
-              <div class="ansatz-step">
-                <span class="ansatz-step-num">03</span>
-                <div class="ansatz-step-copy">
-                  <span class="ansatz-step-label">Effizienz</span>
-                  <span class="ansatz-step-name">Automatisierung</span>
-                </div>
-              </div>
-              <div class="ansatz-step">
-                <span class="ansatz-step-num">04</span>
-                <div class="ansatz-step-copy">
-                  <span class="ansatz-step-label">Wirkung</span>
-                  <span class="ansatz-step-name">Digitaler Auftritt</span>
-                </div>
-              </div>
-            </div>
-
-            <p class="ansatz-split-closing"><em>Wer KI als System aufbaut, hat einen Vorsprung, den man nicht mehr einholt.</em></p>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
     <!-- ── Section 6: Partnerschaft / Zeitstrahl ────────────── -->
     <section id="proto-partnerschaft" aria-label="Partnerschaft mit Amplifyr">
       <div class="container">
@@ -545,7 +525,7 @@
             <div>
               <p class="ptl-step-num">04</p>
               <h3>Support</h3>
-              <p>Direkter Ansprechpartner, der Ihren Betrieb kennt — kein anonymes Ticketsystem, kein Callcenter.</p>
+              <p>Direkter Ansprechpartner, der Ihren Betrieb kennt — persönliche Betreuung statt anonymer Warteschlange.</p>
             </div>
           </div>
 
@@ -583,15 +563,9 @@
 
       </div>
 
-      <div class="ptl-closing-panel">
-        <div class="container">
-          <p class="ptl-closing">Sie müssen KI nicht verstehen.<br><em>Das ist unser Job.</em></p>
-          <p class="ptl-closing-sub">Und falls gewünscht: Wir machen auch gleich Ihr Team fit dafür.</p>
-          <a href="/formular" class="btn btn--primary ptl-cta">Potenzialanalyse anfragen &rarr;</a>
-        </div>
-      </div>
-
     </section>
+
+
 
     <!-- ── Section 7: KI-Potenzial-Check ────────────────────── -->
     <section id="ki-check" aria-label="KI-Potenzial-Check">

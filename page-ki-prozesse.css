@@ -19,6 +19,15 @@
   margin-top: var(--space-5);
 }
 
+.its-section-header--light h2,
+.its-section-header--light .its-intro {
+  color: #fff;
+}
+
+#sec-telefonie {
+  background: var(--navy);
+}
+
 /* ============================================================
    HERO OVERLAY (page-specific)
 ============================================================ */
@@ -182,44 +191,47 @@
 }
 
 .ki-feature-card {
-  background: var(--bg-white);
-  border: 1px solid var(--border);
+  background: linear-gradient(135deg, #F4F8FD 0%, #DCE9F6 100%);
+  border: 1px solid var(--border-light);
   border-radius: var(--radius-lg);
-  padding: var(--space-8);
+  padding: var(--space-7) var(--space-6) var(--space-6);
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: var(--space-3);
   transition:
-    border-color var(--duration) var(--ease),
     box-shadow var(--duration) var(--ease),
     transform var(--duration) var(--ease);
 }
 
 .ki-feature-card:hover {
-  border-color: var(--navy);
   box-shadow: var(--shadow-md);
   transform: translateY(-2px);
 }
 
 .ki-feature-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: var(--radius-md);
-  background: var(--accent-light);
-  color: var(--navy);
+  width: 100%;
   display: flex;
-  align-items: center;
   justify-content: center;
+  color: var(--navy);
+  opacity: 0.82;
+  margin-bottom: var(--space-2);
+}
+
+.ki-feature-icon svg {
+  width: 52px;
+  height: 52px;
 }
 
 .ki-feature-card h3 {
   font-size: 1.05rem;
   font-weight: 700;
+  color: var(--navy);
   margin: 0;
 }
 
 .ki-feature-card p {
-  color: var(--text-muted);
+  color: var(--navy);
+  opacity: 0.75;
   font-size: 0.92rem;
   line-height: 1.7;
   margin: 0;
@@ -253,7 +265,8 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
-  color: var(--text-muted);
+  color: var(--navy);
+  opacity: 0.75;
   font-size: 0.88rem;
   line-height: 1.5;
   margin-top: var(--space-4);

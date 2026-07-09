@@ -863,3 +863,86 @@
   });
 
 }());
+
+/* ============================================================
+   HEADER AUSBLENDEN ÜBER DER EISBERG-GRAFIK
+   Nur hier: Nav-Header verschwindet, solange die Eisberg-Section
+   den Header-Bereich überlappt, damit die Grafik den vollen
+   Platz bekommt — danach (und davor) wieder normal sichtbar.
+============================================================ */
+(function () {
+  'use strict';
+
+  var header  = document.getElementById('site-header');
+  var section = document.getElementById('proto-eisberg');
+  if (!header || !section) return;
+
+  var ticking = false;
+
+  function update() {
+    var rect = section.getBoundingClientRect();
+    var headerH = header.offsetHeight;
+    var overlaps = rect.top <= headerH && rect.bottom >= 0;
+    header.classList.toggle('hidden', overlaps);
+    ticking = false;
+  }
+
+  function onScroll() {
+    if (!ticking) {
+      requestAnimationFrame(update);
+      ticking = true;
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  update();
+}());
+
+/* ============================================================
+   SCROLL-SNAP HERO → EISBERG
+   Verhindert, dass man beim Scrollen zwischen Hero und Eisberg auf
+   halber Höhe hängen bleibt. Wirkt NUR in der Übergangszone zwischen
+   Hero-Anfang und Eisberg-Anfang; sobald die Eisberg-Section erreicht
+   ist, mischt sich das Script nicht mehr ein — normales Scrollen im
+   Rest der Seite bleibt unangetastet.
+============================================================ */
+(function () {
+  'use strict';
+
+  var hero    = document.getElementById('hero');
+  var eisberg = document.getElementById('proto-eisberg');
+  if (!hero || !eisberg) return;
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var settleTimer  = null;
+  var snapping     = false;
+
+  function docTop(el) {
+    return el.getBoundingClientRect().top + window.scrollY;
+  }
+
+  function trySnap() {
+    if (snapping) return;
+    var heroTop    = docTop(hero);
+    var eisbergTop = docTop(eisberg);
+    var y = window.scrollY;
+
+    if (y <= heroTop || y >= eisbergTop) return;
+
+    var mid    = (heroTop + eisbergTop) / 2;
+    var target = y < mid ? heroTop : eisbergTop;
+
+    snapping = true;
+    window.scrollTo({ top: target, behavior: reduceMotion ? 'auto' : 'smooth' });
+    setTimeout(function () { snapping = false; }, 500);
+  }
+
+  function onScroll() {
+    if (snapping) return;
+    clearTimeout(settleTimer);
+    settleTimer = setTimeout(trySnap, 140);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+}());

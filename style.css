@@ -160,18 +160,18 @@ input, textarea, select {
 }
 
 .section {
-  padding-block: var(--space-16);
+  padding-block: var(--space-12);
 }
 
 @media (min-width: 768px) {
   .section {
-    padding-block: var(--space-24);
+    padding-block: var(--space-16);
   }
 }
 
 @media (min-width: 1200px) {
   .section {
-    padding-block: var(--section-py);
+    padding-block: var(--space-20);
   }
 }
 
@@ -1155,9 +1155,9 @@ footer {
 }
 
 .side-widget--portal {
-  background: var(--navy);
+  background: #4a7cad;
   color: #fff;
-  border-left: 3px solid var(--steel);
+  border-left: 3px solid var(--navy);
 }
 
 .side-widget--tv {
@@ -1442,7 +1442,7 @@ footer {
 .fsh-inner {
   position: relative;
   z-index: 2;
-  padding-block: var(--space-24);
+  padding-block: var(--space-16);
 }
 
 .fsh-content {

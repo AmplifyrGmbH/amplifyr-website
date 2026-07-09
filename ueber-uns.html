@@ -55,8 +55,9 @@
   </script>
 
   <!-- CSS -->
-  <link rel="stylesheet" href="/style.css?v=2">
-  <link rel="stylesheet" href="/page-ueber-uns.css?v=1">
+  <link rel="stylesheet" href="/style.css?v=4">
+  <link rel="stylesheet" href="/page-blog.css?v=2">
+  <link rel="stylesheet" href="/page-ueber-uns.css?v=2">
 </head>
 <body>
 
@@ -90,15 +91,7 @@
       <nav class="site-nav site-nav--right header-portal-btn" aria-label="Weitere Navigation">
         <ul class="site-nav__list">
           <li class="site-nav__item">
-            <a href="/ueber-uns" class="site-nav__link nav-link" aria-haspopup="true">
-              Über uns
-              <svg class="site-nav__chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </a>
-            <div class="nav-dropdown" role="menu">
-              <a href="/blog" class="nav-dropdown__link" role="menuitem">Blog</a>
-            </div>
+            <a href="/ueber-uns" class="site-nav__link nav-link">Über uns</a>
           </li>
         </ul>
       </nav>
@@ -178,19 +171,7 @@
         </div>
       </div>
 
-      <div class="mobile-nav-group">
-        <div class="mobile-nav-group__row">
-          <a href="/ueber-uns" class="mobile-nav-link">Über uns</a>
-          <button class="mobile-nav-group__chevron-btn" aria-label="Über uns Untermenü">
-            <svg class="mobile-nav-group__chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
-        </div>
-        <div class="mobile-nav-group__sub">
-          <a href="/blog">Blog</a>
-        </div>
-      </div>
+      <a href="/ueber-uns" class="mobile-nav-link">Über uns</a>
 
     </div>
 
@@ -224,13 +205,6 @@
       <div class="fsh-scroll" aria-hidden="true"></div>
     </section>
 
-    <!-- ── Sektion 1b: Drei Perspektiven ────────────────────── -->
-    <section class="ua-perspectives" id="ua-perspectives" aria-label="Drei Perspektiven, eine digitale Basis">
-      <div class="container">
-        <img src="/Bilder/Drei_Perspektiven.png" alt="Drei Perspektiven, eine digitale Basis: Markt &amp; Strategie (Timo Steinfort), Prozesse &amp; Data Science (David Staub), Systeme &amp; Engineering (Sinan Sen)" width="2494" height="1310" loading="lazy" decoding="async">
-      </div>
-    </section>
-
     <!-- ── Sektion 2: Team-Akkordeon ─────────────────────────── -->
     <section id="team-section" class="section ua-team" aria-labelledby="ua-team-heading">
       <div class="container">
@@ -241,11 +215,19 @@
           <p class="ua-team-sub">Drei Perspektiven, ein gemeinsames Ziel: stabile Systeme, smarte Prozesse und messbare Wirkung für Schweizer KMU.</p>
         </div>
 
+        <div class="ua-team-split">
+
+          <div class="ua-team-left">
+            <div class="ua-team-visual">
+              <img src="/Bilder/Drei_Perspektiven_Grafik.png" alt="Drei ineinandergreifende Segmente: Markt &amp; Strategie, Systeme &amp; Engineering, Prozesse &amp; Data Science" width="930" height="820" loading="lazy" decoding="async">
+            </div>
+          </div>
+
         <div class="ua-accordion" role="list">
 
-          <!-- Item 1: Markt & Strategie — standardmässig offen -->
-          <div class="ua-acc-item is-open" role="listitem">
-            <button class="ua-acc-header" aria-expanded="true" aria-controls="ua-body-1">
+          <!-- Item 1: Markt & Strategie -->
+          <div class="ua-acc-item" role="listitem">
+            <button class="ua-acc-header" aria-expanded="false" aria-controls="ua-body-1">
               <div class="ua-acc-left">
                 <p class="ua-acc-title">Markt &amp; Strategie</p>
                 <p class="ua-acc-desc">Wir verbinden Geschäftsverständnis mit digitaler Klarheit. So entstehen Lösungen, die zu Markt, Zielgruppe und Unternehmenszielen passen.</p>
@@ -442,6 +424,32 @@
           </div>
 
         </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Sektion 2b: Blog-Vorschau ──────────────────────────── -->
+    <section id="blog-preview-section" class="section ua-blog-preview" aria-labelledby="ua-blog-heading">
+      <div class="container">
+
+        <div class="ua-blog-intro">
+          <p class="section-label">Blog</p>
+          <h2 id="ua-blog-heading">Einblicke aus dem Unternehmertum.</h2>
+          <p class="ua-blog-sub">Wir dokumentieren unsere Reise als junge Gründer – offen, ehrlich und nah an der Praxis.</p>
+        </div>
+
+        <div id="blog-preview-grid" class="blog-grid" aria-live="polite" aria-busy="true">
+          <div class="blog-loading">
+            <div class="blog-spinner" aria-hidden="true"></div>
+            <p>Posts werden geladen…</p>
+          </div>
+        </div>
+
+        <div class="ua-blog-more">
+          <a href="/blog" class="btn btn--outline">Alle Beiträge ansehen</a>
+        </div>
+
       </div>
     </section>
 
@@ -631,6 +639,8 @@
   </div>
 
   <script src="/main.js"></script>
+  <script src="/blog-config.js"></script>
+  <script src="/page-blog.js"></script>
   <script src="/page-ueber-uns.js"></script>
   <!-- Floating Side Widgets -->
   <div class="side-widgets">

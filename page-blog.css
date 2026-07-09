@@ -8,7 +8,7 @@
 ============================================================ */
 
 .blog-section {
-  padding-block: var(--section-py);
+  padding-block: var(--space-20);
   padding-top: calc(var(--header-h) + var(--section-py));
   min-height: 100vh;
 }

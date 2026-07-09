@@ -130,7 +130,7 @@
     if (!track) return;
 
     var pos      = 0;
-    var speed    = 0.6;
+    var speed    = 1.0;
     var origW    = 0; /* Breite eines Sets (= Reset-Distanz) */
 
     function cloneUntilFull() {

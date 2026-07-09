@@ -73,6 +73,47 @@ function buildAssetMap(includes) {
 
 // ── Blog-Übersicht laden (blog.html) ─────────────────────────
 
+function renderBlogCard(item, assets) {
+  var f      = item.fields;
+  var title  = f.titel || f.title || '';
+  var slug   = f.slug  || item.sys.id;
+  var date   = formatDate(f.date);
+  var imgRef = f.coverImage || f.titelbild;
+  var imgId  = imgRef && imgRef.sys ? imgRef.sys.id : null;
+  var imgUrl = imgId && assets[imgId] ? assets[imgId] : null;
+  var teaser = typeof f.teaser === 'string'
+    ? f.teaser
+    : extractPlainText(f.teaser).slice(0, 160);
+  var cat = f.category || f.kategorie || '';
+
+  var imgHtml = imgUrl
+    ? '<img class="blog-card-img" src="' + escHtml(imgUrl) + '" alt="' + escHtml(title) + '" loading="lazy" decoding="async">'
+    : '<div class="blog-card-img-placeholder" aria-hidden="true">'
+      + '<svg width="40" height="40" viewBox="0 0 24 24" fill="none">'
+      + '<rect x="3" y="3" width="18" height="18" rx="2" stroke="#B0C4DE" stroke-width="1.5"/>'
+      + '<circle cx="8.5" cy="8.5" r="1.5" fill="#B0C4DE"/>'
+      + '<path d="M21 15l-5-5L5 21" stroke="#B0C4DE" stroke-width="1.5"/>'
+      + '</svg></div>';
+
+  var catHtml  = cat  ? '<span class="blog-card-category">' + escHtml(cat)  + '</span>' : '';
+  var dateHtml = date ? '<span class="blog-card-date">'      + escHtml(date) + '</span>' : '';
+
+  return '<a class="blog-card" href="/blog-post.html?slug=' + encodeURIComponent(slug) + '">'
+    + imgHtml
+    + '<div class="blog-card-body">'
+    + '<div class="blog-card-meta">' + catHtml + dateHtml + '</div>'
+    + '<h2 class="blog-card-title">' + escHtml(title) + '</h2>'
+    + (teaser ? '<p class="blog-card-teaser">' + escHtml(teaser) + '</p>' : '')
+    + '<span class="blog-card-readmore">'
+    + 'Weiterlesen'
+    + '<svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">'
+    + '<path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>'
+    + '</svg>'
+    + '</span>'
+    + '</div>'
+    + '</a>';
+}
+
 function loadBlogList() {
   var grid = document.getElementById('blog-grid');
   if (!grid) return;
@@ -99,51 +140,47 @@ function loadBlogList() {
       }
 
       var assets = buildAssetMap(data.includes);
-
-      grid.innerHTML = data.items.map(function (item) {
-        var f      = item.fields;
-        var title  = f.titel || f.title || '';
-        var slug   = f.slug  || item.sys.id;
-        var date   = formatDate(f.date);
-        var imgRef = f.coverImage || f.titelbild;
-        var imgId  = imgRef && imgRef.sys ? imgRef.sys.id : null;
-        var imgUrl = imgId && assets[imgId] ? assets[imgId] : null;
-        var teaser = typeof f.teaser === 'string'
-          ? f.teaser
-          : extractPlainText(f.teaser).slice(0, 160);
-        var cat = f.category || f.kategorie || '';
-
-        var imgHtml = imgUrl
-          ? '<img class="blog-card-img" src="' + escHtml(imgUrl) + '" alt="' + escHtml(title) + '" loading="lazy" decoding="async">'
-          : '<div class="blog-card-img-placeholder" aria-hidden="true">'
-            + '<svg width="40" height="40" viewBox="0 0 24 24" fill="none">'
-            + '<rect x="3" y="3" width="18" height="18" rx="2" stroke="#B0C4DE" stroke-width="1.5"/>'
-            + '<circle cx="8.5" cy="8.5" r="1.5" fill="#B0C4DE"/>'
-            + '<path d="M21 15l-5-5L5 21" stroke="#B0C4DE" stroke-width="1.5"/>'
-            + '</svg></div>';
-
-        var catHtml  = cat  ? '<span class="blog-card-category">' + escHtml(cat)  + '</span>' : '';
-        var dateHtml = date ? '<span class="blog-card-date">'      + escHtml(date) + '</span>' : '';
-
-        return '<a class="blog-card" href="/blog-post.html?slug=' + encodeURIComponent(slug) + '">'
-          + imgHtml
-          + '<div class="blog-card-body">'
-          + '<div class="blog-card-meta">' + catHtml + dateHtml + '</div>'
-          + '<h2 class="blog-card-title">' + escHtml(title) + '</h2>'
-          + (teaser ? '<p class="blog-card-teaser">' + escHtml(teaser) + '</p>' : '')
-          + '<span class="blog-card-readmore">'
-          + 'Weiterlesen'
-          + '<svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">'
-          + '<path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>'
-          + '</svg>'
-          + '</span>'
-          + '</div>'
-          + '</a>';
-      }).join('');
+      grid.innerHTML = data.items.map(function (item) { return renderBlogCard(item, assets); }).join('');
     })
     .catch(function () {
       grid.setAttribute('aria-busy', 'false');
       grid.innerHTML = '<div class="blog-error">Posts konnten nicht geladen werden. Bitte später nochmals versuchen.</div>';
+    });
+}
+
+
+// ── Blog-Vorschau laden (ueber-uns.html) ──────────────────────
+
+function loadBlogPreview() {
+  var grid = document.getElementById('blog-preview-grid');
+  if (!grid) return;
+
+  var section = document.getElementById('blog-preview-section');
+  var cfg = window.BLOG_CONFIG;
+  if (!cfg) {
+    if (section) section.hidden = true;
+    return;
+  }
+
+  var url = 'https://cdn.contentful.com/spaces/' + cfg.spaceId + '/entries'
+          + '?content_type=' + cfg.contentType + '&order=-fields.date&include=1&limit=3'
+          + '&access_token=' + cfg.accessToken;
+
+  fetch(url)
+    .then(function (res) { return res.json(); })
+    .then(function (data) {
+      grid.setAttribute('aria-busy', 'false');
+
+      if (!data.items || data.items.length === 0) {
+        if (section) section.hidden = true;
+        return;
+      }
+
+      var assets = buildAssetMap(data.includes);
+      grid.innerHTML = data.items.map(function (item) { return renderBlogCard(item, assets); }).join('');
+    })
+    .catch(function () {
+      if (section) section.hidden = true;
     });
 }
 
@@ -246,6 +283,9 @@ function loadBlogPost() {
 
 if (document.getElementById('blog-grid')) {
   loadBlogList();
+}
+if (document.getElementById('blog-preview-grid')) {
+  loadBlogPreview();
 }
 if (document.getElementById('post-wrap')) {
   loadBlogPost();
