@@ -32,7 +32,7 @@
     var pbsKiQuoteWrap = document.getElementById('pbs-ki-quote-wrap');
     var pbsKiFomoWrap  = document.getElementById('pbs-ki-fomo-wrap');
     var fadeout        = document.getElementById('hero-fadeout');
-    var scrollCue      = document.getElementById('hero-scroll-cue');
+    var ctaBanner      = document.getElementById('hero-cta-banner');
 
     if (!hero || !video) return;
 
@@ -76,7 +76,7 @@
         pbsShow(pbsKiFomoWrap);
         pbsShow(pbsL4);
         sloganDone = true;
-        if (scrollCue) scrollCue.classList.add('is-visible');
+        if (ctaBanner) ctaBanner.classList.add('is-visible');
       }, OUT);
     }
 
@@ -94,7 +94,7 @@
       if (pbsL4)          pbsL4.classList.add('pbs-show');
       if (pbsKiQuoteWrap) pbsKiQuoteWrap.classList.add('pbs-show');
       if (pbsKiFomoWrap)  pbsKiFomoWrap.classList.add('pbs-show');
-      if (scrollCue)      scrollCue.classList.add('is-visible');
+      if (ctaBanner)      ctaBanner.classList.add('is-visible');
       sessionStorage.setItem('heroSeen', '1');
     }
 
