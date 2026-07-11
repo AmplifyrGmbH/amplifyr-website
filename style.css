@@ -1253,8 +1253,8 @@ footer {
 .ba-teaser-rocket-wrap::before {
   width: 22px;
   height: 90px;
-  top: 84px;
-  left: 31px;
+  top: 97px;
+  left: 62px;
   background: linear-gradient(to bottom, #B0C4DE 0%, #B0C4DE 30%, rgba(176,196,222,0.55) 58%, rgba(176,196,222,0.15) 80%, transparent 100%);
   filter: blur(4px);
   transform: rotate(45deg);
@@ -1264,8 +1264,8 @@ footer {
 .ba-teaser-rocket-wrap::after {
   width: 12px;
   height: 64px;
-  top: 87px;
-  left: 36px;
+  top: 100px;
+  left: 67px;
   background: linear-gradient(to bottom, #ffffff 0%, #eaf2fb 18%, #B0C4DE 50%, rgba(176,196,222,0.3) 78%, transparent 100%);
   filter: blur(1.5px);
   transform: rotate(45deg);

@@ -9,14 +9,6 @@
 
   var EASE = 'cubic-bezier(0.22, 1, 0.36, 1)';
 
-  /* Markiert echte Touch-Nutzung auf <html>, damit CSS Hover-Effekte
-     (z. B. Flip-Karten) auf Touch-Geräten zuverlässig deaktivieren kann —
-     robuster als eine reine hover/pointer-Media-Query. */
-  document.addEventListener('touchstart', function onFirstTouch() {
-    document.documentElement.classList.add('has-touch');
-    document.removeEventListener('touchstart', onFirstTouch);
-  }, { passive: true });
-
   /* ============================================================
      HERO ANIMATION (1:1 von page-index.js)
   ============================================================ */
@@ -246,16 +238,8 @@
       }
     }
 
-    /* Eisberg-Grafik — iframe-Höhe an Inhalt anpassen ─────────── */
-    initIcebergFrame();
-
-    /* Praxis-Karten ─────────────────────────────────────────── */
-    var praxisCards = Array.prototype.slice.call(document.querySelectorAll('.pprax-card'));
-    praxisCards.forEach(function (card) {
-      card.addEventListener('click', function () {
-        card.classList.toggle('is-flipped');
-      });
-    });
+    /* Praxis-Vergleichskarten — Fade-in beim Scrollen ──────────── */
+    var praxisCards = Array.prototype.slice.call(document.querySelectorAll('.pprax-compare-card'));
     if (praxisCards.length) {
       if (reduced) {
         praxisCards.forEach(function (el) { el.classList.add('is-visible'); });
@@ -266,10 +250,10 @@
           praxTriggered = true;
           praxIO.disconnect();
           praxisCards.forEach(function (el, i) {
-            setTimeout(function () { el.classList.add('is-visible'); }, i * 140);
+            setTimeout(function () { el.classList.add('is-visible'); }, i * 100);
           });
         }, { threshold: 0.1 });
-        praxIO.observe(praxisCards[0].closest('.pprax-grid') || praxisCards[0]);
+        praxIO.observe(praxisCards[0].closest('.pprax-compare-list') || praxisCards[0]);
       }
     }
 
@@ -301,86 +285,6 @@
      hier wird nur noch die Höhe des iframes an den tatsächlichen Inhalt
      angepasst und der graue Rahmen ums Bild entfernt (gleiche Origin,
      daher zugreifbar). */
-  function initIcebergFrame() {
-    var frame = document.getElementById('icb-frame');
-    if (!frame) return;
-
-    function injectStyleOverrides(doc) {
-      if (doc.getElementById('icb-style-overrides')) return;
-      var style = doc.createElement('style');
-      style.id = 'icb-style-overrides';
-      style.textContent =
-        /* Grauer Rahmen kam vom body-Hintergrund hinter der Grafik; overflow
-           verhindert eine interne iframe-Scrollbar, die die verfügbare
-           Breite verringern und die Grafik rechts abschneiden würde. */
-        'html,body{background:transparent!important;overflow:hidden!important;}' +
-        /* Karten aufhellen + hellblauer Rahmen für mehr Kontrast */
-        '[style*="background: rgba(26,39,68,0.62)"]{background:rgba(74,116,182,0.8)!important;border-color:rgba(200,230,255,0.75)!important;}' +
-        '[style*="background: rgba(20,32,58,0.62)"]{background:rgba(60,98,160,0.82)!important;border-color:rgba(200,230,255,0.6)!important;}' +
-        /* "In der Tiefe"-Titel gleich hell wie der Titel darüber (Desktop
-           nutzt eine eigene, dunklere Farbe; Mobile grenzt sich zusätzlich
-           per font-weight vom gleichfarbigen Footer-Tagline ab). */
-        '[style*="color: #a8bcdd"]{color:#dbe7f9!important;}' +
-        '[style*="color: #6f84ab; font-size: 11px; font-weight: 700"]{color:#dbe7f9!important;}';
-      doc.head.appendChild(style);
-    }
-
-    /* Die "Real"-Version skaliert sich selbst anhand der Fensterbreite,
-       deckelt aber bei ihrer nativen Grösse (1320px) — auf breiten Screens
-       bliebe sie also klein und zentriert statt die Breite auszufüllen.
-       Direkte .style-Zuweisungen auf die React/DCLogic-Elemente wurden bei
-       jedem internen Re-Render (z. B. Hover auf einer Karte) sofort wieder
-       überschrieben — daher wie bei den Farb-Overrides eine CSS-Regel mit
-       !important verwenden, die IMMER gewinnt, egal wie oft die Komponente
-       neu rendert. Die drei Elemente werden per Klasse markiert (Klassen
-       werden von den Re-Renders nicht angefasst, da im Original-Template
-       kein class-Attribut auf ihnen liegt) statt per Style-Text-Selektor,
-       der bei kleinsten Formatierungsabweichungen brechen könnte. */
-    function forceFullWidth(doc) {
-      var box = doc.querySelector('div[style*="width: 1320px; height: 1660px"]');
-      if (!box) return;
-      var reserve = box.parentElement;
-      var wrapper = reserve ? reserve.parentElement : null;
-      box.classList.add('icb-box');
-      if (reserve) reserve.classList.add('icb-reserve');
-      if (wrapper) wrapper.classList.add('icb-wrapper');
-
-      var scale = frame.clientWidth / 1320;
-      var h = Math.round(1660 * scale);
-
-      var style = doc.getElementById('icb-scale-override');
-      if (!style) {
-        style = doc.createElement('style');
-        style.id = 'icb-scale-override';
-        doc.head.appendChild(style);
-      }
-      style.textContent =
-        '.icb-wrapper{display:block!important;padding:0!important;}' +
-        '.icb-reserve{position:relative!important;width:100%!important;height:' + h + 'px!important;overflow:hidden!important;}' +
-        '.icb-box{position:absolute!important;left:0!important;top:0!important;transform:scale(' + scale.toFixed(4) + ')!important;}';
-    }
-
-    function measure() {
-      try {
-        var doc = frame.contentDocument;
-        if (!doc || !doc.body) return;
-        injectStyleOverrides(doc);
-        forceFullWidth(doc);
-        var h = doc.body.scrollHeight;
-        if (h > 0) frame.style.height = h + 'px';
-      } catch (e) { /* cross-origin — Fallback-Höhe aus CSS bleibt */ }
-    }
-
-    frame.addEventListener('load', function () {
-      measure();
-      setTimeout(measure, 300);
-      setTimeout(measure, 1000);
-      setInterval(measure, 500);
-    });
-
-    window.addEventListener('resize', debounce(measure, 200));
-  }
-
   /* Zeichnet eine Wachstumskurve exakt durch die 5 Zeitstrahl-Punkte
      (Desktop: Treppenform, Mobile: senkrecht — dieselbe Geometrie-Berechnung,
      nur die Punkt-Anordnung unterscheidet sich) und lässt eine Rakete per

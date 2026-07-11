@@ -243,7 +243,7 @@
    ANSATZ
 ============================================================ */
 #ansatz {
-  background: var(--bg-white);
+  background: var(--navy);
   padding-block: var(--space-12);
 }
 
@@ -337,14 +337,13 @@
   }
 
   /* Full-bleed: break out of .container's side padding so the diagram gets
-     the full viewport width instead of width-minus-32px. The card has no
-     visible background/border against the page (both --bg-white), so this
-     is a pure size gain with no visual seam. */
+     the full viewport width instead of width-minus-32px. Der Zahnrad-Bereich
+     hat jetzt Navy-Hintergrund, die weisse Karte bleibt darum sichtbar
+     abgesetzt — Eckenradius bleibt erhalten statt auf 0 gesetzt zu werden. */
   .ki-gear-wrap {
     width: 100vw;
     max-width: 100vw;
     margin-inline: calc(50% - 50vw);
-    border-radius: 0;
   }
 
   .ki-gear-legend {

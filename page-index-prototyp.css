@@ -240,16 +240,20 @@
   padding-block: 0;
 }
 
-/* Eisberg-Grafik — 1:1 eingebettetes Original-Artifact, Breite/Höhe unverändert.
-   Titel liegt direkt AUF der Grafik (kein eigener Bereich/Band davor). */
+/* Eisberg-Grafik — 1:1 eingebettetes Original-Artifact. Die Grafik selbst
+   ist responsiv (skaliert auf Container-Grösse), darum feste Viewport-Höhe
+   statt JS-gemessener Content-Höhe — passt sich so jedem Gerät an. */
 .icb-frame-wrap {
   width: 100%;
+  height: 100vh;
+  height: 100svh;
   position: relative;
 }
 
 .icb-frame {
   display: block;
   width: 100%;
+  height: 100%;
   border: 0;
 }
 
@@ -257,7 +261,7 @@
    PRAXIS-BEISPIELE
 ============================================================ */
 #proto-praxis {
-  background: var(--navy);
+  background: var(--bg-white);
   padding-block: var(--space-12);
 }
 
@@ -280,303 +284,188 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  color: var(--steel);
-  opacity: 0.85;
+  color: var(--text-muted);
   margin: 0 0 var(--space-4) 0;
 }
 
 .pprax-header h2 {
-  color: #fff;
+  color: var(--navy);
   margin-bottom: var(--space-4);
   font-size: clamp(1.9rem, 4vw, 3.4rem);
 }
 
 .pprax-header h2 em {
-  color: var(--steel);
+  color: #6b8cc4;
   font-style: italic;
 }
 
 .pprax-sub {
   font-family: var(--font-display);
   font-style: italic;
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(26, 39, 68, 0.72);
   font-size: clamp(0.95rem, 1.5vw, 1.1rem);
   margin: 0;
 }
 
-.pprax-cards-wrap {
+.pprax-compare-list {
   display: flex;
-  align-items: center;
-  gap: var(--space-3);
-}
-
-.pprax-flip-hint {
-  flex: none;
-  width: 32px;
-  color: var(--steel);
-  opacity: 0.85;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: pprax-flip-hint-left 3.2s ease-in-out infinite;
-}
-
-.pprax-flip-hint svg {
-  width: 30px;
-  height: 30px;
-}
-
-.pprax-flip-hint--right {
-  animation: pprax-flip-hint-right 3.2s ease-in-out infinite;
-}
-
-@keyframes pprax-flip-hint-left {
-  0%, 55%, 100% { opacity: 0.55; transform: rotate(0deg) scale(1); }
-  25%            { opacity: 1;    transform: rotate(-26deg) scale(1.15); }
-}
-
-@keyframes pprax-flip-hint-right {
-  0%, 55%, 100% { opacity: 0.55; transform: rotate(0deg) scale(1); }
-  25%            { opacity: 1;    transform: rotate(26deg) scale(1.15); }
-}
-
-@media (max-width: 860px) {
-  .pprax-flip-hint { display: none; }
-}
-
-.pprax-grid {
-  display: grid;
-  grid-template-columns: 1fr;
+  flex-direction: column;
   gap: var(--space-4);
-  flex: 1;
-  perspective: 1400px;
 }
 
-@media (min-width: 600px) {
-  .pprax-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (min-width: 1080px) {
-  .pprax-grid { grid-template-columns: repeat(5, 1fr); }
-}
-
-.pprax-card {
-  height: 300px;
-  cursor: pointer;
+.pprax-compare-card {
+  background: #fff;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 2px 14px rgba(26, 39, 68, 0.06);
+  padding: var(--space-5);
   opacity: 0;
   transform: translateY(18px);
 }
 
-.pprax-card.is-visible {
+.pprax-compare-card.is-visible {
   opacity: 1;
   transform: translateY(0);
   transition: opacity 500ms cubic-bezier(0.22, 1, 0.36, 1),
               transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.pprax-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-  transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: var(--radius-lg);
-}
-
-.pprax-card.is-flipped .pprax-card-inner {
-  transform: rotateY(180deg);
-}
-
-/* Hover-Flip für Mausnutzer. Auf Touch-Geräten würde :hover nach einem Tap
-   oft "hängen" bleiben und mit dem Klick-Toggle kollidieren — daher setzt
-   JS beim ersten echten touchstart die Klasse .has-touch auf <html>, die
-   diese Regel dann deaktiviert (zuverlässiger als eine reine
-   hover/pointer-Media-Query, die auf manchen Geräten falsch greift). */
-.pprax-card:hover .pprax-card-inner {
-  transform: rotateY(180deg);
-}
-
-html.has-touch .pprax-card:hover:not(.is-flipped) .pprax-card-inner {
-  transform: none;
-}
-
-@keyframes pprax-tease {
-  0%   { transform: rotateY(0deg); }
-  35%  { transform: rotateY(22deg); }
-  65%  { transform: rotateY(6deg); }
-  100% { transform: rotateY(0deg); }
-}
-
-.pprax-card.is-teasing .pprax-card-inner {
-  animation: pprax-tease 0.75s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-.pprax-card-front,
-.pprax-card-back {
-  position: absolute;
-  inset: 0;
-  border-radius: var(--radius-lg);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
+.pprax-compare-head {
   display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-/* ── Vorderseite: Firmen-Hellblau (wie IT-Lösungen) ── */
-.pprax-card-front {
-  background: linear-gradient(135deg, #F4F8FD 0%, #DCE9F6 100%);
-  border: 1px solid var(--border-light);
-  padding: 0;
-  justify-content: flex-start;
-}
-
-/* ── Rückseite: Navy ── */
-.pprax-card-back {
-  background: var(--navy);
-  border: 1px solid var(--steel);
-  padding: 0;
-  transform: rotateY(180deg);
-  justify-content: center;
-}
-
-.pprax-card-back::after {
-  content: '';
-  position: absolute;
-  bottom: -36px; right: -36px;
-  width: 110px; height: 110px;
-  border-radius: 50%;
-  background: rgba(176,196,222,0.09);
-  pointer-events: none;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
 }
 
 .pprax-card-icon {
-  position: absolute;
-  top: 10%;
-  left: 0;
-  right: 0;
+  flex: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1;
-  pointer-events: none;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, #F4F8FD 0%, #DCE9F6 100%);
 }
 
 .pprax-card-icon svg {
-  width: 84px;
-  height: 84px;
+  width: 26px;
+  height: 26px;
   color: var(--navy);
-  opacity: 0.82;
-}
-
-@media (max-width: 860px) {
-  .pprax-card-icon svg { width: 66px; height: 66px; }
 }
 
 .pprax-card-icon--multi {
-  gap: var(--space-3);
+  gap: 3px;
 }
 
 .pprax-card-icon--multi svg {
-  width: 32px;
-  height: 32px;
-}
-
-@media (max-width: 860px) {
-  .pprax-card-icon--multi svg { width: 26px; height: 26px; }
-}
-
-.pprax-card-front-content,
-.pprax-card-back-content {
-  position: relative;
-  z-index: 2;
-  padding: var(--space-5);
-}
-
-.pprax-card-front-content {
-  padding-top: 0;
-  margin-top: 132px;
-}
-
-@media (max-width: 860px) {
-  .pprax-card-front-content { margin-top: 104px; }
+  width: 14px;
+  height: 14px;
 }
 
 .pprax-card-area {
-  font-size: 0.6rem;
+  font-size: 0.68rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--steel);
+  color: var(--text-muted);
   margin: 0 0 2px 0;
-}
-
-.pprax-card-front-content .pprax-card-area {
-  color: var(--navy);
-  opacity: 0.6;
 }
 
 .pprax-card-name {
   font-family: var(--font-body);
-  font-size: 0.85rem;
+  font-size: 1.05rem;
   font-weight: 700;
-  color: #fff;
+  color: var(--navy);
   line-height: 1.25;
-  min-height: 2.5em;
-  margin: 0 0 var(--space-3) 0;
+  margin: 0;
 }
 
-.pprax-card-front-content .pprax-card-name {
+.pprax-compare-body {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+}
+
+.pprax-compare-col {
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+}
+
+.pprax-compare-col--before {
+  background: var(--bg-fog);
+}
+
+.pprax-compare-col--after {
+  background: linear-gradient(135deg, #EBF2FA 0%, #E4EBF5 100%);
+  border: 1px solid rgba(110, 149, 209, 0.25);
+}
+
+.pprax-compare-col p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0;
   color: var(--navy);
+}
+
+.pprax-compare-col--before p {
+  opacity: 0.72;
+}
+
+.pprax-compare-col--after p {
+  font-weight: 600;
 }
 
 .pprax-row-label {
-  display: block;
-  font-size: 0.6rem;
+  display: inline-block;
+  font-size: 0.62rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  margin-bottom: 5px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin-bottom: 8px;
 }
 
 .pprax-row-label--before {
-  display: inline-block;
-  color: #fff;
-  background: var(--navy);
-  padding: 3px 10px;
-  border-radius: 999px;
-  margin-bottom: 8px;
+  color: var(--text-muted);
+  background: #fff;
 }
 
 .pprax-row-label--after {
-  display: inline-block;
-  color: var(--navy);
-  background: #EBF2FA;
-  padding: 3px 10px;
-  border-radius: 999px;
-  margin-bottom: 8px;
+  color: #fff;
+  background: var(--navy);
 }
 
-.pprax-front-text {
-  font-size: 0.82rem;
-  line-height: 1.6;
-  margin: 0;
-  color: var(--navy);
-  opacity: 0.75;
+.pprax-compare-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 32px;
+  height: 32px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: var(--navy);
+  color: #fff;
+  transform: rotate(90deg);
 }
 
-.pprax-back-text {
-  font-size: 0.82rem;
-  line-height: 1.6;
-  margin: 0;
-  color: rgba(255, 255, 255, 0.78);
+.pprax-compare-arrow svg {
+  width: 16px;
+  height: 16px;
 }
 
-@media (max-width: 860px) {
-  .pprax-card { height: 280px; }
-}
-@media (max-width: 500px) {
-  .pprax-card { height: 260px; }
+@media (min-width: 700px) {
+  .pprax-compare-body {
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: var(--space-5);
+  }
+
+  .pprax-compare-arrow {
+    transform: rotate(0deg);
+  }
 }
 
 /* More-Footer */
@@ -614,13 +503,24 @@ html.has-touch .pprax-card:hover:not(.is-flipped) .pprax-card-inner {
 .ansatz-split {
   display: grid;
   grid-template-columns: 1fr;
+  grid-template-areas:
+    "heading"
+    "gear"
+    "text";
   gap: var(--space-10);
   align-items: center;
 }
 
+.ansatz-split-heading { grid-area: heading; }
+.ansatz-split-gear    { grid-area: gear; }
+.ansatz-split-text    { grid-area: text; }
+
 @media (min-width: 900px) {
   .ansatz-split {
     grid-template-columns: 1.5fr 1fr;
+    grid-template-areas:
+      "gear heading"
+      "gear text";
     gap: var(--space-14);
   }
 }
@@ -742,7 +642,8 @@ html.has-touch .pprax-card:hover:not(.is-flipped) .pprax-card-inner {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  color: var(--text-muted);
+  color: var(--steel);
+  opacity: 0.85;
   margin: 0;
 }
 
@@ -750,14 +651,14 @@ html.has-touch .pprax-card:hover:not(.is-flipped) .pprax-card-inner {
   font-family: var(--font-display);
   font-size: clamp(1.9rem, 3.5vw, 3rem);
   font-weight: 900;
-  color: var(--navy);
+  color: #fff;
   line-height: 1.1;
   margin: 0;
 }
 
 .ansatz-split-sub {
   font-size: clamp(0.95rem, 1.5vw, 1.1rem);
-  color: var(--navy);
+  color: #fff;
   opacity: 0.75;
   line-height: 1.65;
   margin: 0;
@@ -794,7 +695,7 @@ html.has-touch .pprax-card:hover:not(.is-flipped) .pprax-card-inner {
   font-size: clamp(0.9rem, 1.4vw, 1.05rem);
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: var(--navy);
+  color: var(--steel);
   margin: var(--space-2) 0 0 0;
 }
 
@@ -861,7 +762,7 @@ html.has-touch .pprax-card:hover:not(.is-flipped) .pprax-card-inner {
 .ansatz-split-closing {
   font-family: var(--font-display);
   font-size: clamp(0.9rem, 1.4vw, 1.05rem);
-  color: var(--navy);
+  color: rgba(255, 255, 255, 0.82);
   font-weight: 600;
   font-style: italic;
   line-height: 1.55;
@@ -1007,7 +908,12 @@ html.has-touch .pprax-card:hover:not(.is-flipped) .pprax-card-inner {
   left: 0;
   width: 30px;
   height: 30px;
-  offset-rotate: auto 90deg;
+  /* Fixe statt "auto" Rotation: die Catmull-Rom-Kurve durch ungleich
+     verteilte Punkte erzeugt lokal stark schwankende Tangenten (v.a. bei
+     ungleichen Textlängen zwischen den Schritten) — mit auto-rotate kippte
+     die Rakete dadurch sichtbar schräg/seitlich. Fixe Rotation = immer
+     aufrecht, unabhängig von der Kurvenform. */
+  offset-rotate: 0deg;
   animation: ptl-growth-fly 4.5s cubic-bezier(0.3, 0, 0.7, 1) infinite;
   filter: drop-shadow(0 0 6px rgba(110, 193, 255, 0.65));
 }
