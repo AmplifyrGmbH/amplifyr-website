@@ -253,6 +253,13 @@
   width: 100%;
   height: 100vh;
   height: 100svh;
+  /* dvh statt svh: svh ist ein FIXER Wert (Browser-Toolbar maximal
+     ausgeklappt angenommen) — klappt die Adressleiste beim Scrollen später
+     ein, wächst der tatsächlich sichtbare Bereich, ein svh-Element bleibt
+     aber bei seiner kleineren Höhe stehen und lässt am unteren Rand eine
+     Lücke, durch die die nächste Section (Titel) schon hereinragt. dvh
+     verfolgt die aktuelle Viewport-Höhe live und schliesst diese Lücke. */
+  height: 100dvh;
   position: relative;
 }
 
