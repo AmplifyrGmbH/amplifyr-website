@@ -109,6 +109,23 @@
       setTimeout(function () {
         if (!sloganDone) onVideoEnd();
       }, 9000);
+
+      /* Manche Mobile-Browser (v.a. iOS Safari) starten das Video trotz
+         autoplay+muted+playsinline nicht zuverlässig, wenn play() nicht
+         auch explizit per JS aufgerufen wird — die Attribute allein reichen
+         nicht immer. Ohne das bleibt das Video auf dem ersten Frame stehen
+         und zeigt einen nativen Play-Button, bis der 9s-Fallback greift.
+         video.muted zusätzlich per Property setzen, da manche Browser das
+         Attribut allein vor dem play()-Aufruf nicht zuverlässig auswerten. */
+      video.muted = true;
+      var playAttempt = video.play();
+      if (playAttempt && typeof playAttempt.catch === 'function') {
+        playAttempt.catch(function () {
+          // Autoplay wurde vom Browser blockiert — nicht auf die vollen 9s
+          // warten, sondern sofort mit der restlichen Hero-Sequenz weitermachen.
+          if (!sloganDone) onVideoEnd();
+        });
+      }
     }
 
     function onHeroScroll() {
@@ -295,20 +312,39 @@
       if (reduced) {
         ptlSteps.forEach(function (el) { el.classList.add('is-visible'); });
       } else {
+        /* Jeder Schritt bekommt is-visible zeitversetzt (Scroll-Reveal).
+           Die Kurve NICHT nach einer geschätzten Verzögerung neu berechnen
+           (bei langsamem Scrollen können mehrere Schritte gleichzeitig
+           mitten in ihrem eigenen Transform-Übergang stecken — eine Neu-
+           berechnung mit gemischt fertigen/noch bewegten Punkten verzieht
+           die Kurve sichtbar). Stattdessen exakt auf transitionend jedes
+           einzelnen Schritts reagieren, dann steht die Position garantiert
+           fest, egal wie die Reveals zeitlich verschachtelt sind. */
         ptlSteps.forEach(function (el, i) {
+          el.addEventListener('transitionend', function (e) {
+            if (e.propertyName === 'transform') layoutTimelineArrows();
+          });
           var io = new IntersectionObserver(function (entries) {
             if (!entries[0].isIntersecting) return;
             io.disconnect();
             setTimeout(function () {
               el.classList.add('is-visible');
-              setTimeout(layoutTimelineArrows, 600);
             }, i * 120);
           }, { threshold: 0.3 });
           io.observe(el);
         });
       }
     }
-    layoutTimelineArrows();
+
+    /* Erste Berechnung erst NACH Font-Ladung (sonst werden Absatz-Umbrüche
+       noch mit der Fallback-Schrift gemessen → Punkte sitzen leicht anders
+       als nach dem finalen Layout, macht die Kurve beim Laden krumm). */
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(layoutTimelineArrows);
+    } else {
+      layoutTimelineArrows();
+    }
+    window.addEventListener('load', layoutTimelineArrows);
     window.addEventListener('resize', debounce(layoutTimelineArrows, 150));
   }
 

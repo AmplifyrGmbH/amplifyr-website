@@ -1249,14 +1249,17 @@ footer {
   pointer-events: none;
   border-radius: 40% 40% 50% 50% / 10% 10% 90% 90%;
 }
-/* Äussere Flamme */
+/* Äussere Flamme — dunkler Drop-Shadow-Halo sorgt für Kontrast auch über
+   hellen Seitenbereichen (der helle Flammen-Farbverlauf allein war auf
+   weissem Hintergrund fast unsichtbar, da er für den dunklen Navy-Header
+   ausgelegt war). */
 .ba-teaser-rocket-wrap::before {
   width: 22px;
   height: 90px;
   top: 97px;
   left: 62px;
   background: linear-gradient(to bottom, #B0C4DE 0%, #B0C4DE 30%, rgba(176,196,222,0.55) 58%, rgba(176,196,222,0.15) 80%, transparent 100%);
-  filter: blur(4px);
+  filter: blur(4px) drop-shadow(0 0 3px rgba(26, 39, 68, 0.75)) drop-shadow(0 0 7px rgba(26, 39, 68, 0.5));
   transform: rotate(45deg);
   animation: ba-flame-a 0.5s ease-in-out infinite alternate;
 }
@@ -1267,7 +1270,7 @@ footer {
   top: 100px;
   left: 67px;
   background: linear-gradient(to bottom, #ffffff 0%, #eaf2fb 18%, #B0C4DE 50%, rgba(176,196,222,0.3) 78%, transparent 100%);
-  filter: blur(1.5px);
+  filter: blur(1.5px) drop-shadow(0 0 3px rgba(26, 39, 68, 0.7)) drop-shadow(0 0 6px rgba(26, 39, 68, 0.45));
   transform: rotate(45deg);
   animation: ba-flame-b 0.65s ease-in-out infinite alternate;
 }
