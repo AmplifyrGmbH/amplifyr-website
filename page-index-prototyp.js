@@ -384,48 +384,60 @@
       return { x: r.left + r.width / 2 - tRect.left, y: r.top + r.height / 2 - tRect.top };
     });
 
-    /* Die 5 Punkte selbst sind bereits exponentiell gestaffelt (siehe CSS-
-       Treppe). Eine glatte Catmull-Rom-Spline durch alle Punkte (in Bezier
-       umgerechnet) verbindet sie organisch — jeder Punkt wird exakt
-       getroffen, und weil die zugrunde liegende Staffelung schon
-       exponentiell ist, wirkt auch die Kurve klar exponentiell statt wie
-       künstlich gebogene Einzelsegmente.
+    /* Mobile (<900px, senkrechte Punktanordnung): nur eine gerade Linie
+       Punkt-zu-Punkt, keine Kurve — die Rakete soll hier schlicht senkrecht
+       von oben nach unten fliegen, ohne jede seitliche Krümmung. */
+    var isDesktopTimeline = window.innerWidth >= 900;
+    var d;
+    if (!isDesktopTimeline) {
+      d = 'M ' + centers[0].x.toFixed(1) + ' ' + centers[0].y.toFixed(1);
+      for (var j = 1; j < centers.length; j++) {
+        d += ' L ' + centers[j].x.toFixed(1) + ' ' + centers[j].y.toFixed(1);
+      }
+    } else {
+      /* Desktop (Treppenform): Die 5 Punkte sind bereits exponentiell
+         gestaffelt (siehe CSS-Treppe). Eine glatte Catmull-Rom-Spline durch
+         alle Punkte (in Bezier umgerechnet) verbindet sie organisch — jeder
+         Punkt wird exakt getroffen, und weil die zugrunde liegende
+         Staffelung schon exponentiell ist, wirkt auch die Kurve klar
+         exponentiell statt wie künstlich gebogene Einzelsegmente.
 
-       Zentripetale statt uniforme Parametrisierung (alpha=0.5, Tangenten
-       nach Punktabstand statt pauschal /6 skaliert): bei stark ungleichen
-       Abständen zwischen den Punkten (z. B. durch unterschiedlich lange
-       Schritt-Texte) überschwingt eine uniforme Catmull-Rom-Kurve seitlich —
-       die Rakete kippte dadurch (via offset-rotate: auto) sichtbar schräg.
-       Zentripetal verhindert dieses Überschwingen, ohne dass die Rakete
-       ihre Ausrichtung zur Flugrichtung verliert. */
-    var ALPHA = 0.5;
-    var EPS = 1e-3;
-    function dist(a, b) { return Math.hypot(b.x - a.x, b.y - a.y); }
+         Zentripetale statt uniforme Parametrisierung (alpha=0.5, Tangenten
+         nach Punktabstand statt pauschal /6 skaliert): bei stark ungleichen
+         Abständen zwischen den Punkten (z. B. durch unterschiedlich lange
+         Schritt-Texte) überschwingt eine uniforme Catmull-Rom-Kurve seitlich —
+         die Rakete kippte dadurch (via offset-rotate: auto) sichtbar schräg.
+         Zentripetal verhindert dieses Überschwingen, ohne dass die Rakete
+         ihre Ausrichtung zur Flugrichtung verliert. */
+      var ALPHA = 0.5;
+      var EPS = 1e-3;
+      var dist = function (a, b) { return Math.hypot(b.x - a.x, b.y - a.y); };
 
-    var d = 'M ' + centers[0].x.toFixed(1) + ' ' + centers[0].y.toFixed(1);
-    for (var i = 0; i < centers.length - 1; i++) {
-      var p0 = centers[i === 0 ? 0 : i - 1];
-      var p1 = centers[i];
-      var p2 = centers[i + 1];
-      var p3 = centers[i + 2 < centers.length ? i + 2 : centers.length - 1];
+      d = 'M ' + centers[0].x.toFixed(1) + ' ' + centers[0].y.toFixed(1);
+      for (var i = 0; i < centers.length - 1; i++) {
+        var p0 = centers[i === 0 ? 0 : i - 1];
+        var p1 = centers[i];
+        var p2 = centers[i + 1];
+        var p3 = centers[i + 2 < centers.length ? i + 2 : centers.length - 1];
 
-      var t0 = 0;
-      var t1 = t0 + Math.pow(dist(p0, p1), ALPHA) + EPS;
-      var t2 = t1 + Math.pow(dist(p1, p2), ALPHA) + EPS;
-      var t3 = t2 + Math.pow(dist(p2, p3), ALPHA) + EPS;
+        var t0 = 0;
+        var t1 = t0 + Math.pow(dist(p0, p1), ALPHA) + EPS;
+        var t2 = t1 + Math.pow(dist(p1, p2), ALPHA) + EPS;
+        var t3 = t2 + Math.pow(dist(p2, p3), ALPHA) + EPS;
 
-      var m1x = (t2 - t1) * ((p1.x - p0.x) / (t1 - t0) - (p2.x - p0.x) / (t2 - t0) + (p2.x - p1.x) / (t2 - t1));
-      var m1y = (t2 - t1) * ((p1.y - p0.y) / (t1 - t0) - (p2.y - p0.y) / (t2 - t0) + (p2.y - p1.y) / (t2 - t1));
-      var m2x = (t2 - t1) * ((p2.x - p1.x) / (t2 - t1) - (p3.x - p1.x) / (t3 - t1) + (p3.x - p2.x) / (t3 - t2));
-      var m2y = (t2 - t1) * ((p2.y - p1.y) / (t2 - t1) - (p3.y - p1.y) / (t3 - t1) + (p3.y - p2.y) / (t3 - t2));
+        var m1x = (t2 - t1) * ((p1.x - p0.x) / (t1 - t0) - (p2.x - p0.x) / (t2 - t0) + (p2.x - p1.x) / (t2 - t1));
+        var m1y = (t2 - t1) * ((p1.y - p0.y) / (t1 - t0) - (p2.y - p0.y) / (t2 - t0) + (p2.y - p1.y) / (t2 - t1));
+        var m2x = (t2 - t1) * ((p2.x - p1.x) / (t2 - t1) - (p3.x - p1.x) / (t3 - t1) + (p3.x - p2.x) / (t3 - t2));
+        var m2y = (t2 - t1) * ((p2.y - p1.y) / (t2 - t1) - (p3.y - p1.y) / (t3 - t1) + (p3.y - p2.y) / (t3 - t2));
 
-      var cp1x = p1.x + m1x / 3;
-      var cp1y = p1.y + m1y / 3;
-      var cp2x = p2.x - m2x / 3;
-      var cp2y = p2.y - m2y / 3;
-      d += ' C ' + cp1x.toFixed(1) + ' ' + cp1y.toFixed(1) + ', ' +
-                   cp2x.toFixed(1) + ' ' + cp2y.toFixed(1) + ', ' +
-                   p2.x.toFixed(1) + ' ' + p2.y.toFixed(1);
+        var cp1x = p1.x + m1x / 3;
+        var cp1y = p1.y + m1y / 3;
+        var cp2x = p2.x - m2x / 3;
+        var cp2y = p2.y - m2y / 3;
+        d += ' C ' + cp1x.toFixed(1) + ' ' + cp1y.toFixed(1) + ', ' +
+                     cp2x.toFixed(1) + ' ' + cp2y.toFixed(1) + ', ' +
+                     p2.x.toFixed(1) + ' ' + p2.y.toFixed(1);
+      }
     }
 
     svg.setAttribute('viewBox', '0 0 ' + tRect.width + ' ' + tRect.height);
