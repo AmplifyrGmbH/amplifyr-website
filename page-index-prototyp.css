@@ -241,13 +241,26 @@
 }
 
 /* Eisberg-Grafik — 1:1 eingebettetes Original-Artifact. Die Grafik selbst
-   ist responsiv (skaliert auf Container-Grösse), darum feste Viewport-Höhe
-   statt JS-gemessener Content-Höhe — passt sich so jedem Gerät an. */
+   ist responsiv (skaliert auf Container-Grösse). Mobile-Layout (<768px,
+   Grafik-eigener Breakpoint) ist auf Hochformat ausgelegt → 100vh passt.
+   Ab 768px wechselt die Grafik intern auf ein festes 16:9-Layout, das sich
+   bei "height:100vh" auf breiten/kurzen Viewports (z. B. externe Monitore
+   mit wenig Browser-Höhe) proportional verkleinert und dann links/rechts
+   Leerraum lässt statt die volle Breite zu nutzen. Ein exaktes 16:9
+   aspect-ratio statt fixer vh-Höhe garantiert dagegen auf jedem Bildschirm
+   volle Breite ohne Leerraum. */
 .icb-frame-wrap {
   width: 100%;
   height: 100vh;
   height: 100svh;
   position: relative;
+}
+
+@media (min-width: 768px) {
+  .icb-frame-wrap {
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
 }
 
 .icb-frame {
@@ -1191,7 +1204,7 @@ html.has-touch .pprax-card:hover:not(.is-flipped) .pprax-card-inner {
   left: 0;
   width: 30px;
   height: 30px;
-  offset-rotate: auto -90deg;
+  offset-rotate: auto 90deg;
   animation: ptl-growth-fly 4.5s cubic-bezier(0.3, 0, 0.7, 1) infinite;
   filter: drop-shadow(0 0 6px rgba(110, 193, 255, 0.65));
 }

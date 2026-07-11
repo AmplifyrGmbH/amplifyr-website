@@ -1324,7 +1324,7 @@ footer {
   60%      { transform: rotate(-7deg); }
   80%      { transform: rotate(7deg); }
 }
-#ba-chat-teaser.ba-teaser-wiggle .ba-teaser-rocket {
+#ba-chat-teaser.ba-teaser-wiggle .ba-teaser-rocket-wrap {
   animation: ba-teaser-wiggle 0.6s ease;
 }
 
@@ -1388,7 +1388,7 @@ footer {
   .ba-teaser-rocket-wrap::before,
   .ba-teaser-rocket-wrap::after,
   #ba-chat-teaser.ba-teaser-visible .ba-teaser-pill,
-  #ba-chat-teaser.ba-teaser-wiggle .ba-teaser-rocket {
+  #ba-chat-teaser.ba-teaser-wiggle .ba-teaser-rocket-wrap {
     animation: none;
   }
 }
