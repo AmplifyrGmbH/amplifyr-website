@@ -634,14 +634,12 @@ html.has-touch .pprax-card:hover:not(.is-flipped) .pprax-card-inner {
   justify-content: center;
   width: 52px;
   height: 52px;
-  border-radius: var(--radius-lg);
-  background: linear-gradient(135deg, #F4F8FD 0%, #DCE9F6 100%);
 }
 
 .pprax-cmp-icon svg {
-  width: 26px;
-  height: 26px;
-  color: var(--navy);
+  width: 28px;
+  height: 28px;
+  color: var(--steel);
 }
 
 .pprax-cmp-icon--multi {
