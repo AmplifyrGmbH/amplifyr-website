@@ -916,3 +916,28 @@
   update();
 }());
 
+/* ============================================================
+   ECHTE VIEWPORT-HÖHE ALS CSS-VARIABLE (--vh)
+   Für die Eisberg-Grafik (100% Bildschirmhöhe auf Mobile). Selbst
+   100dvh weicht auf manchen Mobile-Browsern noch von der wirklich
+   sichtbaren Höhe ab (z. B. Zusammenspiel Adressleiste + Safe-Area) —
+   window.visualViewport.height ist die verlässlichste verfügbare Quelle,
+   da sie exakt den aktuell sichtbaren Bereich abbildet (nicht das
+   Layout-Viewport). Läuft bei jeder Grössenänderung neu, damit Ein-/
+   Ausklappen der Adressleiste sofort nachgezogen wird. */
+(function () {
+  'use strict';
+
+  function setVh() {
+    var h = (window.visualViewport && window.visualViewport.height) || window.innerHeight;
+    document.documentElement.style.setProperty('--vh', (h * 0.01) + 'px');
+  }
+
+  setVh();
+  window.addEventListener('resize', setVh);
+  window.addEventListener('orientationchange', setVh);
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', setVh);
+  }
+}());
+

@@ -260,6 +260,12 @@
      Lücke, durch die die nächste Section (Titel) schon hereinragt. dvh
      verfolgt die aktuelle Viewport-Höhe live und schliesst diese Lücke. */
   height: 100dvh;
+  /* --vh wird per JS aus window.visualViewport.height gesetzt (main.js) —
+     auf manchen Mobile-Browsern weicht selbst dvh noch von der wirklich
+     sichtbaren Höhe ab (Safe-Area/Adressleiste/Tab-Bar-Kombination). Das
+     JS-gemessene --vh ist die zuverlässigste Quelle und gewinnt darum als
+     letzte Deklaration, mit 100dvh als Fallback bevor JS greift. */
+  height: calc(var(--vh, 1dvh) * 100);
   position: relative;
 }
 
