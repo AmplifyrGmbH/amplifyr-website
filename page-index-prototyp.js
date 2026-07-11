@@ -114,28 +114,34 @@
          autoplay+muted+playsinline nicht zuverlässig, wenn play() nicht
          auch explizit per JS aufgerufen wird — die Attribute allein reichen
          nicht immer. Ohne das bleibt das Video auf dem ersten Frame stehen
-         und zeigt einen nativen Play-Button, bis der 9s-Fallback greift.
-         video.muted zusätzlich per Property setzen, da manche Browser das
-         Attribut allein vor dem play()-Aufruf nicht zuverlässig auswerten.
+         (iOS zeigt dann sogar einen nativen Play-Button, obwohl gar kein
+         controls-Attribut gesetzt ist) bis der Fallback greift.
 
-         Ein abgelehntes play() heisst aber NICHT zwingend "Autoplay ist
-         blockiert" — auf Mobile schlägt der Aufruf oft nur fehl, weil er zu
-         früh kommt (Video-Metadaten noch nicht geladen), obwohl die
-         autoplay-Attribute kurz danach ganz normal greifen. Direkt bei der
-         ersten Ablehnung zur Statik zu springen liess die Animation auf
-         Mobile komplett übersprungen wirken. Daher: erst erneut versuchen
-         (auf canplay warten), und nur falls das Video nach einer kurzen
-         Gnadenfrist wirklich noch nicht läuft, zur Endsequenz springen. */
+         video.muted/defaultMuted zusätzlich per Property setzen, da manche
+         Browser das HTML-Attribut allein vor dem play()-Aufruf nicht
+         zuverlässig auswerten. Ein abgelehntes play() heisst nicht zwingend
+         "Autoplay ist blockiert" — der Aufruf schlägt oft nur fehl, weil er
+         zu früh kommt (Video noch nicht weit genug geladen), obwohl es
+         Sekundenbruchteile später ganz normal klappen würde. iOS braucht
+         dafür tendenziell mehr Anläufe als Android/Chrome, darum an
+         mehreren Lade-Events UND mit ein paar festen Zeitpunkten erneut
+         versuchen, statt nur einmal auf canplay zu warten. */
       video.muted = true;
+      video.defaultMuted = true;
       function attemptPlay() {
         var p = video.play();
         if (p && typeof p.catch === 'function') p.catch(function () {});
       }
       attemptPlay();
-      video.addEventListener('canplay', attemptPlay, { once: true });
+      ['loadedmetadata', 'loadeddata', 'canplay', 'canplaythrough'].forEach(function (ev) {
+        video.addEventListener(ev, attemptPlay, { once: true });
+      });
+      [100, 300, 800, 1500].forEach(function (delay) {
+        setTimeout(function () { if (video.paused) attemptPlay(); }, delay);
+      });
       setTimeout(function () {
         if (!sloganDone && video.paused) onVideoEnd();
-      }, 2500);
+      }, 3500);
     }
 
     function onHeroScroll() {
