@@ -116,16 +116,26 @@
          nicht immer. Ohne das bleibt das Video auf dem ersten Frame stehen
          und zeigt einen nativen Play-Button, bis der 9s-Fallback greift.
          video.muted zusätzlich per Property setzen, da manche Browser das
-         Attribut allein vor dem play()-Aufruf nicht zuverlässig auswerten. */
+         Attribut allein vor dem play()-Aufruf nicht zuverlässig auswerten.
+
+         Ein abgelehntes play() heisst aber NICHT zwingend "Autoplay ist
+         blockiert" — auf Mobile schlägt der Aufruf oft nur fehl, weil er zu
+         früh kommt (Video-Metadaten noch nicht geladen), obwohl die
+         autoplay-Attribute kurz danach ganz normal greifen. Direkt bei der
+         ersten Ablehnung zur Statik zu springen liess die Animation auf
+         Mobile komplett übersprungen wirken. Daher: erst erneut versuchen
+         (auf canplay warten), und nur falls das Video nach einer kurzen
+         Gnadenfrist wirklich noch nicht läuft, zur Endsequenz springen. */
       video.muted = true;
-      var playAttempt = video.play();
-      if (playAttempt && typeof playAttempt.catch === 'function') {
-        playAttempt.catch(function () {
-          // Autoplay wurde vom Browser blockiert — nicht auf die vollen 9s
-          // warten, sondern sofort mit der restlichen Hero-Sequenz weitermachen.
-          if (!sloganDone) onVideoEnd();
-        });
+      function attemptPlay() {
+        var p = video.play();
+        if (p && typeof p.catch === 'function') p.catch(function () {});
       }
+      attemptPlay();
+      video.addEventListener('canplay', attemptPlay, { once: true });
+      setTimeout(function () {
+        if (!sloganDone && video.paused) onVideoEnd();
+      }, 2500);
     }
 
     function onHeroScroll() {
