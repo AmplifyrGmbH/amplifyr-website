@@ -264,8 +264,14 @@
      auf manchen Mobile-Browsern weicht selbst dvh noch von der wirklich
      sichtbaren Höhe ab (Safe-Area/Adressleiste/Tab-Bar-Kombination). Das
      JS-gemessene --vh ist die zuverlässigste Quelle und gewinnt darum als
-     letzte Deklaration, mit 100dvh als Fallback bevor JS greift. */
-  height: calc(var(--vh, 1dvh) * 100);
+     letzte Deklaration, mit 100dvh als Fallback bevor JS greift.
+     +2px Puffer: einzelne Geräte rundeten trotzdem noch einen Sub-Pixel-
+     Rest ab, der als hauchdünner weisser Streifen der nächsten Section
+     am unteren Rand durchschien. 2px zusätzliche Höhe (unmerklich beim
+     Scrollen) schliesst diesen Rest zuverlässig, die Section überlappt
+     minimal statt exakt bündig zu enden. */
+  height: calc(var(--vh, 1dvh) * 100 + 2px);
+  margin-bottom: -2px;
   position: relative;
 }
 
