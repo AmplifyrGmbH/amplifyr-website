@@ -9,6 +9,14 @@
 
   var EASE = 'cubic-bezier(0.22, 1, 0.36, 1)';
 
+  /* Markiert echte Touch-Nutzung auf <html>, damit CSS Hover-Effekte
+     (Flip-Karten, Desktop-Breite) auf Touch-Geräten zuverlässig deaktivieren
+     kann — robuster als eine reine hover/pointer-Media-Query. */
+  document.addEventListener('touchstart', function onFirstTouch() {
+    document.documentElement.classList.add('has-touch');
+    document.removeEventListener('touchstart', onFirstTouch);
+  }, { passive: true });
+
   /* ============================================================
      HERO ANIMATION (1:1 von page-index.js)
   ============================================================ */
@@ -238,8 +246,32 @@
       }
     }
 
-    /* Praxis-Vergleichskarten — Fade-in beim Scrollen ──────────── */
-    var praxisCards = Array.prototype.slice.call(document.querySelectorAll('.pprax-compare-card'));
+    /* Praxis — Mobile Vergleichskarten: Fade-in beim Scrollen ──── */
+    var compareCards = Array.prototype.slice.call(document.querySelectorAll('.pprax-compare-card'));
+    if (compareCards.length) {
+      if (reduced) {
+        compareCards.forEach(function (el) { el.classList.add('is-visible'); });
+      } else {
+        var cmpTriggered = false;
+        var cmpIO = new IntersectionObserver(function (entries) {
+          if (cmpTriggered || !entries[0].isIntersecting) return;
+          cmpTriggered = true;
+          cmpIO.disconnect();
+          compareCards.forEach(function (el, i) {
+            setTimeout(function () { el.classList.add('is-visible'); }, i * 100);
+          });
+        }, { threshold: 0.1 });
+        cmpIO.observe(compareCards[0].closest('.pprax-compare-list') || compareCards[0]);
+      }
+    }
+
+    /* Praxis — Desktop Flip-Karten ──────────────────────────────── */
+    var praxisCards = Array.prototype.slice.call(document.querySelectorAll('.pprax-card'));
+    praxisCards.forEach(function (card) {
+      card.addEventListener('click', function () {
+        card.classList.toggle('is-flipped');
+      });
+    });
     if (praxisCards.length) {
       if (reduced) {
         praxisCards.forEach(function (el) { el.classList.add('is-visible'); });
@@ -250,10 +282,10 @@
           praxTriggered = true;
           praxIO.disconnect();
           praxisCards.forEach(function (el, i) {
-            setTimeout(function () { el.classList.add('is-visible'); }, i * 100);
+            setTimeout(function () { el.classList.add('is-visible'); }, i * 140);
           });
         }, { threshold: 0.1 });
-        praxIO.observe(praxisCards[0].closest('.pprax-compare-list') || praxisCards[0]);
+        praxIO.observe(praxisCards[0].closest('.pprax-grid') || praxisCards[0]);
       }
     }
 
@@ -311,17 +343,40 @@
        umgerechnet) verbindet sie organisch — jeder Punkt wird exakt
        getroffen, und weil die zugrunde liegende Staffelung schon
        exponentiell ist, wirkt auch die Kurve klar exponentiell statt wie
-       künstlich gebogene Einzelsegmente. */
+       künstlich gebogene Einzelsegmente.
+
+       Zentripetale statt uniforme Parametrisierung (alpha=0.5, Tangenten
+       nach Punktabstand statt pauschal /6 skaliert): bei stark ungleichen
+       Abständen zwischen den Punkten (z. B. durch unterschiedlich lange
+       Schritt-Texte) überschwingt eine uniforme Catmull-Rom-Kurve seitlich —
+       die Rakete kippte dadurch (via offset-rotate: auto) sichtbar schräg.
+       Zentripetal verhindert dieses Überschwingen, ohne dass die Rakete
+       ihre Ausrichtung zur Flugrichtung verliert. */
+    var ALPHA = 0.5;
+    var EPS = 1e-3;
+    function dist(a, b) { return Math.hypot(b.x - a.x, b.y - a.y); }
+
     var d = 'M ' + centers[0].x.toFixed(1) + ' ' + centers[0].y.toFixed(1);
     for (var i = 0; i < centers.length - 1; i++) {
       var p0 = centers[i === 0 ? 0 : i - 1];
       var p1 = centers[i];
       var p2 = centers[i + 1];
       var p3 = centers[i + 2 < centers.length ? i + 2 : centers.length - 1];
-      var cp1x = p1.x + (p2.x - p0.x) / 6;
-      var cp1y = p1.y + (p2.y - p0.y) / 6;
-      var cp2x = p2.x - (p3.x - p1.x) / 6;
-      var cp2y = p2.y - (p3.y - p1.y) / 6;
+
+      var t0 = 0;
+      var t1 = t0 + Math.pow(dist(p0, p1), ALPHA) + EPS;
+      var t2 = t1 + Math.pow(dist(p1, p2), ALPHA) + EPS;
+      var t3 = t2 + Math.pow(dist(p2, p3), ALPHA) + EPS;
+
+      var m1x = (t2 - t1) * ((p1.x - p0.x) / (t1 - t0) - (p2.x - p0.x) / (t2 - t0) + (p2.x - p1.x) / (t2 - t1));
+      var m1y = (t2 - t1) * ((p1.y - p0.y) / (t1 - t0) - (p2.y - p0.y) / (t2 - t0) + (p2.y - p1.y) / (t2 - t1));
+      var m2x = (t2 - t1) * ((p2.x - p1.x) / (t2 - t1) - (p3.x - p1.x) / (t3 - t1) + (p3.x - p2.x) / (t3 - t2));
+      var m2y = (t2 - t1) * ((p2.y - p1.y) / (t2 - t1) - (p3.y - p1.y) / (t3 - t1) + (p3.y - p2.y) / (t3 - t2));
+
+      var cp1x = p1.x + m1x / 3;
+      var cp1y = p1.y + m1y / 3;
+      var cp2x = p2.x - m2x / 3;
+      var cp2y = p2.y - m2y / 3;
       d += ' C ' + cp1x.toFixed(1) + ' ' + cp1y.toFixed(1) + ', ' +
                    cp2x.toFixed(1) + ' ' + cp2y.toFixed(1) + ', ' +
                    p2.x.toFixed(1) + ' ' + p2.y.toFixed(1);
@@ -466,7 +521,7 @@
   defs.appendChild(radGrad('kg2-fKI', '50%','32%','80%', [['0%','#5e7aae'],['100%','#243a6a']]));
 
   var mkr = el('marker', { id:'kg2-arw', markerWidth:'9', markerHeight:'9', refX:'6.5', refY:'4.5', orient:'auto' });
-  mkr.appendChild(el('path', { d:'M1,1 L7,4.5 L1,8', fill:'none', stroke:'#42598c', 'stroke-width':'1.5', 'stroke-linecap':'round', 'stroke-linejoin':'round' }));
+  mkr.appendChild(el('path', { d:'M1,1 L7,4.5 L1,8', fill:'none', stroke:'#7d9bd1', 'stroke-width':'1.5', 'stroke-linecap':'round', 'stroke-linejoin':'round' }));
   defs.appendChild(mkr);
   defs.appendChild(mkFlt('kg2-bs', '7', '-45%','-45%','190%','190%'));
   defs.appendChild(mkFlt('kg2-bh', '9', '-60%','-60%','220%','220%'));
@@ -499,7 +554,7 @@
   var connLines = satDefs.map(function (s, i) {
     var n   = satDefs[(i + 1) % satDefs.length];
     var len = Math.hypot(+n.cx - +s.cx, +n.cy - +s.cy).toFixed(1);
-    var line = el('line', { x1:s.cx, y1:s.cy, x2:n.cx, y2:n.cy, stroke:'#4a6396', 'stroke-width':'1.4' });
+    var line = el('line', { x1:s.cx, y1:s.cy, x2:n.cx, y2:n.cy, stroke:'#7d9bd1', 'stroke-width':'1.4' });
     line.style.opacity           = '0';
     line.style.strokeDasharray   = len;
     line.style.strokeDashoffset  = len;
@@ -508,7 +563,7 @@
   });
   connLines.forEach(function (l) { svg.appendChild(l); });
 
-  var syspulse = el('circle', { cx:cx0, cy:cy0, r:'230', fill:'none', stroke:'#4a6396', 'stroke-width':'2.4' });
+  var syspulse = el('circle', { cx:cx0, cy:cy0, r:'230', fill:'none', stroke:'#7d9bd1', 'stroke-width':'2.4' });
   syspulse.style.cssText = 'transform-box:fill-box;transform-origin:center;opacity:0;';
   svg.appendChild(syspulse);
 
@@ -539,12 +594,12 @@
     g.setAttribute('class', 'kg2-callout');
     g.style.opacity    = '0';
     g.style.transition = 'opacity 450ms ease';
-    var leader = el('line', { x1:ex, y1:ey, x2:ax, y2:ay, stroke:'#42598c', 'stroke-width':'1.3', opacity:'0.8', 'marker-end':'url(#kg2-arw)' });
+    var leader = el('line', { x1:ex, y1:ey, x2:ax, y2:ay, stroke:'#7d9bd1', 'stroke-width':'1.3', opacity:'0.8', 'marker-end':'url(#kg2-arw)' });
     leader.style.strokeDasharray  = len;
     leader.style.strokeDashoffset = len;
     leader.style.transition = 'stroke-dashoffset 650ms ease 80ms';
     g.appendChild(leader);
-    var bulletEl = el('text', { x:tx, y:+ty.toFixed(2), 'text-anchor':anchor, 'font-family':F, 'font-size':'32', 'font-weight':'700', fill:'#0f1f45' });
+    var bulletEl = el('text', { x:tx, y:+ty.toFixed(2), 'text-anchor':anchor, 'font-family':F, 'font-size':'32', 'font-weight':'700', fill:'#dbe7f9' });
     bulletEl.textContent = AREAS[i].b[0];
     bulletEl.style.opacity    = '0';
     bulletEl.style.transition = 'opacity 380ms ease';

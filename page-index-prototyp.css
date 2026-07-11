@@ -307,6 +307,283 @@
   margin: 0;
 }
 
+.pprax-cards-wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.pprax-flip-hint {
+  flex: none;
+  width: 32px;
+  color: var(--steel);
+  opacity: 0.85;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pprax-flip-hint-left 3.2s ease-in-out infinite;
+}
+
+.pprax-flip-hint svg {
+  width: 30px;
+  height: 30px;
+}
+
+.pprax-flip-hint--right {
+  animation: pprax-flip-hint-right 3.2s ease-in-out infinite;
+}
+
+@keyframes pprax-flip-hint-left {
+  0%, 55%, 100% { opacity: 0.55; transform: rotate(0deg) scale(1); }
+  25%            { opacity: 1;    transform: rotate(-26deg) scale(1.15); }
+}
+
+@keyframes pprax-flip-hint-right {
+  0%, 55%, 100% { opacity: 0.55; transform: rotate(0deg) scale(1); }
+  25%            { opacity: 1;    transform: rotate(26deg) scale(1.15); }
+}
+
+@media (max-width: 860px) {
+  .pprax-flip-hint { display: none; }
+}
+
+.pprax-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  flex: 1;
+  perspective: 1400px;
+}
+
+@media (min-width: 600px) {
+  .pprax-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1080px) {
+  .pprax-grid { grid-template-columns: repeat(5, 1fr); }
+}
+
+.pprax-card {
+  height: 300px;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.pprax-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 500ms cubic-bezier(0.22, 1, 0.36, 1),
+              transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.pprax-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: var(--radius-lg);
+}
+
+.pprax-card.is-flipped .pprax-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Hover-Flip für Mausnutzer. Auf Touch-Geräten würde :hover nach einem Tap
+   oft "hängen" bleiben und mit dem Klick-Toggle kollidieren — daher setzt
+   JS beim ersten echten touchstart die Klasse .has-touch auf <html>, die
+   diese Regel dann deaktiviert (zuverlässiger als eine reine
+   hover/pointer-Media-Query, die auf manchen Geräten falsch greift). */
+.pprax-card:hover .pprax-card-inner {
+  transform: rotateY(180deg);
+}
+
+html.has-touch .pprax-card:hover:not(.is-flipped) .pprax-card-inner {
+  transform: none;
+}
+
+@keyframes pprax-tease {
+  0%   { transform: rotateY(0deg); }
+  35%  { transform: rotateY(22deg); }
+  65%  { transform: rotateY(6deg); }
+  100% { transform: rotateY(0deg); }
+}
+
+.pprax-card.is-teasing .pprax-card-inner {
+  animation: pprax-tease 0.75s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.pprax-card-front,
+.pprax-card-back {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ── Vorderseite: Firmen-Hellblau (wie IT-Lösungen) ── */
+.pprax-card-front {
+  background: linear-gradient(135deg, #F4F8FD 0%, #DCE9F6 100%);
+  border: 1px solid var(--border-light);
+  padding: 0;
+  justify-content: flex-start;
+}
+
+/* ── Rückseite: Navy ── */
+.pprax-card-back {
+  background: var(--navy);
+  border: 1px solid var(--steel);
+  padding: 0;
+  transform: rotateY(180deg);
+  justify-content: center;
+}
+
+.pprax-card-back::after {
+  content: '';
+  position: absolute;
+  bottom: -36px; right: -36px;
+  width: 110px; height: 110px;
+  border-radius: 50%;
+  background: rgba(176,196,222,0.09);
+  pointer-events: none;
+}
+
+.pprax-card-icon {
+  position: absolute;
+  top: 10%;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.pprax-card-icon svg {
+  width: 84px;
+  height: 84px;
+  color: var(--navy);
+  opacity: 0.82;
+}
+
+@media (max-width: 860px) {
+  .pprax-card-icon svg { width: 66px; height: 66px; }
+}
+
+.pprax-card-icon--multi {
+  gap: var(--space-3);
+}
+
+.pprax-card-icon--multi svg {
+  width: 32px;
+  height: 32px;
+}
+
+@media (max-width: 860px) {
+  .pprax-card-icon--multi svg { width: 26px; height: 26px; }
+}
+
+.pprax-card-front-content,
+.pprax-card-back-content {
+  position: relative;
+  z-index: 2;
+  padding: var(--space-5);
+}
+
+.pprax-card-front-content {
+  padding-top: 0;
+  margin-top: 132px;
+}
+
+@media (max-width: 860px) {
+  .pprax-card-front-content { margin-top: 104px; }
+}
+
+.pprax-card-area {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--steel);
+  margin: 0 0 2px 0;
+}
+
+.pprax-card-front-content .pprax-card-area {
+  color: var(--navy);
+  opacity: 0.6;
+}
+
+.pprax-card-name {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.25;
+  min-height: 2.5em;
+  margin: 0 0 var(--space-3) 0;
+}
+
+.pprax-card-front-content .pprax-card-name {
+  color: var(--navy);
+}
+
+.pprax-row-label {
+  display: block;
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 5px;
+}
+
+.pprax-row-label--before {
+  display: inline-block;
+  color: #fff;
+  background: var(--navy);
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+
+.pprax-row-label--after {
+  display: inline-block;
+  color: var(--navy);
+  background: #EBF2FA;
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+
+.pprax-front-text {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  margin: 0;
+  color: var(--navy);
+  opacity: 0.75;
+}
+
+.pprax-back-text {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+@media (max-width: 860px) {
+  .pprax-card { height: 280px; }
+}
+@media (max-width: 500px) {
+  .pprax-card { height: 260px; }
+}
+
+/* Mobile: moderne Ohne-KI/Mit-KI-Gegenüberstellung.
+   Ab 761px (Tablet/Desktop): die ursprünglichen Flip-Karten (weiter unten). */
 .pprax-compare-list {
   display: flex;
   flex-direction: column;
@@ -337,7 +614,7 @@
   margin-bottom: var(--space-4);
 }
 
-.pprax-card-icon {
+.pprax-cmp-icon {
   flex: none;
   display: flex;
   align-items: center;
@@ -348,22 +625,22 @@
   background: linear-gradient(135deg, #F4F8FD 0%, #DCE9F6 100%);
 }
 
-.pprax-card-icon svg {
+.pprax-cmp-icon svg {
   width: 26px;
   height: 26px;
   color: var(--navy);
 }
 
-.pprax-card-icon--multi {
+.pprax-cmp-icon--multi {
   gap: 3px;
 }
 
-.pprax-card-icon--multi svg {
+.pprax-cmp-icon--multi svg {
   width: 14px;
   height: 14px;
 }
 
-.pprax-card-area {
+.pprax-cmp-area {
   font-size: 0.68rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -372,7 +649,7 @@
   margin: 0 0 2px 0;
 }
 
-.pprax-card-name {
+.pprax-cmp-name {
   font-family: var(--font-body);
   font-size: 1.05rem;
   font-weight: 700;
@@ -416,7 +693,7 @@
   font-weight: 600;
 }
 
-.pprax-row-label {
+.pprax-cmp-label {
   display: inline-block;
   font-size: 0.62rem;
   font-weight: 700;
@@ -427,12 +704,12 @@
   margin-bottom: 8px;
 }
 
-.pprax-row-label--before {
+.pprax-cmp-label--before {
   color: var(--text-muted);
   background: #fff;
 }
 
-.pprax-row-label--after {
+.pprax-cmp-label--after {
   color: #fff;
   background: var(--navy);
 }
@@ -456,7 +733,13 @@
   height: 16px;
 }
 
-@media (min-width: 700px) {
+@media (max-width: 760px) {
+  .pprax-cards-wrap { display: none; }
+}
+
+@media (min-width: 761px) {
+  .pprax-compare-list { display: none; }
+
   .pprax-compare-body {
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
@@ -908,12 +1191,7 @@
   left: 0;
   width: 30px;
   height: 30px;
-  /* Fixe statt "auto" Rotation: die Catmull-Rom-Kurve durch ungleich
-     verteilte Punkte erzeugt lokal stark schwankende Tangenten (v.a. bei
-     ungleichen Textlängen zwischen den Schritten) — mit auto-rotate kippte
-     die Rakete dadurch sichtbar schräg/seitlich. Fixe Rotation = immer
-     aufrecht, unabhängig von der Kurvenform. */
-  offset-rotate: 0deg;
+  offset-rotate: auto -90deg;
   animation: ptl-growth-fly 4.5s cubic-bezier(0.3, 0, 0.7, 1) infinite;
   filter: drop-shadow(0 0 6px rgba(110, 193, 255, 0.65));
 }
