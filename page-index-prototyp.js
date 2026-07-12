@@ -324,9 +324,11 @@
 
     /* Zeitstrahl-Schritte ───────────────────────────────────── */
     var ptlSteps = Array.prototype.slice.call(document.querySelectorAll('.ptl-step'));
+    var ptlTimelineEl = document.querySelector('.ptl-timeline');
     if (ptlSteps.length) {
       if (reduced) {
         ptlSteps.forEach(function (el) { el.classList.add('is-visible'); });
+        if (ptlTimelineEl) ptlTimelineEl.classList.add('ptl-ready');
       } else {
         /* Jeder Schritt bekommt is-visible zeitversetzt (Scroll-Reveal).
            Die Kurve NICHT nach einer geschätzten Verzögerung neu berechnen
@@ -335,10 +337,25 @@
            berechnung mit gemischt fertigen/noch bewegten Punkten verzieht
            die Kurve sichtbar). Stattdessen exakt auf transitionend jedes
            einzelnen Schritts reagieren, dann steht die Position garantiert
-           fest, egal wie die Reveals zeitlich verschachtelt sind. */
+           fest, egal wie die Reveals zeitlich verschachtelt sind.
+
+           Die Rakete darf zudem erst fliegen, wenn ALLE Schritte sichtbar
+           sind (.ptl-ready, siehe CSS) — sonst verband die Kurve teils
+           noch nicht eingeblendete (verschobene) Punkte mit bereits
+           fertigen und wirkte dadurch schräg, obwohl jeder einzelne Punkt
+           für sich am Ende korrekt sitzt. */
+        var revealedCount = 0;
         ptlSteps.forEach(function (el, i) {
           el.addEventListener('transitionend', function (e) {
-            if (e.propertyName === 'transform') layoutTimelineArrows();
+            if (e.propertyName !== 'transform') return;
+            layoutTimelineArrows();
+            if (el.classList.contains('is-visible')) {
+              revealedCount++;
+              if (revealedCount === ptlSteps.length && ptlTimelineEl) {
+                layoutTimelineArrows();
+                ptlTimelineEl.classList.add('ptl-ready');
+              }
+            }
           });
           var io = new IntersectionObserver(function (entries) {
             if (!entries[0].isIntersecting) return;

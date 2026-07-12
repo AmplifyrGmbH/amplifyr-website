@@ -1223,8 +1223,19 @@ html.has-touch .pprax-card:hover:not(.is-flipped) .pprax-card-inner {
   width: 30px;
   height: 30px;
   offset-rotate: auto 90deg;
-  animation: ptl-growth-fly 4.5s cubic-bezier(0.3, 0, 0.7, 1) infinite;
+  /* Fliegt erst los, wenn ALLE Zeitstrahl-Punkte eingeblendet sind (siehe
+     .ptl-ready in page-index-prototyp.js) — vorher war die Rakete schon
+     unterwegs, während weiter unten liegende Punkte noch nicht an ihrer
+     finalen Position waren (translateX(-20px) vor dem Reveal). Die Kurve
+     verband dann eine Mischung aus fertigen und noch verschobenen Punkten
+     und wirkte dadurch schräg/krumm. */
+  animation: none;
+  opacity: 0;
   filter: drop-shadow(0 0 6px rgba(110, 193, 255, 0.65));
+}
+
+.ptl-timeline.ptl-ready .ptl-growth-rocket {
+  animation: ptl-growth-fly 4.5s cubic-bezier(0.3, 0, 0.7, 1) infinite;
 }
 
 .ptl-growth-rocket svg {
