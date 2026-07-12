@@ -240,22 +240,53 @@
   padding-block: 0;
 }
 
-/* Eisberg-Grafik — skaliert sich selbst rein über ihre Breite (festes
-   Seitenverhältnis), darum genügt volle Breite + passendes aspect-ratio.
-   Breakpoint (768px) bezieht sich auf die IFRAME-Breite, nicht die
-   Gerätebreite — die Section ist deshalb bewusst ausserhalb jedes
-   max-width-Containers platziert (echte 100vw-Section). */
-.eisberg-frame {
-  display: block;
+/* Eisberg-Grafik — 1:1 eingebettetes Original-Artifact. Die Grafik selbst
+   ist responsiv (skaliert auf Container-Grösse). Mobile-Layout (<768px,
+   Grafik-eigener Breakpoint) ist auf Hochformat ausgelegt → 100vh passt.
+   Ab 768px wechselt die Grafik intern auf ein festes 16:9-Layout, das sich
+   bei "height:100vh" auf breiten/kurzen Viewports (z. B. externe Monitore
+   mit wenig Browser-Höhe) proportional verkleinert und dann links/rechts
+   Leerraum lässt statt die volle Breite zu nutzen. Ein exaktes 16:9
+   aspect-ratio statt fixer vh-Höhe garantiert dagegen auf jedem Bildschirm
+   volle Breite ohne Leerraum. */
+.icb-frame-wrap {
   width: 100%;
-  border: 0;
-  aspect-ratio: 1920 / 1080;
+  height: 100vh;
+  height: 100svh;
+  /* dvh statt svh: svh ist ein FIXER Wert (Browser-Toolbar maximal
+     ausgeklappt angenommen) — klappt die Adressleiste beim Scrollen später
+     ein, wächst der tatsächlich sichtbare Bereich, ein svh-Element bleibt
+     aber bei seiner kleineren Höhe stehen und lässt am unteren Rand eine
+     Lücke, durch die die nächste Section (Titel) schon hereinragt. dvh
+     verfolgt die aktuelle Viewport-Höhe live und schliesst diese Lücke. */
+  height: 100dvh;
+  /* --vh wird per JS aus window.visualViewport.height gesetzt (main.js) —
+     auf manchen Mobile-Browsern weicht selbst dvh noch von der wirklich
+     sichtbaren Höhe ab (Safe-Area/Adressleiste/Tab-Bar-Kombination). Das
+     JS-gemessene --vh ist die zuverlässigste Quelle und gewinnt darum als
+     letzte Deklaration, mit 100dvh als Fallback bevor JS greift.
+     +2px Puffer: einzelne Geräte rundeten trotzdem noch einen Sub-Pixel-
+     Rest ab, der als hauchdünner weisser Streifen der nächsten Section
+     am unteren Rand durchschien. 2px zusätzliche Höhe (unmerklich beim
+     Scrollen) schliesst diesen Rest zuverlässig, die Section überlappt
+     minimal statt exakt bündig zu enden. */
+  height: calc(var(--vh, 1dvh) * 100 + 2px);
+  margin-bottom: -2px;
+  position: relative;
 }
 
-@media (max-width: 768px) {
-  .eisberg-frame {
-    aspect-ratio: 520 / 880;
+@media (min-width: 768px) {
+  .icb-frame-wrap {
+    height: auto;
+    aspect-ratio: 16 / 9;
   }
+}
+
+.icb-frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
 
 /* ============================================================
