@@ -1205,22 +1205,13 @@ html.has-touch .pprax-card:hover:not(.is-flipped) .pprax-card-inner {
   overflow: visible;
 }
 
+/* Nur die Rakete fliegen lassen, ohne die gestrichelte Verbindungslinie —
+   auf manchen Geräten wirkte die Linie trotz korrekter Punkt-Daten krumm
+   (Rendering-Unterschiede zwischen Geräten/Browsern). Die Rakete selbst
+   folgt weiterhin exakt derselben Bahn, nur der sichtbare Strich ist
+   ausgeblendet — auf Mobile (gerade Linie) wie Desktop (Treppenform). */
 .ptl-growth-path {
-  stroke-width: 2.5;
-  stroke-linecap: round;
-  stroke-dasharray: 5 7;
-  animation: ptl-growth-dash 4.5s linear infinite;
-}
-
-/* Auf Mobile nur die Rakete fliegen lassen, ohne die gestrichelte Linie —
-   auf manchen Geräten wirkte die Linie trotz gerader Punkt-zu-Punkt-Daten
-   noch krumm (Rendering-Unterschiede zwischen Geräten/Browsern). Die
-   Rakete selbst folgt weiterhin exakt der geraden Bahn, nur der sichtbare
-   Strich wird ausgeblendet. */
-@media (max-width: 899px) {
-  .ptl-growth-path {
-    display: none;
-  }
+  display: none;
 }
 
 @keyframes ptl-growth-dash {
