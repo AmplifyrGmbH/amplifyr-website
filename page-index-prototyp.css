@@ -1212,6 +1212,17 @@ html.has-touch .pprax-card:hover:not(.is-flipped) .pprax-card-inner {
   animation: ptl-growth-dash 4.5s linear infinite;
 }
 
+/* Auf Mobile nur die Rakete fliegen lassen, ohne die gestrichelte Linie —
+   auf manchen Geräten wirkte die Linie trotz gerader Punkt-zu-Punkt-Daten
+   noch krumm (Rendering-Unterschiede zwischen Geräten/Browsern). Die
+   Rakete selbst folgt weiterhin exakt der geraden Bahn, nur der sichtbare
+   Strich wird ausgeblendet. */
+@media (max-width: 899px) {
+  .ptl-growth-path {
+    display: none;
+  }
+}
+
 @keyframes ptl-growth-dash {
   to { stroke-dashoffset: -48; }
 }
