@@ -41,6 +41,17 @@
     var sloganDone   = false;
     var philStarted  = false;
 
+    /* Video bleibt per CSS unsichtbar (opacity:0), bis 'playing' tatsächlich
+       feuert — das Event kommt nur, wenn Frames wirklich gerendert werden,
+       im Gegensatz zu play()/!paused, die auch bei einem hängenden Video
+       (z. B. blockiertes Autoplay) fälschlich "läuft" suggerieren können.
+       So kann iOS' nativer Play-Button niemals auf einem sichtbaren Video
+       auftauchen: entweder es läuft und ist sichtbar, oder es bleibt
+       unsichtbar und der Navy-Hintergrund der Section zeigt sich. */
+    video.addEventListener('playing', function () {
+      video.classList.add('is-playing');
+    });
+
     function showSlogan() {
       var DUR = 700;
       setTimeout(function () {

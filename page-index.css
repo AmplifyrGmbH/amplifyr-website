@@ -26,6 +26,18 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  /* Erst sichtbar, sobald die Wiedergabe wirklich läuft (siehe .is-playing
+     in page-index-prototyp.js). Manche Browser (v.a. iOS Safari) zeigen auf
+     einem sichtbaren, aber noch nicht gestarteten Video einen grossen
+     nativen Play-Button — selbst ohne controls-Attribut. Solange das Video
+     unsichtbar bleibt, kann dieser Button nie auftauchen; der Navy-
+     Hintergrund der Section dient so lange als Fallback. */
+  opacity: 0;
+  transition: opacity 400ms ease;
+}
+
+.hero-video.is-playing {
+  opacity: 1;
 }
 
 /* Slogan */
