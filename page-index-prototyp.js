@@ -1029,7 +1029,22 @@
     if (!el || el.dataset.approxAdded === '1') return;
     var text = el.textContent.trim();
     if (/^\d+\s*%$/.test(text)) {
-      el.textContent = '~' + text;
+      /* "~" wird absolut positioniert links neben die Zahl gesetzt statt
+         einfach als Text davorzuschreiben — reiner Text hätte den Block
+         breiter gemacht und auf schmalen Layouts (z. B. Mobile, wo diese
+         Zahl direkt neben einer Karte steht) in die Nachbar-Karte hinein
+         überlappt. So bleibt die Layoutbreite der Zahl unverändert. */
+      if (getComputedStyle(el).position === 'static') {
+        el.style.position = 'relative';
+      }
+      var tilde = document.createElement('span');
+      tilde.textContent = '~';
+      tilde.setAttribute('aria-hidden', 'true');
+      tilde.style.position = 'absolute';
+      tilde.style.right = '100%';
+      tilde.style.top = '0';
+      tilde.style.paddingRight = '0.12em';
+      el.insertBefore(tilde, el.firstChild);
       el.dataset.approxAdded = '1';
     }
   }
