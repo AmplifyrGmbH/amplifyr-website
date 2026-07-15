@@ -301,10 +301,6 @@
   color: var(--text-muted);
   line-height: 1.5;
   margin: 0;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
 }
 
 /* Person-Vorschau */
@@ -392,7 +388,7 @@
 /* Profil-Layout */
 .ua-acc-profile {
   display: grid;
-  grid-template-columns: 160px 1fr;
+  grid-template-columns: 220px 1fr;
   gap: var(--space-8);
   padding: var(--space-8);
 }
@@ -528,7 +524,8 @@
   }
 
   .ua-acc-photo {
-    max-width: 160px;
+    max-width: 220px;
+    margin: 0 auto;
   }
 }
 

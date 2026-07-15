@@ -348,8 +348,8 @@
 .pprax-flip-hint {
   flex: none;
   width: 32px;
-  color: var(--steel);
-  opacity: 0.85;
+  color: var(--navy);
+  opacity: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -366,12 +366,12 @@
 }
 
 @keyframes pprax-flip-hint-left {
-  0%, 55%, 100% { opacity: 0.55; transform: rotate(0deg) scale(1); }
+  0%, 55%, 100% { opacity: 0.75; transform: rotate(0deg) scale(1); }
   25%            { opacity: 1;    transform: rotate(-26deg) scale(1.15); }
 }
 
 @keyframes pprax-flip-hint-right {
-  0%, 55%, 100% { opacity: 0.55; transform: rotate(0deg) scale(1); }
+  0%, 55%, 100% { opacity: 0.75; transform: rotate(0deg) scale(1); }
   25%            { opacity: 1;    transform: rotate(26deg) scale(1.15); }
 }
 
@@ -420,19 +420,6 @@
 
 .pprax-card.is-flipped .pprax-card-inner {
   transform: rotateY(180deg);
-}
-
-/* Hover-Flip für Mausnutzer. Auf Touch-Geräten würde :hover nach einem Tap
-   oft "hängen" bleiben und mit dem Klick-Toggle kollidieren — daher setzt
-   JS beim ersten echten touchstart die Klasse .has-touch auf <html>, die
-   diese Regel dann deaktiviert (zuverlässiger als eine reine
-   hover/pointer-Media-Query, die auf manchen Geräten falsch greift). */
-.pprax-card:hover .pprax-card-inner {
-  transform: rotateY(180deg);
-}
-
-html.has-touch .pprax-card:hover:not(.is-flipped) .pprax-card-inner {
-  transform: none;
 }
 
 @keyframes pprax-tease {
