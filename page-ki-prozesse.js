@@ -73,3 +73,44 @@
   }
 
 }());
+
+/* ============================================================
+   PROZESSGRAFIK — Iframe-Höhe an tatsächlichen Inhalt anpassen
+   Das Artifact ist ein normal fliessender Inhaltsblock (keine feste
+   Aspect-Ratio wie das Eisberg-Diagramm) und reflowt bei schmalen
+   Breakpoints komplett anders (vertikal statt horizontal) — ein Iframe
+   hat von sich aus keine intrinsische Höhe, darum wird sie hier live per
+   JS aus dem tatsächlichen Inhalt (gleiche Origin, daher zugänglich)
+   ausgelesen und übernommen. ResizeObserver auf den Iframe-Body selbst
+   deckt sowohl Breakpoint-Wechsel als auch spätes Nachladen (Fonts,
+   Bilder) automatisch ab. */
+(function () {
+  'use strict';
+
+  var iframe = document.getElementById('prozgraf-frame');
+  if (!iframe) return;
+
+  function resize() {
+    try {
+      var doc = iframe.contentDocument;
+      if (doc && doc.body) {
+        iframe.style.height = doc.body.scrollHeight + 'px';
+      }
+    } catch (e) {}
+  }
+
+  iframe.addEventListener('load', function () {
+    resize();
+    setTimeout(resize, 300);
+    setTimeout(resize, 1200);
+    try {
+      var doc = iframe.contentDocument;
+      if (doc && doc.body && window.ResizeObserver) {
+        new ResizeObserver(resize).observe(doc.body);
+      }
+    } catch (e) {}
+  });
+
+  window.addEventListener('resize', resize);
+  window.addEventListener('orientationchange', resize);
+}());

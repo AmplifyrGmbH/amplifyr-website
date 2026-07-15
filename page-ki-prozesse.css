@@ -29,6 +29,28 @@
 }
 
 /* ============================================================
+   PROZESSGRAFIK — 1:1 eingebettetes Artifact (kein Vollbild-Visual wie
+   das Eisberg-Diagramm, sondern ein normal fliessender Inhaltsblock mit
+   eigener Höhe je nach Breakpoint). Die Höhe wird per JS
+   (page-ki-prozesse.js) live an die tatsächliche Inhaltshöhe des Iframes
+   angepasst — ein Iframe hat sonst keine intrinsische Höhe und würde
+   entweder abschneiden oder unnötig leeren Raum lassen.
+============================================================ */
+#proto-prozessgrafik {
+  padding-block: 0;
+}
+
+.prozgraf-frame-wrap {
+  width: 100%;
+}
+
+.prozgraf-frame {
+  display: block;
+  width: 100%;
+  border: 0;
+}
+
+/* ============================================================
    HERO OVERLAY (page-specific)
 ============================================================ */
 .fsh-overlay {
