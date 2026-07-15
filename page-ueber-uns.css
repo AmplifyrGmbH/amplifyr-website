@@ -309,24 +309,30 @@
   align-items: center;
   gap: var(--space-3);
   flex-shrink: 0;
-  width: 210px;
+  width: 280px;
+}
+
+/* Ausgeblendet, sobald aufgeklappt — Foto und Name erscheinen dann bereits
+   gross im aufgeklappten Profil darunter. */
+.ua-acc-item.is-open .ua-acc-person {
+  display: none;
 }
 
 .ua-acc-avatar {
-  width: 72px;
-  height: 72px;
+  width: 144px;
+  height: 144px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid var(--accent-light);
+  border: 4px solid var(--accent-light);
   flex-shrink: 0;
 }
 
 .ua-acc-avatar-placeholder {
-  width: 72px;
-  height: 72px;
+  width: 144px;
+  height: 144px;
   border-radius: 50%;
   background: #2b4274;
-  border: 3px solid rgba(176,196,222,0.3);
+  border: 4px solid rgba(176,196,222,0.3);
   display: flex;
   align-items: center;
   justify-content: center;

@@ -181,22 +181,21 @@
   font-size: 0.68rem;
 }
 
-.pbs-ki-sources a,
 .pbs-ki-link {
   font-family: var(--font-body);
   font-size: 0.7rem;
-  color: rgba(176, 196, 222, 0.75);
+  font-weight: 700;
+  color: #ffffff;
   text-decoration: underline;
   text-underline-offset: 3px;
-  text-decoration-color: rgba(176, 196, 222, 0.35);
+  text-decoration-color: rgba(255, 255, 255, 0.6);
   letter-spacing: 0.03em;
-  transition: color 200ms ease, text-decoration-color 200ms ease;
+  transition: text-decoration-color 200ms ease;
   pointer-events: auto;
 }
 
 .pbs-ki-link:hover {
-  color: #fff;
-  text-decoration-color: rgba(255, 255, 255, 0.5);
+  text-decoration-color: #ffffff;
 }
 
 .pbs-ki-fomo {
