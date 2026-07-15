@@ -37,7 +37,6 @@
     if (!hero || !video) return;
 
     var reduced      = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var heroScrolled = false;
     var sloganDone   = false;
     var philStarted  = false;
 
@@ -154,32 +153,6 @@
         if (!sloganDone && video.paused) onVideoEnd();
       }, 8000);
     }
-
-    /* Mindest-Scrolldistanz, bevor ein "scroll" als echtes Wegscrollen der
-       Nutzerin gilt. Ohne das reicht auf iOS Safari schon das winzige,
-       unfreiwillige Scroll-Event, das beim Einklappen der Adressleiste kurz
-       nach dem Laden ausgelöst wird, um die Animation sofort abzubrechen —
-       das Video verschwindet dann augenblicklich, statt durchzulaufen. */
-    var SCROLL_AWAY_THRESHOLD = 60;
-
-    function onHeroScroll() {
-      if (heroScrolled) return;
-      if ((window.scrollY || window.pageYOffset || 0) < SCROLL_AWAY_THRESHOLD) return;
-      heroScrolled = true;
-      window.removeEventListener('scroll', onHeroScroll);
-      window.removeEventListener('wheel',  onHeroScroll);
-      if (!sloganDone) {
-        showEndState();
-      } else {
-        if (fadeout) {
-          fadeout.style.transition = 'opacity 500ms ' + EASE;
-          fadeout.style.opacity    = '1';
-        }
-      }
-    }
-
-    window.addEventListener('scroll', onHeroScroll, { passive: true });
-    window.addEventListener('wheel',  onHeroScroll, { passive: true });
   }
 
   /* ============================================================
