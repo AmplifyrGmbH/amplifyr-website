@@ -64,7 +64,7 @@
 
   <!-- CSS -->
   <link rel="stylesheet" href="/style.css?v=5">
-  <link rel="stylesheet" href="/page-index.css?v=5">
+  <link rel="stylesheet" href="/page-index.css?v=6">
   <link rel="stylesheet" href="/page-index-prototyp.css?v=18">
 </head>
 <body>
@@ -198,10 +198,29 @@
 
       <h1 class="sr-only">Amplifyr – KI-Lösungen &amp; digitale Transformation für Schweizer KMU</h1>
 
-      <video class="hero-video" autoplay muted playsinline webkit-playsinline preload="auto">
+      <video class="hero-video" id="hero-video" autoplay muted playsinline webkit-playsinline preload="auto">
         <source src="/Animationen/Animation_Heropage.mp4"  type="video/mp4">
         <source src="/Animationen/Animation_Heropage.webm" type="video/webm">
       </video>
+      <div class="hero-video-cover" id="hero-video-cover" aria-hidden="true"></div>
+      <script>
+        /* Inline und synchron direkt nach dem <video>-Tag, damit der
+           allererste play()-Versuch so früh wie möglich passiert — nicht
+           erst, nachdem das komplette page-index-prototyp.js-Bundle
+           geladen und geparst wurde. Auf iOS zählt hier jede Millisekunde:
+           je später der erste Versuch, desto eher verpasst er das enge
+           Zeitfenster, in dem Safari einen Autoplay-Aufruf noch als
+           "im Zuge des Seitenaufrufs" akzeptiert. */
+        (function () {
+          var v = document.getElementById('hero-video');
+          if (!v) return;
+          v.muted = true;
+          v.defaultMuted = true;
+          v.playsInline = true;
+          var p = v.play();
+          if (p && typeof p.catch === 'function') p.catch(function () {});
+        }());
+      </script>
 
       <div class="hero-slogan" id="hero-slogan" aria-hidden="true">
         <div class="hero-phase-1" id="hero-phase-1">
@@ -927,7 +946,7 @@
   </div>
 
   <script src="/main.js"></script>
-  <script src="/page-index-prototyp.js?v=21"></script>
+  <script src="/page-index-prototyp.js?v=22"></script>
   <script src="/ki-check-prototyp.js"></script>
 
   <!-- Floating Side Widgets -->

@@ -33,6 +33,7 @@
     var pbsKiFomoWrap  = document.getElementById('pbs-ki-fomo-wrap');
     var fadeout        = document.getElementById('hero-fadeout');
     var ctaBanner      = document.getElementById('hero-cta-banner');
+    var videoCover     = document.getElementById('hero-video-cover');
 
     if (!hero || !video) return;
 
@@ -40,15 +41,17 @@
     var sloganDone   = false;
     var philStarted  = false;
 
-    /* Video bleibt per CSS unsichtbar (opacity:0), bis 'playing' tatsächlich
-       feuert — das Event kommt nur, wenn Frames wirklich gerendert werden,
-       im Gegensatz zu play()/!paused, die auch bei einem hängenden Video
-       (z. B. blockiertes Autoplay) fälschlich "läuft" suggerieren können.
-       So kann iOS' nativer Play-Button niemals auf einem sichtbaren Video
-       auftauchen: entweder es läuft und ist sichtbar, oder es bleibt
-       unsichtbar und der Navy-Hintergrund der Section zeigt sich. */
+    /* Das Video selbst bleibt die ganze Zeit über sichtbar (opacity:1,
+       siehe page-index.css) — ein separates, opakes Cover-Element
+       (.hero-video-cover) verdeckt es stattdessen, bis 'playing'
+       tatsächlich feuert (das Event kommt nur, wenn Frames wirklich
+       gerendert werden, im Gegensatz zu play()/!paused, die auch bei
+       einem hängenden Video fälschlich "läuft" suggerieren können). So
+       kann der native iOS-Play-Button nie auftauchen: entweder das Video
+       läuft und das Cover ist weg, oder das Cover verdeckt weiterhin
+       einen eventuell pausierten/gestoppten Frame. */
     video.addEventListener('playing', function () {
-      video.classList.add('is-playing');
+      if (videoCover) videoCover.classList.add('is-hidden');
     });
 
     function showSlogan() {
