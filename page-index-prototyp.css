@@ -211,7 +211,7 @@
 .pbs-ki-sub {
   font-family: Georgia, serif;
   font-style: italic;
-  font-size: clamp(1.02rem, 1.6vw, 1.15rem);
+  font-size: clamp(1.3rem, 2vw, 1.5rem);
   color: rgba(176, 196, 222, 0.55);
   margin: 0;
 }
@@ -227,7 +227,7 @@
    grösser als eine "typische" Fussnote — soll gut lesbar sein, nicht nur
    dezent im Hintergrund stehen. */
 #pbs-l4 {
-  font-size: clamp(1.3rem, 2vw, 1.5rem);
+  font-size: clamp(1.02rem, 1.6vw, 1.15rem);
   font-style: italic;
   color: rgba(176, 196, 222, 0.5);
   margin-top: var(--space-2);
@@ -244,12 +244,16 @@
 /* Eisberg-Grafik — 1:1 eingebettetes Original-Artifact. Die Grafik selbst
    ist responsiv (skaliert auf Container-Grösse). Mobile-Layout (<768px,
    Grafik-eigener Breakpoint) ist auf Hochformat ausgelegt → 100vh passt.
-   Ab 768px wechselt die Grafik intern auf ein festes 16:9-Layout, das sich
-   bei "height:100vh" auf breiten/kurzen Viewports (z. B. externe Monitore
-   mit wenig Browser-Höhe) proportional verkleinert und dann links/rechts
-   Leerraum lässt statt die volle Breite zu nutzen. Ein exaktes 16:9
-   aspect-ratio statt fixer vh-Höhe garantiert dagegen auf jedem Bildschirm
-   volle Breite ohne Leerraum. */
+   Ab 768px wechselt die Grafik intern auf ein festes 16:9-Layout: per
+   Default wird die Höhe aus der Breite abgeleitet (volle Breite, kein
+   Leerraum) — das passt auf praktisch allen normalen Bildschirmen. Nur
+   auf Geräten mit ungewöhnlich viel Browser-Chrome relativ zur Breite
+   (z. B. ASUS Vivobook X1505VA) würde die Grafik dadurch unten
+   abgeschnitten. JS (page-index-prototyp.js, updateIcebergFit) misst das
+   tatsächliche Verhältnis und setzt NUR bei deutlichem Missverhältnis die
+   Klasse .icb-contain-fit, die stattdessen an der Höhe orientiert
+   einpasst (siehe unten) — dezentes Letterboxing statt Abschneiden, aber
+   nur dort, wo es wirklich nötig ist, statt auf jedem Bildschirm. */
 .icb-frame-wrap {
   width: 100%;
   height: 100vh;
@@ -276,18 +280,6 @@
   position: relative;
 }
 
-/* Ab 768px: die Grafik per "contain"-Fit einpassen statt die Höhe blind aus
-   der Breite abzuleiten. Reines "width:100% + aspect-ratio" (frühere
-   Variante) ignoriert, wie viel Höhe auf dem jeweiligen Gerät tatsächlich
-   sichtbar ist (Browser-Chrome/Taskbar variieren) — auf Geräten mit
-   "kurzem" Viewport relativ zur Breite wurde die Grafik dadurch unten
-   abgeschnitten, weil der Wrap höher berechnet wurde als tatsächlich
-   sichtbar war (z. B. ASUS Vivobook X1505VA). Mit height:100% als
-   Ausgangswert und aspect-ratio + max-width als Begrenzung wird stattdessen
-   automatisch die kleinere der beiden Grössen (Breite/Höhe) gewählt — die
-   Grafik ist so garantiert immer vollständig sichtbar, und nutzt die volle
-   Breite auf jedem Bildschirm, dessen Verhältnis das zulässt (praktisch
-   alle normalen 16:9-Screens). */
 .icb-frame {
   display: block;
   width: 100%;
@@ -297,20 +289,28 @@
 
 @media (min-width: 768px) {
   .icb-frame-wrap {
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+
+  /* Fallback für extremes Missverhältnis (per JS erkannt, siehe
+     updateIcebergFit in page-index-prototyp.js): beide Dimensionen werden
+     unabhängig über eine explizite Formel berechnet statt per
+     aspect-ratio-Auflösung durch den Browser — die Kombination
+     aspect-ratio + max-width/height + eine 100%-Dimension löst die andere
+     Dimension in manchen Browsern nicht korrekt neu auf und verzerrt dann
+     das Verhältnis (in Tests beobachtet). min()/calc() mit den
+     tatsächlichen Viewport-Massen garantiert exakt 16:9. */
+  .icb-frame-wrap.icb-contain-fit {
+    height: calc(var(--vh, 1dvh) * 100);
+    aspect-ratio: unset;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
   }
 
-  /* Beide Dimensionen werden unabhängig über eine explizite Formel
-     berechnet (nicht per aspect-ratio-Auflösung durch den Browser) — die
-     Kombination aspect-ratio + max-width + height:100% löst in manchen
-     Browsern die Höhe nicht korrekt neu auf, sobald max-width greift, und
-     verzerrt dann das Verhältnis (in Tests beobachtet: 1440x900-Viewport
-     ergab 1440x902 statt korrekt 1440x810). min()/calc() mit den
-     tatsächlichen Viewport-Massen garantiert exakt 16:9 in jedem Fall. */
-  .icb-frame {
+  .icb-frame-wrap.icb-contain-fit .icb-frame {
     width: min(100%, calc(var(--vh, 1dvh) * 100 * 16 / 9));
     height: min(calc(var(--vh, 1dvh) * 100), calc(100vw * 9 / 16));
     max-width: 100%;
