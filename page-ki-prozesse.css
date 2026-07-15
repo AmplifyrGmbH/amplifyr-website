@@ -260,42 +260,6 @@
 }
 
 /* ============================================================
-   WORKFLOW GRID
-============================================================ */
-.ki-workflow-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-5);
-  margin-top: var(--space-10);
-}
-
-@media (min-width: 600px) {
-  .ki-workflow-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .ki-workflow-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.ki-workflow-bullets {
-  list-style: disc;
-  padding-left: var(--space-5);
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  color: var(--navy);
-  opacity: 0.75;
-  font-size: 0.88rem;
-  line-height: 1.5;
-  margin-top: var(--space-4);
-  margin-bottom: 0;
-}
-
-/* ============================================================
    CTA
 ============================================================ */
 .ki-cta {

@@ -1206,8 +1206,8 @@ footer {
 ============================================================ */
 #ba-chat-teaser {
   position: fixed;
-  right: 20px;
-  bottom: 28px;
+  right: 4px;
+  bottom: 14px;
   opacity: 0;
   pointer-events: none;
   z-index: 1000;

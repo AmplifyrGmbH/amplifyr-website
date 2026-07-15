@@ -513,6 +513,33 @@
   pointer-events: none;
 }
 
+/* Kontakt-Zeile: LinkedIn, E-Mail, Telefon nebeneinander */
+.ua-acc-contact-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.ua-acc-contact {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--navy);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 8px 14px;
+  text-decoration: none;
+  transition: background var(--duration) var(--ease), border-color var(--duration) var(--ease), color var(--duration) var(--ease);
+}
+
+.ua-acc-contact:hover {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #fff;
+}
+
 @media (max-width: 640px) {
   .ua-acc-header {
     flex-wrap: wrap;
