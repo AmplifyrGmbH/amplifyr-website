@@ -39,25 +39,6 @@
     ioEntry.observe(ctaSection);
   }
 
-  /* ── Scroll-Snap ── */
-  var fcSnapBlocked = false;
-  if (ctaSection && window.IntersectionObserver) {
-    var snapObserver = new IntersectionObserver(function (entries) {
-      var entry = entries[0];
-      if (!entry.isIntersecting) return;
-      if (fcSnapBlocked) return;
-      if (ctaSection.classList.contains('fc-submitted')) return;
-      if (entry.boundingClientRect.top < 0) return;
-      fcSnapBlocked = true;
-      var hdr  = document.getElementById('site-header');
-      var hdrH = hdr ? hdr.getBoundingClientRect().height : 60;
-      var top  = window.scrollY + ctaSection.getBoundingClientRect().top - hdrH;
-      window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
-      setTimeout(function () { fcSnapBlocked = false; }, 1400);
-    }, { threshold: 0.18 });
-    snapObserver.observe(ctaSection);
-  }
-
   /* ── Thinking-Text Rotation ── */
   var THINKING_MSGS = [
     'Analysiere Engpässe …',
