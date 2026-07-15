@@ -973,47 +973,6 @@
 }());
 
 /* ============================================================
-   EISBERG — Contain-Fit nur bei extremem Missverhältnis
-   Ab 768px leitet die Grafik ihre Höhe standardmässig aus der Breite ab
-   (volle Breite, kein Leerraum) — das passt auf praktisch jedem normalen
-   Bildschirm. Nur auf Geräten mit ungewöhnlich viel Browser-Chrome relativ
-   zur Breite (z. B. ASUS Vivobook X1505VA) würde die derart abgeleitete
-   Höhe die tatsächlich sichtbare Höhe übersteigen und die Grafik unten
-   abschneiden. Statt IMMER an der Höhe zu orientieren (das würde auf den
-   meisten normalen Breitbild-Fenstern unnötig grosse Leerräume links/
-   rechts erzeugen, da reale Browser-Viewports nach Abzug von Toolbars oft
-   breiter als 16:9 sind), wird die Höhen-Orientierung nur dann aktiviert,
-   wenn die Abweichung eine spürbare Toleranzschwelle überschreitet. */
-(function () {
-  'use strict';
-
-  var TOLERANCE = 1.15;
-
-  function updateIcebergFit() {
-    var wrap = document.getElementById('icb-frame-wrap');
-    if (!wrap) return;
-    if (window.innerWidth < 768) {
-      wrap.classList.remove('icb-contain-fit');
-      return;
-    }
-    var vh = (window.visualViewport && window.visualViewport.height) || window.innerHeight;
-    var derivedHeight = window.innerWidth * 9 / 16;
-    if (derivedHeight > vh * TOLERANCE) {
-      wrap.classList.add('icb-contain-fit');
-    } else {
-      wrap.classList.remove('icb-contain-fit');
-    }
-  }
-
-  updateIcebergFit();
-  window.addEventListener('resize', updateIcebergFit);
-  window.addEventListener('orientationchange', updateIcebergFit);
-  if (window.visualViewport) {
-    window.visualViewport.addEventListener('resize', updateIcebergFit);
-  }
-}());
-
-/* ============================================================
    EISBERG — "~" vor den 10%/90%-Kennzahlen
    Die Grafik liegt im eingebetteten Artifact (eisberg-artifact-v2.html),
    das wir nicht direkt bearbeiten (stark komprimierter/generierter
