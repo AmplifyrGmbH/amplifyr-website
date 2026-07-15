@@ -119,7 +119,7 @@
       });
       setTimeout(function () {
         if (!sloganDone) onVideoEnd();
-      }, 9000);
+      }, 14000);
 
       /* Manche Mobile-Browser (v.a. iOS Safari) starten das Video trotz
          autoplay+muted+playsinline nicht zuverlässig, wenn play() nicht
@@ -147,12 +147,12 @@
       ['loadedmetadata', 'loadeddata', 'canplay', 'canplaythrough'].forEach(function (ev) {
         video.addEventListener(ev, attemptPlay, { once: true });
       });
-      [100, 300, 800, 1500].forEach(function (delay) {
+      [100, 300, 800, 1500, 2500, 4000, 6000].forEach(function (delay) {
         setTimeout(function () { if (video.paused) attemptPlay(); }, delay);
       });
       setTimeout(function () {
         if (!sloganDone && video.paused) onVideoEnd();
-      }, 3500);
+      }, 8000);
     }
 
     function onHeroScroll() {
