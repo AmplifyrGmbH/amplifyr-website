@@ -66,7 +66,7 @@
 .hero-line-1,
 .hero-line-2 {
   font-family: var(--font-display);
-  font-size: clamp(2.2rem, 5.2vw, 4.2rem);
+  font-size: clamp(2.35rem, 5.4vw, 4.35rem);
   font-weight: 900;
   letter-spacing: -0.02em;
   line-height: 1.1;
@@ -200,7 +200,7 @@
 }
 .pbs-l1 {
   font-family: Georgia, serif;
-  font-size: clamp(1.75rem, 3.2vw, 2.8rem);
+  font-size: clamp(1.9rem, 3.4vw, 3rem);
   font-weight: 900;
   color: #ffffff;
   line-height: 1.2;
@@ -215,7 +215,7 @@
 }
 .pbs-l2, .pbs-l3 {
   font-family: Georgia, serif;
-  font-size: clamp(1.35rem, 2.4vw, 2.05rem);
+  font-size: clamp(1.45rem, 2.6vw, 2.2rem);
   font-weight: 400;
   font-style: italic;
   color: #ffffff;
@@ -223,7 +223,7 @@
 }
 .pbs-l4 {
   font-family: Georgia, serif;
-  font-size: clamp(1.45rem, 2.6vw, 2.25rem);
+  font-size: clamp(1.55rem, 2.8vw, 2.4rem);
   font-style: italic;
   color: rgba(176, 196, 222, 0.6);
   line-height: 1.2;
@@ -240,13 +240,13 @@
     background-position: 88% center;
   }
   .pbs-l1 {
-    font-size: clamp(1.45rem, 5.2vw, 2.05rem);
+    font-size: clamp(1.55rem, 5.4vw, 2.15rem);
   }
   .pbs-l4 {
-    font-size: clamp(1.2rem, 4.2vw, 1.65rem);
+    font-size: clamp(1.3rem, 4.4vw, 1.75rem);
   }
   .pbs-l2, .pbs-l3 {
-    font-size: clamp(1.15rem, 4.2vw, 1.55rem);
+    font-size: clamp(1.25rem, 4.4vw, 1.65rem);
   }
 }
 

@@ -183,7 +183,7 @@
 
 .pbs-ki-link {
   font-family: var(--font-body);
-  font-size: 0.7rem;
+  font-size: 1rem;
   font-weight: 700;
   color: #ffffff;
   text-decoration: underline;
@@ -200,7 +200,7 @@
 
 .pbs-ki-fomo {
   font-family: Georgia, serif;
-  font-size: clamp(1.35rem, 2.2vw, 1.85rem);
+  font-size: clamp(1.45rem, 2.4vw, 2rem);
   font-weight: 900;
   color: #fff;
   line-height: 1.3;
@@ -211,21 +211,23 @@
 .pbs-ki-sub {
   font-family: Georgia, serif;
   font-style: italic;
-  font-size: clamp(0.92rem, 1.4vw, 1.05rem);
+  font-size: clamp(1.02rem, 1.6vw, 1.15rem);
   color: rgba(176, 196, 222, 0.55);
   margin: 0;
 }
 
 @media (max-width: 600px) {
   .pbs-ki-quote { font-size: clamp(0.82rem, 3.5vw, 1rem); }
-  .pbs-ki-fomo  { font-size: clamp(1.25rem, 5.2vw, 1.65rem); }
+  .pbs-ki-fomo  { font-size: clamp(1.35rem, 5.4vw, 1.8rem); }
 }
 
 /* McKinsey-Statistik als kleine Fussnote (page-index.css definiert .pbs-l4
    grösser für die Haupt-Tagline auf index.html — hier per ID verkleinert,
-   um die geteilte Klasse nicht anzutasten). */
+   um die geteilte Klasse nicht anzutasten). Auf expliziten Wunsch deutlich
+   grösser als eine "typische" Fussnote — soll gut lesbar sein, nicht nur
+   dezent im Hintergrund stehen. */
 #pbs-l4 {
-  font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+  font-size: clamp(1.3rem, 2vw, 1.5rem);
   font-style: italic;
   color: rgba(176, 196, 222, 0.5);
   margin-top: var(--space-2);
@@ -274,18 +276,46 @@
   position: relative;
 }
 
-@media (min-width: 768px) {
-  .icb-frame-wrap {
-    height: auto;
-    aspect-ratio: 16 / 9;
-  }
-}
-
+/* Ab 768px: die Grafik per "contain"-Fit einpassen statt die Höhe blind aus
+   der Breite abzuleiten. Reines "width:100% + aspect-ratio" (frühere
+   Variante) ignoriert, wie viel Höhe auf dem jeweiligen Gerät tatsächlich
+   sichtbar ist (Browser-Chrome/Taskbar variieren) — auf Geräten mit
+   "kurzem" Viewport relativ zur Breite wurde die Grafik dadurch unten
+   abgeschnitten, weil der Wrap höher berechnet wurde als tatsächlich
+   sichtbar war (z. B. ASUS Vivobook X1505VA). Mit height:100% als
+   Ausgangswert und aspect-ratio + max-width als Begrenzung wird stattdessen
+   automatisch die kleinere der beiden Grössen (Breite/Höhe) gewählt — die
+   Grafik ist so garantiert immer vollständig sichtbar, und nutzt die volle
+   Breite auf jedem Bildschirm, dessen Verhältnis das zulässt (praktisch
+   alle normalen 16:9-Screens). */
 .icb-frame {
   display: block;
   width: 100%;
   height: 100%;
   border: 0;
+}
+
+@media (min-width: 768px) {
+  .icb-frame-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  /* Beide Dimensionen werden unabhängig über eine explizite Formel
+     berechnet (nicht per aspect-ratio-Auflösung durch den Browser) — die
+     Kombination aspect-ratio + max-width + height:100% löst in manchen
+     Browsern die Höhe nicht korrekt neu auf, sobald max-width greift, und
+     verzerrt dann das Verhältnis (in Tests beobachtet: 1440x900-Viewport
+     ergab 1440x902 statt korrekt 1440x810). min()/calc() mit den
+     tatsächlichen Viewport-Massen garantiert exakt 16:9 in jedem Fall. */
+  .icb-frame {
+    width: min(100%, calc(var(--vh, 1dvh) * 100 * 16 / 9));
+    height: min(calc(var(--vh, 1dvh) * 100), calc(100vw * 9 / 16));
+    max-width: 100%;
+    max-height: 100%;
+  }
 }
 
 /* ============================================================
