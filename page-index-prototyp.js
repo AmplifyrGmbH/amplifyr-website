@@ -997,3 +997,54 @@
   }
 }());
 
+/* ============================================================
+   EISBERG — "~" vor den 10%/90%-Kennzahlen
+   Die Grafik liegt im eingebetteten Artifact (eisberg-artifact-v2.html),
+   das wir nicht direkt bearbeiten (stark komprimierter/generierter
+   Export). Da das Iframe von derselben Origin ist, lässt sich der Text
+   stattdessen sicher von aussen per JS ergänzen, ohne die Artifact-Datei
+   selbst anzufassen. "~" statt "≈", da das Artifact an anderer Stelle
+   (Chat-Vorschau "~10 % des Potenzials") bereits dieselbe Konvention
+   verwendet. MutationObserver als Absicherung, falls das Artifact diese
+   Zahlen zur Laufzeit neu rendert. */
+(function () {
+  'use strict';
+
+  var TPL_IDS = ['32', '35', '128', '131'];
+
+  function ensureApprox(el) {
+    if (!el || el.dataset.approxAdded === '1') return;
+    var text = el.textContent.trim();
+    if (/^\d+\s*%$/.test(text)) {
+      el.textContent = '~' + text;
+      el.dataset.approxAdded = '1';
+    }
+  }
+
+  function scan(frameDoc) {
+    TPL_IDS.forEach(function (tpl) {
+      ensureApprox(frameDoc.querySelector('[data-dc-tpl="' + tpl + '"]'));
+    });
+  }
+
+  var iframe = document.getElementById('icb-frame');
+  if (!iframe) return;
+
+  function init() {
+    var frameDoc;
+    try { frameDoc = iframe.contentDocument; } catch (e) { return; }
+    if (!frameDoc || !frameDoc.body) return;
+
+    scan(frameDoc);
+
+    var debounceTimer = null;
+    var observer = new MutationObserver(function () {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(function () { scan(frameDoc); }, 50);
+    });
+    observer.observe(frameDoc.body, { childList: true, characterData: true, subtree: true });
+  }
+
+  iframe.addEventListener('load', function () { setTimeout(init, 300); });
+}());
+
