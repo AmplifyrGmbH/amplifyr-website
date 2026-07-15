@@ -1042,8 +1042,9 @@
       tilde.setAttribute('aria-hidden', 'true');
       tilde.style.position = 'absolute';
       tilde.style.right = '100%';
-      tilde.style.top = '0';
-      tilde.style.paddingRight = '0.12em';
+      tilde.style.top = '0.05em';
+      tilde.style.paddingRight = '0.05em';
+      tilde.style.fontSize = '0.6em';
       el.insertBefore(tilde, el.firstChild);
       el.dataset.approxAdded = '1';
     }
