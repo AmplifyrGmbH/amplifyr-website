@@ -105,17 +105,13 @@
       if (pbsKiQuoteWrap) pbsKiQuoteWrap.classList.add('pbs-show');
       if (pbsKiFomoWrap)  pbsKiFomoWrap.classList.add('pbs-show');
       if (ctaBanner)      ctaBanner.classList.add('is-visible');
-      sessionStorage.setItem('heroSeen', '1');
     }
 
-    if (reduced || sessionStorage.getItem('heroSeen')) {
+    if (reduced) {
       showEndState();
     } else {
       showSlogan();
-      video.addEventListener('ended', function () {
-        onVideoEnd();
-        sessionStorage.setItem('heroSeen', '1');
-      });
+      video.addEventListener('ended', onVideoEnd);
       setTimeout(function () {
         if (!sloganDone) onVideoEnd();
       }, 14000);
