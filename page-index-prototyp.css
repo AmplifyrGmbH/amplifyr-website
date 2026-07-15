@@ -219,6 +219,10 @@
 @media (max-width: 600px) {
   .pbs-ki-quote { font-size: clamp(0.82rem, 3.5vw, 1rem); }
   .pbs-ki-fomo  { font-size: clamp(1.35rem, 5.4vw, 1.8rem); }
+  /* Auf Mobile klar kleiner als der fett gesetzte Titel darüber — auf
+     Desktop bewusst grösser (siehe Basis-Deklarationen), aber auf
+     schmalen Screens wirkten sie im Vergleich zum Titel zu dominant. */
+  .pbs-ki-sub { font-size: clamp(0.8rem, 3.2vw, 0.95rem); }
 }
 
 /* McKinsey-Statistik als kleine Fussnote (page-index.css definiert .pbs-l4
@@ -231,6 +235,12 @@
   font-style: italic;
   color: rgba(176, 196, 222, 0.5);
   margin-top: var(--space-2);
+}
+
+@media (max-width: 600px) {
+  /* Muss NACH der Basis-Deklaration stehen, da beide dieselbe
+     ID-Spezifität haben und sonst die spätere (Basis-)Regel gewinnt. */
+  #pbs-l4 { font-size: clamp(0.7rem, 2.8vw, 0.85rem); }
 }
 
 /* ============================================================

@@ -105,16 +105,29 @@
       if (pbsKiQuoteWrap) pbsKiQuoteWrap.classList.add('pbs-show');
       if (pbsKiFomoWrap)  pbsKiFomoWrap.classList.add('pbs-show');
       if (ctaBanner)      ctaBanner.classList.add('is-visible');
-      sessionStorage.setItem('heroSeen', '1');
+      setHeroSeen();
     }
 
-    if (reduced || sessionStorage.getItem('heroSeen')) {
+    /* sessionStorage kann in restriktiven Browsing-Modi (z. B. manche
+       Private-Browsing-Varianten) beim Zugriff werfen — ungefangen würde
+       das die gesamte initHero()-Funktion an dieser frühen Stelle
+       abbrechen und Video, Slogan-Animation UND die statische Ansicht
+       würden NIE erscheinen (nicht nur das Video). Defensiv behandeln:
+       im Fehlerfall einfach wie "noch nicht gesehen" verhalten. */
+    function getHeroSeen() {
+      try { return sessionStorage.getItem('heroSeen'); } catch (e) { return null; }
+    }
+    function setHeroSeen() {
+      try { sessionStorage.setItem('heroSeen', '1'); } catch (e) {}
+    }
+
+    if (reduced || getHeroSeen()) {
       showEndState();
     } else {
       showSlogan();
       video.addEventListener('ended', function () {
         onVideoEnd();
-        sessionStorage.setItem('heroSeen', '1');
+        setHeroSeen();
       });
       setTimeout(function () {
         if (!sloganDone) onVideoEnd();
