@@ -155,8 +155,16 @@
       }, 8000);
     }
 
+    /* Mindest-Scrolldistanz, bevor ein "scroll" als echtes Wegscrollen der
+       Nutzerin gilt. Ohne das reicht auf iOS Safari schon das winzige,
+       unfreiwillige Scroll-Event, das beim Einklappen der Adressleiste kurz
+       nach dem Laden ausgelöst wird, um die Animation sofort abzubrechen —
+       das Video verschwindet dann augenblicklich, statt durchzulaufen. */
+    var SCROLL_AWAY_THRESHOLD = 60;
+
     function onHeroScroll() {
       if (heroScrolled) return;
+      if ((window.scrollY || window.pageYOffset || 0) < SCROLL_AWAY_THRESHOLD) return;
       heroScrolled = true;
       window.removeEventListener('scroll', onHeroScroll);
       window.removeEventListener('wheel',  onHeroScroll);

@@ -323,6 +323,7 @@
   height: 144px;
   border-radius: 50%;
   object-fit: cover;
+  object-position: center 12%;
   border: 4px solid var(--accent-light);
   flex-shrink: 0;
 }
