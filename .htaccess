@@ -12,9 +12,22 @@
 </IfModule>
 
 # ── Browser-Caching ───────────────────────────────────────────
+# HTML bewusst NICHT langfristig cachen: anders als CSS/JS/Bilder hat es
+# kein Cache-Busting (?v=N) und ändert sich bei jedem Deploy. Mit "access
+# plus 1 hour" konnten Geräte bis zu einer Stunde lang eine veraltete
+# Seite anzeigen, ohne dass ein normaler Reload das bemerkt hätte (HTTP-
+# Caching wird von einem normalen Reload respektiert, nicht umgangen) —
+# das hat vermutlich einen grossen Teil der "der Fix kommt nicht an"-
+# Meldungen dieser gesamten Session erklärt.
+<IfModule mod_headers.c>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
 <IfModule mod_expires.c>
   ExpiresActive On
-  ExpiresByType text/html                 "access plus 1 hour"
+  ExpiresByType text/html                 "access plus 0 seconds"
   ExpiresByType text/css                  "access plus 1 year"
   ExpiresByType application/javascript    "access plus 1 year"
   ExpiresByType image/webp                "access plus 1 year"

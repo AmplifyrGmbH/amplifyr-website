@@ -33,42 +33,12 @@
     var pbsKiFomoWrap  = document.getElementById('pbs-ki-fomo-wrap');
     var fadeout        = document.getElementById('hero-fadeout');
     var ctaBanner      = document.getElementById('hero-cta-banner');
-    var videoCover     = document.getElementById('hero-video-cover');
 
     if (!hero || !video) return;
 
     var reduced      = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var sloganDone   = false;
     var philStarted  = false;
-
-    /* Das Video selbst bleibt die ganze Zeit über sichtbar (opacity:1,
-       siehe page-index.css) — ein separates, opakes Cover-Element
-       (.hero-video-cover) verdeckt es stattdessen, bis 'playing'
-       tatsächlich feuert (das Event kommt nur, wenn Frames wirklich
-       gerendert werden, im Gegensatz zu play()/!paused, die auch bei
-       einem hängenden Video fälschlich "läuft" suggerieren können). So
-       kann der native iOS-Play-Button nie auftauchen: entweder das Video
-       läuft und das Cover ist weg, oder das Cover verdeckt weiterhin
-       einen eventuell pausierten/gestoppten Frame.
-
-       WICHTIG — Race Condition: das Inline-<script> direkt nach dem
-       <video>-Tag ruft play() bereits auf, BEVOR dieses (deferred
-       geladene) Bundle überhaupt ausgeführt wird. Auf langsameren
-       Verbindungen (mit Netzwerk-Latenz getestet, nicht nur lokal ohne
-       jede Latenz) kann das Video also schon VOR diesem Zeilenaufruf
-       laufen und sein einziges 'playing'-Event ins Leere feuern — der
-       Listener wird erst danach angehängt und verpasst es komplett. Das
-       Cover bliebe dann für immer sichtbar, OBWOHL das Video tatsächlich
-       läuft (exakt das gemeldete Symptom: Slogan erscheint, Video bleibt
-       unsichtbar). Fix: Zustand bei Listener-Anhängung sofort prüfen —
-       läuft es schon, Cover direkt ausblenden, statt nur auf ein Event zu
-       warten, das eventuell nie mehr kommt. */
-    if (!video.paused && !video.ended) {
-      if (videoCover) videoCover.classList.add('is-hidden');
-    }
-    video.addEventListener('playing', function () {
-      if (videoCover) videoCover.classList.add('is-hidden');
-    });
 
     function showSlogan() {
       var DUR = 700;
@@ -148,30 +118,10 @@
         onVideoEnd();
         setHeroSeen();
       });
-      /* Muss den spätesten legitimen Startzeitpunkt (kurz vor der
-         3000ms-"noch pausiert"-Prüfung weiter unten) plus die volle
-         Videolänge (5.13s) abdecken, sonst würde ein spät, aber
-         erfolgreich gestartetes Video hier abgeschnitten. */
       setTimeout(function () {
         if (!sloganDone) onVideoEnd();
-      }, 9000);
+      }, 8000);
 
-      /* Manche Mobile-Browser (v.a. iOS Safari) starten das Video trotz
-         autoplay+muted+playsinline nicht zuverlässig, wenn play() nicht
-         auch explizit per JS aufgerufen wird — die Attribute allein reichen
-         nicht immer. Ohne das bleibt das Video auf dem ersten Frame stehen
-         (iOS zeigt dann sogar einen nativen Play-Button, obwohl gar kein
-         controls-Attribut gesetzt ist) bis der Fallback greift.
-
-         video.muted/defaultMuted zusätzlich per Property setzen, da manche
-         Browser das HTML-Attribut allein vor dem play()-Aufruf nicht
-         zuverlässig auswerten. Ein abgelehntes play() heisst nicht zwingend
-         "Autoplay ist blockiert" — der Aufruf schlägt oft nur fehl, weil er
-         zu früh kommt (Video noch nicht weit genug geladen), obwohl es
-         Sekundenbruchteile später ganz normal klappen würde. iOS braucht
-         dafür tendenziell mehr Anläufe als Android/Chrome, darum an
-         mehreren Lade-Events UND mit ein paar festen Zeitpunkten erneut
-         versuchen, statt nur einmal auf canplay zu warten. */
       video.muted = true;
       video.defaultMuted = true;
       function attemptPlay() {
@@ -182,34 +132,9 @@
       ['loadedmetadata', 'loadeddata', 'canplay', 'canplaythrough'].forEach(function (ev) {
         video.addEventListener(ev, attemptPlay, { once: true });
       });
-      [100, 300, 800, 1500, 2500].forEach(function (delay) {
-        setTimeout(function () { if (video.paused) attemptPlay(); }, delay);
+      [100, 300, 800, 1500, 2500, 4000, 6000].forEach(function (delay) {
+        setTimeout(function () { if (video.paused && !video.ended) attemptPlay(); }, delay);
       });
-
-      /* Zusätzliches Sicherheitsnetz, spezifisch für iOS Low Power Mode:
-         dort wird autoplayendes Video (selbst muted+playsinline) laut
-         Apple/WebKit grundsätzlich pausiert — ABER ein play()-Aufruf, der
-         SYNCHRON innerhalb eines echten Touch-/Klick-Handlers passiert,
-         zählt als nutzerinitiiert und ist von dieser Sperre ausgenommen.
-         Beim allerersten Touch/Klick irgendwo auf der Seite (auch wenn er
-         gar nicht dem Video gilt) bekommt das Video dadurch eine
-         zusätzliche, gestengedeckte Chance zu starten. */
-      function gestureRetry() {
-        if (video.paused) attemptPlay();
-      }
-      document.addEventListener('touchstart', gestureRetry, { once: true, passive: true });
-      document.addEventListener('click', gestureRetry, { once: true });
-      /* Kürzer als früher (war 8000ms): iOS Low Power Mode blockiert
-         autoplayendes Video komplett (dokumentiertes Apple/WebKit-
-         Verhalten, per Akku-Sparmassnahme, ohne JS-Workaround) — in
-         diesem Fall würde WARTEN nie zum Erfolg führen, sondern nur die
-         Nutzerin unnötig lange vor einem grösstenteils leeren Bildschirm
-         sitzen lassen. Schneller aufgeben und die statische Ansicht
-         zeigen ist die bessere Erfahrung als ein langes, folgenloses
-         Warten. */
-      setTimeout(function () {
-        if (!sloganDone && video.paused) onVideoEnd();
-      }, 3000);
     }
   }
 

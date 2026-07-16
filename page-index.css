@@ -26,39 +26,6 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  /* WICHTIG: bleibt von Anfang an sichtbar/opacity:1 (nicht auf
-     opacity:0 gesetzt) — ein per opacity:0 unsichtbares Video kann auf
-     iOS/WebKit vom System als "nicht sichtbar" eingestuft und beim
-     Decodieren gedrosselt bzw. gar nicht erst gestartet werden (bekannte
-     Akku-Sparmassnahme für Video ausserhalb des sichtbaren Bereichs).
-     Genau das führte vermutlich dazu, dass die Animation auf echten
-     iOS-Geräten nie richtig anlief: das Video musste sichtbar werden, um
-     zu spielen, durfte aber laut CSS erst sichtbar werden, NACHDEM es
-     bereits spielte — ein Deadlock, der sich mit keinem Emulator/
-     Test-Browser nachstellen liess, da nur echte Apple-Hardware diese
-     Drosselung tatsächlich anwendet. Das Abdecken des noch nicht
-     gestarteten Zustands (nativer Play-Button-Bug) übernimmt stattdessen
-     ein separates, opakes Cover-Element (.hero-video-cover) — das Video
-     selbst bleibt technisch die ganze Zeit über "sichtbar" und darf daher
-     ungedrosselt starten. */
-}
-
-/* Deckt das Video ab, bis das 'playing'-Event wirklich feuert (siehe
-   page-index-prototyp.js) — verhindert den nativen iOS-Play-Button auf
-   einem sichtbaren, aber noch pausierten Video, ohne das Video selbst
-   unsichtbar (und damit potenziell drosselungsgefährdet) zu machen. */
-.hero-video-cover {
-  position: absolute;
-  inset: 0;
-  background: var(--navy);
-  z-index: 1;
-  opacity: 1;
-  transition: opacity 400ms ease;
-  pointer-events: none;
-}
-
-.hero-video-cover.is-hidden {
-  opacity: 0;
 }
 
 /* Slogan */
