@@ -132,9 +132,13 @@
         onVideoEnd();
         setHeroSeen();
       });
+      /* Muss den spätesten legitimen Startzeitpunkt (kurz vor der
+         3000ms-"noch pausiert"-Prüfung weiter unten) plus die volle
+         Videolänge (5.13s) abdecken, sonst würde ein spät, aber
+         erfolgreich gestartetes Video hier abgeschnitten. */
       setTimeout(function () {
         if (!sloganDone) onVideoEnd();
-      }, 14000);
+      }, 9000);
 
       /* Manche Mobile-Browser (v.a. iOS Safari) starten das Video trotz
          autoplay+muted+playsinline nicht zuverlässig, wenn play() nicht
@@ -162,12 +166,20 @@
       ['loadedmetadata', 'loadeddata', 'canplay', 'canplaythrough'].forEach(function (ev) {
         video.addEventListener(ev, attemptPlay, { once: true });
       });
-      [100, 300, 800, 1500, 2500, 4000, 6000].forEach(function (delay) {
+      [100, 300, 800, 1500, 2500].forEach(function (delay) {
         setTimeout(function () { if (video.paused) attemptPlay(); }, delay);
       });
+      /* Kürzer als früher (war 8000ms): iOS Low Power Mode blockiert
+         autoplayendes Video komplett (dokumentiertes Apple/WebKit-
+         Verhalten, per Akku-Sparmassnahme, ohne JS-Workaround) — in
+         diesem Fall würde WARTEN nie zum Erfolg führen, sondern nur die
+         Nutzerin unnötig lange vor einem grösstenteils leeren Bildschirm
+         sitzen lassen. Schneller aufgeben und die statische Ansicht
+         zeigen ist die bessere Erfahrung als ein langes, folgenloses
+         Warten. */
       setTimeout(function () {
         if (!sloganDone && video.paused) onVideoEnd();
-      }, 8000);
+      }, 3000);
     }
   }
 
