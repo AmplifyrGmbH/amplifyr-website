@@ -55,6 +55,13 @@
   }
   </script>
 
+  <!-- Hero-Video so früh und priorisiert wie möglich laden — auf echten
+       Mobilgeräten (Netzwerk-Latenz, gleichzeitig ladende Fonts/CSS/JS)
+       kann das Video sonst zu wenig Daten gepuffert haben, um innerhalb
+       des Autoplay-Zeitfensters zu starten. Lokale Tests mit
+       Null-Latenz können dieses Problem nicht sichtbar machen. -->
+  <link rel="preload" as="video" href="/Animationen/Animation_Heropage.mp4" fetchpriority="high">
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -198,8 +205,8 @@
 
       <h1 class="sr-only">Amplifyr – KI-Lösungen &amp; digitale Transformation für Schweizer KMU</h1>
 
-      <video class="hero-video" id="hero-video" autoplay muted playsinline webkit-playsinline preload="auto">
-        <source src="/Animationen/Animation_Heropage.mp4"  type="video/mp4">
+      <video class="hero-video" id="hero-video" autoplay muted playsinline webkit-playsinline preload="auto" fetchpriority="high">
+        <source src="/Animationen/Animation_Heropage.mp4"  type="video/mp4" fetchpriority="high">
         <source src="/Animationen/Animation_Heropage.webm" type="video/webm">
       </video>
       <div class="hero-video-cover" id="hero-video-cover" aria-hidden="true"></div>
@@ -946,7 +953,7 @@
   </div>
 
   <script src="/main.js"></script>
-  <script src="/page-index-prototyp.js?v=25"></script>
+  <script src="/page-index-prototyp.js?v=26"></script>
   <script src="/ki-check-prototyp.js"></script>
 
   <!-- Floating Side Widgets -->

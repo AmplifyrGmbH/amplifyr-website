@@ -49,7 +49,23 @@
        einem hängenden Video fälschlich "läuft" suggerieren können). So
        kann der native iOS-Play-Button nie auftauchen: entweder das Video
        läuft und das Cover ist weg, oder das Cover verdeckt weiterhin
-       einen eventuell pausierten/gestoppten Frame. */
+       einen eventuell pausierten/gestoppten Frame.
+
+       WICHTIG — Race Condition: das Inline-<script> direkt nach dem
+       <video>-Tag ruft play() bereits auf, BEVOR dieses (deferred
+       geladene) Bundle überhaupt ausgeführt wird. Auf langsameren
+       Verbindungen (mit Netzwerk-Latenz getestet, nicht nur lokal ohne
+       jede Latenz) kann das Video also schon VOR diesem Zeilenaufruf
+       laufen und sein einziges 'playing'-Event ins Leere feuern — der
+       Listener wird erst danach angehängt und verpasst es komplett. Das
+       Cover bliebe dann für immer sichtbar, OBWOHL das Video tatsächlich
+       läuft (exakt das gemeldete Symptom: Slogan erscheint, Video bleibt
+       unsichtbar). Fix: Zustand bei Listener-Anhängung sofort prüfen —
+       läuft es schon, Cover direkt ausblenden, statt nur auf ein Event zu
+       warten, das eventuell nie mehr kommt. */
+    if (!video.paused && !video.ended) {
+      if (videoCover) videoCover.classList.add('is-hidden');
+    }
     video.addEventListener('playing', function () {
       if (videoCover) videoCover.classList.add('is-hidden');
     });
