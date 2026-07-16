@@ -97,17 +97,20 @@
       setHeroSeen();
     }
 
-    /* sessionStorage kann in restriktiven Browsing-Modi (z. B. manche
-       Private-Browsing-Varianten) beim Zugriff werfen — ungefangen würde
-       das die gesamte initHero()-Funktion an dieser frühen Stelle
-       abbrechen und Video, Slogan-Animation UND die statische Ansicht
-       würden NIE erscheinen (nicht nur das Video). Defensiv behandeln:
-       im Fehlerfall einfach wie "noch nicht gesehen" verhalten. */
+    /* localStorage statt sessionStorage: die Animation soll wirklich nur
+       einmalig abspielen (nicht pro Tab erneut) — persistiert daher über
+       Tabs, Fenster und Neustarts des Browsers hinweg. Zugriff kann in
+       restriktiven Browsing-Modi (z. B. manche Private-Browsing-Varianten)
+       werfen — ungefangen würde das die gesamte initHero()-Funktion an
+       dieser frühen Stelle abbrechen und Video, Slogan-Animation UND die
+       statische Ansicht würden NIE erscheinen (nicht nur das Video).
+       Defensiv behandeln: im Fehlerfall einfach wie "noch nicht gesehen"
+       verhalten. */
     function getHeroSeen() {
-      try { return sessionStorage.getItem('heroSeen'); } catch (e) { return null; }
+      try { return localStorage.getItem('heroSeen'); } catch (e) { return null; }
     }
     function setHeroSeen() {
-      try { sessionStorage.setItem('heroSeen', '1'); } catch (e) {}
+      try { localStorage.setItem('heroSeen', '1'); } catch (e) {}
     }
 
     if (reduced || getHeroSeen()) {
