@@ -169,6 +169,20 @@
       [100, 300, 800, 1500, 2500].forEach(function (delay) {
         setTimeout(function () { if (video.paused) attemptPlay(); }, delay);
       });
+
+      /* Zusätzliches Sicherheitsnetz, spezifisch für iOS Low Power Mode:
+         dort wird autoplayendes Video (selbst muted+playsinline) laut
+         Apple/WebKit grundsätzlich pausiert — ABER ein play()-Aufruf, der
+         SYNCHRON innerhalb eines echten Touch-/Klick-Handlers passiert,
+         zählt als nutzerinitiiert und ist von dieser Sperre ausgenommen.
+         Beim allerersten Touch/Klick irgendwo auf der Seite (auch wenn er
+         gar nicht dem Video gilt) bekommt das Video dadurch eine
+         zusätzliche, gestengedeckte Chance zu starten. */
+      function gestureRetry() {
+        if (video.paused) attemptPlay();
+      }
+      document.addEventListener('touchstart', gestureRetry, { once: true, passive: true });
+      document.addEventListener('click', gestureRetry, { once: true });
       /* Kürzer als früher (war 8000ms): iOS Low Power Mode blockiert
          autoplayendes Video komplett (dokumentiertes Apple/WebKit-
          Verhalten, per Akku-Sparmassnahme, ohne JS-Workaround) — in
