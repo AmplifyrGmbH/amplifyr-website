@@ -41,6 +41,14 @@
   /* Typography */
   --font-display: Georgia, 'Times New Roman', serif;
   --font-body:    'DM Sans', sans-serif;
+  /* Logo-Schriftart: Georgia ist auf Android nicht als Systemfont
+     installiert (anders als auf Desktop/iOS) und wird dort durch einen
+     optisch abweichenden Serif-Ersatz ersetzt — das Logo sah dadurch auf
+     Android auf allen Seiten anders aus. Gelasio ist eine von Google
+     veröffentlichte, metrisch/optisch an Georgia angelehnte Schrift, die
+     als Webfont geladen wird und so auf jeder Plattform identisch
+     aussieht. */
+  --font-logo:    'Gelasio', Georgia, 'Times New Roman', serif;
 
   /* Spacing Scale */
   --space-1:  4px;
@@ -417,7 +425,7 @@ p {
   display: flex;
   align-items: center;
   text-decoration: none;
-  font-family: var(--font-display);
+  font-family: var(--font-logo);
   font-size: 1.5rem;
   font-weight: 700;
   color: #fff;
@@ -785,7 +793,7 @@ p {
 }
 
 .mobile-menu__logo {
-  font-family: var(--font-display);
+  font-family: var(--font-logo);
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--navy);
@@ -1060,7 +1068,7 @@ footer {
 }
 
 .footer-logo {
-  font-family: var(--font-display);
+  font-family: var(--font-logo);
   font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: -0.02em;
