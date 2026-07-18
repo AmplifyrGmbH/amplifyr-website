@@ -48,10 +48,6 @@
   Require all denied
 </FilesMatch>
 
-# ── Weiterleitungen gelöschter Seiten ─────────────────────
-Redirect 301 /branchen-software https://www.amplifyr.ch/it-solutions
-Redirect 301 /branchen-software.html https://www.amplifyr.ch/it-solutions
-
 # ── Rewrites ──────────────────────────────────────────────────
 RewriteEngine On
 
