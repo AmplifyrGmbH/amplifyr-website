@@ -43,6 +43,11 @@
   ExpiresByType application/manifest+json "access plus 1 week"
 </IfModule>
 
+# ── Sensible Dateien blockieren ───────────────────────────
+<FilesMatch "(\.DS_Store|\.git|\.env|\.aws|\.docker|sftp\.json)">
+  Require all denied
+</FilesMatch>
+
 # ── Rewrites ──────────────────────────────────────────────────
 RewriteEngine On
 
