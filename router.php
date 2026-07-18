@@ -8,22 +8,20 @@ if ($uri !== '/' && file_exists(__DIR__ . $uri)) {
 
 // Map clean URLs to .html files
 $map = [
-    '/it-solutions'               => 'it-solutions.html',
-    '/ki-prozesse'                => 'ki-prozesse.html',
-    '/webdesign'                  => 'webdesign.html',
-    '/ueber-uns'                  => 'ueber-uns.html',
-    '/branchen-software'          => 'branchen-software.html',
-    '/blog'                       => 'blog.html',
-    '/blog-post'                  => 'blog-post.html',
-    '/formular'                   => 'formular.html',
-    '/impressum'                  => 'impressum.html',
-    '/datenschutz'                => 'datenschutz.html',
-    '/agb'                        => 'agb.html',
-    '/business-amplification'     => 'business-amplification.html',
-    '/digitalisierung-kmu'        => 'digitalisierung-kmu.html',
-    '/digitalisierung-handwerker' => 'digitalisierung-handwerker.html',
-    '/links'                      => 'links.html',
-    '/demo'                       => 'demo.html',
+    '/it-solutions'          => 'it-solutions.html',
+    '/ki-prozesse'           => 'ki-prozesse.html',
+    '/webdesign'             => 'webdesign.html',
+    '/ueber-uns'             => 'ueber-uns.html',
+    '/blog'                  => 'blog.html',
+    '/blog-post'             => 'blog-post.html',
+    '/formular'              => 'formular.html',
+    '/impressum'             => 'impressum.html',
+    '/datenschutz'           => 'datenschutz.html',
+    '/agb'                   => 'agb.html',
+    '/links'                 => 'links.html',
+    '/demo'                  => 'demo.html',
+    '/eisberg-artifact-v2'   => 'eisberg-artifact-v2.html',
+    '/prozessgrafik-artifact' => 'prozessgrafik-artifact.html',
 ];
 
 $path = rtrim($uri, '/');
