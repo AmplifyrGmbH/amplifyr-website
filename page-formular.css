@@ -50,8 +50,25 @@
 
 @media (min-width: 600px) {
   .fs-options {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
   }
+}
+
+/* Steel-Karte (Website Demo) */
+.fs-option-card--steel {
+  background: #EDF2F9;
+  border: 1.5px solid #B0C4DE;
+  box-shadow: var(--shadow);
+  color: inherit;
+  text-decoration: none;
+}
+.fs-option-card--steel:hover {
+  border-color: #1a2744;
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+.fs-option-icon--steel {
+  background: rgba(176,196,222,0.35);
 }
 
 .fs-option-card {

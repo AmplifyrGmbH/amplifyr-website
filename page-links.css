@@ -1,0 +1,279 @@
+/* ============================================================
+   page-links.css — Linktree-Ersatz / QR-Code-Seite
+   Mobile-first, standalone (kein main.js / Header)
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  /* Light steel-fog gradient — brand background */
+  background:
+    radial-gradient(60% 40% at 20% 0%,  rgba(176,196,222,0.35), transparent 60%),
+    radial-gradient(50% 35% at 85% 90%, rgba(176,196,222,0.25), transparent 60%),
+    linear-gradient(160deg, #EDF0F7 0%, #dce5f2 100%);
+}
+
+/* ---- Page wrapper ---- */
+.lk-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 48px 16px 32px;
+}
+
+@supports (padding: max(0px)) {
+  .lk-page {
+    padding-top: max(48px, env(safe-area-inset-top, 48px));
+    padding-bottom: max(32px, env(safe-area-inset-bottom, 32px));
+  }
+}
+
+/* ---- Header / Logo ---- */
+.lk-header {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.lk-logo {
+  display: inline-block;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #1a2744;
+  text-decoration: none;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.lk-logo-fyr {
+  font-style: italic;
+  color: #B0C4DE;
+}
+
+.lk-tagline {
+  font-size: 0.85rem;
+  color: #445269;
+  margin-top: 4px;
+}
+
+/* ---- Main content ---- */
+.lk-main {
+  width: 100%;
+  max-width: 480px;
+  flex: 1;
+}
+
+/* ---- Section ---- */
+.lk-section {
+  margin-bottom: 8px;
+}
+
+.lk-section-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: #8290ab;
+  margin-bottom: 12px;
+  padding-left: 2px;
+}
+
+/* ---- Link list ---- */
+.lk-links {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+/* ---- Button base ---- */
+.lk-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+.lk-btn:active {
+  transform: scale(0.97);
+}
+
+/* Primary — Navy filled */
+.lk-btn--primary {
+  background: #1a2744;
+  color: #ffffff;
+  box-shadow: 0 4px 18px rgba(26,39,68,0.22), inset 0 1px 0 rgba(255,255,255,0.1);
+}
+
+.lk-btn--primary:hover {
+  background: #0f1a31;
+  box-shadow: 0 8px 28px rgba(26,39,68,0.32), inset 0 1px 0 rgba(255,255,255,0.1);
+  transform: translateY(-1px);
+}
+
+.lk-btn--primary .lk-btn-arrow { opacity: 0.5; }
+.lk-btn--primary:hover .lk-btn-arrow { opacity: 1; }
+
+/* Ghost — Liquid glass */
+.lk-btn--ghost {
+  background: rgba(255,255,255,0.62);
+  border: 1px solid rgba(176,196,222,0.42);
+  color: #1a2744;
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  box-shadow:
+    0 2px 12px rgba(26,39,68,0.07),
+    inset 0 1px 0 rgba(255,255,255,0.92);
+}
+
+.lk-btn--ghost:hover {
+  background: rgba(255,255,255,0.82);
+  border-color: rgba(176,196,222,0.65);
+  box-shadow:
+    0 6px 20px rgba(26,39,68,0.10),
+    inset 0 1px 0 rgba(255,255,255,0.92);
+  transform: translateY(-1px);
+}
+
+.lk-btn--ghost .lk-btn-arrow { opacity: 0.35; }
+.lk-btn--ghost:hover .lk-btn-arrow { opacity: 0.7; }
+
+/* Button parts */
+.lk-btn-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+}
+
+.lk-btn-label {
+  flex: 1;
+}
+
+.lk-btn-arrow {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  transition: opacity 0.15s;
+}
+
+/* ---- Divider ---- */
+.lk-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(26,39,68,0.13), transparent);
+  margin: 20px 0 24px;
+}
+
+/* ---- Team ---- */
+.lk-team {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Person card */
+.lk-person {
+  background: rgba(255,255,255,0.52);
+  border: 1px solid rgba(176,196,222,0.38);
+  border-radius: 18px;
+  padding: 18px 16px 16px;
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  box-shadow:
+    0 8px 32px rgba(26,39,68,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.92);
+}
+
+.lk-person-head {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(176,196,222,0.3);
+}
+
+.lk-person-name {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a2744;
+  line-height: 1.2;
+}
+
+.lk-person-role {
+  font-size: 0.78rem;
+  color: #8290ab;
+  margin-top: 3px;
+}
+
+/* ---- Footer ---- */
+.lk-footer {
+  margin-top: 40px;
+  padding-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  color: #8290ab;
+}
+
+.lk-footer-link {
+  color: #1a2744;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.lk-footer-link:hover {
+  text-decoration: underline;
+}
+
+/* ---- Desktop ---- */
+@media (min-width: 540px) {
+  .lk-logo { font-size: 2.6rem; }
+  .lk-tagline { font-size: 0.9rem; }
+  .lk-btn { padding: 16px 20px; }
+  .lk-person { padding: 22px 20px 18px; }
+}
+
+@media (min-width: 820px) {
+  .lk-main { max-width: 960px; }
+  .lk-team {
+    flex-direction: row;
+    align-items: stretch;
+  }
+  .lk-person { flex: 1; }
+
+  /* Company-Links kompakter nebeneinander, zentriert */
+  .lk-section:first-child .lk-links {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+  .lk-section:first-child .lk-btn {
+    flex: 0 0 auto;
+    padding: 10px 18px;
+    font-size: 0.88rem;
+  }
+
+  .lk-section-label { text-align: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lk-btn { transition: none; }
+}

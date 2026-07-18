@@ -206,6 +206,27 @@
             </span>
           </a>
 
+          <!-- Website Demo beantragen (Steel-Karte) -->
+          <a class="fs-option-card fs-option-card--steel" href="/demo">
+            <div class="fs-option-icon fs-option-icon--steel" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <rect x="2" y="3" width="20" height="14" rx="2" stroke="#1a2744" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M8 21h8M12 17v4" stroke="#1a2744" stroke-width="1.7" stroke-linecap="round"/>
+                <path d="M9 9l2 2 4-4" stroke="#1a2744" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="fs-option-text">
+              <p class="fs-option-title fs-option-title--light">Website Demo</p>
+              <p class="fs-option-desc">Demo in 48h — kostenlos. Geben Sie einfach Ihre Domain an.</p>
+            </div>
+            <span class="fs-option-cta fs-option-cta--light">
+              Demo anfragen
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </a>
+
           <!-- Nachricht senden (dunkle Karte) -->
           <button class="fs-option-card fs-option-card--dark" id="toggle-form-fs"
                   type="button" aria-expanded="false" aria-controls="form-collapse-fs">
@@ -397,6 +418,21 @@
 
   <script src="/main.js"></script>
   <script src="/page-formular.js"></script>
+  <script>
+  (function() {
+    var p = new URLSearchParams(window.location.search);
+    var domain = p.get('domain');
+    var subject = p.get('subject');
+    if (subject) {
+      var sel = document.getElementById('fs-subject');
+      if (sel) sel.value = subject;
+    }
+    if (domain) {
+      var msg = document.getElementById('fs-message');
+      if (msg) msg.value = 'Meine aktuelle Website: ' + domain;
+    }
+  })();
+  </script>
   <!-- Floating Side Widgets -->
   <div class="side-widgets">
     <a href="https://portal.amplifyr.ch/" target="_blank" rel="noopener" class="side-widget side-widget--portal" aria-label="Kundenportal">
