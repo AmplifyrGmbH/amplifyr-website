@@ -74,6 +74,17 @@
   }
 }
 
+@media (min-width: 1024px) {
+  .ki-split {
+    grid-template-columns: 1fr 1.1fr;
+    gap: var(--space-16);
+  }
+
+  .ki-split-visual {
+    min-height: 380px;
+  }
+}
+
 .ki-split-note {
   margin-top: var(--space-6);
   font-size: 0.88rem;

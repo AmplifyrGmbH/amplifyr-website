@@ -1495,7 +1495,7 @@
   align-items: center;
   background: var(--navy);
   color: #ffffff;
-  font-size: 13px;
+  font-size: 0.8125rem;
   font-weight: 600;
   letter-spacing: 0.04em;
   padding: 7px 16px;
@@ -1505,7 +1505,7 @@
 
 .sla-plan-name {
   font-family: var(--font-display);
-  font-size: 30px;
+  font-size: 1.875rem;
   font-weight: 600;
   letter-spacing: -0.01em;
   margin-bottom: 8px;
@@ -1513,7 +1513,7 @@
 }
 
 .sla-plan-tagline {
-  font-size: 16px;
+  font-size: 1rem;
   color: #737B8E;
   line-height: 1.4;
   margin-bottom: 22px;
@@ -1529,20 +1529,20 @@
 
 .sla-price {
   font-family: var(--font-display);
-  font-size: 42px;
+  font-size: clamp(1.75rem, 3vw, 2.625rem);
   font-weight: 600;
   letter-spacing: -0.01em;
   color: var(--navy);
 }
 
 .sla-price-unit {
-  font-size: 17px;
+  font-size: 1.0625rem;
   color: #9197A8;
   font-weight: 400;
 }
 
 .sla-seats {
-  font-size: 16px;
+  font-size: 1rem;
   color: #9197A8;
   margin-bottom: 24px;
 }
@@ -1566,14 +1566,14 @@
 .sla-hours-divider { height: 1px; background: #E4E9F4; }
 
 .sla-hours-label {
-  font-size: 15px;
+  font-size: 0.9375rem;
   color: #5C6479;
   font-weight: 500;
   line-height: 1.3;
 }
 
 .sla-hours-value {
-  font-size: 22px;
+  font-size: 1.375rem;
   font-weight: 700;
   color: var(--navy);
   white-space: nowrap;
@@ -1586,11 +1586,11 @@
   white-space: nowrap;
 }
 
-.sla-extra-price { font-size: 18px; font-weight: 700; color: #3E7FB0; }
-.sla-extra-orig  { font-size: 15px; color: #AEB4C2; text-decoration: line-through; }
+.sla-extra-price { font-size: 1.125rem; font-weight: 700; color: #3E7FB0; }
+.sla-extra-orig  { font-size: 0.9375rem; color: #AEB4C2; text-decoration: line-through; }
 
 .sla-section-label {
-  font-size: 13px;
+  font-size: 0.8125rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -1616,13 +1616,13 @@
 
 .sla-check {
   color: #3E8F5B;
-  font-size: 18px;
+  font-size: 1.125rem;
   line-height: 1.45;
   flex: none;
 }
 
 .sla-features li > span:last-child {
-  font-size: 17px;
+  font-size: 1.0625rem;
   line-height: 1.45;
   color: #2C3650;
 }
@@ -1634,7 +1634,7 @@
   align-items: center;
   background: #DCE9F6;
   color: #2C5F8A;
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 600;
   padding: 2px 10px;
   border-radius: 999px;
@@ -1645,7 +1645,7 @@
 .sla-btn {
   display: block;
   font-family: var(--font-body);
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 600;
   padding: 16px;
   border-radius: 12px;
@@ -1734,28 +1734,28 @@
 
   .sla-badge {
     padding: 4px 12px;
-    font-size: 11px;
+    font-size: 0.6875rem;
     margin-bottom: 8px;
   }
 
   .sla-plan-name {
-    font-size: 19px;
+    font-size: 1.1875rem;
     margin-bottom: 3px;
   }
 
   .sla-plan-tagline {
-    font-size: 12px;
+    font-size: 0.75rem;
     line-height: 1.3;
     margin-bottom: 10px;
     min-height: 0;
   }
 
   .sla-price {
-    font-size: 25px;
+    font-size: 1.5625rem;
   }
 
   .sla-price-unit {
-    font-size: 12px;
+    font-size: 0.75rem;
   }
 
   .sla-price-row {
@@ -1763,7 +1763,7 @@
   }
 
   .sla-seats {
-    font-size: 12px;
+    font-size: 0.75rem;
     margin-bottom: 10px;
   }
 
@@ -1778,15 +1778,15 @@
   }
 
   .sla-hours-label {
-    font-size: 11.5px;
+    font-size: 0.71875rem;
   }
 
   .sla-hours-value {
-    font-size: 15px;
+    font-size: 0.9375rem;
   }
 
-  .sla-extra-price { font-size: 13px; }
-  .sla-extra-orig  { font-size: 11px; }
+  .sla-extra-price { font-size: 0.8125rem; }
+  .sla-extra-orig  { font-size: 0.6875rem; }
 
   .sla-section-label {
     font-size: 10.5px;

@@ -141,6 +141,12 @@
   min-height: 420px;
 }
 
+@media (max-width: 1024px) {
+  .wd-split-visual {
+    min-height: 320px;
+  }
+}
+
 @media (max-width: 768px) {
   .wd-split,
   .wd-split--rev {
