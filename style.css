@@ -3,6 +3,9 @@
    style.css — gemeinsames CSS für alle Seiten
 ============================================================ */
 
+/* Gelasio: Georgia-Fallback für Android (Georgia dort nicht als Systemfont verfügbar) */
+@import url('https://fonts.googleapis.com/css2?family=Gelasio:ital,wght@0,700;1,700&display=swap');
+
 /* ============================================================
    1. CSS CUSTOM PROPERTIES
 ============================================================ */
@@ -40,6 +43,7 @@
 
   /* Typography */
   --font-display: Georgia, 'Times New Roman', serif;
+  --font-logo:    Georgia, 'Gelasio', 'Times New Roman', serif;
   --font-body:    'DM Sans', sans-serif;
 
   /* Spacing Scale */
@@ -417,7 +421,7 @@ p {
   display: flex;
   align-items: center;
   text-decoration: none;
-  font-family: var(--font-display);
+  font-family: var(--font-logo);
   font-size: 1.5rem;
   font-weight: 700;
   color: #fff;
@@ -785,7 +789,7 @@ p {
 }
 
 .mobile-menu__logo {
-  font-family: var(--font-display);
+  font-family: var(--font-logo);
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--navy);
@@ -1060,7 +1064,7 @@ footer {
 }
 
 .footer-logo {
-  font-family: var(--font-display);
+  font-family: var(--font-logo);
   font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: -0.02em;
