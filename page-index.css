@@ -148,6 +148,23 @@
   border-color: var(--steel);
 }
 
+/* Scroll Indicator */
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.55);
+  animation: scrollBounce 1.8s ease-in-out infinite;
+  z-index: 10;
+  pointer-events: none;
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.55; }
+  50%       { transform: translateX(-50%) translateY(6px); opacity: 1; }
+}
+
 /* PBS-Section (innerhalb des Hero, nach Slogan-Animation) */
 .hero-phil {
   position: absolute;
