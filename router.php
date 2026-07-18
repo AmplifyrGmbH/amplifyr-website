@@ -22,6 +22,8 @@ $map = [
     '/business-amplification'     => 'business-amplification.html',
     '/digitalisierung-kmu'        => 'digitalisierung-kmu.html',
     '/digitalisierung-handwerker' => 'digitalisierung-handwerker.html',
+    '/links'                      => 'links.html',
+    '/demo'                       => 'demo.html',
 ];
 
 $path = rtrim($uri, '/');

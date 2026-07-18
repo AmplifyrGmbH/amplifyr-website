@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="de-CH">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Website Demo anfragen — kostenlos in 48h | Amplifyr</title>
+  <meta name="description" content="Kostenlose Website-Demo in 48 Stunden. Geben Sie Ihre Domain an — wir zeigen Ihnen, was mit Ihrer Website möglich ist.">
+  <link rel="canonical" href="https://www.amplifyr.ch/demo">
+  <meta name="robots" content="index,follow">
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://www.amplifyr.ch/demo">
+  <meta property="og:title"       content="Website Demo anfragen | Amplifyr">
+  <meta property="og:description" content="Kostenlose Website-Demo in 48 Stunden — unverbindlich.">
+  <meta property="og:image"       content="https://www.amplifyr.ch/Logos/Open_Graph_Image_Amplifyr.webp">
+  <meta property="og:locale"      content="de_CH">
+
+  <!-- Favicons -->
+  <link rel="icon"             href="/Favicon/favicon.ico">
+  <link rel="icon"             href="/Favicon/favicon_32x32.png" sizes="32x32" type="image/png">
+  <link rel="icon"             href="/Favicon/favicon_16x16.png" sizes="16x16" type="image/png">
+  <link rel="apple-touch-icon" href="/Favicon/favicon_180x180.png">
+  <link rel="manifest"         href="/site.webmanifest">
+  <meta name="theme-color" content="#1a2744">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap">
+  <link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap"></noscript>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/style.css?v=5">
+  <link rel="stylesheet" href="/page-formular.css?v=1">
+
+  <style>
+    /* ---- Demo-Seite spezifisch ---- */
+    .demo-wrap {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 24px 60px;
+      background: #f5f7fb;
+    }
+    .demo-card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 48px 40px;
+      width: 100%;
+      max-width: 520px;
+      box-shadow: 0 8px 40px rgba(26,39,68,0.08);
+    }
+    @media (max-width: 540px) {
+      .demo-card { padding: 32px 24px; }
+    }
+    .demo-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #B0C4DE;
+      margin-bottom: 10px;
+    }
+    .demo-heading {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(1.6rem, 4vw, 2.1rem);
+      font-weight: 700;
+      color: #1a2744;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+    .demo-sub {
+      font-size: 0.97rem;
+      color: #4a5a7a;
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+    .demo-form .form-group { margin-bottom: 18px; }
+    .demo-form .form-label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #1a2744;
+      margin-bottom: 6px;
+    }
+    .demo-form .form-input,
+    .demo-form .form-textarea {
+      width: 100%;
+      padding: 12px 14px;
+      font-size: 0.97rem;
+      font-family: inherit;
+      color: #1a2744;
+      background: #f8fafc;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 10px;
+      outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .demo-form .form-input:focus,
+    .demo-form .form-textarea:focus {
+      border-color: #B0C4DE;
+      box-shadow: 0 0 0 3px rgba(176,196,222,0.25);
+      background: #fff;
+    }
+    .demo-form .form-input.error,
+    .demo-form .form-textarea.error {
+      border-color: #f87171;
+    }
+    .demo-form .form-textarea { resize: vertical; min-height: 90px; }
+    .demo-form .form-hint {
+      font-size: 0.78rem;
+      color: #8290ab;
+      margin-top: 5px;
+    }
+    .demo-submit {
+      width: 100%;
+      height: 52px;
+      font-size: 1rem;
+      font-weight: 600;
+      font-family: inherit;
+      color: #fff;
+      background: #1a2744;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background 0.15s, transform 0.12s;
+    }
+    .demo-submit:hover { background: #0f1a31; transform: translateY(-1px); }
+    .demo-submit:active { transform: scale(0.98); }
+    .demo-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      color: #8290ab;
+      text-decoration: none;
+      margin-bottom: 28px;
+      transition: color 0.15s;
+    }
+    .demo-back:hover { color: #1a2744; }
+    .demo-promise {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 20px;
+      font-size: 0.82rem;
+      color: #8290ab;
+    }
+    .demo-promise-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #4ade80;
+      flex-shrink: 0;
+    }
+    /* Success */
+    .demo-success {
+      text-align: center;
+      padding: 20px 0;
+    }
+    .demo-success-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: rgba(176,196,222,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+    .demo-success h2 {
+      font-family: Georgia, serif;
+      font-size: 1.5rem;
+      color: #1a2744;
+      margin-bottom: 10px;
+    }
+    .demo-success p { color: #4a5a7a; font-size: 0.97rem; line-height: 1.6; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header id="site-header" class="legal-mode">
+    <div class="container header-inner">
+
+      <a href="/" class="site-logo" aria-label="Amplifyr – Startseite">
+        <span>ampli</span><span class="logo-fyr">fyr</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Hauptnavigation">
+        <ul class="site-nav__list">
+          <li class="site-nav__item"><a href="/" class="site-nav__link nav-link">KI-Transformation</a></li>
+          <li class="site-nav__item"><a href="/it-solutions" class="site-nav__link nav-link">IT-Lösungen</a></li>
+          <li class="site-nav__item"><a href="/ki-prozesse" class="site-nav__link nav-link">Automatisierungen</a></li>
+          <li class="site-nav__item"><a href="/webdesign" class="site-nav__link nav-link">Digitaler Auftritt</a></li>
+        </ul>
+      </nav>
+
+      <nav class="site-nav site-nav--right header-portal-btn" aria-label="Weitere Navigation">
+        <ul class="site-nav__list">
+          <li class="site-nav__item"><a href="/ueber-uns" class="site-nav__link nav-link">Über uns</a></li>
+        </ul>
+      </nav>
+
+      <button id="burger-btn" class="burger-btn" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- MOBILE MENU -->
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile Navigation">
+    <div class="mobile-menu__header">
+      <a href="/" class="mobile-menu__logo" aria-label="Amplifyr – Startseite">
+        <span>ampli</span><span class="logo-fyr">fyr</span>
+      </a>
+      <button id="mobile-menu-close" class="mobile-menu__close" aria-label="Menü schliessen">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="mobile-menu__nav">
+      <a href="/" class="mobile-nav-link">KI-Transformation</a>
+      <a href="/it-solutions" class="mobile-nav-link">IT-Lösungen</a>
+      <a href="/ki-prozesse" class="mobile-nav-link">Automatisierungen</a>
+      <a href="/webdesign" class="mobile-nav-link">Digitaler Auftritt</a>
+      <a href="/ueber-uns" class="mobile-nav-link">Über uns</a>
+    </div>
+    <div class="mobile-menu__cta">
+      <a href="https://portal.amplifyr.ch/" class="btn btn--primary" target="_blank" rel="noopener">Kundenportal</a>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main>
+    <div class="demo-wrap">
+      <div class="demo-card">
+
+        <a href="/webdesign" class="demo-back">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M13 8H3M7 4l-4 4 4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Zurück
+        </a>
+
+        <p class="demo-eyebrow">Kostenlos & unverbindlich</p>
+        <h1 class="demo-heading">Website Demo in 48h</h1>
+        <p class="demo-sub">Teilen Sie uns Ihre Domain und Ihre Kontaktdaten mit — wir zeigen Ihnen, was mit Ihrer Website möglich ist.</p>
+
+        <!-- Formular -->
+        <form class="demo-form" id="demo-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+          <input type="hidden" name="access_key" value="48d27eea-a77f-4826-9835-4f308573f036">
+          <input type="hidden" name="from_name" value="Amplifyr Demo-Anfrage">
+          <input type="hidden" name="subject" value="Website Demo-Anfrage">
+
+          <div class="form-group">
+            <label class="form-label" for="demo-name">Name *</label>
+            <input class="form-input" type="text" id="demo-name" name="name"
+                   required placeholder="Max Muster" autocomplete="name">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="demo-email">E-Mail *</label>
+            <input class="form-input" type="email" id="demo-email" name="email"
+                   required placeholder="mail@firma.ch" autocomplete="email">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="demo-domain">Ihre aktuelle Website</label>
+            <input class="form-input" type="text" id="demo-domain" name="domain"
+                   placeholder="ihre-website.ch" autocomplete="url">
+            <p class="form-hint">Optional — auch ohne bestehende Website möglich.</p>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="demo-message">Was ist Ihnen wichtig?</label>
+            <textarea class="form-textarea" id="demo-message" name="message"
+                      rows="3" placeholder="Z.B. Branche, Zielgruppe, besondere Wünsche …"></textarea>
+          </div>
+
+          <button class="demo-submit" type="submit">Demo anfragen</button>
+
+          <div class="demo-promise">
+            <span class="demo-promise-dot"></span>
+            Wir melden uns innert 48 Stunden — kostenlos, unverbindlich.
+          </div>
+
+        </form>
+
+        <!-- Erfolgsmeldung -->
+        <div class="demo-success" id="demo-success" hidden>
+          <div class="demo-success-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a2744" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 6L9 17l-5-5"/>
+            </svg>
+          </div>
+          <h2>Anfrage erhalten.</h2>
+          <p>Wir melden uns innert 48 Stunden mit Ihrer persönlichen Demo.</p>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <a href="/" class="footer-logo" aria-label="Amplifyr – Startseite">
+          <span>ampli</span><span class="logo-fyr">fyr</span>
+        </a>
+        <p class="footer-copy">© 2026 Amplifyr GmbH. Alle Rechte vorbehalten.<a href="tel:+41447985842" class="footer-tel"> · 044 798 58 42</a></p>
+        <nav class="footer-links" aria-label="Rechtliches">
+          <a href="/impressum">Impressum</a>
+          <a href="/datenschutz">Datenschutz</a>
+          <a href="/agb">AGB</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/main.js"></script>
+  <script>
+  // Domain aus URL-Parameter vorausfüllen
+  (function() {
+    var domain = new URLSearchParams(window.location.search).get('domain');
+    if (domain) {
+      var f = document.getElementById('demo-domain');
+      if (f) f.value = domain;
+    }
+  }());
+
+  // Formular absenden
+  (function() {
+    var form    = document.getElementById('demo-form');
+    var success = document.getElementById('demo-success');
+    if (!form || !success) return;
+
+    function validate() {
+      var valid = true;
+      form.querySelectorAll('[required]').forEach(function(f) {
+        var empty = !f.value.trim();
+        f.classList.toggle('error', empty);
+        if (empty) valid = false;
+      });
+      return valid;
+    }
+
+    form.querySelectorAll('.form-input, .form-textarea').forEach(function(f) {
+      f.addEventListener('input', function() { f.classList.remove('error'); });
+    });
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (!validate()) {
+        var first = form.querySelector('.error');
+        if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      var btn = form.querySelector('.demo-submit');
+      if (btn) { btn.disabled = true; btn.textContent = 'Wird gesendet …'; }
+
+      var data = {};
+      new FormData(form).forEach(function(val, key) { data[key] = val; });
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      })
+      .then(function(res) {
+        if (!res.ok) throw new Error('Fehler');
+        form.hidden = true;
+        success.hidden = false;
+      })
+      .catch(function() {
+        if (btn) { btn.disabled = false; btn.textContent = 'Demo anfragen'; }
+        alert('Fehler beim Senden. Bitte kontaktieren Sie uns per E-Mail.');
+      });
+    });
+  }());
+  </script>
+
+</body>
+</html>

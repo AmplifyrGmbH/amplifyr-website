@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Websites als Werkzeug — Amplifyr</title>
+<meta name="description" content="Websites im KI-Zeitalter. Kein Kunstwerk, ein Arbeitspferd. SEO, GEO, blitzschnell, fair im Preis. Fixpreis-Pakete für Schweizer KMU.">
+<style>
+  :root {
+    --navy:      #1A2744;
+    --navy-deep: #111a30;
+    --navy-950:  #0c1424;
+    --steel:     #B0C4DE;
+    --white:     #FFFFFF;
+
+    --bg:        #0c1424;
+    --ink:       #eef2f8;
+    --ink-soft:  #c3cee0;
+    --ink-dim:   #8290ab;
+    --accent:    #B0C4DE;
+    --accent-bright:#d4e2f4;
+
+    /* glass */
+    --glass-bg:     rgba(176,196,222,0.06);
+    --glass-bg-2:   rgba(176,196,222,0.10);
+    --glass-border: rgba(176,196,222,0.18);
+    --glass-hi:     rgba(255,255,255,0.35);
+    --glass-shadow: rgba(6,11,22,0.45);
+
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", system-ui, sans-serif;
+    --mono: "SFMono-Regular", ui-monospace, "JetBrains Mono", "Menlo", monospace;
+
+    /* aliases (kept for existing rules) */
+    --surface:   rgba(176,196,222,0.06);
+    --surface-2: rgba(176,196,222,0.10);
+    --line:      rgba(176,196,222,0.16);
+    --accent-dim:#6f86ab;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body {
+    background:var(--bg); color:var(--ink);
+    font-family:var(--sans); line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    position:relative; overflow-x:hidden;
+  }
+  /* ambient background glow — liquid light */
+  body::before {
+    content:""; position:fixed; inset:0; z-index:-2;
+    background:
+      radial-gradient(60% 50% at 18% 12%, rgba(176,196,222,0.16), transparent 60%),
+      radial-gradient(50% 45% at 85% 8%,  rgba(120,150,200,0.14), transparent 55%),
+      radial-gradient(55% 50% at 78% 88%, rgba(176,196,222,0.10), transparent 60%),
+      linear-gradient(180deg, #0e1830 0%, #0c1424 45%, #0a1120 100%);
+  }
+  body::after {
+    content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
+    background-image:radial-gradient(rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size:3px 3px; opacity:.5;
+  }
+  .wrap { max-width:1120px; margin:0 auto; padding:0 24px; }
+
+  /* ---- eyebrow ---- */
+  .kicker {
+    font-family:var(--mono); font-size:.76rem; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--accent); display:inline-flex; align-items:center; gap:.6em; opacity:.9;
+  }
+  .kicker::before { content:""; width:22px; height:1px; background:var(--accent); opacity:.6; }
+
+  /* ---- header ---- */
+  header {
+    border-bottom:1px solid var(--glass-border);
+    position:sticky; top:0; z-index:50;
+    background:rgba(12,20,36,0.55);
+    backdrop-filter:blur(20px) saturate(1.4);
+    -webkit-backdrop-filter:blur(20px) saturate(1.4);
+  }
+  .nav { display:flex; align-items:center; justify-content:space-between; height:66px; }
+  .brand { font-weight:700; font-size:1.15rem; letter-spacing:-.02em; color:var(--white); }
+  .brand b { color:var(--accent); }
+  .nav a.cta {
+    font-size:.85rem; text-decoration:none; color:var(--navy);
+    background:linear-gradient(180deg, var(--accent-bright), var(--accent));
+    padding:.6em 1.2em; border-radius:100px; font-weight:600; transition:.2s;
+    box-shadow:0 2px 12px rgba(176,196,222,0.25), inset 0 1px 0 var(--glass-hi);
+  }
+  .nav a.cta:hover { transform:translateY(-1px); box-shadow:0 6px 20px rgba(176,196,222,0.35), inset 0 1px 0 var(--glass-hi); }
+  .nav-links { display:none; gap:30px; }
+  .nav-links a { color:var(--ink-soft); text-decoration:none; font-size:.9rem; transition:.15s; }
+  .nav-links a:hover { color:var(--white); }
+  @media(min-width:760px){ .nav-links{ display:flex; } }
+
+  /* ---- hero ---- */
+  .hero { padding:120px 0 90px; }
+  .hero h1 {
+    font-size:clamp(2.3rem,6.5vw,4.4rem); line-height:1.03;
+    font-weight:700; letter-spacing:-.035em; margin:24px 0 22px; max-width:16ch;
+    color:var(--white);
+  }
+  .hero h1 .dim { color:var(--accent); opacity:.85; }
+  .hero p.lead {
+    font-size:clamp(1.08rem,2.2vw,1.32rem); color:var(--ink-soft);
+    max-width:54ch; margin-bottom:38px;
+  }
+  .hero-actions { display:flex; flex-wrap:wrap; gap:14px; }
+  .btn {
+    font-size:.95rem; text-decoration:none; display:inline-block;
+    padding:.9em 1.7em; border-radius:100px; font-weight:600; transition:.2s;
+  }
+  .btn-primary {
+    color:var(--navy);
+    background:linear-gradient(180deg, var(--accent-bright), var(--accent));
+    box-shadow:0 4px 18px rgba(176,196,222,0.28), inset 0 1px 0 var(--glass-hi);
+  }
+  .btn-primary:hover { transform:translateY(-2px); box-shadow:0 10px 28px rgba(176,196,222,0.4), inset 0 1px 0 var(--glass-hi); }
+  .btn-ghost {
+    color:var(--ink); background:var(--glass-bg); border:1px solid var(--glass-border);
+    backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+  }
+  .btn-ghost:hover { background:var(--glass-bg-2); border-color:var(--accent); color:var(--white); }
+
+  /* ---- thesis strip ---- */
+  .thesis { padding:64px 0; }
+  .thesis-grid { display:grid; gap:28px; grid-template-columns:1fr;
+    background:var(--glass-bg); border:1px solid var(--glass-border);
+    border-radius:24px; padding:44px 40px;
+    backdrop-filter:blur(20px) saturate(1.3); -webkit-backdrop-filter:blur(20px) saturate(1.3);
+    box-shadow:0 20px 50px -20px var(--glass-shadow), inset 0 1px 0 var(--glass-hi);
+  }
+  @media(min-width:760px){ .thesis-grid{ grid-template-columns:1fr 1fr; align-items:center; } }
+  .thesis h2 { font-size:clamp(1.5rem,3.5vw,2.15rem); letter-spacing:-.025em; line-height:1.15; color:var(--white); }
+  .thesis h2 em { font-style:normal; color:var(--accent); }
+  .thesis .note { color:var(--ink-soft); font-size:1.02rem; }
+  .thesis .note strong { color:var(--white); font-weight:600; }
+
+  /* ---- section head ---- */
+  .sec { padding:80px 0; }
+  .sec + .sec { border-top:1px solid rgba(176,196,222,0.08); }
+  .sec-head { margin-bottom:44px; }
+  .sec-head h2 { font-size:clamp(1.7rem,4vw,2.5rem); letter-spacing:-.03em; margin-top:14px; color:var(--white); }
+  .sec-head p { color:var(--ink-soft); max-width:56ch; margin-top:12px; }
+
+  /* reusable glass surface */
+  .glass {
+    background:var(--glass-bg); border:1px solid var(--glass-border);
+    backdrop-filter:blur(20px) saturate(1.3); -webkit-backdrop-filter:blur(20px) saturate(1.3);
+    box-shadow:0 20px 50px -24px var(--glass-shadow), inset 0 1px 0 var(--glass-hi);
+  }
+
+  /* ---- basics grid ---- */
+  .basics { display:grid; gap:1px; background:var(--glass-border);
+    border:1px solid var(--glass-border); border-radius:20px; overflow:hidden;
+    grid-template-columns:1fr;
+    backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+    box-shadow:0 20px 50px -24px var(--glass-shadow); }
+  @media(min-width:640px){ .basics{ grid-template-columns:1fr 1fr; } }
+  @media(min-width:900px){ .basics{ grid-template-columns:1fr 1fr 1fr 1fr; } }
+  .basic-cell { background:rgba(176,196,222,0.05); padding:28px 24px; }
+  .basic-cell .lbl {
+    font-family:var(--mono); font-size:.7rem; color:var(--accent);
+    letter-spacing:.08em; text-transform:uppercase; display:block; margin-bottom:14px;
+  }
+  .basic-cell ul { list-style:none; }
+  .basic-cell li {
+    font-size:.92rem; color:var(--ink-soft); padding:5px 0 5px 20px; position:relative;
+  }
+  .basic-cell li::before {
+    content:"+"; position:absolute; left:0; color:var(--accent);
+    font-family:var(--mono); font-weight:700;
+  }
+  .basic-cell li strong { color:var(--white); font-weight:600; }
+
+  /* ---- pricing ---- */
+  .tiers { display:grid; gap:20px; grid-template-columns:1fr; }
+  @media(min-width:860px){ .tiers{ grid-template-columns:repeat(3,1fr); } }
+  .tier {
+    background:var(--glass-bg); border:1px solid var(--glass-border);
+    border-radius:22px; padding:34px 28px; display:flex; flex-direction:column;
+    position:relative; transition:.25s;
+    backdrop-filter:blur(20px) saturate(1.3); -webkit-backdrop-filter:blur(20px) saturate(1.3);
+    box-shadow:0 20px 50px -26px var(--glass-shadow), inset 0 1px 0 var(--glass-hi);
+  }
+  .tier:hover { transform:translateY(-5px); border-color:var(--accent); box-shadow:0 30px 60px -24px var(--glass-shadow), inset 0 1px 0 var(--glass-hi); }
+  .tier.featured {
+    border-color:rgba(176,196,222,0.4); background:var(--glass-bg-2);
+    box-shadow:0 30px 70px -24px rgba(6,11,22,0.6), 0 0 0 1px rgba(176,196,222,0.15), inset 0 1px 0 var(--glass-hi);
+  }
+  .tier .tag {
+    position:absolute; top:-12px; left:28px; color:var(--navy);
+    background:linear-gradient(180deg, var(--accent-bright), var(--accent));
+    font-family:var(--mono); font-size:.66rem; font-weight:700; letter-spacing:.06em;
+    padding:.4em .9em; border-radius:100px; text-transform:uppercase;
+    box-shadow:0 3px 12px rgba(176,196,222,0.3);
+  }
+  .tier .tno { font-family:var(--mono); font-size:.72rem; color:var(--ink-dim); letter-spacing:.05em; }
+  .tier h3 { font-size:1.4rem; letter-spacing:-.02em; margin:6px 0 4px; color:var(--white); }
+  .tier .promise { color:var(--accent); font-size:.9rem; font-family:var(--mono); margin-bottom:22px; }
+  .tier .price { font-size:2.5rem; font-weight:700; letter-spacing:-.03em; color:var(--white); }
+  .tier .price span { font-size:.95rem; color:var(--ink-dim); font-weight:400; font-family:var(--mono); }
+  .tier .who { color:var(--ink-soft); font-size:.9rem; margin:8px 0 22px; padding-bottom:22px; border-bottom:1px solid var(--glass-border); }
+  .tier ul { list-style:none; flex:1; margin-bottom:26px; }
+  .tier li { font-size:.92rem; color:var(--ink-soft); padding:7px 0 7px 24px; position:relative; }
+  .tier li::before { content:"✓"; position:absolute; left:0; color:var(--accent); font-weight:700; }
+  .tier .btn { text-align:center; }
+  .tier-note { text-align:center; color:var(--ink-dim); font-size:.9rem; margin-top:28px; font-family:var(--mono); }
+
+  /* ---- retainer ---- */
+  .retainer-grid { display:grid; gap:20px; grid-template-columns:1fr; align-items:start; }
+  @media(min-width:700px){ .retainer-grid{ grid-template-columns:1fr 1fr; } }
+  .rcard {
+    background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:22px;
+    padding:32px 28px; position:relative;
+    backdrop-filter:blur(20px) saturate(1.3); -webkit-backdrop-filter:blur(20px) saturate(1.3);
+    box-shadow:0 20px 50px -26px var(--glass-shadow), inset 0 1px 0 var(--glass-hi);
+  }
+  .rcard.rfeatured {
+    border-color:rgba(176,196,222,0.4); background:var(--glass-bg-2);
+    box-shadow:0 30px 70px -24px rgba(6,11,22,0.6), 0 0 0 1px rgba(176,196,222,0.15), inset 0 1px 0 var(--glass-hi);
+  }
+  .rcard .rtag {
+    position:absolute; top:-12px; left:28px; color:var(--navy);
+    background:linear-gradient(180deg, var(--accent-bright), var(--accent));
+    font-family:var(--mono); font-size:.66rem; font-weight:700; letter-spacing:.06em;
+    padding:.4em .9em; border-radius:100px; text-transform:uppercase;
+    box-shadow:0 3px 12px rgba(176,196,222,0.3);
+  }
+  .rcard .rprice { font-size:2rem; font-weight:700; letter-spacing:-.02em; color:var(--white); }
+  .rcard .rprice span { font-size:.9rem; color:var(--ink-dim); font-family:var(--mono); font-weight:400; }
+  .rcard h3 { font-size:1.2rem; margin:4px 0 2px; color:var(--white); }
+  .rcard .rsub { font-family:var(--mono); font-size:.82rem; color:var(--ink-dim); margin-bottom:18px; }
+  .rcard.rfeatured .rsub { color:var(--accent); }
+  .rcard ul { list-style:none; }
+  .rcard li { font-size:.92rem; color:var(--ink-soft); padding:6px 0 6px 24px; position:relative; }
+  .rcard li::before { content:"✓"; position:absolute; left:0; color:var(--accent); }
+  .rcard li.rlead { color:var(--white); font-weight:600; }
+  .rcard li .lidesc { display:block; font-size:.78rem; color:var(--ink-dim); font-weight:400; margin-top:2px; }
+  .rcard .rreport { margin-top:14px; padding:16px 18px; background:rgba(10,17,32,0.5); border:1px solid var(--glass-border); border-radius:14px; }
+  .rcard .rreport .rrlbl { font-family:var(--mono); font-size:.66rem; color:var(--accent); text-transform:uppercase; letter-spacing:.06em; display:block; margin-bottom:10px; }
+  .rcard .rreport span.tag2 { display:inline-block; font-size:.78rem; color:var(--ink-soft); background:var(--glass-bg-2); border:1px solid var(--glass-border); padding:.3em .7em; border-radius:100px; margin:0 5px 5px 0; }
+  .addons { margin-top:24px; border:1px solid var(--glass-border); border-radius:18px; padding:24px 26px; background:var(--glass-bg); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); }
+  .addons .lbl { font-family:var(--mono); font-size:.7rem; color:var(--accent); text-transform:uppercase; letter-spacing:.08em; display:block; margin-bottom:14px; }
+  .addon-row { display:flex; justify-content:space-between; align-items:center; padding:11px 0; border-bottom:1px solid var(--glass-border); font-size:.94rem; }
+  .addon-row:last-child { border-bottom:none; }
+  .addon-row .plus { font-family:var(--mono); color:var(--accent); font-weight:600; }
+  .addon-row .desc { color:var(--ink-dim); font-size:.82rem; }
+
+  /* ---- structure / sitemap ---- */
+  .sitemap { display:grid; gap:16px; grid-template-columns:1fr; }
+  @media(min-width:640px){ .sitemap{ grid-template-columns:1fr 1fr; } }
+  @media(min-width:960px){ .sitemap{ grid-template-columns:repeat(3,1fr); } }
+  .page-node {
+    background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:18px; padding:24px;
+    backdrop-filter:blur(16px) saturate(1.2); -webkit-backdrop-filter:blur(16px) saturate(1.2);
+    box-shadow:0 16px 40px -28px var(--glass-shadow), inset 0 1px 0 var(--glass-hi);
+    transition:.25s;
+  }
+  .page-node:hover { transform:translateY(-3px); border-color:var(--accent); }
+  .page-node .pnum { font-family:var(--mono); font-size:.7rem; color:var(--ink-dim); letter-spacing:.05em; }
+  .page-node h4 { font-size:1.1rem; margin:4px 0 12px; display:flex; align-items:center; gap:9px; color:var(--white); }
+  .page-node h4 .dot { width:7px; height:7px; border-radius:50%; background:var(--accent); box-shadow:0 0 10px var(--accent); }
+  .page-node ul { list-style:none; }
+  .page-node li { font-size:.88rem; color:var(--ink-soft); padding:4px 0 4px 16px; position:relative; }
+  .page-node li::before { content:"–"; position:absolute; left:0; color:var(--ink-dim); }
+  .page-node.legal { border-style:dashed; opacity:.85; }
+  .page-node.legal h4 .dot { background:var(--ink-dim); box-shadow:none; }
+
+  /* ---- tools library ---- */
+  .tools-grid { display:grid; gap:1px; background:var(--glass-border);
+    border:1px solid var(--glass-border); border-radius:20px; overflow:hidden;
+    grid-template-columns:1fr; align-items:start;
+    backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
+    box-shadow:0 20px 50px -26px var(--glass-shadow); }
+  @media(min-width:640px){ .tools-grid{ grid-template-columns:1fr 1fr; } }
+  @media(min-width:980px){ .tools-grid{ grid-template-columns:1fr 1fr 1fr; } }
+  .tool-cat { background:rgba(176,196,222,0.05); align-self:stretch; }
+  .tool-cat summary {
+    list-style:none; cursor:pointer; padding:20px 22px;
+    display:flex; align-items:center; gap:12px; transition:.15s;
+  }
+  .tool-cat summary::-webkit-details-marker { display:none; }
+  .tool-cat summary:hover { background:var(--glass-bg-2); }
+  .tool-cat summary .cno { font-family:var(--mono); font-size:.72rem; color:var(--ink-dim); min-width:22px; }
+  .tool-cat summary .cname { font-size:1rem; font-weight:600; flex:1; color:var(--white); }
+  .tool-cat summary .chev { color:var(--accent); font-family:var(--mono); transition:.2s; }
+  .tool-cat[open] summary .chev { transform:rotate(90deg); }
+  .tool-cat[open] summary { background:var(--glass-bg-2); }
+  .tool-cat .items { padding:2px 22px 22px 56px; }
+  .tool-cat .items span {
+    display:inline-block; font-size:.82rem; color:var(--ink-soft);
+    background:rgba(10,17,32,0.5); border:1px solid var(--glass-border);
+    padding:.32em .75em; border-radius:100px; margin:0 6px 6px 0;
+  }
+  .tools-foot { text-align:center; color:var(--ink-dim); font-size:.9rem; margin-top:28px; font-family:var(--mono); }
+
+  /* ---- process ---- */
+  .flow { display:grid; gap:0; grid-template-columns:1fr; }
+  @media(min-width:820px){ .flow{ grid-template-columns:repeat(4,1fr); } }
+  .step { position:relative; padding:26px 24px 26px 0; }
+  .step .snum {
+    font-family:var(--mono); font-size:.8rem; color:var(--navy);
+    background:linear-gradient(180deg, var(--accent-bright), var(--accent));
+    width:34px; height:34px; border-radius:100px;
+    display:flex; align-items:center; justify-content:center; font-weight:700; margin-bottom:16px;
+    box-shadow:0 4px 14px rgba(176,196,222,0.35), inset 0 1px 0 var(--glass-hi);
+  }
+  .step h4 { font-size:1.15rem; letter-spacing:-.01em; margin-bottom:8px; color:var(--white); }
+  .step p { font-size:.9rem; color:var(--ink-soft); }
+  .step:not(:last-child)::after {
+    content:""; position:absolute; left:44px; right:16px; top:43px; height:1px;
+    background:linear-gradient(90deg,var(--accent),transparent);
+  }
+  @media(max-width:819px){
+    .step { padding:22px 0 22px 48px; }
+    .step .snum { position:absolute; left:0; top:22px; margin:0; }
+    .step:not(:last-child)::after {
+      left:16px; top:56px; bottom:-8px; width:1px; height:auto; right:auto;
+      background:linear-gradient(180deg,var(--accent),transparent);
+    }
+  }
+  .loops { margin-top:40px; border:1px solid var(--glass-border); border-radius:20px; overflow:hidden;
+    background:var(--glass-bg); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
+    box-shadow:0 20px 50px -26px var(--glass-shadow), inset 0 1px 0 var(--glass-hi); }
+  .loops-head { font-family:var(--mono); font-size:.7rem; color:var(--accent); text-transform:uppercase; letter-spacing:.08em; padding:20px 24px 6px; }
+  .loop-row { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:16px 24px; border-top:1px solid var(--glass-border); flex-wrap:wrap; }
+  .loop-row .lname b { font-weight:600; color:var(--white); }
+  .loop-row .lname span { color:var(--ink-dim); font-size:.85rem; font-family:var(--mono); }
+  .loop-dots { display:flex; gap:6px; align-items:center; flex-shrink:0; }
+  .loop-dots i { width:11px; height:11px; border-radius:50%; background:var(--accent); display:block; box-shadow:0 0 8px rgba(176,196,222,0.5); }
+  .loop-dots i.demo { background:var(--ink-dim); box-shadow:none; }
+  .loop-dots .lcount { font-family:var(--mono); font-size:.82rem; color:var(--ink-soft); margin-left:8px; white-space:nowrap; }
+
+  /* ---- final cta ---- */
+  .final { padding:110px 0; text-align:center; }
+  .final-inner {
+    max-width:720px; margin:0 auto; padding:64px 40px; border-radius:28px;
+    background:var(--glass-bg); border:1px solid var(--glass-border);
+    backdrop-filter:blur(24px) saturate(1.4); -webkit-backdrop-filter:blur(24px) saturate(1.4);
+    box-shadow:0 40px 80px -30px rgba(6,11,22,0.7), inset 0 1px 0 var(--glass-hi);
+    position:relative; overflow:hidden;
+  }
+  .final-inner::before {
+    content:""; position:absolute; top:-50%; left:-20%; width:80%; height:120%;
+    background:radial-gradient(circle, rgba(176,196,222,0.14), transparent 65%);
+    pointer-events:none;
+  }
+  .final h2 { font-size:clamp(1.9rem,4.5vw,2.9rem); letter-spacing:-.035em; max-width:20ch; margin:0 auto 18px; color:var(--white); position:relative; }
+  .final p { color:var(--ink-soft); max-width:48ch; margin:0 auto 34px; font-size:1.1rem; position:relative; }
+  .final .btn { position:relative; }
+
+  footer { border-top:1px solid var(--glass-border); padding:40px 0; color:var(--ink-dim); font-size:.85rem; }
+  .foot { display:flex; flex-wrap:wrap; gap:12px; justify-content:space-between; align-items:center; }
+  .foot .brand { font-size:1rem; color:var(--white); }
+
+  @media (prefers-reduced-motion: reduce) { * { transition:none !important; scroll-behavior:auto; } }
+  :focus-visible { outline:2px solid var(--accent); outline-offset:3px; border-radius:4px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand">amplifyr<b>.</b></div>
+    <nav class="nav-links">
+      <a href="#basics">Standard</a>
+      <a href="#preise">Pakete</a>
+      <a href="#betrieb">Betrieb</a>
+      <a href="#werkzeuge">Werkzeuge</a>
+      <a href="#ablauf">Ablauf</a>
+      <a href="#aufbau">Aufbau</a>
+    </nav>
+    <a href="#kontakt" class="cta">Projekt starten</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <span class="kicker">website im ki-zeitalter</span>
+    <h1>Keine Kunstwerke.<br><span class="dim">Arbeitspferde.</span></h1>
+    <p class="lead">Sie sehen gut aus — aber sie sind zum Arbeiten gebaut. Gefunden werden bei Google und KI, rechnen, buchen, beraten, Leads erfassen. Eine Website, die Aufgaben übernimmt statt nur schön dazustehen.</p>
+    <div class="hero-actions">
+      <a href="#preise" class="btn btn-primary">Pakete ansehen</a>
+      <a href="#basics" class="btn btn-ghost">Was immer drin ist</a>
+    </div>
+  </div>
+</section>
+
+<!-- THESIS -->
+<section class="thesis">
+  <div class="wrap thesis-grid">
+    <h2>Eine Website ist ein <em>Werkzeug</em>, kein Deko-Objekt.</h2>
+    <p class="note">Gutes Design ist bei uns selbstverständlich — aber es dient der <strong>Funktion</strong>, statt Selbstzweck zu sein. Moderne Technik ohne Wartungs-Ballast, sichtbar in der klassischen Suche <strong>und</strong> in ChatGPT, Perplexity & Co. Und wo es Sinn ergibt, übernimmt die Seite echte Aufgaben: rechnen, buchen, filtern, beraten. Das Ergebnis gehört zu 100&nbsp;% Ihnen.</p>
+  </div>
+</section>
+
+<!-- BASICS -->
+<section class="sec" id="basics">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">in jedem paket enthalten</span>
+      <h2>Der Standard — ohne Aufpreis</h2>
+      <p>Was anderswo „Extra" kostet, ist bei uns die Grundlinie. Jede Website, egal welches Paket, wird so gebaut:</p>
+    </div>
+    <div class="basics">
+      <div class="basic-cell">
+        <span class="lbl">Sichtbarkeit</span>
+        <ul>
+          <li><strong>SEO</strong> — klassische Suche</li>
+          <li><strong>GEO</strong> — KI-Suche (ChatGPT, Perplexity, Gemini)</li>
+          <li>Schema.org / strukturierte Daten</li>
+          <li>llms.txt — Zugang für KI-Crawler</li>
+          <li>Saubere URLs & Meta-Tags</li>
+        </ul>
+      </div>
+      <div class="basic-cell">
+        <span class="lbl">Technik</span>
+        <ul>
+          <li><strong>Blitzschnelle Ladezeit</strong></li>
+          <li>Mobile-First — Handy, Tablet, Desktop</li>
+          <li>Kein CMS-Ballast, kein Wartungsrisiko</li>
+          <li>Moderne Infrastruktur (Vercel / Cloudflare)</li>
+          <li>SSL / HTTPS inklusive</li>
+        </ul>
+      </div>
+      <div class="basic-cell">
+        <span class="lbl">Recht (CH)</span>
+        <ul>
+          <li><strong>nDSG-konform</strong></li>
+          <li>Impressum</li>
+          <li>Datenschutzerklärung</li>
+          <li>Cookie-Handling korrekt gelöst</li>
+        </ul>
+      </div>
+      <div class="basic-cell">
+        <span class="lbl">Fairness</span>
+        <ul>
+          <li><strong>Fixpreis</strong> — keine Überraschungen</li>
+          <li>Code & Texte gehören Ihnen</li>
+          <li>Kein Hosting-Lock-in</li>
+          <li>Jederzeit übertragbar</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="sec" id="preise">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">erstellung · fixpreise</span>
+      <h2>Drei Pakete. Klarer Zweck.</h2>
+      <p>Nicht „mehr Design für mehr Geld", sondern mehr Werkzeug für mehr Wachstum. Sie wählen nach Ziel, nicht nach Seitenzahl.</p>
+    </div>
+    <div class="tiers">
+
+      <div class="tier">
+        <span class="tno">01 / Der Auftritt</span>
+        <h3>Der Auftritt</h3>
+        <div class="promise">„Sie sind online."</div>
+        <div class="price">2'999<span> CHF</span></div>
+        <p class="who">Für Kleinstbetriebe, Einzelunternehmer, den sauberen Start.</p>
+        <ul>
+          <li>Eine Seite, alle Infos</li>
+          <li>Alle Standard-Leistungen inklusive</li>
+          <li>Kontaktformular</li>
+          <li>Startklar in wenigen Tagen</li>
+        </ul>
+        <a href="#kontakt" class="btn btn-ghost">Anfragen</a>
+      </div>
+
+      <div class="tier featured">
+        <span class="tag">KMU-Match</span>
+        <span class="tno">02 / Das Arbeitspferd</span>
+        <h3>Das Arbeitspferd</h3>
+        <div class="promise">„Ihre Website arbeitet."</div>
+        <div class="price">4'999<span> CHF</span></div>
+        <p class="who">Der Standard für Dienstleister & KMU. Deckt den echten Bedarf komplett ab.</p>
+        <ul>
+          <li>5 Inhaltsseiten (Rechtsseiten inklusive)</li>
+          <li>Leistungen, Team, Kontakt</li>
+          <li>Alle Standard-Leistungen inklusive</li>
+          <li>Kontaktformular & Karte</li>
+          <li>Vertrauens-Elemente (Bewertungen, USP)</li>
+        </ul>
+        <a href="#kontakt" class="btn btn-primary">Anfragen</a>
+      </div>
+
+      <div class="tier">
+        <span class="tno">03 / Die Maschine</span>
+        <h3>Die Maschine</h3>
+        <div class="promise">„Läuft von selbst."</div>
+        <div class="price">8'900<span> CHF</span></div>
+        <p class="who">Wenn die Website Aufgaben übernehmen soll: rechnen, buchen, automatisieren — rund um die Uhr.</p>
+        <ul>
+          <li>Bis ~10 Seiten inkl. Leistungs-Landingpages</li>
+          <li>Interaktive Werkzeuge (Rechner, Buchung, Konfigurator)</li>
+          <li>Terminbuchung & Automatisierung (Kalender-Sync)</li>
+          <li>Google Business Profile + lokale SEO/GEO</li>
+          <li>Blog- & FAQ-Struktur für GEO · optional Mehrsprachigkeit</li>
+        </ul>
+        <a href="#kontakt" class="btn btn-ghost">Anfragen</a>
+      </div>
+
+    </div>
+    <p class="tier-note">// Grössere Projekte, Shops, Individuallösungen — auf Anfrage, transparent kalkuliert.</p>
+  </div>
+</section>
+
+<!-- RETAINER -->
+<section class="sec" id="betrieb">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">laufender betrieb · monatlich</span>
+      <h2>Betrieb & Pflege</h2>
+      <p>Weil wir kein WordPress warten, ist unser Aufwand minimal — und Ihr Preis ehrlich tief.</p>
+    </div>
+    <div class="retainer-grid">
+      <div class="rcard">
+        <div class="rprice">49<span> CHF / Monat</span></div>
+        <h3>Basic</h3>
+        <div class="rsub">„Läuft. Mehr nicht."</div>
+        <ul>
+          <li>Hosting & SSL</li>
+          <li>Uptime-Monitoring</li>
+          <li>Sicherheit & Erreichbarkeit garantiert</li>
+        </ul>
+      </div>
+      <div class="rcard rfeatured">
+        <span class="rtag">Empfohlen</span>
+        <div class="rprice">99<span> CHF / Monat</span></div>
+        <h3>Advanced</h3>
+        <div class="rsub">„Läuft, wird gepflegt, Sie sehen den Erfolg."</div>
+        <ul>
+          <li class="rlead">Alles aus Basic</li>
+          <li>1 Änderungswunsch pro Monat<br><span class="lidesc">Texte, Bilder, Preise — kein Neuaufbau</span></li>
+          <li>Laufende Updates & Content-Pflege</li>
+          <li>Priorisierter Support</li>
+        </ul>
+        <div class="rreport">
+          <span class="rrlbl">Monatlicher Report</span>
+          <span class="tag2">Traffic & Nutzer</span><span class="tag2">Sichtbarkeit (SEO)</span><span class="tag2">Verfügbarkeit</span><span class="tag2">Performance</span><span class="tag2">SSL-Check</span><span class="tag2">Backup-Status</span>
+        </div>
+      </div>
+    </div>
+    <div class="addons">
+      <span class="lbl">Zubuchbar zu jedem Betrieb</span>
+      <div class="addon-row">
+        <span>Einfacher Chatbot <span class="desc">— FAQ & Standardfragen</span></span>
+        <span class="plus">+20 CHF / Monat</span>
+      </div>
+      <div class="addon-row">
+        <span>Komplexer Chatbot <span class="desc">— Terminlogik, Beratung, Lead-Qualifizierung</span></span>
+        <span class="plus">+40 CHF / Monat</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS LIBRARY -->
+<section class="sec" id="werkzeuge">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">was „arbeiten" heisst</span>
+      <h2>Werkzeuge, die Aufgaben übernehmen</h2>
+      <p>Eine Website arbeitet nicht nur, indem sie Anfragen bringt — sie rechnet, bucht, filtert, berät und erfasst. Alles ohne CMS-Ballast, sauber in Ihre Seite integriert. Eine Auswahl dessen, was wir einbauen:</p>
+    </div>
+    <div class="tools-grid">
+
+      <details class="tool-cat">
+        <summary><span class="cno">01</span><span class="cname">Rechner & Kalkulatoren</span><span class="chev">›</span></summary>
+        <div class="items">
+          <span>Preis-/Kostenrechner</span><span>Hypothekenrechner</span><span>ROI-Rechner</span><span>Steuerrechner</span><span>Währungsumrechner</span><span>Einheitenumrechner</span><span>Mengen-/Materialrechner</span><span>Rabattrechner</span><span>Energiekosten</span><span>Leasingrechner</span>
+        </div>
+      </details>
+
+      <details class="tool-cat">
+        <summary><span class="cno">02</span><span class="cname">Buchung & Termine</span><span class="chev">›</span></summary>
+        <div class="items">
+          <span>Terminbuchung</span><span>Verfügbarkeitskalender (iCal)</span><span>Tischreservierung</span><span>Kursanmeldung</span><span>Warteliste</span><span>Zeitfenster-Auswahl</span><span>Ressourcenbuchung</span>
+        </div>
+      </details>
+
+      <details class="tool-cat">
+        <summary><span class="cno">03</span><span class="cname">Formulare & Leads</span><span class="chev">›</span></summary>
+        <div class="items">
+          <span>Kontaktformular</span><span>Mehrstufige Formulare</span><span>Bewerbung mit Upload</span><span>Angebotskonfigurator</span><span>Newsletter (Double-Opt-in)</span><span>Umfragen</span><span>Bewertungsabgabe</span><span>Rückruf-Anfrage</span>
+        </div>
+      </details>
+
+      <details class="tool-cat">
+        <summary><span class="cno">04</span><span class="cname">E-Commerce & Zahlung</span><span class="chev">›</span></summary>
+        <div class="items">
+          <span>Warenkorb & Checkout</span><span>Stripe / PayPal / TWINT</span><span>Produktfilter</span><span>Wunschliste</span><span>Gutscheincodes</span><span>Abo-Verwaltung</span><span>Rechnungs-PDF</span>
+        </div>
+      </details>
+
+      <details class="tool-cat">
+        <summary><span class="cno">05</span><span class="cname">Suche & Filter</span><span class="chev">›</span></summary>
+        <div class="items">
+          <span>Volltextsuche</span><span>Facettenfilter</span><span>Autocomplete</span><span>Standortsuche (PLZ/Umkreis)</span><span>Sortierung</span><span>Tag-Filter</span>
+        </div>
+      </details>
+
+      <details class="tool-cat">
+        <summary><span class="cno">06</span><span class="cname">Karten & Standort</span><span class="chev">›</span></summary>
+        <div class="items">
+          <span>Interaktive Karte</span><span>Routenplaner</span><span>Filialsuche</span><span>Geolocation</span><span>Umkreissuche</span>
+        </div>
+      </details>
+
+      <details class="tool-cat">
+        <summary><span class="cno">07</span><span class="cname">Medien & Dateien</span><span class="chev">›</span></summary>
+        <div class="items">
+          <span>Datei-Upload/-Download</span><span>Galerie / Lightbox</span><span>Video-Player</span><span>Audio-Player</span><span>PDF-Viewer</span><span>Vorher-Nachher-Slider</span><span>360°-Ansicht</span>
+        </div>
+      </details>
+
+      <details class="tool-cat">
+        <summary><span class="cno">08</span><span class="cname">Kommunikation</span><span class="chev">›</span></summary>
+        <div class="items">
+          <span>Live-Chat / KI-Assistent</span><span>WhatsApp-Button</span><span>Kommentare</span><span>Rezensionssystem</span><span>FAQ-Akkordeon</span><span>Share-Buttons</span><span>Voting / Polls</span>
+        </div>
+      </details>
+
+      <details class="tool-cat">
+        <summary><span class="cno">09</span><span class="cname">Nutzer & Konten</span><span class="chev">›</span></summary>
+        <div class="items">
+          <span>Login / Registrierung</span><span>Mitgliederbereich</span><span>Passwort-Reset</span><span>Benutzerprofil</span><span>Rollenverwaltung</span><span>Geschützte Inhalte</span>
+        </div>
+      </details>
+
+      <details class="tool-cat">
+        <summary><span class="cno">10</span><span class="cname">Content-Tools</span><span class="chev">›</span></summary>
+        <div class="items">
+          <span>Konfigurator</span><span>Quiz mit Auswertung</span><span>Checklisten-Generator</span><span>PDF-Generator</span><span>QR-Code-Generator</span><span>Countdown</span><span>Fortschrittsanzeige</span>
+        </div>
+      </details>
+
+      <details class="tool-cat">
+        <summary><span class="cno">11</span><span class="cname">Daten & Visualisierung</span><span class="chev">›</span></summary>
+        <div class="items">
+          <span>Diagramme / Charts</span><span>Dashboards</span><span>Sortier-/Exporttabellen</span><span>Live-Daten (API)</span><span>Vergleichsmatrix</span>
+        </div>
+      </details>
+
+      <details class="tool-cat">
+        <summary><span class="cno">12</span><span class="cname">Automatisierung & Support</span><span class="chev">›</span></summary>
+        <div class="items">
+          <span>API-Anbindungen</span><span>Webhooks</span><span>CRM-Integration</span><span>Kalender-Sync</span><span>E-Mail-Automatisierung</span><span>Zapier / Make</span><span>Ticketsystem</span><span>Wissensdatenbank</span><span>Cookie-Consent</span><span>Mehrsprachigkeit</span>
+        </div>
+      </details>
+
+    </div>
+    <p class="tools-foot">// Nicht dabei? Fragen Sie — was technisch machbar ist, bauen wir.</p>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="sec" id="ablauf">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">ablauf der zusammenarbeit</span>
+      <h2>Vom Gespräch zur fertigen Seite</h2>
+      <p>Kein Wochen-Briefing, keine Überraschungen. Sie sehen früh eine echte Demo und geben Feedback, bis es sitzt — die Anzahl der Runden ist pro Paket klar festgelegt.</p>
+    </div>
+    <div class="flow">
+      <div class="step">
+        <div class="snum">1</div>
+        <h4>Erstgespräch</h4>
+        <p>Kurz & konkret: Ziel, Zielgruppe, Umfang. Danach steht der Fixpreis.</p>
+      </div>
+      <div class="step">
+        <div class="snum">2</div>
+        <h4>Demo</h4>
+        <p>Sie bekommen eine echte, live klickbare Version — keine Skizze, kein Mockup.</p>
+      </div>
+      <div class="step">
+        <div class="snum">3</div>
+        <h4>Feedback</h4>
+        <p>Sie sagen, was noch soll. Wir passen an — in festgelegten Runden je Paket.</p>
+      </div>
+      <div class="step">
+        <div class="snum">4</div>
+        <h4>Launch</h4>
+        <p>Freigabe, online, übergeben. Code & Texte gehören Ihnen.</p>
+      </div>
+    </div>
+
+    <div class="loops">
+      <div class="loops-head">Feedback-Runden je Paket</div>
+      <div class="loop-row">
+        <div class="lname"><b>Der Auftritt</b> <span>· 2'999</span></div>
+        <div class="loop-dots">
+          <i class="demo" title="Demo"></i><i title="Feedback-Runde"></i><i title="Feedback-Runde"></i>
+          <span class="lcount">Demo + 2 Runden</span>
+        </div>
+      </div>
+      <div class="loop-row">
+        <div class="lname"><b>Das Arbeitspferd</b> <span>· 4'999</span></div>
+        <div class="loop-dots">
+          <i class="demo" title="Demo"></i><i></i><i></i><i></i>
+          <span class="lcount">Demo + 3 Runden</span>
+        </div>
+      </div>
+      <div class="loop-row">
+        <div class="lname"><b>Die Maschine</b> <span>· 8'900</span></div>
+        <div class="loop-dots">
+          <i class="demo" title="Demo"></i><i></i><i></i><i></i><i></i>
+          <span class="lcount">Demo + 4 Runden</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRUCTURE -->
+<section class="sec" id="aufbau">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">so ist eine kmu-website aufgebaut</span>
+      <h2>Aufbau „Arbeitspferd"</h2>
+      <p>Fünf Inhaltsseiten, die zusammen ein arbeitendes System ergeben — jede mit einem klaren Job.</p>
+    </div>
+    <div class="sitemap">
+      <div class="page-node">
+        <span class="pnum">page 01</span>
+        <h4><span class="dot"></span>Startseite</h4>
+        <ul>
+          <li>Wer, was, für wen — in einem Satz</li>
+          <li>Klarer Call-to-Action</li>
+          <li>Vertrauen: Bewertungen, USP, Logos</li>
+        </ul>
+      </div>
+      <div class="page-node">
+        <span class="pnum">page 02</span>
+        <h4><span class="dot"></span>Leistungen</h4>
+        <ul>
+          <li>Angebot nutzenorientiert</li>
+          <li>Pro Kernleistung ein Block</li>
+          <li>CTA je Abschnitt</li>
+        </ul>
+      </div>
+      <div class="page-node">
+        <span class="pnum">page 03</span>
+        <h4><span class="dot"></span>Über uns / Team</h4>
+        <ul>
+          <li>Gesichter & Story</li>
+          <li>Kompetenz zeigen</li>
+          <li>Vertrauen aufbauen</li>
+        </ul>
+      </div>
+      <div class="page-node">
+        <span class="pnum">page 04</span>
+        <h4><span class="dot"></span>Kontakt</h4>
+        <ul>
+          <li>Formular & Karte</li>
+          <li>Öffnungszeiten</li>
+          <li>Telefon / E-Mail klickbar</li>
+        </ul>
+      </div>
+      <div class="page-node legal">
+        <span class="pnum">page 05a</span>
+        <h4><span class="dot"></span>Impressum</h4>
+        <ul>
+          <li>Pflichtangaben CH</li>
+          <li>Standard mitgeliefert</li>
+        </ul>
+      </div>
+      <div class="page-node legal">
+        <span class="pnum">page 05b</span>
+        <h4><span class="dot"></span>Datenschutz</h4>
+        <ul>
+          <li>nDSG-konform</li>
+          <li>Standard mitgeliefert</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final" id="kontakt">
+  <div class="wrap">
+    <div class="final-inner">
+      <span class="kicker" style="justify-content:center;">Projekt starten</span>
+      <h2>Reden wir über Ihr Arbeitspferd.</h2>
+      <p>Kurzes Erstgespräch, klares Angebot, Fixpreis. Kein Agentur-Gerede.</p>
+      <a href="mailto:hallo@amplifyr.ch" class="btn btn-primary">Erstgespräch anfragen</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <span class="brand">amplifyr<b style="color:var(--accent)">.</b></span>
+    <span>Websites als Werkzeug · Uitikon Waldegg ZH</span>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1155,9 +1155,9 @@ footer {
 }
 
 .side-widget--portal {
-  background: #4a7cad;
+  background: var(--navy);
   color: #fff;
-  border-left: 3px solid var(--navy);
+  border-left: 3px solid #0f1a31;
 }
 
 .side-widget--tv {
