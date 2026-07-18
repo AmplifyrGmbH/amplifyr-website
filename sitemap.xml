@@ -3,70 +3,91 @@
 
   <url>
     <loc>https://www.amplifyr.ch/</loc>
-    <lastmod>2026-06-14</lastmod>
+    <lastmod>2026-07-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://www.amplifyr.ch/it-solutions</loc>
-    <lastmod>2026-06-14</lastmod>
+    <lastmod>2026-07-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://www.amplifyr.ch/ki-prozesse</loc>
-    <lastmod>2026-06-14</lastmod>
+    <lastmod>2026-07-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://www.amplifyr.ch/webdesign</loc>
-    <lastmod>2026-06-14</lastmod>
+    <lastmod>2026-07-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
+    <loc>https://www.amplifyr.ch/business-amplification</loc>
+    <lastmod>2026-07-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.amplifyr.ch/digitalisierung-kmu</loc>
+    <lastmod>2026-07-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.amplifyr.ch/digitalisierung-handwerker</loc>
+    <lastmod>2026-07-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
     <loc>https://www.amplifyr.ch/ueber-uns</loc>
-    <lastmod>2026-06-14</lastmod>
+    <lastmod>2026-07-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://www.amplifyr.ch/blog</loc>
-    <lastmod>2026-06-14</lastmod>
+    <lastmod>2026-07-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://www.amplifyr.ch/formular</loc>
-    <lastmod>2026-06-14</lastmod>
+    <lastmod>2026-07-18</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://www.amplifyr.ch/impressum</loc>
-    <lastmod>2026-06-14</lastmod>
+    <lastmod>2026-07-18</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 
   <url>
     <loc>https://www.amplifyr.ch/datenschutz</loc>
-    <lastmod>2026-06-14</lastmod>
+    <lastmod>2026-07-18</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 
   <url>
     <loc>https://www.amplifyr.ch/agb</loc>
-    <lastmod>2026-06-14</lastmod>
+    <lastmod>2026-07-18</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

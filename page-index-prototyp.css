@@ -346,7 +346,7 @@
 }
 
 .pprax-header h2 em {
-  color: #6b8cc4;
+  color: var(--steel);
   font-style: italic;
 }
 

@@ -3,8 +3,6 @@
    style.css — gemeinsames CSS für alle Seiten
 ============================================================ */
 
-/* Gelasio: Georgia-Fallback für Android (Georgia dort nicht als Systemfont verfügbar) */
-@import url('https://fonts.googleapis.com/css2?family=Gelasio:ital,wght@0,700;1,700&display=swap');
 
 /* ============================================================
    1. CSS CUSTOM PROPERTIES
@@ -43,7 +41,6 @@
 
   /* Typography */
   --font-display: Georgia, 'Times New Roman', serif;
-  --font-logo:    Georgia, 'Gelasio', 'Times New Roman', serif;
   --font-body:    'DM Sans', sans-serif;
 
   /* Spacing Scale */
@@ -391,6 +388,7 @@ p {
   left: 0;
   right: 0;
   z-index: 1000;
+  will-change: transform;
   height: var(--header-h);
   background: var(--navy);
   transition:
@@ -421,18 +419,17 @@ p {
   display: flex;
   align-items: center;
   text-decoration: none;
-  font-family: var(--font-logo);
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: -0.02em;
   flex-shrink: 0;
 }
 
-.site-logo .logo-fyr {
-  font-style: italic;
-  color: var(--steel);
+.logo-img {
+  display: block;
+  height: 46px;
+  width: auto;
 }
+
+/* Default: show light logo (white), hide dark logo */
+.logo-img--dark { display: none; }
 
 /* State: scrolled */
 #site-header.scrolled {
@@ -442,17 +439,11 @@ p {
   box-shadow: var(--shadow-sm);
 }
 
-#site-header.scrolled .site-logo {
-  color: var(--navy);
-}
-
-#site-header.scrolled .site-logo .logo-fyr {
-  color: var(--steel);
-}
-
-#site-header.legal-mode .site-logo .logo-fyr {
-  color: var(--steel);
-}
+/* Scrolled/legal-mode: swap to dark logo */
+#site-header.scrolled .logo-img--light,
+#site-header.legal-mode .logo-img--light { display: none; }
+#site-header.scrolled .logo-img--dark,
+#site-header.legal-mode .logo-img--dark  { display: block; }
 
 /* State: hero-mode (transparent over dark hero) */
 #site-header.hero-mode {
@@ -464,14 +455,6 @@ p {
   background: #fff;
   border-bottom: 1px solid var(--border-light);
   box-shadow: var(--shadow-sm);
-}
-
-#site-header.legal-mode .site-logo {
-  color: var(--navy);
-}
-
-#site-header.legal-mode .site-logo .logo-fyr {
-  color: var(--steel);
 }
 
 /* State: hidden (scroll up) */
@@ -503,7 +486,7 @@ p {
   gap: var(--space-1);
   padding: var(--space-2) var(--space-3);
   border-radius: var(--radius);
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   font-weight: 500;
   color: rgba(255,255,255,0.85);
   text-decoration: none;
@@ -789,17 +772,9 @@ p {
 }
 
 .mobile-menu__logo {
-  font-family: var(--font-logo);
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--navy);
-  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
   text-decoration: none;
-}
-
-.mobile-menu__logo .logo-fyr {
-  font-style: italic;
-  color: var(--steel);
 }
 
 .mobile-menu__close {
@@ -1064,20 +1039,12 @@ footer {
 }
 
 .footer-logo {
-  font-family: var(--font-logo);
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
   color: var(--navy);
   letter-spacing: -0.02em;
   text-decoration: none;
   flex-shrink: 0;
 }
 
-.footer-logo .logo-fyr {
-  font-style: italic;
-  color: var(--steel);
-}
 
 .footer-copy {
   font-size: 0.85rem;

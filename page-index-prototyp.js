@@ -882,40 +882,6 @@
 
 }());
 
-/* ============================================================
-   HEADER AUSBLENDEN ÜBER DER EISBERG-GRAFIK
-   Nur hier: Nav-Header verschwindet, solange die Eisberg-Section
-   den Header-Bereich überlappt, damit die Grafik den vollen
-   Platz bekommt — danach (und davor) wieder normal sichtbar.
-============================================================ */
-(function () {
-  'use strict';
-
-  var header  = document.getElementById('site-header');
-  var section = document.getElementById('proto-eisberg');
-  if (!header || !section) return;
-
-  var ticking = false;
-
-  function update() {
-    var rect = section.getBoundingClientRect();
-    var headerH = header.offsetHeight;
-    var overlaps = rect.top <= headerH && rect.bottom >= 0;
-    header.classList.toggle('hidden', overlaps);
-    ticking = false;
-  }
-
-  function onScroll() {
-    if (!ticking) {
-      requestAnimationFrame(update);
-      ticking = true;
-    }
-  }
-
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll);
-  update();
-}());
 
 /* ============================================================
    ECHTE VIEWPORT-HÖHE ALS CSS-VARIABLE (--vh)
