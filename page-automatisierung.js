@@ -1,6 +1,6 @@
 /* ============================================================
-   AMPLIFYR — page-ki-prozesse.js
-   Seitenspezifisches JS für ki-prozesse.html
+   AMPLIFYR — page-automatisierung.js
+   Seitenspezifisches JS für automatisierung.html
 ============================================================ */
 
 (function () {

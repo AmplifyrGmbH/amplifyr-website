@@ -1,6 +1,6 @@
 /* ============================================================
-   AMPLIFYR — page-ki-prozesse.css
-   Seitenspezifische Styles für ki-prozesse.html
+   AMPLIFYR — page-automatisierung.css
+   Seitenspezifische Styles für automatisierung.html
 ============================================================ */
 
 /* ============================================================
@@ -32,7 +32,7 @@
    PROZESSGRAFIK — 1:1 eingebettetes Artifact (kein Vollbild-Visual wie
    das Eisberg-Diagramm, sondern ein normal fliessender Inhaltsblock mit
    eigener Höhe je nach Breakpoint). Die Höhe wird per JS
-   (page-ki-prozesse.js) live an die tatsächliche Inhaltshöhe des Iframes
+   (page-automatisierung.js) live an die tatsächliche Inhaltshöhe des Iframes
    angepasst — ein Iframe hat sonst keine intrinsische Höhe und würde
    entweder abschneiden oder unnötig leeren Raum lassen.
 ============================================================ */

@@ -1,0 +1,691 @@
+/* ============================================================
+   AMPLIFYR — page-ki-transformation.css
+   Seitenspezifische Styles für ki-transformation.html
+   Präfix: kit- (KI-Transformation)
+============================================================ */
+
+
+/* ============================================================
+   2. STATS
+============================================================ */
+.kit-stats-section {
+  border-bottom: 1px solid var(--border-light);
+}
+
+.kit-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-12);
+}
+
+.kit-stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+/* Vertikale Trennlinie (nur Desktop) */
+.kit-stat--divider {
+  display: none;
+  width: 1px;
+  background: var(--border-light);
+  margin-block: var(--space-4);
+}
+
+.kit-stat-number {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 5.5vw, 4.5rem);
+  font-weight: 900;
+  line-height: 1;
+  color: var(--navy);
+  letter-spacing: -0.02em;
+}
+
+.kit-stat-unit {
+  font-size: 0.5em;
+  font-weight: 700;
+  vertical-align: baseline;
+}
+
+.kit-stat-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+.kit-stat-source {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  opacity: 0.7;
+  line-height: 1.4;
+}
+
+@media (min-width: 768px) {
+  .kit-stats-grid {
+    grid-template-columns: 1fr 1px 1fr 1px 1fr;
+    gap: 0;
+    column-gap: var(--space-12);
+  }
+  .kit-stat--divider {
+    display: block;
+  }
+}
+
+
+/* ============================================================
+   3. VERGLEICH
+============================================================ */
+.kit-compare-section {}
+
+.kit-compare-header {
+  max-width: 58ch;
+  margin-bottom: var(--space-12);
+}
+
+.kit-compare-header h2 {
+  margin-block: var(--space-3) var(--space-4);
+}
+
+.kit-compare-intro {
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+/* Tabelle */
+.kit-compare-table {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.kit-compare-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+}
+
+.kit-compare-col {
+  padding: var(--space-5) var(--space-6);
+}
+
+.kit-compare-col--bad {
+  background: #fdf2f2;
+  color: #a04040;
+  border-bottom: 1px solid #f5d5d5;
+}
+
+.kit-compare-col--good {
+  background: #f0f6ff;
+  color: #1a4080;
+  border-bottom: 1px solid #d0e4ff;
+  border-left: 1px solid var(--border);
+}
+
+.kit-compare-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--border-light);
+}
+
+.kit-compare-row:first-of-type { border-top: none; }
+
+.kit-compare-cell {
+  padding: var(--space-5) var(--space-6);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  background: #fff;
+  color: var(--text-muted);
+}
+
+.kit-compare-cell--good {
+  border-left: 1px solid var(--border-light);
+  color: var(--text);
+}
+
+.kit-compare-icon {
+  font-size: 0.85rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 0.2em;
+}
+
+.kit-compare-cell--bad  .kit-compare-icon { color: #c05050; }
+.kit-compare-cell--good .kit-compare-icon { color: #2a6adf; }
+
+@media (max-width: 599px) {
+  .kit-compare-head,
+  .kit-compare-row {
+    grid-template-columns: 1fr;
+  }
+  .kit-compare-col--good,
+  .kit-compare-cell--good {
+    border-left: none;
+    border-top: 1px solid var(--border-light);
+  }
+  .kit-compare-col--bad,
+  .kit-compare-cell--bad {
+    border-bottom: none;
+  }
+}
+
+
+/* ============================================================
+   4. REIFEGRAD-CHECK
+============================================================ */
+.kit-check-section {
+  background: var(--navy);
+  padding-block: var(--space-20);
+}
+
+@media (min-width: 768px) {
+  .kit-check-section {
+    padding-block: var(--space-24);
+  }
+}
+
+.kit-check-header {
+  text-align: center;
+  margin-bottom: var(--space-12);
+}
+
+.kit-check-header h2 {
+  color: #fff;
+  margin-block: var(--space-3) var(--space-4);
+}
+
+.kit-check-intro {
+  color: rgba(228, 235, 245, 0.65);
+  max-width: 48ch;
+  margin-inline: auto;
+}
+
+/* Fortschrittsbalken */
+.kit-check-progress-bar {
+  height: 3px;
+  background: rgba(255,255,255,0.1);
+  border-radius: var(--radius-pill);
+  margin-bottom: var(--space-3);
+  overflow: hidden;
+}
+
+.kit-check-progress-fill {
+  height: 100%;
+  background: #6ec1ff;
+  border-radius: var(--radius-pill);
+  width: 25%;
+  transition: width 0.4s var(--ease);
+}
+
+.kit-check-progress-label {
+  font-size: 0.8rem;
+  color: rgba(176, 196, 222, 0.6);
+  text-align: center;
+  margin-bottom: var(--space-10);
+  font-family: var(--font-body);
+}
+
+/* Fragen-Wrap */
+.kit-check-wrap {
+  max-width: 640px;
+  margin-inline: auto;
+}
+
+.kit-questions-wrap {
+  position: relative;
+  min-height: 240px;
+}
+
+/* Eine Frage */
+.kit-question {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  animation: kitFadeUp 0.35s var(--ease) both;
+}
+
+@keyframes kitFadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.kit-question-text {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.kit-question-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.kit-option-btn {
+  width: 100%;
+  text-align: left;
+  padding: var(--space-5) var(--space-6);
+  border-radius: var(--radius-md);
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(228, 235, 245, 0.85);
+  font-size: 0.95rem;
+  font-family: var(--font-body);
+  line-height: 1.5;
+  cursor: pointer;
+  transition:
+    background var(--duration) var(--ease),
+    border-color var(--duration) var(--ease),
+    color var(--duration) var(--ease),
+    transform var(--duration) var(--ease);
+}
+
+.kit-option-btn:hover {
+  background: rgba(110, 193, 255, 0.12);
+  border-color: rgba(110, 193, 255, 0.35);
+  color: #fff;
+  transform: translateX(4px);
+}
+
+.kit-option-btn:focus-visible {
+  outline: 2px solid #6ec1ff;
+  outline-offset: 2px;
+}
+
+/* Ergebnis */
+.kit-result-wrap {
+  animation: kitFadeUp 0.4s var(--ease) both;
+}
+
+.kit-result-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-lg);
+  padding: var(--space-10) var(--space-8);
+  text-align: center;
+}
+
+.kit-result-stage {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #6ec1ff;
+  margin-bottom: var(--space-4);
+}
+
+.kit-result-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(110, 193, 255, 0.15);
+  border: 1.5px solid rgba(110, 193, 255, 0.3);
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #6ec1ff;
+  margin: 0 auto var(--space-5);
+}
+
+.kit-result-headline {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: var(--space-4);
+  line-height: 1.3;
+}
+
+.kit-result-text {
+  color: rgba(228, 235, 245, 0.75);
+  margin-bottom: var(--space-8);
+  max-width: 44ch;
+  margin-inline: auto;
+}
+
+.kit-result-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 12px 24px;
+  border-radius: var(--radius-pill);
+  background: #6ec1ff;
+  color: var(--navy);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    background var(--duration) var(--ease),
+    transform var(--duration) var(--ease);
+}
+.kit-result-cta:hover {
+  background: #8dd0ff;
+  transform: translateY(-2px);
+}
+
+/* Neustart-Button */
+.kit-restart-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  margin: var(--space-6) auto 0;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: rgba(176, 196, 222, 0.5);
+  cursor: pointer;
+  transition: color var(--duration) var(--ease);
+  background: none;
+  border: none;
+}
+.kit-restart-btn:hover { color: var(--steel); }
+
+
+/* ============================================================
+   5. DIE 4 STUFEN / ROADMAP
+============================================================ */
+.kit-stufen-section {}
+
+.kit-stufen-header {
+  max-width: 56ch;
+  margin-bottom: var(--space-12);
+}
+
+.kit-stufen-header h2 {
+  margin-block: var(--space-3) var(--space-4);
+}
+
+.kit-stufen-intro {
+  color: var(--text-muted);
+}
+
+/* Grid */
+.kit-stufen-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+}
+
+@media (min-width: 640px) {
+  .kit-stufen-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1100px) {
+  .kit-stufen-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Stufe-Karte */
+.kit-stufe-card {
+  background: var(--bg);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8) var(--space-7);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  transition:
+    box-shadow var(--duration-slow) var(--ease),
+    border-color var(--duration-slow) var(--ease),
+    transform var(--duration-slow) var(--ease);
+}
+
+.kit-stufe-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--border);
+  transform: translateY(-3px);
+}
+
+.kit-stufe-num {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--border);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-2);
+}
+
+.kit-stufe-label {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  opacity: 0.75;
+}
+
+.kit-stufe-name {
+  font-size: clamp(1.1rem, 1.8vw, 1.2rem);
+  color: var(--navy);
+  margin-top: var(--space-1);
+}
+
+.kit-stufe-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  flex: 1;
+}
+
+.kit-stufe-examples {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  list-style: none;
+}
+
+.kit-stufe-examples li {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  padding-left: var(--space-4);
+  position: relative;
+}
+.kit-stufe-examples li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--steel);
+  font-size: 0.75rem;
+}
+
+.kit-stufe-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--navy);
+  text-decoration: none;
+  margin-top: auto;
+  transition: gap var(--duration) var(--ease);
+}
+.kit-stufe-link:hover { gap: var(--space-3); }
+
+.kit-stufe-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  color: var(--text-muted);
+  background: var(--bg-fog);
+  border-radius: var(--radius-pill);
+  padding: 4px 12px;
+  margin-top: auto;
+  width: fit-content;
+}
+
+
+/* ============================================================
+   6. WARUM JETZT?
+============================================================ */
+.kit-cost-section {
+  background: var(--navy);
+  padding-block: var(--space-20);
+}
+
+@media (min-width: 768px) {
+  .kit-cost-section {
+    padding-block: var(--space-24);
+  }
+}
+
+.kit-cost-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-10);
+}
+
+@media (min-width: 900px) {
+  .kit-cost-inner {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-16);
+  }
+}
+
+/* Zahl */
+.kit-cost-number {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  font-family: var(--font-display);
+  font-weight: 900;
+  color: #fff;
+}
+
+.kit-cost-chf {
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  color: #6ec1ff;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  margin-bottom: var(--space-2);
+  font-family: var(--font-body);
+}
+
+.kit-cost-val {
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  letter-spacing: -0.02em;
+}
+
+.kit-cost-suffix {
+  font-size: clamp(1rem, 2.2vw, 1.5rem);
+  color: var(--steel);
+  font-weight: 600;
+  margin-top: var(--space-2);
+  font-family: var(--font-body);
+}
+
+/* Text */
+.kit-cost-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 50ch;
+}
+
+.kit-cost-text h2 {
+  color: #fff;
+  margin-block: var(--space-2) var(--space-3);
+}
+
+.kit-cost-text p {
+  color: rgba(228, 235, 245, 0.72);
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
+.kit-cost-text strong {
+  color: #fff;
+  font-weight: 700;
+}
+
+.kit-cost-note {
+  font-size: 0.88rem !important;
+  font-style: italic;
+  color: rgba(176, 196, 222, 0.5) !important;
+}
+
+.kit-cost-btn {
+  margin-top: var(--space-4);
+  align-self: flex-start;
+}
+
+
+/* ============================================================
+   7. CTA ABSCHLUSS
+============================================================ */
+.kit-cta-section {
+  background: var(--navy);
+  padding-block: var(--space-20);
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .kit-cta-section {
+    padding-block: clamp(80px, 10vw, 140px);
+  }
+}
+
+.kit-cta-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+.kit-cta-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(176, 196, 222, 0.55);
+}
+
+.kit-cta-h {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.8rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+
+.kit-cta-em {
+  font-style: italic;
+  color: #6ec1ff;
+}
+
+.kit-cta-sub {
+  color: rgba(228, 235, 245, 0.65);
+  max-width: 50ch;
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
+.kit-cta-btn {
+  margin-top: var(--space-4);
+}

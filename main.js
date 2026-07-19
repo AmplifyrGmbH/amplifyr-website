@@ -178,6 +178,32 @@
   window.animateOnScroll = animateOnScroll;
 
   /* ============================================================
+     SHARED: FAQ ACCORDION
+     Aktiviert automatisch auf jeder Seite mit .kit-faq-btn
+  ============================================================ */
+  function initKitFaq() {
+    var btns = document.querySelectorAll('.kit-faq-btn');
+    if (!btns.length) return;
+    btns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var expanded = btn.getAttribute('aria-expanded') === 'true';
+        var answerId = btn.getAttribute('aria-controls');
+        var answer   = document.getElementById(answerId);
+        if (!answer) return;
+        btns.forEach(function (b) {
+          b.setAttribute('aria-expanded', 'false');
+          var a = document.getElementById(b.getAttribute('aria-controls'));
+          if (a) a.hidden = true;
+        });
+        if (!expanded) {
+          btn.setAttribute('aria-expanded', 'true');
+          answer.hidden = false;
+        }
+      });
+    });
+  }
+
+  /* ============================================================
      INIT
   ============================================================ */
   document.addEventListener('DOMContentLoaded', function () {
@@ -185,6 +211,7 @@
     initHeaderScroll();
     initMobileMenu();
     initMobileSubMenus();
+    initKitFaq();
   });
 
 }());
@@ -249,4 +276,5 @@
     clearTimeout(wiggleTimer);
     window.location.href = '/#ki-check';
   });
+
 }());
