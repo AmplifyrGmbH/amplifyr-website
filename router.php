@@ -8,8 +8,9 @@ if ($uri !== '/' && file_exists(__DIR__ . $uri)) {
 
 // Map clean URLs to .html files
 $map = [
+    '/ki-transformation'     => 'ki-transformation.html',
     '/it-solutions'          => 'it-solutions.html',
-    '/ki-prozesse'           => 'ki-prozesse.html',
+    '/automatisierung'           => 'automatisierung.html',
     '/webdesign'             => 'webdesign.html',
     '/ueber-uns'             => 'ueber-uns.html',
     '/blog'                  => 'blog.html',
