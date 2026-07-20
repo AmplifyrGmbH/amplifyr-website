@@ -1621,3 +1621,240 @@
   font-size: 0.7rem;
   color: rgba(255, 255, 255, 0.45);
 }
+
+
+/* ── Ansatz Steps: klickbare Links ── */
+.ansatz-step--link {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.ansatz-step-arrow {
+  margin-left: auto;
+  font-size: 1rem;
+  color: var(--steel);
+  opacity: 0.5;
+  transition: opacity 200ms ease, transform 200ms ease;
+}
+
+.ansatz-step--link:hover .ansatz-step-arrow {
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+/* ── Ansatz Result: KI-Transformation Ergebnis-Card ── */
+.ansatz-result {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  background: var(--bg-fog);
+  border: 1px solid var(--navy);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  color: var(--navy);
+  transition: background 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+}
+
+.ansatz-result:hover {
+  background: #EBF2FA;
+  transform: translateX(2px);
+  box-shadow: 0 4px 16px rgba(10,20,50,0.1);
+}
+
+.ansatz-result-num {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ansatz-result-inner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ansatz-result-label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.ansatz-result-name {
+  font-size: clamp(1rem, 1.5vw, 1.05rem);
+  font-weight: 800;
+  color: var(--navy);
+  font-family: var(--font-display);
+}
+
+.ansatz-result-arrow {
+  font-size: 1rem;
+  color: var(--steel);
+  opacity: 0.5;
+  transition: opacity 200ms ease, transform 200ms ease;
+}
+
+.ansatz-result:hover .ansatz-result-arrow {
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+
+/* ── Ansatz Step Operatoren (+, =) ── */
+.ansatz-step-operator {
+  padding-left: var(--space-4);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--steel);
+  opacity: 0.5;
+  line-height: 1;
+  user-select: none;
+}
+
+.ansatz-step-operator--eq {
+  opacity: 0.7;
+  color: var(--navy);
+  font-size: 1.1rem;
+}
+
+
+/* ── Ansatz Equation Wrapper ── */
+.ansatz-equation {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin: var(--space-6) 0;
+}
+
+.ansatz-equation .ansatz-result {
+  margin-top: 0;
+}
+
+
+/* ── KI-Transformation Widget (nested) ── */
+.ansatz-kit-widget {
+  margin: var(--space-6) 0;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5) var(--space-5) var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.ansatz-kit-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.ansatz-kit-label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+}
+
+.ansatz-kit-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2vw, 1.7rem);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.15;
+}
+
+/* Sub-widgets */
+.ansatz-kit-subs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.ansatz-kit-sub {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: calc(var(--radius-lg) - 4px);
+  text-decoration: none;
+  color: #fff;
+  transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.ansatz-kit-sub:hover {
+  background: rgba(255,255,255,0.13);
+  border-color: rgba(255,255,255,0.2);
+  transform: translateX(3px);
+}
+
+.ansatz-kit-sub-num {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.4);
+  flex-shrink: 0;
+  width: 1.4rem;
+}
+
+.ansatz-kit-sub-copy {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.ansatz-kit-sub-label {
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+}
+
+.ansatz-kit-sub-name {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.ansatz-kit-sub-arrow {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.3);
+  transition: color 180ms ease, transform 180ms ease;
+}
+
+.ansatz-kit-sub:hover .ansatz-kit-sub-arrow {
+  color: rgba(255,255,255,0.8);
+  transform: translateX(3px);
+}
+
+/* CTA Link */
+.ansatz-kit-cta {
+  align-self: flex-start;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.55);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: color 180ms ease;
+}
+
+.ansatz-kit-cta:hover {
+  color: #fff;
+}

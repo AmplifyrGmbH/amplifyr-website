@@ -241,7 +241,7 @@
 .ua-acc-item {
   background: var(--bg-white);
   border: 1px solid var(--border-light, var(--border));
-  border-top: 3px solid var(--border-light);
+  border-top: 5px solid var(--border-light);
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
@@ -256,9 +256,9 @@
 /* Akzentfarbe — horizontale Linie oben, je aus der Drei-Perspektiven-Grafik gesampelt:
    1) Markt & Strategie = Creme-Segment, 2) Prozesse & Data Science = Steelblau-Segment,
    3) Systeme & Engineering = Navy-Segment. */
-.ua-acc-item:nth-child(1) { border-top-color: #d2ccc4; }
-.ua-acc-item:nth-child(2) { border-top-color: #a4aab7; }
-.ua-acc-item:nth-child(3) { border-top-color: #354155; }
+.ua-acc-item:nth-child(1) { border-top-color: #b5a898; }
+.ua-acc-item:nth-child(2) { border-top-color: #6e8299; }
+.ua-acc-item:nth-child(3) { border-top-color: #1a2744; }
 
 /* Titelfarbe im offenen Zustand passend zur jeweiligen Akzentfarbe */
 .ua-acc-item:nth-child(1).is-open .ua-acc-title { color: #8a7f6f; }
