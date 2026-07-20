@@ -833,32 +833,43 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-areas:
-    "heading"
     "gear"
     "text";
   gap: var(--space-10);
-  align-items: center;
+  align-items: start;
 }
 
-.ansatz-split-heading { grid-area: heading; }
-.ansatz-split-gear    { grid-area: gear; }
-.ansatz-split-text    { grid-area: text; }
+.ansatz-split-heading { display: none; }
+.ansatz-split-gear    {
+  grid-area: gear;
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  align-items: flex-end;
+}
+.ansatz-split-text    {
+  grid-area: text;
+  display: flex;
+  flex-direction: column;
+}
 
 @media (min-width: 900px) {
   .ansatz-split {
-    grid-template-columns: 1.5fr 1fr;
-    grid-template-areas:
-      "gear heading"
-      "gear text";
-    gap: var(--space-14);
+    grid-template-columns: 1fr 1.1fr;
+    grid-template-areas: "text gear";
+    gap: var(--space-10);
+    align-items: start;
   }
 }
 
 .ansatz-split-gear .ki-gear-wrap {
   width: 100%;
   max-width: 100%;
+  max-height: 420px;
   margin-inline: 0;
+  margin-top: -100px;
   border-radius: var(--radius-xl);
+  overflow: hidden;
 }
 
 .ansatz-split-gear .kg2-callout {
@@ -949,7 +960,7 @@
   .ansatz-split-gear .ki-gear-wrap svg {
     position: absolute !important;
     top: 50% !important;
-    left: 38% !important;
+    left: 58% !important;
     width: 100% !important;
     height: auto !important;
     min-height: 0 !important;
@@ -962,7 +973,6 @@
 .ansatz-split-text {
   display: flex;
   flex-direction: column;
-  gap: var(--space-5);
 }
 
 .ansatz-split-label {
@@ -1743,9 +1753,31 @@
 }
 
 
+/* ── Spalten-Eyebrow ── */
+.ansatz-col-eyebrow {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  color: #fff;
+  margin: 0 0 1rem !important;
+  line-height: 1.2;
+}
+
+.ansatz-col-sub {
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  color: rgba(255,255,255,0.5);
+  line-height: 1.65;
+  margin: 0 0 var(--space-5) !important;
+  max-width: 38ch;
+}
+
+
 /* ── KI-Transformation Widget (nested) ── */
 .ansatz-kit-widget {
-  margin: var(--space-6) 0;
+  margin: 4rem 0 0;
   background: rgba(255,255,255,0.06);
   border: 1px solid rgba(255,255,255,0.12);
   border-radius: var(--radius-lg);
