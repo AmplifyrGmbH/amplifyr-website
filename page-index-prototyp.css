@@ -843,7 +843,7 @@
 }
 
 .pprax2-card {
-  --card-accent: #5BC8E8;
+  --card-accent: #B0C4DE;
   background: #1a2744;
   border-radius: 14px;
   padding: var(--space-4);
@@ -855,13 +855,13 @@
   transition: opacity 0.45s ease, transform 0.45s ease;
 }
 
-/* Alle Karten gleicher Hintergrund, Akzentfarbe läuft Blau → Cyan → Türkis → Mint */
-.pprax2-card:nth-child(1) { --card-accent: #74B8F8; }
-.pprax2-card:nth-child(2) { --card-accent: #5BC8E8; }
-.pprax2-card:nth-child(3) { --card-accent: #3DCDD8; }
-.pprax2-card:nth-child(4) { --card-accent: #2ED9BE; }
-.pprax2-card:nth-child(5) { --card-accent: #3EE8A8; }
-.pprax2-card:nth-child(6) { --card-accent: #5EF0C0; }
+/* Alle Karten gleicher Hintergrund, Akzentfarbe als Helligkeitsverlauf im Steel-Blue */
+.pprax2-card:nth-child(1) { --card-accent: #7AAEE2; }
+.pprax2-card:nth-child(2) { --card-accent: #90BBE6; }
+.pprax2-card:nth-child(3) { --card-accent: #A4C6E4; }
+.pprax2-card:nth-child(4) { --card-accent: #B0C4DE; }
+.pprax2-card:nth-child(5) { --card-accent: #C4D6EC; }
+.pprax2-card:nth-child(6) { --card-accent: #D6E4F4; }
 
 .pprax2-card.is-visible {
   opacity: 1;
