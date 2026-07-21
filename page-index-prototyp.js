@@ -257,46 +257,22 @@
       }
     }
 
-    /* Praxis — Mobile Vergleichskarten: Fade-in beim Scrollen ──── */
-    var compareCards = Array.prototype.slice.call(document.querySelectorAll('.pprax-compare-card'));
-    if (compareCards.length) {
+    /* Praxis V2 — Karten Fade-in ────────────────────────────────── */
+    var prax2Cards = Array.prototype.slice.call(document.querySelectorAll('.pprax2-card'));
+    if (prax2Cards.length) {
       if (reduced) {
-        compareCards.forEach(function (el) { el.classList.add('is-visible'); });
+        prax2Cards.forEach(function (el) { el.classList.add('is-visible'); });
       } else {
-        var cmpTriggered = false;
-        var cmpIO = new IntersectionObserver(function (entries) {
-          if (cmpTriggered || !entries[0].isIntersecting) return;
-          cmpTriggered = true;
-          cmpIO.disconnect();
-          compareCards.forEach(function (el, i) {
+        var prax2Triggered = false;
+        var prax2IO = new IntersectionObserver(function (entries) {
+          if (prax2Triggered || !entries[0].isIntersecting) return;
+          prax2Triggered = true;
+          prax2IO.disconnect();
+          prax2Cards.forEach(function (el, i) {
             setTimeout(function () { el.classList.add('is-visible'); }, i * 100);
           });
         }, { threshold: 0.1 });
-        cmpIO.observe(compareCards[0].closest('.pprax-compare-list') || compareCards[0]);
-      }
-    }
-
-    /* Praxis — Desktop Flip-Karten ──────────────────────────────── */
-    var praxisCards = Array.prototype.slice.call(document.querySelectorAll('.pprax-card'));
-    praxisCards.forEach(function (card) {
-      card.addEventListener('click', function () {
-        card.classList.toggle('is-flipped');
-      });
-    });
-    if (praxisCards.length) {
-      if (reduced) {
-        praxisCards.forEach(function (el) { el.classList.add('is-visible'); });
-      } else {
-        var praxTriggered = false;
-        var praxIO = new IntersectionObserver(function (entries) {
-          if (praxTriggered || !entries[0].isIntersecting) return;
-          praxTriggered = true;
-          praxIO.disconnect();
-          praxisCards.forEach(function (el, i) {
-            setTimeout(function () { el.classList.add('is-visible'); }, i * 140);
-          });
-        }, { threshold: 0.1 });
-        praxIO.observe(praxisCards[0].closest('.pprax-grid') || praxisCards[0]);
+        prax2IO.observe(prax2Cards[0].closest('.pprax2-grid') || prax2Cards[0]);
       }
     }
 
