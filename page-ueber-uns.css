@@ -312,6 +312,12 @@
   width: 280px;
 }
 
+@media (min-width: 900px) and (max-width: 1100px) {
+  .ua-acc-person {
+    width: 200px;
+  }
+}
+
 /* Ausgeblendet, sobald aufgeklappt — Foto und Name erscheinen dann bereits
    gross im aufgeklappten Profil darunter. */
 .ua-acc-item.is-open .ua-acc-person {
@@ -540,17 +546,7 @@
   color: #fff;
 }
 
-@media (max-width: 640px) {
-  .ua-acc-header {
-    flex-wrap: wrap;
-    padding: var(--space-4);
-    gap: var(--space-4);
-  }
-
-  .ua-acc-person {
-    display: none;
-  }
-
+@media (max-width: 768px) {
   .ua-acc-profile {
     grid-template-columns: 1fr;
     padding: var(--space-5);
@@ -560,6 +556,18 @@
   .ua-acc-photo {
     max-width: 220px;
     margin: 0 auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .ua-acc-header {
+    flex-wrap: wrap;
+    padding: var(--space-4);
+    gap: var(--space-4);
+  }
+
+  .ua-acc-person {
+    display: none;
   }
 }
 
