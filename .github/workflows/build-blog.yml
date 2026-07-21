@@ -1,0 +1,47 @@
+name: Build & Deploy Blog
+
+# Wird ausgelöst durch:
+#   1. Contentful-Webhook beim Publizieren eines Posts
+#      → Contentful: Settings > Webhooks > URL:
+#        https://api.github.com/repos/AmplifyrGmbH/amplifyr-website-v2/dispatches
+#        Method: POST  |  Header: Authorization: Bearer [GITHUB_PAT]
+#        Body: {"event_type": "contentful-publish"}
+#   2. Manuell über GitHub Actions > "Run workflow"
+
+on:
+  repository_dispatch:
+    types: [contentful-publish]
+  workflow_dispatch:
+
+jobs:
+  build-blog:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Blog aus Contentful generieren
+        env:
+          CONTENTFUL_SPACE_ID:     ${{ secrets.CONTENTFUL_SPACE_ID }}
+          CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
+        run: node scripts/build-blog.js
+
+      - name: Deploy Blog-Dateien via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server:            ${{ secrets.FTP_SERVER }}
+          username:          ${{ secrets.FTP_USERNAME }}
+          password:          ${{ secrets.FTP_PASSWORD }}
+          protocol:          ftps
+          port:              21
+          local-dir:         ./_blog-dist/
+          server-dir:        /www/amplifyr.ch/
+          server-state-name: .ftp-deploy-sync-state-blog.json
+          # Nur hinzufügen/aktualisieren — niemals andere Dateien auf dem Server löschen
+          dangerous-clean-slate: false
