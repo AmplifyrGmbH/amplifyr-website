@@ -844,18 +844,38 @@
 
 .pprax2-card {
   --card-accent: #B0C4DE;
-  background: #1a2744;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(170deg, #1f2f55 0%, #1a2744 60%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-top-color: rgba(255, 255, 255, 0.12);
   border-radius: 14px;
   padding: var(--space-4);
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
+  box-shadow:
+    0 1px 2px rgba(26, 39, 68, 0.06),
+    0 4px 8px rgba(26, 39, 68, 0.08),
+    0 12px 24px rgba(26, 39, 68, 0.1),
+    0 24px 48px rgba(26, 39, 68, 0.06);
   opacity: 0;
   transform: translateY(16px);
   transition: opacity 0.45s ease, transform 0.45s ease;
 }
 
-/* Alle Karten gleicher Hintergrund, Akzentfarbe als Helligkeitsverlauf im Steel-Blue */
+/* Interner Glanzsaum oben links */
+.pprax2-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 35%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, transparent 100%);
+  border-radius: 14px 14px 0 0;
+  pointer-events: none;
+}
+
+/* Steel-Blue Spektrum als Akzentfarbe */
 .pprax2-card:nth-child(1) { --card-accent: #7AAEE2; }
 .pprax2-card:nth-child(2) { --card-accent: #90BBE6; }
 .pprax2-card:nth-child(3) { --card-accent: #A4C6E4; }
@@ -882,6 +902,7 @@
   align-items: center;
   justify-content: center;
   background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 7px;
   color: var(--steel);
 }
@@ -900,7 +921,7 @@
   font-size: 0.58rem;
   text-transform: uppercase;
   letter-spacing: 0.09em;
-  color: var(--steel);
+  color: rgba(176, 196, 222, 0.65);
   margin: 0;
   font-family: var(--font-body);
   font-weight: 600;
@@ -935,7 +956,7 @@
   font-size: 0.55rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--steel);
+  color: rgba(176, 196, 222, 0.6);
   margin-top: 2px;
   font-family: var(--font-body);
 }
@@ -953,12 +974,14 @@
 }
 
 .pprax2-before {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .pprax2-after {
   flex: 1;
   background: color-mix(in srgb, var(--card-accent) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--card-accent) 22%, transparent);
 }
 
 .pprax2-before p,
@@ -969,7 +992,7 @@
 }
 
 .pprax2-before p {
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.38);
 }
 
 .pprax2-after p {
@@ -981,7 +1004,7 @@
   display: flex;
   justify-content: center;
   padding: 4px 0;
-  color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.18);
 }
 
 .pprax2-arrow svg {
@@ -1003,11 +1026,11 @@
 
 .pprax2-badge--before {
   background: rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.38);
 }
 
 .pprax2-badge--after {
-  background: color-mix(in srgb, var(--card-accent) 22%, transparent);
+  background: color-mix(in srgb, var(--card-accent) 20%, transparent);
   color: var(--card-accent);
 }
 
