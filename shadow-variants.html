@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shadow & Gloss Variants</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: "DM Sans", system-ui, sans-serif; background: #1a2032; }
+
+/* ── Sticky nav ── */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(10,15,30,0.95); backdrop-filter: blur(12px);
+  display: flex; align-items: center; gap: 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.nav-label { padding: 14px 20px 14px 24px; font-size: .72rem; color: rgba(255,255,255,0.3); font-family: monospace; letter-spacing: .06em; }
+.nav a {
+  color: rgba(255,255,255,0.5); text-decoration: none;
+  padding: 14px 22px; font-size: .85rem; font-weight: 500;
+  border-bottom: 2px solid transparent; transition: .15s;
+}
+.nav a:hover { color: rgba(255,255,255,0.85); }
+.nav a.v1 { color: #7eb8e8; border-bottom-color: #7eb8e8; }
+.nav a.v2 { }
+.nav a.v3 { }
+.nav a.v4 { }
+
+/* ── Shared section wrapper ── */
+.section {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 100px 32px;
+  position: relative; overflow: hidden;
+}
+.inner { max-width: 900px; width: 100%; position: relative; z-index: 1; }
+.sec-head { text-align: center; margin-bottom: 52px; }
+.kicker {
+  display: inline-flex; align-items: center; gap: .65em;
+  font-size: .72rem; font-weight: 600; letter-spacing: .12em;
+  text-transform: uppercase; font-family: monospace; margin-bottom: 20px;
+}
+.kicker::before { content: ""; width: 28px; height: 1.5px; }
+h2 {
+  font-family: Georgia, serif; font-weight: normal;
+  font-size: clamp(2rem, 4.5vw, 3rem); letter-spacing: -.01em;
+  margin-bottom: 16px; line-height: 1.15;
+}
+.sub { font-size: 1rem; line-height: 1.7; max-width: 50ch; margin: 0 auto; }
+
+/* ── Checklist grid ── */
+.sp-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; }
+.sp-list li {
+  font-size: 1rem; font-weight: 500;
+  padding: 20px 24px 20px 44px;
+  position: relative; border-bottom: 1px solid;
+}
+.sp-list li:nth-last-child(-n+2) { border-bottom: none; }
+.sp-list li::before {
+  content: "+"; position: absolute; left: 20px;
+  font-weight: 700; font-size: .9rem;
+}
+
+/* variant label */
+.v-label {
+  position: absolute; top: 28px; right: 32px;
+  font-family: monospace; font-size: .7rem; letter-spacing: .06em;
+  opacity: .4; text-transform: uppercase;
+}
+
+/* ════════════════════════════════════════
+   VARIANT 1 — Deep Float
+   Weiche, mehrschichtige Schatten
+   Karte schwebt weit über dem Hintergrund
+════════════════════════════════════════ */
+#v1 {
+  background: #c8d5e8;
+}
+#v1::before {
+  content: "";
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(65% 45% at 15% 10%, rgba(106,171,223,0.35), transparent 65%),
+    radial-gradient(55% 40% at 80% 88%, rgba(106,171,223,0.25), transparent 65%);
+}
+#v1 .kicker { color: #6AABDF; }
+#v1 .kicker::before { background: #6AABDF; }
+#v1 h2 { color: #1A2744; }
+#v1 .sub { color: #4a5a7a; }
+#v1 .v-label { color: #1A2744; }
+#v1 .card {
+  background: rgba(255,255,255,0.90);
+  border-radius: 24px;
+  border: 1px solid rgba(255,255,255,0.95);
+  box-shadow:
+    /* rim light top */
+    inset 0 1px 0 rgba(255,255,255,1),
+    /* inner bottom shadow */
+    inset 0 -2px 6px rgba(26,39,68,0.04),
+    /* close shadow — form */
+    0 4px 6px -2px rgba(26,39,68,0.08),
+    /* mid shadow — lift */
+    0 16px 32px -8px rgba(26,39,68,0.16),
+    /* far shadow — depth */
+    0 48px 80px -20px rgba(26,39,68,0.22),
+    /* ambient spread */
+    0 80px 120px -40px rgba(26,39,68,0.12);
+}
+#v1 .sp-list li { color: #1A2744; border-bottom-color: rgba(26,39,68,0.07); }
+#v1 .sp-list li::before { color: #6AABDF; }
+
+/* ════════════════════════════════════════
+   VARIANT 2 — Liquid Glass
+   Starkes Frosted-Glas, Rim-Licht,
+   lebendige Schichten
+════════════════════════════════════════ */
+#v2 {
+  background: #b8cce0;
+}
+#v2::before {
+  content: "";
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(70% 50% at 20% 15%, rgba(255,255,255,0.30), transparent 60%),
+    radial-gradient(60% 45% at 82% 80%, rgba(106,171,223,0.40), transparent 65%),
+    radial-gradient(40% 30% at 50% 50%, rgba(255,255,255,0.08), transparent 70%);
+}
+#v2 .kicker { color: #3a7ab5; }
+#v2 .kicker::before { background: #3a7ab5; }
+#v2 h2 { color: #0f1f3d; }
+#v2 .sub { color: #3a4e6a; }
+#v2 .v-label { color: #0f1f3d; }
+#v2 .card {
+  background: rgba(255,255,255,0.55);
+  border-radius: 28px;
+  backdrop-filter: blur(32px) saturate(1.8) brightness(1.08);
+  -webkit-backdrop-filter: blur(32px) saturate(1.8) brightness(1.08);
+  border: 1px solid rgba(255,255,255,0.70);
+  box-shadow:
+    /* strong top rim — glass edge */
+    inset 0 1.5px 0 rgba(255,255,255,0.95),
+    /* left rim */
+    inset 1.5px 0 0 rgba(255,255,255,0.40),
+    /* bottom inner shadow */
+    inset 0 -1px 0 rgba(26,39,68,0.08),
+    /* close shadow */
+    0 2px 4px rgba(26,39,68,0.06),
+    /* main lift shadow */
+    0 20px 50px -10px rgba(26,39,68,0.22),
+    /* colour glow from bg bleeding through */
+    0 40px 80px -20px rgba(106,171,223,0.30);
+}
+#v2 .sp-list li { color: #0f1f3d; border-bottom-color: rgba(26,39,68,0.08); }
+#v2 .sp-list li::before { color: #3a7ab5; }
+
+/* ════════════════════════════════════════
+   VARIANT 3 — Pressed / Inset
+   Karte ist in den Hintergrund eingedrückt
+   Konkaves Licht — Tiefe nach innen
+════════════════════════════════════════ */
+#v3 {
+  background: #d4dfee;
+}
+#v3::before {
+  content: "";
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(80% 60% at 50% 50%, rgba(255,255,255,0.25), transparent 70%);
+}
+#v3 .kicker { color: #6AABDF; }
+#v3 .kicker::before { background: #6AABDF; }
+#v3 h2 { color: #1A2744; }
+#v3 .sub { color: #4a5a7a; }
+#v3 .v-label { color: #1A2744; }
+#v3 .card {
+  background: rgba(255,255,255,0.50);
+  border-radius: 24px;
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border: 1px solid rgba(255,255,255,0.60);
+  box-shadow:
+    /* inner top shadow — pressed in */
+    inset 0 4px 12px rgba(26,39,68,0.12),
+    /* inner left shadow */
+    inset 4px 0 10px rgba(26,39,68,0.06),
+    /* inner bottom bright — concave light */
+    inset 0 -3px 8px rgba(255,255,255,0.80),
+    /* inner right bright */
+    inset -3px 0 8px rgba(255,255,255,0.50),
+    /* outer: barely lifts */
+    0 1px 2px rgba(26,39,68,0.04),
+    /* very soft outer glow */
+    0 8px 24px -8px rgba(26,39,68,0.10);
+}
+#v3 .sp-list li { color: #1A2744; border-bottom-color: rgba(26,39,68,0.08); }
+#v3 .sp-list li::before { color: #6AABDF; }
+
+/* ════════════════════════════════════════
+   VARIANT 4 — Dark Glass / Neon Rim
+   Dunkler Hintergrund, Karte glüht
+   Accent-Rim-Licht + innerer Glanz
+════════════════════════════════════════ */
+#v4 {
+  background: #0d1624;
+}
+#v4::before {
+  content: "";
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(60% 45% at 20% 15%, rgba(106,171,223,0.18), transparent 65%),
+    radial-gradient(55% 40% at 80% 85%, rgba(99,102,241,0.12), transparent 65%),
+    radial-gradient(40% 30% at 50% 50%, rgba(106,171,223,0.06), transparent 70%);
+}
+#v4 .kicker { color: rgba(106,171,223,0.75); }
+#v4 .kicker::before { background: #6AABDF; }
+#v4 h2 { color: #ffffff; }
+#v4 .sub { color: rgba(255,255,255,0.60); }
+#v4 .v-label { color: rgba(255,255,255,0.4); }
+#v4 .card {
+  background: rgba(255,255,255,0.055);
+  border-radius: 24px;
+  backdrop-filter: blur(24px) saturate(1.6);
+  -webkit-backdrop-filter: blur(24px) saturate(1.6);
+  border: 1px solid rgba(106,171,223,0.28);
+  box-shadow:
+    /* accent rim glow — outer */
+    0 0 0 1px rgba(106,171,223,0.12),
+    /* top rim bright — glass sheen */
+    inset 0 1px 0 rgba(255,255,255,0.14),
+    /* bottom inner dark */
+    inset 0 -1px 0 rgba(0,0,0,0.20),
+    /* close shadow */
+    0 4px 8px rgba(0,0,0,0.25),
+    /* main depth shadow */
+    0 24px 60px -12px rgba(0,0,0,0.55),
+    /* accent colour glow */
+    0 0 80px -20px rgba(106,171,223,0.18),
+    /* wide ambient */
+    0 60px 120px -30px rgba(0,0,0,0.40);
+}
+#v4 .sp-list li { color: rgba(255,255,255,0.85); border-bottom-color: rgba(255,255,255,0.07); }
+#v4 .sp-list li::before { color: #6AABDF; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <span class="nav-label">SHADOW & GLOSS</span>
+  <a href="#v1" class="v1">1 — Deep Float</a>
+  <a href="#v2" class="v2">2 — Liquid Glass</a>
+  <a href="#v3" class="v3">3 — Pressed / Inset</a>
+  <a href="#v4" class="v4">4 — Dark Neon Rim</a>
+</nav>
+
+<!-- ─── VARIANT 1 ─── -->
+<section class="section" id="v1">
+  <span class="v-label">Variant 1 — Deep Float</span>
+  <div class="inner">
+    <div class="sec-head">
+      <div class="kicker">in jedem Paket enthalten</div>
+      <h2>Der Standard — ohne Aufpreis</h2>
+      <p class="sub">Was anderswo „Extra" kostet, ist bei uns die Grundlinie. Jede Website, egal welches Paket, wird so gebaut:</p>
+    </div>
+    <div class="card">
+      <ul class="sp-list">
+        <li>Gefunden bei Google — und von KI-Assistenten</li>
+        <li>Blitzschnell — auf jedem Gerät</li>
+        <li>Läuft — ohne Ihren Eingriff</li>
+        <li>Fixpreis — keine Überraschungen</li>
+        <li>Alles gehört Ihnen</li>
+        <li>Schweizer Datenschutz eingehalten</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ─── VARIANT 2 ─── -->
+<section class="section" id="v2">
+  <span class="v-label">Variant 2 — Liquid Glass</span>
+  <div class="inner">
+    <div class="sec-head">
+      <div class="kicker">in jedem Paket enthalten</div>
+      <h2>Der Standard — ohne Aufpreis</h2>
+      <p class="sub">Was anderswo „Extra" kostet, ist bei uns die Grundlinie. Jede Website, egal welches Paket, wird so gebaut:</p>
+    </div>
+    <div class="card">
+      <ul class="sp-list">
+        <li>Gefunden bei Google — und von KI-Assistenten</li>
+        <li>Blitzschnell — auf jedem Gerät</li>
+        <li>Läuft — ohne Ihren Eingriff</li>
+        <li>Fixpreis — keine Überraschungen</li>
+        <li>Alles gehört Ihnen</li>
+        <li>Schweizer Datenschutz eingehalten</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ─── VARIANT 3 ─── -->
+<section class="section" id="v3">
+  <span class="v-label">Variant 3 — Pressed / Inset</span>
+  <div class="inner">
+    <div class="sec-head">
+      <div class="kicker">in jedem Paket enthalten</div>
+      <h2>Der Standard — ohne Aufpreis</h2>
+      <p class="sub">Was anderswo „Extra" kostet, ist bei uns die Grundlinie. Jede Website, egal welches Paket, wird so gebaut:</p>
+    </div>
+    <div class="card">
+      <ul class="sp-list">
+        <li>Gefunden bei Google — und von KI-Assistenten</li>
+        <li>Blitzschnell — auf jedem Gerät</li>
+        <li>Läuft — ohne Ihren Eingriff</li>
+        <li>Fixpreis — keine Überraschungen</li>
+        <li>Alles gehört Ihnen</li>
+        <li>Schweizer Datenschutz eingehalten</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ─── VARIANT 4 ─── -->
+<section class="section" id="v4">
+  <span class="v-label">Variant 4 — Dark Neon Rim</span>
+  <div class="inner">
+    <div class="sec-head">
+      <div class="kicker">in jedem Paket enthalten</div>
+      <h2>Der Standard — ohne Aufpreis</h2>
+      <p class="sub">Was anderswo „Extra" kostet, ist bei uns die Grundlinie. Jede Website, egal welches Paket, wird so gebaut:</p>
+    </div>
+    <div class="card">
+      <ul class="sp-list">
+        <li>Gefunden bei Google — und von KI-Assistenten</li>
+        <li>Blitzschnell — auf jedem Gerät</li>
+        <li>Läuft — ohne Ihren Eingriff</li>
+        <li>Fixpreis — keine Überraschungen</li>
+        <li>Alles gehört Ihnen</li>
+        <li>Schweizer Datenschutz eingehalten</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
