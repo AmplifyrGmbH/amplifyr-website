@@ -637,55 +637,106 @@
 /* ============================================================
    7. CTA ABSCHLUSS
 ============================================================ */
-.kit-cta-section {
+.ki-cta {
+  position: relative;
   background: var(--navy);
-  padding-block: var(--space-20);
+  padding-block: clamp(3rem, 6vw, 4.5rem);
+  overflow: hidden;
+}
+
+.ki-cta-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.ki-cta-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10,14,35,0.60);
+}
+
+.ki-cta-content {
+  position: relative;
+  z-index: 1;
   text-align: center;
-}
-
-@media (min-width: 768px) {
-  .kit-cta-section {
-    padding-block: clamp(80px, 10vw, 140px);
-  }
-}
-
-.kit-cta-inner {
+  max-width: 600px;
+  margin-inline: auto;
   display: flex;
   flex-direction: column;
+  gap: var(--space-6);
   align-items: center;
-  gap: var(--space-5);
 }
 
-.kit-cta-eyebrow {
-  font-family: var(--font-body);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(176, 196, 222, 0.55);
-}
-
-.kit-cta-h {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 5vw, 3.8rem);
-  font-weight: 900;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
+.ki-cta-content h2 {
   color: #fff;
+  margin: 0;
 }
 
-.kit-cta-em {
-  font-style: italic;
-  color: #6ec1ff;
+.ki-cta-content > p {
+  color: rgba(255,255,255,0.75);
+  font-size: 1rem;
+  margin: 0;
 }
 
-.kit-cta-sub {
-  color: rgba(228, 235, 245, 0.65);
-  max-width: 50ch;
-  font-size: 0.95rem;
-  line-height: 1.75;
+/* ── Gemini Aurora Blobs ── */
+.ki-cta-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.55;
+  will-change: transform;
 }
 
-.kit-cta-btn {
-  margin-top: var(--space-4);
+.ki-cta-blob--1 {
+  width: 480px; height: 360px;
+  background: rgba(99, 102, 241, 0.72);
+  top: -10%; left: -10%;
+  animation: blobDrift1 20s ease-in-out infinite alternate;
+}
+
+.ki-cta-blob--2 {
+  width: 420px; height: 320px;
+  background: rgba(6, 182, 212, 0.60);
+  bottom: -15%; right: 5%;
+  animation: blobDrift2 17s ease-in-out infinite alternate;
+}
+
+.ki-cta-blob--3 {
+  width: 380px; height: 300px;
+  background: rgba(168, 85, 247, 0.55);
+  top: 25%; left: 38%;
+  animation: blobDrift3 24s ease-in-out infinite alternate;
+}
+
+.ki-cta-blob--4 {
+  width: 300px; height: 250px;
+  background: rgba(59, 130, 246, 0.50);
+  top: -5%; right: 18%;
+  animation: blobDrift4 22s ease-in-out infinite alternate;
+}
+
+@keyframes blobDrift1 {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(60px, 40px) scale(1.1); }
+}
+@keyframes blobDrift2 {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(-50px, -30px) scale(1.08); }
+}
+@keyframes blobDrift3 {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(30px, -50px) scale(0.92); }
+}
+@keyframes blobDrift4 {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(-40px, 35px) scale(1.05); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ki-cta-blob { animation: none; }
+}
+
+@media (max-width: 640px) {
+  .ki-cta-blob { filter: blur(50px); animation-duration: 35s; }
 }
