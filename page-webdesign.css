@@ -18,6 +18,11 @@
   background: rgba(10, 18, 40, 0.38);
 }
 
+/* Heading kleiner damit «Die Website fürs KI‑Zeitalter» in 2 Zeilen passt */
+#wd-h1 {
+  font-size: clamp(2.4rem, 4.5vw, 4.2rem);
+}
+
 
 .fsh-sub--lg {
   font-size: clamp(1.1rem, 2.2vw, 1.35rem);
