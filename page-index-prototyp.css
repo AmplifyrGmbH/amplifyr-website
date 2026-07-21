@@ -843,7 +843,8 @@
 }
 
 .pprax2-card {
-  background: var(--navy);
+  --card-accent: #5BC8E8;
+  background: #1a2744;
   border-radius: 16px;
   padding: var(--space-6);
   display: flex;
@@ -853,6 +854,13 @@
   transform: translateY(16px);
   transition: opacity 0.45s ease, transform 0.45s ease;
 }
+
+.pprax2-card:nth-child(1) { --card-accent: #5BC8E8; background: #1a2744; }
+.pprax2-card:nth-child(2) { --card-accent: #4DD9B8; background: #192a46; }
+.pprax2-card:nth-child(3) { --card-accent: #78B8F8; background: #1c2c4a; }
+.pprax2-card:nth-child(4) { --card-accent: #4EC9D6; background: #172240; }
+.pprax2-card:nth-child(5) { --card-accent: #8AAEF5; background: #1b2d4c; }
+.pprax2-card:nth-child(6) { --card-accent: #5EE8C0; background: #1e2c46; }
 
 .pprax2-card.is-visible {
   opacity: 1;
@@ -916,7 +924,7 @@
   font-family: var(--font-display);
   font-size: 1.5rem;
   font-weight: 800;
-  color: #5BC8E8;
+  color: var(--card-accent);
   line-height: 1;
   letter-spacing: -0.02em;
 }
@@ -948,7 +956,7 @@
 }
 
 .pprax2-after {
-  background: rgba(91, 200, 232, 0.1);
+  background: color-mix(in srgb, var(--card-accent) 12%, transparent);
 }
 
 .pprax2-before p,
@@ -997,8 +1005,8 @@
 }
 
 .pprax2-badge--after {
-  background: rgba(91, 200, 232, 0.18);
-  color: #5BC8E8;
+  background: color-mix(in srgb, var(--card-accent) 22%, transparent);
+  color: var(--card-accent);
 }
 
 /* ============================================================
