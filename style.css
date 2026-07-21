@@ -66,8 +66,8 @@
   --container-px: 48px;
 
   /* Header */
-  --header-h:         86px;
-  --header-h-compact: 68px;
+  --header-h:         72px;
+  --header-h-compact: 58px;
 
   /* Transitions */
   --ease:          cubic-bezier(0.25, 0.46, 0.45, 0.94);
