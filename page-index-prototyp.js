@@ -257,23 +257,18 @@
       }
     }
 
-    /* Praxis V2 — Karten Fade-in ────────────────────────────────── */
-    var prax2Cards = Array.prototype.slice.call(document.querySelectorAll('.pprax2-card'));
-    if (prax2Cards.length) {
-      if (reduced) {
-        prax2Cards.forEach(function (el) { el.classList.add('is-visible'); });
-      } else {
-        var prax2Triggered = false;
-        var prax2IO = new IntersectionObserver(function (entries) {
-          if (prax2Triggered || !entries[0].isIntersecting) return;
-          prax2Triggered = true;
-          prax2IO.disconnect();
-          prax2Cards.forEach(function (el, i) {
-            setTimeout(function () { el.classList.add('is-visible'); }, i * 100);
-          });
-        }, { threshold: 0.1 });
-        prax2IO.observe(prax2Cards[0].closest('.pprax2-grid') || prax2Cards[0]);
-      }
+    /* Praxis KI-Detail — Master-Detail Interaktion ─────────────── */
+    var pkidItems = Array.prototype.slice.call(document.querySelectorAll('.pkid-item'));
+    var pkidEntries = Array.prototype.slice.call(document.querySelectorAll('.pkid-panel-entry'));
+    if (pkidItems.length && pkidEntries.length) {
+      pkidItems.forEach(function (item, i) {
+        item.addEventListener('click', function () {
+          pkidItems.forEach(function (it) { it.classList.remove('is-active'); });
+          pkidEntries.forEach(function (en) { en.classList.remove('is-active'); });
+          item.classList.add('is-active');
+          if (pkidEntries[i]) pkidEntries[i].classList.add('is-active');
+        });
+      });
     }
 
     /* Zeitstrahl-Schritte ───────────────────────────────────── */

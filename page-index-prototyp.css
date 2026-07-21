@@ -826,217 +826,372 @@
   opacity: 0.85;
 }
 
-/* ── Praxis V2 — Statische Navy-Karten mit Metrik ──────────── */
-.pprax2-grid {
+/* ── Praxis KI-Detail — Master-Detail Layout ──────────────── */
+:root {
+  --pkid-accent: #6AABDF;
+  --pkid-navy:   #E8EDF5;
+  --pkid-panel:  #F2F5FA;
+}
+
+/* Layout */
+.pkid-layout {
+  margin-top: var(--space-8);
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-4);
-  margin-top: var(--space-10);
+  gap: 0;
+  border-radius: 16px;
+  overflow: clip;
+  border: 1px solid rgba(26, 39, 68, 0.1);
+  box-shadow: 0 4px 24px rgba(26, 39, 68, 0.08);
 }
 
-@media (min-width: 560px) {
-  .pprax2-grid { grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 860px) {
+  .pkid-layout { grid-template-columns: 260px 1fr; }
 }
 
-@media (min-width: 1100px) {
-  .pprax2-grid { grid-template-columns: repeat(3, 1fr); }
-}
-
-.pprax2-card {
-  --card-accent: #B0C4DE;
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(170deg, #1f2f55 0%, #1a2744 60%);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-top-color: rgba(255, 255, 255, 0.12);
-  border-radius: 14px;
-  padding: var(--space-4);
+/* ── Sidebar ── */
+.pkid-list-wrap {
+  background: var(--pkid-navy);
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
-  box-shadow:
-    0 1px 2px rgba(26, 39, 68, 0.06),
-    0 4px 8px rgba(26, 39, 68, 0.08),
-    0 12px 24px rgba(26, 39, 68, 0.1),
-    0 24px 48px rgba(26, 39, 68, 0.06);
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.45s ease, transform 0.45s ease;
 }
 
-/* Interner Glanzsaum oben links */
-.pprax2-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 35%;
-  background: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, transparent 100%);
-  border-radius: 14px 14px 0 0;
-  pointer-events: none;
-}
-
-/* Steel-Blue Spektrum als Akzentfarbe */
-.pprax2-card:nth-child(1) { --card-accent: #7AAEE2; }
-.pprax2-card:nth-child(2) { --card-accent: #90BBE6; }
-.pprax2-card:nth-child(3) { --card-accent: #A4C6E4; }
-.pprax2-card:nth-child(4) { --card-accent: #B0C4DE; }
-.pprax2-card:nth-child(5) { --card-accent: #C4D6EC; }
-.pprax2-card:nth-child(6) { --card-accent: #D6E4F4; }
-
-.pprax2-card.is-visible {
-  opacity: 1;
-  transform: none;
-}
-
-.pprax2-head {
+.pkid-list {
+  background: var(--pkid-navy);
   display: flex;
-  align-items: flex-start;
-  gap: var(--space-2);
+  flex-direction: row;
+  gap: 0;
 }
 
-.pprax2-icon {
+@media (min-width: 860px) {
+  .pkid-list { flex-direction: column; }
+}
+
+.pkid-item {
+  flex: none;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 11px;
+  padding: 12px 16px;
+  background: transparent;
+  border: none;
+  border-left: 3px solid transparent;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+@media (max-width: 859px) {
+  .pkid-item {
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    padding: 12px 4px;
+    border-left: none;
+    border-bottom: 2px solid transparent;
+    text-align: center;
+    min-width: 0;
+  }
+}
+
+.pkid-item:hover {
+  background: rgba(26, 39, 68, 0.04);
+}
+
+.pkid-item.is-active {
+  background: rgba(106, 171, 223, 0.12);
+  border-left-color: var(--pkid-accent);
+}
+
+@media (max-width: 859px) {
+  .pkid-item.is-active {
+    background: rgba(106, 171, 223, 0.12);
+    border-left-color: transparent;
+    border-bottom-color: var(--pkid-accent);
+  }
+}
+
+/* Icon — inaktiv: gedämpft, aktiv: Akzentfarbe */
+.pkid-item-icon {
   flex: none;
   width: 30px;
   height: 30px;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 7px;
-  color: var(--steel);
+  color: rgba(26, 39, 68, 0.4);
+  transition: color 0.15s ease;
 }
 
-.pprax2-icon svg {
+@media (min-width: 860px) {
+  .pkid-item-icon { width: 32px; height: 32px; }
+}
+
+.pkid-item.is-active .pkid-item-icon {
+  color: var(--pkid-accent);
+}
+
+.pkid-item-icon svg {
   width: 15px;
   height: 15px;
 }
 
-.pprax2-labels {
-  flex: 1;
-  min-width: 0;
+@media (min-width: 860px) {
+  .pkid-item-icon svg { width: 16px; height: 16px; }
 }
 
-.pprax2-area {
-  font-size: 0.58rem;
-  text-transform: uppercase;
-  letter-spacing: 0.09em;
-  color: rgba(176, 196, 222, 0.65);
-  margin: 0;
+.pkid-item-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+
+@media (max-width: 859px) {
+  .pkid-item-copy { display: none; }
+}
+
+.pkid-item-title {
   font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: rgba(26, 39, 68, 0.65);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2;
+  transition: color 0.15s ease;
+}
+
+.pkid-item.is-active .pkid-item-title {
+  color: #1a2744;
   font-weight: 600;
 }
 
-.pprax2-name {
-  font-family: var(--font-body);
-  font-size: 0.84rem;
-  font-weight: 700;
-  color: #fff;
-  margin: 0;
-  margin-top: 1px;
+.pkid-item-cat { display: none; }
+
+/* ── Panel ── */
+.pkid-panel-wrap {
+  background: var(--pkid-panel);
+  padding: var(--space-5) var(--space-5);
+  min-height: 260px;
+  position: relative;
 }
 
-.pprax2-metric-wrap {
-  flex: none;
-  text-align: right;
+@media (min-width: 860px) {
+  .pkid-panel-wrap {
+    padding: var(--space-7) var(--space-8);
+    min-height: 300px;
+  }
 }
 
-.pprax2-metric {
-  display: block;
+/* Aurora Blobs — subtiler, nur 2 */
+.pkid-blobs {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.pkid-blob {
+  position: absolute;
+  border-radius: 50%;
+  will-change: transform;
+}
+
+.pkid-blob--1 {
+  width: 380px; height: 280px;
+  background: rgba(106, 171, 223, 0.18);
+  top: -30%; right: 0;
+  filter: blur(90px);
+  animation: pkidBlob1 22s ease-in-out infinite alternate;
+}
+
+.pkid-blob--2 {
+  width: 320px; height: 260px;
+  background: rgba(99, 102, 241, 0.10);
+  bottom: -20%; left: -5%;
+  filter: blur(85px);
+  animation: pkidBlob2 28s ease-in-out infinite alternate;
+}
+
+.pkid-blob--3, .pkid-blob--4 { display: none; }
+
+@keyframes pkidBlob1 {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(-30px, 25px) scale(1.1); }
+}
+
+@keyframes pkidBlob2 {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(25px, -20px) scale(0.92); }
+}
+
+@media (max-width: 859px) {
+  .pkid-blob--1 { width: 200px; height: 160px; filter: blur(55px); }
+  .pkid-blob--2 { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pkid-blob { animation: none; }
+}
+
+/* Panel content */
+.pkid-panel-entry {
+  display: none;
+  flex-direction: column;
+  gap: var(--space-4);
+  animation: pkidFadeIn 0.2s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.pkid-panel-entry.is-active { display: flex; }
+
+@keyframes pkidFadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.pkid-panel-head { margin-bottom: 2px; }
+
+.pkid-panel-title {
   font-family: var(--font-display);
-  font-size: 1.25rem;
-  font-weight: 800;
-  color: var(--card-accent);
-  line-height: 1;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-weight: 700;
+  color: #1a2744;
+  margin: 0;
   letter-spacing: -0.02em;
+  line-height: 1.2;
 }
 
-.pprax2-metric-label {
-  display: block;
-  font-size: 0.55rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: rgba(176, 196, 222, 0.6);
-  margin-top: 2px;
-  font-family: var(--font-body);
+/* ── Compare columns — exakt gleiche Karten ── */
+.pkid-compare {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
 }
 
-.pprax2-body {
+@media (min-width: 560px) {
+  .pkid-compare { grid-template-columns: 1fr 1fr; }
+}
+
+.pkid-col {
+  border-radius: 8px;
+  padding: 14px 16px;
   display: flex;
   flex-direction: column;
-  flex: 1;
+  gap: 10px;
 }
 
-.pprax2-before,
-.pprax2-after {
-  padding: 10px 12px;
-  border-radius: 8px;
+.pkid-col--before {
+  background: rgba(26, 39, 68, 0.04);
+  border: 1px solid rgba(26, 39, 68, 0.08);
 }
 
-.pprax2-before {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+.pkid-col--after {
+  background: rgba(106, 171, 223, 0.12);
+  border: 1px solid rgba(106, 171, 223, 0.28);
 }
 
-.pprax2-after {
-  flex: 1;
-  background: color-mix(in srgb, var(--card-accent) 12%, transparent);
-  border: 1px solid color-mix(in srgb, var(--card-accent) 22%, transparent);
-}
-
-.pprax2-before p,
-.pprax2-after p {
-  font-size: 0.78rem;
-  line-height: 1.5;
+.pkid-col p {
+  font-size: 0.875rem;
+  line-height: 1.55;
   margin: 0;
 }
 
-.pprax2-before p {
-  color: rgba(255, 255, 255, 0.38);
-}
+.pkid-col--before p { color: rgba(26, 39, 68, 0.62); }
+.pkid-col--after  p { color: #1a2744; font-weight: 500; }
 
-.pprax2-after p {
-  color: #fff;
-  font-weight: 500;
-}
-
-.pprax2-arrow {
-  display: flex;
-  justify-content: center;
-  padding: 4px 0;
-  color: rgba(255, 255, 255, 0.18);
-}
-
-.pprax2-arrow svg {
-  width: 12px;
-  height: 12px;
-}
-
-.pprax2-badge {
+/* Badges — exakt gleiche Form, nur Farbe unterscheidet */
+.pkid-pill {
   display: inline-block;
-  font-size: 0.55rem;
+  font-family: var(--font-body);
+  font-size: 0.62rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.09em;
-  padding: 2px 7px;
-  border-radius: 20px;
-  margin-bottom: 6px;
+  padding: 3px 10px;
+  border-radius: 4px;
+  align-self: flex-start;
+  line-height: 1.4;
+}
+
+.pkid-pill--before {
+  background: rgba(26, 39, 68, 0.08);
+  color: rgba(26, 39, 68, 0.55);
+}
+
+.pkid-pill--after {
+  background: rgba(106, 171, 223, 0.2);
+  color: #3a7fc1;
+}
+
+/* Footer — mehr Abstand, dezentere Linie */
+.pkid-footer {
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px solid rgba(26, 39, 68, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  position: relative;
+  z-index: 1;
+}
+
+.pkid-footer-eyebrow {
   font-family: var(--font-body);
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--pkid-accent);
+  margin: 0;
 }
 
-.pprax2-badge--before {
-  background: rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.38);
+.pkid-footer-text {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: rgba(26, 39, 68, 0.75);
+  margin: 0;
 }
 
-.pprax2-badge--after {
-  background: color-mix(in srgb, var(--card-accent) 20%, transparent);
-  color: var(--card-accent);
+@media (min-width: 860px) {
+  .pkid-footer-text { font-size: 1rem; }
 }
+
+.pkid-footer-text strong {
+  color: #1a2744;
+  font-weight: 600;
+}
+
+/* unused leftovers (kept for safety) */
+.pkid-footer-cta, .pkid-footer-copy { display: contents; }
+.pkid-panel-icon, .pkid-panel-cat, .pkid-panel-head-copy { display: none; }
 
 /* ============================================================
    ANSATZ / ZAHNRAD SPLIT-LAYOUT
 ============================================================ */
+#ansatz {
+  padding-bottom: var(--space-8);
+}
+
+@media (min-width: 768px) {
+  #ansatz { padding-bottom: var(--space-10); }
+}
+
+@media (min-width: 1200px) {
+  #ansatz { padding-bottom: var(--space-12); }
+}
 .ansatz-split {
   display: grid;
   grid-template-columns: 1fr;
@@ -1073,6 +1228,7 @@
     text-align: right;
     align-items: flex-end;
     padding-right: var(--space-6);
+    margin-top: -1rem;
   }
 }
 
@@ -2013,6 +2169,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
+  position: relative;
 }
 
 @media (min-width: 900px) {
@@ -2061,6 +2218,8 @@
   text-decoration: none;
   color: #fff;
   transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+  position: relative;
+  z-index: 2;
 }
 
 .ansatz-kit-sub:hover {
@@ -2110,7 +2269,7 @@
   transform: translateX(3px);
 }
 
-/* CTA Link */
+/* CTA Link — stretched über das ganze Widget */
 .ansatz-kit-cta {
   align-self: flex-start;
   font-size: 0.8rem;
@@ -2119,8 +2278,17 @@
   text-decoration: none;
   letter-spacing: 0.02em;
   transition: color 180ms ease;
+  /* kein position:relative hier — damit ::after sich auf .ansatz-kit-widget ausdehnt */
+}
+
+.ansatz-kit-cta::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
 }
 
 .ansatz-kit-cta:hover {
   color: #fff;
 }
+
