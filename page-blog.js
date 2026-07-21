@@ -98,7 +98,7 @@ function renderBlogCard(item, assets) {
   var catHtml  = cat  ? '<span class="blog-card-category">' + escHtml(cat)  + '</span>' : '';
   var dateHtml = date ? '<span class="blog-card-date">'      + escHtml(date) + '</span>' : '';
 
-  return '<a class="blog-card" href="/blog-post.html?slug=' + encodeURIComponent(slug) + '">'
+  return '<a class="blog-card" href="/blog/' + encodeURIComponent(slug) + '">'
     + imgHtml
     + '<div class="blog-card-body">'
     + '<div class="blog-card-meta">' + catHtml + dateHtml + '</div>'
