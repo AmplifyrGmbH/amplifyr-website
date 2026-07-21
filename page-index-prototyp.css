@@ -864,6 +864,7 @@
   .ansatz-split-gear {
     text-align: right;
     align-items: flex-end;
+    padding-right: var(--space-6);
   }
 }
 
@@ -881,6 +882,13 @@
   .ansatz-split-gear .ki-gear-wrap {
     max-height: 420px;
     margin-top: -100px;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1300px) {
+  .ansatz-split-gear .ki-gear-wrap {
+    max-height: 340px;
+    margin-top: -60px;
   }
 }
 
