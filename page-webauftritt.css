@@ -536,7 +536,7 @@
 .wa-wrap .page-node.legal h4 .dot { background: var(--wa-ink-dim); box-shadow: none; }
 
 /* ---- Problem section ---- */
-.wa-wrap .check-list { display: flex; flex-direction: column; }
+.wa-wrap .check-list { display: flex; flex-direction: column; max-width: 820px; margin-inline: auto; }
 .wa-wrap .check-row {
   display: flex;
   align-items: center;
