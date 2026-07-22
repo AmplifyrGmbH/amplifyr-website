@@ -575,6 +575,20 @@
   .wa-wrap .check-desc { text-align: left; flex-basis: 100%; padding-left: 40px; }
 }
 
+/* ---- Block labels (within combined sections) ---- */
+.wa-wrap .block-label {
+  font-family: var(--wa-mono);
+  font-size: .72rem;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--wa-ink-dim);
+  margin: 0 0 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--wa-glass-bd);
+}
+.wa-wrap .block-label + .tools-grid { margin-bottom: 40px; }
+.wa-wrap .cno--check { color: #6AABDF; font-size: .9rem; }
+
 /* ---- Resultate section ---- */
 .wa-wrap .result-grid {
   display: grid;
