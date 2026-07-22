@@ -367,6 +367,7 @@
 .wa-wrap .tier h3 { font-size: 1.2rem; letter-spacing: -.02em; margin: 3px 0 2px; color: var(--wa-navy); }
 .wa-wrap .tier .promise { color: var(--wa-ink-dim); font-size: .82rem; font-family: var(--wa-mono); margin-bottom: 10px; }
 .wa-wrap .tier .price { font-size: 1.9rem; font-weight: 700; letter-spacing: -.03em; color: var(--wa-navy); }
+.wa-wrap .tier .price .price-from { font-size: 1rem; font-weight: 400; letter-spacing: 0; }
 .wa-wrap .tier .price span { font-size: .88rem; color: var(--wa-ink-dim); font-weight: 400; font-family: var(--wa-mono); }
 .wa-wrap .tier .who {
   color: var(--wa-ink-soft);
