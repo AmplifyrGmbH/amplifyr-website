@@ -535,21 +535,79 @@
 .wa-wrap .page-node.legal { border-style: dashed; opacity: .75; }
 .wa-wrap .page-node.legal h4 .dot { background: var(--wa-ink-dim); box-shadow: none; }
 
-/* ---- Tools library ---- */
-.wa-wrap .tools-grid {
+/* ---- Problem section ---- */
+.wa-wrap .check-list { display: flex; flex-direction: column; }
+.wa-wrap .check-row {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--wa-glass-bd);
+}
+.wa-wrap .check-row:first-child { border-top: 1px solid var(--wa-glass-bd); }
+.wa-wrap .check-no {
+  font-family: var(--wa-mono);
+  font-size: 1.6rem;
+  color: var(--wa-steel-dim);
+  min-width: 48px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+.wa-wrap .check-title {
+  font-size: 1.2rem;
+  color: var(--wa-navy);
+  flex: 1;
+  margin: 0;
+}
+.wa-wrap .check-desc {
+  font-size: .88rem;
+  color: var(--wa-ink-soft);
+  flex: 1.5;
+  margin: 0;
+  text-align: right;
+}
+@media(max-width:639px) {
+  .wa-wrap .check-row { flex-wrap: wrap; gap: 4px 12px; }
+  .wa-wrap .check-desc { text-align: left; flex-basis: 100%; padding-left: 60px; }
+}
+
+/* ---- Resultate section ---- */
+.wa-wrap .result-grid {
   display: grid;
   gap: 16px;
   grid-template-columns: 1fr;
 }
-@media(min-width:640px) { .wa-wrap .tools-grid { grid-template-columns: 1fr 1fr; } }
+@media(min-width:640px) { .wa-wrap .result-grid { grid-template-columns: repeat(3,1fr); } }
+.wa-wrap .result-card .result-quote {
+  font-size: .95rem;
+  line-height: 1.6;
+  margin: 0 0 16px;
+  font-style: italic;
+}
+.wa-wrap .result-card .result-who {
+  font-family: var(--wa-mono);
+  font-size: .72rem;
+  color: var(--wa-ink-dim);
+  display: block;
+}
+.wa-wrap .sec--dark .result-card .result-who { color: rgba(106,171,223,0.65); }
+
+/* ---- Tools library ---- */
+.wa-wrap .tools-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr;
+}
+@media(min-width:560px) { .wa-wrap .tools-grid { grid-template-columns: 1fr 1fr; } }
+@media(min-width:900px) { .wa-wrap .tools-grid { grid-template-columns: 1fr 1fr 1fr; } }
 
 .wa-wrap .tool-card {
   background: var(--wa-glass-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--wa-glass-bd);
-  border-radius: 20px;
-  padding: 24px;
+  border-radius: 16px;
+  padding: 16px 20px;
   box-shadow:
     0 0 0 1px rgba(106,171,223,0.08),
     inset 0 1px 0 var(--wa-glass-hi),
@@ -560,32 +618,28 @@
   display: flex;
   align-items: baseline;
   gap: 10px;
-  margin-bottom: 16px;
+  margin-bottom: 6px;
 }
 .wa-wrap .tool-card-head .cno {
   font-family: var(--wa-mono);
-  font-size: .72rem;
+  font-size: .68rem;
   color: var(--wa-ink-dim);
-  min-width: 22px;
+  min-width: 20px;
   flex-shrink: 0;
 }
 .wa-wrap .tool-card-head h3 {
-  font-size: 1rem;
+  font-size: .9rem;
   color: var(--wa-navy);
   margin: 0;
   line-height: 1.3;
 }
-.wa-wrap .tool-items span {
-  display: inline-block;
-  font-size: .82rem;
-  color: var(--wa-ink-soft);
-  background: var(--wa-glass-bg2);
-  border: 1px solid var(--wa-glass-bd);
-  padding: .32em .75em;
-  border-radius: 100px;
-  margin: 0 6px 6px 0;
+.wa-wrap .tool-desc {
+  font-size: .78rem;
+  color: var(--wa-ink-dim);
+  margin: 0;
+  line-height: 1.4;
 }
-.wa-wrap .tools-foot { text-align: center; color: var(--wa-ink-dim); font-size: .9rem; margin-top: 28px; font-family: var(--wa-mono); }
+.wa-wrap .tools-foot { text-align: center; color: var(--wa-ink-dim); font-size: .9rem; margin-top: 24px; font-family: var(--wa-mono); }
 
 /* ---- Process ---- */
 .wa-wrap .flow { display: grid; gap: 0; grid-template-columns: 1fr; }
@@ -722,6 +776,7 @@
     0 0 80px -20px rgba(106,171,223,0.30);
 }
 
+
 /* Remove dividers between light/dark transitions */
 .wa-wrap .sec--dark,
 .wa-wrap .sec--dark + .sec {
@@ -758,10 +813,8 @@
 .wa-wrap .sec--dark .tool-card-head h3 {
   color: rgba(255,255,255,0.90);
 }
-.wa-wrap .sec--dark .tool-items span {
-  background: rgba(255,255,255,0.07);
-  border-color: rgba(106,171,223,0.28);
-  color: rgba(255,255,255,0.65);
+.wa-wrap .sec--dark .tool-desc {
+  color: rgba(255,255,255,0.45);
 }
 
 /* Tier cards — featured accent */
