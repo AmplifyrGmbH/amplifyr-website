@@ -495,8 +495,9 @@
   color: var(--wa-ink);
 }
 .wa-wrap .addon-row:last-child { border-bottom: none; }
-.wa-wrap .addon-row .plus { font-family: var(--wa-mono); color: var(--wa-navy); font-weight: 600; }
+.wa-wrap .addon-row .plus { font-family: var(--wa-mono); color: var(--wa-ink-dim); font-size: .82rem; }
 .wa-wrap .addon-row .desc { color: var(--wa-ink-dim); font-size: .82rem; }
+.wa-wrap .addon-note { font-size: .78rem; color: var(--wa-ink-dim); font-family: var(--wa-mono); margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--wa-glass-bd); }
 
 /* ---- Sitemap / Structure ---- */
 .wa-wrap .sitemap { display: grid; gap: 16px; grid-template-columns: 1fr; }
