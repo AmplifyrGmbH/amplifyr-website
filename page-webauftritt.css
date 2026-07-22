@@ -536,14 +536,53 @@
 .wa-wrap .page-node.legal { border-style: dashed; opacity: .75; }
 .wa-wrap .page-node.legal h4 .dot { background: var(--wa-ink-dim); box-shadow: none; }
 
-/* ---- Fade-Übergang wa-wrap → FAQ (weiss) ---- */
-.wa-wrap::after {
-  content: "";
-  display: block;
-  height: 80px;
-  background: linear-gradient(to bottom, #eef4fb, #ffffff);
-  pointer-events: none;
+/* ---- FAQ — angepasst an Seitenstil ---- */
+#sec-faq {
+  background: #eef4fb;
 }
+#sec-faq .kit-faq-header {
+  margin-bottom: 44px;
+}
+#sec-faq .section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--wa-mono, monospace);
+  font-size: .72rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--wa-navy-mid, #4a6280);
+  font-weight: 500;
+}
+#sec-faq .section-label::before {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 2px;
+  background: #6AABDF;
+  border-radius: 2px;
+}
+#sec-faq #wd-faq-h {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: normal;
+  font-size: clamp(1.7rem, 4vw, 2.5rem);
+  color: #1a2744;
+  margin-top: 14px;
+}
+#sec-faq .kit-faq-item {
+  border-bottom-color: rgba(106,171,223,0.22);
+}
+#sec-faq .kit-faq-item:first-child {
+  border-top-color: rgba(106,171,223,0.22);
+}
+#sec-faq .kit-faq-btn {
+  color: #1a2744;
+  font-size: 1rem;
+  padding-block: 20px;
+}
+#sec-faq .kit-faq-btn:hover { color: #6AABDF; }
+#sec-faq .kit-faq-chevron { color: #6AABDF; }
+#sec-faq .kit-faq-answer p { color: #4a6280; }
 
 /* ---- Problem section ---- */
 .wa-wrap .check-list { display: flex; flex-direction: column; max-width: 820px; margin-inline: auto; }
