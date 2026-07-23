@@ -6,6 +6,16 @@
 
 
 /* ============================================================
+   HERO — Heading-Clipping Fix (Safari)
+   "Transformation" ist zu lang für kleine Viewports
+============================================================ */
+@media (max-width: 520px) {
+  #kit-h1 {
+    font-size: clamp(2.2rem, 10vw, 2.8rem);
+  }
+}
+
+/* ============================================================
    PARTNERSCHAFT — Overrides
 ============================================================ */
 #kit-partnerschaft {
