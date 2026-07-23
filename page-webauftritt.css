@@ -674,6 +674,12 @@
   padding-top: 48px;
   border-top: 1px solid rgba(176,196,222,0.4);
 }
+@media (max-width: 520px) {
+  .wa-wrap .pq-text--accent {
+    margin-top: 28px;
+    padding-top: 24px;
+  }
+}
 .wa-wrap .pq-text strong {
   font-family: Georgia, 'Times New Roman', serif;
   font-size: 1.1em;

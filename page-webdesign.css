@@ -109,6 +109,10 @@
 }
 
 @media (max-width: 520px) {
+  .fsh-inner {
+    padding-block-start: calc(var(--header-h) + var(--space-10));
+  }
+
   .hdf-row {
     flex-direction: column;
     height: auto;
@@ -129,8 +133,11 @@
     justify-content: center;
   }
   .hdf-hint {
-    padding-left: 0;
-    text-align: center;
+    display: none;
+  }
+
+  .fsh-subnav {
+    display: none;
   }
 }
 

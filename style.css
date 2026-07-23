@@ -1419,6 +1419,13 @@ footer {
   overflow: hidden;
 }
 
+/* iOS Safari: Adressleisten-Zoom beim Scrollen verhindern */
+@supports (-webkit-touch-callout: none) {
+  .fsh {
+    min-height: -webkit-fill-available;
+  }
+}
+
 @media (max-height: 500px) and (orientation: landscape) {
   .fsh {
     min-height: 0;
@@ -1433,6 +1440,8 @@ footer {
   height: 100%;
   object-fit: cover;
   z-index: 0;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 .fsh-overlay {
