@@ -843,9 +843,21 @@
   document.getElementById('hdf-form').addEventListener('submit', function(e) {
     e.preventDefault();
     var domain = document.getElementById('hdf-domain').value.trim();
-    var url = '/demo';
-    if (domain) url += '?domain=' + encodeURIComponent(domain);
-    window.location.href = url;
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        access_key: '48d27eea-a77f-4826-9835-4f308573f036',
+        subject: 'Website-Demo Anfrage' + (domain ? ': ' + domain : ''),
+        message: domain ? 'Domain: ' + domain : 'Keine Domain angegeben.',
+        from_name: 'Amplifyr Website'
+      })
+    }).finally(function() {
+      var url = '/demo';
+      if (domain) url += '?domain=' + encodeURIComponent(domain);
+      window.location.href = url;
+    });
   });
   </script>
   <!-- Floating Side Widgets -->
