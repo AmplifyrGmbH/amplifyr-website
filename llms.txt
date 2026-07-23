@@ -1,33 +1,23 @@
-# Amplifyr GmbH — llms.txt
+# Amplifyr GmbH
 
-## Unternehmen
-Amplifyr GmbH ist ein Schweizer Technologiedienstleister mit Sitz in Uitikon Waldegg (Kanton Zürich). Das Unternehmen begleitet Schweizer KMU bei der KI-Transformation — von der Potenzialanalyse bis zur Umsetzung. Drei Gründer und Geschäftsführer: Timo Steinfort, David Staub, Sinan Sen.
+> Schweizer Technologiedienstleister mit Sitz in Uitikon Waldegg (Kanton Zürich). Amplifyr begleitet Schweizer KMU bei der KI-Transformation — von der Potenzialanalyse bis zur Umsetzung. Leistungen: KI & Automatisierung, IT-Lösungen, Digitaler Auftritt.
 
-## Leistungen
-- **KI & Automatisierung**: KI-Chatbots, automatisierte Telefonie (Voice AI), intelligente Workflows und Prozessautomatisierung für KMU
-- **IT-Lösungen**: IT-Outsourcing, Managed Services, Cloud-Migration, Microsoft 365, Netzwerk & Sicherheit für Schweizer Unternehmen
-- **Digitaler Auftritt**: Webdesign, SEO-optimierte Websites, Rebranding für KMU — Fixpreis, ohne Überraschungen
+Drei Gründer und Geschäftsführer: Timo Steinfort, David Staub, Sinan Sen. Telefon: +41 44 798 58 42. Adresse: Mettlenstrasse 11, 8142 Uitikon Waldegg, Schweiz. E-Mail: info@amplifyr.ch
 
-## Positionierung
-Amplifyr macht KI-Technologie für Schweizer KMU zugänglich und nutzbar — ohne IT-Kenntnisse voraussetzen zu müssen. Der Fokus liegt auf messbaren Ergebnissen: weniger manuelle Arbeit, schnellere Abläufe, bessere Sichtbarkeit.
+## Hauptseiten
 
-## Kontakt
-- Website: https://www.amplifyr.ch
-- Telefon: +41 44 798 58 42
-- Adresse: Mettlenstrasse 11, 8142 Uitikon Waldegg, Schweiz
-- E-Mail: info@amplifyr.ch
-
-## Wichtige Seiten
-- Startseite / KI-Transformation: https://www.amplifyr.ch/
-- KI & Automatisierung: https://www.amplifyr.ch/ki-transformation
-- IT-Lösungen: https://www.amplifyr.ch/it-solutions
-- Digitaler Auftritt / Webdesign: https://www.amplifyr.ch/webdesign
-- Über uns: https://www.amplifyr.ch/ueber-uns
-- Kontakt & Anfrage: https://www.amplifyr.ch/formular
-- Blog: https://www.amplifyr.ch/blog
+- [Startseite](https://www.amplifyr.ch/): KI-Transformation für Schweizer KMU — Überblick über alle Leistungen
+- [KI-Transformation](https://www.amplifyr.ch/ki-transformation): KI-Strategie, Potenzialanalyse und Umsetzung für KMU
+- [Automatisierungen](https://www.amplifyr.ch/automatisierung): KI-Chatbots, Voice AI und Prozessautomatisierung
+- [IT-Lösungen](https://www.amplifyr.ch/it-solutions): IT-Outsourcing, Managed Services, Cloud, Microsoft 365
+- [Digitaler Auftritt](https://www.amplifyr.ch/webdesign): Webdesign, SEO-optimierte Websites und Rebranding für KMU
+- [Über uns](https://www.amplifyr.ch/ueber-uns): Team, Gründer und Unternehmensgeschichte
+- [Kontakt & Anfrage](https://www.amplifyr.ch/formular): Kontaktformular und Potenzialanalyse anfragen
+- [Blog](https://www.amplifyr.ch/blog): Artikel zu KI, Automatisierung und digitalem Auftritt für KMU
 
 ## Profile
-- LinkedIn: https://www.linkedin.com/company/112354402
-- Instagram: https://www.instagram.com/amplifyr.ch
-- Google Business: https://share.google/eYm0aezDVVAf7fzIW
-- local.ch: https://www.local.ch/de/d/uitikon-waldegg/8142/informatikberatung/amplifyr-gmbh-ynGCJ_bt1_3XVfH6abKyhQ
+
+- [LinkedIn](https://www.linkedin.com/company/112354402): Amplifyr auf LinkedIn
+- [Instagram](https://www.instagram.com/amplifyr.ch): Amplifyr auf Instagram
+- [Google Business](https://share.google/eYm0aezDVVAf7fzIW): Google-Unternehmensprofil
+- [local.ch](https://www.local.ch/de/d/uitikon-waldegg/8142/informatikberatung/amplifyr-gmbh-ynGCJ_bt1_3XVfH6abKyhQ): Branchenverzeichnis-Eintrag
