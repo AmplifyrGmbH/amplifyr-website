@@ -202,7 +202,13 @@
     if (!section) return;
     setTimeout(function () {
       var hdrH = hdr ? hdr.getBoundingClientRect().height : 60;
-      var top  = window.scrollY + section.getBoundingClientRect().top - hdrH;
+      var rect = section.getBoundingClientRect();
+      /* Auf Mobile: Section ist beim Tippen meist schon sichtbar —
+         Auto-Scroll überspringen verhindert das Zittern/Flimmern. */
+      if (window.innerWidth < 760) return;
+      /* Desktop: nur scrollen wenn Section nicht schon oben eingeblendet */
+      if (rect.top >= hdrH - 10 && rect.top <= hdrH + 80) return;
+      var top = window.scrollY + rect.top - hdrH;
       window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
     }, 60);
   }
