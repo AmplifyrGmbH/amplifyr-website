@@ -704,44 +704,7 @@
   box-shadow: var(--shadow-sm);
 }
 
-/* ============================================================
-   CTA (Foto-Hintergrund)
-============================================================ */
-.wd-cta {
-  position: relative;
-  overflow: hidden;
-  padding-block: clamp(3rem, 6vw, 4.5rem);
-  text-align: center;
-}
-
-.wd-cta-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-
-.wd-cta-bg img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.wd-cta-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(10,20,45,0.55);
-}
-
-.wd-cta-content {
-  position: relative;
-  z-index: 1;
-  max-width: 520px;
-  margin-inline: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-5);
-}
+/* CTA → see style.css .site-cta */
 
 @media (prefers-reduced-motion: reduce) {
   .wdf-load-bar,
