@@ -19,7 +19,7 @@ Amplifyr macht KI-Technologie für Schweizer KMU zugänglich und nutzbar — ohn
 
 ## Wichtige Seiten
 - Startseite / KI-Transformation: https://www.amplifyr.ch/
-- KI & Automatisierung: https://www.amplifyr.ch/ki-prozesse
+- KI & Automatisierung: https://www.amplifyr.ch/ki-transformation
 - IT-Lösungen: https://www.amplifyr.ch/it-solutions
 - Digitaler Auftritt / Webdesign: https://www.amplifyr.ch/webdesign
 - Über uns: https://www.amplifyr.ch/ueber-uns

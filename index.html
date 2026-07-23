@@ -11,10 +11,13 @@
 
   <!-- Open Graph -->
   <meta property="og:type"        content="website">
+  <meta property="og:site_name"   content="Amplifyr">
   <meta property="og:url"         content="https://www.amplifyr.ch/">
   <meta property="og:title"       content="KI-Transformation für Schweizer KMU — Amplifyr">
   <meta property="og:description" content="Amplifyr begleitet Schweizer KMU bei der KI-Transformation — von der Potenzialanalyse bis zur Umsetzung.">
   <meta property="og:image"       content="https://www.amplifyr.ch/Logos/Open_Graph_Image_Amplifyr.webp">
+  <meta property="og:image:width"  content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:locale"      content="de_CH">
 
   <!-- Twitter Card -->
@@ -100,6 +103,21 @@
         }
       }
     ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://www.amplifyr.ch/#website",
+    "url": "https://www.amplifyr.ch",
+    "name": "Amplifyr",
+    "publisher": { "@id": "https://www.amplifyr.ch/#organization" },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": { "@type": "EntryPoint", "urlTemplate": "https://www.amplifyr.ch/?s={search_term_string}" },
+      "query-input": "required name=search_term_string"
+    }
   }
   </script>
 
@@ -189,6 +207,24 @@
 
       <div class="mobile-nav-group">
         <div class="mobile-nav-group__row">
+          <a href="/ki-transformation" class="mobile-nav-link">KI-Transformation</a>
+          <button class="mobile-nav-group__chevron-btn" aria-label="KI-Transformation Untermenü">
+            <svg class="mobile-nav-group__chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+        <div class="mobile-nav-group__sub">
+          <a href="/ki-transformation#kit-zahlen">Zahlen</a>
+          <a href="/ki-transformation#kit-ansatz">Ansatz</a>
+          <a href="/ki-transformation#kit-handwerk">Praxisbeispiel</a>
+          <a href="/ki-transformation#kit-partnerschaft">Partnerschaft</a>
+          <a href="/ki-transformation#kit-faq">FAQ</a>
+        </div>
+      </div>
+
+      <div class="mobile-nav-group">
+        <div class="mobile-nav-group__row">
           <a href="/it-solutions" class="mobile-nav-link">IT-Lösungen</a>
           <button class="mobile-nav-group__chevron-btn" aria-label="IT-Lösungen Untermenü">
             <svg class="mobile-nav-group__chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -197,9 +233,11 @@
           </button>
         </div>
         <div class="mobile-nav-group__sub">
+          <a href="/it-solutions#sec-support">Support &amp; Beratung</a>
+          <a href="/it-solutions#sec-cloud">Cloudlösungen</a>
+          <a href="/it-solutions#sec-managed">IT-Betrieb &amp; Wartung</a>
           <a href="/it-solutions#sec-outsourcing">IT-Outsourcing</a>
-          <a href="/it-solutions#sec-managed">Managed Services</a>
-          <a href="/it-solutions#sec-cloud">Cloud</a>
+          <a href="/it-solutions#sec-relocation">IT-Umzug &amp; Verkabelungen</a>
         </div>
       </div>
 
@@ -228,9 +266,10 @@
           </button>
         </div>
         <div class="mobile-nav-group__sub">
-          <a href="/webdesign#sec-website">Websites &amp; Webshops</a>
-          <a href="/webdesign#sec-seo">SEO</a>
-          <a href="/webdesign#sec-rebranding">Rebrandings</a>
+          <a href="/webdesign#basics">Werkzeuge</a>
+          <a href="/webdesign#preise">Pakete &amp; Preise</a>
+          <a href="/webdesign#ablauf">Ablauf</a>
+          <a href="/webdesign#sec-faq">FAQ</a>
         </div>
       </div>
 
@@ -495,8 +534,7 @@
 
           <div class="pkid-footer">
             <div class="pkid-footer-copy">
-              <p class="pkid-footer-eyebrow">Und das ist erst der Anfang</p>
-              <p class="pkid-footer-text"><strong>Nahezu jeder Prozess lässt sich automatisieren.</strong></p>
+<p class="pkid-footer-text"><strong>Nahezu jeder Prozess lässt sich automatisieren.</strong></p>
               <p class="pkid-footer-text">Wir zeigen Ihnen, wo KI in Ihrem KMU den grössten Hebel hat.</p>
             </div>
           </div>
@@ -771,7 +809,7 @@
       <div class="ba-teaser-rocket-wrap" aria-hidden="true">
         <picture>
           <source srcset="/Bilder/rakete_teaser.webp" type="image/webp">
-          <img class="ba-teaser-rocket" src="/Bilder/rakete_teaser.png" alt="" loading="lazy" decoding="async">
+          <img class="ba-teaser-rocket" src="/Bilder/rakete_teaser.png" alt="" loading="lazy" decoding="async" width="1024" height="1024">
         </picture>
       </div>
       <span class="ba-teaser-label">Ihr Problem? Unsere KI-Lösung!</span>

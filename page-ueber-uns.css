@@ -875,6 +875,50 @@
   background: #c5d8ee;
 }
 
+/* ============================================================
+   FAQ-SEKTION
+============================================================ */
+.ua-faq {
+  background: var(--bg-white);
+  padding-block: var(--space-20);
+}
+
+.ua-faq-heading {
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: var(--space-10);
+  text-align: center;
+}
+
+.ua-faq-list {
+  max-width: 760px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.ua-faq-item {
+  background: #eef4fb;
+  border-radius: 12px;
+  padding: var(--space-6) var(--space-8);
+}
+
+.ua-faq-q {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--navy);
+  margin-bottom: var(--space-2);
+}
+
+.ua-faq-a {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin: 0;
+}
+
 /* Form-Micro */
 .form-micro {
   display: flex;

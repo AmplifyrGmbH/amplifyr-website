@@ -11,10 +11,13 @@
 
   <!-- Open Graph -->
   <meta property="og:type"        content="website">
+  <meta property="og:site_name"   content="Amplifyr">
   <meta property="og:url"         content="https://www.amplifyr.ch/ki-transformation">
   <meta property="og:title"       content="KI-Transformation für Schweizer KMU — Amplifyr">
   <meta property="og:description" content="Ganzheitliche KI-Transformation für Schweizer KMU — von der Infrastruktur bis zur Automatisierung.">
   <meta property="og:image"       content="https://www.amplifyr.ch/Logos/Open_Graph_Image_Amplifyr.webp">
+  <meta property="og:image:width"  content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:locale"      content="de_CH">
 
   <!-- Twitter Card -->
@@ -182,7 +185,23 @@
 
     <div class="mobile-menu__nav">
 
-      <a href="/ki-transformation" class="mobile-nav-link">KI-Transformation</a>
+      <div class="mobile-nav-group">
+        <div class="mobile-nav-group__row">
+          <a href="/ki-transformation" class="mobile-nav-link">KI-Transformation</a>
+          <button class="mobile-nav-group__chevron-btn" aria-label="KI-Transformation Untermenü">
+            <svg class="mobile-nav-group__chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+        <div class="mobile-nav-group__sub">
+          <a href="/ki-transformation#kit-zahlen">Zahlen</a>
+          <a href="/ki-transformation#kit-ansatz">Ansatz</a>
+          <a href="/ki-transformation#kit-handwerk">Praxisbeispiel</a>
+          <a href="/ki-transformation#kit-partnerschaft">Partnerschaft</a>
+          <a href="/ki-transformation#kit-faq">FAQ</a>
+        </div>
+      </div>
 
       <div class="mobile-nav-group">
         <div class="mobile-nav-group__row">
@@ -194,9 +213,11 @@
           </button>
         </div>
         <div class="mobile-nav-group__sub">
+          <a href="/it-solutions#sec-support">Support &amp; Beratung</a>
+          <a href="/it-solutions#sec-cloud">Cloudlösungen</a>
+          <a href="/it-solutions#sec-managed">IT-Betrieb &amp; Wartung</a>
           <a href="/it-solutions#sec-outsourcing">IT-Outsourcing</a>
-          <a href="/it-solutions#sec-managed">Managed Services</a>
-          <a href="/it-solutions#sec-cloud">Cloud</a>
+          <a href="/it-solutions#sec-relocation">IT-Umzug &amp; Verkabelungen</a>
         </div>
       </div>
 
@@ -225,9 +246,10 @@
           </button>
         </div>
         <div class="mobile-nav-group__sub">
-          <a href="/webdesign#sec-website">Websites &amp; Webshops</a>
-          <a href="/webdesign#sec-seo">SEO</a>
-          <a href="/webdesign#sec-rebranding">Rebrandings</a>
+          <a href="/webdesign#basics">Werkzeuge</a>
+          <a href="/webdesign#preise">Pakete &amp; Preise</a>
+          <a href="/webdesign#ablauf">Ablauf</a>
+          <a href="/webdesign#sec-faq">FAQ</a>
         </div>
       </div>
 
@@ -260,10 +282,10 @@
             <a href="/formular" class="btn btn--hero-pill">Potenzialanalyse anfragen</a>
           </div>
           <nav class="fsh-subnav" aria-label="Seitennavigation">
-            <a class="fsh-subnav-btn" href="#kit-stats">Zahlen</a>
-            <a class="fsh-subnav-btn" href="#kit-compare">Vergleich</a>
-            <a class="fsh-subnav-btn" href="#kit-check">Reifegrad-Check</a>
-            <a class="fsh-subnav-btn" href="#kit-stufen">4 Stufen</a>
+            <a class="fsh-subnav-btn" href="#kit-zahlen">Zahlen</a>
+            <a class="fsh-subnav-btn" href="#kit-ansatz">Ansatz</a>
+            <a class="fsh-subnav-btn" href="#kit-handwerk">Praxisbeispiel</a>
+            <a class="fsh-subnav-btn" href="#kit-partnerschaft">Partnerschaft</a>
             <a class="fsh-subnav-btn" href="#kit-faq">FAQ</a>
           </nav>
         </div>
@@ -271,38 +293,46 @@
       <div class="fsh-scroll-cue" aria-hidden="true"></div>
     </section>
 
-    <!-- ── Section 2: Daten & Zahlen ─────────────────────────── -->
-    <section id="kit-stats" class="section section--white kit-stats-section" aria-label="Kennzahlen KI-Transformation">
+    <!-- ── Section 2: Zahlen ─────────────────────────────────── -->
+    <section id="kit-zahlen" class="kit-zahlen-section" aria-labelledby="kit-zahlen-h">
       <div class="container">
 
-        <div class="kit-stats-grid">
+        <div class="kit-zahlen-inner">
 
-          <div class="kit-stat" data-target="57" data-suffix="%">
-            <p class="kit-stat-number" aria-label="57 Prozent">
-              <span class="kit-stat-value">0</span><span class="kit-stat-unit">%</span>
-            </p>
-            <p class="kit-stat-label">der Arbeitsstunden sind automatisierbar</p>
-            <p class="kit-stat-source">McKinsey, 2024 — agentische KI</p>
+          <div class="kit-zahlen-header">
+            <p class="section-label">Zahlen</p>
+            <h2 id="kit-zahlen-h">KI ist in Schweizer KMU angekommen.<br>Die Frage ist nur noch, wie schnell Sie mitziehen.</h2>
+            <p class="kit-zahlen-intro">Innerhalb eines Jahres hat sich die bewusste KI-Nutzung in Schweizer KMU deutlich beschleunigt. Wer jetzt eine Grundlage baut, verschafft sich einen Vorsprung, der später teuer aufzuholen ist.</p>
           </div>
 
-          <div class="kit-stat kit-stat--divider" aria-hidden="true"></div>
+          <div class="kit-zahlen-right">
 
-          <div class="kit-stat" data-target="30" data-suffix=" Tage">
-            <p class="kit-stat-number" aria-label="30 Tage">
-              &lt;&nbsp;<span class="kit-stat-value">0</span><span class="kit-stat-unit"> Tage</span>
-            </p>
-            <p class="kit-stat-label">bis zu ersten messbaren Resultaten</p>
-            <p class="kit-stat-source">Amplifyr-Erfahrungswert</p>
-          </div>
+            <div class="kit-zahlen-grid">
 
-          <div class="kit-stat kit-stat--divider" aria-hidden="true"></div>
+              <div class="kit-zahlen-kachel">
+                <p class="kit-zahlen-num">34 %</p>
+                <p class="kit-zahlen-text">der Schweizer KMU setzen KI heute <mark class="kit-zahlen-mark">bewusst</mark> ein — ein Jahr zuvor waren es erst 22 %.</p>
+              </div>
 
-          <div class="kit-stat" data-target="4" data-suffix="">
-            <p class="kit-stat-number" aria-label="4 Bausteine">
-              <span class="kit-stat-value">0</span><span class="kit-stat-unit"> Bausteine</span>
-            </p>
-            <p class="kit-stat-label">IT, Software, KI, Auftritt — alles aus einer Hand</p>
-            <p class="kit-stat-source">Das Amplifyr-Modell</p>
+              <div class="kit-zahlen-kachel">
+                <p class="kit-zahlen-num">57 %</p>
+                <p class="kit-zahlen-text">der KI-nutzenden KMU berichten von spürbarer <mark class="kit-zahlen-mark">Zeitersparnis</mark> im Arbeitsalltag (2024: 46 %).</p>
+              </div>
+
+              <div class="kit-zahlen-kachel">
+                <p class="kit-zahlen-num">45 %</p>
+                <p class="kit-zahlen-text">bewerten KI inzwischen als <mark class="kit-zahlen-mark">Chance</mark> für ihr Geschäft — statt als Risiko (2024: 35 %).</p>
+              </div>
+
+              <div class="kit-zahlen-kachel">
+                <p class="kit-zahlen-num">29 %</p>
+                <p class="kit-zahlen-text">verzichten noch ganz auf KI. Der Kreis, der <mark class="kit-zahlen-mark">abwartet</mark>, wird kleiner — und der Anschluss schwerer.</p>
+              </div>
+
+            </div>
+
+            <p class="kit-zahlen-source">Quelle: AXA KMU-Arbeitsmarktstudie 2025, Forschungsinstitut Sotomo, 300 Schweizer KMU, Befragung März 2025.</p>
+
           </div>
 
         </div>
@@ -310,226 +340,59 @@
       </div>
     </section>
 
-    <!-- ── Section 3: Was echte Transformation bedeutet ──────── -->
-    <section id="kit-compare" class="section section--fog kit-compare-section" aria-labelledby="kit-compare-h">
+    <!-- ── Section 3: Ansatz ─────────────────────────────────── -->
+    <section id="kit-ansatz" class="kit-ansatz-section" aria-labelledby="kit-ansatz-h">
       <div class="container">
 
-        <div class="kit-compare-header">
-          <p class="section-label">Die entscheidende Unterscheidung</p>
-          <h2 id="kit-compare-h">Ein Tool kaufen ist keine Transformation.</h2>
-          <p class="kit-compare-intro">Die meisten Unternehmen beginnen mit einem einzelnen KI-Tool. Die Wenigsten bauen daraus ein System. Der Unterschied ist enorm.</p>
+        <div class="kit-ansatz-header">
+          <h2 id="kit-ansatz-h">Amplifyr. IT, KI und Web —<br>alles aus einer Hand.</h2>
         </div>
 
-        <div class="kit-compare-table" role="table" aria-label="Vergleich: Tool kaufen vs. Transformation">
+        <p class="kit-ansatz-lead">Die meisten KMU jonglieren mit drei verschiedenen Dienstleistern — und zahlen jedes Mal, wenn die eine Hand nicht weiss, was die andere tut. Bei Amplifyr sitzt alles zusammen: stabile IT als Fundament, KI die Prozesse automatisiert, und ein digitaler Auftritt der Kunden gewinnt. Das ist keine Zufallskombination — das ist Absicht.</p>
 
-          <div class="kit-compare-head" role="row" aria-hidden="true">
-            <div class="kit-compare-col kit-compare-col--bad" role="columnheader">Was die meisten machen</div>
-            <div class="kit-compare-col kit-compare-col--good" role="columnheader">Was wirklich wirkt</div>
-          </div>
+        <div class="kit-ansatz-grid">
 
-          <div class="kit-compare-row" role="row">
-            <div class="kit-compare-cell kit-compare-cell--bad" role="cell">
-              <span class="kit-compare-icon" aria-hidden="true">✗</span>
-              Ein KI-Tool kaufen und ausprobieren
-            </div>
-            <div class="kit-compare-cell kit-compare-cell--good" role="cell">
-              <span class="kit-compare-icon" aria-hidden="true">✓</span>
-              Analyse — Planung — Umsetzung — Optimierung
-            </div>
-          </div>
-
-          <div class="kit-compare-row" role="row">
-            <div class="kit-compare-cell kit-compare-cell--bad" role="cell">
-              <span class="kit-compare-icon" aria-hidden="true">✗</span>
-              Einzelne Prozesse isoliert optimieren
-            </div>
-            <div class="kit-compare-cell kit-compare-cell--good" role="cell">
-              <span class="kit-compare-icon" aria-hidden="true">✓</span>
-              Alle Bereiche als System vernetzen
-            </div>
-          </div>
-
-          <div class="kit-compare-row" role="row">
-            <div class="kit-compare-cell kit-compare-cell--bad" role="cell">
-              <span class="kit-compare-icon" aria-hidden="true">✗</span>
-              IT und KI separat behandeln
-            </div>
-            <div class="kit-compare-cell kit-compare-cell--good" role="cell">
-              <span class="kit-compare-icon" aria-hidden="true">✓</span>
-              Fundament und KI zusammen denken
-            </div>
-          </div>
-
-          <div class="kit-compare-row" role="row">
-            <div class="kit-compare-cell kit-compare-cell--bad" role="cell">
-              <span class="kit-compare-icon" aria-hidden="true">✗</span>
-              Einmalige Implementierung, dann Stillstand
-            </div>
-            <div class="kit-compare-cell kit-compare-cell--good" role="cell">
-              <span class="kit-compare-icon" aria-hidden="true">✓</span>
-              Laufende Optimierung, immer am Puls der Zeit
-            </div>
-          </div>
-
-          <div class="kit-compare-row" role="row">
-            <div class="kit-compare-cell kit-compare-cell--bad" role="cell">
-              <span class="kit-compare-icon" aria-hidden="true">✗</span>
-              Verschiedene Anbieter, niemand hat den Überblick
-            </div>
-            <div class="kit-compare-cell kit-compare-cell--good" role="cell">
-              <span class="kit-compare-icon" aria-hidden="true">✓</span>
-              Ein Ansprechpartner, der Ihren Betrieb kennt
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ── Section 4: Reifegrad-Check ────────────────────────── -->
-    <section id="kit-check" class="kit-check-section" aria-labelledby="kit-check-h">
-      <div class="container">
-
-        <div class="kit-check-header">
-          <p class="section-label section-label--steel">Reifegrad-Check</p>
-          <h2 id="kit-check-h">Wo stehen Sie heute?</h2>
-          <p class="kit-check-intro">4 Fragen. 2 Minuten. Eine klare Einschätzung — kostenlos, ohne Anmeldung.</p>
-        </div>
-
-        <div class="kit-check-wrap" id="kit-check-wrap">
-
-          <!-- Fortschrittsbalken -->
-          <div class="kit-check-progress-bar" aria-hidden="true">
-            <div class="kit-check-progress-fill" id="kit-prog-fill"></div>
-          </div>
-          <p class="kit-check-progress-label" id="kit-prog-label" aria-live="polite">Frage 1 von 4</p>
-
-          <!-- Fragen-Container -->
-          <div id="kit-questions-wrap" class="kit-questions-wrap">
-            <!-- Wird per JS befüllt -->
-          </div>
-
-          <!-- Ergebnis-Container -->
-          <div id="kit-result-wrap" class="kit-result-wrap" hidden aria-live="polite">
-            <!-- Wird per JS befüllt -->
-          </div>
-
-          <!-- Neustart-Button -->
-          <button class="kit-restart-btn" id="kit-restart-btn" hidden type="button">
-            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" width="14" height="14">
-              <path d="M2 8a6 6 0 1 0 1.5-3.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <polyline points="2 4 2 8 6 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            Nochmals versuchen
-          </button>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ── Section 5: Die 4 Stufen ───────────────────────────── -->
-    <section id="kit-stufen" class="section section--white kit-stufen-section" aria-labelledby="kit-stufen-h">
-      <div class="container">
-
-        <div class="kit-stufen-header">
-          <p class="section-label">Das Amplifyr-Modell</p>
-          <h2 id="kit-stufen-h">4 Stufen. Ein System.</h2>
-          <p class="kit-stufen-intro">KI-Transformation funktioniert von unten nach oben. Jede Stufe baut auf der vorherigen auf — wer überspringt, verliert.</p>
-        </div>
-
-        <div class="kit-stufen-grid">
-
-          <article class="kit-stufe-card" aria-labelledby="stufe-1-h">
-            <div class="kit-stufe-num" aria-hidden="true">01</div>
-            <p class="kit-stufe-label">Fundament</p>
-            <h3 id="stufe-1-h" class="kit-stufe-name">IT-Lösungen</h3>
-            <p class="kit-stufe-desc">Kein KI auf wackligem Boden. Wir schaffen eine stabile, sichere und skalierbare IT-Infrastruktur — die Basis für alles, was folgt.</p>
-            <ul class="kit-stufe-examples" aria-label="Beispiele">
-              <li>IT-Outsourcing</li>
-              <li>Cloud-Migration</li>
-              <li>Managed Services</li>
-            </ul>
-            <a href="/it-solutions" class="kit-stufe-link" aria-label="Mehr zu IT-Lösungen">
-              IT-Lösungen entdecken
-              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" width="14" height="14">
-                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <div class="kit-ansatz-card">
+            <div class="kit-ansatz-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="26" height="26">
+                <rect x="2" y="2" width="20" height="8" rx="2"/>
+                <rect x="2" y="14" width="20" height="8" rx="2"/>
+                <line x1="6" y1="6" x2="6.01" y2="6"/>
+                <line x1="6" y1="18" x2="6.01" y2="18"/>
               </svg>
-            </a>
-          </article>
+            </div>
+            <h3>IT-Infrastruktur</h3>
+            <p>Stabile Server, sichere Netzwerke, zuverlässige Systeme. Wir sorgen dafür, dass Ihr Betrieb läuft — und läuft.</p>
+          </div>
 
-          <article class="kit-stufe-card" aria-labelledby="stufe-2-h">
-            <div class="kit-stufe-num" aria-hidden="true">02</div>
-            <p class="kit-stufe-label">Struktur</p>
-            <h3 id="stufe-2-h" class="kit-stufe-name">Software &amp; Prozesse</h3>
-            <p class="kit-stufe-desc">Bevor KI Prozesse automatisiert, müssen sie definiert und digitalisiert sein. Wir helfen, digitale Abläufe zu strukturieren und die richtige Software zu integrieren.</p>
-            <ul class="kit-stufe-examples" aria-label="Beispiele">
-              <li>ERP-Integration</li>
-              <li>CRM-Systeme</li>
-              <li>Digitale Workflows</li>
-            </ul>
-            <span class="kit-stufe-badge">Beratung im Gespräch</span>
-          </article>
-
-          <article class="kit-stufe-card" aria-labelledby="stufe-3-h">
-            <div class="kit-stufe-num" aria-hidden="true">03</div>
-            <p class="kit-stufe-label">Effizienz</p>
-            <h3 id="stufe-3-h" class="kit-stufe-name">KI &amp; Automatisierungen</h3>
-            <p class="kit-stufe-desc">Jetzt kommt die KI. Chatbots, automatisierte Telefonie, intelligente Workflows — nahtlos in Ihre bestehenden Systeme integriert, messbar in der Wirkung.</p>
-            <ul class="kit-stufe-examples" aria-label="Beispiele">
-              <li>KI-Chatbots</li>
-              <li>KI-Telefonie</li>
-              <li>Prozessautomation</li>
-            </ul>
-            <a href="/automatisierung" class="kit-stufe-link" aria-label="Mehr zu KI und Automatisierungen">
-              Automatisierungen entdecken
-              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" width="14" height="14">
-                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <div class="kit-ansatz-card">
+            <div class="kit-ansatz-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="26" height="26">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 8v4l3 3"/>
+                <path d="M12 2a10 10 0 0 1 7.07 17.07"/>
+                <path d="M9 3.5A10 10 0 0 0 3.5 9"/>
               </svg>
-            </a>
-          </article>
+            </div>
+            <h3>KI &amp; Automatisierung</h3>
+            <p>Prozesse, die für Sie arbeiten. Amplifyr bringt KI dorthin, wo sie Ihnen täglich Zeit und Geld spart.</p>
+          </div>
 
-          <article class="kit-stufe-card" aria-labelledby="stufe-4-h">
-            <div class="kit-stufe-num" aria-hidden="true">04</div>
-            <p class="kit-stufe-label">Wirkung</p>
-            <h3 id="stufe-4-h" class="kit-stufe-name">Digitaler Auftritt</h3>
-            <p class="kit-stufe-desc">Der letzte Baustein: Ihr digitales Gesicht nach aussen. Eine Website, die überzeugt, schnell ist und von Google wie von KI-Suchsystemen gefunden wird.</p>
-            <ul class="kit-stufe-examples" aria-label="Beispiele">
-              <li>Website &amp; Webshop</li>
-              <li>SEO &amp; GEO</li>
-              <li>Rebranding</li>
-            </ul>
-            <a href="/webdesign" class="kit-stufe-link" aria-label="Mehr zu Digitaler Auftritt">
-              Digitaler Auftritt entdecken
-              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" width="14" height="14">
-                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <div class="kit-ansatz-card">
+            <div class="kit-ansatz-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="26" height="26">
+                <rect x="2" y="3" width="20" height="14" rx="2"/>
+                <line x1="8" y1="21" x2="16" y2="21"/>
+                <line x1="12" y1="17" x2="12" y2="21"/>
               </svg>
-            </a>
-          </article>
+            </div>
+            <h3>Digitaler Auftritt</h3>
+            <p>Websites, die überzeugen und gefunden werden. Ihr professionelles Gesicht im Netz — klar, schnell und wirkungsvoll.</p>
+          </div>
 
         </div>
 
-      </div>
-    </section>
-
-    <!-- ── Section 6: Warum jetzt? ───────────────────────────── -->
-    <section id="kit-cost" class="kit-cost-section" aria-labelledby="kit-cost-h">
-      <div class="container kit-cost-inner">
-
-        <div class="kit-cost-number" aria-hidden="true">
-          <span class="kit-cost-chf">CHF</span>
-          <span class="kit-cost-val">72'800</span>
-          <span class="kit-cost-suffix">/Jahr</span>
-        </div>
-
-        <div class="kit-cost-text">
-          <p class="section-label section-label--steel">Warum jetzt?</p>
-          <h2 id="kit-cost-h">Warten hat einen Preis.</h2>
-          <p>Angenommen, 5 Ihrer Mitarbeitenden verlieren je 4 Stunden pro Woche an Aufgaben, die eine KI in Minuten erledigt. Das sind über 1'000 Stunden pro Jahr. Bei CHF 70 internem Stundensatz: <strong>CHF 72'800 — jedes Jahr.</strong> Ohne KI.</p>
-          <p class="kit-cost-note">Der Wettbewerb schläft nicht. Jedes Quartal, das vergeht, ist ein Quartal Vorsprung, den andere aufbauen.</p>
-          <a href="/formular" class="btn btn--hero-pill kit-cost-btn">Jetzt Potenzialanalyse anfragen</a>
-        </div>
+        <p class="section-label kit-ansatz-footer-label">Unternehmerisch. Ganzheitlich. Strukturiert.</p>
 
       </div>
     </section>
@@ -613,6 +476,94 @@
           </div>
 
         </div><!-- /ptl-timeline -->
+
+      </div>
+    </section>
+
+    <!-- ── Section: Handwerk digital ────────────────────────── -->
+    <section id="kit-handwerk" class="kit-handwerk-section" aria-labelledby="kit-handwerk-h">
+      <div class="container">
+
+        <div class="kit-handwerk-header">
+          <h2 id="kit-handwerk-h">Praxisbeispiel</h2>
+          <p class="kit-handwerk-intro">Ein Auftrag im Optimum: So läuft ein Handwerksbetrieb, wenn Prozesse konsequent digitalisiert sind — von der ersten Anfrage bis zur bezahlten Rechnung.</p>
+        </div>
+
+        <div class="kit-hw-timeline" role="list">
+
+          <div class="kit-hw-step" role="listitem">
+            <div class="kit-hw-side kit-hw-side--left">
+              <div class="kit-hw-card">
+                <p class="kit-hw-num">01</p>
+                <h3 class="kit-hw-title">Anfrage</h3>
+                <p class="kit-hw-desc">Anruf wird automatisch entgegengenommen, das Anliegen qualifiziert und ein Termin direkt gebucht — ohne dass jemand im Büro sitzen muss.</p>
+              </div>
+            </div>
+            <div class="kit-hw-axis" aria-hidden="true"><div class="kit-hw-dot"></div></div>
+            <div class="kit-hw-side kit-hw-side--right kit-hw-side--empty" aria-hidden="true"></div>
+          </div>
+
+          <div class="kit-hw-step" role="listitem">
+            <div class="kit-hw-side kit-hw-side--left kit-hw-side--empty" aria-hidden="true"></div>
+            <div class="kit-hw-axis" aria-hidden="true"><div class="kit-hw-dot"></div></div>
+            <div class="kit-hw-side kit-hw-side--right">
+              <div class="kit-hw-card">
+                <p class="kit-hw-num">02</p>
+                <h3 class="kit-hw-title">Angebot</h3>
+                <p class="kit-hw-desc">Auftrag wird erfasst, Angebot aus dem Produktkatalog zusammengestellt und digital an den Kunden versendet.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="kit-hw-step" role="listitem">
+            <div class="kit-hw-side kit-hw-side--left">
+              <div class="kit-hw-card">
+                <p class="kit-hw-num">03</p>
+                <h3 class="kit-hw-title">Planung</h3>
+                <p class="kit-hw-desc">Digitale Plantafel mit automatischer Disposition — Mitarbeiter und Termin werden zugewiesen, Verfügbarkeiten geprüft.</p>
+              </div>
+            </div>
+            <div class="kit-hw-axis" aria-hidden="true"><div class="kit-hw-dot"></div></div>
+            <div class="kit-hw-side kit-hw-side--right kit-hw-side--empty" aria-hidden="true"></div>
+          </div>
+
+          <div class="kit-hw-step" role="listitem">
+            <div class="kit-hw-side kit-hw-side--left kit-hw-side--empty" aria-hidden="true"></div>
+            <div class="kit-hw-axis" aria-hidden="true"><div class="kit-hw-dot"></div></div>
+            <div class="kit-hw-side kit-hw-side--right">
+              <div class="kit-hw-card">
+                <p class="kit-hw-num">04</p>
+                <h3 class="kit-hw-title">Ausführung</h3>
+                <p class="kit-hw-desc">GPS-gestützte Zeiterfassung und Fotodokumentation direkt am Auftrag — per Handy, auch offline.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="kit-hw-step" role="listitem">
+            <div class="kit-hw-side kit-hw-side--left">
+              <div class="kit-hw-card">
+                <p class="kit-hw-num">05</p>
+                <h3 class="kit-hw-title">Abnahme</h3>
+                <p class="kit-hw-desc">Digitale Unterschrift des Kunden vor Ort, Abnahmeprotokoll wird automatisch als PDF erstellt und archiviert.</p>
+              </div>
+            </div>
+            <div class="kit-hw-axis" aria-hidden="true"><div class="kit-hw-dot"></div></div>
+            <div class="kit-hw-side kit-hw-side--right kit-hw-side--empty" aria-hidden="true"></div>
+          </div>
+
+          <div class="kit-hw-step" role="listitem">
+            <div class="kit-hw-side kit-hw-side--left kit-hw-side--empty" aria-hidden="true"></div>
+            <div class="kit-hw-axis" aria-hidden="true"><div class="kit-hw-dot"></div></div>
+            <div class="kit-hw-side kit-hw-side--right">
+              <div class="kit-hw-card">
+                <p class="kit-hw-num">06</p>
+                <h3 class="kit-hw-title">Rechnung</h3>
+                <p class="kit-hw-desc">Direkt aus dem Auftrag generiert, versendet und bei Bedarf automatisch gemahnt — mit Übergabe an die Buchhaltung.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
 
       </div>
     </section>
@@ -703,7 +654,7 @@
       </div>
     </section>
 
-    <!-- ── Section 8: CTA ─────────────────────────────────────── -->
+    <!-- ── Section: CTA ─────────────────────────────────────── -->
     <section id="kit-cta" class="ki-cta" aria-label="Call to Action">
       <div class="ki-cta-bg" aria-hidden="true">
         <div class="ki-cta-blob ki-cta-blob--1"></div>
@@ -714,9 +665,10 @@
       </div>
       <div class="container ki-cta-content">
         <p class="section-label section-label--steel">Der erste Schritt kostet nichts.</p>
-        <h2 class="text-white">Bereit für den nächsten Schritt?</h2>
-        <p class="text-white">Wir analysieren Ihren Betrieb und zeigen Ihnen konkret, wo KI für Sie wirklich wirkt — kostenlos, unverbindlich, ohne Fachbegriffe.</p>
+        <h2 class="text-white">Bereit, Ihren Betrieb zu verstärken?</h2>
+        <p class="text-white">Starten Sie mit einer unverbindlichen Potenzialanalyse. Wir zeigen konkret, wo KI für Sie wirkt — ehrlich, verständlich, ohne Fachchinesisch.</p>
         <a href="/formular" class="btn btn--white">Potenzialanalyse anfragen</a>
+        <p class="ki-cta-reassurance">Unverbindlich · Keine Vorkenntnisse nötig · Schweizer KMU-Fokus</p>
       </div>
     </section>
 
@@ -729,7 +681,7 @@
       <div class="ba-teaser-rocket-wrap" aria-hidden="true">
         <picture>
           <source srcset="/Bilder/rakete_teaser.webp" type="image/webp">
-          <img class="ba-teaser-rocket" src="/Bilder/rakete_teaser.png" alt="" loading="lazy" decoding="async">
+          <img class="ba-teaser-rocket" src="/Bilder/rakete_teaser.png" alt="" loading="lazy" decoding="async" width="1024" height="1024">
         </picture>
       </div>
       <span class="ba-teaser-label">Ihr Problem? Unsere KI-Lösung!</span>
