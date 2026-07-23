@@ -1413,17 +1413,11 @@ footer {
   position: relative;
   min-height: 100vh;
   min-height: 100svh;
+  min-height: calc(var(--vh, 1svh) * 100);
   display: flex;
   align-items: center;
   background: var(--navy);
   overflow: hidden;
-}
-
-/* iOS Safari: Adressleisten-Zoom beim Scrollen verhindern */
-@supports (-webkit-touch-callout: none) {
-  .fsh {
-    min-height: -webkit-fill-available;
-  }
 }
 
 @media (max-height: 500px) and (orientation: landscape) {

@@ -7,6 +7,17 @@
   'use strict';
 
   /* ============================================================
+     0. MOBILE VIEWPORT HEIGHT FIX
+     Verhindert den Zoom-Effekt wenn die Browser-Adressleiste
+     beim Scrollen auftaucht/verschwindet (iOS Safari, Brave, Chrome).
+  ============================================================ */
+  function setVH() {
+    document.documentElement.style.setProperty('--vh', window.innerHeight * 0.01 + 'px');
+  }
+  setVH();
+  window.addEventListener('resize', setVH, { passive: true });
+
+  /* ============================================================
      1. AKTIVEN NAV-LINK SETZEN
   ============================================================ */
   function setActiveNavLinks() {
