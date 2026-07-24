@@ -107,10 +107,10 @@
        Defensiv behandeln: im Fehlerfall einfach wie "noch nicht gesehen"
        verhalten. */
     function getHeroSeen() {
-      try { return localStorage.getItem('heroSeen'); } catch (e) { return null; }
+      try { return localStorage.getItem('heroSeen_v2'); } catch (e) { return null; }
     }
     function setHeroSeen() {
-      try { localStorage.setItem('heroSeen', '1'); } catch (e) {}
+      try { localStorage.setItem('heroSeen_v2', '1'); } catch (e) {}
     }
 
     if (reduced || getHeroSeen()) {
