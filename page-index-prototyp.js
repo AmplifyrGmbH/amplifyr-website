@@ -116,13 +116,7 @@
     if (getHeroSeen()) {
       showEndState();
     } else {
-      /* Slogan mit Animation (normal) oder sofort ohne Bewegung (reduced). */
-      if (!reduced) {
-        showSlogan();
-      } else {
-        if (phase1) { phase1.style.opacity = '1'; phase1.style.transform = 'translateX(0)'; }
-        if (phase2) { phase2.style.opacity = '1'; phase2.style.transform = 'translateX(0)'; }
-      }
+      showSlogan();
 
       video.addEventListener('ended', function () {
         onVideoEnd();
