@@ -113,10 +113,13 @@
       try { localStorage.setItem('heroSeen_v2', '1'); } catch (e) {}
     }
 
-    if (reduced || getHeroSeen()) {
+    if (getHeroSeen()) {
       showEndState();
     } else {
-      showSlogan();
+      /* Slogan-Animation nur ohne Reduce-Motion abspielen —
+         das Video selbst läuft in jedem Fall (einmalig, kein Loop). */
+      if (!reduced) showSlogan();
+
       video.addEventListener('ended', function () {
         onVideoEnd();
         setHeroSeen();
