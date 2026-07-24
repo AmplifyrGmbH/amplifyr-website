@@ -131,10 +131,6 @@
         var p = video.play();
         if (p && typeof p.catch === 'function') p.catch(function () {});
       }
-      /* load() startet den Download explizit — nötig wenn preload="none"
-         oder preload="metadata" gesetzt ist, weil mobile Browser sonst
-         keine Videodaten puffern und play() lautlos scheitert. */
-      video.load();
       attemptPlay();
       ['loadedmetadata', 'loadeddata', 'canplay', 'canplaythrough'].forEach(function (ev) {
         video.addEventListener(ev, attemptPlay, { once: true });
