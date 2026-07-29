@@ -43,6 +43,9 @@
   ExpiresByType application/manifest+json "access plus 1 week"
 </IfModule>
 
+# ── vCard MIME-Type ───────────────────────────────────────
+AddType text/vcard .vcf
+
 # ── Sensible Dateien blockieren ───────────────────────────
 <FilesMatch "(\.DS_Store|\.git|\.env|\.aws|\.docker|sftp\.json)">
   Require all denied

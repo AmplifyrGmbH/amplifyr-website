@@ -77,6 +77,7 @@
       {
         name: 'Timo Steinfort',
         role: 'Co-Founder · Markt & Strategie',
+        vcf: '/vcards/Timo_Steinfort.vcf',
         links: [
           { type: 'linkedin', label: 'LinkedIn',           url: 'https://www.linkedin.com/in/timo-steinfort-8571971a4/' },
           { type: 'tel',      label: '+41 44 244 59 98',  url: 'tel:+41442445998' },
@@ -86,6 +87,7 @@
       {
         name: 'David Staub',
         role: 'Co-Founder · Prozesse & Data Science',
+        vcf: '/vcards/David_Staub.vcf',
         links: [
           { type: 'linkedin', label: 'LinkedIn',           url: 'https://www.linkedin.com/in/david-staub-456331237/' },
           { type: 'tel',      label: '+41 44 244 59 97',  url: 'tel:+41442445997' },
@@ -95,6 +97,7 @@
       {
         name: 'Sinan Sen',
         role: 'Co-Founder · Systeme & Engineering',
+        vcf: '/vcards/Sinan_Sen.vcf',
         links: [
           { type: 'linkedin', label: 'LinkedIn',           url: 'https://www.linkedin.com/in/sinan-sen-61299a22b/' },
           { type: 'tel',      label: '+41 44 244 59 96',  url: 'tel:+41442445996' },
@@ -152,12 +155,12 @@
       }
     }
 
-    // 2. iOS fallback: navigate to blob URL — Safari opens vCard natively
+    // 2. iOS fallback: static .vcf URL — Safari triggers native Contacts import
     var isIOS = /iP(hone|ad|od)/.test(navigator.userAgent) ||
                 (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-    if (isIOS) {
-      window.location.href = blobUrl;
-      setTimeout(function(){ URL.revokeObjectURL(blobUrl); }, 2000);
+    if (isIOS && person.vcf) {
+      window.location.href = person.vcf;
+      URL.revokeObjectURL(blobUrl);
       return;
     }
 

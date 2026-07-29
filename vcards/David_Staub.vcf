@@ -1,0 +1,10 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Staub;David;;;
+FN:David Staub
+ORG:Amplifyr GmbH
+TITLE:Co-Founder - Prozesse & Data Science
+TEL;TYPE=WORK,VOICE:+41442445997
+EMAIL;TYPE=WORK,INTERNET:david@amplifyr.ch
+URL:https://www.amplifyr.ch
+END:VCARD
