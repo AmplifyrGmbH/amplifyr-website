@@ -24,12 +24,12 @@ body {
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  padding: 48px 16px 32px;
+  padding: 32px 16px 32px;
 }
 
 @supports (padding: max(0px)) {
   .lk-page {
-    padding-top: max(48px, env(safe-area-inset-top, 48px));
+    padding-top: max(32px, env(safe-area-inset-top, 32px));
     padding-bottom: max(32px, env(safe-area-inset-bottom, 32px));
   }
 }
@@ -37,7 +37,7 @@ body {
 /* ---- Header / Logo ---- */
 .lk-header {
   text-align: center;
-  margin-bottom: 36px;
+  margin-bottom: 24px;
 }
 
 .lk-logo {
@@ -85,11 +85,26 @@ body {
   padding-left: 2px;
 }
 
+.lk-section-label--center {
+  text-align: center;
+  padding-left: 0;
+}
+
 /* ---- Link list ---- */
 .lk-links {
   display: flex;
   flex-direction: column;
   gap: 9px;
+}
+
+/* Company links: LinkedIn+Instagram side by side, tel+web full width */
+.lk-links--company {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+}
+.lk-links--company .lk-btn:nth-child(n+3) {
+  grid-column: 1 / -1;
 }
 
 /* ---- Button base ---- */
@@ -183,7 +198,7 @@ body {
 .lk-team {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 10px;
 }
 
 /* Person card */
@@ -191,7 +206,7 @@ body {
   background: rgba(255,255,255,0.52);
   border: 1px solid rgba(176,196,222,0.38);
   border-radius: 18px;
-  padding: 18px 16px 16px;
+  overflow: hidden;
   backdrop-filter: blur(20px) saturate(1.4);
   -webkit-backdrop-filter: blur(20px) saturate(1.4);
   box-shadow:
@@ -199,12 +214,30 @@ body {
     inset 0 1px 0 rgba(255,255,255,0.92);
 }
 
-.lk-person-head {
+/* Toggle-Button (Header) */
+.lk-person-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+  font-family: inherit;
+}
+
+.lk-person-toggle:active {
+  background: rgba(176,196,222,0.15);
+}
+
+.lk-person-info {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  margin-bottom: 14px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid rgba(176,196,222,0.3);
+  gap: 2px;
 }
 
 .lk-person-name {
@@ -218,7 +251,63 @@ body {
 .lk-person-role {
   font-size: 0.78rem;
   color: #8290ab;
-  margin-top: 3px;
+}
+
+.lk-person-chevron {
+  flex-shrink: 0;
+  color: #8290ab;
+  transition: transform 0.25s ease;
+}
+
+.lk-person-toggle[aria-expanded="true"] .lk-person-chevron {
+  transform: rotate(180deg);
+}
+
+/* Accordion body */
+.lk-person-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.lk-person-body.is-open {
+  max-height: 400px;
+}
+
+.lk-person-body-inner {
+  padding: 12px 14px 14px;
+  border-top: 1px solid rgba(176,196,222,0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* vCard button */
+.lk-vcard-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 16px;
+  margin-top: 2px;
+  background: linear-gradient(135deg, #1a2744 0%, #253459 100%);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity 0.15s, transform 0.15s;
+  text-decoration: none;
+}
+
+.lk-vcard-btn:active {
+  opacity: 0.82;
+  transform: scale(0.97);
 }
 
 /* ---- Footer ---- */
@@ -247,7 +336,7 @@ body {
   .lk-logo { font-size: 2.6rem; }
   .lk-tagline { font-size: 0.9rem; }
   .lk-btn { padding: 16px 20px; }
-  .lk-person { padding: 22px 20px 18px; }
+  .lk-person { padding: 0; } /* mobile: no outer padding, inner handles spacing */
 }
 
 @media (min-width: 820px) {
@@ -258,18 +347,31 @@ body {
   }
   .lk-person { flex: 1; }
 
-  /* Company-Links kompakter nebeneinander, zentriert */
-  .lk-section:first-child .lk-links {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
+  .lk-links--company {
+    grid-template-columns: repeat(4, 1fr);
   }
-  .lk-section:first-child .lk-btn {
-    flex: 0 0 auto;
+  .lk-links--company .lk-btn:nth-child(n+3),
+  .lk-links--company .lk-btn:last-child {
+    grid-column: auto;
+  }
+  .lk-links--company .lk-btn {
     padding: 10px 18px;
     font-size: 0.88rem;
   }
+
+  /* Accordions always open on desktop */
+  .lk-person-body {
+    max-height: 600px;
+    transition: none;
+  }
+  .lk-person-toggle {
+    pointer-events: none;
+  }
+  .lk-person-chevron {
+    display: none;
+  }
+
+  .lk-person { padding: 22px 20px 18px; }
 
   .lk-section-label { text-align: center; }
 }

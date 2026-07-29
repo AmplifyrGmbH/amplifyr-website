@@ -67,9 +67,10 @@
   const LINKS = {
 
     company: [
-      { type: 'web',       label: 'amplifyr.ch',  url: 'https://amplifyr.ch' },
-      { type: 'linkedin',  label: 'LinkedIn',     url: 'https://www.linkedin.com/company/112354402' },
-      { type: 'instagram', label: 'Instagram',    url: 'https://www.instagram.com/amplifyr.ch' },
+      { type: 'linkedin',  label: 'LinkedIn',        url: 'https://www.linkedin.com/company/112354402' },
+      { type: 'instagram', label: 'Instagram',       url: 'https://www.instagram.com/amplifyr.ch' },
+      { type: 'tel',       label: '044 244 59 95',   url: 'tel:+41442445995' },
+      { type: 'web',       label: 'amplifyr.ch',     url: 'https://amplifyr.ch' },
     ],
 
     team: [
@@ -78,7 +79,7 @@
         role: 'Co-Founder · Markt & Strategie',
         links: [
           { type: 'linkedin', label: 'LinkedIn',           url: 'https://www.linkedin.com/in/timo-steinfort-8571971a4/' },
-          { type: 'tel',      label: '+41 44 798 58 42',  url: 'tel:+41447985842' },
+          { type: 'tel',      label: '+41 44 244 59 98',  url: 'tel:+41442445998' },
           { type: 'mail',     label: 'timo@amplifyr.ch',  url: 'mailto:timo@amplifyr.ch' },
         ]
       },
@@ -87,7 +88,7 @@
         role: 'Co-Founder · Prozesse & Data Science',
         links: [
           { type: 'linkedin', label: 'LinkedIn',           url: 'https://www.linkedin.com/in/david-staub-456331237/' },
-          { type: 'tel',      label: '+41 44 798 58 42',  url: 'tel:+41447985842' },
+          { type: 'tel',      label: '+41 44 244 59 97',  url: 'tel:+41442445997' },
           { type: 'mail',     label: 'david@amplifyr.ch', url: 'mailto:david@amplifyr.ch' },
         ]
       },
@@ -96,7 +97,7 @@
         role: 'Co-Founder · Systeme & Engineering',
         links: [
           { type: 'linkedin', label: 'LinkedIn',           url: 'https://www.linkedin.com/in/sinan-sen-61299a22b/' },
-          { type: 'tel',      label: '+41 44 798 58 42',  url: 'tel:+41447985842' },
+          { type: 'tel',      label: '+41 44 244 59 96',  url: 'tel:+41442445996' },
           { type: 'mail',     label: 'sinan@amplifyr.ch', url: 'mailto:sinan@amplifyr.ch' },
         ]
       },
@@ -114,6 +115,38 @@
   };
 
   const ARROW = `<svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  const CHEVRON = `<svg class="lk-person-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  const VCARD_ICON = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>`;
+
+  // ---- vCard download ----
+  function downloadVCard(person) {
+    const parts = person.name.split(' ');
+    const lastName = parts.pop();
+    const firstName = parts.join(' ');
+    const phone = (person.links.find(function(l){ return l.type === 'tel'; }) || {}).url || '';
+    const email = (person.links.find(function(l){ return l.type === 'mail'; }) || {}).url || '';
+    const lines = [
+      'BEGIN:VCARD',
+      'VERSION:3.0',
+      'N:' + lastName + ';' + firstName + ';;;',
+      'FN:' + person.name,
+      'ORG:Amplifyr GmbH',
+      'TITLE:' + person.role,
+    ];
+    if (phone) lines.push('TEL;TYPE=WORK,VOICE:' + phone.replace('tel:', ''));
+    if (email) lines.push('EMAIL;TYPE=WORK,INTERNET:' + email.replace('mailto:', ''));
+    lines.push('URL:https://www.amplifyr.ch');
+    lines.push('END:VCARD');
+    const blob = new Blob([lines.join('\r\n')], { type: 'text/vcard;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = person.name.replace(/\s+/g, '_') + '.vcf';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
+  }
 
   // ---- Render helpers ----
   function linkBtn(link, variant) {
@@ -129,33 +162,75 @@
   function render() {
     const root = document.getElementById('lk-root');
 
-    const teamHTML = LINKS.team.map(person => `
-      <div class="lk-person">
-        <div class="lk-person-head">
-          <span class="lk-person-name">${person.name}</span>
-          <span class="lk-person-role">${person.role}</span>
+    const teamHTML = LINKS.team.map(function(person, i) {
+      return `<div class="lk-person">
+        <button class="lk-person-toggle" aria-expanded="false" aria-controls="lk-person-body-${i}">
+          <div class="lk-person-info">
+            <span class="lk-person-name">${person.name}</span>
+            <span class="lk-person-role">${person.role}</span>
+          </div>
+          ${CHEVRON}
+        </button>
+        <div class="lk-person-body" id="lk-person-body-${i}" aria-hidden="true">
+          <div class="lk-person-body-inner">
+            <div class="lk-links">
+              ${person.links.map(function(l){ return linkBtn(l, 'ghost'); }).join('')}
+            </div>
+            <button class="lk-vcard-btn" data-person-idx="${i}">
+              ${VCARD_ICON}
+              Kontakt hinzufügen
+            </button>
+          </div>
         </div>
-        <div class="lk-links">
-          ${person.links.map(l => linkBtn(l, 'ghost')).join('')}
-        </div>
-      </div>
-    `).join('');
+      </div>`;
+    }).join('');
 
     root.innerHTML = `
-      <section class="lk-section" aria-label="Firma">
-        <p class="lk-section-label">Firma</p>
-        <div class="lk-links">
-          ${LINKS.company.map(l => linkBtn(l, 'primary')).join('')}
+      <section class="lk-section lk-section--company" aria-label="Firma">
+        <div class="lk-links lk-links--company">
+          ${LINKS.company.map(function(l){ return linkBtn(l, 'primary'); }).join('')}
         </div>
       </section>
 
       <div class="lk-divider" aria-hidden="true"></div>
 
       <section class="lk-section" aria-label="Team">
-        <p class="lk-section-label">Team</p>
+        <p class="lk-section-label lk-section-label--center">Team</p>
         <div class="lk-team">${teamHTML}</div>
       </section>
     `;
+
+    // Accordion
+    root.querySelectorAll('.lk-person-toggle').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        const isOpen = btn.getAttribute('aria-expanded') === 'true';
+        // Close all
+        root.querySelectorAll('.lk-person-toggle').forEach(function(b) {
+          b.setAttribute('aria-expanded', 'false');
+          const body = document.getElementById(b.getAttribute('aria-controls'));
+          if (body) { body.classList.remove('is-open'); body.setAttribute('aria-hidden', 'true'); }
+        });
+        // Open this one if it was closed
+        if (!isOpen) {
+          btn.setAttribute('aria-expanded', 'true');
+          const body = document.getElementById(btn.getAttribute('aria-controls'));
+          if (body) { body.classList.add('is-open'); body.setAttribute('aria-hidden', 'false'); }
+          if (window.innerWidth < 820) {
+            setTimeout(function() {
+              btn.closest('.lk-person').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 50);
+          }
+        }
+      });
+    });
+
+    // vCard buttons
+    root.querySelectorAll('.lk-vcard-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        const idx = parseInt(btn.getAttribute('data-person-idx'), 10);
+        downloadVCard(LINKS.team[idx]);
+      });
+    });
   }
 
   render();
