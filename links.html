@@ -137,15 +137,23 @@
     if (email) lines.push('EMAIL;TYPE=WORK,INTERNET:' + email.replace('mailto:', ''));
     lines.push('URL:https://www.amplifyr.ch');
     lines.push('END:VCARD');
-    const blob = new Blob([lines.join('\r\n')], { type: 'text/vcard;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = person.name.replace(/\s+/g, '_') + '.vcf';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
+    const vcf = lines.join('\r\n');
+    // iOS Safari: data URI triggers native Contacts import dialog
+    // Android/Desktop: fallback to blob download
+    var isIOS = /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    if (isIOS) {
+      window.location.href = 'data:text/vcard;charset=utf-8,' + encodeURIComponent(vcf);
+    } else {
+      const blob = new Blob([vcf], { type: 'text/vcard;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = person.name.replace(/\s+/g, '_') + '.vcf';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
+    }
   }
 
   // ---- Render helpers ----
