@@ -142,29 +142,18 @@
     lines.push('END:VCARD');
     const vcf = lines.join('\r\n');
     const filename = person.name.replace(/\s+/g, '_') + '.vcf';
-    const blob = new Blob([vcf], { type: 'text/vcard;charset=utf-8' });
-    const blobUrl = URL.createObjectURL(blob);
 
-    // 1. Web Share API (HTTPS only — iOS 15+, Android)
-    if (navigator.share && navigator.canShare) {
-      var file = new File([vcf], filename, { type: 'text/vcard' });
-      if (navigator.canShare({ files: [file] })) {
-        navigator.share({ files: [file] }).catch(function(){});
-        setTimeout(function(){ URL.revokeObjectURL(blobUrl); }, 1000);
-        return;
-      }
-    }
-
-    // 2. iOS fallback: static .vcf URL — Safari triggers native Contacts import
+    // iOS: static .vcf URL → Safari triggers native "New Contact" dialog directly
     var isIOS = /iP(hone|ad|od)/.test(navigator.userAgent) ||
                 (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
     if (isIOS && person.vcf) {
       window.location.href = person.vcf;
-      URL.revokeObjectURL(blobUrl);
       return;
     }
 
-    // 3. Android / Desktop: <a download>
+    // Android / Desktop: blob download
+    const blob = new Blob([vcf], { type: 'text/vcard;charset=utf-8' });
+    const blobUrl = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = blobUrl;
     a.download = filename;
