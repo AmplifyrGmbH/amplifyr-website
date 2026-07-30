@@ -54,6 +54,9 @@ AddType text/vcard .vcf
 # ── Rewrites ──────────────────────────────────────────────────
 RewriteEngine On
 
+# 0. Permanente Weiterleitungen (301)
+RewriteRule ^automatisierung/?$ /ki-transformation [R=301,L]
+
 # 1. non-www (http + https) → https://www
 RewriteCond %{HTTP_HOST} ^amplifyr\.ch [NC]
 RewriteRule ^(.*)$ https://www.amplifyr.ch/$1 [R=301,L]

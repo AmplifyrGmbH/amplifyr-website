@@ -109,9 +109,16 @@ const HEADER = `  <header id="site-header" class="legal-mode">
       </a>
       <nav class="site-nav" aria-label="Hauptnavigation">
         <ul class="site-nav__list">
-          <li class="site-nav__item"><a href="/ki-transformation" class="site-nav__link nav-link">KI-Transformation</a></li>
+          <li class="site-nav__item">
+            <a href="/ki-transformation" class="site-nav__link nav-link">KI-Transformation
+              <svg class="site-nav__chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <ul class="nav-dropdown" role="menu">
+              <li><a href="/ki-transformation#kit-zahlen" class="nav-dropdown__link" role="menuitem">Allgemein</a></li>
+              <li><a href="/handwerker" class="nav-dropdown__link" role="menuitem">Handwerker</a></li>
+            </ul>
+          </li>
           <li class="site-nav__item"><a href="/it-solutions"      class="site-nav__link nav-link">IT-Lösungen</a></li>
-          <li class="site-nav__item"><a href="/automatisierung"   class="site-nav__link nav-link">Automatisierungen</a></li>
           <li class="site-nav__item"><a href="/webdesign"         class="site-nav__link nav-link">Digitaler Auftritt</a></li>
         </ul>
       </nav>
@@ -136,9 +143,21 @@ const HEADER = `  <header id="site-header" class="legal-mode">
       </button>
     </div>
     <div class="mobile-menu__nav">
-      <a href="/ki-transformation" class="mobile-nav-link">KI-Transformation</a>
+      <div class="mobile-nav-group">
+        <div class="mobile-nav-group__row">
+          <a href="/ki-transformation" class="mobile-nav-link">KI-Transformation</a>
+          <button class="mobile-nav-group__chevron-btn" aria-label="KI-Transformation Untermenü">
+            <svg class="mobile-nav-group__chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+        <div class="mobile-nav-group__sub">
+          <a href="/ki-transformation#kit-zahlen">Allgemein</a>
+          <a href="/handwerker">Handwerker</a>
+        </div>
+      </div>
       <a href="/it-solutions"      class="mobile-nav-link">IT-Lösungen</a>
-      <a href="/automatisierung"   class="mobile-nav-link">Automatisierungen</a>
       <a href="/webdesign"         class="mobile-nav-link">Digitaler Auftritt</a>
       <a href="/ueber-uns"         class="mobile-nav-link">Über uns</a>
     </div>
