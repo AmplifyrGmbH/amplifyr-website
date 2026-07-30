@@ -1393,6 +1393,31 @@
   flex-wrap: wrap;
 }
 
+@media (max-width: 819px) {
+  .fsh-branch {
+    flex-wrap: nowrap;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  .fsh-branch-card {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: none;
+    padding: 14px 16px;
+    gap: 4px;
+  }
+  .fsh-branch-title {
+    font-size: 1rem;
+  }
+  .fsh-branch-desc {
+    font-size: 0.75rem;
+  }
+  .fsh-branch-cta {
+    font-size: 0.73rem;
+    margin-top: 4px;
+  }
+}
+
 .fsh-branch-card {
   display: flex;
   flex-direction: column;
