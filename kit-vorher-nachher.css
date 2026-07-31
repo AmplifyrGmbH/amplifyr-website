@@ -1,0 +1,359 @@
+/* ============================================================
+   AMPLIFYR — kit-vorher-nachher.css
+   Sektion "Vorher / Nachher" (/ki-transformation)
+   Präfix: kit-vn-
+   Rein CSS-animiert (Linien-Dash, blinkende Punkte), kein JS.
+   Erwartet die Variablen aus /style.css (--navy, --steel, ...)
+============================================================ */
+
+.kit-vn-section {
+  position: relative;
+  background: var(--bg-white);
+  padding-block: clamp(3.5rem, 7vw, 6rem);
+}
+
+.kit-vn-header {
+  max-width: 640px;
+  margin: 0 auto clamp(2.5rem, 5vw, 3.5rem);
+  text-align: center;
+}
+
+.kit-vn-header h2 {
+  margin: 14px 0 16px;
+}
+
+.kit-vn-lead {
+  color: var(--text-muted);
+  font-size: 1.02rem;
+  line-height: 1.75;
+  text-wrap: pretty;
+}
+
+/* ── Diagramme (Desktop) ─────────────────────────────────── */
+.kit-vn-diagrams {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 4vw, 2.75rem);
+  width: 1180px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.kit-vn-row-label {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.kit-vn-row-label span {
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8598B4;
+  white-space: nowrap;
+}
+
+.kit-vn-row-label i {
+  flex: 1;
+  height: 1px;
+  background: var(--border-light);
+  font-style: normal;
+}
+
+.kit-vn-row-label--ai span { color: #1B4A75; }
+.kit-vn-row-label--ai i { background: linear-gradient(90deg, #6EC1FF, var(--border-light)); }
+
+.kit-vn-flow {
+  position: relative;
+  width: 1180px;
+  height: 320px;
+}
+
+.kit-vn-lines {
+  position: absolute;
+  inset: 0;
+  width: 1180px;
+  height: 320px;
+  overflow: visible;
+}
+
+.kit-vn-lines path {
+  fill: none;
+  stroke: #C7D1E0;
+  stroke-width: 1.2;
+  stroke-dasharray: 5 5;
+}
+
+.kit-vn-lines--ai path {
+  stroke: #6EC1FF;
+  stroke-width: 1.6;
+  stroke-dasharray: 6 8;
+  animation: kitVnDash 1.6s linear infinite;
+}
+
+@keyframes kitVnDash { to { stroke-dashoffset: -14; } }
+
+.kit-vn-col {
+  position: absolute;
+  top: 0;
+  width: 200px;
+  height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.kit-vn-col--left { left: 0; }
+.kit-vn-col--right { left: 980px; }
+
+.kit-vn-chip {
+  height: 44px;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  border-radius: 10px;
+  background: #F4F7FB;
+  border: 1px solid #E2E8F1;
+  font-size: 13.5px;
+  color: #33456A;
+}
+
+.kit-vn-chip--system {
+  height: 56px;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.kit-vn-chip--done {
+  justify-content: space-between;
+  background: #F4F9FF;
+  border-color: #C9E4FA;
+  color: var(--navy);
+}
+
+.kit-vn-chip--done span {
+  font-size: 11px;
+  color: #1B7A55;
+}
+
+.kit-vn-chip--live {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2px;
+  border-color: #C9E4FA;
+  box-shadow: 0 2px 12px rgba(110,193,255,0.14);
+}
+
+.kit-vn-chip--live span {
+  font-size: 11px;
+  font-weight: 400;
+  color: #5A6A83;
+}
+
+/* ── Hub (Mitte) ─────────────────────────────────────────── */
+.kit-vn-hub {
+  position: absolute;
+  left: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+  padding: 0 28px;
+}
+
+.kit-vn-hub--before {
+  top: 90px;
+  width: 340px;
+  height: 140px;
+  border-radius: 14px;
+  background: #F4F7FB;
+  border: 1px dashed #B9C6D8;
+}
+
+.kit-vn-hub-label {
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #8598B4;
+}
+
+.kit-vn-hub-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.kit-vn-hub-sub {
+  font-size: 13px;
+  line-height: 1.55;
+  color: #5A6A83;
+}
+
+.kit-vn-hub--after {
+  top: 62px;
+  width: 340px;
+  height: 196px;
+  gap: 10px;
+  border-radius: 16px;
+  background: radial-gradient(circle at 30% 20%, #1E355F 0%, #0C1730 100%);
+  border: 1px solid rgba(110,193,255,0.4);
+  box-shadow: 0 0 50px rgba(110,193,255,0.2);
+}
+
+.kit-vn-hub-brand {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(110,193,255,0.85);
+}
+
+.kit-vn-hub--after .kit-vn-hub-title {
+  font-size: 23px;
+  color: #fff;
+  line-height: 1.25;
+}
+
+.kit-vn-hub--after .kit-vn-hub-sub {
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: rgba(176,196,222,0.75);
+}
+
+.kit-vn-hub-dots {
+  display: flex;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.kit-vn-hub-dots span {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #6EC1FF;
+  animation: kitVnBlink 1.4s ease-in-out infinite;
+}
+
+.kit-vn-hub-dots span:nth-child(2) { animation-delay: 0.2s; }
+.kit-vn-hub-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes kitVnBlink {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+/* ── Fussnote ────────────────────────────────────────────── */
+.kit-vn-note {
+  max-width: 70ch;
+  margin: clamp(2.5rem, 5vw, 3.5rem) auto 0;
+  text-align: center;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--text-muted);
+  text-wrap: pretty;
+}
+
+/* ── Mobile-Fallback ─────────────────────────────────────── */
+.kit-vn-mobile { display: none; }
+
+.kit-vn-mcard {
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 20px 20px 22px;
+  margin-bottom: 16px;
+}
+
+.kit-vn-mcard--after {
+  background: linear-gradient(180deg, #F4F9FF 0%, #fff 60%);
+  border-color: #C9E4FA;
+}
+
+.kit-vn-mcard-label {
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #8598B4;
+  margin-bottom: 12px;
+}
+
+.kit-vn-mcard--after .kit-vn-mcard-label { color: #1B4A75; }
+
+.kit-vn-mchips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.kit-vn-mchip {
+  font-size: 12.5px;
+  padding: 7px 12px;
+  border-radius: 100px;
+  background: #F4F7FB;
+  border: 1px solid #E2E8F1;
+  color: #33456A;
+}
+
+.kit-vn-mcard--after .kit-vn-mchip {
+  background: #F4F9FF;
+  border-color: #C9E4FA;
+  color: var(--navy);
+}
+
+.kit-vn-mhub {
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+  background: #F4F7FB;
+  border: 1px dashed #B9C6D8;
+}
+
+.kit-vn-mcard--after .kit-vn-mhub {
+  background: radial-gradient(circle at 30% 20%, #1E355F 0%, #0C1730 100%);
+  border: 1px solid rgba(110,193,255,0.4);
+}
+
+.kit-vn-mhub p {
+  margin: 0;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.kit-vn-mcard--after .kit-vn-mhub p { color: #fff; }
+
+.kit-vn-mhub span {
+  display: block;
+  margin-top: 3px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #5A6A83;
+}
+
+.kit-vn-mcard--after .kit-vn-mhub span { color: rgba(176,196,222,0.8); }
+
+/* ── Breakpoints ────────────────────────────────────────── */
+@media (max-width: 1279px) {
+  .kit-vn-diagrams { transform: scale(0.86); transform-origin: top center; margin-bottom: calc(-14% + 8px); }
+}
+
+@media (max-width: 1023px) {
+  .kit-vn-diagrams { display: none; }
+  .kit-vn-mobile { display: block; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kit-vn-lines--ai path { animation: none; }
+  .kit-vn-hub-dots span { animation: none; opacity: 0.8; }
+}

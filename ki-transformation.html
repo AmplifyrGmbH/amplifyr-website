@@ -120,6 +120,8 @@
   <link rel="stylesheet" href="/style.css?v=5">
   <link rel="stylesheet" href="/page-index-prototyp.css">
   <link rel="stylesheet" href="/page-ki-transformation.css?v=1">
+  <link rel="stylesheet" href="/kit-intro.css?v=1">
+  <link rel="stylesheet" href="/kit-vorher-nachher.css?v=1">
   <script defer src="https://cloud.umami.is/script.js" data-website-id="a5638b4a-87cc-4014-a56d-b5b83ae8ccd5"></script>
 </head>
 <body>
@@ -142,7 +144,6 @@
               <svg class="site-nav__chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
             <ul class="nav-dropdown" role="menu">
-              <li><a href="/ki-transformation#kit-zahlen" class="nav-dropdown__link" role="menuitem">Allgemein</a></li>
               <li><a href="/handwerker" class="nav-dropdown__link" role="menuitem">Handwerker</a></li>
             </ul>
           </li>
@@ -200,7 +201,6 @@
           </button>
         </div>
         <div class="mobile-nav-group__sub">
-          <a href="/ki-transformation#kit-zahlen">Allgemein</a>
           <a href="/handwerker">Handwerker</a>
         </div>
       </div>
@@ -265,13 +265,8 @@
       <div class="container fsh-inner">
         <div class="fsh-content">
           <h1 id="kit-h1" class="fsh-heading">Transformation <em class="fsh-em">amplified</em></h1>
-          <p class="fsh-sub">Nicht Tool kaufen. System aufbauen. Amplifyr begleitet Schweizer KMU ganzheitlich — von der IT-Infrastruktur über KI-Automatisierungen bis zum digitalen Auftritt.</p>
+          <p class="fsh-sub">Ihre Geschäftsbereiche, verstärkt durch KI. Amplifyr macht aus dem, was in Ihrem Betrieb schon läuft, ein leistungsfähigeres System.</p>
           <div class="fsh-branch">
-            <a href="#kit-zahlen" class="fsh-branch-card">
-              <span class="fsh-branch-title">Allgemein</span>
-              <span class="fsh-branch-desc">Übersicht, Zahlen und unser Ansatz zur KI-Transformation für KMU.</span>
-              <span class="fsh-branch-cta">Mehr erfahren →</span>
-            </a>
             <a href="/handwerker" class="fsh-branch-card">
               <span class="fsh-branch-title">Handwerker</span>
               <span class="fsh-branch-desc">Massgeschneiderte KI-Lösungen speziell für Handwerksbetriebe.</span>
@@ -283,106 +278,363 @@
       <div class="fsh-scroll-cue" aria-hidden="true"></div>
     </section>
 
-    <!-- ── Section 2: Zahlen ─────────────────────────────────── -->
-    <section id="kit-zahlen" class="kit-zahlen-section" aria-labelledby="kit-zahlen-h">
+    <!-- CSS: /kit-intro.css -->
+    <!-- ═══ Abschnitt 1: Der Auftragsfluss ═══════════════════════ -->
+    <section id="kit-auftragsfluss" class="kit-flow" aria-labelledby="kit-flow-h">
       <div class="container">
 
-        <div class="kit-zahlen-inner">
+        <header class="kit-head">
+          <p class="kit-eyebrow">Der Weg durch Ihren Betrieb</p>
+          <h2 id="kit-flow-h">Jede Abteilung berührt denselben Auftrag.<br>Und in jeder gewinnen Sie Zeit zurück.</h2>
+          <p class="kit-lead">Vom ersten Kontakt bis zur ausgewerteten Zahl durchläuft jeder Auftrag dieselben Abteilungen — in jeder Branche. Überall entsteht dabei Handarbeit, die sich wiederholt. Wir setzen dort an, wo es bei Ihnen am meisten bringt.</p>
+        </header>
 
-          <div class="kit-zahlen-header">
-            <p class="section-label">Zahlen</p>
-            <h2 id="kit-zahlen-h">KI ist in Schweizer KMU angekommen.<br>Die Frage ist nur noch, wie schnell Sie mitziehen.</h2>
-            <p class="kit-zahlen-intro">Innerhalb eines Jahres hat sich die bewusste KI-Nutzung in Schweizer KMU deutlich beschleunigt. Wer jetzt eine Grundlage baut, verschafft sich einen Vorsprung, der später teuer aufzuholen ist.</p>
+        <details class="kit-collapse" data-kit-collapse>
+          <summary class="kit-collapse__summary">
+            <span class="kit-collapse__label">Acht Abteilungen · ein Weg</span>
+            <span class="kit-collapse__text">Was Sie in jeder Abteilung zurückgewinnen.</span>
+            <span class="kit-collapse__btn">Den ganzen Weg ansehen</span>
+          </summary>
+
+          <div class="kit-timeline">
+
+          <div class="kit-row kit-row--phase">
+            <div class="kit-axis kit-axis--phase"><span class="kit-phase">Der Auftrag entsteht</span></div>
           </div>
-
-          <div class="kit-zahlen-right">
-
-            <div class="kit-zahlen-grid">
-
-              <div class="kit-zahlen-kachel">
-                <p class="kit-zahlen-num">34 %</p>
-                <p class="kit-zahlen-text">der Schweizer KMU setzen KI heute <mark class="kit-zahlen-mark">bewusst</mark> ein — ein Jahr zuvor waren es erst 22 %.</p>
-              </div>
-
-              <div class="kit-zahlen-kachel">
-                <p class="kit-zahlen-num">57 %</p>
-                <p class="kit-zahlen-text">der KI-nutzenden KMU berichten von spürbarer <mark class="kit-zahlen-mark">Zeitersparnis</mark> im Arbeitsalltag (2024: 46 %).</p>
-              </div>
-
-              <div class="kit-zahlen-kachel">
-                <p class="kit-zahlen-num">45 %</p>
-                <p class="kit-zahlen-text">bewerten KI inzwischen als <mark class="kit-zahlen-mark">Chance</mark> für ihr Geschäft — statt als Risiko (2024: 35 %).</p>
-              </div>
-
-              <div class="kit-zahlen-kachel">
-                <p class="kit-zahlen-num">29 %</p>
-                <p class="kit-zahlen-text">verzichten noch ganz auf KI. Der Kreis, der <mark class="kit-zahlen-mark">abwartet</mark>, wird kleiner — und der Anschluss schwerer.</p>
-              </div>
-
+          <div class="kit-row kit-row--left">
+            <article class="kit-card">
+              <p class="kit-card__dept">Marketing &amp; Social Media</p>
+              <h3>Kunden werden auf Sie aufmerksam</h3>
+              <p class="kit-gain"><span class="kit-gain__mark" aria-hidden="true">✓</span>Neue Anfragen entstehen planbar — Kampagnen laufen automatisch, ihre Wirkung wird laufend ausgewertet.</p>
+              <p class="kit-tools">Social-Beiträge · Website-Inhalte · Newsletter</p>
+            </article>
+            <div class="kit-axis" style="--seg-from:#1a2744; --seg-to:#26385A;">
+              <span class="kit-axis__dot">01</span>
             </div>
-
-            <p class="kit-zahlen-source">Quelle: AXA KMU-Arbeitsmarktstudie 2025, Forschungsinstitut Sotomo, 300 Schweizer KMU, Befragung März 2025.</p>
-
           </div>
 
+          <div class="kit-row kit-row--right">
+            <article class="kit-card">
+              <p class="kit-card__dept">Kundenbetreuung</p>
+              <h3>Die Anfrage kommt an</h3>
+              <p class="kit-gain"><span class="kit-gain__mark" aria-hidden="true">✓</span>Keine Anfrage bleibt liegen — auch abends und am Wochenende nicht.</p>
+              <p class="kit-tools">KI-Telefonie · Website-Chat · WhatsApp for Business</p>
+            </article>
+            <div class="kit-axis" style="--seg-from:#26385A; --seg-to:#324A70;">
+              <span class="kit-axis__dot">02</span>
+            </div>
+          </div>
+
+          <div class="kit-row kit-row--left">
+            <article class="kit-card">
+              <p class="kit-card__dept">Verkauf</p>
+              <h3>Aus der Anfrage wird ein Auftrag</h3>
+              <p class="kit-gain"><span class="kit-gain__mark" aria-hidden="true">✓</span>Die Offerte ist am selben Tag draussen, statt nächste Woche.</p>
+              <p class="kit-tools">Offerten-Assistent · Preislogik · Angebotsverfolgung</p>
+            </article>
+            <div class="kit-axis" style="--seg-from:#324A70; --seg-to:#3E5C86;">
+              <span class="kit-axis__dot">03</span>
+            </div>
+          </div>
+
+          <div class="kit-row kit-row--phase">
+            <div class="kit-axis kit-axis--phase"><span class="kit-phase">Der Auftrag läuft</span></div>
+          </div>
+          <div class="kit-row kit-row--right">
+            <article class="kit-card">
+              <p class="kit-card__dept">Einkauf &amp; Material</p>
+              <h3>Was gebraucht wird, ist da</h3>
+              <p class="kit-gain"><span class="kit-gain__mark" aria-hidden="true">✓</span>Material ist bestellt, bevor es jemand vermisst.</p>
+              <p class="kit-tools">Bedarfsermittlung · Bestellungen · Lieferanten</p>
+            </article>
+            <div class="kit-axis" style="--seg-from:#3E5C86; --seg-to:#4C6F9C;">
+              <span class="kit-axis__dot">04</span>
+            </div>
+          </div>
+
+          <div class="kit-row kit-row--left">
+            <article class="kit-card">
+              <p class="kit-card__dept">Disposition &amp; Planung</p>
+              <h3>Der Auftrag wird eingeplant</h3>
+              <p class="kit-gain"><span class="kit-gain__mark" aria-hidden="true">✓</span>Alle wissen, wer wann wo ist — ohne eine einzige Rückfrage.</p>
+              <p class="kit-tools">Einsatzplan · Terminvorschlag · Erinnerungen</p>
+            </article>
+            <div class="kit-axis" style="--seg-from:#4C6F9C; --seg-to:#5F86B0;">
+              <span class="kit-axis__dot">05</span>
+            </div>
+          </div>
+
+          <div class="kit-row kit-row--right">
+            <article class="kit-card">
+              <p class="kit-card__dept">Leistung &amp; Qualität</p>
+              <h3>Die Arbeit wird gemacht</h3>
+              <p class="kit-gain"><span class="kit-gain__mark" aria-hidden="true">✓</span>Rapporte und Fotos sind erfasst, sobald die Arbeit fertig ist — nicht erst abends im Büro.</p>
+              <p class="kit-tools">Rapport-Erfassung · Protokolle · Fotos</p>
+            </article>
+            <div class="kit-axis" style="--seg-from:#5F86B0; --seg-to:#7FA0C4;">
+              <span class="kit-axis__dot">06</span>
+            </div>
+          </div>
+
+          <div class="kit-row kit-row--phase">
+            <div class="kit-axis kit-axis--phase"><span class="kit-phase">Der Auftrag ist erledigt</span></div>
+          </div>
+          <div class="kit-row kit-row--left">
+            <article class="kit-card">
+              <p class="kit-card__dept">Buchhaltung &amp; Finanzen</p>
+              <h3>Das Geld kommt und geht</h3>
+              <p class="kit-gain"><span class="kit-gain__mark" aria-hidden="true">✓</span>Rechnungen und Belege werden automatisch verarbeitet — offene Posten fallen nicht mehr durch.</p>
+              <p class="kit-tools">Belegerkennung · Rechnungslauf · Mahnwesen</p>
+            </article>
+            <div class="kit-axis" style="--seg-from:#7FA0C4; --seg-to:#B0C4DE;">
+              <span class="kit-axis__dot">07</span>
+            </div>
+          </div>
+
+          <div class="kit-row kit-row--right">
+            <article class="kit-card">
+              <p class="kit-card__dept">Geschäftsleitung</p>
+              <h3>Sie sehen, was daraus geworden ist</h3>
+              <p class="kit-gain"><span class="kit-gain__mark" aria-hidden="true">✓</span>Sie entscheiden mit aktuellen Zahlen statt mit dem Bauchgefühl von letztem Monat.</p>
+              <p class="kit-tools">Kennzahlen · Monatsbericht · Dokumentensuche</p>
+            </article>
+            <div class="kit-axis" style="--seg-from:#B0C4DE; --seg-to:#B0C4DE;">
+              <span class="kit-axis__dot">08</span>
+            </div>
+          </div>
+          </div>
+        </details>
+
+      </div>
+    </section>
+
+    <!-- ═══ Abschnitt 2: Interne Bereiche ════════════════════════ -->
+    <section id="kit-interne-bereiche" class="kit-flow kit-internal" aria-labelledby="kit-internal-h">
+      <div class="container">
+
+        <header class="kit-head">
+          <p class="kit-eyebrow">Der Betrieb dahinter</p>
+          <h2 id="kit-internal-h">Interne Bereiche —<br>genauso viel Aufwand, nur im Hintergrund.</h2>
+          <p class="kit-lead">Diese Bereiche hängen an keinem einzelnen Auftrag. Bewerbungen, Tickets, Verträge und internes Wissen laufen unabhängig davon — mit derselben Wiederholung, viel Text und vielen Fristen. Also lässt sich hier genauso automatisieren.</p>
+        </header>
+
+        <div class="kit-internal__grid">
+            <article class="kit-card kit-card--plain">
+              <p class="kit-card__dept">Personal &amp; Recruiting</p>
+              <h3>Stellen besetzen und einarbeiten</h3>
+              <p class="kit-gain"><span class="kit-gain__mark" aria-hidden="true">✓</span>Jede Bewerbung ist am selben Tag beantwortet und vorsortiert.</p>
+              <p class="kit-tools">Inserate · Screening · Onboarding</p>
+            </article>
+            <article class="kit-card kit-card--plain">
+              <p class="kit-card__dept">IT &amp; Support</p>
+              <h3>Störungen und Anfragen im Betrieb</h3>
+              <p class="kit-gain"><span class="kit-gain__mark" aria-hidden="true">✓</span>Tickets landen sofort beim Richtigen — mit Lösungsvorschlag.</p>
+              <p class="kit-tools">Ticket-Triage · Wissensbasis · Zugänge</p>
+            </article>
+            <article class="kit-card kit-card--plain">
+              <p class="kit-card__dept">Recht &amp; Compliance</p>
+              <h3>Verträge, Fristen, Nachweise</h3>
+              <p class="kit-gain"><span class="kit-gain__mark" aria-hidden="true">✓</span>Fristen fallen auf, bevor sie teuer werden.</p>
+              <p class="kit-tools">Vertragsanalyse · Fristen · Nachweise</p>
+            </article>
+            <article class="kit-card kit-card--plain">
+              <p class="kit-card__dept">Wissen &amp; interne Abläufe</p>
+              <h3>Was alle wissen müssen</h3>
+              <p class="kit-gain"><span class="kit-gain__mark" aria-hidden="true">✓</span>Neue Mitarbeitende finden Antworten selbst, statt jemanden zu fragen.</p>
+              <p class="kit-tools">Protokolle · Wissenssuche · Anleitungen</p>
+            </article>
         </div>
 
       </div>
     </section>
 
-    <!-- ── Section 3: Ansatz ─────────────────────────────────── -->
-    <section id="kit-ansatz" class="kit-ansatz-section" aria-labelledby="kit-ansatz-h">
+    <!-- ── Section: Vorher / Nachher ──────────────────────────── -->
+    <!-- CSS: /kit-vorher-nachher.css -->
+    <section id="kit-vorher-nachher" class="kit-vn-section" aria-labelledby="kit-vn-h">
       <div class="container">
 
-        <div class="kit-ansatz-header">
-          <h2 id="kit-ansatz-h">Amplifyr. IT, KI und Web —<br>alles aus einer Hand.</h2>
+        <div class="kit-vn-header">
+          <p class="section-label">Vorher / Nachher</p>
+          <h2 id="kit-vn-h">Vom Anruf bis zur Buchung — in einem Durchlauf.</h2>
+          <p class="kit-vn-lead">Links kommt jeden Tag dasselbe rein. Rechts stehen die Systeme, mit denen Sie ohnehin arbeiten. Der Unterschied liegt in dem, was dazwischen passiert.</p>
         </div>
 
-        <p class="kit-ansatz-lead">Die meisten KMU jonglieren mit drei verschiedenen Dienstleistern — und zahlen jedes Mal, wenn die eine Hand nicht weiss, was die andere tut. Bei Amplifyr sitzt alles zusammen: stabile IT als Fundament, KI die Prozesse automatisiert, und ein digitaler Auftritt der Kunden gewinnt. Das ist keine Zufallskombination — das ist Absicht.</p>
+        <!-- Desktop-Diagramme -->
+        <div class="kit-vn-diagrams" aria-hidden="true">
 
-        <div class="kit-ansatz-grid">
-
-          <div class="kit-ansatz-card">
-            <div class="kit-ansatz-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="26" height="26">
-                <rect x="2" y="2" width="20" height="8" rx="2"/>
-                <rect x="2" y="14" width="20" height="8" rx="2"/>
-                <line x1="6" y1="6" x2="6.01" y2="6"/>
-                <line x1="6" y1="18" x2="6.01" y2="18"/>
+          <!-- Heute -->
+          <div class="kit-vn-row">
+            <div class="kit-vn-row-label"><span>Heute</span><i></i></div>
+            <div class="kit-vn-flow">
+              <svg class="kit-vn-lines" viewBox="0 0 1180 320">
+                <path d="M200 22 C300 22 340 160 420 160"></path>
+                <path d="M200 77 C300 77 340 160 420 160"></path>
+                <path d="M200 132 C300 132 340 160 420 160"></path>
+                <path d="M200 188 C300 188 340 160 420 160"></path>
+                <path d="M200 243 C300 243 340 160 420 160"></path>
+                <path d="M200 298 C300 298 340 160 420 160"></path>
+                <path d="M760 160 C860 160 880 28 980 28"></path>
+                <path d="M760 160 C860 160 880 116 980 116"></path>
+                <path d="M760 160 C860 160 880 204 980 204"></path>
+                <path d="M760 160 C860 160 880 292 980 292"></path>
               </svg>
+              <div class="kit-vn-col kit-vn-col--left">
+                <div class="kit-vn-chip">Anruf</div>
+                <div class="kit-vn-chip">E-Mail-Anfrage</div>
+                <div class="kit-vn-chip">WhatsApp-Nachricht</div>
+                <div class="kit-vn-chip">Lieferantenbeleg</div>
+                <div class="kit-vn-chip">Formular von der Website</div>
+                <div class="kit-vn-chip">Terminwunsch</div>
+              </div>
+              <div class="kit-vn-hub kit-vn-hub--before">
+                <span class="kit-vn-hub-label">Der Weg dazwischen</span>
+                <span class="kit-vn-hub-title">Läuft über einen Tisch</span>
+                <span class="kit-vn-hub-sub">Lesen, weiterleiten, erfassen, nachfragen — von Hand, jeden Tag.</span>
+              </div>
+              <div class="kit-vn-col kit-vn-col--right">
+                <div class="kit-vn-chip kit-vn-chip--system">Buchhaltung</div>
+                <div class="kit-vn-chip kit-vn-chip--system">Offerten &amp; Aufträge</div>
+                <div class="kit-vn-chip kit-vn-chip--system">Kalender &amp; Planung</div>
+                <div class="kit-vn-chip kit-vn-chip--system">Ablage &amp; Dokumente</div>
+              </div>
             </div>
-            <h3>IT-Infrastruktur</h3>
-            <p>Stabile Server, sichere Netzwerke, zuverlässige Systeme. Wir sorgen dafür, dass Ihr Betrieb läuft — und läuft.</p>
           </div>
 
-          <div class="kit-ansatz-card">
-            <div class="kit-ansatz-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="26" height="26">
-                <circle cx="12" cy="12" r="10"/>
-                <path d="M12 8v4l3 3"/>
-                <path d="M12 2a10 10 0 0 1 7.07 17.07"/>
-                <path d="M9 3.5A10 10 0 0 0 3.5 9"/>
+          <!-- Mit Amplifyr -->
+          <div class="kit-vn-row">
+            <div class="kit-vn-row-label kit-vn-row-label--ai"><span>Mit Amplifyr</span><i></i></div>
+            <div class="kit-vn-flow">
+              <svg class="kit-vn-lines kit-vn-lines--ai" viewBox="0 0 1180 320">
+                <path d="M200 22 C310 22 330 160 420 160"></path>
+                <path d="M200 77 C310 77 330 160 420 160"></path>
+                <path d="M200 132 C310 132 330 160 420 160"></path>
+                <path d="M200 188 C310 188 330 160 420 160"></path>
+                <path d="M200 243 C310 243 330 160 420 160"></path>
+                <path d="M200 298 C310 298 330 160 420 160"></path>
+                <path d="M760 160 C870 160 880 28 980 28"></path>
+                <path d="M760 160 C870 160 880 116 980 116"></path>
+                <path d="M760 160 C870 160 880 204 980 204"></path>
+                <path d="M760 160 C870 160 880 292 980 292"></path>
               </svg>
+              <div class="kit-vn-col kit-vn-col--left">
+                <div class="kit-vn-chip kit-vn-chip--done">Anruf <span>beantwortet</span></div>
+                <div class="kit-vn-chip kit-vn-chip--done">E-Mail-Anfrage <span>erfasst</span></div>
+                <div class="kit-vn-chip kit-vn-chip--done">WhatsApp <span>beantwortet</span></div>
+                <div class="kit-vn-chip kit-vn-chip--done">Lieferantenbeleg <span>verbucht</span></div>
+                <div class="kit-vn-chip kit-vn-chip--done">Formular <span>zugeordnet</span></div>
+                <div class="kit-vn-chip kit-vn-chip--done">Terminwunsch <span>gebucht</span></div>
+              </div>
+              <div class="kit-vn-hub kit-vn-hub--after">
+                <span class="kit-vn-hub-brand">Amplifyr</span>
+                <span class="kit-vn-hub-title">KI-Schicht</span>
+                <span class="kit-vn-hub-sub">Versteht das Anliegen, holt sich den Kontext aus Ihren Systemen, antwortet oder erfasst — und legt Ihnen vor, was Sie freigeben müssen.</span>
+                <div class="kit-vn-hub-dots"><span></span><span></span><span></span></div>
+              </div>
+              <div class="kit-vn-col kit-vn-col--right">
+                <div class="kit-vn-chip kit-vn-chip--system kit-vn-chip--live">Buchhaltung<span>Belege &amp; Rechnungen laufen</span></div>
+                <div class="kit-vn-chip kit-vn-chip--system kit-vn-chip--live">Offerten &amp; Aufträge<span>Entwurf liegt bereit</span></div>
+                <div class="kit-vn-chip kit-vn-chip--system kit-vn-chip--live">Kalender &amp; Planung<span>Termin steht drin</span></div>
+                <div class="kit-vn-chip kit-vn-chip--system kit-vn-chip--live">Ablage &amp; Dokumente<span>abgelegt und findbar</span></div>
+              </div>
             </div>
-            <h3>KI &amp; Automatisierung</h3>
-            <p>Prozesse, die für Sie arbeiten. Amplifyr bringt KI dorthin, wo sie Ihnen täglich Zeit und Geld spart.</p>
-          </div>
-
-          <div class="kit-ansatz-card">
-            <div class="kit-ansatz-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="26" height="26">
-                <rect x="2" y="3" width="20" height="14" rx="2"/>
-                <line x1="8" y1="21" x2="16" y2="21"/>
-                <line x1="12" y1="17" x2="12" y2="21"/>
-              </svg>
-            </div>
-            <h3>Digitaler Auftritt</h3>
-            <p>Websites, die überzeugen und gefunden werden. Ihr professionelles Gesicht im Netz — klar, schnell und wirkungsvoll.</p>
           </div>
 
         </div>
 
-        <p class="section-label kit-ansatz-footer-label">Unternehmerisch. Ganzheitlich. Strukturiert.</p>
+        <!-- Mobile-Fallback -->
+        <div class="kit-vn-mobile">
+
+          <div class="kit-vn-mcard">
+            <p class="kit-vn-mcard-label">Heute</p>
+            <div class="kit-vn-mchips">
+              <span class="kit-vn-mchip">Anruf</span>
+              <span class="kit-vn-mchip">E-Mail-Anfrage</span>
+              <span class="kit-vn-mchip">WhatsApp-Nachricht</span>
+              <span class="kit-vn-mchip">Lieferantenbeleg</span>
+              <span class="kit-vn-mchip">Formular von der Website</span>
+              <span class="kit-vn-mchip">Terminwunsch</span>
+            </div>
+            <div class="kit-vn-mhub">
+              <p>Läuft über einen Tisch</p>
+              <span>Lesen, weiterleiten, erfassen, nachfragen — von Hand, jeden Tag.</span>
+            </div>
+            <div class="kit-vn-mchips">
+              <span class="kit-vn-mchip">Buchhaltung</span>
+              <span class="kit-vn-mchip">Offerten &amp; Aufträge</span>
+              <span class="kit-vn-mchip">Kalender &amp; Planung</span>
+              <span class="kit-vn-mchip">Ablage &amp; Dokumente</span>
+            </div>
+          </div>
+
+          <div class="kit-vn-mcard kit-vn-mcard--after">
+            <p class="kit-vn-mcard-label">Mit Amplifyr</p>
+            <div class="kit-vn-mchips">
+              <span class="kit-vn-mchip">Anruf · beantwortet</span>
+              <span class="kit-vn-mchip">E-Mail · erfasst</span>
+              <span class="kit-vn-mchip">WhatsApp · beantwortet</span>
+              <span class="kit-vn-mchip">Beleg · verbucht</span>
+              <span class="kit-vn-mchip">Formular · zugeordnet</span>
+              <span class="kit-vn-mchip">Termin · gebucht</span>
+            </div>
+            <div class="kit-vn-mhub">
+              <p>KI-Schicht</p>
+              <span>Versteht das Anliegen, holt sich den Kontext aus Ihren Systemen, antwortet oder erfasst — und legt Ihnen vor, was Sie freigeben müssen.</span>
+            </div>
+            <div class="kit-vn-mchips">
+              <span class="kit-vn-mchip">Buchhaltung läuft</span>
+              <span class="kit-vn-mchip">Offerte bereit</span>
+              <span class="kit-vn-mchip">Termin steht</span>
+              <span class="kit-vn-mchip">Ablage findbar</span>
+            </div>
+          </div>
+
+        </div>
+
+        <p class="kit-vn-note">Dieselben Systeme, dieselben Leute — die Arbeit dazwischen läuft von selbst. Welcher Bereich bei Ihnen zuerst dran ist, zeigt die Potenzialanalyse.</p>
+
+      </div>
+    </section>
+
+    <!-- ── Section 3: Chatbots & Telefonie ───────────────────── -->
+    <section id="kit-bausteine" class="kit-bot-section" aria-labelledby="kit-bot-h">
+      <div class="container">
+
+        <div class="kit-bot-header">
+          <p class="section-label section-label--steel">Chatbots &amp; Telefonassistent</p>
+          <h2 id="kit-bot-h">Der Assistent, der<br>Ihre Anfragen übernimmt.</h2>
+          <p class="kit-bot-lead">Meist der erste sichtbare Baustein einer Transformation: klein genug, um allein zu starten, gross genug, dass Kunden und Team den Unterschied sofort merken. Trainiert auf Ihre Inhalte, verbunden mit Ihren Systemen.</p>
+        </div>
+
+        <div class="kit-bot-layout">
+
+          <div class="kit-bot-demo" aria-hidden="true">
+            <div class="kit-bot-demo-head">
+              <span class="kit-bot-dot"></span>
+              <span class="kit-bot-demo-name">KI-Assistent</span>
+              <span class="kit-bot-demo-live">live</span>
+            </div>
+            <div class="kit-bot-bub kit-bot-bub--u">Brauche ich für den Wintergarten eine Baugenehmigung?</div>
+            <div class="kit-bot-bub kit-bot-bub--a">Das hängt von der Grösse ab. Ab 12 m² wird's meldepflichtig. Wie gross soll er werden?</div>
+            <div class="kit-bot-bub kit-bot-bub--u">Ca. 20 m².</div>
+            <div class="kit-bot-bub kit-bot-bub--a">Dann braucht es ein Baugesuch — übernehmen wir. Passt Donnerstag 14:00 für ein Aufmass?</div>
+          </div>
+
+          <div class="kit-bot-channels">
+            <div class="kit-bot-channel">
+              <h3>Website-Chat</h3>
+              <p>Fängt Besucher ab, solange sie noch da sind — sofort startklar, keine Kosten pro Gespräch.</p>
+            </div>
+            <div class="kit-bot-channel">
+              <h3>WhatsApp</h3>
+              <p>Läuft dort, wo Ihre Kunden ohnehin schreiben — mit Verlauf, Bildern und Dokumenten im Chat.</p>
+            </div>
+            <div class="kit-bot-channel">
+              <h3>Telefonie</h3>
+              <p>Nimmt Anrufe entgegen, wenn niemand abnehmen kann — erfasst das Anliegen und bucht den Termin direkt.</p>
+            </div>
+          </div>
+
+        </div>
 
       </div>
     </section>
@@ -470,100 +722,69 @@
       </div>
     </section>
 
-    <!-- ── Section: Handwerk digital ────────────────────────── -->
-    <section id="kit-handwerk" class="kit-handwerk-section" aria-labelledby="kit-handwerk-h">
+    <!-- ── Section: Unser Standard ────────────────────────────── -->
+    <section id="kit-standard" class="kit-standard-section" aria-labelledby="kit-standard-h">
       <div class="container">
 
-        <div class="kit-handwerk-header">
-          <h2 id="kit-handwerk-h">Praxisbeispiel</h2>
-          <p class="kit-handwerk-intro">Ein Auftrag im Optimum: So läuft ein Handwerksbetrieb, wenn Prozesse konsequent digitalisiert sind — von der ersten Anfrage bis zur bezahlten Rechnung.</p>
+        <div class="kit-standard-header">
+          <p class="section-label section-label--steel">Unser Standard</p>
+          <h2 id="kit-standard-h">Was bei jeder Lösung<br>dabei ist.</h2>
         </div>
 
-        <div class="kit-hw-timeline" role="list">
-
-          <div class="kit-hw-step" role="listitem">
-            <div class="kit-hw-side kit-hw-side--left">
-              <div class="kit-hw-card">
-                <p class="kit-hw-num">01</p>
-                <h3 class="kit-hw-title">Anfrage</h3>
-                <p class="kit-hw-desc">Anruf wird automatisch entgegengenommen, das Anliegen qualifiziert und ein Termin direkt gebucht — ohne dass jemand im Büro sitzen muss.</p>
-              </div>
-            </div>
-            <div class="kit-hw-axis" aria-hidden="true"><div class="kit-hw-dot"></div></div>
-            <div class="kit-hw-side kit-hw-side--right kit-hw-side--empty" aria-hidden="true"></div>
+        <div class="kit-standard-grid">
+          <div class="kit-standard-card">
+            <h3>Sie geben frei, nicht die KI</h3>
+            <p>Bei allem, was Kunden oder Mitarbeitende betrifft, legt die KI vor — ein Mensch entscheidet.</p>
           </div>
-
-          <div class="kit-hw-step" role="listitem">
-            <div class="kit-hw-side kit-hw-side--left kit-hw-side--empty" aria-hidden="true"></div>
-            <div class="kit-hw-axis" aria-hidden="true"><div class="kit-hw-dot"></div></div>
-            <div class="kit-hw-side kit-hw-side--right">
-              <div class="kit-hw-card">
-                <p class="kit-hw-num">02</p>
-                <h3 class="kit-hw-title">Angebot</h3>
-                <p class="kit-hw-desc">Auftrag wird erfasst, Angebot aus dem Produktkatalog zusammengestellt und digital an den Kunden versendet.</p>
-              </div>
-            </div>
+          <div class="kit-standard-card">
+            <h3>Schweizer Hosting, revDSG-konform</h3>
+            <p>Betrieb auf Schweizer Infrastruktur. Ihre Daten trainieren keine fremden Modelle.</p>
           </div>
-
-          <div class="kit-hw-step" role="listitem">
-            <div class="kit-hw-side kit-hw-side--left">
-              <div class="kit-hw-card">
-                <p class="kit-hw-num">03</p>
-                <h3 class="kit-hw-title">Planung</h3>
-                <p class="kit-hw-desc">Digitale Plantafel mit automatischer Disposition — Mitarbeiter und Termin werden zugewiesen, Verfügbarkeiten geprüft.</p>
-              </div>
-            </div>
-            <div class="kit-hw-axis" aria-hidden="true"><div class="kit-hw-dot"></div></div>
-            <div class="kit-hw-side kit-hw-side--right kit-hw-side--empty" aria-hidden="true"></div>
+          <div class="kit-standard-card">
+            <h3>Kein Lock-in</h3>
+            <p>Zugänge, Daten und Dokumentation gehören Ihnen — jederzeit wechselbar.</p>
           </div>
-
-          <div class="kit-hw-step" role="listitem">
-            <div class="kit-hw-side kit-hw-side--left kit-hw-side--empty" aria-hidden="true"></div>
-            <div class="kit-hw-axis" aria-hidden="true"><div class="kit-hw-dot"></div></div>
-            <div class="kit-hw-side kit-hw-side--right">
-              <div class="kit-hw-card">
-                <p class="kit-hw-num">04</p>
-                <h3 class="kit-hw-title">Ausführung</h3>
-                <p class="kit-hw-desc">GPS-gestützte Zeiterfassung und Fotodokumentation direkt am Auftrag — per Handy, auch offline.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="kit-hw-step" role="listitem">
-            <div class="kit-hw-side kit-hw-side--left">
-              <div class="kit-hw-card">
-                <p class="kit-hw-num">05</p>
-                <h3 class="kit-hw-title">Abnahme</h3>
-                <p class="kit-hw-desc">Digitale Unterschrift des Kunden vor Ort, Abnahmeprotokoll wird automatisch als PDF erstellt und archiviert.</p>
-              </div>
-            </div>
-            <div class="kit-hw-axis" aria-hidden="true"><div class="kit-hw-dot"></div></div>
-            <div class="kit-hw-side kit-hw-side--right kit-hw-side--empty" aria-hidden="true"></div>
-          </div>
-
-          <div class="kit-hw-step" role="listitem">
-            <div class="kit-hw-side kit-hw-side--left kit-hw-side--empty" aria-hidden="true"></div>
-            <div class="kit-hw-axis" aria-hidden="true"><div class="kit-hw-dot"></div></div>
-            <div class="kit-hw-side kit-hw-side--right">
-              <div class="kit-hw-card">
-                <p class="kit-hw-num">06</p>
-                <h3 class="kit-hw-title">Rechnung</h3>
-                <p class="kit-hw-desc">Direkt aus dem Auftrag generiert, versendet und bei Bedarf automatisch gemahnt — mit Übergabe an die Buchhaltung.</p>
-              </div>
-            </div>
-          </div>
-
         </div>
 
       </div>
     </section>
 
+    <!-- ── Section: Ehrliche Grenzen ──────────────────────────── -->
+    <section id="kit-grenzen" class="kit-grenzen-section" aria-labelledby="kit-grenzen-h">
+      <div class="container">
+
+        <div class="kit-grenzen-header">
+          <p class="section-label">Ehrliche Grenzen</p>
+          <h2 id="kit-grenzen-h">Was wir <em>nicht</em> versprechen.</h2>
+          <p class="kit-grenzen-lead">Weil überzogene Erwartungen der häufigste Grund sind, warum KI-Projekte in KMU scheitern.</p>
+        </div>
+
+        <div class="kit-grenzen-grid">
+          <div class="kit-grenzen-item">
+            <h3>Keine Entscheidungen über Menschen</h3>
+            <p>Kündigungen, Absagen, Bonitätsurteile: Die KI bereitet vor, entschieden wird von Ihnen.</p>
+          </div>
+          <div class="kit-grenzen-item">
+            <h3>Keinen Personalabbau</h3>
+            <p>Wir automatisieren Handgriffe, nicht Menschen. Wer heute Belege tippt, macht danach etwas Sinnvolleres.</p>
+          </div>
+          <div class="kit-grenzen-item">
+            <h3>Keine Automatisierung um jeden Preis</h3>
+            <p>Unter fünf Stunden Aufwand im Monat lohnt sich ein Ablauf meist nicht. Dann sagen wir das.</p>
+          </div>
+        </div>
+
+        <p class="kit-ansatz-note">Übrigens: IT-Infrastruktur und digitaler Auftritt bauen wir ebenso aus einer Hand — <a href="/it-solutions">IT-Lösungen</a> und <a href="/webdesign">Digitaler Auftritt</a>.</p>
+
+      </div>
+    </section>
+
     <!-- ── Section 8: FAQ ─────────────────────────────────────── -->
-    <section id="kit-faq" class="section section--white kit-faq-section" aria-labelledby="kit-faq-h">
+    <section id="kit-faq" class="section kit-faq-section" aria-labelledby="kit-faq-h">
       <div class="container">
 
         <div class="kit-faq-header">
-          <p class="section-label">Häufige Fragen</p>
+          <p class="section-label section-label--steel">Häufige Fragen</p>
           <h2 id="kit-faq-h">Was KMU uns häufig fragen.</h2>
         </div>
 
@@ -717,6 +938,7 @@
   <script src="/main.js"></script>
   <script src="/page-index-prototyp.js"></script>
   <script src="/page-ki-transformation.js?v=1"></script>
+  <script defer src="/kit-intro.js?v=1"></script>
 
 </body>
 </html>

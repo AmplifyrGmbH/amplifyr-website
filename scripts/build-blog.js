@@ -114,7 +114,6 @@ const HEADER = `  <header id="site-header" class="legal-mode">
               <svg class="site-nav__chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
             <ul class="nav-dropdown" role="menu">
-              <li><a href="/ki-transformation#kit-zahlen" class="nav-dropdown__link" role="menuitem">Allgemein</a></li>
               <li><a href="/handwerker" class="nav-dropdown__link" role="menuitem">Handwerker</a></li>
             </ul>
           </li>
@@ -153,7 +152,6 @@ const HEADER = `  <header id="site-header" class="legal-mode">
           </button>
         </div>
         <div class="mobile-nav-group__sub">
-          <a href="/ki-transformation#kit-zahlen">Allgemein</a>
           <a href="/handwerker">Handwerker</a>
         </div>
       </div>

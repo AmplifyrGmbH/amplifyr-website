@@ -1463,3 +1463,288 @@
   color: var(--steel);
   margin-top: 6px;
 }
+
+
+/* ============================================================
+   CHATBOTS & TELEFONIE
+============================================================ */
+.kit-bot-section {
+  background: var(--navy);
+  padding-block: clamp(4rem, 8vw, 7rem);
+}
+
+.kit-bot-header {
+  max-width: 700px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.kit-bot-header h2 {
+  color: #fff;
+  margin-block: var(--space-3) var(--space-5);
+  font-size: clamp(1.7rem, 3.2vw, 2.6rem);
+}
+
+.kit-bot-lead {
+  color: rgba(228,235,245,0.68);
+  font-size: 1.02rem;
+  line-height: 1.75;
+  text-wrap: pretty;
+}
+
+.kit-bot-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 4vw, 3rem);
+  max-width: 980px;
+  margin: clamp(2.5rem, 5vw, 3.5rem) auto 0;
+  align-items: start;
+}
+
+@media (min-width: 860px) {
+  .kit-bot-layout {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.kit-bot-demo {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: var(--radius-lg);
+  padding: 22px 22px 20px;
+}
+
+.kit-bot-demo-head {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding-bottom: 14px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+
+.kit-bot-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #5DCAA5;
+  flex: none;
+}
+
+.kit-bot-demo-name {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.kit-bot-demo-live {
+  margin-left: auto;
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: rgba(228,235,245,0.5);
+}
+
+.kit-bot-bub {
+  max-width: 86%;
+  font-size: 0.87rem;
+  line-height: 1.55;
+  padding: 10px 14px;
+  border-radius: 14px;
+  margin-bottom: 9px;
+}
+
+.kit-bot-bub--u {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.14);
+  color: rgba(255,255,255,0.86);
+  border-bottom-right-radius: 4px;
+  margin-left: auto;
+}
+
+.kit-bot-bub--a {
+  background: #6ec1ff;
+  color: var(--navy);
+  border-bottom-left-radius: 4px;
+  font-weight: 500;
+}
+
+.kit-bot-channels {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.kit-bot-channel {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+}
+
+.kit-bot-channel h3 {
+  color: #fff;
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.kit-bot-channel p {
+  color: rgba(228,235,245,0.65);
+  font-size: 0.87rem;
+  line-height: 1.6;
+}
+
+
+/* ============================================================
+   UNSER STANDARD
+============================================================ */
+.kit-standard-section {
+  background: var(--navy);
+  padding-block: clamp(4rem, 8vw, 7rem);
+}
+
+.kit-standard-header {
+  max-width: 640px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.kit-standard-header h2 {
+  color: #fff;
+  margin-top: var(--space-3);
+  font-size: clamp(1.7rem, 3.2vw, 2.6rem);
+}
+
+.kit-standard-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+  max-width: 980px;
+  margin: clamp(2.5rem, 5vw, 3.5rem) auto 0;
+}
+
+@media (min-width: 768px) {
+  .kit-standard-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.kit-standard-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: var(--radius-lg);
+  padding: 22px 24px;
+}
+
+.kit-standard-card h3 {
+  color: #fff;
+  font-size: 1.02rem;
+  margin-bottom: 8px;
+}
+
+.kit-standard-card p {
+  color: rgba(228,235,245,0.65);
+  font-size: 0.88rem;
+  line-height: 1.65;
+}
+
+
+/* ============================================================
+   EHRLICHE GRENZEN
+============================================================ */
+.kit-grenzen-section {
+  background: var(--bg-white);
+  padding-block: clamp(4rem, 8vw, 7rem);
+}
+
+.kit-grenzen-header {
+  max-width: 640px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.kit-grenzen-header h2 {
+  margin-top: var(--space-3);
+  font-size: clamp(1.7rem, 3.2vw, 2.6rem);
+}
+
+.kit-grenzen-header h2 em {
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+.kit-grenzen-lead {
+  margin-top: var(--space-3);
+  color: var(--text-muted);
+  font-size: 1.02rem;
+  line-height: 1.7;
+}
+
+.kit-grenzen-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+  max-width: 980px;
+  margin: clamp(2.5rem, 5vw, 3.5rem) auto 0;
+}
+
+@media (min-width: 768px) {
+  .kit-grenzen-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.kit-grenzen-item {
+  border-left: 2px solid var(--navy);
+  padding: 2px 0 2px 20px;
+}
+
+.kit-grenzen-item h3 {
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
+
+.kit-grenzen-item p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+.kit-ansatz-note {
+  text-align: center;
+  max-width: 620px;
+  margin: clamp(2.5rem, 5vw, 3.5rem) auto 0;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.kit-ansatz-note a {
+  color: var(--navy);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ── FAQ — Navy-Hintergrund ─────────────────────────────── */
+.kit-faq-section {
+  background: var(--navy);
+}
+
+.kit-faq-section .kit-faq-header h2 { color: #fff; }
+
+.kit-faq-section .kit-faq-item {
+  border-bottom: 1px solid rgba(255,255,255,0.14);
+}
+
+.kit-faq-section .kit-faq-item:first-child {
+  border-top: 1px solid rgba(255,255,255,0.14);
+}
+
+.kit-faq-section .kit-faq-btn { color: #fff; }
+.kit-faq-section .kit-faq-btn:hover { color: #6ec1ff; }
+
+.kit-faq-section .kit-faq-chevron { color: rgba(255,255,255,0.55); }
+
+.kit-faq-section .kit-faq-answer p { color: rgba(228,235,245,0.7); }

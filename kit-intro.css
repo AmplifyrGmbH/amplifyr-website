@@ -1,0 +1,318 @@
+/* ============================================================
+   AMPLIFYR — kit-intro.css
+   Intro der Seite /ki-transformation
+   Abschnitt 1: Auftragsfluss (Timeline, 8 Abteilungen)
+   Abschnitt 2: Interne Bereiche (4 Karten)
+   Präfix: kit-  ·  nutzt die Variablen aus /style.css
+============================================================ */
+
+.kit-flow {
+  --kit-blue:      #6AABDF;
+  --kit-blue-dk:   #4d8fc9;
+  --kit-line:      rgba(106,171,223,.30);
+  --kit-ink:       #1a2744;
+  --kit-ink-soft:  #4a5a7a;
+  --kit-mono: "SFMono-Regular", ui-monospace, Menlo, monospace;
+  position: relative;
+  background: #fff;
+  overflow: hidden;
+  padding-block: clamp(3rem, 6vw, 4.5rem);
+}
+
+/* Zweite .kit-flow-Instanz direkt danach: eigener Rand oben,
+   damit sich beide Abschnitte nicht ineinander verlieren. */
+.kit-flow + .kit-flow {
+  border-top: 1px solid rgba(106,171,223,.16);
+}
+
+/* ── Kopf ─────────────────────────────────────────────────── */
+.kit-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.kit-eyebrow {
+  margin: 0 0 14px;
+  font-family: var(--kit-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #2a3f6e;
+}
+
+.kit-head h2 { margin: 0 0 14px; color: var(--kit-ink); }
+
+.kit-lead {
+  margin: 0;
+  max-width: 64ch;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--text-muted);
+  text-wrap: pretty;
+}
+
+/* ── Timeline ─────────────────────────────────────────────── */
+.kit-timeline { position: relative; }
+
+.kit-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 64px 1fr;
+  align-items: start;
+  padding-bottom: 18px;
+}
+
+.kit-row--left  > .kit-card { grid-column: 1; }
+.kit-row--right > .kit-card { grid-column: 3; }
+.kit-row > .kit-axis { grid-column: 2; grid-row: 1; align-self: stretch; }
+
+.kit-row--phase { align-items: center; }
+
+/* Achse */
+.kit-axis { position: relative; min-height: 36px; }
+
+.kit-axis::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: -18px;
+  width: 2px;
+  margin-left: -1px;
+  background: linear-gradient(180deg, var(--seg-from, var(--steel)), var(--seg-to, var(--steel)));
+}
+
+.kit-row:last-child .kit-axis::before { bottom: calc(100% - 39px); }
+
+.kit-axis--phase::before { background: var(--steel); }
+.kit-row--phase:first-child .kit-axis--phase::before { top: 50%; }
+
+.kit-axis__dot {
+  position: absolute;
+  left: 50%;
+  top: 24px;
+  width: 30px;
+  height: 30px;
+  margin-left: -15px;
+  border-radius: 50%;
+  background: var(--kit-ink);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--kit-mono);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+/* Wanderndes Licht auf der Achse */
+.kit-axis::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  margin-left: -4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4a90d9;
+  box-shadow: 0 0 0 5px rgba(74,144,217,.16);
+  animation: kitFlow 8s linear infinite;
+}
+.kit-axis--phase::after { display: none; }
+.kit-row:nth-of-type(2)  .kit-axis::after { animation-delay: -1s; }
+.kit-row:nth-of-type(4)  .kit-axis::after { animation-delay: -2s; }
+.kit-row:nth-of-type(6)  .kit-axis::after { animation-delay: -3s; }
+.kit-row:nth-of-type(8)  .kit-axis::after { animation-delay: -4s; }
+.kit-row:nth-of-type(10) .kit-axis::after { animation-delay: -5s; }
+
+@keyframes kitFlow {
+  0%   { top: -8px; opacity: 0; }
+  12%  { opacity: 1; }
+  88%  { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+/* Phasen-Pille (Stil = .rtag aus page-webauftritt.css) */
+.kit-phase {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  padding: .5em 1.05em;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(135deg, var(--kit-blue), var(--kit-blue-dk));
+  color: #fff;
+  font-family: var(--kit-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  box-shadow: 0 3px 12px rgba(106,171,223,.45);
+}
+
+/* ── Karte ────────────────────────────────────────────────── */
+.kit-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 17px 19px;
+  border: 1px solid rgba(106,171,223,.34);
+  border-radius: 20px;
+  background: linear-gradient(180deg, #F2F8FE 0%, #E4EFFA 100%);
+  box-shadow:
+    0 0 0 1px rgba(106,171,223,.08),
+    inset 0 1px 0 rgba(255,255,255,.98),
+    0 4px 8px rgba(26,39,68,.06),
+    0 24px 60px -12px rgba(26,39,68,.14);
+}
+
+.kit-card__dept {
+  margin: 0;
+  font-family: var(--kit-mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #2a3f6e;
+}
+
+.kit-card h3 {
+  margin: 0;
+  font-size: 1.12rem;
+  line-height: 1.25;
+  color: var(--kit-ink);
+}
+
+.kit-gain {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding: 10px 13px;
+  border: 1px solid var(--kit-line);
+  border-radius: 12px;
+  background: rgba(255,255,255,.85);
+  font-size: .85rem;
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--kit-ink);
+  text-wrap: pretty;
+}
+
+.kit-gain__mark {
+  flex: 0 0 auto;
+  font-size: .92rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--kit-blue-dk);
+}
+
+.kit-tools {
+  margin: 0;
+  font-family: var(--kit-mono);
+  font-size: .7rem;
+  line-height: 1.6;
+  color: var(--kit-ink-soft);
+}
+
+/* ── Abschnitt 2: Interne Bereiche — Navy, wechselt sich ab ── */
+.kit-internal {
+  background: var(--navy);
+}
+
+.kit-internal .kit-eyebrow { color: rgba(110,193,255,.85); }
+.kit-internal .kit-head h2 { color: #fff; }
+.kit-internal .kit-lead { color: rgba(228,235,245,.7); }
+
+.kit-internal__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 860px) {
+  .kit-internal__grid { grid-template-columns: 1fr; }
+}
+
+/* ── Mobile-Zuklappen ─────────────────────────────────────── */
+.kit-collapse { border: none; }
+.kit-collapse__summary { display: none; }
+
+@media (max-width: 1023px) {
+  .kit-collapse {
+    padding: 20px 18px;
+    border: 1px solid rgba(106,171,223,.34);
+    border-radius: var(--radius-xl);
+    background: linear-gradient(180deg, #F2F8FE 0%, #E4EFFA 100%);
+  }
+  .kit-collapse[open] {
+    padding: 0;
+    border-color: transparent;
+    background: transparent;
+  }
+
+  .kit-collapse__summary {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    list-style: none;
+    cursor: pointer;
+  }
+  .kit-collapse__summary::-webkit-details-marker { display: none; }
+  .kit-collapse[open] .kit-collapse__summary { margin-bottom: 20px; }
+
+  .kit-collapse__label {
+    font-family: var(--kit-mono);
+    font-size: .66rem;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--kit-ink-soft);
+  }
+  .kit-collapse__text { font-size: .91rem; line-height: 1.6; color: var(--kit-ink); }
+  .kit-collapse__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 13px 18px;
+    border-radius: var(--radius-pill);
+    background: var(--kit-ink);
+    color: #fff;
+    font-size: .84rem;
+    font-weight: 700;
+  }
+
+  /* Timeline einspaltig, Achse links */
+  .kit-timeline { padding-left: 49px; }
+  .kit-row { grid-template-columns: 1fr; padding-bottom: 10px; }
+  .kit-row--left > .kit-card,
+  .kit-row--right > .kit-card { grid-column: 1; }
+  .kit-row > .kit-axis {
+    grid-column: 1;
+    grid-row: auto;
+    position: absolute;
+    left: -49px;
+    top: 0;
+    bottom: 0;
+    width: 34px;
+  }
+  .kit-axis::before { left: 13px; bottom: -10px; }
+  .kit-row:last-child .kit-axis::before { bottom: calc(100% - 32px); }
+  .kit-axis__dot { left: 14px; top: 15px; width: 28px; height: 28px; margin-left: -14px; font-size: .66rem; }
+  .kit-axis::after { display: none; }
+  .kit-row--phase > .kit-axis { position: static; width: auto; }
+  .kit-phase { left: 0; transform: none; }
+  .kit-card { padding: 14px 15px; gap: 9px; }
+  .kit-card h3 { font-size: 1.06rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kit-axis::after { animation: none; opacity: 0; }
+}
