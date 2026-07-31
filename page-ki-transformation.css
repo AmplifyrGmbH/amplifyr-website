@@ -1654,7 +1654,7 @@
    EHRLICHE GRENZEN
 ============================================================ */
 .kit-grenzen-section {
-  background: var(--bg-white);
+  background: var(--navy);
   padding-block: clamp(4rem, 8vw, 7rem);
 }
 
@@ -1667,16 +1667,17 @@
 .kit-grenzen-header h2 {
   margin-top: var(--space-3);
   font-size: clamp(1.7rem, 3.2vw, 2.6rem);
+  color: #fff;
 }
 
 .kit-grenzen-header h2 em {
   font-style: italic;
-  color: var(--text-muted);
+  color: rgba(228,235,245,0.7);
 }
 
 .kit-grenzen-lead {
   margin-top: var(--space-3);
-  color: var(--text-muted);
+  color: rgba(228,235,245,0.7);
   font-size: 1.02rem;
   line-height: 1.7;
 }
@@ -1696,18 +1697,19 @@
 }
 
 .kit-grenzen-item {
-  border-left: 2px solid var(--navy);
+  border-left: 2px solid #6ec1ff;
   padding: 2px 0 2px 20px;
 }
 
 .kit-grenzen-item h3 {
   font-size: 1rem;
   margin-bottom: 6px;
+  color: #fff;
 }
 
 .kit-grenzen-item p {
   font-size: 0.9rem;
-  color: var(--text-muted);
+  color: rgba(228,235,245,0.7);
   line-height: 1.65;
 }
 
@@ -1716,35 +1718,13 @@
   max-width: 620px;
   margin: clamp(2.5rem, 5vw, 3.5rem) auto 0;
   font-size: 0.88rem;
-  color: var(--text-muted);
+  color: rgba(228,235,245,0.6);
   line-height: 1.6;
 }
 
 .kit-ansatz-note a {
-  color: var(--navy);
+  color: #6ec1ff;
   font-weight: 600;
   text-decoration: underline;
   text-underline-offset: 2px;
 }
-
-/* ── FAQ — Navy-Hintergrund ─────────────────────────────── */
-.kit-faq-section {
-  background: var(--navy);
-}
-
-.kit-faq-section .kit-faq-header h2 { color: #fff; }
-
-.kit-faq-section .kit-faq-item {
-  border-bottom: 1px solid rgba(255,255,255,0.14);
-}
-
-.kit-faq-section .kit-faq-item:first-child {
-  border-top: 1px solid rgba(255,255,255,0.14);
-}
-
-.kit-faq-section .kit-faq-btn { color: #fff; }
-.kit-faq-section .kit-faq-btn:hover { color: #6ec1ff; }
-
-.kit-faq-section .kit-faq-chevron { color: rgba(255,255,255,0.55); }
-
-.kit-faq-section .kit-faq-answer p { color: rgba(228,235,245,0.7); }
