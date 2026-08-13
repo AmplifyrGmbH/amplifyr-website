@@ -13,8 +13,10 @@
   --wa-ink-dim:   #8290ab;
 
   /* glass surface — Option A (same accent border as dark) */
-  --wa-glass-bg:  rgba(255,255,255,0.82);
-  --wa-glass-bg2: rgba(255,255,255,0.94);
+  /* Umgedreht: der Grund ist weiss, also traegt die Karte den Farbton.
+     Weisses Glas auf weissem Grund waere unsichtbar. */
+  --wa-glass-bg:  rgba(236,243,251,0.80);
+  --wa-glass-bg2: rgba(243,248,253,0.92);
   --wa-glass-bd:  rgba(106,171,223,0.28);
   --wa-glass-hi:  rgba(255,255,255,0.98);
   --wa-glass-sh:  rgba(26,39,68,0.06);
@@ -29,14 +31,15 @@
   position: absolute;
   bottom: 0; left: 0; right: 0;
   height: 140px;
-  background: linear-gradient(to bottom, transparent, #eef4fb);
+  background: linear-gradient(to bottom, transparent, #ffffff);
   z-index: 3;
   pointer-events: none;
 }
 
 /* ---- Wrapper ---- */
 .wa-wrap {
-  background: #eef4fb;
+  /* Nur drei Gruende auf der Seite: Weiss, Dunkelblau, einmal Hellblau. */
+  background: #ffffff;
   color: var(--wa-ink);
   position: relative;
   overflow-x: hidden;
@@ -47,11 +50,15 @@
   content: "";
   position: absolute;
   inset: 0;
-  z-index: 0;
+  /* Hinter die Sections legen: mit z-index 0 lag der Schleier ueber den
+     Sectionsgruenden und toente sie ungleichmaessig. Die Seite soll nur
+     drei Gruende haben — Weiss, Dunkelblau und ein Grau. */
+  z-index: -1;
   pointer-events: none;
   background:
-    radial-gradient(65% 50% at 18% 12%, rgba(106,171,223,0.14), transparent 65%),
-    radial-gradient(55% 45% at 82% 88%, rgba(106,171,223,0.10), transparent 65%);
+    /* Auf weissem Grund wirken die Pools staerker als auf blau — schwaecher. */
+    radial-gradient(65% 50% at 18% 12%, rgba(106,171,223,0.07), transparent 65%),
+    radial-gradient(55% 45% at 82% 88%, rgba(106,171,223,0.05), transparent 65%);
 }
 
 .wa-wrap .wrap {
@@ -307,165 +314,10 @@
 }
 
 /* ---- Pricing tiers ---- */
-.wa-wrap .tiers { display: grid; gap: 20px; grid-template-columns: 1fr; }
 @media(min-width:860px) { .wa-wrap .tiers { grid-template-columns: repeat(3,1fr); } }
-.wa-wrap .tier {
-  background: var(--wa-glass-bg);
-  border: 1px solid var(--wa-glass-bd);
-  border-radius: 20px;
-  padding: 22px 22px 20px;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  transition: .25s;
-  backdrop-filter: blur(24px) saturate(1.6);
-  -webkit-backdrop-filter: blur(24px) saturate(1.6);
-  box-shadow:
-    0 0 0 1px rgba(106,171,223,0.08),
-    inset 0 1px 0 var(--wa-glass-hi),
-    inset 0 -1px 0 var(--wa-glass-sh),
-    0 4px 8px var(--wa-glass-sh),
-    0 24px 60px -12px var(--wa-glass-sh2),
-    0 0 80px -20px rgba(106,171,223,0.20);
-}
-.wa-wrap .tier:hover {
-  transform: translateY(-4px);
-  border-color: rgba(106,171,223,0.50);
-  box-shadow:
-    0 0 0 1px rgba(106,171,223,0.16),
-    inset 0 1px 0 var(--wa-glass-hi),
-    0 8px 16px rgba(26,39,68,0.08),
-    0 32px 70px -12px rgba(26,39,68,0.16),
-    0 0 100px -20px rgba(106,171,223,0.28);
-}
-.wa-wrap .tier.featured {
-  border-color: rgba(106,171,223,0.40);
-  background: rgba(106,171,223,0.08);
-  box-shadow:
-    0 0 0 1px rgba(106,171,223,0.20),
-    inset 0 1px 0 var(--wa-glass-hi),
-    0 4px 8px var(--wa-glass-sh),
-    0 24px 60px -12px var(--wa-glass-sh2),
-    0 0 80px -20px rgba(106,171,223,0.25);
-}
-.wa-wrap .tier .tag {
-  position: absolute;
-  top: -12px;
-  left: 28px;
-  color: #ffffff;
-  background: linear-gradient(135deg, #6AABDF, #4d8fc9);
-  font-family: var(--wa-mono);
-  font-size: .66rem;
-  font-weight: 700;
-  letter-spacing: .06em;
-  padding: .4em .9em;
-  border-radius: 100px;
-  text-transform: uppercase;
-  box-shadow: 0 3px 12px rgba(106,171,223,0.45);
-}
-.wa-wrap .tier .tno { font-family: var(--wa-mono); font-size: .72rem; color: var(--wa-ink-dim); letter-spacing: .05em; }
-.wa-wrap .tier h3 { font-size: 1.2rem; letter-spacing: -.02em; margin: 3px 0 2px; color: var(--wa-navy); }
-.wa-wrap .tier .promise { color: var(--wa-ink-dim); font-size: .82rem; font-family: var(--wa-mono); margin-bottom: 10px; }
-.wa-wrap .tier .price { font-size: 1.9rem; font-weight: 700; letter-spacing: -.03em; color: var(--wa-navy); }
-.wa-wrap .tier .price .price-from { font-size: 1rem; font-weight: 400; letter-spacing: 0; }
-.wa-wrap .tier .price span { font-size: .88rem; color: var(--wa-ink-dim); font-weight: 400; font-family: var(--wa-mono); }
-.wa-wrap .tier .who {
-  color: var(--wa-ink-soft);
-  font-size: .83rem;
-  margin: 6px 0 10px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--wa-glass-bd);
-}
-.wa-wrap .tier ul { list-style: none; flex: 1; margin-bottom: 14px; }
-.wa-wrap .tier li { font-size: .84rem; color: var(--wa-ink-soft); padding: 3px 0 3px 18px; position: relative; }
-.wa-wrap .tier li::before { content: "✓"; position: absolute; left: 0; color: #6AABDF; font-weight: 700; }
-.wa-wrap .tier .btn { text-align: center; }
-.wa-wrap .tier-note { text-align: center; color: var(--wa-ink-dim); font-size: .9rem; margin-top: 20px; font-family: var(--wa-mono); }
 
 /* ---- Retainer ---- */
-.wa-wrap .retainer-grid { display: grid; gap: 20px; grid-template-columns: 1fr; align-items: stretch; }
 @media(min-width:700px) { .wa-wrap .retainer-grid { grid-template-columns: 1fr 1fr; } }
-.wa-wrap .rcard {
-  background: var(--wa-glass-bg);
-  border: 1px solid var(--wa-glass-bd);
-  border-radius: 20px;
-  padding: 22px 22px 20px;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  backdrop-filter: blur(24px) saturate(1.6);
-  -webkit-backdrop-filter: blur(24px) saturate(1.6);
-  box-shadow:
-    0 0 0 1px rgba(106,171,223,0.08),
-    inset 0 1px 0 var(--wa-glass-hi),
-    inset 0 -1px 0 var(--wa-glass-sh),
-    0 4px 8px var(--wa-glass-sh),
-    0 24px 60px -12px var(--wa-glass-sh2),
-    0 0 80px -20px rgba(106,171,223,0.20);
-}
-.wa-wrap .rcard.rfeatured {
-  border-color: rgba(106,171,223,0.40);
-  background: rgba(106,171,223,0.08);
-  box-shadow:
-    0 0 0 1px rgba(106,171,223,0.20),
-    inset 0 1px 0 var(--wa-glass-hi),
-    0 4px 8px var(--wa-glass-sh),
-    0 24px 60px -12px var(--wa-glass-sh2),
-    0 0 80px -20px rgba(106,171,223,0.25);
-}
-.wa-wrap .rcard .rtag {
-  position: absolute;
-  top: -12px;
-  left: 28px;
-  color: #ffffff;
-  background: linear-gradient(135deg, #6AABDF, #4d8fc9);
-  font-family: var(--wa-mono);
-  font-size: .66rem;
-  font-weight: 700;
-  letter-spacing: .06em;
-  padding: .4em .9em;
-  border-radius: 100px;
-  text-transform: uppercase;
-  box-shadow: 0 3px 12px rgba(106,171,223,0.45);
-}
-.wa-wrap .rcard .rprice { font-size: 1.75rem; font-weight: 700; letter-spacing: -.02em; color: var(--wa-navy); }
-.wa-wrap .rcard .rprice span { font-size: .85rem; color: var(--wa-ink-dim); font-family: var(--wa-mono); font-weight: 400; }
-.wa-wrap .rcard h3 { font-size: 1.1rem; margin: 3px 0 2px; color: var(--wa-navy); }
-.wa-wrap .rcard .rsub { font-family: var(--wa-mono); font-size: .78rem; color: var(--wa-ink-dim); margin-bottom: 12px; }
-.wa-wrap .rcard.rfeatured .rsub { color: var(--wa-navy-mid); }
-.wa-wrap .rcard ul { list-style: none; }
-.wa-wrap .rcard li { font-size: .84rem; color: var(--wa-ink-soft); padding: 3px 0 3px 20px; position: relative; }
-.wa-wrap .rcard li::before { content: "✓"; position: absolute; left: 0; color: #6AABDF; }
-.wa-wrap .rcard li.rlead { color: var(--wa-navy); font-weight: 600; }
-.wa-wrap .rcard li .lidesc { display: block; font-size: .74rem; color: var(--wa-ink-dim); font-weight: 400; margin-top: 1px; }
-.wa-wrap .rcard .rreport {
-  margin-top: 10px;
-  padding: 12px 14px;
-  background: rgba(176,196,222,0.12);
-  border: 1px solid var(--wa-glass-bd);
-  border-radius: 14px;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-.wa-wrap .rcard .rreport .rrlbl {
-  font-family: var(--wa-mono);
-  font-size: .66rem;
-  color: var(--wa-navy-mid);
-  text-transform: uppercase;
-  letter-spacing: .06em;
-  display: block;
-  margin-bottom: 10px;
-}
-.wa-wrap .rcard .rreport span.tag2 {
-  display: inline-block;
-  font-size: .78rem;
-  color: var(--wa-ink-soft);
-  background: var(--wa-glass-bg2);
-  border: 1px solid var(--wa-glass-bd);
-  padding: .3em .7em;
-  border-radius: 100px;
-  margin: 0 5px 5px 0;
-}
 .wa-wrap .addons {
   margin-top: 24px;
   border: 1px solid var(--wa-glass-bd);
@@ -539,7 +391,7 @@
 
 /* ---- FAQ — angepasst an Seitenstil ---- */
 #sec-faq {
-  background: #eef4fb;
+  background: #ffffff;
 }
 #sec-faq .kit-faq-header {
   margin-bottom: 44px;
@@ -567,7 +419,10 @@
   font-family: Georgia, "Times New Roman", serif;
   font-weight: normal;
   font-size: clamp(1.7rem, 4vw, 2.5rem);
-  color: #1a2744;
+  /* Die Section steht auf Dunkelblau — die Ueberschrift muss hell sein.
+     Diese Regel hat Spezifitaet 2,0,0 und schlaegt jedes spaetere
+     #sec-faq h2, deshalb steht die Farbe hier und nicht unten. */
+  color: #ffffff;
   margin-top: 14px;
 }
 #sec-faq .kit-faq-item {
@@ -628,39 +483,6 @@
   padding-top: 100px;
   padding-bottom: 0;
 }
-.wa-wrap .pq-heading {
-  font-size: clamp(2.6rem, 5vw, 4.4rem);
-  margin: 0 auto 28px;
-  text-align: center;
-  max-width: 760px;
-}
-.wa-wrap .pq-text {
-  font-size: clamp(1rem, 1.5vw, 1.1rem);
-  color: #4A5568;
-  line-height: 1.7;
-  margin: 0 auto;
-  text-align: center;
-  max-width: 680px;
-}
-.wa-wrap .pq-text strong {
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 1.1em;
-  color: #1A2744;
-  font-weight: 700;
-  font-style: italic;
-}
-.wa-wrap .pq-banner {
-  margin-top: 56px;
-  padding-bottom: 80px;
-  text-align: center;
-}
-.wa-wrap .pq-banner p {
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: clamp(1.15rem, 2vw, 1.45rem);
-  font-weight: 600;
-  color: #1A2744;
-  margin: 0;
-}
 
 /* ---- Block labels (within combined sections) ---- */
 .wa-wrap .block-label {
@@ -699,114 +521,24 @@
 }
 .wa-wrap .sec--dark .result-card .result-who { color: rgba(106,171,223,0.65); }
 
-/* ---- Google Ads Addon ---- */
-.wa-wrap #google-ads {
-  background: linear-gradient(135deg, #1a1a2e 0%, #1f1a2e 100%);
-  border-top: 1px solid rgba(234,67,53,0.25);
-  border-bottom: 1px solid rgba(234,67,53,0.15);
-}
+/* Die frueher eigene Google-Ads-Section hatte hier einen Hintergrund und
+   zwei Rahmen in Google-Rot. Die Section ist in #sichtbarkeit aufgegangen;
+   #google-ads ist nur noch der Sprunganker aus der Hauptnavigation, ein
+   Element mit height: 0. Die Rahmen wurden dadurch zu einem roten Strich
+   am Sectionsanfang — deshalb ist die Regel entfallen. */
 
-.wa-wrap .gads-card {
-  display: flex;
-  gap: 32px;
-  align-items: flex-start;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.10);
-  border-left: 4px solid #EA4335;
-  border-radius: 16px;
-  padding: 36px 40px;
-  max-width: 860px;
-  margin-inline: auto;
-}
 
-.wa-wrap .gads-icon {
-  flex: none;
-  width: 52px;
-  height: 52px;
-  background: rgba(234,67,53,0.12);
-  border: 1px solid rgba(234,67,53,0.25);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #EA4335;
-}
 
-.wa-wrap .gads-body {
-  flex: 1;
-  min-width: 0;
-}
 
-.wa-wrap .gads-label {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #EA4335;
-  margin: 0 0 10px;
-}
 
-.wa-wrap .gads-heading {
-  font-size: clamp(1.4rem, 2.5vw, 1.9rem);
-  color: #fff;
-  margin: 0 0 12px;
-}
 
-.wa-wrap .gads-sub {
-  font-size: 0.97rem;
-  color: rgba(228,235,245,0.68);
-  line-height: 1.7;
-  margin: 0 0 20px;
-  max-width: 580px;
-}
 
-.wa-wrap .gads-list {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
 
-.wa-wrap .gads-list li {
-  font-size: 0.92rem;
-  color: rgba(228,235,245,0.82);
-  padding-left: 20px;
-  position: relative;
-}
 
-.wa-wrap .gads-list li::before {
-  content: '✓';
-  position: absolute;
-  left: 0;
-  color: #EA4335;
-  font-weight: 700;
-}
 
-.wa-wrap .gads-cta {
-  display: inline-block;
-  font-size: 0.92rem;
-  font-weight: 600;
-  color: #EA4335;
-  text-decoration: none;
-  border: 1.5px solid rgba(234,67,53,0.4);
-  border-radius: 999px;
-  padding: 9px 22px;
-  transition: background 0.2s, border-color 0.2s;
-}
 
-.wa-wrap .gads-cta:hover {
-  background: rgba(234,67,53,0.1);
-  border-color: #EA4335;
-}
 
 @media (max-width: 600px) {
-  .wa-wrap .gads-card {
-    flex-direction: column;
-    gap: 20px;
-    padding: 24px 22px;
-  }
 }
 
 /* ---- Tools library ---- */
@@ -871,226 +603,15 @@
 .wa-wrap .tool-desc::after {
   content: '\00a0';
 }
-.wa-wrap .tools-foot { text-align: center; color: var(--wa-ink-dim); font-size: .9rem; margin-top: 24px; font-family: var(--wa-mono); }
 
 /* ── Werkzeug-Tabs ── */
-.wa-wrap .wtab-layout {
-  margin-top: 12px;
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.08);
-  box-shadow:
-    0 1px 2px rgba(0,0,0,0.15),
-    0 4px 20px rgba(0,0,0,0.2),
-    0 0 0 1px rgba(106,171,223,0.06);
-}
-.wa-wrap .wtab-nav {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0;
-  background: rgba(0,0,0,0.18);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  padding: 8px 8px 0;
-}
-.wa-wrap .wtab-btn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-  padding: 10px 14px 10px;
-  background: transparent;
-  border: none;
-  border-bottom: 2px solid transparent;
-  cursor: pointer;
-  color: rgba(176,196,222,0.55);
-  transition: color .15s, border-color .15s, background .15s;
-  border-radius: 8px 8px 0 0;
-  min-width: 0;
-}
-.wa-wrap .wtab-btn:hover {
-  color: rgba(176,196,222,0.85);
-  background: rgba(255,255,255,0.04);
-}
-.wa-wrap .wtab-btn.is-active {
-  color: #ffffff;
-  border-bottom-color: #6AABDF;
-  background: rgba(106,171,223,0.08);
-}
-.wa-wrap .wtab-icon {
-  width: 20px;
-  height: 20px;
-  flex-shrink: 0;
-}
-.wa-wrap .wtab-icon svg {
-  width: 20px;
-  height: 20px;
-}
-.wa-wrap .wtab-label {
-  font-family: var(--wa-mono);
-  font-size: .62rem;
-  font-weight: 600;
-  letter-spacing: .05em;
-  text-transform: uppercase;
-  white-space: nowrap;
-  line-height: 1;
-}
-.wa-wrap .wtab-panel-wrap {
-  background: rgba(255,255,255,0.02);
-  padding: 36px 40px;
-  min-height: 160px;
-  position: relative;
-}
-.wa-wrap .wtab-panel {
-  display: none;
-  flex-direction: column;
-  gap: 12px;
-  animation: wtabFade .2s ease;
-  max-width: 64ch;
-}
-.wa-wrap .wtab-panel.is-active { display: flex; }
 @keyframes wtabFade {
   from { opacity: 0; transform: translateY(6px); }
   to   { opacity: 1; transform: none; }
 }
-.wa-wrap .wtab-panel-title {
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: clamp(1rem, 2vw, 1.2rem);
-  font-weight: 400;
-  color: #ffffff;
-  margin: 0;
-  letter-spacing: -.01em;
-}
-.wa-wrap .wtab-panel-text {
-  font-size: 1rem;
-  color: rgba(176,196,222,0.70);
-  margin: 0;
-  line-height: 1.6;
-  max-width: 60ch;
-}
-.wa-wrap .wtab-panel-examples {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-.wa-wrap .wtab-panel-examples li {
-  font-family: var(--wa-mono);
-  font-size: .85rem;
-  color: rgba(106,171,223,0.85);
-  letter-spacing: .01em;
-  line-height: 1.4;
-  padding-left: 1em;
-  position: relative;
-}
-.wa-wrap .wtab-panel-examples li::before {
-  content: '—';
-  position: absolute;
-  left: 0;
-  color: rgba(106,171,223,0.45);
-}
 @media(max-width:639px) {
-  .wa-wrap .wtab-nav {
-    padding: 6px 6px 0;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-  }
-  .wa-wrap .wtab-btn {
-    padding: 7px 10px 7px;
-    gap: 3px;
-    flex-shrink: 0;
-    flex: 1 1 calc(100% / 6 - 2px);
-    min-width: 0;
-    max-width: none;
-  }
-  .wa-wrap .wtab-label { font-size: .52rem; }
-  .wa-wrap .wtab-panel-wrap { padding: 20px 18px; }
-  .wa-wrap .wtab-panel-text { font-size: .9rem; }
 }
 
-/* ---- Process ---- */
-.wa-wrap .flow { display: grid; gap: 0; grid-template-columns: 1fr; }
-@media(min-width:820px) { .wa-wrap .flow { grid-template-columns: repeat(4,1fr); } }
-.wa-wrap .step { position: relative; padding: 26px 24px 26px 0; }
-.wa-wrap .step .snum {
-  font-family: var(--wa-mono);
-  font-size: .8rem;
-  color: #ffffff;
-  background: linear-gradient(160deg, #6AABDF, #4d8fc9);
-  width: 34px;
-  height: 34px;
-  border-radius: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  margin-bottom: 16px;
-  box-shadow: 0 4px 14px rgba(106,171,223,0.45), inset 0 1px 0 rgba(255,255,255,0.3);
-}
-.wa-wrap .step h4 { font-size: 1.15rem; letter-spacing: -.01em; margin-bottom: 8px; color: var(--wa-navy); }
-.wa-wrap .step p { font-size: .9rem; color: var(--wa-ink-soft); }
-.wa-wrap .step:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  left: 44px;
-  right: 16px;
-  top: 43px;
-  height: 1px;
-  background: linear-gradient(90deg, var(--wa-steel), transparent);
-}
-@media(max-width:819px) {
-  .wa-wrap .step { padding: 22px 0 22px 48px; }
-  .wa-wrap .step .snum { position: absolute; left: 0; top: 22px; margin: 0; }
-  .wa-wrap .step:not(:last-child)::after {
-    left: 16px; top: 56px; bottom: -8px; width: 1px; height: auto; right: auto;
-    background: linear-gradient(180deg, var(--wa-steel), transparent);
-  }
-}
-.wa-wrap .loops {
-  margin-top: 40px;
-  border: 1px solid var(--wa-glass-bd);
-  border-radius: 20px;
-  overflow: hidden;
-  background: var(--wa-glass-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow:
-    0 16px 40px -12px var(--wa-glass-sh2),
-    inset 0 1px 0 var(--wa-glass-hi);
-}
-.wa-wrap .loops-head {
-  font-family: var(--wa-mono);
-  font-size: .7rem;
-  color: var(--wa-ink-dim);
-  text-transform: uppercase;
-  letter-spacing: .08em;
-  padding: 20px 24px 6px;
-}
-.wa-wrap .loop-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 16px 24px;
-  border-top: 1px solid var(--wa-glass-bd);
-  flex-wrap: wrap;
-}
-.wa-wrap .loop-row .lname b { font-weight: 600; color: var(--wa-navy); }
-.wa-wrap .loop-row .lname span { color: var(--wa-ink-dim); font-size: .85rem; font-family: var(--wa-mono); }
-.wa-wrap .loop-dots { display: flex; gap: 6px; align-items: center; flex-shrink: 0; }
-.wa-wrap .loop-dots i {
-  width: 11px; height: 11px; border-radius: 50%;
-  background: linear-gradient(135deg, var(--wa-navy-mid), var(--wa-navy));
-  display: block;
-  box-shadow: 0 0 6px rgba(26,39,68,0.25);
-}
-.wa-wrap .loop-dots i.demo {
-  background: linear-gradient(135deg, #6AABDF, #4d8fc9);
-  box-shadow: 0 0 6px rgba(106,171,223,0.55);
-}
-.wa-wrap .loop-dots .lcount { font-family: var(--wa-mono); font-size: .82rem; color: var(--wa-ink-soft); margin-left: 8px; white-space: nowrap; }
 
 @media (prefers-reduced-motion: reduce) {
   .wa-wrap * { transition: none !important; }
@@ -1135,15 +656,6 @@
     0 0 80px -20px rgba(106,171,223,0.18);
 }
 .wa-wrap .sec--dark .tier.featured,
-.wa-wrap .sec--dark .rcard.rfeatured {
-  box-shadow:
-    0 0 0 1px rgba(106,171,223,0.30),
-    inset 0 1px 0 rgba(255,255,255,0.13),
-    inset 0 -1px 0 rgba(0,0,0,0.20),
-    0 4px 8px rgba(0,0,0,0.25),
-    0 24px 60px -12px rgba(0,0,0,0.55),
-    0 0 80px -20px rgba(106,171,223,0.30);
-}
 
 
 /* Remove dividers between light/dark transitions */
@@ -1250,40 +762,8 @@
 }
 
 /* Tier cards — featured accent */
-.wa-wrap .sec--dark .tier.featured {
-  background: rgba(106,171,223,0.14);
-  border-color: rgba(106,171,223,0.40);
-}
-.wa-wrap .sec--dark .tier .tag {
-  background: rgba(106,171,223,0.22);
-  color: #8fc7f0;
-  border-color: rgba(106,171,223,0.30);
-}
-.wa-wrap .sec--dark .tier li::before {
-  color: #6AABDF;
-}
-.wa-wrap .sec--dark .tier:hover {
-  background: rgba(255,255,255,0.09);
-  border-color: rgba(255,255,255,0.20);
-}
-.wa-wrap .sec--dark .tier-note {
-  color: rgba(255,255,255,0.38);
-}
 
 /* Retainer cards — featured accent */
-.wa-wrap .sec--dark .rcard.rfeatured {
-  background: rgba(106,171,223,0.12);
-  border-color: rgba(106,171,223,0.38);
-}
-.wa-wrap .sec--dark .rcard .rtag {
-  background: rgba(106,171,223,0.22);
-  color: #8fc7f0;
-}
-.wa-wrap .sec--dark .rcard li::before {
-  color: #6AABDF;
-}
-.wa-wrap .sec--dark .rcard .rsub { color: rgba(255,255,255,0.42); }
-.wa-wrap .sec--dark .rcard.rfeatured .rsub { color: rgba(255,255,255,0.62); }
 
 /* Addons */
 .wa-wrap .sec--dark .addons {
@@ -1336,19 +816,6 @@
 }
 
 /* Process steps */
-.wa-wrap .sec--dark .loops {
-  border-top-color: var(--wa-glass-bd);
-}
-.wa-wrap .sec--dark .loop-row {
-  border-bottom-color: var(--wa-glass-bd);
-}
-.wa-wrap .sec--dark .loop-dots i {
-  border-color: rgba(255,255,255,0.30);
-}
-.wa-wrap .sec--dark .loop-dots i.demo {
-  background: linear-gradient(135deg, #6AABDF, #4d8fc9);
-  box-shadow: 0 0 6px rgba(106,171,223,0.45);
-}
 .wa-wrap .sec--dark .tools-foot {
   color: rgba(255,255,255,0.38);
 }
@@ -1475,3 +942,1888 @@
     align-items: flex-start;
   }
 }
+
+/* ============================================================
+   ERKLÄRVIDEO (#erklaervideo)
+   Positioniert nach dem Problem-Abschnitt: nimmt die "das ist
+   ein riesiger Schritt"-Sorge früh auf, statt sie bis zum FAQ
+   stehen zu lassen.
+============================================================ */
+
+
+/* ============================================================
+   KUNDENALLTAG (#alltag)
+   Sechs Situationen aus dem Tag des Kunden, mit Uhrzeit als Anker.
+   Perspektivwechsel gegenüber #ablauf, der unseren Prozess zeigt.
+============================================================ */
+
+@media (max-width: 640px) {
+}
+
+/* ── Frühes Kundenzitat im Problem-Abschnitt ──
+   Beweis direkt nach der Beruhigung. Die volle Referenzliste bleibt
+   in #resultate unmittelbar vor den Preisen. */
+
+/* ── Video-Platzhalter ──
+   Hält exakt die Fläche des späteren Videos (16:9), damit das Layout
+   beim Einsetzen nicht springt. Entfällt mit dem Platzhalter-Markup. */
+
+/* ---- Eingaben ---- */
+
+/* ── Standard-Leiste (#standard) ──
+   Hygiene-Faktoren weit unten, als eine schmale Zeile. Ersetzt die drei
+   Bento-Karten, die vorher an Position 4 standen und dort zu viel Gewicht
+   hatten: der Kunde erwartet diese Punkte, sie überzeugen ihn nicht. */
+.wa-wrap .sec--tight { padding: 40px 0; }
+
+/* ============================================================
+   ZEITSTRAHL (#alltag)
+   Struktur übernommen vom Auftragsablauf der Picassino-Demo
+   (handwerker-agent/demos/picassino.html, #zs-root): Mittellinie,
+   alternierende Seiten, Stationskreis mit Doppelring, Verbindungsstrich.
+   Farben/Schriften auf das wa-*-System übersetzt, Kreis verbreitert,
+   weil hier Uhrzeiten statt Ziffern darin stehen.
+============================================================ */
+
+
+
+
+/* Einblenden nacheinander, wie in der Demo.
+   Ohne JS bleiben die Zeilen sichtbar — opacity:0 gilt nur, wenn das Script
+   den Zeitstrahl per data-anim scharf gemacht hat. So kann nichts unsichtbar
+   haengen bleiben, falls JS blockiert ist. */
+@keyframes zsIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+}
+
+/* Mobil: einspaltig, Linie und Kreise nach links */
+@media (max-width: 760px) {
+}
+
+/* ── Website-Check innerhalb von .wa-wrap ──
+   Der Check ist aus dem Seitenende in den Seitenfluss gewandert. Zwei Dinge
+   müssen dafür korrigiert werden:
+
+   1. z-index: der ::before-Gradient von .wa-wrap hat inset:0, und Sections
+      heben sich normalerweise über .wrap darüber. Der Check nutzt eigene
+      Container statt .wrap, deshalb hier ausdrücklich anheben.
+
+   2. min-height: ki-check.css gibt ihm 100svh plus align-items:center — das
+      war richtig, solange er als Vollbild-Sektion am Seitenende stand. Mitten
+      im Seitenfluss erzeugt es eine bildschirmhohe leere Fläche und schiebt
+      den Inhalt in die Mitte davon. Hier auf normale Section-Höhe zurück. */
+.wa-wrap #ki-check {
+  position: relative;
+  z-index: 1;
+  min-height: 0;
+  align-items: stretch;
+  padding: 80px clamp(20px, 4vw, 48px);
+  overflow: visible;
+}
+.wa-wrap #ki-check .final-check-wrap {
+  margin-inline: auto;
+}
+
+/* ── "Ausserdem möglich" unter den Werkzeug-Tabs ──
+   Die acht entfernten Werkzeuge bleiben als eine Zeile sichtbar. Sie zeigen
+   Kompetenzbreite, ohne die vier conversionwirksamen Tabs zu verwässern. */
+
+
+
+/* ── Video innerhalb des Problem-Abschnitts ──
+   Das Video hat keine eigene Überschrift mehr, nur einen kleinen Kicker.
+   Vorher standen zwei grosse Überschriften mit je einem Textblock
+   hintereinander, die inhaltlich dasselbe sagten. */
+.wa-wrap #problem .wd-video-frame {
+  margin-top: 0;
+}
+
+/* ============================================================
+   RECHNER (#rechner)
+   Layout 1:1 von der Picassino-Demo (#kostenrechner): vier
+   Tätigkeits-Karten im 2×2-Raster mit Slider und Jahreskosten,
+   darunter ein dunkler Ergebnisbalken in drei Spalten mit Pfeilen.
+   Farben aus dem wa-*-System dieser Seite.
+============================================================ */
+
+/* ── Kopfzeile mit Ansatz rechts ── */
+
+/* ── Vier Tätigkeits-Karten ── */
+@media (min-width: 700px) {
+}
+
+/* ── Slider ── */
+
+
+/* ── Stundensatz ── */
+
+/* ── Dunkler Ergebnisbalken ── */
+@media (min-width: 860px) {
+}
+@media (min-width: 860px) { .wa-wrap .rc-arrow { display: block; } }
+
+
+/* ── Fuss: Amortisation + Kopieren ── */
+@media (min-width: 760px) {
+}
+
+/* ============================================================
+   REFERENZEN (#referenzen) — klickbare Live-Projekte
+   Neu geschrieben: diese Regeln wurden beim Aufräumen des alten
+   Rechner-CSS versehentlich mitgelöscht, weil das Script alles
+   zwischen der ersten und letzten calc-Regel entfernt hat.
+============================================================ */
+@media (min-width: 760px) {
+}
+
+/* ============================================================
+   GEFUNDEN WERDEN (#sichtbarkeit)
+   Organisch (inklusive) und Ads (Addon) nebeneinander. Die
+   unterschiedliche Rahmenart trennt "im Preis" von "kostet extra".
+   Ebenfalls neu geschrieben nach dem Versehen oben.
+============================================================ */
+.wa-wrap .anchor-alias {
+  display: block;
+  position: relative;
+  top: calc(-1 * var(--header-h-compact, 58px));
+  height: 0;
+}
+@media (min-width: 760px) {
+}
+
+/* ============================================================
+   Nachtraege
+============================================================ */
+
+/* Kopier-Button im Rechner: eigene Spalte im rc-foot-Raster, damit der
+   Button nicht an der Amortisationsliste klebt. */
+@media (min-width: 760px) {
+}
+
+/* Die "inklusive"-Karte in #sichtbarkeit gegen die gestrichelte
+   Addon-Karte abgrenzen: durchgezogener Rand plus ein Hauch Akzent, damit
+   auf den ersten Blick klar ist, was im Preis steckt. */
+
+/* Die Zeitmarken im Zeitstrahl heissen jetzt "Nachmittags" statt "14:45" —
+   exakte Uhrzeiten behaupteten eine Genauigkeit, die es nicht gibt.
+   Woerter brauchen mehr Platz als vier Ziffern. */
+@media (max-width: 700px) {
+}
+
+/* ============================================================
+   ZEITSTRAHL → VORHER/NACHHER
+   Dasselbe Raster (1fr 96px 1fr), neue Bedeutung: links der heutige
+   Zustand, rechts was die Website uebernimmt, in der Mitte der Anlass.
+   Die Asymmetrie ist beabsichtigt — der Schmerz braucht einen Satz,
+   die Loesung darf Platz haben.
+============================================================ */
+
+
+/* Der heutige Zustand tritt bewusst zurueck: kleiner, blasser, kein
+   Titel. Er soll wiedererkannt werden, nicht gelesen werden wollen. */
+
+/* Die linke Spalte hat keine h3 — ohne Ausgleich stehen die beiden
+   Seiten auf unterschiedlicher Hoehe. Das Tag der rechten Seite und die
+   Schmerzzeile sollen auf einer Linie liegen. */
+
+@media (max-width: 760px) {
+  /* Einspaltig stapeln die beiden Seiten untereinander. Damit klar
+     bleibt, was wovon ist, tragen dort beide ihr Tag sichtbar und die
+     Schmerzzeile bekommt eine Trennlinie nach unten. */
+}
+
+
+/* ============================================================
+   REFERENZ-LOGOS
+   Hoehe begrenzen statt Breite: die Dateien haben 3:2 und 3:1, eine
+   feste Breite wuerde das eine winzig und das andere riesig machen.
+============================================================ */
+
+
+
+/* Anhaltspunkt neben dem Anteil-Regler. Bewusst zurueckhaltend: die Zahl
+   gehoert nicht zur Rechnung, sie hilft nur beim Einstellen. Steht im
+   dunklen Ergebnisbalken, deshalb helle Farben statt der wa-Variablen. */
+
+/* Kopfzeile der Stundensatz-Karte: Label links, Wert rechts — genau wie
+   bei den vier Taetigkeitskarten. Vorher stand dort weder Wert noch Skala,
+   der Regler wirkte unfertig. */
+
+
+/* Das dritte Referenzlogo ist ein rundes Signet, das der Kunde selbst
+   beschnitten einsetzt. Als contain-Bild neben zwei Querformat-Logos wuerde
+   es verloren wirken, deshalb hier quadratisch und rund beschnitten. */
+
+
+
+/* Stundensatz als Zahlenfeld statt Regler: einen Stundensatz kennt man
+   genau, man schaetzt ihn nicht. Optisch bleibt es die Werteanzeige der
+   uebrigen Karten — gleiche Schrift, gleiche Farbe, nur eingebbar. */
+
+
+/* ============================================================
+   WEITERE KANAELE (#sichtbarkeit)
+   Schmale Zeile unter den zwei Hauptkarten. Zurueckhaltend gestaltet: sie
+   soll Kompetenzbreite zeigen, nicht mit den zwei Wegen konkurrieren, die
+   tatsaechlich im Angebot stehen.
+============================================================ */
+@media (min-width: 760px) {
+}
+
+
+/* Hinweis am Website-Check. Bewusst klein und ohne Kasten: er soll die Demo
+   einordnen, nicht von ihr ablenken. Der Check nutzt eigene Container statt
+   .wrap, deshalb hier die Zentrierung mitgeben. */
+.wa-wrap .fc-ki-note {
+  max-width: 640px;
+  margin: -4px auto 18px;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--wa-ink-dim);
+}
+
+/* ============================================================
+   RECHNER ALS ZEILEN
+   Vorher vier Karten im 2x2-Raster, jede mit eigener Skala und eigener
+   Kostenzeile. Die Hoehe ging an die Wiederholung, nicht an den Inhalt.
+   Jetzt vier Zeilen: Beschriftung links, Regler mittig, Werte rechts,
+   eine gemeinsame Skala darunter.
+============================================================ */
+@media (min-width: 820px) {
+}
+@media (min-width: 820px) {
+}
+
+@media (min-width: 820px) {
+}
+
+
+/* Stundensatz in der Kopfzeile: rechts neben der Ueberschrift */
+@media (min-width: 700px) {
+}
+
+/* ============================================================
+   DICHTE-RUNDE: PREISE, BETRIEB, SICHTBARKEIT
+   Kein Inhalt entfaellt — nur Innenabstaende, Zeilenhoehen und die
+   Groesse der Nebentexte. Diese Sections waren fuer ihren Inhalt
+   ungefaehr doppelt so hoch wie noetig.
+============================================================ */
+.wa-wrap #preise .sec-head,
+.wa-wrap #betrieb .sec-head,
+.wa-wrap #sichtbarkeit .sec-head { margin-bottom: 24px; }
+.wa-wrap #preise .sec-head p,
+.wa-wrap #betrieb .sec-head p,
+.wa-wrap #sichtbarkeit .sec-head p { font-size: 0.92rem; line-height: 1.55; }
+
+/* Pakete */
+
+/* Betrieb & Pflege */
+
+/* Gefunden werden */
+
+/* Sections insgesamt etwas enger stellen */
+@media (min-width: 900px) {
+  .wa-wrap #preise,
+  .wa-wrap #betrieb,
+  .wa-wrap #sichtbarkeit,
+  .wa-wrap #rechner { padding-block: 64px; }
+}
+
+/* Zahlenfeld fuer den Stundensatz. (Diese drei Regeln waren beim Entfernen
+   des alten Karten-CSS versehentlich mitgegangen: das Suchmuster "rc-rate\b"
+   trifft auch rc-rate-field, weil der Bindestrich eine Wortgrenze ist.) */
+
+
+/* ============================================================
+   RECHNER: VIER KARTEN, KOMPAKT
+   Wieder das 2x2-Raster der Picassino-Demo. Der Unterschied zur ersten
+   Fassung liegt nur in der Zeilenzahl pro Karte: Std./Wo. und Jahreskosten
+   stehen zusammen in der Kopfzeile statt in zwei getrennten Zeilen, und die
+   Skala 0/5/10/15 steht einmal unter dem Raster statt viermal in den Karten.
+   Drei Zeilen pro Karte statt sechs.
+============================================================ */
+@media (min-width: 700px) {
+}
+
+/* Kopfzeile: Titel links, Werte rechts. Bei schmalen Karten darf sie
+   umbrechen, statt den Titel zu quetschen. */
+
+
+/* Schalter unter der Preistabelle. Zurueckhaltend: er ist eine Hilfe, kein
+   Angebot — der Blick soll bei den Preisen und den Anfragen-Buttons bleiben.
+   Das hidden-Attribut muss ausdruecklich gewinnen, sonst haebelt das
+   display: inline-flex es aus (derselbe Fall wie beim FAQ-Schalter). */
+
+
+/* Der Schalter sitzt direkt im .wrap neben dem Kartenraster. Ein
+   inline-flex-Element laesst sich dort nicht mit margin:auto zentrieren,
+   deshalb bekommt es eine eigene Zeile mit Flex-Zentrierung. */
+
+
+/* Schalter in der Paketkarte. Sitzt zwischen Liste und Anfragen-Button und
+   tritt bewusst zurueck: der Anfragen-Button muss die auffaelligere Flaeche
+   bleiben. Das hidden-Attribut braucht eine eigene Regel, sonst haebelt
+   display: inline-flex es aus. */
+
+/* Die ganze Karte ist klickbar, also auch als solche kenntlich machen. */
+
+
+/* Der Schalter in den Betriebs-Karten steht auf hellem Grund, die
+   Grundregel ist fuer die dunklen Paketkarten gemacht. */
+
+/* ============================================================
+   GEFUNDEN WERDEN — KANALLISTE (#sichtbarkeit)
+   Ersetzt zwei grosse Karten plus einen Kasten mit fuenf weiteren
+   Kanaelen. Sieben Zeilen zum Aufklappen: alle Wege auf einen Blick,
+   Details nur wo gewuenscht. Eingeklappt etwa ein Drittel der alten Hoehe.
+============================================================ */
+
+/* Kopfzeile: Kennzeichnung, Name, Nutzen, Pfeil. Auf breiten Schirmen in
+   einer Zeile, auf schmalen umgebrochen — der Nutzen rutscht dann unter
+   den Namen statt ihn zu quetschen. */
+@media (min-width: 860px) {
+}
+
+/* Die zwei Basiswege heben sich ab, die fuenf Optionen treten zurueck. */
+
+
+/* Aufgeklappter Bereich. Linke Kante als Akzent, damit klar ist, wozu er
+   gehoert — bei sieben Zeilen sonst schnell verwirrend. */
+@media (min-width: 860px) {
+}
+
+
+
+/* Aufgeklappte Karte hervorheben: sie ist die gewaehlte. Der Anfragen-Button
+   erscheint erst hier, deshalb braucht die Karte einen sichtbaren Zustand. */
+
+
+/* Schalter-Abstaende bei eingeklappter Liste: zu ist er der einzige Inhalt
+   zwischen who-Text und Anfragen-Button, offen trennt er Liste und Button. */
+.wa-wrap #preise .tier .tier-more,
+.wa-wrap #preise .tier.is-open .tier-more,
+
+
+/* Sectionsgrund als Variable, damit Elemente wie der Ring um die Zeitmarken
+   ihn aufnehmen koennen, statt ihn fest verdrahtet zu haben. */
+.wa-wrap .sec { --wa-sec-bg: #ffffff; }
+.wa-wrap .sec--dark { --wa-sec-bg: #101e38; }
+
+
+
+/* ============================================================
+   UMFAERBUNGEN NACH DER NEUEN FARBFOLGE
+   Nach dem Hero wechseln sich weiss und dunkelblau strikt ab. Vier
+   Komponenten standen damit auf dem falschen Grund. Alle Korrekturen
+   stehen hier und sind auf diese Seite begrenzt — style.css und
+   ki-check.css bleiben unangetastet, damit andere Seiten nichts abbekommen.
+============================================================ */
+
+/* ── #werkzeuge steht jetzt auf WEISS ──
+   Die Tab-Komponente war fuer dunklen Grund gebaut: weisse Rahmen, schwarze
+   Fuellungen, weisse Schrift. Hier gespiegelt. */
+
+
+/* ── #sec-faq steht jetzt auf DUNKELBLAU ──
+   kit-faq ist eine geteilte Komponente. Deshalb hier nur ueber #sec-faq
+   gescoped, damit index.html und die anderen Seiten unveraendert bleiben. */
+#sec-faq { background: #101e38; }
+#sec-faq .section-label { color: rgba(106, 171, 223, 0.85); }
+#sec-faq .kit-faq-item { border-bottom-color: rgba(255, 255, 255, 0.12); }
+#sec-faq .kit-faq-item:first-child { border-top-color: rgba(255, 255, 255, 0.12); }
+#sec-faq .kit-faq-btn { color: rgba(255, 255, 255, 0.9); }
+#sec-faq .kit-faq-btn:hover { color: #ffffff; }
+#sec-faq .kit-faq-chevron { color: rgba(255, 255, 255, 0.55); }
+#sec-faq .kit-faq-answer p { color: rgba(255, 255, 255, 0.7); }
+#sec-faq .kit-faq-answer strong { color: #ffffff; }
+#sec-faq .kit-faq-answer a { color: #6AABDF; }
+#sec-faq .faq-toggle {
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(106, 171, 223, 0.35);
+}
+#sec-faq .faq-toggle:hover {
+  background: rgba(255, 255, 255, 0.13);
+  border-color: rgba(106, 171, 223, 0.6);
+}
+
+/* ── #sec-cta steht jetzt auf WEISS ──
+   Der CTA-Block war ein dunkler Abschluss mit farbigen Lichtflecken und
+   weisser Schrift. Auf weissem Grund kehrt sich alles um. Die Lichtflecken
+   bleiben, aber deutlich schwaecher — sonst wirken sie auf Weiss wie
+   Flecken statt wie Licht. */
+#sec-cta.site-cta { background: #ffffff; }
+#sec-cta .site-cta-overlay { background: none; }
+#sec-cta .site-cta-blob { opacity: 0.16; filter: blur(90px); }
+#sec-cta .section-label,
+#sec-cta .section-label--steel { color: var(--wa-navy-mid, #3d5a82); }
+#sec-cta .site-cta-content h2 { color: #1A2744; }
+#sec-cta .site-cta-content > p { color: #4a5a7a; }
+#sec-cta .hdf-form--cta .hdf-hint { color: #8290ab; }
+/* .hdf-row traegt die Pille: heller Grund und heller Rahmen -> auf Weiss
+   umgekehrt. */
+#sec-cta .hdf-row {
+  background: rgba(26, 39, 68, 0.04);
+  border: 1.5px solid rgba(106, 171, 223, 0.4);
+}
+/* Der Eingabetext war weiss auf dunkel. */
+#sec-cta .hdf-input { color: #1A2744; }
+#sec-cta .hdf-input::placeholder { color: #8290ab; }
+/* Der Knopf war eine weisse Pille auf dunkel — auf Weiss wird er dunkel. */
+#sec-cta .hdf-btn {
+  background: #1A2744;
+  color: #ffffff;
+}
+#sec-cta .hdf-btn:hover { background: #24365d; }
+
+
+/* ── Leicht grauer Grund fuer die erste Section nach dem Hero ──
+   Sie ist die These der Seite und darf sich von den weissen Sections
+   abheben, ohne dunkel zu werden. Die wa-Variablen bleiben unveraendert:
+   der Grund ist hell, also gelten dieselben Text- und Glasfarben.
+   Nur --wa-sec-bg wird nachgezogen, damit Elemente, die den Sectionsgrund
+   aufnehmen, stimmen. */
+.wa-wrap section.sec--soft {
+  background: #f4f6f9;
+  /* Ohne eigenen z-index liegt der Lichtschleier von .wa-wrap::before
+     (absolut, inset:0) UEBER dem Sectionsgrund und toent ihn
+     ungleichmaessig — oben blaeulich, unten aus. Der Grund wirkte
+     dadurch nach unten hin weiss. Anheben loest das, dieselbe
+     Korrektur brauchte #ki-check schon. */
+  position: relative;
+  z-index: 1;
+  --wa-sec-bg: #f4f6f9;
+}
+/* Der Video-Platzhalter stand auf halbtransparentem Weiss — auf grauem
+   Grund braucht er mehr Deckung, sonst verschwimmt die Flaeche. */
+
+/* Ueberleitung unter dem Video: etwas Luft und ein Satz, damit die Section
+   nicht unmittelbar in die dunkle Farbkante der naechsten laeuft. */
+@media (min-width: 900px) {
+  .wa-wrap .sec--soft { padding-block-end: 140px; }
+}
+
+
+/* Auf dunklem Grund wird var(--wa-navy) zu Weiss — die Zeitmarke ist dort
+   also schon eine weisse Pille, nur die Schrift blieb weiss und war damit
+   unsichtbar. Hier die Schrift umdrehen, nicht die Flaeche: eine weisse
+   Pille mit dunkler Schrift ist auf dunklem Grund die klarste Loesung. */
+
+
+/* Der Bruecken-Text ist das Letzte vor der harten Farbkante der naechsten
+   Section. 96px waren zu knapp — mehr Luft, und zwar auch unter 900px, wo
+   die Media Query oben nicht greift. */
+.wa-wrap .sec--soft { padding-block-end: 104px; }
+@media (min-width: 900px) {
+  .wa-wrap .sec--soft { padding-block-end: 140px; }
+}
+
+
+/* Der Abstand unter dem Bruecken-Text gehoert INS .wrap, nicht an den Absatz.
+   Als Aussenabstand am letzten Kind faellt er durch Margin-Collapsing aus der
+   Section heraus und wird zum Zwischenraum zwischen den Sections — dort
+   scheint der weisse Grund von .wa-wrap durch, und genau das war der weisse
+   Streifen. Als Innenabstand des Containers liegt er sicher im grauen Grund. */
+.wa-wrap section.sec--soft > .wrap { padding-bottom: 88px; }
+@media (min-width: 900px) {
+  .wa-wrap section.sec--soft > .wrap { padding-bottom: 120px; }
+}
+
+/* ============================================================
+   ALLTAG-VERGLEICH (#alltag)
+   Aufbau und Bedienung aus dem Design-Projekt "Alltag Vergleich Redesign"
+   uebernommen: Spaltenkoepfe, drei nummerierte Gruppen, aufklappbare Zeilen.
+
+   Zwei Dinge sind bewusst anders als im Entwurf:
+   - Schriften und Farben kommen aus dem System dieser Seite (Georgia,
+     DM Sans, wa-Variablen) statt aus Manrope/Fraunces und einer eigenen
+     Blaupalette. Ein zweites Farbsystem fuer einen Abschnitt waere ein Bruch.
+   - Der Entwurf steht auf Weiss, diese Section auf Dunkelblau. Die dunklen
+     Kacheln des Entwurfs sind deshalb hier helle: Auf dunklem Grund ist die
+     helle Flaeche das hervorgehobene Element.
+============================================================ */
+
+.wa-wrap #alltag .wrap { max-width: 860px; }
+
+.wa-wrap .av-hint {
+  text-align: center;
+  font-size: 0.94rem;
+  line-height: 1.6;
+  color: var(--wa-ink-soft);
+  margin: 20px 0 0;
+}
+.wa-wrap .av-hint strong { color: #fff; font-weight: 600; }
+
+/* ── Spaltenkoepfe ──
+   Die erste Spalte bleibt leer; sie steht ueber den Bezeichnungen. */
+.wa-wrap .av-head {
+  display: grid;
+  grid-template-columns: 240px 1fr 1fr;
+  align-items: center;
+  gap: 0 12px;
+  margin: 34px 0 18px;
+}
+.wa-wrap .av-head-old {
+  grid-column: 2;
+  text-align: right;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--wa-ink-dim);
+  padding-right: 22px;
+}
+.wa-wrap .av-head-new {
+  grid-column: 3;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #0f1c33;
+  /* Derselbe Ton wie die Kacheln darunter: die Kopfzeile gehoert zu der
+     Spalte, die sie beschriftet. Im Entwurf waren beide identisch
+     (#1A2744 auf Weiss) — hier beide hell auf Dunkelblau. Der
+     Akzentton #6AABDF wirkte als grosse Flaeche zu kraeftig. */
+  background: #eaf2fa;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28);
+  border-radius: 9px;
+  padding: 9px 0;
+}
+
+/* ── Gruppenkopf mit Nummer ── */
+.wa-wrap .av-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 26px 0 10px;
+}
+.wa-wrap .av-group:first-of-type { margin-top: 0; }
+.wa-wrap .av-gnum {
+  flex: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #6AABDF;
+  color: #0f1c33;
+  font-family: var(--wa-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wa-wrap .av-gtitle {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.08rem;
+  color: #fff;
+}
+.wa-wrap .av-gline {
+  flex: 1;
+  height: 1px;
+  background: var(--wa-glass-bd);
+}
+
+/* ── Eine Zeile ── */
+.wa-wrap .av-item {
+  border: 1px solid var(--wa-glass-bd);
+  border-radius: 8px;
+  margin: 0 0 8px;
+  overflow: hidden;
+}
+.wa-wrap .av-item:last-of-type { margin-bottom: 0; }
+
+.wa-wrap .av-btn {
+  display: grid;
+  grid-template-columns: 240px 1fr 1fr;
+  align-items: center;
+  gap: 0 12px;
+  width: 100%;
+  padding: 11px 6px 11px 14px;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  background: none;
+  /* Die Kante links markiert die offene Zeile, ohne dass sich die Hoehe
+     aendert — deshalb im geschlossenen Zustand durchsichtig statt keine. */
+  border: none;
+  border-left: 2px solid transparent;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.wa-wrap .av-btn:hover { background: rgba(255, 255, 255, 0.04); }
+.wa-wrap .av-item.is-open .av-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border-left-color: #6AABDF;
+}
+
+.wa-wrap .av-label {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+}
+.wa-wrap .av-plus {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid rgba(106, 171, 223, 0.5);
+  color: #6AABDF;
+  font-size: 0.88rem;
+  font-weight: 700;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wa-wrap .av-label-text {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+/* ── Der heutige Zustand: tritt zurueck ── */
+.wa-wrap .av-old {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  text-align: right;
+  padding: 8px 22px 8px 4px;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--wa-ink-dim);
+}
+.wa-wrap .av-arrow {
+  position: absolute;
+  right: 0;
+  color: var(--wa-steel);
+}
+
+/* ── Der neue Zustand: die hervorgehobene Flaeche ──
+   Im Entwurf dunkel auf Weiss, hier hell auf Dunkelblau. */
+.wa-wrap .av-new {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 65px;
+  padding: 11px 13px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.05rem;
+  line-height: 1.25;
+  text-align: center;
+  color: #0f1c33;
+  background: #eaf2fa;
+  border-radius: 11px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28);
+}
+
+/* ── Erklaerung ──
+   Ohne JavaScript ist sie offen: hidden greift erst, wenn das Script laeuft. */
+.wa-wrap .av-panel[hidden] { display: none; }
+.wa-wrap .av-panel {
+  position: relative;
+  background: rgba(106, 171, 223, 0.1);
+  border: 1px solid rgba(106, 171, 223, 0.45);
+  border-radius: 12px;
+  padding: 15px 19px;
+  margin: 4px 14px 16px auto;
+  width: 60%;
+  min-width: 320px;
+}
+.wa-wrap .av-panel-lbl {
+  font-family: var(--wa-mono);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #6AABDF;
+  margin: 0 0 8px;
+}
+.wa-wrap .av-panel-text {
+  font-size: 0.94rem;
+  line-height: 1.62;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+
+/* ── Schmale Schirme ──
+   Aus dem Entwurf uebernommen: die drei Spalten stapeln, der heutige Zustand
+   rueckt nach links unter die Bezeichnung, der Pfeil entfaellt. */
+@media (max-width: 760px) {
+  .wa-wrap .av-head { grid-template-columns: 1fr 1fr; }
+  .wa-wrap .av-head-old { grid-column: 1; }
+  .wa-wrap .av-head-new { grid-column: 2; }
+  .wa-wrap .av-btn {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 14px 14px 16px;
+  }
+  .wa-wrap .av-old {
+    justify-content: flex-start;
+    text-align: left;
+    padding: 0 0 0 31px;
+  }
+  .wa-wrap .av-arrow { display: none; }
+  .wa-wrap .av-new { min-height: 0; margin-left: 31px; }
+  .wa-wrap .av-panel { width: auto; min-width: 0; margin-left: 14px; }
+}
+
+/* ============================================================
+   RECHNER (#rechner) — Fassung aus dem Design-Projekt
+   Uebernommen: Wert direkt neben dem Titel, Skala 0/5/10/15 in jeder Karte,
+   Jahreskosten als eigene rechtsbuendige Zeile, Ergebnisbalken mit drei
+   Spalten und zwei Pfeilen, Fussnote zu den Arbeitswochen.
+   Angepasst: Schriften und Farben aus dem System der Seite (Georgia,
+   DM Sans, wa-Variablen) statt Fraunces/Manrope und eigener Blaupalette.
+============================================================ */
+
+.wa-wrap #rechner .wrap { max-width: 900px; }
+
+/* ── Kopf: Ueberschrift links, Stundensatz rechts ── */
+.wa-wrap .rc-top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin: 0 0 22px;
+}
+.wa-wrap .rc-top h2 {
+  font-size: clamp(1.6rem, 3.2vw, 2.125rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: var(--wa-navy);
+  margin: 0;
+}
+.wa-wrap .rc-rate-head {
+  flex: none;
+  text-align: right;
+}
+.wa-wrap .rc-rate-lbl {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--wa-ink-soft);
+  margin: 0 0 6px;
+}
+.wa-wrap .rc-rate-field {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+.wa-wrap .rc-rate-input {
+  width: 76px;
+  padding: 8px 10px;
+  font-family: var(--wa-mono);
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-align: center;
+  color: #6AABDF;
+  background: rgba(106, 171, 223, 0.08);
+  border: 1px solid var(--wa-glass-bd);
+  border-radius: 8px;
+  transition: border-color 0.15s, background 0.15s;
+}
+.wa-wrap .rc-rate-input:focus {
+  outline: none;
+  border-color: #6AABDF;
+  background: rgba(106, 171, 223, 0.14);
+}
+.wa-wrap .rc-rate-unit {
+  font-family: var(--wa-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--wa-ink-soft);
+}
+.wa-wrap .rc-rate-note {
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--wa-ink-soft);
+  margin: 0 0 20px;
+}
+
+/* ── Die vier Karten ── */
+.wa-wrap .rc-items {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin: 0 0 20px;
+}
+@media (min-width: 761px) {
+  .wa-wrap .rc-items { grid-template-columns: 1fr 1fr; }
+}
+.wa-wrap .rc-item {
+  background: var(--wa-glass-bg2);
+  border: 1px solid var(--wa-glass-bd);
+  border-radius: 12px;
+  padding: 18px 22px;
+  box-shadow: 0 2px 6px var(--wa-glass-sh);
+}
+/* Wert direkt neben dem Titel statt am rechten Rand: so liest man beides
+   in einem Zug, statt zwischen den Kartenraendern zu springen. */
+.wa-wrap .rc-item-head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0 12px;
+  margin: 0 0 2px;
+}
+.wa-wrap .rc-item-title {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--wa-navy);
+}
+.wa-wrap .rc-item-val {
+  font-family: var(--wa-mono);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #6AABDF;
+  white-space: nowrap;
+}
+.wa-wrap .rc-item-desc {
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: var(--wa-ink-soft);
+  margin: 0 0 12px;
+}
+.wa-wrap .rc-ticks {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2px;
+  margin: 2px 0 0;
+}
+.wa-wrap .rc-ticks span {
+  font-family: var(--wa-mono);
+  font-size: 0.69rem;
+  color: var(--wa-ink-dim);
+}
+.wa-wrap .rc-item-cost {
+  margin: 8px 0 0;
+  text-align: right;
+  font-family: var(--wa-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #6AABDF;
+}
+
+/* ── Regler ── */
+.wa-wrap .rc-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 22px;
+  background: transparent;
+  cursor: pointer;
+}
+.wa-wrap .rc-slider::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(106, 171, 223, 0.3);
+}
+.wa-wrap .rc-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  margin-top: -6px;
+  border: none;
+  border-radius: 50%;
+  background: var(--wa-navy);
+}
+.wa-wrap .rc-slider::-moz-range-track {
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(106, 171, 223, 0.3);
+}
+.wa-wrap .rc-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border: none;
+  border-radius: 50%;
+  background: var(--wa-navy);
+}
+/* Der Regler im dunklen Balken braucht helle Farben. */
+.wa-wrap .rc-slider--light::-webkit-slider-runnable-track { background: rgba(255, 255, 255, 0.22); }
+.wa-wrap .rc-slider--light::-webkit-slider-thumb { background: #ffffff; }
+.wa-wrap .rc-slider--light::-moz-range-track { background: rgba(255, 255, 255, 0.22); }
+.wa-wrap .rc-slider--light::-moz-range-thumb { background: #ffffff; }
+
+/* ── Ergebnisbalken ──
+   Drei Spalten, dazwischen zwei Pfeile: das Raster macht die Rechnung
+   sichtbar — was gebunden ist, wie viel davon uebernommen wird, was frei
+   wird. */
+.wa-wrap .rc-bar {
+  display: grid;
+  grid-template-columns: 1fr;
+  background: var(--wa-navy);
+  border-radius: 16px;
+  overflow: hidden;
+}
+@media (min-width: 761px) {
+  .wa-wrap .rc-bar { grid-template-columns: 1fr 30px 1fr 30px 1fr; }
+}
+.wa-wrap .rc-cell { padding: 26px 28px; }
+.wa-wrap .rc-cell--mid {
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+@media (min-width: 761px) {
+  .wa-wrap .rc-cell--mid {
+    border: none;
+    border-left: 1px solid rgba(255, 255, 255, 0.14);
+    border-right: 1px solid rgba(255, 255, 255, 0.14);
+  }
+}
+.wa-wrap .rc-cell-lbl {
+  font-family: var(--wa-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0 0 4px;
+}
+.wa-wrap .rc-cell--right .rc-cell-lbl { text-align: right; margin-bottom: 10px; }
+.wa-wrap .rc-cell-big {
+  display: block;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 700;
+  font-size: clamp(1.6rem, 3.4vw, 1.75rem);
+  line-height: 1.1;
+  color: #ffffff;
+}
+.wa-wrap .rc-cell--mid .rc-cell-big { margin: 10px 0 4px; }
+.wa-wrap .rc-cell-sub {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 4px 0 0;
+}
+.wa-wrap .rc-cell-sub--dim { line-height: 1.5; }
+.wa-wrap .rc-formula {
+  font-size: 0.82rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 6px 0 0;
+}
+.wa-wrap .rc-cell-extra {
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.72);
+  margin: 10px 0 0;
+}
+.wa-wrap .rc-arrow {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.35);
+}
+@media (min-width: 761px) {
+  .wa-wrap .rc-arrow { display: flex; }
+}
+
+/* ── Was frei wuerde ── */
+.wa-wrap .rc-years { list-style: none; margin: 0; padding: 0; }
+.wa-wrap .rc-years li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0 0 6px;
+}
+.wa-wrap .rc-years li:last-child { margin-bottom: 0; }
+.wa-wrap .rc-years span {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+.wa-wrap .rc-years strong {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+/* ── Quellenangabe und Fussnote ── */
+.wa-wrap .rc-source {
+  font-size: 0.72rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.45);
+  margin: 12px 0 0;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+.wa-wrap .rc-source strong { color: rgba(255, 255, 255, 0.72); font-weight: 600; }
+.wa-wrap .rc-source a {
+  color: rgba(255, 255, 255, 0.62);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.wa-wrap .rc-source a:hover { color: #ffffff; }
+.wa-wrap .rc-foot {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--wa-ink-soft);
+  margin: 10px 0 0;
+}
+
+@media (max-width: 760px) {
+  .wa-wrap .rc-top { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .wa-wrap .rc-rate-head { text-align: left; }
+  .wa-wrap .rc-rate-field { justify-content: flex-start; }
+}
+
+/* ============================================================
+   WERKZEUGE (#werkzeuge) — Fassung aus dem Design-Projekt
+   Uebernommen: Tabs ohne Icons als gleich breite Pillen, Panel zweigeteilt
+   in Text und Beispielkasten, Untertitel unter der Ueberschrift.
+   Angepasst: Schriften und Farben aus dem System der Seite.
+   Die Section steht auf Weiss, der Entwurf ebenfalls — die Farben liegen
+   hier also nahe beieinander.
+============================================================ */
+
+.wa-wrap #werkzeuge .wrap { max-width: 900px; }
+
+/* ── Tab-Leiste ──
+   Gleich breite Pillen statt einer Leiste mit Unterstrich. Der aktive Tab
+   ist gefuellt, die uebrigen sind umrandet. */
+.wa-wrap .wtab-nav {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin: 0 0 14px;
+  background: none;
+  border: none;
+  padding: 0;
+}
+.wa-wrap .wtab-btn {
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 11px 8px;
+  border-radius: 9px;
+  cursor: pointer;
+  text-align: center;
+  background: var(--wa-glass-bg2);
+  color: var(--wa-ink-soft);
+  border: 1px solid var(--wa-glass-bd);
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.wa-wrap .wtab-btn:hover {
+  color: var(--wa-navy);
+  border-color: rgba(106, 171, 223, 0.55);
+}
+.wa-wrap .wtab-btn.is-active {
+  background: var(--wa-navy);
+  color: #ffffff;
+  border-color: var(--wa-navy);
+}
+
+/* ── Panel ── */
+.wa-wrap .wtab-panel-wrap {
+  background: var(--wa-glass-bg2);
+  border: 1px solid var(--wa-glass-bd);
+  border-radius: 12px;
+  padding: 30px 34px;
+  box-shadow: 0 2px 6px var(--wa-glass-sh);
+}
+.wa-wrap .wtab-panel { display: none; }
+.wa-wrap .wtab-panel.is-active { display: block; }
+
+.wa-wrap .wtab-split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+@media (min-width: 761px) {
+  .wa-wrap .wtab-split { grid-template-columns: 1.5fr 1fr; gap: 34px; }
+}
+.wa-wrap .wtab-panel-title {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: var(--wa-navy);
+  margin: 0 0 10px;
+}
+.wa-wrap .wtab-panel-text {
+  font-size: 0.95rem;
+  line-height: 1.68;
+  color: var(--wa-ink-soft);
+  margin: 0;
+}
+.wa-wrap .wtab-panel-text strong {
+  font-weight: 600;
+  color: var(--wa-navy);
+}
+
+/* ── Beispielkasten ──
+   Hebt sich vom Panel ab, ohne mit dem aktiven Tab zu konkurrieren. */
+.wa-wrap .wtab-ex {
+  background: rgba(106, 171, 223, 0.09);
+  border: 1px solid rgba(106, 171, 223, 0.3);
+  border-radius: 10px;
+  padding: 16px 18px;
+  align-self: start;
+}
+.wa-wrap .wtab-ex-lbl {
+  font-family: var(--wa-mono);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #4a86b8;
+  margin: 0 0 10px;
+}
+.wa-wrap .wtab-ex-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.wa-wrap .wtab-ex-list li {
+  font-size: 0.86rem;
+  line-height: 1.4;
+  color: var(--wa-ink);
+}
+
+.wa-wrap .tools-foot {
+  margin: 14px 0 0;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--wa-ink-dim);
+}
+
+/* ── Schmale Schirme ──
+   Fuenf Pillen nebeneinander werden unlesbar schmal, deshalb zweispaltig. */
+@media (max-width: 760px) {
+  .wa-wrap .wtab-nav { grid-template-columns: 1fr 1fr; }
+  .wa-wrap .wtab-panel-wrap { padding: 22px 20px; }
+}
+
+/* In einem Grid haben Spalten eine Mindestbreite aus ihrem Inhalt. Ohne
+   min-width: 0 kann ein langes Wort die Textspalte breiter machen als ihr
+   Anteil und den Beispielkasten zusammendruecken. */
+.wa-wrap .wtab-body { min-width: 0; }
+
+/* ============================================================
+   GEFUNDEN WERDEN (#sichtbarkeit) — Fassung aus dem Design-Projekt
+   Uebernommen: Kennzeichnungen als gefuellte Pillen, Chevron statt SVG,
+   Erklaerkasten mit vollem Rahmen und Einzug unter die Namensspalte,
+   zentrierte Fussnote.
+   Der Entwurf steht auf Weiss, diese Section auf Dunkelblau — die Farben
+   sind deshalb gespiegelt, die Struktur ist unveraendert.
+============================================================ */
+
+.wa-wrap #sichtbarkeit .wrap { max-width: 900px; }
+
+.wa-wrap .vch-list {
+  border: 1px solid var(--wa-glass-bd);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--wa-glass-bg);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+}
+.wa-wrap .vch { border-bottom: 1px solid var(--wa-glass-bd); }
+.wa-wrap .vch:last-child { border-bottom: none; }
+
+/* ── Kopfzeile einer Zeile ──
+   Vier Spalten: Kennzeichnung, Name, Nutzen, Chevron. */
+.wa-wrap .vch-head {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 15em) 1fr 20px;
+  align-items: center;
+  gap: 0 16px;
+  width: 100%;
+  padding: 15px 18px;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.wa-wrap .vch-head:hover { background: rgba(255, 255, 255, 0.045); }
+.wa-wrap .vch-head.is-open { background: rgba(255, 255, 255, 0.05); }
+
+.wa-wrap .vch-tag {
+  justify-self: start;
+  font-family: var(--wa-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  padding: 5px 10px;
+  white-space: nowrap;
+}
+/* Die zwei Basiswege heben sich ab, die fuenf Optionen treten zurueck. */
+.wa-wrap .vch-tag--incl  { color: #cfe6fb; background: rgba(106, 171, 223, 0.22); }
+.wa-wrap .vch-tag--addon { color: #f0d3a8; background: rgba(217, 168, 108, 0.2); }
+.wa-wrap .vch-tag--opt   { color: rgba(255, 255, 255, 0.5); background: rgba(255, 255, 255, 0.07); }
+
+.wa-wrap .vch-name {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.06rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.25;
+}
+.wa-wrap .vch-lead {
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.6);
+}
+.wa-wrap .vch-icon {
+  justify-self: end;
+  font-size: 1rem;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.45);
+  transition: transform 0.18s;
+}
+.wa-wrap .vch-head.is-open .vch-icon { transform: rotate(180deg); }
+
+/* ── Erklaerung ──
+   Eingerueckt bis unter die Namensspalte, damit klar ist, wozu sie gehoert.
+   Ohne JavaScript ist sie offen — hidden greift erst, wenn das Script laeuft. */
+.wa-wrap .vch-body[hidden] { display: none; }
+.wa-wrap .vch-body {
+  margin: 0 18px 18px 146px;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(106, 171, 223, 0.3);
+  border-radius: 10px;
+}
+.wa-wrap .vch-body-text {
+  font-size: 0.91rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0 0 10px;
+}
+.wa-wrap .vch-body-text:last-child { margin-bottom: 0; }
+
+.wa-wrap .vch-plus {
+  list-style: none;
+  margin: 0 0 10px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.wa-wrap .vch-plus li {
+  position: relative;
+  padding-left: 18px;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.78);
+}
+.wa-wrap .vch-plus li::before {
+  content: "+";
+  position: absolute;
+  left: 0;
+  color: #6AABDF;
+  font-weight: 700;
+}
+
+.wa-wrap .vch-note {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.45);
+  margin: 0;
+}
+.wa-wrap .vch-cta {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  padding-bottom: 2px;
+  transition: border-color 0.15s;
+}
+.wa-wrap .vch-cta:hover { border-color: #ffffff; }
+
+.wa-wrap .vch-foot {
+  margin: 14px 0 0;
+  text-align: center;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* ── Schmale Schirme ──
+   Aus dem Entwurf: Kennzeichnung und Name in eine Zeile, der Nutzen darunter
+   ueber die volle Breite, Chevron entfaellt, Erklaerung ohne Einzug. */
+@media (max-width: 860px) {
+  .wa-wrap .vch-head {
+    grid-template-columns: auto 1fr;
+    grid-template-areas: "tag name" "lead lead";
+    row-gap: 6px;
+  }
+  .wa-wrap .vch-tag  { grid-area: tag; }
+  .wa-wrap .vch-name { grid-area: name; }
+  .wa-wrap .vch-lead { grid-area: lead; }
+  .wa-wrap .vch-icon { display: none; }
+  .wa-wrap .vch-body { margin-left: 18px; }
+}
+
+/* ============================================================
+   REFERENZEN (#referenzen) — Fassung aus dem Design-Projekt
+   Uebernommen: Untertitel, feste Logozeile, Branche als Kleinschrift ueber
+   dem Namen, Link am Kartenfuss hinter einer Trennlinie, Hover mit Anheben.
+   Die Section steht auf Weiss wie der Entwurf — die Farben liegen also nah
+   beieinander.
+============================================================ */
+
+.wa-wrap #referenzen .wrap { max-width: 900px; }
+
+.wa-wrap .ref-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+@media (min-width: 861px) {
+  .wa-wrap .ref-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.wa-wrap .ref-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  background: var(--wa-glass-bg2);
+  border: 1px solid var(--wa-glass-bd);
+  border-radius: 12px;
+  padding: 22px 24px 20px;
+  box-shadow: 0 2px 6px var(--wa-glass-sh);
+  transition: border-color 0.18s, box-shadow 0.18s, transform 0.18s;
+}
+.wa-wrap .ref-card:hover {
+  border-color: rgba(106, 171, 223, 0.55);
+  box-shadow: 0 10px 24px -14px rgba(26, 39, 68, 0.35);
+  transform: translateY(-3px);
+}
+
+/* ── Logozeile ──
+   Feste Hoehe, damit die Logos ueber die drei Karten hinweg auf einer Linie
+   stehen. Ihre Seitenverhaeltnisse gehen weit auseinander (3:2, 3:1, rund),
+   deshalb bekommt jedes seine eigene Hoehe innerhalb dieser Zeile. */
+.wa-wrap .ref-logo-row {
+  display: flex;
+  align-items: center;
+  height: 46px;
+  margin: 0 0 16px;
+}
+.wa-wrap .ref-logo {
+  height: 44px;
+  width: auto;
+  max-width: 150px;
+  object-fit: contain;
+  object-position: left center;
+}
+.wa-wrap .ref-logo--wide { height: 32px; max-width: 170px; }
+.wa-wrap .ref-logo--round {
+  height: 44px;
+  width: 44px;
+  max-width: none;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.wa-wrap .ref-branch {
+  font-family: var(--wa-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #4a86b8;
+  margin: 0 0 6px;
+}
+.wa-wrap .ref-name {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.18rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--wa-navy);
+  margin: 0 0 10px;
+}
+.wa-wrap .ref-text {
+  font-size: 0.91rem;
+  line-height: 1.65;
+  color: var(--wa-ink-soft);
+  margin: 0 0 18px;
+}
+/* margin-top: auto drueckt den Link an den Kartenfuss — so liegen die drei
+   Links auf einer Linie, auch wenn die Beschreibungen unterschiedlich lang
+   sind. */
+.wa-wrap .ref-link {
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid var(--wa-glass-bd);
+  font-family: var(--wa-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #4a86b8;
+}
+.wa-wrap .ref-card:hover .ref-link { color: var(--wa-navy); }
+
+/* ============================================================
+   PREISE (#preise) — Fassung aus dem Design-Projekt
+   Uebernommen: Untertitel, hervorgehobene mittlere Karte mit Badge,
+   Trennlinie unter dem Wer-fuer-Text, Schalter mit Chevron, Haekchenliste,
+   Anfragen-Knopf am Kartenfuss, Feedback-Runden als eigener Kasten.
+   Der Entwurf steht auf Weiss, diese Section auf Dunkelblau — die Farben
+   sind gespiegelt: die hervorgehobene Karte ist heller statt dunkler, und
+   ihr Knopf ist gefuellt hell statt gefuellt dunkel.
+============================================================ */
+
+.wa-wrap #preise .wrap { max-width: 900px; }
+
+.wa-wrap .tiers {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  align-items: start;
+}
+@media (min-width: 861px) {
+  .wa-wrap .tiers { grid-template-columns: repeat(3, 1fr); }
+}
+
+.wa-wrap .tier {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--wa-glass-bg2);
+  border: 1px solid var(--wa-glass-bd);
+  border-radius: 14px;
+  padding: 26px 24px 22px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+/* Die empfohlene Karte: heller Grund und Akzentrahmen. Auf dunklem Grund
+   ist Aufhellen die Hervorhebung — im Entwurf war es umgekehrt. */
+.wa-wrap .tier.featured {
+  background: rgba(106, 171, 223, 0.13);
+  border-color: rgba(106, 171, 223, 0.65);
+  padding-top: 30px;
+  box-shadow: 0 14px 34px -22px rgba(106, 171, 223, 0.7);
+}
+.wa-wrap .tier .tag {
+  position: absolute;
+  top: -11px;
+  left: 24px;
+  font-family: var(--wa-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: #0f1c33;
+  background: #6AABDF;
+  border-radius: 999px;
+  padding: 5px 12px;
+}
+
+.wa-wrap .tier-name {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 4px;
+}
+.wa-wrap .promise {
+  font-size: 0.84rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0 0 16px;
+}
+.wa-wrap .tier.featured .promise { color: rgba(255, 255, 255, 0.62); }
+.wa-wrap .price {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.9rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #ffffff;
+  margin: 0 0 14px;
+}
+.wa-wrap .price-from {
+  font-family: var(--wa-mono);
+  font-size: 0.94rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.5);
+  margin-right: 6px;
+}
+.wa-wrap .price-cur {
+  font-family: var(--wa-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.5);
+  margin-left: 6px;
+}
+.wa-wrap .who {
+  font-size: 0.91rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.62);
+  margin: 0 0 16px;
+  padding: 0 0 16px;
+  border-bottom: 1px solid var(--wa-glass-bd);
+}
+
+/* ── Schalter fuer die Leistungen ──
+   Das hidden-Attribut braucht eine eigene Regel, sonst haebelt display:flex
+   es aus, solange das Skript noch nicht gelaufen ist. */
+.wa-wrap .tier-more[hidden] { display: none; }
+.wa-wrap .tier-more {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  padding: 0;
+  font: inherit;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: #6AABDF;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+.wa-wrap .tier-more:hover { color: #9ecaee; }
+.wa-wrap .tier-more-icon {
+  display: inline-block;
+  font-size: 0.94rem;
+  line-height: 1;
+  transition: transform 0.18s;
+}
+.wa-wrap .tier-more[aria-expanded="true"] .tier-more-icon { transform: rotate(180deg); }
+
+.wa-wrap .tier-list {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.wa-wrap .tier-list li {
+  position: relative;
+  padding-left: 20px;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.8);
+}
+.wa-wrap .tier-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #6AABDF;
+  font-weight: 700;
+}
+
+/* margin-top: auto haelt den Knopf am Kartenfuss, auch wenn die Listen
+   unterschiedlich lang sind. */
+.wa-wrap .tier-cta {
+  margin-top: auto;
+  padding-top: 18px;
+}
+.wa-wrap .tier-cta {
+  display: block;
+  margin-top: 18px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 0.91rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: none;
+  border: 1px solid rgba(106, 171, 223, 0.5);
+  border-radius: 10px;
+  padding: 12px 16px;
+  transition: background 0.15s, border-color 0.15s;
+}
+.wa-wrap .tier-cta:hover {
+  background: rgba(106, 171, 223, 0.16);
+  border-color: #6AABDF;
+}
+/* Der Knopf der empfohlenen Karte ist gefuellt — auf dunklem Grund hell. */
+.wa-wrap .tier.featured .tier-cta {
+  color: #0f1c33;
+  background: #eaf2fa;
+  border-color: #eaf2fa;
+}
+.wa-wrap .tier.featured .tier-cta:hover { background: #ffffff; border-color: #ffffff; }
+
+.wa-wrap .tier-note {
+  margin: 16px 0 26px;
+  text-align: center;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* ── Feedback-Runden ── */
+.wa-wrap .loops {
+  border: 1px solid var(--wa-glass-bd);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--wa-glass-bg);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+}
+.wa-wrap .loops-head {
+  margin: 0;
+  padding: 14px 20px;
+  font-family: var(--wa-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: #6AABDF;
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid var(--wa-glass-bd);
+}
+.wa-wrap .loop-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 13px 20px;
+  border-bottom: 1px solid var(--wa-glass-bd);
+}
+.wa-wrap .loop-row:last-child { border-bottom: none; }
+.wa-wrap .lname {
+  margin: 0;
+  font-size: 0.91rem;
+  color: #ffffff;
+}
+.wa-wrap .lname strong { font-weight: 600; }
+.wa-wrap .lname span { color: rgba(255, 255, 255, 0.45); }
+.wa-wrap .loop-dots {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+/* Der erste Punkt ist die Demo und deshalb gefuellt, die Feedback-Runden
+   sind offen — so sieht man die Zahl auf einen Blick. */
+.wa-wrap .ldot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1px solid rgba(106, 171, 223, 0.5);
+  display: inline-block;
+  flex: none;
+}
+.wa-wrap .ldot--demo { background: #6AABDF; border-color: #6AABDF; }
+.wa-wrap .lcount {
+  margin-left: 8px;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.6);
+  white-space: nowrap;
+}
+
+/* Die Beschriftung im Schalter — das Skript schreibt hier "Leistungen
+   anzeigen (5)" bzw. "Leistungen ausblenden" hinein. */
+.wa-wrap .tier-more-lbl { flex: 1; }
+
+/* ============================================================
+   BETRIEB & PFLEGE (#betrieb) — Fassung aus dem Design-Projekt
+   Dieselbe Kartensprache wie die Pakete, aber auf hellem Grund: die Section
+   steht auf Weiss, die Pakete auf Dunkelblau. Die gemeinsamen Klassen
+   (.price, .tier-name, .promise, .tier-list, .tier-more, .tag) bekommen
+   deshalb hier ihre eigenen Farben.
+   Unterschied zum Paket-Aufbau: der Preis steht zuoberst, weil er hier der
+   eigentliche Punkt ist, und es gibt keinen Anfragen-Knopf.
+============================================================ */
+
+.wa-wrap #betrieb .wrap { max-width: 760px; }
+
+.wa-wrap .retainer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  align-items: start;
+}
+@media (min-width: 761px) {
+  .wa-wrap .retainer-grid { grid-template-columns: 1fr 1fr; }
+}
+
+.wa-wrap .rcard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--wa-glass-bg2);
+  border: 1px solid var(--wa-glass-bd);
+  border-radius: 14px;
+  padding: 26px 24px 22px;
+  box-shadow: 0 2px 6px var(--wa-glass-sh);
+}
+.wa-wrap .rcard.rfeatured {
+  background: rgba(106, 171, 223, 0.08);
+  border-color: rgba(106, 171, 223, 0.7);
+  padding-top: 30px;
+  box-shadow: 0 14px 34px -22px rgba(26, 39, 68, 0.45);
+}
+.wa-wrap #betrieb .tag {
+  position: absolute;
+  top: -11px;
+  left: 24px;
+  font-family: var(--wa-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: var(--wa-navy);
+  border-radius: 999px;
+  padding: 5px 12px;
+}
+
+/* ── Farben fuer den hellen Grund ──
+   Die gleichnamigen Regeln der Pakete sind fuer Dunkelblau gemacht und
+   wuerden hier weissen Text auf Weiss ergeben. */
+.wa-wrap #betrieb .price {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.9rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--wa-navy);
+  margin: 0 0 14px;
+}
+.wa-wrap #betrieb .price-cur {
+  font-family: var(--wa-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--wa-ink-dim);
+  margin-left: 6px;
+}
+.wa-wrap #betrieb .tier-name {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: var(--wa-navy);
+  margin: 0 0 4px;
+}
+.wa-wrap #betrieb .promise {
+  font-size: 0.84rem;
+  color: var(--wa-ink-dim);
+  margin: 0 0 16px;
+  padding: 0 0 16px;
+  border-bottom: 1px solid var(--wa-glass-bd);
+}
+.wa-wrap #betrieb .rcard.rfeatured .promise { color: var(--wa-ink-soft); }
+.wa-wrap #betrieb .tier-more { color: #4a86b8; }
+.wa-wrap #betrieb .tier-more:hover { color: var(--wa-navy); }
+.wa-wrap #betrieb .tier-list li { color: var(--wa-ink); }
+.wa-wrap #betrieb .tier-list li::before { color: #4a86b8; }
+.wa-wrap #betrieb .tier-list strong { font-weight: 600; color: var(--wa-navy); }
+/* Der Zusatz hinter "1 Änderung pro Monat" tritt zurueck. */
+.wa-wrap #betrieb .lidesc { color: var(--wa-ink-dim); }
+
+
+/* ============================================================
+   VIDEO-INTRO (#problem) — Fassung aus dem Design-Projekt
+   Alles zentriert, Zeilenlaengen begrenzt, Platzhalter als 16:9-Flaeche mit
+   rundem Abspielknopf. Die Section steht auf leichtem Grau, der Entwurf auf
+   Weiss — der Platzhalter ist deshalb etwas heller als sein Grund, damit er
+   sich abhebt.
+============================================================ */
+
+.wa-wrap #problem .wrap { max-width: 760px; }
+
+.wa-wrap .pq-heading {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.6rem, 3.4vw, 2.125rem);
+  font-weight: normal;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: var(--wa-navy);
+  text-align: center;
+  margin: 0;
+}
+.wa-wrap .pq-text {
+  max-width: 58ch;
+  margin: 14px auto 0;
+  text-align: center;
+  font-size: 1.02rem;
+  line-height: 1.62;
+  color: var(--wa-ink-soft);
+}
+.wa-wrap .pq-text strong { font-weight: 600; color: var(--wa-navy); }
+
+.wa-wrap .vid-kicker {
+  display: flex;
+  justify-content: center;
+  margin: 34px 0 12px;
+}
+
+/* ── Platzhalter ──
+   aspect-ratio haelt exakt die Flaeche des spaeteren Videos frei, damit das
+   Layout beim Einsetzen nicht springt. */
+.wa-wrap .wd-video-frame--placeholder {
+  aspect-ratio: 16 / 9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid var(--wa-glass-bd);
+  border-radius: 14px;
+  box-shadow: 0 2px 6px var(--wa-glass-sh);
+}
+.wa-wrap .wd-play {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: var(--wa-navy);
+  color: #ffffff;
+  font-size: 1.1rem;
+  /* Das Dreieck sitzt optisch links von der Mitte, deshalb leicht schieben. */
+  text-indent: 3px;
+}
+.wa-wrap .wd-video-ph-title {
+  margin: 6px 0 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: var(--wa-navy);
+}
+.wa-wrap .wd-video-ph-note {
+  margin: 0;
+  font-family: var(--wa-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--wa-ink-dim);
+}
+
+/* ── Der fertige Video-Rahmen, sobald der Platzhalter weicht ── */
+.wa-wrap .wd-video-frame {
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--wa-navy);
+}
+.wa-wrap .wd-video-frame video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ── Ueberleitung zur naechsten Section ──
+   Der Abstand nach unten liegt im .wrap, nicht als Aussenabstand am Absatz:
+   dort wuerde er durch Margin-Collapsing aus der Section fallen und als
+   weisser Streifen zwischen den Sections erscheinen. */
+.wa-wrap .pq-bridge {
+  max-width: 56ch;
+  margin: 26px auto 0;
+  text-align: center;
+  font-size: 0.95rem;
+  line-height: 1.68;
+  color: var(--wa-ink-soft);
+}
+.wa-wrap .pq-bridge strong { font-weight: 600; color: var(--wa-navy); }

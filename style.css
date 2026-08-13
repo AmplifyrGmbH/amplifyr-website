@@ -1757,3 +1757,35 @@ footer {
   max-width: 70ch;
 }
 }
+
+/* ── FAQ-Block zuklappbar ──
+   Der ganze Fragenblock lässt sich zuklappen, damit die Seite kürzer wirkt.
+   display:none blendet nur visuell aus — Google und KI-Assistenten lesen den
+   Inhalt weiterhin, weil er im HTML steht und nicht per JS geladen wird.
+   Ohne JS greift .is-collapsed nie, dann bleibt alles offen. */
+.kit-faq-list.is-collapsed { display: none; }
+
+/* display: inline-flex unten wuerde das hidden-Attribut aushebeln */
+.faq-toggle[hidden] { display: none; }
+.faq-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  padding: 9px 18px;
+  font-family: inherit;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--navy);
+  background: rgba(176, 196, 222, 0.16);
+  border: 1px solid rgba(176, 196, 222, 0.4);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.faq-toggle:hover {
+  background: rgba(176, 196, 222, 0.28);
+  border-color: rgba(176, 196, 222, 0.6);
+}
+.faq-toggle-icon { transition: transform 0.2s; }
+.faq-toggle.is-open .faq-toggle-icon { transform: rotate(180deg); }

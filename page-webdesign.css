@@ -15,6 +15,8 @@
    HERO OVERLAY (page-specific)
 ============================================================ */
 .fsh-overlay {
+  /* Bewusst leicht: der Hero bleibt hell, damit der Wechsel Hell/Dunkel
+     ueber die ganze Seite lueckenlos aufgeht (siehe #problem, dunkel). */
   background: rgba(10, 18, 40, 0.38);
 }
 
@@ -109,6 +111,32 @@
   font-size: 0.8rem;
   color: rgba(255,255,255,0.4);
   padding-left: 20px;
+}
+
+/* ── Dasselbe Formular im Final-CTA ──
+   Gleiches Angebot wie im Hero, damit der wärmste Besucher nicht die höhere
+   Hürde bekommt. Der CTA ist ebenfalls navy, die hdf-Styles greifen direkt. */
+.hdf-form--cta {
+  margin-top: 32px;
+}
+.hdf-form--cta .hdf-hint {
+  padding-left: 0;
+  color: rgba(255,255,255,0.55);
+}
+
+.site-cta-alt {
+  display: inline-block;
+  margin-top: 20px;
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.65);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.25);
+  padding-bottom: 2px;
+  transition: color 0.15s, border-color 0.15s;
+}
+.site-cta-alt:hover {
+  color: #fff;
+  border-color: rgba(255,255,255,0.6);
 }
 
 @media (max-width: 520px) {
@@ -715,4 +743,18 @@
   .wdf-live-dot,
   .seo-live-dot,
   .wdf-shop-card { animation: none; opacity: 1; }
+}
+
+/* ── Hero: Abstand nach oben ──
+   style.css setzt .fsh-inner auf symmetrisches padding-block und gleicht die
+   Header-Höhe nur unter 520px aus. Die H1 dieser Seite ist seit der Textänderung
+   dreizeilig und klebte dadurch an der Navigation. Header-Höhe plus Luft
+   ausdrücklich einrechnen — nur für diese Seite, style.css bleibt unberührt. */
+#fsh-wd .fsh-inner {
+  padding-block-start: calc(var(--header-h, 76px) + var(--space-10, 40px));
+}
+@media (min-width: 900px) {
+  #fsh-wd .fsh-inner {
+    padding-block-start: calc(var(--header-h, 76px) + var(--space-16, 64px));
+  }
 }

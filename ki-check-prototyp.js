@@ -4,6 +4,12 @@
 (function () {
   'use strict';
 
+  /* ── Konfiguration ──
+     Seiten können window.KI_CHECK_CONFIG vor dem Laden dieses Scripts setzen,
+     um Endpoint und Texte zu überschreiben. Ohne Config gelten die Defaults
+     unten (= Verhalten der Startseite, unverändert). */
+  var CFG = window.KI_CHECK_CONFIG || {};
+
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ── CTA Entrance Animation ── */
@@ -40,7 +46,7 @@
   }
 
   /* ── Thinking-Text Rotation ── */
-  var THINKING_MSGS = [
+  var THINKING_MSGS = CFG.thinkingMsgs || [
     'Analysiere Engpässe …',
     'Vergleiche mit Best Practices …',
     'Erkenne Muster …',
@@ -168,7 +174,7 @@
     }
   }
 
-  var FC_MINI = {
+  var FC_MINI = CFG.miniAnalyses || {
     offert:   { text: 'Langsame Offerten entstehen häufig nicht durch eine einzelne Person, sondern durch fehlende Vorlagen, manuelle Datenerfassung oder Freigaben.', causes: ['Keine einheitlichen Vorlagen', 'Manuelle Datenerfassung', 'Lange Freigabewege'], question: 'Was bremst bei Ihnen am meisten?', choices: ['Datenerfassung', 'Freigaben', 'Vorlagen', 'Anderes'] },
     email:    { text: 'Zu viele E-Mails sind meist ein Symptom fehlender Prozessstruktur — Informationen landen im Postfach, weil kein System sie weiterleitet.', causes: ['Fehlende automatische Weiterleitung', 'Unklare Zuständigkeiten', 'Keine zentrale Wissensbasis'], question: 'Worum geht es hauptsächlich?', choices: ['Interne Kommunikation', 'Kundenanfragen', 'Aufgabenverteilung', 'Anderes'] },
     manuell:  { text: 'Manuelle Prozesse verursachen nicht nur Zeitverlust, sondern auch Fehler — besonders wenn Daten mehrfach erfasst werden.', causes: ['Mehrfache Dateneingabe', 'Fehlende Automatisierung', 'Papierbasierte Abläufe'], question: 'Welcher Bereich kostet am meisten?', choices: ['Dateneingabe', 'Berichterstattung', 'Kundenanfragen', 'Anderes'] },
@@ -178,14 +184,22 @@
     generic:  { text: 'Zeitverluste entstehen oft dort, wo Prozesse manuell ablaufen oder Systeme nicht miteinander verbunden sind.', causes: ['Manuelle, wiederholbare Abläufe', 'Fehlende Systemverbindungen', 'Unklare Prozessverantwortung'], question: 'In welchem Bereich liegt die grösste Belastung?', choices: ['Administration', 'Kundenkommunikation', 'Interne Abläufe', 'Anderes'] }
   };
 
+  /* Keyword → FC_MINI-Schlüssel. Über CFG.miniRules überschreibbar,
+     als Array von { re: RegExp, key: 'schlüssel' }. */
+  var FC_RULES = CFG.miniRules || [
+    { re: /offert|angebot/,                 key: 'offert'   },
+    { re: /e.?mail|postfach|inbox/,          key: 'email'    },
+    { re: /manuell|von hand/,                key: 'manuell'  },
+    { re: /freigabe|genehmig/,               key: 'freigabe' },
+    { re: /daten|erfassung/,                 key: 'daten'    },
+    { re: /system|software|tool|plattform/,  key: 'system'   }
+  ];
+
   function fcGetContext(val) {
     var l = val.toLowerCase();
-    if (/offert|angebot/.test(l))              return 'offert';
-    if (/e.?mail|postfach|inbox/.test(l))      return 'email';
-    if (/manuell|von hand/.test(l))            return 'manuell';
-    if (/freigabe|genehmig/.test(l))           return 'freigabe';
-    if (/daten|erfassung/.test(l))             return 'daten';
-    if (/system|software|tool|plattform/.test(l)) return 'system';
+    for (var i = 0; i < FC_RULES.length; i++) {
+      if (FC_RULES[i].re.test(l) && FC_MINI[FC_RULES[i].key]) return FC_RULES[i].key;
+    }
     return 'generic';
   }
 
@@ -288,9 +302,10 @@
       pair[1].forEach(function (t) { var li = document.createElement('li'); li.textContent = t; el.appendChild(li); });
     });
 
-    document.getElementById('fc-res-potential').textContent = 'Signifikantes Automatisierungspotenzial';
+    document.getElementById('fc-res-potential').textContent =
+      CFG.potentialTitle || 'Signifikantes Automatisierungspotenzial';
     document.getElementById('fc-res-potential-desc').textContent =
-      'Betriebe in vergleichbaren Situationen konnten durch gezielte KI-Integration erhebliche Kapazitäten freisetzen.';
+      CFG.potentialDesc || 'Betriebe in vergleichbaren Situationen konnten durch gezielte KI-Integration erhebliche Kapazitäten freisetzen.';
 
     minEl.style.display   = 'none';
     shortEl.style.display = 'none';
@@ -361,7 +376,7 @@
         var fc_controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
         var fc_timer = fc_controller ? setTimeout(function () { fc_controller.abort(); }, 25000) : null;
 
-        fetch('ai-check.php', {
+        fetch(CFG.endpoint || 'ai-check.php', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ message: val }),
@@ -530,7 +545,7 @@
 (function () {
   'use strict';
 
-  var DEMOS = [
+  var DEMOS = (window.KI_CHECK_CONFIG || {}).demos || [
     { text: 'Unsere Angebote dauern zu lange …',      status: 'Muster wird erkannt …',        insights: ['Nicht das Schreiben kostet Zeit — das Zusammensuchen davor', 'Jede Offerte wird neu aufgebaut statt aus einer Vorlage gezogen', 'Wer zuerst liefert, gewinnt oft schon vor dem Preisvergleich'] },
     { text: 'Die Rechnungsprüfung ist ein Chaos …',   status: 'Engpass wird lokalisiert …',    insights: ['Belege kommen per Mail, Papier und WhatsApp — kein zentraler Eingang', 'Jede Rechnung wird manuell erfasst statt automatisch erkannt', 'Verzögerter Versand ist der häufigste selbstverschuldete Cashflow-Engpass'] },
     { text: 'Meetings fressen unseren Arbeitstag …',  status: 'Zeitverlust wird berechnet …',  insights: ['Beschlüsse versanden, weil kein System sie nach dem Meeting weiterführt', 'Die eigentlichen Kosten entstehen nicht im Meeting — sondern danach', 'Was fehlt, ist nicht weniger Meetings — sondern ein Aufgabensystem'] }
@@ -666,8 +681,9 @@
   'use strict';
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  var LEFT_ITEMS  = ['Offerten dauern zu lange.', 'Zu viele interne Rückfragen.', 'Informationen müssen gesucht werden.', 'Wir erfassen Daten mehrfach.', 'Excel verbindet unsere Prozesse.', 'Kundenanfragen landen an mehreren Orten.', 'Freigaben dauern zu lange.', 'Manuelle Rapporte kosten Zeit.'];
-  var RIGHT_ITEMS = ['Mehr Zeit fürs Kerngeschäft.', 'Weniger manuelle Arbeit.', 'Klare Verantwortlichkeiten.', 'Automatisierte Abläufe.', 'Schnellere Reaktionszeiten.', 'Weniger Fehler.', 'Mehr Transparenz.', 'Höhere Produktivität.'];
+  var SLOT_CFG    = window.KI_CHECK_CONFIG || {};
+  var LEFT_ITEMS  = SLOT_CFG.leftItems  || ['Offerten dauern zu lange.', 'Zu viele interne Rückfragen.', 'Informationen müssen gesucht werden.', 'Wir erfassen Daten mehrfach.', 'Excel verbindet unsere Prozesse.', 'Kundenanfragen landen an mehreren Orten.', 'Freigaben dauern zu lange.', 'Manuelle Rapporte kosten Zeit.'];
+  var RIGHT_ITEMS = SLOT_CFG.rightItems || ['Mehr Zeit fürs Kerngeschäft.', 'Weniger manuelle Arbeit.', 'Klare Verantwortlichkeiten.', 'Automatisierte Abläufe.', 'Schnellere Reaktionszeiten.', 'Weniger Fehler.', 'Mehr Transparenz.', 'Höhere Produktivität.'];
 
   var leftEl     = document.getElementById('fc-side-left');
   var rightEl    = document.getElementById('fc-side-right');
