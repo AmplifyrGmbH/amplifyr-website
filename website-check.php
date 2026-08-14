@@ -195,8 +195,10 @@ NENNE ES — als Halbsatz am Ende der "beobachtung". Ein Gastrobetrieb mit
 Abholstau soll von Ruay Thai hören, ein Immobilienverwalter von CORA. Das ist
 der einzige Beleg, den du hast, dass ihr das schon gebaut habt, und er wirkt
 stärker als jede Beschreibung.
-Beispiel: "… Für ein Restaurant haben wir das gebaut: Die Gäste bestellen vor,
-statt am Mittag anzustehen."
+NENNE DABEI DEN NAMEN. Er steht live auf derselben Seite und ist damit
+nachprüfbar — "wir haben das schon gebaut" ohne Namen ist kein Beleg.
+Beispiel: "… Für Ruay Thai Noodle haben wir genau das gebaut: Die Gäste
+bestellen vor, statt am Mittag anzustehen."
 
 Passt keines wirklich, lass es weg — bei einem Coiffeur wirkt das Restaurant
 beliebig. Erfinde nie ein weiteres Projekt und keine Zahlen dazu; was hier
