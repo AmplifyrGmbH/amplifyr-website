@@ -12,6 +12,11 @@
   --wa-ink-soft:  #4a5a7a;
   --wa-ink-dim:   #8290ab;
 
+  /* Akzent als Schrift. Auf hellem Grund braucht es einen dunkleren Ton als
+     die Flaechenfarbe #6AABDF, sonst ist er unlesbar (2,5:1). #0067A8 stammt
+     aus den Entwuerfen und erreicht 6,0:1. */
+  --wa-accent-text: #0067A8;
+
   /* glass surface — Option A (same accent border as dark) */
   /* Umgedreht: der Grund ist weiss, also traegt die Karte den Farbton.
      Weisses Glas auf weissem Grund waere unsichtbar. */
@@ -620,6 +625,8 @@
    ============================================= */
 .wa-wrap .sec--dark {
   background: #101e38;
+  /* Auf Dunkelblau ist der helle Akzent der lesbare (6,7:1). */
+  --wa-accent-text: #6AABDF;
   --wa-navy:      #ffffff;
   --wa-navy-mid:  rgba(255,255,255,0.85);
   --wa-ink:       rgba(255,255,255,0.92);
@@ -1317,7 +1324,7 @@
 /* ── #sec-faq steht jetzt auf DUNKELBLAU ──
    kit-faq ist eine geteilte Komponente. Deshalb hier nur ueber #sec-faq
    gescoped, damit index.html und die anderen Seiten unveraendert bleiben. */
-#sec-faq { background: #101e38; }
+#sec-faq { background: #101e38; --wa-accent-text: #6AABDF; }
 #sec-faq .section-label { color: rgba(106, 171, 223, 0.85); }
 #sec-faq .kit-faq-item { border-bottom-color: rgba(255, 255, 255, 0.12); }
 #sec-faq .kit-faq-item:first-child { border-top-color: rgba(255, 255, 255, 0.12); }
@@ -1711,7 +1718,7 @@
   font-size: 0.95rem;
   font-weight: 700;
   text-align: center;
-  color: #6AABDF;
+  color: var(--wa-accent-text);
   background: rgba(106, 171, 223, 0.08);
   border: 1px solid var(--wa-glass-bd);
   border-radius: 8px;
@@ -1771,7 +1778,7 @@
   font-family: var(--wa-mono);
   font-size: 0.92rem;
   font-weight: 700;
-  color: #6AABDF;
+  color: var(--wa-accent-text);
   white-space: nowrap;
 }
 .wa-wrap .rc-item-desc {
@@ -1797,7 +1804,7 @@
   font-family: var(--wa-mono);
   font-size: 0.75rem;
   font-weight: 700;
-  color: #6AABDF;
+  color: var(--wa-accent-text);
 }
 
 /* ── Regler ── */
@@ -2065,7 +2072,7 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #4a86b8;
+  color: var(--wa-accent-text);
   margin: 0 0 10px;
 }
 .wa-wrap .wtab-ex-list {
@@ -2331,7 +2338,7 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #4a86b8;
+  color: var(--wa-accent-text);
   margin: 0 0 6px;
 }
 .wa-wrap .ref-name {
@@ -2358,7 +2365,7 @@
   font-family: var(--wa-mono);
   font-size: 0.82rem;
   font-weight: 700;
-  color: #4a86b8;
+  color: var(--wa-accent-text);
 }
 .wa-wrap .ref-card:hover .ref-link { color: var(--wa-navy); }
 
@@ -2704,10 +2711,10 @@
   border-bottom: 1px solid var(--wa-glass-bd);
 }
 .wa-wrap #betrieb .rcard.rfeatured .promise { color: var(--wa-ink-soft); }
-.wa-wrap #betrieb .tier-more { color: #4a86b8; }
+.wa-wrap #betrieb .tier-more { color: var(--wa-accent-text); }
 .wa-wrap #betrieb .tier-more:hover { color: var(--wa-navy); }
 .wa-wrap #betrieb .tier-list li { color: var(--wa-ink); }
-.wa-wrap #betrieb .tier-list li::before { color: #4a86b8; }
+.wa-wrap #betrieb .tier-list li::before { color: var(--wa-accent-text); }
 .wa-wrap #betrieb .tier-list strong { font-weight: 600; color: var(--wa-navy); }
 /* Der Zusatz hinter "1 Änderung pro Monat" tritt zurueck. */
 .wa-wrap #betrieb .lidesc { color: var(--wa-ink-dim); }
