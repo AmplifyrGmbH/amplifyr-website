@@ -11,18 +11,13 @@
 //  unverändert für beide funktioniert:
 //    {done, valid, beobachtung, ursachen[3], uebersehen, rueckfrage, score}
 //
-//  ACHTUNG beim Vergleich mit ai-check.php — zwei Unterschiede:
-//
-//  1. Diese Datei holt die Antwort per Structured Outputs (Schema erzwingt die
-//     Form), ai-check.php erbittet ihr JSON noch im Prompt.
-//  2. Modellseitig heissen die Felder hier nach ihrem Inhalt:
-//        uebernimmt  → was die Website uebernehmen koennte
-//        konkret_1..3 → was sie konkret tun wuerde
-//        aenderung    → was sich dadurch verschiebt
-//     Frueher hiessen sie beobachtung / ursachen / uebersehen — Namen aus der
-//     Betriebsdiagnose, wo eine Ursachenliste Sinn ergibt. Hier stand unter
-//     "ursachen" aber eine Liste von MASSNAHMEN; der Feldname arbeitete gegen
-//     den Prompt. Die SSE-Ausgabe traegt weiter die alten Namen, siehe unten.
+//  Unterschied zu ai-check.php: Diese Datei holt die Antwort per Structured
+//  Outputs (das Schema erzwingt die Form), ai-check.php erbittet ihr JSON noch
+//  im Prompt. Die Feldnamen sind in beiden dieselben und muessen es bleiben —
+//  siehe die Warnung am Schema weiter unten. Sie sind inhaltlich unschoen
+//  ("ursachen" enthaelt Massnahmen), aber der Parser im geteilten Frontend
+//  haengt woertlich daran. Ein Umbenennungsversuch am 14.08.2026 hat den Chat
+//  live lahmgelegt.
 // =============================================================================
 
 // ── Configuration ─────────────────────────────────────────────────────────────
@@ -172,9 +167,9 @@ Demo: kostenlos innerhalb von 48 Stunden, ohne Kreditkarte, ohne Verpflichtung.
 
 UMGANG MIT FAKTENFRAGEN:
 Fragt der Nutzer nach Preis, Dauer, Ablauf, Technik, Datenschutz, Schnittstellen oder
-Aufwand, dann beantworte das zuerst und direkt — im Feld "uebernimmt", in maximal
+Aufwand, dann beantworte das zuerst und direkt — im Feld "beobachtung", in maximal
 2 Sätzen, mit der konkreten Zahl oder Tatsache. Die drei "ursachen" tragen dann die
-Details (etwa die drei Pakete oder die Ablaufschritte), "aenderung" den Zusammenhang,
+Details (etwa die drei Pakete oder die Ablaufschritte), "uebersehen" den Zusammenhang,
 den er noch nicht bedacht hat, und "rueckfrage" führt ins Gespräch.
 Weiche einer Preisfrage nie aus und verweise nicht auf ein Formular — die Zahlen
 stehen ohnehin auf der Seite. Steht die Antwort nicht in der Wissensbasis, sage das
@@ -194,13 +189,13 @@ Sonst: valid = true, message leer lassen (""), und die folgenden Felder füllen.
   Nutze faq_answer, wenn es eine reine Faktenfrage war (Preis, Dauer, Technik,
   Ablauf, Datenschutz) und keine Situation aus dem Betrieb geschildert wurde.
 
-- uebernimmt: Was die Website in dieser Situation übernehmen könnte. Symptom aufgreifen, dann die Fähigkeit benennen. Max 2 Sätze. Keine Wiederholung der Eingabe.
+- beobachtung: Was die Website in dieser Situation übernehmen könnte. Symptom aufgreifen, dann die Fähigkeit benennen. Max 2 Sätze. Keine Wiederholung der Eingabe.
 
-- konkret_1, konkret_2, konkret_3: Drei konkrete Punkte, was die Website konkret tun würde. Keine Kategorien, keine Feature-Namen — Situationen. Je 1 Satz.
+- ursachen (genau 3 Einträge): Drei konkrete Punkte, was die Website konkret tun würde. Keine Kategorien, keine Feature-Namen — Situationen. Je 1 Satz.
   Schlecht: "Terminbuchungssystem", "SEO-Optimierung"
   Gut: "Der Kunde sieht Ihre freien Zeiten und bucht selbst — Sie erfahren es per Benachrichtigung"
 
-- aenderung: Drei Sätze, jeder mit klarer Aufgabe:
+- uebersehen: Drei Sätze, jeder mit klarer Aufgabe:
   1. Der überraschende Zusammenhang, den die meisten nicht sehen.
   2. Warum das Problem ohne diese Lösung wiederkehrt.
   3. Was sich dadurch verschiebt — als markierter Richtwert, nie als Versprechen.
@@ -248,14 +243,28 @@ $activityScoresRaw = [
 //
 // Bewusst FLACH statt anyOf-Union aus {valid:false} und {valid:true}: Die
 // Schemaunterstützung erlaubt anyOf, aber ein Wurzelschema ohne "type" ist
-// ungetestet, und ohne API-Key kann hier nichts live geprüft werden. Ein
-// flaches Objekt mit allen Feldern required nutzt nur unstrittige Bausteine.
-// Bei valid=false bleiben die Textfelder leer; gelesen werden sie dann nicht.
+// ungetestet. Ein flaches Objekt mit allen Feldern required nutzt nur
+// unstrittige Bausteine. Bei valid=false bleiben die Textfelder leer.
 //
-// ursache_1..3 statt eines Arrays: minItems/maxItems gehören zu den nicht
-// unterstützten Array-Einschränkungen, drei benannte Pflichtfelder sind
-// dagegen garantiert vorhanden. Die PHP setzt sie unten wieder zur Liste
-// zusammen, das Frontend sieht unverändert "ursachen".
+// ‼ FELDNAMEN UND REIHENFOLGE SIND FEST — NICHT UMBENENNEN, NICHT UMSORTIEREN.
+// ki-check-prototyp.js rendert die Antwort NICHT aus dem fertigen done-Ereignis,
+// sondern parst den durchlaufenden Zeichenstrom mit einem Zustandsautomaten
+// (Zeile ~403 ff.). Der sucht darin wörtlich und in dieser Reihenfolge:
+//
+//     "beobachtung":"…"   →   ["…","…","…"]   →   "uebersehen":"…"   →   "rueckfrage":"…"
+//
+// Genau das ging am 14.08.2026 schief: die Felder hiessen kurzzeitig
+// uebernimmt / konkret_1..3 / aenderung, weil die alten Namen inhaltlich
+// unpassend sind ("ursachen" enthält Massnahmen). Der Marker traf nie, das
+// "[" der Liste kam nie — der Chat blieb auf "Analyse wird vorbereitet"
+// stehen, obwohl der Endpoint einwandfrei antwortete. Nur das done-Ereignis
+// zu prüfen findet diesen Fehler NICHT, weil das Frontend es nicht benutzt.
+// Wer die Namen ändern will, muss den Parser im geteilten JS mit ändern —
+// und der bedient auch index.html mit ai-check.php.
+//
+// ursachen ist deshalb ein echtes Array. minItems/maxItems gehören zu den
+// nicht unterstützten Array-Einschränkungen, die Dreizahl kann das Schema
+// also nicht erzwingen — dafür steht die Prüfung weiter unten.
 //
 // Erste Anfrage mit einem neuen Schema kostet einmalig Kompilierzeit,
 // danach 24 Stunden gecacht.
@@ -263,18 +272,17 @@ $responseSchema = [
     'type'                 => 'object',
     'additionalProperties' => false,
     'required'             => [
-        'valid', 'message', 'activity_type', 'uebernimmt',
-        'konkret_1', 'konkret_2', 'konkret_3', 'aenderung', 'rueckfrage',
+        'valid', 'message', 'activity_type',
+        'beobachtung', 'ursachen', 'uebersehen', 'rueckfrage',
     ],
     'properties' => [
         'valid'         => ['type' => 'boolean', 'description' => 'false, wenn die Eingabe keine erkennbare Situation enthält.'],
         'message'       => ['type' => 'string',  'description' => 'Nur bei valid=false: Bitte um eine konkretere Beschreibung, 1 Satz. Sonst leer.'],
         'activity_type' => ['type' => 'string',  'enum' => array_keys($activityScoresRaw), 'description' => 'Der am besten passende Bereich.'],
-        'uebernimmt'   => ['type' => 'string',  'description' => 'Was die Website hier übernehmen könnte. Max 2 Sätze.'],
-        'konkret_1'     => ['type' => 'string',  'description' => 'Erster konkreter Punkt, 1 Satz.'],
-        'konkret_2'     => ['type' => 'string',  'description' => 'Zweiter konkreter Punkt, 1 Satz.'],
-        'konkret_3'     => ['type' => 'string',  'description' => 'Dritter konkreter Punkt, 1 Satz.'],
-        'aenderung'    => ['type' => 'string',  'description' => 'Drei Sätze: Zusammenhang, Wiederkehr, markierter Richtwert.'],
+        // Ab hier die vier Felder in der Reihenfolge, die der Parser erwartet.
+        'beobachtung'   => ['type' => 'string',  'description' => 'Was die Website hier übernehmen könnte. Max 2 Sätze.'],
+        'ursachen'      => ['type' => 'array',   'items' => ['type' => 'string'], 'description' => 'Genau drei konkrete Punkte, was die Website tun würde. Je 1 Satz.'],
+        'uebersehen'    => ['type' => 'string',  'description' => 'Drei Sätze: Zusammenhang, Wiederkehr, markierter Richtwert.'],
         'rueckfrage'    => ['type' => 'string',  'description' => 'Eine kurze präzise Frage, 1 Satz.'],
     ],
 ];
@@ -366,14 +374,14 @@ if (isset($parsed['valid']) && $parsed['valid'] === false) {
     exit;
 }
 
-// ── Die drei Punkte zur Liste zusammensetzen ─────────────────────────────────
-// Alle drei Felder sind im Schema required, ihr Vorhandensein ist also
-// garantiert. Leere Zeichenketten kann das Schema nicht ausschliessen
-// (minLength gehört zu den nicht unterstützten Einschränkungen) — die werden
-// hier still verworfen, statt eine leere Aufzählungszeile zu rendern.
+// ── Die Punkte säubern ───────────────────────────────────────────────────────
+// Das Feld ist im Schema required, ein Array also garantiert da. Die DREIZAHL
+// kann das Schema nicht erzwingen (minItems ist nicht unterstützt) und leere
+// Zeichenketten auch nicht (minLength ebenso) — deshalb hier filtern und
+// weiter unten auf Vollständigkeit prüfen.
 $ursachen = [];
-foreach (['konkret_1', 'konkret_2', 'konkret_3'] as $key) {
-    $u = trim(strip_tags((string) ($parsed[$key] ?? '')));
+foreach ((array) ($parsed['ursachen'] ?? []) as $u) {
+    $u = trim(strip_tags((string) $u));
     if ($u !== '') $ursachen[] = $u;
 }
 
@@ -386,20 +394,17 @@ $rawScore     = $activityScoresRaw[$activityType] ?? 74;
 $score        = (int) round($rawScore * 0.85); // pauschaler Abschlag für den Einführungsaufwand
 
 // ── Done event ───────────────────────────────────────────────────────────────
-// HIER WERDEN DIE NAMEN ZURUECKUEBERSETZT — nicht angleichen!
-// Modellseitig heissen die Felder seit der Umbenennung nach ihrem Inhalt
-// (uebernimmt / konkret_1..3 / aenderung). Nach draussen gehen weiter die
-// alten Namen (beobachtung / ursachen / uebersehen), weil ki-check-prototyp.js
-// eine geteilte Komponente ist: dieselbe Datei bedient index.html mit
-// ai-check.php. Wer die SSE-Schluessel hier umbenennt, muss das JS UND
-// ai-check.php mitziehen — sonst bleibt die Startseite leer.
-$uebernimmt = trim(strip_tags((string) ($parsed['uebernimmt'] ?? '')));
+// Die Schluessel hier heissen wie die Felder des Modells — keine Uebersetzung
+// mehr, weil beide Seiten wieder dieselben Namen tragen (siehe Warnung am
+// Schema). ki-check-prototyp.js ist geteilt und bedient auch index.html mit
+// ai-check.php; wer hier umbenennt, muss dort den Parser mitaendern.
+$beobachtung = trim(strip_tags((string) ($parsed['beobachtung'] ?? '')));
 
-// Die frühere Vollständigkeitsprüfung ("incomplete") ist entfallen — das Schema
-// garantiert alle Felder. Ein Rest bleibt: required verlangt das Feld, nicht
-// seinen Inhalt. Käme alles Tragende leer zurück, zeigte die Karte sonst eine
-// leere Einschätzung. Nur dieser Entartungsfall gilt noch als Fehler.
-if ($uebernimmt === '' && !$ursachen) {
+// required garantiert das Feld, nicht seinen Inhalt, und die Dreizahl der
+// Punkte kann das Schema gar nicht erzwingen. Deshalb bleibt diese Pruefung:
+// eine Karte mit leerer Einschaetzung oder ohne Punkte waere schlimmer als
+// eine ehrliche Fehlermeldung.
+if ($beobachtung === '' || count($ursachen) < 3) {
     sendSSE(['error' => 'incomplete']);
     exit;
 }
@@ -407,9 +412,9 @@ if ($uebernimmt === '' && !$ursachen) {
 sendSSE([
     'done'        => true,
     'valid'       => true,
-    'beobachtung' => $uebernimmt,                                                  // Modell: uebernimmt
-    'ursachen'    => $ursachen,                                                    // Modell: konkret_1..3
-    'uebersehen'  => trim(strip_tags((string) ($parsed['aenderung'] ?? ''))),      // Modell: aenderung
+    'beobachtung' => $beobachtung,
+    'ursachen'    => $ursachen,
+    'uebersehen'  => trim(strip_tags((string) ($parsed['uebersehen'] ?? ''))),
     'rueckfrage'  => trim(strip_tags((string) ($parsed['rueckfrage'] ?? ''))),
     'score'       => $score,
 ]);
