@@ -2806,3 +2806,82 @@
   height: 100%;
   object-fit: cover;
 }
+
+/* ============================================================
+   HANDY (bis 760px)
+   Drei Dinge waren zu korrigieren:
+
+   1. Abstaende. Die Sections hatten oben und unten je 80 Pixel — auf allen
+      Breiten gleich. Bei neun Sections sind das 1440 Pixel reiner Leerraum,
+      also fast zwei Bildschirmhoehen, die man auf dem Handy nur scrollt.
+
+   2. Beruehrungsflaechen. Der Schalter "Leistungen anzeigen" war 16 Pixel
+      hoch, die Werkzeug-Tabs 39 — beide unter den 44 Pixeln, die eine
+      Fingerkuppe zuverlaessig trifft.
+
+   3. Innenabstaende der Karten. Auf 375 Pixel Breite bleiben von einer Karte
+      mit 24 Pixeln Polsterung links und rechts und 24 Pixeln am .wrap nur
+      279 Pixel Inhalt uebrig.
+============================================================ */
+
+@media (max-width: 760px) {
+
+  /* ── Vertikale Abstaende ── */
+  .wa-wrap .sec { padding: 52px 0; }
+  .wa-wrap .wrap { padding: 0 18px; }
+  .wa-wrap .sec-head { margin-bottom: 28px; }
+  .wa-wrap #ki-check { padding: 52px 18px; }
+
+  /* Die Section nach dem Hero hat unten mehr Luft, weil dort der
+     Bruecken-Text steht. Auf dem Handy darf auch die schmaler werden. */
+  .wa-wrap section.sec--soft > .wrap { padding-bottom: 56px; }
+
+  /* ── Beruehrungsflaechen auf mindestens 44px ── */
+  .wa-wrap .tier-more,
+  .wa-wrap #betrieb .tier-more {
+    min-height: 44px;
+    margin-top: 4px;
+  }
+  .wa-wrap .wtab-btn { min-height: 44px; }
+  .wa-wrap .tier-cta { padding: 14px 16px; }
+  .wa-wrap .vch-head { padding: 14px 16px; }
+
+  /* ── Karten enger polstern ──
+     Sonst bleibt vom Inhalt zu wenig Breite uebrig. */
+  .wa-wrap .tier,
+  .wa-wrap .tier.featured,
+  .wa-wrap .rcard,
+  .wa-wrap .rcard.rfeatured { padding: 22px 18px 18px; }
+  .wa-wrap .rc-item { padding: 16px 18px; }
+  .wa-wrap .ref-card { padding: 20px 18px 18px; }
+  .wa-wrap .rc-cell { padding: 22px 20px; }
+  .wa-wrap .av-panel { padding: 14px 16px; }
+  .wa-wrap .vch-body { padding: 14px 16px; }
+
+  /* ── Schriftgroessen, die auf schmalen Schirmen zu gross wirken ── */
+  .wa-wrap .price { font-size: 1.7rem; }
+  .wa-wrap .rc-cell-big { font-size: 1.5rem; }
+  .wa-wrap .av-new { font-size: 0.98rem; }
+
+  /* ── Der Preis-Badge sitzt oberhalb der Kartenkante ──
+     Gestapelt braucht die Karte darunter etwas mehr Luft, sonst beruehrt
+     das Schild die Karte darueber. */
+  .wa-wrap .tiers,
+  .wa-wrap .retainer-grid { gap: 22px; }
+}
+
+/* ── Sehr schmale Geraete (bis 380px) ──
+   Zwei nebeneinanderliegende Pillen werden hier zu schmal fuer die
+   Beschriftung. */
+@media (max-width: 380px) {
+  .wa-wrap .wtab-nav { grid-template-columns: 1fr; }
+  .wa-wrap .wrap { padding: 0 14px; }
+  .wa-wrap .av-btn { padding: 12px 12px 14px; }
+}
+
+/* Auf iPhones zoomt Safari in die Seite hinein, sobald ein Eingabefeld mit
+   weniger als 16px Schrift angetippt wird — und zoomt nicht von selbst
+   zurueck. Das Feld ist breit genug fuer die groessere Schrift. */
+@media (max-width: 760px) {
+  .wa-wrap .rc-rate-input { font-size: 16px; }
+}

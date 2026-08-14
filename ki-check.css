@@ -1538,3 +1538,10 @@
 #ki-check .final-check-slogan span { color: #ffffff; }
 #ki-check .fc-side-label { color: rgba(255, 255, 255, 0.3); }
 #ki-check .fc-side-slot  { color: rgba(255, 255, 255, 0.5); }
+
+/* Gleicher Grund wie im Rechner: unter 16px Schrift zoomt Safari auf dem
+   iPhone beim Antippen in die Seite hinein. */
+@media (max-width: 760px) {
+  .fc-lead-input,
+  .kic-email-input { font-size: 16px; }
+}
