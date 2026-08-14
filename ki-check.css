@@ -1456,11 +1456,11 @@
    dunklem Grund besser als jede Umkehrung. */
 #ki-check .fc-input-shell {
   background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(106, 171, 223, 0.28);
+  border-color: rgba(176, 196, 222, 0.28);
 }
 #ki-check .fc-input-shell:focus-within {
   background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(106, 171, 223, 0.55);
+  border-color: rgba(176, 196, 222, 0.55);
   color: rgba(255, 255, 255, 0.8);
 }
 #ki-check .final-check-ta { color: #ffffff; }
@@ -1479,7 +1479,7 @@
 /* ── Fortschritt und Denkzeilen ── */
 #ki-check .fc-progress-track { background: rgba(255, 255, 255, 0.12); }
 #ki-check .fc-progress-label { color: rgba(255, 255, 255, 0.5); }
-#ki-check .fc-progress-wrap.fc-progress-active .fc-progress-fill { background: #6AABDF; }
+#ki-check .fc-progress-wrap.fc-progress-active .fc-progress-fill { background: #B0C4DE; }
 #ki-check .fc-progress-wrap.fc-progress-active .fc-progress-label { color: rgba(255, 255, 255, 0.72); }
 #ki-check .fc-thinking-text { color: rgba(255, 255, 255, 0.55); }
 #ki-check .fc-thinking-dot  { background: rgba(255, 255, 255, 0.5); }
@@ -1490,7 +1490,7 @@
 /* ── Ergebniskarte ── */
 #ki-check .fc-result-card {
   background: rgba(255, 255, 255, 0.055);
-  border-color: rgba(106, 171, 223, 0.28);
+  border-color: rgba(176, 196, 222, 0.28);
 }
 #ki-check .fc-result-label { color: rgba(255, 255, 255, 0.5); }
 #ki-check .fc-result-body  { color: rgba(255, 255, 255, 0.85); }
@@ -1511,13 +1511,13 @@
 #ki-check .fc-lead-question { color: #ffffff; }
 #ki-check .fc-lead-input {
   background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(106, 171, 223, 0.28);
+  border-color: rgba(176, 196, 222, 0.28);
   color: #ffffff;
 }
 #ki-check .fc-lead-input::placeholder { color: rgba(255, 255, 255, 0.4); }
 #ki-check .fc-lead-input:focus {
   background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(106, 171, 223, 0.55);
+  border-color: rgba(176, 196, 222, 0.55);
 }
 #ki-check .fc-lead-hint { color: rgba(255, 255, 255, 0.4); }
 #ki-check .fc-lead-success-text { color: rgba(255, 255, 255, 0.7); }
@@ -1528,7 +1528,7 @@
 
 /* Der Knopf war navy auf hell — auf dunklem Grund waere er unsichtbar. */
 #ki-check .final-check-btn {
-  background: #6AABDF;
+  background: #B0C4DE;
   color: #0f1c33;
 }
 #ki-check .final-check-btn:hover { background: #85bce8; }
