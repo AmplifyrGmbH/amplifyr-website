@@ -6,12 +6,26 @@
 
 
 /* ============================================================
-   HERO — Heading-Clipping Fix (Safari)
-   "Transformation" ist zu lang für kleine Viewports
+   HERO — Fixes für kleine Viewports
 ============================================================ */
+/* H1: "Transformation" ist zu lang für kleine Viewports (Safari-Clip) */
 @media (max-width: 520px) {
   #kit-h1 {
     font-size: clamp(2.2rem, 10vw, 2.8rem);
+  }
+}
+
+/* CTA-Button: "Kostenloses Erstgespräch anfragen" überläuft
+   bei white-space:nowrap auf < 420px → vollbreite Variante */
+@media (max-width: 420px) {
+  #kit-hero .fsh-actions {
+    width: 100%;
+  }
+  #kit-hero .fsh-actions .btn {
+    width: 100%;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.35;
   }
 }
 
@@ -318,6 +332,14 @@
   .kit-zahlen-inner {
     grid-template-columns: 1fr;
     gap: var(--space-8);
+  }
+}
+
+/* Kacheln auf sehr kleinen Phones einspaltig — 2-col wird
+   unter ~480px zu eng (< 150px pro Kachel nach Padding) */
+@media (max-width: 480px) {
+  .kit-zahlen-grid {
+    grid-template-columns: 1fr;
   }
 }
 

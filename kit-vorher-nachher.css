@@ -344,11 +344,9 @@
 .kit-vn-mcard--after .kit-vn-mhub span { color: rgba(176,196,222,0.8); }
 
 /* ── Breakpoints ────────────────────────────────────────── */
+/* Diagramm-SVGs sind 1180px breit und passen erst ab 1280px
+   sicher in den Container. Unterhalb → Mobile-Cards zeigen. */
 @media (max-width: 1279px) {
-  .kit-vn-diagrams { transform: scale(0.86); transform-origin: top center; margin-bottom: calc(-14% + 8px); }
-}
-
-@media (max-width: 1023px) {
   .kit-vn-diagrams { display: none; }
   .kit-vn-mobile { display: block; }
 }
