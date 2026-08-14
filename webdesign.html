@@ -268,7 +268,7 @@
           </button>
         </div>
         <div class="mobile-nav-group__sub">
-          <a href="/webdesign#werkzeuge">Werkzeuge</a>
+          <a href="/webdesign#alltag">Was sich ändert</a>
           <a href="/webdesign#preise">Pakete &amp; Preise</a>
           <a href="/webdesign#sec-faq">FAQ</a>
         </div>
@@ -315,7 +315,7 @@
             <p class="hdf-hint">Keine Kreditkarte. Kein Risiko.</p>
           </form>
           <nav class="fsh-subnav" aria-label="Seitennavigation">
-            <a class="fsh-subnav-btn" href="#werkzeuge">Werkzeuge</a>
+            <a class="fsh-subnav-btn" href="#alltag">Was sich ändert</a>
             <a class="fsh-subnav-btn" href="#preise">Pakete &amp; Preise</a>
             <a class="fsh-subnav-btn" href="#sec-faq">FAQ</a>
           </nav>
@@ -404,6 +404,10 @@
             <div class="av-panel" id="av-p0" hidden>
               <p class="av-panel-lbl">So macht es die Website</p>
               <p class="av-panel-text">Was Sie machen, wie Sie arbeiten, wie lange es dauert — und bei Standardleistungen auch der Richtpreis. Wer danach anruft, weiss schon Bescheid: das Gespräch beginnt beim eigentlichen Anliegen.</p>
+              <div class="av-tags">
+                <span class="av-tag">KI-Assistent: antwortet rund um die Uhr</span>
+                <span class="av-tag">Kalkulatoren: Richtpreis sofort</span>
+              </div>
             </div>
           </div>
           <div class="av-item">
@@ -418,6 +422,10 @@
             <div class="av-panel" id="av-p1" hidden>
               <p class="av-panel-lbl">So macht es die Website</p>
               <p class="av-panel-text">Die Website beantwortet die üblichen Fragen auch nachts und nimmt das Anliegen strukturiert auf — Beschrieb, Fotos, Adresse. Am Morgen liegt alles vollständig beim Team.</p>
+              <div class="av-tags">
+                <span class="av-tag">KI-Assistent: nimmt das Anliegen auf</span>
+                <span class="av-tag">Anbindung: liegt morgens als Kontakt vor</span>
+              </div>
             </div>
           </div>
 
@@ -438,6 +446,10 @@
             <div class="av-panel" id="av-p2" hidden>
               <p class="av-panel-lbl">So macht es die Website</p>
               <p class="av-panel-text">Der Kunde sieht Ihre freien Zeiten und wählt einen Termin aus. Er steht im Kalender, bevor Sie im Büro sind.</p>
+              <div class="av-tags">
+                <span class="av-tag">Buchung: Kunde wählt selbst</span>
+                <span class="av-tag">Anbindung: Termin im Outlook</span>
+              </div>
             </div>
           </div>
 
@@ -458,6 +470,10 @@
             <div class="av-panel" id="av-p3" hidden>
               <p class="av-panel-lbl">So macht es die Website</p>
               <p class="av-panel-text">Wer eine Stelle sucht, schaut abends — und findet einen Betrieb, der zeigt, wie bei ihm gearbeitet wird. Die Bewerbung kommt mit allen Angaben.</p>
+              <div class="av-tags">
+                <span class="av-tag">Karriere: Bewerbung mit allen Angaben</span>
+                <span class="av-tag">KI-Assistent: sortiert nach Ihren Kriterien</span>
+              </div>
             </div>
           </div>
         </div>
@@ -468,14 +484,24 @@
            │ VORBILD: handwerker-agent/demos/picassino.html               │
            │          Section #kostenrechner                              │
            │                                                              │
-           │ ÜBERNOMMEN: vier Tätigkeits-Karten im 2×2-Raster, je mit     │
-           │ Slider, Stundenwert und Jahreskosten. Darunter ein dunkler   │
-           │ Ergebnisbalken in drei Spalten mit Pfeilen: Kosten heute →   │
-           │ Anteil → Ersparnis über 1/5/10 Jahre. Rechenformel offen.    │
+           │ ÜBERNOMMEN: Tätigkeitszeilen mit Slider, Stundenwert und     │
+           │ Jahreskosten. Darunter ein dunkler Ergebnisbalken in drei    │
+           │ Spalten mit Pfeilen: Kosten heute → Anteil → Ersparnis über  │
+           │ 1/5/10 Jahre. Rechenformel offen.                            │
            │                                                              │
            │ ENTFERNT: die Umschaltung "ausgelastet / Kapazität frei".    │
            │ Sie war eine eigene Idee, hat aber niemandem geholfen und    │
            │ das Layout zerrissen. Ein Pfad, ein Bild.                    │
+           │                                                              │
+           │ ZWEI POSTEN STATT VIER: "Preis- & Leistungsauskünfte" und   │
+           │ "Auftragsstatus & Rückfragen" hatten je einen eigenen        │
+           │ Regler und damit ein Viertel der Sectionhöhe. Sie stecken    │
+           │ jetzt als Nebenpunkt in der Beschreibung der beiden          │
+           │ verbliebenen Posten — Rückfragen bei "Termine & Rückrufe",   │
+           │ Preisfragen bei "Anfragen aufnehmen". Weil die zwei Regler   │
+           │ nun mehr abdecken, sind ihre Startwerte um die weggefallenen │
+           │ Stunden erhöht (3→5 und 2→4): die Summe bleibt bei 9 Std.    │
+           │ und 33'120 CHF, das Argument also gleich stark.              │
            │                                                              │
            │ NICHT übernommen von Picassino:                              │
            │  · 52 Wochen — zählt Ferien als Arbeitszeit. Hier 46.        │
@@ -502,53 +528,50 @@
             </div>
           </div>
 
+          <!-- Eine Karte, zwei Zeilen statt vier Karten: derselbe Glas-Look,
+               aber ohne vierfache Polsterung und ohne Tick-Leiste. Der
+               aktuelle Wert steht ohnehin live neben dem Titel.
+               Die beiden gestrichenen Posten laufen als Nebenpunkt in der
+               jeweiligen Beschreibung mit — Startwerte entsprechend erhöht. -->
           <div class="rc-items">
-            <div class="rc-item">
-              <p class="rc-item-head">
-                <span class="rc-item-title">Termine &amp; Rückrufe</span>
-                <span class="rc-item-val" id="rc-v-termine">3 Std./Wo.</span>
+            <div class="rc-row">
+              <div class="rc-row-main">
+                <p class="rc-item-head">
+                  <span class="rc-item-title">Termine &amp; Rückrufe</span>
+                  <span class="rc-item-val" id="rc-v-termine">5 Std./Wo.</span>
+                </p>
+                <p class="rc-item-desc">Terminvereinbarung, Rückrufe am Abend, Verschiebungen abstimmen —
+                  dazu laufend „Wann kommen Sie?“ und „Ist es fertig?“.</p>
+              </div>
+              <div class="rc-slider-wrap">
+                <input type="range" class="rc-slider" id="rc-termine" min="0" max="15" step="1" value="5"
+                       aria-label="Stunden pro Woche für Termine, Rückrufe und Auftragsstatus">
+                <output class="rc-slider-bubble" id="rc-b-termine" aria-hidden="true">5 Std./Wo.</output>
+              </div>
+              <p class="rc-item-cost">
+                <span class="rc-cost-num" id="rc-c-termine">18'400</span>
+                <span class="rc-cost-unit">CHF/Jahr</span>
               </p>
-              <p class="rc-item-desc">Terminvereinbarung am Telefon, Rückrufe am Abend, Verschiebungen abstimmen.</p>
-              <input type="range" class="rc-slider" id="rc-termine" min="0" max="15" step="1" value="3"
-                     aria-label="Stunden pro Woche für Termine und Rückrufe">
-              <div class="rc-ticks" aria-hidden="true"><span>0</span><span>5</span><span>10</span><span>15</span></div>
-              <p class="rc-item-cost" id="rc-c-termine">= 11'040 CHF/Jahr</p>
             </div>
 
-            <div class="rc-item">
-              <p class="rc-item-head">
-                <span class="rc-item-title">Preis- &amp; Leistungsauskünfte</span>
-                <span class="rc-item-val" id="rc-v-auskunft">2 Std./Wo.</span>
+            <div class="rc-row">
+              <div class="rc-row-main">
+                <p class="rc-item-head">
+                  <span class="rc-item-title">Anfragen aufnehmen</span>
+                  <span class="rc-item-val" id="rc-v-anfragen">4 Std./Wo.</span>
+                </p>
+                <p class="rc-item-desc">Adresse und Fotos nachfordern, Angaben zusammensuchen —
+                  dazu immer dieselben Fragen zu Preis, Region und Dauer.</p>
+              </div>
+              <div class="rc-slider-wrap">
+                <input type="range" class="rc-slider" id="rc-anfragen" min="0" max="15" step="1" value="4"
+                       aria-label="Stunden pro Woche für Anfragen und Auskünfte">
+                <output class="rc-slider-bubble" id="rc-b-anfragen" aria-hidden="true">4 Std./Wo.</output>
+              </div>
+              <p class="rc-item-cost">
+                <span class="rc-cost-num" id="rc-c-anfragen">14'720</span>
+                <span class="rc-cost-unit">CHF/Jahr</span>
               </p>
-              <p class="rc-item-desc">Immer dieselben Fragen: was kostet es, kommen Sie in meine Region, wie lange dauert es.</p>
-              <input type="range" class="rc-slider" id="rc-auskunft" min="0" max="15" step="1" value="2"
-                     aria-label="Stunden pro Woche für Preis- und Leistungsauskünfte">
-              <div class="rc-ticks" aria-hidden="true"><span>0</span><span>5</span><span>10</span><span>15</span></div>
-              <p class="rc-item-cost" id="rc-c-auskunft">= 7'360 CHF/Jahr</p>
-            </div>
-
-            <div class="rc-item">
-              <p class="rc-item-head">
-                <span class="rc-item-title">Anfragen aufnehmen</span>
-                <span class="rc-item-val" id="rc-v-anfragen">2 Std./Wo.</span>
-              </p>
-              <p class="rc-item-desc">Unvollständige Anfragen, Adresse und Fotos nachfordern, Angaben zusammensuchen.</p>
-              <input type="range" class="rc-slider" id="rc-anfragen" min="0" max="15" step="1" value="2"
-                     aria-label="Stunden pro Woche für das Aufnehmen von Anfragen">
-              <div class="rc-ticks" aria-hidden="true"><span>0</span><span>5</span><span>10</span><span>15</span></div>
-              <p class="rc-item-cost" id="rc-c-anfragen">= 7'360 CHF/Jahr</p>
-            </div>
-
-            <div class="rc-item">
-              <p class="rc-item-head">
-                <span class="rc-item-title">Auftragsstatus &amp; Rückfragen</span>
-                <span class="rc-item-val" id="rc-v-nachfassen">2 Std./Wo.</span>
-              </p>
-              <p class="rc-item-desc">„Wann kommen Sie?“, „Ist es fertig?“, „Wo bleibt die Offerte?“ — jedes Mal ein Anruf.</p>
-              <input type="range" class="rc-slider" id="rc-nachfassen" min="0" max="15" step="1" value="2"
-                     aria-label="Stunden pro Woche für Auftragsstatus und Rückfragen">
-              <div class="rc-ticks" aria-hidden="true"><span>0</span><span>5</span><span>10</span><span>15</span></div>
-              <p class="rc-item-cost" id="rc-c-nachfassen">= 7'360 CHF/Jahr</p>
             </div>
           </div>
 
@@ -561,7 +584,7 @@
               <strong class="rc-cell-big" id="rc-total">33'120 CHF</strong>
               <p class="rc-cell-sub">pro Jahr</p>
               <p class="rc-formula" id="rc-formula">9 Std./Wo. × 80 CHF × 46 Wo.</p>
-              <p class="rc-cell-extra" id="rc-extra">414 Stunden · rund 3,6 Abende pro Woche · 21 % einer Vollzeitstelle</p>
+              <p class="rc-cell-extra" id="rc-extra">414 Stunden · 21 % einer Vollzeitstelle</p>
             </div>
 
             <span class="rc-arrow" aria-hidden="true">→</span>
@@ -573,10 +596,20 @@
                      aria-label="Anteil, den die Website übernimmt">
               <p class="rc-cell-sub rc-cell-sub--dim">Ihre Einschätzung — wir behaupten keine Quote.</p>
               <!-- Anhaltspunkt aus einer Primaerquelle, nicht Teil der Rechnung.
-                   Gartner, Basis: ueber 8'000 untersuchte Kundenwege. -->
-              <p class="rc-source">Zur Orientierung: <strong>73 %</strong> der Kunden nutzen Selbstbedienung, wenn sie angeboten wird —
-                <a href="https://www.gartner.com/smarterwithgartner/rethink-customer-service-strategy-drive-self-service" target="_blank" rel="noopener">Gartner</a>,
-                über 8'000 untersuchte Kundenwege.</p>
+                   Gartner-Pressemitteilung vom 19.08.2024, Umfrage unter 5'728
+                   Kunden (Dezember 2023).
+                   ACHTUNG beim Aendern: Die frueher hier verlinkte Seite
+                   "Rethink Your Customer Service Strategy" nennt 70 %, nicht
+                   73 % — Zahl und Link stammten aus zwei verschiedenen
+                   Erhebungen. Auch die Formulierung war zu weit: gemessen ist
+                   "irgendwann im Serviceweg", nicht "wenn es angeboten wird".
+                   Dieselbe Mitteilung sagt ausserdem, dass nur 14 % der
+                   Anliegen per Selbstbedienung vollstaendig geloest werden —
+                   das gilt fuer Selbstbedienung von der Stange und ist kein
+                   Widerspruch zu unserem Angebot, aber wer die Quelle
+                   nachschlaegt, liest es mit. -->
+              <p class="rc-source">Zur Orientierung: <strong>73 %</strong> der Kunden nutzen irgendwann in ihrem Serviceweg Selbstbedienung —
+                <a href="https://www.gartner.com/en/newsroom/press-releases/2024-08-19-gartner-survey-finds-only-14-percent-of-customer-service-issues-are-fully-resolved-in-self-service" target="_blank" rel="noopener">Gartner</a>.</p>
             </div>
 
             <span class="rc-arrow" aria-hidden="true">→</span>
@@ -700,16 +733,27 @@
                     <p class="fc-result-label">Ihre Eingabe</p>
                     <p class="fc-result-body" id="fc-res-input"></p>
                   </div>
+                  <!-- BESCHRIFTUNGEN AUF DIE FRAGE DIESES CHATS AUSGERICHTET
+                       Vorher standen hier die Überschriften der Betriebsdiagnose
+                       von der Startseite: "Erste Einschätzung", "Wo es stockt",
+                       "Was das wirklich kostet". Zwei davon sagten das Gegenteil
+                       ihres Inhalts — unter "Wo es stockt" steht eine Liste von
+                       Dingen, die die Website TUN würde, und "Was das wirklich
+                       kostet" versprach eine Zahl, die nie kommt. Der Chat fragt
+                       "Was könnte Ihre Website für Sie übernehmen?", also
+                       antworten die Beschriftungen jetzt genau darauf.
+                       Die Element-IDs bleiben, weil ki-check-prototyp.js sie mit
+                       index.html teilt. -->
                   <div class="fc-result-row" style="padding-top:0;border-top:none">
-                    <p class="fc-result-label">Erste Einschätzung</p>
+                    <p class="fc-result-label">Das könnte sie übernehmen</p>
                     <p class="fc-result-body" id="fc-res-assessment"></p>
                   </div>
                   <div class="fc-result-row">
-                    <p class="fc-result-label">Wo es stockt</p>
+                    <p class="fc-result-label">Konkret heisst das</p>
                     <ul class="fc-result-checks" id="fc-res-bottlenecks"></ul>
                   </div>
                   <div class="fc-result-row">
-                    <p class="fc-result-label">Was das wirklich kostet</p>
+                    <p class="fc-result-label">Was sich dadurch ändert</p>
                     <p class="fc-result-highlight" id="fc-res-potential"></p>
                     <p class="fc-result-body" id="fc-res-potential-desc"></p>
                   </div>
@@ -724,28 +768,23 @@
             <div id="fc-score" aria-hidden="true">
               <div class="fc-score-inner">
                 <div class="fc-result-card fc-combined-card">
-                  <div class="fc-result-row fc-score-row" style="padding-top:0;border-top:none;padding-bottom:14px;">
-                    <div class="fc-score-left">
-                      <p class="fc-score-label">Transformationspotenzial <span class="fc-info-btn" aria-label="Methodik" tabindex="0">i<span class="fc-tooltip">Basierend auf öffentlichen Studien zu Automatisierungspotenzialen, ergänzt durch KMU-Faktoren wie Budget, Datenqualität, Systemlandschaft und Umsetzbarkeit.</span></span></p>
-                      <p class="fc-score-hint">Studienbasierter Orientierungswert</p>
-                    </div>
-                    <div class="fc-score-right">
-                      <p class="fc-score-auto-label">Automatisierbar</p>
-                      <div class="fc-score-gauge">
-                        <svg class="fc-score-ring" viewBox="0 0 80 80" fill="none">
-                          <circle class="fc-score-ring-bg" cx="40" cy="40" r="32" stroke-width="6"/>
-                          <circle class="fc-score-ring-fill" id="fc-score-ring-fill" cx="40" cy="40" r="32" stroke-width="6"
-                            stroke-dasharray="201" stroke-dashoffset="201"
-                            stroke-linecap="round"
-                            transform="rotate(-90 40 40)"/>
-                        </svg>
-                        <div class="fc-score-number">
-                          <span id="fc-score-value">0</span><span class="fc-score-pct">%</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div id="fc-lead" aria-hidden="true" style="border-top:1px solid rgba(176,196,222,0.08); padding-top:18px;">
+                  <!-- RING ENTFERNT (Prozentanzeige "Transformationspotenzial /
+                       Automatisierbar"). Er stammt aus der Betriebsdiagnose der
+                       Startseite und mass hier nichts: der Wert war eine Konstante
+                       je Kategorie aus der Tabelle in website-check.php, mal 0,85.
+                       Bei einer reinen Preisfrage stand dort "63 % automatisierbar".
+                       Die inhaltliche Einschaetzung darueber traegt die Section
+                       ohnehin allein.
+                       Der Container #fc-score BLEIBT: das Lead-Formular unten
+                       steckt darin, und ki-check-prototyp.js macht ueber
+                       fcShowScore() genau diesen Container sichtbar. Wer ihn
+                       entfernt, nimmt dem Chat sein Kontaktfeld.
+                       fcShowScore() sucht #fc-score-value und #fc-score-ring-fill
+                       beide mit if-Guard — dass sie fehlen, ist folgenlos. -->
+                  <!-- Kein border-top mehr: die Linie trennte den Lead-Block vom
+                       Ring darueber. Ohne Ring ist er das erste Element der Karte
+                       und die Linie haette am oberen Rand geklebt. -->
+                  <div id="fc-lead" aria-hidden="true">
                     <div class="fc-lead-inner">
                       <div class="fc-result-row">
                         <p class="fc-result-label">Nächster Schritt</p>
@@ -774,122 +813,6 @@
 
 
 
-      <!-- WERKZEUGE TABS
-           Trägt jetzt die Überschrift, die vorher in #basics stand. Grund: Die
-           drei Basis-Karten (Ladezeit, Eigentum, Datenschutz) sind Hygiene-
-           Faktoren — man erwartet sie, sie überzeugen nicht. Sie sind inzwischen
-           ganz gestrichen, weil jeder der Punkte als FAQ-Frage auf derselben
-           Seite steht. Die Überschrift gehört inhaltlich zu den Werkzeugen. -->
-      <section class="sec" id="werkzeuge">
-        <div class="wrap">
-          <div class="sec-head">
-            <span class="kicker">was jede website von uns kann</span>
-            <h2>Unser Standard. Ihre Werkzeuge.</h2>
-            <p>Auf Ihr Unternehmen angepasst — wählen Sie ein Werkzeug.</p>
-          </div>
-
-          <nav class="wtab-nav" aria-label="Werkzeug-Kategorien">
-            <button class="wtab-btn is-active" data-wtab="0" type="button">Rechner</button>
-            <button class="wtab-btn" data-wtab="1" type="button">Buchung</button>
-            <button class="wtab-btn" data-wtab="2" type="button">KI-Assistent</button>
-            <button class="wtab-btn" data-wtab="3" type="button">Automation</button>
-            <button class="wtab-btn" data-wtab="4" type="button">Karriere</button>
-          </nav>
-
-          <div class="wtab-panel-wrap">
-            <div class="wtab-panel is-active" id="wtab-0">
-              <div class="wtab-split">
-                <div class="wtab-body">
-                  <p class="wtab-panel-title">Rechner &amp; Kalkulatoren</p>
-                  <p class="wtab-panel-text">Ob Preiskalkulator, Konfigurationsassistent oder Kostenrechner — Besucher erhalten ihr Ergebnis sofort auf der Website. Kein Formular, kein Anruf, keine Wartezeit. Das senkt die Hemmschwelle und liefert Ihnen qualifizierte Anfragen statt vager Kontaktaufnahmen.</p>
-                </div>
-                <div class="wtab-ex">
-                  <p class="wtab-ex-lbl">Zum Beispiel</p>
-                  <ul class="wtab-ex-list">
-                    <li>Umzugskostenrechner</li>
-                    <li>Solaranlage-Kalkulator</li>
-                    <li>Druckkosten-Konfigurator</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div class="wtab-panel" id="wtab-1">
-              <div class="wtab-split">
-                <div class="wtab-body">
-                  <p class="wtab-panel-title">Buchung &amp; Termine</p>
-                  <p class="wtab-panel-text">Kunden buchen direkt auf Ihrer Website — ohne Telefonanruf, ohne Hin-und-Her per E-Mail. Der Termin landet automatisch in Ihrem Kalender, Erinnerungen werden verschickt, Stornierungen verwalten sich selbst. Auch nachts und am Wochenende.</p>
-                </div>
-                <div class="wtab-ex">
-                  <p class="wtab-ex-lbl">Zum Beispiel</p>
-                  <ul class="wtab-ex-list">
-                    <li>Coiffeur-Termin online buchen</li>
-                    <li>Beratungsgespräch reservieren</li>
-                    <li>Servicetermin in der Werkstatt</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div class="wtab-panel" id="wtab-2">
-              <div class="wtab-split">
-                <div class="wtab-body">
-                  <p class="wtab-panel-title">KI-Assistent auf Ihrer Website</p>
-                  <p class="wtab-panel-text">Nicht nur ein Chat, der Fragen beantwortet: Der Assistent nimmt Anliegen auf, stellt die Rückfragen, die Sie sonst am Telefon stellen, liest hochgeladene Fotos und schätzt sie ein, und leitet an die richtige Person weiter. Er antwortet in der Sprache, in der geschrieben wird — auch in einer, die Sie nicht sprechen.</p>
-                </div>
-                <div class="wtab-ex">
-                  <p class="wtab-ex-lbl">Zum Beispiel</p>
-                  <ul class="wtab-ex-list">
-                    <li>Anliegen aufnehmen und die richtigen Rückfragen stellen</li>
-                    <li>Hochgeladene Fotos lesen und einschätzen</li>
-                    <li>Offerten-Entwurf vorbereiten, Sie geben frei</li>
-                    <li>Bewerbungen vorsortieren nach Ihren Kriterien</li>
-                    <li>Antwortet in jeder Sprache, in der gefragt wird</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div class="wtab-panel" id="wtab-3">
-              <div class="wtab-split">
-                <div class="wtab-body">
-                  <p class="wtab-panel-title">Automatisierung &amp; Support</p>
-                  <p class="wtab-panel-text">Wiederkehrende Abläufe wie Auftragsbestätigungen, Erinnerungsmails, Rechnungsversand oder interne Benachrichtigungen laufen vollständig automatisch. Und die Anfrage bleibt nicht im Postfach liegen: Sie wird zum Kontakt in Ihrer Software, der gebuchte Termin erscheint in Ihrem Kalender — zum Beispiel <strong>bexio</strong> und <strong>Outlook</strong>. Kein Abtippen, keine zweite Liste.</p>
-                </div>
-                <div class="wtab-ex">
-                  <p class="wtab-ex-lbl">Zum Beispiel</p>
-                  <ul class="wtab-ex-list">
-                    <li>Anfrage wird zum Kontakt in bexio — auf Wunsch samt Offerten-Entwurf</li>
-                    <li>Termin landet im Outlook-Kalender, mit Einladung an den Kunden</li>
-                    <li>Andere Systeme genauso, sofern sie eine Schnittstelle haben</li>
-                    <li>Automatische Auftragsbestätigung per Mail</li>
-                    <li>Internes Alert bei neuer Anfrage</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div class="wtab-panel" id="wtab-4">
-              <div class="wtab-split">
-                <div class="wtab-body">
-                  <p class="wtab-panel-title">Karriereseite &amp; Bewerbungen</p>
-                  <p class="wtab-panel-text">Für viele Betriebe ist Personal das dringendere Problem als Kundenakquise. Eine Karriereseite zeigt, wie bei Ihnen gearbeitet wird, und nimmt Bewerbungen strukturiert auf: Angaben, Lebenslauf und Zeugnisse in einem Schritt, statt einer Rückrufbitte auf dem Anrufbeantworter. Offene Stellen werden für Google und KI-Assistenten separat auffindbar gemacht.</p>
-                </div>
-                <div class="wtab-ex">
-                  <p class="wtab-ex-lbl">Zum Beispiel</p>
-                  <ul class="wtab-ex-list">
-                    <li>Offene Stellen mit eigener Unterseite</li>
-                    <li>Bewerbungsformular mit Dateiupload</li>
-                    <li>Lehrstellen-Seite für Schulabgänger</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <p class="tools-foot">Nicht dabei? Fragen Sie — was technisch machbar ist, bauen wir.</p>
-        </div>
-      </section>
 
       <!-- GEFUNDEN WERDEN — organisch + bezahlt zusammen
            Zusammengelegt aus der ehemaligen #basics-Karte "Gefunden bei Google —
@@ -904,7 +827,7 @@
            Aufklappen: der Besucher sieht alle Wege auf einen Blick und
            oeffnet nur, was ihn betrifft. Kein Inhalt entfaellt.
            Der Anker #google-ads wird aus der Hauptnavigation angesprungen. -->
-      <section class="sec sec--dark" id="sichtbarkeit">
+      <section class="sec" id="sichtbarkeit">
         <div class="wrap">
           <span id="google-ads" class="anchor-alias" aria-hidden="true"></span>
 
@@ -1018,7 +941,7 @@
       <!-- REFERENZEN — echte, live geschaltete Projekte
            Die Beschreibungen stammen aus den Seiten selbst (Stand 13.08.2026),
            nicht aus Annahmen. Bei Änderungen an den Projekten hier nachziehen. -->
-      <section class="sec" id="referenzen">
+      <section class="sec sec--dark" id="referenzen">
         <div class="wrap">
           <div class="sec-head">
             <span class="kicker">gebaut und live</span>
@@ -1064,7 +987,7 @@
       </section>
 
       <!-- PRICING -->
-      <section class="sec sec--dark" id="preise">
+      <section class="sec" id="preise">
         <div class="wrap">
           <div class="sec-head">
             <span class="kicker">erstellung · fixpreise</span>
@@ -1175,7 +1098,7 @@
       </section>
 
       <!-- RETAINER -->
-      <section class="sec" id="betrieb">
+      <section class="sec sec--dark" id="betrieb">
         <div class="wrap">
           <div class="sec-head">
             <span class="kicker">laufender betrieb · monatlich</span>
@@ -1493,7 +1416,12 @@
       'Bereite Einschätzung vor …'
     ],
 
-    potentialTitle: 'Das kann Ihre Website übernehmen',
+    // Diese zwei füllen nur den Demo-Pfad (die drei Beispiel-Chips) — bei einer
+    // echten Anfrage bleibt die Hervorhebung leer und der Text kommt vom Modell.
+    // Sie stehen unter "Was sich dadurch ändert" und müssen dazu passen; vorher
+    // stand hier "Das kann Ihre Website übernehmen", was die erste Beschriftung
+    // der Karte wortwörtlich wiederholte.
+    potentialTitle: 'Die Arbeit verschiebt sich von Ihnen auf die Seite',
     potentialDesc:  'In vergleichbaren Fällen liess sich ein grosser Teil dieser Arbeit direkt auf die Website verlagern.',
 
     demos: [
@@ -1575,23 +1503,6 @@
   };
   </script>
   <script src="/ki-check-prototyp.js"></script>
-  <script>
-  /* Werkzeug-Tabs */
-  (function() {
-    var btns = document.querySelectorAll('.wtab-btn');
-    var panels = document.querySelectorAll('.wtab-panel');
-    btns.forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        var idx = this.dataset.wtab;
-        btns.forEach(function(b) { b.classList.remove('is-active'); });
-        panels.forEach(function(p) { p.classList.remove('is-active'); });
-        this.classList.add('is-active');
-        document.getElementById('wtab-' + idx).classList.add('is-active');
-      });
-    });
-  })();
-  </script>
-
   <script>
   /* ── Kanalliste in #sichtbarkeit ──
      Immer nur eine Zeile offen, wie im Entwurf. Das display wird direkt am
@@ -1744,23 +1655,25 @@
 
   <script>
   /* ── Rechner (#rechner) ──
-     Vier Tätigkeiten, ein Stundensatz, ein Anteil. Struktur wie in der
+     Zwei Tätigkeiten, ein Stundensatz, ein Anteil. Struktur wie in der
      Picassino-Demo, aber ohne fixe Automatisierungsquote: den Anteil setzt
      der Besucher selbst, wir behaupten keine Zahl.
+     Früher gab es vier Regler; 'auskunft' und 'nachfassen' sind in die
+     beiden verbliebenen eingerechnet (siehe Kommentar bei der Section).
      Alle Annahmen stehen in CALC. */
   (function () {
     var CALC = {
-      workWeeks:   46,        // 52 minus Ferien und Feiertage
-      hoursPerEve: 2.5,       // 1 Abend ≈ 2,5 Stunden
-      fteHours:    42 * 46    // Vollzeit CH ≈ 42 h/Woche → 1932 h/Jahr
+      workWeeks: 46,        // 52 minus Ferien und Feiertage
+      fteHours:  42 * 46    // Vollzeit CH ≈ 42 h/Woche → 1932 h/Jahr
     };
 
-    var ITEMS = ['termine', 'auskunft', 'anfragen', 'nachfassen'];
+    var ITEMS = ['termine', 'anfragen'];
     var el = {}, out = {};
     ITEMS.forEach(function (k) {
       el[k]      = document.getElementById('rc-' + k);
       out['v'+k] = document.getElementById('rc-v-' + k);
       out['c'+k] = document.getElementById('rc-c-' + k);
+      out['b'+k] = document.getElementById('rc-b-' + k);
     });
     el.rate  = document.getElementById('rc-rate');
     el.share = document.getElementById('rc-share-in');
@@ -1784,7 +1697,16 @@
         var h = parseFloat(el[k].value);
         hours += h;
         out['v'+k].textContent = num(h) + ' Std./Wo.';
-        out['c'+k].textContent = '= ' + chf(h * CALC.workWeeks * rate) + ' CHF/Jahr';
+        out['c'+k].textContent = chf(h * CALC.workWeeks * rate);
+        /* Wertblase am Reglergriff: beim Ziehen liegt der Blick rechts,
+           die Zahl neben dem Titel ist dann ausserhalb des Blickfelds.
+           --p ist die Reglerstellung 0..1, das CSS setzt daraus die
+           Position der Blase. */
+        if (out['b'+k]) {
+          var min = parseFloat(el[k].min), max = parseFloat(el[k].max);
+          out['b'+k].textContent = num(h) + ' Std./Wo.';
+          el[k].parentNode.style.setProperty('--p', max > min ? (h - min) / (max - min) : 0);
+        }
       });
 
       var hoursYear = hours * CALC.workWeeks;
@@ -1797,7 +1719,6 @@
       out.share.textContent   = Math.round(share * 100) + ' %';
 
       var extra = [chf(hoursYear) + ' Stunden'];
-      if (hours > 0) extra.push('rund ' + num(hours / CALC.hoursPerEve) + ' Abende pro Woche');
       if (pct >= 3)  extra.push(pct + ' % einer Vollzeitstelle');
       out.extra.textContent = extra.join(' · ');
 
@@ -1807,7 +1728,9 @@
 
     }
 
-    /* Reglerstellung in die URL, damit ein geteilter Link sie wiederherstellt */
+    /* Reglerstellung in die URL, damit ein geteilter Link sie wiederherstellt.
+       Links aus der Vierregler-Fassung haben zwei Werte zu viel und werden
+       von der Längenprüfung verworfen — dann gelten die Startwerte. */
     var KEYS = ITEMS.concat(['rate', 'share']);
     function syncUrl() {
       var v = KEYS.map(function (k) { return el[k].value; }).join('-');

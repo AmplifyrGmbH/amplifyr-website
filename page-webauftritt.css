@@ -28,6 +28,20 @@
   --wa-glass-sh2: rgba(26,39,68,0.14);
 
   --wa-mono: "SFMono-Regular", ui-monospace, "Menlo", monospace;
+
+  /* ── Ziffern-Schrift ──
+     --wa-mono nennt nur macOS-Schriften: SFMono-Regular, ui-monospace und Menlo
+     existieren auf Windows nicht, die Kette fällt bis zum generischen monospace
+     durch, und Chrome loest das dort als CONSOLAS auf. Consolas setzt die Null
+     mit Schraegstrich — in einem Rechner, dessen Zahlen das ganze Argument sind,
+     liest sich "36'800" damit wie ein Tippfehler.
+     font-feature-settings: "zero" 0 hilft NICHT: der Schraegstrich ist bei
+     Consolas die Standardform, keine abschaltbare Variante (geprueft).
+     Georgia waere die Alternative, hat aber Mediaevalziffern in wechselnder
+     Hoehe und Breite — beim Ziehen am Regler wuerde die Zahl zappeln.
+     Deshalb DM Sans, die Textschrift der Seite, mit tabular-nums fuer feste
+     Ziffernbreite. Buchstaben-Labels (Kicker, Einheiten, Tags) bleiben Mono. */
+  --wa-num: "DM Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
 }
 
 /* ---- Hero → erste Section Übergang ---- */
@@ -422,10 +436,10 @@
   font-family: Georgia, "Times New Roman", serif;
   font-weight: normal;
   font-size: clamp(1.7rem, 4vw, 2.5rem);
-  /* Die Section steht auf Dunkelblau — die Ueberschrift muss hell sein.
-     Diese Regel hat Spezifitaet 2,0,0 und schlaegt jedes spaetere
-     #sec-faq h2, deshalb steht die Farbe hier und nicht unten. */
-  color: #ffffff;
+  /* Die Section steht auf Weiss, die Ueberschrift also dunkel. Die Regel hat
+     Spezifitaet 2,0,0 und schlaegt jedes spaetere #sec-faq h2 — die Farbe
+     muss deshalb hier stehen und nicht weiter unten. */
+  color: var(--wa-navy, #1A2744);
   margin-top: 14px;
 }
 #sec-faq .kit-faq-item {
@@ -607,11 +621,6 @@
   content: '\00a0';
 }
 
-/* ── Werkzeug-Tabs ── */
-@keyframes wtabFade {
-  from { opacity: 0; transform: translateY(6px); }
-  to   { opacity: 1; transform: none; }
-}
 @media(max-width:639px) {
 }
 
@@ -821,9 +830,6 @@
 }
 
 /* Process steps */
-.wa-wrap .sec--dark .tools-foot {
-  color: rgba(255,255,255,0.38);
-}
 
 /* =============================================
    Bento Grid — Basics section (light)
@@ -1316,66 +1322,13 @@
    ki-check.css bleiben unangetastet, damit andere Seiten nichts abbekommen.
 ============================================================ */
 
-/* ── #werkzeuge steht jetzt auf WEISS ──
-   Die Tab-Komponente war fuer dunklen Grund gebaut: weisse Rahmen, schwarze
-   Fuellungen, weisse Schrift. Hier gespiegelt. */
-
-
-/* ── #sec-faq steht jetzt auf DUNKELBLAU ──
-   kit-faq ist eine geteilte Komponente. Deshalb hier nur ueber #sec-faq
-   gescoped, damit index.html und die anderen Seiten unveraendert bleiben. */
-#sec-faq { background: #101e38; --wa-accent-text: #B0C4DE; }
-#sec-faq .section-label { color: rgba(176, 196, 222, 0.85); }
-#sec-faq .kit-faq-item { border-bottom-color: rgba(255, 255, 255, 0.12); }
-#sec-faq .kit-faq-item:first-child { border-top-color: rgba(255, 255, 255, 0.12); }
-#sec-faq .kit-faq-btn { color: rgba(255, 255, 255, 0.9); }
-#sec-faq .kit-faq-btn:hover { color: #ffffff; }
-#sec-faq .kit-faq-chevron { color: rgba(255, 255, 255, 0.55); }
-#sec-faq .kit-faq-answer p { color: rgba(255, 255, 255, 0.7); }
-#sec-faq .kit-faq-answer strong { color: #ffffff; }
-#sec-faq .kit-faq-answer a { color: #B0C4DE; }
-#sec-faq .faq-toggle {
-  color: rgba(255, 255, 255, 0.85);
-  background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(176, 196, 222, 0.35);
-}
-#sec-faq .faq-toggle:hover {
-  background: rgba(255, 255, 255, 0.13);
-  border-color: rgba(176, 196, 222, 0.6);
-}
-
-/* ── #sec-cta steht jetzt auf WEISS ──
-   Der CTA-Block war ein dunkler Abschluss mit farbigen Lichtflecken und
-   weisser Schrift. Auf weissem Grund kehrt sich alles um. Die Lichtflecken
-   bleiben, aber deutlich schwaecher — sonst wirken sie auf Weiss wie
-   Flecken statt wie Licht. */
-#sec-cta.site-cta { background: #ffffff; }
-#sec-cta .site-cta-overlay { background: none; }
-/* Die vier Lichtflecken sind Violett, Indigo, Cyan und Blau — auf dunklem
-   Grund wirkten sie als Licht, auf Weiss als rosa Schleier. Auf dieser
-   Section ist der Grund weiss, also weg damit. */
-#sec-cta .site-cta-blob,
-#sec-cta .site-cta-bg { display: none; }
-#sec-cta .section-label,
-#sec-cta .section-label--steel { color: var(--wa-navy-mid, #3d5a82); }
-#sec-cta .site-cta-content h2 { color: #1A2744; }
-#sec-cta .site-cta-content > p { color: #4a5a7a; }
-#sec-cta .hdf-form--cta .hdf-hint { color: #8290ab; }
-/* .hdf-row traegt die Pille: heller Grund und heller Rahmen -> auf Weiss
-   umgekehrt. */
-#sec-cta .hdf-row {
-  background: rgba(26, 39, 68, 0.04);
-  border: 1.5px solid rgba(176, 196, 222, 0.4);
-}
-/* Der Eingabetext war weiss auf dunkel. */
-#sec-cta .hdf-input { color: #1A2744; }
-#sec-cta .hdf-input::placeholder { color: #8290ab; }
-/* Der Knopf war eine weisse Pille auf dunkel — auf Weiss wird er dunkel. */
-#sec-cta .hdf-btn {
-  background: #1A2744;
-  color: #ffffff;
-}
-#sec-cta .hdf-btn:hover { background: #24365d; }
+/* ── Sectionsgruende wechseln ab: weiss / dunkelblau / weiss / … ──
+   Der Wechsel wird ueber die Klassen im HTML gesteuert (.sec bzw.
+   .sec--dark), nicht hier. Die frueheren Sonderfaelle sind entfallen:
+   #werkzeuge existiert nicht mehr, und #sec-faq und #sec-cta stehen
+   wieder auf ihrem urspruenglichen Grund — FAQ hell, CTA dunkel.
+   Wer eine Section einfuegt oder entfernt, muss den Wechsel danach
+   durchziehen, sonst stossen zwei gleiche Gruende aneinander. */
 
 
 /* ── Leicht grauer Grund fuer die erste Section nach dem Hero ──
@@ -1647,6 +1600,42 @@
   margin: 0;
 }
 
+/* ── Betroffene Werkzeuge als Pillen ──
+   Muster aus dem Auftragsfluss der REMA-Demo (auftragsfluss.html): unter dem
+   Erklaertext eine Reihe kleiner Pillen, jede nennt einen betroffenen Bereich
+   mit Doppelpunkt. Dort waren die Bereiche Website / KI / Software /
+   Buchhaltung / IT, weil die Demo die ganze Firmen-IT abdeckte. Hier ist der
+   Umfang nur die Website — die Bereiche sind deshalb die Werkzeuge selbst,
+   also die Tabs aus #werkzeuge. Damit ist die Vollstaendigkeit pruefbar: ein
+   Werkzeug, das in keiner Pille vorkommt, hat keinen Anlass auf der Seite.
+
+   Nicht uebernommen: das Gelb (#ffcb08). Das ist REMAs Markenfarbe; diese
+   Seite hat nur drei Gruende — Weiss, Dunkelblau, einmal Hellblau. Die
+   Pillen tragen deshalb Steel Blue.
+
+   Nicht verlinkt, im Unterschied zu den Chips im Rechner: #alltag steht vor
+   Rechner und KI-Check, ein Sprung von hier zu den Werkzeugen wuerde zwei
+   Sections ueberspringen. Hier informieren die Pillen nur. */
+.wa-wrap .av-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 12px;
+}
+.wa-wrap .av-tag {
+  font-family: var(--wa-mono);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  line-height: 1.3;
+  text-transform: uppercase;
+  padding: 5px 11px;
+  border-radius: var(--radius-pill, 999px);
+  background: rgba(176, 196, 222, 0.18);
+  border: 1px solid rgba(176, 196, 222, 0.34);
+  color: #B0C4DE;
+}
+
 /* ── Schmale Schirme ──
    Aus dem Entwurf uebernommen: die drei Spalten stapeln, der heutige Zustand
    rueckt nach links unter die Bezeichnung, der Pfeil entfaellt. */
@@ -1671,11 +1660,13 @@
 
 /* ============================================================
    RECHNER (#rechner) — Fassung aus dem Design-Projekt
-   Uebernommen: Wert direkt neben dem Titel, Skala 0/5/10/15 in jeder Karte,
-   Jahreskosten als eigene rechtsbuendige Zeile, Ergebnisbalken mit drei
-   Spalten und zwei Pfeilen, Fussnote zu den Arbeitswochen.
+   Uebernommen: Wert direkt neben dem Titel, rechtsbuendige Jahreskosten,
+   Ergebnisbalken mit drei Spalten und zwei Pfeilen, Fussnote zu den
+   Arbeitswochen.
    Angepasst: Schriften und Farben aus dem System der Seite (Georgia,
    DM Sans, wa-Variablen) statt Fraunces/Manrope und eigener Blaupalette.
+   Ausserdem: die vier Posten sind Zeilen einer Karte statt vier Karten,
+   die Skala 0/5/10/15 je Karte ist entfallen (siehe .rc-items).
 ============================================================ */
 
 .wa-wrap #rechner .wrap { max-width: 900px; }
@@ -1714,7 +1705,8 @@
 .wa-wrap .rc-rate-input {
   width: 76px;
   padding: 8px 10px;
-  font-family: var(--wa-mono);
+  font-family: var(--wa-num);
+  font-variant-numeric: tabular-nums;
   font-size: 0.95rem;
   font-weight: 700;
   text-align: center;
@@ -1742,22 +1734,40 @@
   margin: 0 0 20px;
 }
 
-/* ── Die vier Karten ── */
+/* ── Die Posten ──
+   Frueher vier einzelne Karten im 2x2-Raster, jede mit Beschreibung, Regler,
+   Tick-Leiste und eigener Kostenzeile. Das war rund die halbe Sectionhoehe,
+   bevor der Ergebnisbalken ueberhaupt begann. Jetzt eine Karte mit zwei
+   Zeilen: gleicher Glas-Look, aber die Polsterung faellt einmal statt
+   viermal an und die Tick-Leiste entfaellt — der aktuelle Wert steht
+   ohnehin live neben dem Titel. Das Regelwerk bleibt fuer beliebig viele
+   Zeilen gueltig. */
 .wa-wrap .rc-items {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 14px;
-  margin: 0 0 20px;
-}
-@media (min-width: 761px) {
-  .wa-wrap .rc-items { grid-template-columns: 1fr 1fr; }
-}
-.wa-wrap .rc-item {
   background: var(--wa-glass-bg2);
   border: 1px solid var(--wa-glass-bd);
   border-radius: 12px;
-  padding: 18px 22px;
+  padding: 2px 22px;
   box-shadow: 0 2px 6px var(--wa-glass-sh);
+  margin: 0 0 20px;
+}
+/* Schmal: Kopf und Beschreibung ueber die volle Breite, darunter Regler und
+   Jahreskosten nebeneinander — drei Zeilen statt fuenf gestapelten Bloecken. */
+.wa-wrap .rc-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 4px 16px;
+  padding: 14px 0;
+}
+.wa-wrap .rc-row + .rc-row { border-top: 1px solid var(--wa-glass-bd); }
+.wa-wrap .rc-row-main { grid-column: 1 / -1; }
+@media (min-width: 761px) {
+  /* Breit: Text | Regler | Jahreskosten in einer Zeile. */
+  .wa-wrap .rc-row {
+    grid-template-columns: minmax(0, 1fr) 190px 132px;
+    gap: 0 20px;
+  }
+  .wa-wrap .rc-row-main { grid-column: 1; }
 }
 /* Wert direkt neben dem Titel statt am rechten Rand: so liest man beides
    in einem Zug, statt zwischen den Kartenraendern zu springen. */
@@ -1775,7 +1785,8 @@
   color: var(--wa-navy);
 }
 .wa-wrap .rc-item-val {
-  font-family: var(--wa-mono);
+  font-family: var(--wa-num);
+  font-variant-numeric: tabular-nums;
   font-size: 0.92rem;
   font-weight: 700;
   color: var(--wa-accent-text);
@@ -1785,26 +1796,71 @@
   font-size: 0.82rem;
   line-height: 1.4;
   color: var(--wa-ink-soft);
-  margin: 0 0 12px;
+  margin: 0;
 }
-.wa-wrap .rc-ticks {
-  display: flex;
-  justify-content: space-between;
-  padding: 0 2px;
-  margin: 2px 0 0;
-}
-.wa-wrap .rc-ticks span {
-  font-family: var(--wa-mono);
-  font-size: 0.69rem;
-  color: var(--wa-ink-dim);
-}
+
+/* ── Verweis auf das Werkzeug, das den Posten uebernimmt ──
+   Der Ergebnisbalken behauptet "davon uebernimmt die Website X %", nennt
+   aber kein Mittel. Hier steht es: ein Sprung in die Werkzeug-Section,
+   der gleich den passenden Tab oeffnet. Bewusst klein und mono — es ist
+   ein Querverweis, kein zweiter Handlungsaufruf neben dem Regler. */
+/* Jahreskosten zweizeilig: die Zahl ist das Argument und war einzeilig mit
+   "= " und "CHF/Jahr" auf 0.75rem gedrueckt, um in die Spalte zu passen.
+   Einheit als eigene Zeile darunter — so traegt die Zahl selbst. */
 .wa-wrap .rc-item-cost {
-  margin: 8px 0 0;
+  margin: 0;
   text-align: right;
-  font-family: var(--wa-mono);
-  font-size: 0.75rem;
+  white-space: nowrap;
+}
+.wa-wrap .rc-cost-num {
+  display: block;
+  font-family: var(--wa-num);
+  font-variant-numeric: tabular-nums;
+  font-size: 1.15rem;
   font-weight: 700;
+  line-height: 1.15;
   color: var(--wa-accent-text);
+}
+.wa-wrap .rc-cost-unit {
+  display: block;
+  font-family: var(--wa-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--wa-ink-soft);
+}
+
+/* ── Wertblase am Reglergriff ──
+   Beim Ziehen liegt der Blick auf dem Griff; die Stundenzahl neben dem
+   Titel ist dann am anderen Ende der Zeile. Die Blase erscheint darum
+   nur waehrend der Bedienung. --p (0..1) setzt das Skript aus der
+   Reglerstellung; clamp haelt die Blase an den Enden im Rahmen. */
+.wa-wrap .rc-slider-wrap {
+  position: relative;
+  --p: 0;
+}
+.wa-wrap .rc-slider-bubble {
+  position: absolute;
+  bottom: calc(100% - 2px);
+  left: clamp(46px, calc(8px + var(--p) * (100% - 16px)), calc(100% - 46px));
+  transform: translateX(-50%);
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: var(--wa-navy);
+  color: #ffffff;
+  font-family: var(--wa-num);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.72rem;
+  font-weight: 700;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.12s;
+}
+.wa-wrap .rc-slider:active ~ .rc-slider-bubble,
+.wa-wrap .rc-slider:focus-visible ~ .rc-slider-bubble { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .wa-wrap .rc-slider-bubble { transition: none; }
 }
 
 /* ── Regler ── */
@@ -1974,141 +2030,6 @@
 }
 
 /* ============================================================
-   WERKZEUGE (#werkzeuge) — Fassung aus dem Design-Projekt
-   Uebernommen: Tabs ohne Icons als gleich breite Pillen, Panel zweigeteilt
-   in Text und Beispielkasten, Untertitel unter der Ueberschrift.
-   Angepasst: Schriften und Farben aus dem System der Seite.
-   Die Section steht auf Weiss, der Entwurf ebenfalls — die Farben liegen
-   hier also nahe beieinander.
-============================================================ */
-
-.wa-wrap #werkzeuge .wrap { max-width: 900px; }
-
-/* ── Tab-Leiste ──
-   Gleich breite Pillen statt einer Leiste mit Unterstrich. Der aktive Tab
-   ist gefuellt, die uebrigen sind umrandet. */
-.wa-wrap .wtab-nav {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 8px;
-  margin: 0 0 14px;
-  background: none;
-  border: none;
-  padding: 0;
-}
-.wa-wrap .wtab-btn {
-  font: inherit;
-  font-size: 0.86rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  padding: 11px 8px;
-  border-radius: 9px;
-  cursor: pointer;
-  text-align: center;
-  background: var(--wa-glass-bg2);
-  color: var(--wa-ink-soft);
-  border: 1px solid var(--wa-glass-bd);
-  transition: background 0.15s, color 0.15s, border-color 0.15s;
-}
-.wa-wrap .wtab-btn:hover {
-  color: var(--wa-navy);
-  border-color: rgba(176, 196, 222, 0.55);
-}
-.wa-wrap .wtab-btn.is-active {
-  background: var(--wa-navy);
-  color: #ffffff;
-  border-color: var(--wa-navy);
-}
-
-/* ── Panel ── */
-.wa-wrap .wtab-panel-wrap {
-  background: var(--wa-glass-bg2);
-  border: 1px solid var(--wa-glass-bd);
-  border-radius: 12px;
-  padding: 30px 34px;
-  box-shadow: 0 2px 6px var(--wa-glass-sh);
-}
-.wa-wrap .wtab-panel { display: none; }
-.wa-wrap .wtab-panel.is-active { display: block; }
-
-.wa-wrap .wtab-split {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 18px;
-}
-@media (min-width: 761px) {
-  .wa-wrap .wtab-split { grid-template-columns: 1.5fr 1fr; gap: 34px; }
-}
-.wa-wrap .wtab-panel-title {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.18rem;
-  font-weight: 700;
-  color: var(--wa-navy);
-  margin: 0 0 10px;
-}
-.wa-wrap .wtab-panel-text {
-  font-size: 0.95rem;
-  line-height: 1.68;
-  color: var(--wa-ink-soft);
-  margin: 0;
-}
-.wa-wrap .wtab-panel-text strong {
-  font-weight: 600;
-  color: var(--wa-navy);
-}
-
-/* ── Beispielkasten ──
-   Hebt sich vom Panel ab, ohne mit dem aktiven Tab zu konkurrieren. */
-.wa-wrap .wtab-ex {
-  background: rgba(176, 196, 222, 0.09);
-  border: 1px solid rgba(176, 196, 222, 0.3);
-  border-radius: 10px;
-  padding: 16px 18px;
-  align-self: start;
-}
-.wa-wrap .wtab-ex-lbl {
-  font-family: var(--wa-mono);
-  font-size: 0.64rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--wa-accent-text);
-  margin: 0 0 10px;
-}
-.wa-wrap .wtab-ex-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.wa-wrap .wtab-ex-list li {
-  font-size: 0.86rem;
-  line-height: 1.4;
-  color: var(--wa-ink);
-}
-
-.wa-wrap .tools-foot {
-  margin: 14px 0 0;
-  text-align: center;
-  font-size: 0.82rem;
-  color: var(--wa-ink-dim);
-}
-
-/* ── Schmale Schirme ──
-   Fuenf Pillen nebeneinander werden unlesbar schmal, deshalb zweispaltig. */
-@media (max-width: 760px) {
-  .wa-wrap .wtab-nav { grid-template-columns: 1fr 1fr; }
-  .wa-wrap .wtab-panel-wrap { padding: 22px 20px; }
-}
-
-/* In einem Grid haben Spalten eine Mindestbreite aus ihrem Inhalt. Ohne
-   min-width: 0 kann ein langes Wort die Textspalte breiter machen als ihr
-   Anteil und den Beispielkasten zusammendruecken. */
-.wa-wrap .wtab-body { min-width: 0; }
-
-/* ============================================================
    GEFUNDEN WERDEN (#sichtbarkeit) — Fassung aus dem Design-Projekt
    Uebernommen: Kennzeichnungen als gefuellte Pillen, Chevron statt SVG,
    Erklaerkasten mit vollem Rahmen und Einzug unter die Namensspalte,
@@ -2146,8 +2067,8 @@
   cursor: pointer;
   transition: background 0.15s;
 }
-.wa-wrap .vch-head:hover { background: rgba(255, 255, 255, 0.045); }
-.wa-wrap .vch-head.is-open { background: rgba(255, 255, 255, 0.05); }
+.wa-wrap .vch-head:hover { background: rgba(26, 39, 68, 0.035); }
+.wa-wrap .vch-head.is-open { background: rgba(26, 39, 68, 0.045); }
 
 .wa-wrap .vch-tag {
   justify-self: start;
@@ -2160,28 +2081,30 @@
   padding: 5px 10px;
   white-space: nowrap;
 }
-/* Die zwei Basiswege heben sich ab, die fuenf Optionen treten zurueck. */
-.wa-wrap .vch-tag--incl  { color: #cfe6fb; background: rgba(176, 196, 222, 0.22); }
-.wa-wrap .vch-tag--addon { color: #f0d3a8; background: rgba(217, 168, 108, 0.2); }
-.wa-wrap .vch-tag--opt   { color: rgba(255, 255, 255, 0.5); background: rgba(255, 255, 255, 0.07); }
+/* Die zwei Basiswege heben sich ab, die fuenf Optionen treten zurueck.
+   Auf weissem Grund gespiegelt: gefuellte Flaeche, dunkle Schrift. Der
+   Addon-Ton bleibt derselbe Bernstein, nur dunkel genug fuer Weiss (4,9:1). */
+.wa-wrap .vch-tag--incl  { color: var(--wa-navy);    background: rgba(176, 196, 222, 0.55); }
+.wa-wrap .vch-tag--addon { color: #7d5214;           background: rgba(217, 168, 108, 0.32); }
+.wa-wrap .vch-tag--opt   { color: var(--wa-ink-soft); background: rgba(26, 39, 68, 0.055); }
 
 .wa-wrap .vch-name {
   font-family: Georgia, "Times New Roman", serif;
   font-size: 1.06rem;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--wa-navy);
   line-height: 1.25;
 }
 .wa-wrap .vch-lead {
   font-size: 0.88rem;
   line-height: 1.45;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--wa-ink-soft);
 }
 .wa-wrap .vch-icon {
   justify-self: end;
   font-size: 1rem;
   line-height: 1;
-  color: rgba(255, 255, 255, 0.45);
+  color: var(--wa-ink-dim);
   transition: transform 0.18s;
 }
 .wa-wrap .vch-head.is-open .vch-icon { transform: rotate(180deg); }
@@ -2193,14 +2116,14 @@
 .wa-wrap .vch-body {
   margin: 0 18px 18px 146px;
   padding: 16px 20px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(176, 196, 222, 0.3);
+  background: rgba(176, 196, 222, 0.10);
+  border: 1px solid rgba(176, 196, 222, 0.45);
   border-radius: 10px;
 }
 .wa-wrap .vch-body-text {
   font-size: 0.91rem;
   line-height: 1.65;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--wa-ink-soft);
   margin: 0 0 10px;
 }
 .wa-wrap .vch-body-text:last-child { margin-bottom: 0; }
@@ -2218,19 +2141,21 @@
   padding-left: 18px;
   font-size: 0.88rem;
   line-height: 1.5;
-  color: rgba(255, 255, 255, 0.78);
+  color: var(--wa-ink-soft);
 }
 .wa-wrap .vch-plus li::before {
   content: "+";
   position: absolute;
   left: 0;
-  color: #B0C4DE;
+  color: var(--wa-accent-text);
   font-weight: 700;
 }
 
 .wa-wrap .vch-note {
   font-size: 0.82rem;
-  color: rgba(255, 255, 255, 0.45);
+  /* Traegt eine Aussage ("wirkt sofort, nur solange Sie zahlen") und nicht nur
+     Dekoration — deshalb -soft und nicht -dim, das auf Weiss nur 2,9:1 kommt. */
+  color: var(--wa-ink-soft);
   margin: 0;
 }
 .wa-wrap .vch-cta {
@@ -2238,20 +2163,20 @@
   margin-top: 10px;
   font-size: 0.85rem;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--wa-accent-text);
   text-decoration: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  border-bottom: 1px solid rgba(176, 196, 222, 0.7);
   padding-bottom: 2px;
   transition: border-color 0.15s;
 }
-.wa-wrap .vch-cta:hover { border-color: #ffffff; }
+.wa-wrap .vch-cta:hover { border-color: var(--wa-navy); }
 
 .wa-wrap .vch-foot {
   margin: 14px 0 0;
   text-align: center;
   font-size: 0.82rem;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.45);
+  color: var(--wa-ink-dim);
 }
 
 /* ── Schmale Schirme ──
@@ -2332,6 +2257,24 @@
   max-width: none;
   border-radius: 50%;
   object-fit: cover;
+}
+
+/* ── Logoplatte, seit die Section auf Dunkelblau steht ──
+   Fremde Logos bringen ihren eigenen Grund mit: GastroCycle hat einen weissen
+   Kasten im Bild, das CORA-Zeichen ist dunkles Navy auf transparent — auf
+   dunklem Sectionsgrund war es praktisch unsichtbar. Statt die Dateien zu
+   retuschieren bekommt jedes Logo eine helle Platte, damit alle drei
+   dieselbe Grundlage haben. Der runde Bildausschnitt braucht keine. */
+.wa-wrap .sec--dark .ref-logo-row {
+  height: auto;
+  align-self: flex-start;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: #ffffff;
+}
+.wa-wrap .sec--dark .ref-logo-row:has(.ref-logo--round) {
+  background: none;
+  padding: 0;
 }
 
 .wa-wrap .ref-branch {
@@ -2432,41 +2375,41 @@
   font-family: Georgia, "Times New Roman", serif;
   font-size: 1.18rem;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--wa-navy);
   margin: 0 0 4px;
 }
 .wa-wrap .promise {
   font-size: 0.84rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--wa-ink-dim);
   margin: 0 0 16px;
 }
-.wa-wrap .tier.featured .promise { color: rgba(255, 255, 255, 0.62); }
+.wa-wrap .tier.featured .promise { color: var(--wa-ink-soft); }
 .wa-wrap .price {
   font-family: Georgia, "Times New Roman", serif;
   font-size: 1.9rem;
   font-weight: 700;
   line-height: 1;
-  color: #ffffff;
+  color: var(--wa-navy);
   margin: 0 0 14px;
 }
 .wa-wrap .price-from {
   font-family: var(--wa-mono);
   font-size: 0.94rem;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--wa-ink-dim);
   margin-right: 6px;
 }
 .wa-wrap .price-cur {
   font-family: var(--wa-mono);
   font-size: 0.82rem;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--wa-ink-dim);
   margin-left: 6px;
 }
 .wa-wrap .who {
   font-size: 0.91rem;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.62);
+  color: var(--wa-ink-soft);
   margin: 0 0 16px;
   padding: 0 0 16px;
   border-bottom: 1px solid var(--wa-glass-bd);
@@ -2486,13 +2429,13 @@
   font: inherit;
   font-size: 0.84rem;
   font-weight: 600;
-  color: #B0C4DE;
+  color: var(--wa-accent-text);
   background: none;
   border: none;
   cursor: pointer;
   text-align: left;
 }
-.wa-wrap .tier-more:hover { color: #9ecaee; }
+.wa-wrap .tier-more:hover { color: var(--wa-navy); }
 .wa-wrap .tier-more-icon {
   display: inline-block;
   font-size: 0.94rem;
@@ -2514,13 +2457,13 @@
   padding-left: 20px;
   font-size: 0.88rem;
   line-height: 1.5;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--wa-ink-soft);
 }
 .wa-wrap .tier-list li::before {
   content: "✓";
   position: absolute;
   left: 0;
-  color: #B0C4DE;
+  color: var(--wa-accent-text);
   font-weight: 700;
 }
 
@@ -2537,7 +2480,7 @@
   text-decoration: none;
   font-size: 0.91rem;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--wa-accent-text);
   background: none;
   border: 1px solid rgba(176, 196, 222, 0.5);
   border-radius: 10px;
@@ -2548,19 +2491,21 @@
   background: rgba(176, 196, 222, 0.16);
   border-color: #B0C4DE;
 }
-/* Der Knopf der empfohlenen Karte ist gefuellt — auf dunklem Grund hell. */
+/* Der Knopf der empfohlenen Karte ist gefuellt. Die Section steht jetzt auf
+   Weiss, also ist die Fuellung dunkel und die Schrift hell — vorher war es
+   umgekehrt (helle Fuellung auf dunklem Grund). */
 .wa-wrap .tier.featured .tier-cta {
-  color: #0f1c33;
-  background: #eaf2fa;
-  border-color: #eaf2fa;
+  color: #ffffff;
+  background: var(--wa-navy);
+  border-color: var(--wa-navy);
 }
-.wa-wrap .tier.featured .tier-cta:hover { background: #ffffff; border-color: #ffffff; }
+.wa-wrap .tier.featured .tier-cta:hover { background: #0f1c33; border-color: #0f1c33; }
 
 .wa-wrap .tier-note {
   margin: 16px 0 26px;
   text-align: center;
   font-size: 0.82rem;
-  color: rgba(255, 255, 255, 0.45);
+  color: var(--wa-ink-dim);
 }
 
 /* ── Feedback-Runden ── */
@@ -2579,8 +2524,8 @@
   font-weight: 700;
   letter-spacing: 0.09em;
   text-transform: uppercase;
-  color: #B0C4DE;
-  background: rgba(255, 255, 255, 0.04);
+  color: var(--wa-accent-text);
+  background: rgba(26, 39, 68, 0.035);
   border-bottom: 1px solid var(--wa-glass-bd);
 }
 .wa-wrap .loop-row {
@@ -2596,10 +2541,10 @@
 .wa-wrap .lname {
   margin: 0;
   font-size: 0.91rem;
-  color: #ffffff;
+  color: var(--wa-navy);
 }
 .wa-wrap .lname strong { font-weight: 600; }
-.wa-wrap .lname span { color: rgba(255, 255, 255, 0.45); }
+.wa-wrap .lname span { color: var(--wa-ink-dim); }
 .wa-wrap .loop-dots {
   display: flex;
   align-items: center;
@@ -2619,7 +2564,7 @@
 .wa-wrap .lcount {
   margin-left: 8px;
   font-size: 0.82rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--wa-ink-soft);
   white-space: nowrap;
 }
 
@@ -2674,8 +2619,12 @@
   font-weight: 700;
   letter-spacing: 0.09em;
   text-transform: uppercase;
-  color: #ffffff;
-  background: var(--wa-navy);
+  /* #betrieb steht auf Dunkelblau, deshalb dieselbe Steel-Pille wie das Schild
+     der empfohlenen Preiskarte. NICHT var(--wa-navy) als Fuellung nehmen: in
+     .sec--dark ist dieses Token auf Weiss umgebogen, das Schild waere dann
+     weiss auf weiss und der Text unlesbar. */
+  color: #0f1c33;
+  background: #B0C4DE;
   border-radius: 999px;
   padding: 5px 12px;
 }
@@ -2842,7 +2791,6 @@
     min-height: 44px;
     margin-top: 4px;
   }
-  .wa-wrap .wtab-btn { min-height: 44px; }
   .wa-wrap .tier-cta { padding: 14px 16px; }
   .wa-wrap .vch-head { padding: 14px 16px; }
 
@@ -2852,7 +2800,7 @@
   .wa-wrap .tier.featured,
   .wa-wrap .rcard,
   .wa-wrap .rcard.rfeatured { padding: 22px 18px 18px; }
-  .wa-wrap .rc-item { padding: 16px 18px; }
+  .wa-wrap .rc-items { padding: 2px 18px; }
   .wa-wrap .ref-card { padding: 20px 18px 18px; }
   .wa-wrap .rc-cell { padding: 22px 20px; }
   .wa-wrap .av-panel { padding: 14px 16px; }
@@ -2870,11 +2818,8 @@
   .wa-wrap .retainer-grid { gap: 22px; }
 }
 
-/* ── Sehr schmale Geraete (bis 380px) ──
-   Zwei nebeneinanderliegende Pillen werden hier zu schmal fuer die
-   Beschriftung. */
+/* ── Sehr schmale Geraete (bis 380px) ── */
 @media (max-width: 380px) {
-  .wa-wrap .wtab-nav { grid-template-columns: 1fr; }
   .wa-wrap .wrap { padding: 0 14px; }
   .wa-wrap .av-btn { padding: 12px 12px 14px; }
 }

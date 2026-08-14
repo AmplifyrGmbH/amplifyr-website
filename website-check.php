@@ -10,6 +10,19 @@
 //  Gleiches Antwortformat wie ai-check.php, damit ki-check-prototyp.js
 //  unverändert für beide funktioniert:
 //    {done, valid, beobachtung, ursachen[3], uebersehen, rueckfrage, score}
+//
+//  ACHTUNG beim Vergleich mit ai-check.php — zwei Unterschiede:
+//
+//  1. Diese Datei holt die Antwort per Structured Outputs (Schema erzwingt die
+//     Form), ai-check.php erbittet ihr JSON noch im Prompt.
+//  2. Modellseitig heissen die Felder hier nach ihrem Inhalt:
+//        uebernimmt  → was die Website uebernehmen koennte
+//        konkret_1..3 → was sie konkret tun wuerde
+//        aenderung    → was sich dadurch verschiebt
+//     Frueher hiessen sie beobachtung / ursachen / uebersehen — Namen aus der
+//     Betriebsdiagnose, wo eine Ursachenliste Sinn ergibt. Hier stand unter
+//     "ursachen" aber eine Liste von MASSNAHMEN; der Feldname arbeitete gegen
+//     den Prompt. Die SSE-Ausgabe traegt weiter die alten Namen, siehe unten.
 // =============================================================================
 
 // ── Configuration ─────────────────────────────────────────────────────────────
@@ -159,37 +172,35 @@ Demo: kostenlos innerhalb von 48 Stunden, ohne Kreditkarte, ohne Verpflichtung.
 
 UMGANG MIT FAKTENFRAGEN:
 Fragt der Nutzer nach Preis, Dauer, Ablauf, Technik, Datenschutz, Schnittstellen oder
-Aufwand, dann beantworte das zuerst und direkt — im Feld "beobachtung", in maximal
+Aufwand, dann beantworte das zuerst und direkt — im Feld "uebernimmt", in maximal
 2 Sätzen, mit der konkreten Zahl oder Tatsache. Die drei "ursachen" tragen dann die
-Details (etwa die drei Pakete oder die Ablaufschritte), "uebersehen" den Zusammenhang,
+Details (etwa die drei Pakete oder die Ablaufschritte), "aenderung" den Zusammenhang,
 den er noch nicht bedacht hat, und "rueckfrage" führt ins Gespräch.
 Weiche einer Preisfrage nie aus und verweise nicht auf ein Formular — die Zahlen
 stehen ohnehin auf der Seite. Steht die Antwort nicht in der Wissensbasis, sage das
 klar und benenne, was im Erstgespräch geklärt wird.
 
-WICHTIG: Antworte ausschliesslich als JSON-Objekt, ohne Markdown, ohne Erklärungen.
+DIE FELDER — was in jedes gehört. Das Format erzwingt die API, du musst dich
+also nicht um JSON, Anführungszeichen oder Reihenfolge kümmern — nur um den Inhalt.
 
-Wenn die Eingabe unbrauchbar ist (Unsinn, leer, reine Zeichenfolgen, keine erkennbare Situation):
-{"valid":false,"message":"..."}
-— message: Eine freundliche Bitte um eine konkretere Beschreibung. 1 Satz, Sie-Form.
+Wenn die Eingabe unbrauchbar ist (Unsinn, leer, reine Zeichenfolgen, keine
+erkennbare Situation): valid = false, message = eine freundliche Bitte um eine
+konkretere Beschreibung, 1 Satz, Sie-Form. activity_type = "general", alle
+übrigen Textfelder leer lassen ("").
 
-Sonst:
-{"valid":true,"activity_type":"...","beobachtung":"...","ursachen":["...","...","..."],"uebersehen":"...","rueckfrage":"..."}
+Sonst: valid = true, message leer lassen (""), und die folgenden Felder füllen.
 
-- activity_type: Genau einer der folgenden Codes — wähle den am besten passenden:
-  appointment_booking | price_calculator | inquiry_forms | self_service | findability |
-  ai_visibility | lead_qualification | trust_building | recruiting | content_updates |
-  measurement | site_operations | not_website | faq_answer | general
+- activity_type: Der am besten passende Code.
   Nutze faq_answer, wenn es eine reine Faktenfrage war (Preis, Dauer, Technik,
   Ablauf, Datenschutz) und keine Situation aus dem Betrieb geschildert wurde.
 
-- beobachtung: Was die Website in dieser Situation übernehmen könnte. Symptom aufgreifen, dann die Fähigkeit benennen. Max 2 Sätze. Keine Wiederholung der Eingabe.
+- uebernimmt: Was die Website in dieser Situation übernehmen könnte. Symptom aufgreifen, dann die Fähigkeit benennen. Max 2 Sätze. Keine Wiederholung der Eingabe.
 
-- ursachen: Genau 3 konkrete Punkte, was die Website konkret tun würde. Keine Kategorien, keine Feature-Namen — Situationen. Je 1 Satz.
+- konkret_1, konkret_2, konkret_3: Drei konkrete Punkte, was die Website konkret tun würde. Keine Kategorien, keine Feature-Namen — Situationen. Je 1 Satz.
   Schlecht: "Terminbuchungssystem", "SEO-Optimierung"
   Gut: "Der Kunde sieht Ihre freien Zeiten und bucht selbst — Sie erfahren es per Benachrichtigung"
 
-- uebersehen: Drei Sätze, jeder mit klarer Aufgabe:
+- aenderung: Drei Sätze, jeder mit klarer Aufgabe:
   1. Der überraschende Zusammenhang, den die meisten nicht sehen.
   2. Warum das Problem ohne diese Lösung wiederkehrt.
   3. Was sich dadurch verschiebt — als markierter Richtwert, nie als Versprechen.
@@ -197,13 +208,85 @@ Sonst:
 
 - rueckfrage: Eine kurze präzise Frage, die zum Gespräch führt. 1 Satz.';
 
+// ── Score-Tabelle ────────────────────────────────────────────────────────────
+// Wie gut lässt sich dieser Bereich durch eine Website abdecken?
+// Skala: Abdeckungspotenzial in Prozent, vor dem Abschlag unten.
+// Grundlage: Amplifyr-Projekterfahrung — kein Messwert und keine Studie.
+// Der Ring auf der Seite ist entsprechend beschriftet; wer das hier ändert,
+// muss die Beschriftung in webdesign.html mitziehen.
+//
+// Steht bewusst VOR dem Request: Die Schlüssel dieses Arrays sind gleichzeitig
+// das Enum im Antwortschema. Vorher standen die Codes zusätzlich als Prosaliste
+// im Prompt und konnten von der Tabelle abdriften — jetzt gibt es eine Quelle.
+$activityScoresRaw = [
+    'appointment_booking' => 92, // Terminbuchung: Kunde bucht selbst im Kalender
+    'self_service'        => 90, // Selbstauskunft: häufige Fragen ohne Rückruf
+    'inquiry_forms'       => 89, // Strukturierte Anfragen statt Rückrufbitten
+    'price_calculator'    => 86, // Rechner: Ergebnis sofort auf der Seite
+    'content_updates'     => 85, // Inhalte selbst aktuell halten
+    'lead_qualification'  => 83, // Vorqualifizierte Anfragen
+    'trust_building'      => 82, // Referenzen, Bewertungen, Team
+    'measurement'         => 81, // Sichtbar machen, was funktioniert
+    'findability'         => 78, // Google-Sichtbarkeit in der Region
+    'site_operations'     => 77, // Erreichbarkeit, Ladezeit, Sicherung
+    'ai_visibility'       => 72, // Erwähnung durch KI-Assistenten
+    'recruiting'          => 70, // Mitarbeitergewinnung über die Seite
+    'not_website'         => 38, // Kern liegt ausserhalb der Website
+    // Reine Faktenfrage (Preis, Dauer, Technik): ein "Abdeckungsgrad" ist hier
+    // inhaltlich sinnlos. Das Frontend zeigt den Ring aber immer, deshalb ein
+    // neutraler Wert statt 0 — sonst stünde dort ein irritierendes "0 %".
+    'faq_answer'          => 74,
+    'general'             => 74,
+];
+
+// ── Antwortschema ────────────────────────────────────────────────────────────
+// Structured Outputs: Die API erzwingt diese Form, statt sie im Prompt zu
+// erbitten. Damit entfällt der frühere Reparaturstapel (Markdown-Fences
+// abschneiden, erste/letzte geschweifte Klammer suchen, rohe Zeilenumbrüche
+// per Regex entschärfen) und der activity_type kann nicht mehr erfunden
+// werden — vorher fiel ein Tippfehler still auf 74 zurück.
+//
+// Bewusst FLACH statt anyOf-Union aus {valid:false} und {valid:true}: Die
+// Schemaunterstützung erlaubt anyOf, aber ein Wurzelschema ohne "type" ist
+// ungetestet, und ohne API-Key kann hier nichts live geprüft werden. Ein
+// flaches Objekt mit allen Feldern required nutzt nur unstrittige Bausteine.
+// Bei valid=false bleiben die Textfelder leer; gelesen werden sie dann nicht.
+//
+// ursache_1..3 statt eines Arrays: minItems/maxItems gehören zu den nicht
+// unterstützten Array-Einschränkungen, drei benannte Pflichtfelder sind
+// dagegen garantiert vorhanden. Die PHP setzt sie unten wieder zur Liste
+// zusammen, das Frontend sieht unverändert "ursachen".
+//
+// Erste Anfrage mit einem neuen Schema kostet einmalig Kompilierzeit,
+// danach 24 Stunden gecacht.
+$responseSchema = [
+    'type'                 => 'object',
+    'additionalProperties' => false,
+    'required'             => [
+        'valid', 'message', 'activity_type', 'uebernimmt',
+        'konkret_1', 'konkret_2', 'konkret_3', 'aenderung', 'rueckfrage',
+    ],
+    'properties' => [
+        'valid'         => ['type' => 'boolean', 'description' => 'false, wenn die Eingabe keine erkennbare Situation enthält.'],
+        'message'       => ['type' => 'string',  'description' => 'Nur bei valid=false: Bitte um eine konkretere Beschreibung, 1 Satz. Sonst leer.'],
+        'activity_type' => ['type' => 'string',  'enum' => array_keys($activityScoresRaw), 'description' => 'Der am besten passende Bereich.'],
+        'uebernimmt'   => ['type' => 'string',  'description' => 'Was die Website hier übernehmen könnte. Max 2 Sätze.'],
+        'konkret_1'     => ['type' => 'string',  'description' => 'Erster konkreter Punkt, 1 Satz.'],
+        'konkret_2'     => ['type' => 'string',  'description' => 'Zweiter konkreter Punkt, 1 Satz.'],
+        'konkret_3'     => ['type' => 'string',  'description' => 'Dritter konkreter Punkt, 1 Satz.'],
+        'aenderung'    => ['type' => 'string',  'description' => 'Drei Sätze: Zusammenhang, Wiederkehr, markierter Richtwert.'],
+        'rueckfrage'    => ['type' => 'string',  'description' => 'Eine kurze präzise Frage, 1 Satz.'],
+    ],
+];
+
 // ── Claude API streaming request ─────────────────────────────────────────────
 $requestBody = json_encode([
     'model'      => CLAUDE_MODEL,
     'max_tokens' => MAX_TOKENS,
     'stream'     => true,
     // Sonnet 5 denkt sonst per Default und teilt sich max_tokens mit der Antwort.
-    'thinking'   => ['type' => 'disabled'],
+    'thinking'      => ['type' => 'disabled'],
+    'output_config' => ['format' => ['type' => 'json_schema', 'schema' => $responseSchema]],
     'system'     => [
         [
             'type'          => 'text',
@@ -263,29 +346,11 @@ if ($curlErr !== 0 || $httpCode !== 200) {
 }
 
 // ── Parse the model's JSON ───────────────────────────────────────────────────
-$jsonText = trim($fullText);
-// Falls das Modell den Block in Markdown-Fences legt
-if (strpos($jsonText, '```') === 0) {
-    $jsonText = preg_replace('/^```(?:json)?\s*|\s*```$/', '', $jsonText);
-}
-// Nur den JSON-Teil behalten
-$firstBrace = strpos($jsonText, '{');
-$lastBrace  = strrpos($jsonText, '}');
-if ($firstBrace === false || $lastBrace === false || $lastBrace <= $firstBrace) {
-    sendSSE(['error' => 'parse']);
-    exit;
-}
-$jsonText = substr($jsonText, $firstBrace, $lastBrace - $firstBrace + 1);
-
-// Echte Zeilenumbrüche innerhalb von JSON-Strings entschärfen
-$sanitized = preg_replace_callback('/"(?:[^"\\\\]|\\\\.)*"/s', function ($m) {
-    return str_replace(["\r\n", "\n", "\r"], ' ', $m[0]);
-}, $jsonText);
-if (is_string($sanitized)) {
-    $jsonText = $sanitized;
-}
-
-$parsed = json_decode($jsonText, true);
+// Das Schema garantiert wohlgeformtes JSON in der vereinbarten Form — Fences,
+// Vorreden und rohe Zeilenumbrüche kann es nicht mehr geben. Ein Fall bleibt:
+// reisst max_tokens mitten im Objekt ab, ist der Text unvollständig. Deshalb
+// ein einziger Decode-Guard statt des früheren Reparaturstapels.
+$parsed = json_decode(trim($fullText), true);
 if (!is_array($parsed)) {
     sendSSE(['error' => 'parse']);
     exit;
@@ -301,58 +366,50 @@ if (isset($parsed['valid']) && $parsed['valid'] === false) {
     exit;
 }
 
-// ── Completeness check ───────────────────────────────────────────────────────
+// ── Die drei Punkte zur Liste zusammensetzen ─────────────────────────────────
+// Alle drei Felder sind im Schema required, ihr Vorhandensein ist also
+// garantiert. Leere Zeichenketten kann das Schema nicht ausschliessen
+// (minLength gehört zu den nicht unterstützten Einschränkungen) — die werden
+// hier still verworfen, statt eine leere Aufzählungszeile zu rendern.
 $ursachen = [];
-if (isset($parsed['ursachen']) && is_array($parsed['ursachen'])) {
-    foreach ($parsed['ursachen'] as $u) {
-        $u = trim(strip_tags((string) $u));
-        if ($u !== '') $ursachen[] = $u;
-    }
+foreach (['konkret_1', 'konkret_2', 'konkret_3'] as $key) {
+    $u = trim(strip_tags((string) ($parsed[$key] ?? '')));
+    if ($u !== '') $ursachen[] = $u;
 }
 
-if (
-    !isset($parsed['beobachtung'], $parsed['uebersehen'], $parsed['rueckfrage'])
-    || count($ursachen) < 3
-) {
+// ── Score ────────────────────────────────────────────────────────────────────
+// activity_type ist per Schema-Enum auf die Schlüssel der Tabelle begrenzt,
+// ein unbekannter Wert kann nicht mehr ankommen. Der Fallback bleibt als
+// Gürtel-und-Hosenträger für den Fall, dass jemand die Tabelle ändert.
+$activityType = isset($parsed['activity_type']) ? trim((string) $parsed['activity_type']) : 'general';
+$rawScore     = $activityScoresRaw[$activityType] ?? 74;
+$score        = (int) round($rawScore * 0.85); // pauschaler Abschlag für den Einführungsaufwand
+
+// ── Done event ───────────────────────────────────────────────────────────────
+// HIER WERDEN DIE NAMEN ZURUECKUEBERSETZT — nicht angleichen!
+// Modellseitig heissen die Felder seit der Umbenennung nach ihrem Inhalt
+// (uebernimmt / konkret_1..3 / aenderung). Nach draussen gehen weiter die
+// alten Namen (beobachtung / ursachen / uebersehen), weil ki-check-prototyp.js
+// eine geteilte Komponente ist: dieselbe Datei bedient index.html mit
+// ai-check.php. Wer die SSE-Schluessel hier umbenennt, muss das JS UND
+// ai-check.php mitziehen — sonst bleibt die Startseite leer.
+$uebernimmt = trim(strip_tags((string) ($parsed['uebernimmt'] ?? '')));
+
+// Die frühere Vollständigkeitsprüfung ("incomplete") ist entfallen — das Schema
+// garantiert alle Felder. Ein Rest bleibt: required verlangt das Feld, nicht
+// seinen Inhalt. Käme alles Tragende leer zurück, zeigte die Karte sonst eine
+// leere Einschätzung. Nur dieser Entartungsfall gilt noch als Fehler.
+if ($uebernimmt === '' && !$ursachen) {
     sendSSE(['error' => 'incomplete']);
     exit;
 }
 
-// ── Score-Tabelle ────────────────────────────────────────────────────────────
-// Wie gut lässt sich dieser Bereich durch eine Website abdecken?
-// Skala: technisches Abdeckungspotenzial in Prozent, vor KMU-Adjustment.
-// Grundlage: Amplifyr-Projekterfahrung + gängige Web-Benchmarks.
-$activityScoresRaw = [
-    'appointment_booking' => 92, // Terminbuchung: Kunde bucht selbst im Kalender
-    'self_service'        => 90, // Selbstauskunft: häufige Fragen ohne Rückruf
-    'inquiry_forms'       => 89, // Strukturierte Anfragen statt Rückrufbitten
-    'price_calculator'    => 86, // Rechner: Ergebnis sofort auf der Seite
-    'content_updates'     => 85, // Inhalte selbst aktuell halten
-    'lead_qualification'  => 83, // Vorqualifizierte Anfragen
-    'trust_building'      => 82, // Referenzen, Bewertungen, Team
-    'measurement'         => 81, // Sichtbar machen, was funktioniert
-    'findability'         => 78, // Google-Sichtbarkeit in der Region
-    'site_operations'     => 77, // Erreichbarkeit, Ladezeit, Sicherung
-    'ai_visibility'       => 72, // Erwähnung durch KI-Assistenten
-    'recruiting'          => 70, // Mitarbeitergewinnung über die Seite
-    'not_website'         => 38, // Kern liegt ausserhalb der Website
-    // Reine Faktenfrage (Preis, Dauer, Technik): ein "Abdeckungsgrad" ist hier
-    // inhaltlich sinnlos. Das Frontend zeigt den Ring aber immer, deshalb ein
-    // neutraler Wert statt 0 — sonst stünde dort ein irritierendes "0 %".
-    'faq_answer'          => 74,
-    'general'             => 74,
-];
-$activityType = isset($parsed['activity_type']) ? trim((string) $parsed['activity_type']) : 'general';
-$rawScore     = isset($activityScoresRaw[$activityType]) ? $activityScoresRaw[$activityType] : 74;
-$score        = (int) round($rawScore * 0.85); // -15% Adjustment für Einführungsaufwand
-
-// ── Done event ───────────────────────────────────────────────────────────────
 sendSSE([
     'done'        => true,
     'valid'       => true,
-    'beobachtung' => trim(strip_tags((string) $parsed['beobachtung'])),
-    'ursachen'    => $ursachen,
-    'uebersehen'  => trim(strip_tags((string) $parsed['uebersehen'])),
-    'rueckfrage'  => trim(strip_tags((string) $parsed['rueckfrage'])),
+    'beobachtung' => $uebernimmt,                                                  // Modell: uebernimmt
+    'ursachen'    => $ursachen,                                                    // Modell: konkret_1..3
+    'uebersehen'  => trim(strip_tags((string) ($parsed['aenderung'] ?? ''))),      // Modell: aenderung
+    'rueckfrage'  => trim(strip_tags((string) ($parsed['rueckfrage'] ?? ''))),
     'score'       => $score,
 ]);
