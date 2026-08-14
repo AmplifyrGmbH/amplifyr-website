@@ -501,9 +501,17 @@
   .wa-wrap .check-title { font-size: 1.25rem; }
 }
 
-/* ---- Problem section ---- */
+/* ---- Problem section ----
+   104px oben, derselbe Wert wie beim Chat: diese zwei Sections haben KEINE
+   Kicker-Zeile ueber der Ueberschrift, waehrend alle anderen eine haben und
+   ihre Ueberschrift deshalb erst rund 122px unter der Kante einsetzt. Mit den
+   80px aus .sec begannen die zwei direkt an der Farbkante. Der Ausgleich ist
+   optisch, nicht metrisch — eine 11px-Kickerzeile braucht weniger Luft ueber
+   sich als eine Ueberschrift.
+   padding-bottom bleibt 0: der untere Abstand sitzt im .wrap, siehe die
+   Begruendung zum Margin-Collapsing weiter unten. */
 .wa-wrap #problem {
-  padding-top: 100px;
+  padding-top: 104px;
   padding-bottom: 0;
 }
 
@@ -1037,7 +1045,14 @@
   z-index: 1;
   min-height: 0;
   align-items: stretch;
-  padding: 80px clamp(20px, 4vw, 48px);
+  /* Oben mehr als die 80px der anderen Sections, und das mit Absicht: Jede
+     andere Section beginnt mit einer Kicker-Zeile ueber der Ueberschrift, deren
+     Ueberschrift setzt deshalb erst 95-124px unter der Sectionkante ein. Der
+     Chat hat keinen Kicker und die groesste Schrift der Seite (54px) — mit
+     80px begann er als engster Einstieg direkt an der Farbkante. 104px, derselbe
+     Wert wie bei #problem, das ebenfalls ohne Kicker auskommt. Unten 80px
+     wie ueberall. */
+  padding: 104px clamp(20px, 4vw, 48px) 80px;
   overflow: visible;
 }
 .wa-wrap #ki-check .final-check-wrap {
@@ -1230,13 +1245,11 @@
 
 /* Gefunden werden */
 
-/* Sections insgesamt etwas enger stellen */
-@media (min-width: 900px) {
-  .wa-wrap #preise,
-  .wa-wrap #betrieb,
-  .wa-wrap #sichtbarkeit,
-  .wa-wrap #rechner { padding-block: 64px; }
-}
+/* Hier stellte eine Media Query ab 900px vier Sections auf padding-block: 64px,
+   waehrend .sec 80px vorgibt. Ergebnis waren drei verschiedene Rhythmen auf
+   derselben Seite (64 / 80 / 100), und der Wechsel war beim Scrollen sichtbar.
+   Entfernt — alle Sections stehen auf den 80px aus .sec. Wer die Seite wieder
+   dichter will, aendert den einen Wert in .sec statt hier Ausnahmen zu bauen. */
 
 /* Zahlenfeld fuer den Stundensatz. (Diese drei Regeln waren beim Entfernen
    des alten Karten-CSS versehentlich mitgegangen: das Suchmuster "rc-rate\b"
@@ -1370,24 +1383,21 @@
    Pille mit dunkler Schrift ist auf dunklem Grund die klarste Loesung. */
 
 
-/* Der Bruecken-Text ist das Letzte vor der harten Farbkante der naechsten
-   Section. 96px waren zu knapp — mehr Luft, und zwar auch unter 900px, wo
-   die Media Query oben nicht greift. */
-.wa-wrap .sec--soft { padding-block-end: 104px; }
-@media (min-width: 900px) {
-  .wa-wrap .sec--soft { padding-block-end: 140px; }
-}
+/* Hier standen zwei Regeln mit padding-block-end: 104px / 140px auf
+   .sec--soft. Sie waren wirkungslos: .wa-wrap #problem setzt padding-bottom: 0
+   und gewinnt mit seiner ID gegen jede Klassenregel. #problem ist die einzige
+   .sec--soft der Seite, die Regeln haben also nie etwas getan — entfernt.
 
-
-/* Der Abstand unter dem Bruecken-Text gehoert INS .wrap, nicht an den Absatz.
+   Der Abstand unter dem Bruecken-Text gehoert INS .wrap, nicht an den Absatz.
    Als Aussenabstand am letzten Kind faellt er durch Margin-Collapsing aus der
    Section heraus und wird zum Zwischenraum zwischen den Sections — dort
    scheint der weisse Grund von .wa-wrap durch, und genau das war der weisse
-   Streifen. Als Innenabstand des Containers liegt er sicher im grauen Grund. */
-.wa-wrap section.sec--soft > .wrap { padding-bottom: 88px; }
-@media (min-width: 900px) {
-  .wa-wrap section.sec--soft > .wrap { padding-bottom: 120px; }
-}
+   Streifen. Als Innenabstand des Containers liegt er sicher im grauen Grund.
+
+   Der Wert ist jetzt 80px wie ueberall, ohne Sprung bei 900px. Vorher waren es
+   88px bzw. 120px — auf einer Seite, deren uebrige Sections mit 80px arbeiten,
+   war das der auffaelligste Ausreisser. */
+.wa-wrap section.sec--soft > .wrap { padding-bottom: 80px; }
 
 /* ============================================================
    ALLTAG-VERGLEICH (#alltag)
@@ -1686,7 +1696,11 @@
   margin: 0 0 22px;
 }
 .wa-wrap .rc-top h2 {
-  font-size: clamp(1.6rem, 3.2vw, 2.125rem);
+  /* Dieselbe Groesse wie die uebrigen Sectiontitel. Vorher 34px, weil die
+     Ueberschrift hier nicht in .sec-head sitzt, sondern links im Kopf neben dem
+     Stundensatz-Feld — sie war damit der kleinste Sectiontitel der Seite,
+     obwohl sie denselben Rang hat wie "Wie Kunden Sie finden." */
+  font-size: clamp(1.7rem, 4vw, 2.5rem);
   line-height: 1.08;
   letter-spacing: -0.01em;
   color: var(--wa-navy);
@@ -2274,9 +2288,18 @@
 .wa-wrap .sec--dark .ref-logo-row {
   height: auto;
   align-self: flex-start;
-  padding: 8px 12px;
-  border-radius: 10px;
+  /* Knapp halten: Die Platte umschliesst die Bildbox, und die bringt bei CORA
+     reichlich eigenen Leerraum mit — mit 8px/12px und der 62px hohen Bildbox
+     wirkte sie wie eine Karte um ein kleines Zeichen. Enger und mit
+     niedrigerem Logo liest sie sich als Chip. */
+  padding: 5px 9px;
+  border-radius: 8px;
   background: #ffffff;
+}
+/* Nur das hochformatige Logo (CORA) wird kleiner — das querformatige
+   GastroCycle steht mit 32px ohnehin flach, das runde bekommt keine Platte. */
+.wa-wrap .sec--dark .ref-logo:not(.ref-logo--wide):not(.ref-logo--round) {
+  height: 42px;
 }
 .wa-wrap .sec--dark .ref-logo-row:has(.ref-logo--round) {
   background: none;
@@ -2689,7 +2712,12 @@
 
 .wa-wrap .pq-heading {
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(1.6rem, 3.4vw, 2.125rem);
+  /* Das ist die These der Seite, die erste Aussage nach dem Hero — sie war mit
+     34px die KLEINSTE Ueberschrift der Seite, kleiner als jeder Sectiontitel
+     (40px). Jetzt 44px: groesser als die Sectiontitel, weil sie ueber ihnen
+     steht, aber unter der Chat-Ueberschrift (54px), die den Blick am Ende
+     fangen soll. */
+  font-size: clamp(1.9rem, 4.4vw, 2.75rem);
   /* kein font-weight: die 900 aus style.css sollen gelten, wie auf den
      anderen Subpages. Vorher stand hier normal, die Titel wirkten duenn. */
   line-height: 1.08;
