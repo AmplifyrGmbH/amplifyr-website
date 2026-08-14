@@ -118,11 +118,16 @@
   margin-top: 14px;
   color: var(--wa-navy);
 }
+/* Kein font-weight hier: style.css gibt allen Seiten h2 { font-weight: 900 },
+   h3/h4 { 700 }. Diese Regel hat das fuer webdesign.html auf "normal"
+   zurueckgedreht — die Titel wirkten dadurch duenn und blass, waehrend sie auf
+   den anderen Subpages kraeftig stehen. Jetzt gilt ueberall dasselbe Gewicht.
+   Die Familie bleibt vorsorglich stehen, auch wenn --font-display ohnehin
+   Georgia ist. */
 .wa-wrap h2,
 .wa-wrap h3,
 .wa-wrap h4 {
   font-family: Georgia, "Times New Roman", serif;
-  font-weight: normal;
 }
 .wa-wrap .sec-head p { color: var(--wa-ink-soft); max-width: 56ch; margin-top: 12px; margin-inline: auto; }
 
@@ -434,7 +439,8 @@
 }
 #sec-faq #wd-faq-h {
   font-family: Georgia, "Times New Roman", serif;
-  font-weight: normal;
+  /* kein font-weight: die 900 aus style.css sollen gelten, wie auf den
+     anderen Subpages. Vorher stand hier normal, die Titel wirkten duenn. */
   font-size: clamp(1.7rem, 4vw, 2.5rem);
   /* Die Section steht auf Weiss, die Ueberschrift also dunkel. Die Regel hat
      Spezifitaet 2,0,0 und schlaegt jedes spaetere #sec-faq h2 — die Farbe
@@ -2684,7 +2690,8 @@
 .wa-wrap .pq-heading {
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(1.6rem, 3.4vw, 2.125rem);
-  font-weight: normal;
+  /* kein font-weight: die 900 aus style.css sollen gelten, wie auf den
+     anderen Subpages. Vorher stand hier normal, die Titel wirkten duenn. */
   line-height: 1.08;
   letter-spacing: -0.01em;
   color: var(--wa-navy);
