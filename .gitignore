@@ -6,3 +6,6 @@ _blog-dist/
 *.bak
 *.bak-*
 *.bak[0-9]*
+
+# Unbeschnittene Sicherungskopien von Videos — bleiben lokal
+*.mp4.original

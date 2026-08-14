@@ -168,7 +168,7 @@
   <!-- CSS -->
   <link rel="stylesheet" href="/style.css?v=6">
   <link rel="stylesheet" href="/page-webdesign.css?v=2">
-  <link rel="stylesheet" href="/page-webauftritt.css?v=42">
+  <link rel="stylesheet" href="/page-webauftritt.css?v=49">
   <link rel="stylesheet" href="/ki-check.css?v=2">
   <script defer src="https://cloud.umami.is/script.js" data-website-id="a5638b4a-87cc-4014-a56d-b5b83ae8ccd5"></script>
 </head>
@@ -345,25 +345,17 @@
 
           <p class="vid-kicker"><span class="kicker">in zwei minuten erklärt</span></p>
 
-          <!-- PLATZHALTER — löschen, sobald das Video da ist -->
-          <div class="wd-video-frame wd-video-frame--placeholder">
-            <span class="wd-play" aria-hidden="true">▶</span>
-            <p class="wd-video-ph-title">Hier kommt das Erklärvideo</p>
-            <p class="wd-video-ph-note">Platz reserviert · 16:9</p>
+          <div class="wd-video-frame">
+            <video class="wd-video" controls preload="none"
+                   poster="/Bilder/poster/Website_im_KI-Zeitalter.webp" width="1280" height="720"
+                   aria-label="Erklärvideo: Was eine Website im KI-Zeitalter übernehmen kann">
+              <source src="/Animationen/Website_im_KI-Zeitalter.mp4" type="video/mp4">
+              Ihr Browser kann dieses Video nicht abspielen.
+            </video>
           </div>
 
           <p class="pq-bridge">Am einfachsten sieht man das an einem <strong>gewöhnlichen Arbeitstag</strong> — daran, was sich darin ändert.</p>
 
-          <!-- FERTIGER VIDEO-BLOCK — auskommentiert bis das Video vorliegt
-          <div class="wd-video-frame">
-            <video controls preload="none"
-                   poster="/Bilder/poster/DEIN-POSTER.webp"
-                   aria-label="Erklärvideo: Wie eine Website Anfragen, Termine und Beratung übernimmt">
-              <source src="/Animationen/DEIN-VIDEO.mp4" type="video/mp4">
-              Ihr Browser kann dieses Video nicht abspielen.
-            </video>
-          </div>
-          -->
         </div>
       </section>
 
@@ -623,10 +615,6 @@
 
           <h2 class="final-check-h2" id="fc-h2">Was könnte Ihre Website für Sie übernehmen?</h2>
           <p class="final-check-sub" id="fc-sub">Beschreiben Sie, was in Ihrem Betrieb am meisten Zeit kostet:</p>
-          <!-- Der Check ist selbst eine vorgefuehrte KI-Faehigkeit — das wurde
-               nirgends gesagt. Ein Satz genuegt, er macht aus der Demo ein
-               Argument. -->
-          <p class="fc-ki-note">Was hier antwortet, ist derselbe Assistent, der später auf Ihrer Seite arbeitet.</p>
 
           <div class="final-check-field" id="fc-field-1">
             <div class="fc-input-shell" id="fc-shell">

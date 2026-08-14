@@ -313,8 +313,6 @@
   box-shadow: 0 4px 16px var(--wa-glass-sh), inset 0 1px 0 var(--wa-glass-hi);
 }
 
-/* ---- Pricing tiers ---- */
-@media(min-width:860px) { .wa-wrap .tiers { grid-template-columns: repeat(3,1fr); } }
 
 /* ---- Retainer ---- */
 @media(min-width:700px) { .wa-wrap .retainer-grid { grid-template-columns: 1fr 1fr; } }
@@ -1063,7 +1061,6 @@
 /* ── Dunkler Ergebnisbalken ── */
 @media (min-width: 860px) {
 }
-@media (min-width: 860px) { .wa-wrap .rc-arrow { display: block; } }
 
 
 /* ── Fuss: Amortisation + Kopieren ── */
@@ -1174,16 +1171,6 @@
 }
 
 
-/* Hinweis am Website-Check. Bewusst klein und ohne Kasten: er soll die Demo
-   einordnen, nicht von ihr ablenken. Der Check nutzt eigene Container statt
-   .wrap, deshalb hier die Zentrierung mitgeben. */
-.wa-wrap .fc-ki-note {
-  max-width: 640px;
-  margin: -4px auto 18px;
-  font-size: 0.82rem;
-  line-height: 1.55;
-  color: var(--wa-ink-dim);
-}
 
 /* ============================================================
    RECHNER ALS ZEILEN
@@ -1357,7 +1344,11 @@
    Flecken statt wie Licht. */
 #sec-cta.site-cta { background: #ffffff; }
 #sec-cta .site-cta-overlay { background: none; }
-#sec-cta .site-cta-blob { opacity: 0.16; filter: blur(90px); }
+/* Die vier Lichtflecken sind Violett, Indigo, Cyan und Blau — auf dunklem
+   Grund wirkten sie als Licht, auf Weiss als rosa Schleier. Auf dieser
+   Section ist der Grund weiss, also weg damit. */
+#sec-cta .site-cta-blob,
+#sec-cta .site-cta-bg { display: none; }
 #sec-cta .section-label,
 #sec-cta .section-label--steel { color: var(--wa-navy-mid, #3d5a82); }
 #sec-cta .site-cta-content h2 { color: #1A2744; }
@@ -2387,7 +2378,9 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 16px;
-  align-items: start;
+  /* Kein align-items: start — die drei Karten sollen gleich hoch sein.
+     Im Raster streckt der Standardwert stretch sie auf die Hoehe der
+     hoechsten, und der Knopf sitzt dank margin-top: auto trotzdem unten. */
 }
 @media (min-width: 861px) {
   .wa-wrap .tiers { grid-template-columns: repeat(3, 1fr); }
@@ -2525,12 +2518,12 @@
 /* margin-top: auto haelt den Knopf am Kartenfuss, auch wenn die Listen
    unterschiedlich lang sind. */
 .wa-wrap .tier-cta {
+  display: block;
+  /* auto drueckt den Knopf an den Kartenfuss — so liegen die drei
+     Knoepfe auf einer Linie, auch wenn die Texte darueber
+     unterschiedlich lang sind. */
   margin-top: auto;
   padding-top: 18px;
-}
-.wa-wrap .tier-cta {
-  display: block;
-  margin-top: 18px;
   text-align: center;
   text-decoration: none;
   font-size: 0.91rem;
@@ -2759,48 +2752,6 @@
 /* ── Platzhalter ──
    aspect-ratio haelt exakt die Flaeche des spaeteren Videos frei, damit das
    Layout beim Einsetzen nicht springt. */
-.wa-wrap .wd-video-frame--placeholder {
-  aspect-ratio: 16 / 9;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  background: rgba(255, 255, 255, 0.75);
-  border: 1px solid var(--wa-glass-bd);
-  border-radius: 14px;
-  box-shadow: 0 2px 6px var(--wa-glass-sh);
-}
-.wa-wrap .wd-play {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  width: 58px;
-  height: 58px;
-  border-radius: 50%;
-  background: var(--wa-navy);
-  color: #ffffff;
-  font-size: 1.1rem;
-  /* Das Dreieck sitzt optisch links von der Mitte, deshalb leicht schieben. */
-  text-indent: 3px;
-}
-.wa-wrap .wd-video-ph-title {
-  margin: 6px 0 0;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.18rem;
-  font-weight: 700;
-  color: var(--wa-navy);
-}
-.wa-wrap .wd-video-ph-note {
-  margin: 0;
-  font-family: var(--wa-mono);
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--wa-ink-dim);
-}
 
 /* ── Der fertige Video-Rahmen, sobald der Platzhalter weicht ── */
 .wa-wrap .wd-video-frame {
@@ -2827,3 +2778,22 @@
   color: var(--wa-ink-soft);
 }
 .wa-wrap .pq-bridge strong { font-weight: 600; color: var(--wa-navy); }
+
+
+/* ── Das eingebettete Erklaervideo ──
+   aspect-ratio haelt die Flaeche frei, bevor das Posterbild geladen ist —
+   sonst springt das Layout beim Laden. Das Video ist exakt 1280x720, also
+   16:9, und fuellt den Rahmen ohne Balken. */
+.wa-wrap .wd-video-frame {
+  aspect-ratio: 16 / 9;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--wa-navy);
+  box-shadow: 0 2px 6px var(--wa-glass-sh);
+}
+.wa-wrap .wd-video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
