@@ -1,0 +1,131 @@
+#ba-chat-teaser {
+  position: fixed;
+  right: 4px;
+  bottom: 14px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1000;
+  transition: opacity 600ms ease;
+}
+#ba-chat-teaser.ba-teaser-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+#ba-chat-teaser.ba-scroll-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Pill-Button */
+.ba-teaser-pill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* Raketen-Wrapper mit CSS-Flammen-Effekt */
+.ba-teaser-rocket-wrap {
+  position: relative;
+  width: 116px;
+  height: 116px;
+  left: -8px;
+}
+/* Flammen-Anker: per Canvas-Pixelanalyse des Rocket-PNGs (rakete_teaser.png,
+   1024x1024) exakt bestimmt statt geschätzt — Schwerpunkt der Silhouette,
+   Nase = am weitesten oben-rechts liegender Pixel, Achse = Nase minus
+   Schwerpunkt, Heck-Mitte = Mittelwert der hintersten 6% aller Pixel entlang
+   dieser Achse (nicht nur eine einzelne Finnenspitze). Auf die 116x116px-Box
+   projiziert: Anker (46px, 78px), Achsenwinkel 39deg. Beide Flammen-Layer
+   teilen sich exakt denselben Anker-Punkt und Rotationswinkel (top-center
+   transform-origin, per "left = Anker − Breite/2" statt translateX, damit
+   nichts durch Transform-Reihenfolge verrutschen kann) — sitzen so
+   garantiert zentriert und deckungsgleich hintereinander. */
+.ba-teaser-rocket-wrap::before,
+.ba-teaser-rocket-wrap::after {
+  content: '';
+  position: absolute;
+  top: 79.5px;
+  transform-origin: center top;
+  pointer-events: none;
+  border-radius: 40% 40% 50% 50% / 10% 10% 90% 90%;
+}
+/* Äussere Flamme — dunkler Drop-Shadow-Halo sorgt für Kontrast auch über
+   hellen Seitenbereichen (der helle Farbverlauf allein ist auf Weiss
+   sonst fast unsichtbar). */
+.ba-teaser-rocket-wrap::before {
+  width: 22px;
+  height: 90px;
+  left: 36.5px;
+  background: linear-gradient(to bottom, #B0C4DE 0%, #B0C4DE 30%, rgba(176,196,222,0.55) 58%, rgba(176,196,222,0.15) 80%, transparent 100%);
+  filter: blur(4px) drop-shadow(0 0 3px rgba(26, 39, 68, 0.75)) drop-shadow(0 0 7px rgba(26, 39, 68, 0.5));
+  transform: rotate(39deg);
+  animation: ba-flame-a 0.5s ease-in-out infinite alternate;
+}
+/* Innere Flamme */
+.ba-teaser-rocket-wrap::after {
+  width: 12px;
+  height: 64px;
+  left: 41.5px;
+  background: linear-gradient(to bottom, #ffffff 0%, #eaf2fb 18%, #B0C4DE 50%, rgba(176,196,222,0.3) 78%, transparent 100%);
+  filter: blur(1.5px) drop-shadow(0 0 3px rgba(26, 39, 68, 0.7)) drop-shadow(0 0 6px rgba(26, 39, 68, 0.45));
+  transform: rotate(39deg);
+  animation: ba-flame-b 0.65s ease-in-out infinite alternate;
+}
+
+.ba-teaser-rocket {
+  width: 116px;
+  height: 116px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 6px 16px rgba(26, 39, 68, 0.25));
+  transition: filter 200ms;
+  position: relative;
+  z-index: 1;
+}
+.ba-teaser-pill:hover .ba-teaser-rocket {
+  filter: drop-shadow(0 10px 24px rgba(26, 39, 68, 0.4));
+}
+
+.ba-teaser-label {
+  font-family: var(--font-body, sans-serif);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--navy);
+  background: #ffffff;
+  border-radius: var(--radius-pill);
+  padding: 3px 12px;
+  text-align: center;
+  line-height: 1.2;
+  white-space: nowrap;
+  position: relative;
+  top: -6px;
+  left: -15px;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Bounce-In Animation (beim ersten Erscheinen) */
+@keyframes ba-teaser-bounce-in {
+  0%   { transform: translateY(-90px); animation-timing-function: ease-in; }
+  52%  { transform: translateY(14px);  animation-timing-function: ease-out; }
+  68%  { transform: translateY(-10px); animation-timing-function: ease-in; }
+  82%  { transform: translateY(6px);   animation-timing-function: ease-out; }
+  92%  { transform: translateY(-3px);  animation-timing-function: ease-in; }
+  100% { transform: translateY(0); }
+}
+#ba-chat-teaser.ba-teaser-visible .ba-teaser-pill {
+  animation: ba-teaser-bounce-in 0.85s ease forwards;
+}
+
+/* Wiggle-Animation (alle 8 Sekunden) */
+@keyframes ba-teaser-wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  20%      { transform: rotate(-12deg); }
+  40%      { transform: rotate(12deg); }
+  60%      { transform: rotate(-7deg); }
+  80%      { transform: rotate(7deg); }
+}
