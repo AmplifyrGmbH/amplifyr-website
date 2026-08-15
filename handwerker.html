@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <link rel="preload" as="image" href="https://pub-e99a6cc0592a41d3906183633a0ead00.r2.dev/handwerker/img/hero_allgemeine_demo.avif" fetchpriority="high">
+
   <title>Digitaler Generalunternehmer für Handwerker — Amplifyr</title>
   <meta name="description" content="Amplifyr ist der digitale Generalunternehmer für Handwerksbetriebe. KI-gestützte Auftragsabwicklung, automatische Abrechnung und digitaler Auftritt aus einer Hand.">
   <link rel="canonical" href="https://www.amplifyr.ch/handwerker">
@@ -408,9 +410,73 @@
 <style>
   /* Amplifyr header integration */
   html { scroll-padding-top: 80px; }
-  .hero { min-height: calc(100vh - 80px); }
+  .hero { min-height: 100vh; }
 </style>
   <script defer src="https://cloud.umami.is/script.js" data-website-id="a5638b4a-87cc-4014-a56d-b5b83ae8ccd5"></script>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": "https://www.amplifyr.ch/handwerker#service",
+    "name": "Digitaler Generalunternehmer für Handwerksbetriebe",
+    "description": "Amplifyr begleitet Handwerksbetriebe bei der vollständigen Digitalisierung — von der KI-gestützten Auftragsabwicklung über automatische Offerten und Rechnungen bis zum digitalen Auftritt.",
+    "provider": { "@id": "https://www.amplifyr.ch/#organization" },
+    "areaServed": { "@type": "Country", "name": "Switzerland" },
+    "serviceType": ["Digitalisierung Handwerk", "KI-Automatisierung", "Auftragsmanagement", "Digitaler Auftritt"]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://www.amplifyr.ch/" },
+      { "@type": "ListItem", "position": 2, "name": "Handwerker", "item": "https://www.amplifyr.ch/handwerker" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Was kostet die Digitalisierung für einen Handwerksbetrieb?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Die Kosten hängen vom Umfang ab. Eine professionelle Website gibt es ab CHF 2'999 als Fixpreis. KI-Automatisierungen und IT-Lösungen werden individuell kalkuliert. Ein kostenloses Erstgespräch zeigt, was für Ihren Betrieb sinnvoll ist und was es kostet."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wie lange dauert es, einen Handwerksbetrieb zu digitalisieren?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Die Digitalisierung läuft neben dem Tagesgeschäft und ist mit enger Begleitung in wenigen Wochen umsetzbar. Eine einfache Website ist in wenigen Tagen startklar. Komplexere KI-Automatisierungen werden schrittweise in 4 bis 12 Wochen eingeführt."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Ist die Digitalisierung auch für kleine Handwerksbetriebe geeignet?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja. Amplifyr arbeitet mit Handwerksbetrieben jeder Grösse — von Einzelunternehmern bis zu Betrieben mit mehreren Mitarbeitern. Wir starten dort, wo der grösste Hebel liegt, und bauen die Lösung Schritt für Schritt aus."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Was können Handwerksbetriebe mit KI automatisieren?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Typische Automatisierungen sind: Offertenerstellung, Rechnungsversand, Terminbuchungen, Kundenanfragen per Chat, Einsatzplanung und Mitarbeiter-Kommunikation. Alles, was regelmässig Zeit kostet und nach einem festen Schema abläuft, lässt sich automatisieren."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -544,7 +610,6 @@
       <h1>So wird Ihr Handwerksbetrieb 2026 optimal digitalisiert.</h1>
       <p class="lead hero-lead-detail">Vier Bereiche entscheiden über reibungslose digitale Abläufe: Eine passende Handwerkersoftware, eine massgeschneiderte IT und ein digitaler Auftritt, der Aufträge bringt. Verbunden werden sie durch KI-Prozesse, die im Hintergrund mitlaufen.</p>
       <p class="lead" style="margin-top:.5em;"><b>Sie meistern das Handwerk. Wir das Digitale.</b></p>
-      <a class="credlead" href="#ueberuns" style="text-decoration:none;display:inline-block;margin-top:10px;text-transform:uppercase;letter-spacing:.06em;font-size:.875rem">Wer hinter dieser Demo steht →</a>
     </div>
     <div>
       

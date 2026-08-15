@@ -42,13 +42,14 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": ["Organization", "LocalBusiness"],
     "@id": "https://www.amplifyr.ch/#organization",
     "name": "Amplifyr GmbH",
     "url": "https://www.amplifyr.ch",
     "logo": "https://www.amplifyr.ch/Logos/amplifyr_logo/amplifyr-logo-weiss-hellblau.svg",
     "description": "Amplifyr begleitet Schweizer KMU bei der KI-Transformation — IT-Lösungen, Automatisierungen und digitaler Auftritt aus einer Hand.",
     "telephone": "+41442445995",
+    "email": "info@amplifyr.ch",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Mettlenstrasse 11",
@@ -56,6 +57,19 @@
       "postalCode": "8142",
       "addressCountry": "CH"
     },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 47.3694,
+      "longitude": 8.4695
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "08:00",
+        "closes": "18:00"
+      }
+    ],
     "areaServed": { "@type": "Country", "name": "Switzerland" },
     "sameAs": [
       "https://www.linkedin.com/company/112354402",
