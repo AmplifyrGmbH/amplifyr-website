@@ -7,7 +7,7 @@
 
    Aufruf:
      node scripts/build-blog.js
-   Env-Variablen (optional — Fallback auf öffentliche Werte):
+   Env-Variablen (Pflicht — via GitHub Actions Secrets):
      CONTENTFUL_SPACE_ID
      CONTENTFUL_ACCESS_TOKEN
 ============================================================ */
@@ -17,8 +17,13 @@ const https = require('https');
 const fs    = require('fs');
 const path  = require('path');
 
-const SPACE_ID     = process.env.CONTENTFUL_SPACE_ID     || '0fk0b3cada0j';
-const ACCESS_TOKEN = process.env.CONTENTFUL_ACCESS_TOKEN || 'WRLvqulzWkdZHP560vykq5J9FpiNZLPgmf_2zhuCG_Q';
+const SPACE_ID     = process.env.CONTENTFUL_SPACE_ID;
+const ACCESS_TOKEN = process.env.CONTENTFUL_ACCESS_TOKEN;
+
+if (!SPACE_ID || !ACCESS_TOKEN) {
+  console.error('Fehler: CONTENTFUL_SPACE_ID und CONTENTFUL_ACCESS_TOKEN müssen als Env-Variablen gesetzt sein.');
+  process.exit(1);
+}
 const SITE_ROOT    = path.resolve(__dirname, '..');
 const DIST_DIR     = path.join(SITE_ROOT, '_blog-dist');
 const BASE_URL     = 'https://www.amplifyr.ch';
@@ -179,7 +184,7 @@ const HEAD_COMMON = `  <link rel="icon"             href="/Favicon/favicon.ico">
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap">
   <link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap"></noscript>
-  <link rel="stylesheet" href="/style.css?v=5">
+  <link rel="stylesheet" href="/style.css?v=6">
   <link rel="stylesheet" href="/page-blog.css">`;
 
 // ── Post-Seite generieren ─────────────────────────────────────
