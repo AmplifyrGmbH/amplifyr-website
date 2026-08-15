@@ -965,7 +965,7 @@
 
 <script>
 (function(){
-  var CHECK_URL='https://handwerker-api.amplifyr-digital.ch/api/v1/website/handwerker-check';
+  var CHECK_URL='https://chat-api.amplifyr-digital.ch/api/v1/chat/amplifyr-handwerker';
   var SESSION_ID=(function(){var k='amp_sid',v=sessionStorage.getItem(k);if(!v){v='s-'+Math.random().toString(36).slice(2,11);sessionStorage.setItem(k,v);}return v;})();
   var PLACE_ID='demo';
   var ctx={firmenname:"Ihr Handwerksbetrieb",firmenprofil:"Amplifyr ist der digitale Generalunternehmer f\u00fcr Schweizer Handwerksbetriebe. Wir \u00fcbernehmen alles: Software, IT, Website und KI \u2014 aus einer Hand. So k\u00f6nnen Handwerker sich auf ihr Kerngesch\u00e4ft konzentrieren.",inhaber_name:"",inhaber_namen:[]};
@@ -1066,20 +1066,60 @@
     history.push({role:'user',content:text});
     loadingProgress(true);
     var typing=addTyping();
-    fetch(CHECK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:history,context:ctx,session_id:SESSION_ID,place_id:PLACE_ID})})
-      .then(function(r){return r.json();})
-      .then(function(data){
-        typing.remove();
-        loadingProgress(false);
-        addAiMsg(data);
-        history.push({role:'assistant',content:data.antwort||''});
+    fetch(CHECK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text,messages:history,context:ctx,session_id:SESSION_ID})})
+      .then(function(r){
+        if(!r.ok||!r.body)throw new Error('network');
+        var reader=r.body.getReader();
+        var decoder=new TextDecoder();
+        var buf='';
+        var card=null;
+        var fullText='';
+        function read(){
+          reader.read().then(function(chunk){
+            if(chunk.done)return;
+            buf+=decoder.decode(chunk.value,{stream:true});
+            var parts=buf.split('\n\n');
+            buf=parts.pop();
+            parts.forEach(function(part){
+              if(!part.startsWith('data:'))return;
+              try{
+                var ev=JSON.parse(part.slice(5).trim());
+                if(ev.t!==undefined){
+                  if(!card){
+                    typing.remove();
+                    var wrap=document.createElement('div');
+                    wrap.style.cssText='display:flex;flex-direction:column;gap:8px';
+                    card=document.createElement('div');
+                    card.style.cssText='background:#fff;border:1px solid var(--line);border-radius:14px 14px 14px 4px;padding:16px 18px;font-size:.9375rem;line-height:1.65;color:var(--navy)';
+                    wrap.appendChild(card);
+                    thread.appendChild(wrap);
+                  }
+                  fullText+=ev.t;
+                  card.textContent=fullText;
+                  thread.scrollTop=thread.scrollHeight;
+                } else if(ev.done){
+                  loadingProgress(false);
+                  history.push({role:'assistant',content:ev.antwort||fullText});
+                  busy=false;send.disabled=false;
+                }
+              }catch(e){}
+            });
+            read();
+          }).catch(function(){
+            typing.remove();
+            loadingProgress(false);
+            addAiMsg({antwort:'Momentan nicht erreichbar \u2014 bitte gleich nochmal versuchen.'});
+            busy=false;send.disabled=false;
+          });
+        }
+        read();
       })
       .catch(function(){
         typing.remove();
         loadingProgress(false);
         addAiMsg({antwort:'Momentan nicht erreichbar \u2014 bitte gleich nochmal versuchen.'});
-      })
-      .finally(function(){busy=false;send.disabled=false;});
+        busy=false;send.disabled=false;
+      });
   }
 
   document.querySelectorAll('#ki-berater .kb-chip').forEach(function(c){
