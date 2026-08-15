@@ -13,12 +13,6 @@
     }
   });
 
-  var optsClose=document.getElementById('fchatOptsClose');
-  if(optsClose) optsClose.addEventListener('click',function(){
-    wrap.classList.remove('open-opts','open-contact');
-    btn.setAttribute('aria-expanded','false');
-  });
-
   var optContact=document.getElementById('fchatOptContact');
   if(optContact) optContact.addEventListener('click',function(){
     wrap.classList.remove('open-opts','open-chat');
