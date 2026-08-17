@@ -2462,6 +2462,10 @@
   padding: 0;
   min-height: 70px;
 }
+.wa-wrap .sec--dark .ref-logo--round {
+  height: 64px;
+  width: 64px;
+}
 
 .wa-wrap .ref-branch {
   font-family: var(--wa-mono);
