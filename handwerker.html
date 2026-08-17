@@ -160,7 +160,7 @@
   }
   @media(max-width:400px){.hcr{font-size:.75rem;padding:4px 12px 4px 4px}}
   .herophoto{position:relative;border-radius:18px;overflow:hidden;box-shadow:0 32px 74px -28px rgba(0,0,0,.72);border:1px solid rgba(255,255,255,.16);aspect-ratio:4/3.2}
-  .herophoto img{width:100%;height:100%;object-fit:cover;object-position:top center}
+  .herophoto img,.herophoto video{width:100%;height:100%;object-fit:cover;object-position:top center}
   .herophoto .hptag{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(transparent,rgba(7,32,47,.94));color:#fff;font-weight:700;font-size:.875rem;padding:32px 16px 12px;z-index:2}
   .herophoto .hptag small{display:block;margin-top:4px;font-weight:600;font-size:.75rem;color:rgba(255,255,255,.66)}
   /* Hero card (fallback wenn kein Foto) */
@@ -614,8 +614,10 @@
     <div>
       
       <div class="herophoto">
-        <img src="https://pub-e99a6cc0592a41d3906183633a0ead00.r2.dev/handwerker/img/hero_allgemeine_demo.avif" alt="Ihr Handwerksbetrieb">
-        <div class="hptag">Ihr Handwerksbetrieb<small>Handwerk · der Schweiz</small></div>
+        <video autoplay muted loop playsinline>
+          <source src="Animationen/Animation_Handwerker.webm" type="video/webm">
+          <source src="Animationen/Animation_Handwerker.mp4" type="video/mp4">
+        </video>
       </div>
       
     </div>

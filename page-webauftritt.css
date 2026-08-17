@@ -968,6 +968,163 @@
   }
 }
 
+/* ── Gemeinsame Dachüberschrift über Standard + Werkzeuge ── */
+.wa-wrap .wa-section-group {
+  padding-top: 72px;
+  padding-bottom: 0;
+}
+.wa-wrap .wa-section-group .sec-head {
+  margin-bottom: 0;
+}
+.wa-wrap .std-sublabel {
+  font-size: 0.95rem;
+  color: var(--wa-ink-soft);
+  margin: 0 0 24px;
+  text-align: center;
+}
+
+/* ── Standard-Liste (#sichtbarkeit kompakt) ── */
+.wa-wrap .std-list {
+  background: var(--wa-glass-bg2);
+  border: 1px solid var(--wa-glass-bd);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.wa-wrap .std-row {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  align-items: baseline;
+  gap: 0 20px;
+  padding: 9px 20px;
+  border-bottom: 1px solid var(--wa-glass-bd);
+}
+.wa-wrap .std-row:last-child { border-bottom: none; }
+.wa-wrap .std-name {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--wa-navy);
+}
+.wa-wrap .std-lead {
+  font-size: 0.86rem;
+  line-height: 1.45;
+  color: var(--wa-ink-soft);
+}
+@media (max-width: 600px) {
+  .wa-wrap .std-row { grid-template-columns: 1fr; gap: 2px; padding: 10px 16px; }
+}
+
+/* ── Werkzeug-Tabs ── */
+@keyframes wtabFade {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: none; }
+}
+.wa-wrap .wtab-nav {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin: 0 0 14px;
+  background: none;
+  border: none;
+  padding: 0;
+}
+.wa-wrap .wtab-btn {
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 11px 8px;
+  border-radius: 9px;
+  cursor: pointer;
+  text-align: center;
+  background: var(--wa-glass-bg2);
+  color: var(--wa-ink-soft);
+  border: 1px solid var(--wa-glass-bd);
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.wa-wrap .wtab-btn:hover {
+  color: var(--wa-navy);
+  border-color: rgba(176, 196, 222, 0.55);
+}
+.wa-wrap .wtab-btn.is-active {
+  background: var(--wa-navy);
+  color: #ffffff;
+  border-color: var(--wa-navy);
+}
+.wa-wrap .wtab-panel-wrap {
+  background: var(--wa-glass-bg2);
+  border: 1px solid var(--wa-glass-bd);
+  border-radius: 12px;
+  padding: 30px 34px;
+  box-shadow: 0 2px 6px var(--wa-glass-sh);
+}
+.wa-wrap .wtab-panel { display: none; }
+.wa-wrap .wtab-panel.is-active { display: block; }
+.wa-wrap .wtab-split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+@media (min-width: 761px) {
+  .wa-wrap .wtab-split { grid-template-columns: 1.5fr 1fr; gap: 34px; }
+}
+.wa-wrap .wtab-panel-title {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: var(--wa-navy);
+  margin: 0 0 10px;
+}
+.wa-wrap .wtab-panel-text {
+  font-size: 0.95rem;
+  line-height: 1.68;
+  color: var(--wa-ink-soft);
+  margin: 0;
+}
+.wa-wrap .wtab-panel-text strong {
+  font-weight: 600;
+  color: var(--wa-navy);
+}
+.wa-wrap .wtab-ex {
+  background: rgba(176, 196, 222, 0.09);
+  border: 1px solid rgba(176, 196, 222, 0.3);
+  border-radius: 10px;
+  padding: 16px 18px;
+  align-self: start;
+}
+.wa-wrap .wtab-ex-lbl {
+  font-family: var(--wa-mono);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--wa-accent-text);
+  margin: 0 0 10px;
+}
+.wa-wrap .wtab-ex-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.wa-wrap .wtab-ex-list li {
+  font-size: 0.86rem;
+  line-height: 1.4;
+  color: var(--wa-ink);
+}
+.wa-wrap .tools-foot {
+  margin: 14px 0 0;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--wa-ink-dim);
+}
+.wa-wrap .wtab-body { min-width: 0; }
+@media (max-width: 760px) {
+  .wa-wrap .wtab-nav { grid-template-columns: 1fr 1fr; }
+  .wa-wrap .wtab-panel-wrap { padding: 22px 20px; }
+}
+
 /* ============================================================
    ERKLÄRVIDEO (#erklaervideo)
    Positioniert nach dem Problem-Abschnitt: nimmt die "das ist
@@ -2612,6 +2769,24 @@
 ============================================================ */
 
 .wa-wrap #betrieb .wrap { max-width: 760px; }
+
+.wa-wrap .sorglos-card {
+  background: var(--wa-glass-bg2);
+  border: 1px solid var(--wa-glass-bd);
+  border-radius: 16px;
+  padding: 48px 56px;
+  box-shadow: 0 4px 24px var(--wa-glass-sh);
+}
+.wa-wrap .sorglos-list {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 48px;
+}
+@media (max-width: 700px) {
+  .wa-wrap .sorglos-card { padding: 28px 22px; }
+  .wa-wrap .sorglos-list { grid-template-columns: 1fr; }
+}
 
 .wa-wrap .retainer-grid {
   display: grid;

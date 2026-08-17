@@ -169,7 +169,7 @@
   <link rel="stylesheet" href="/style.css?v=6">
   <link rel="stylesheet" href="/fchat.css">
   <link rel="stylesheet" href="/page-webdesign.css?v=2">
-  <link rel="stylesheet" href="/page-webauftritt.css?v=61">
+  <link rel="stylesheet" href="/page-webauftritt.css?v=69">
   <link rel="stylesheet" href="/ki-check.css?v=53">
   <script defer src="https://cloud.umami.is/script.js" data-website-id="a5638b4a-87cc-4014-a56d-b5b83ae8ccd5"></script>
 </head>
@@ -356,285 +356,233 @@
 
           </div>
 
-          <p class="pq-bridge">Am einfachsten sieht man das an einem <strong>gewöhnlichen Arbeitstag</strong> — daran, was sich darin ändert.</p>
 
         </div>
       </section>
 
-
-      <!-- KUNDENALLTAG — Zeitstrahl
-           Design übernommen vom Auftragsablauf der Picassino-Demo
-           (handwerker-agent/demos/picassino.html, #zs-root): alternierender
-           Zeitstrahl mit Mittellinie, Stationskreis und Verbindungsstrich.
-           Farben und Schriften auf das wa-*-System dieser Seite übersetzt.
-
-           Position im roten Faden: nach den Werkzeugen (was die Seite kann),
-           vor Referenzen und Preisen. Erst wird der Nutzen erlebbar, dann
-           kommt der Beweis, dann der Preis.
-
-           Chronologisch sortiert — als Zeitstrahl muss der Tag vorwärts laufen.
-           Die Nacht-Anfrage steht deshalb am Ende, nicht am Anfang. -->
-      <section class="sec sec--dark" id="alltag">
+      <!-- WERKZEUGE + STANDARD — gemeinsame Dachüberschrift -->
+      <div class="wa-section-group">
         <div class="wrap">
           <div class="sec-head">
-            <span class="kicker">heute — und mit einer arbeitenden seite</span>
-            <h2>Was sich für Sie ändert — konkret.</h2>
-            <p>Links, wie es heute läuft. Rechts, was die Website übernimmt.</p>
-          </div>
-
-          <p class="av-hint"><strong>Tippen Sie einen Schritt an</strong> — dann sehen Sie, was dahintersteckt.</p>
-
-          <div class="av-head" aria-hidden="true">
-            <span class="av-head-old">Wie es heute läuft</span>
-            <span class="av-head-new">Mit der Website</span>
-          </div>
-
-          <div class="av-group">
-            <span class="av-gnum" aria-hidden="true">1</span>
-            <span class="av-gtitle">Die Anfrage</span>
-            <span class="av-gline" aria-hidden="true"></span>
-          </div>
-          <div class="av-item">
-            <button type="button" class="av-btn" aria-expanded="false" aria-controls="av-p0">
-              <span class="av-label">
-                <span class="av-plus" aria-hidden="true">+</span>
-                <span class="av-label-text">Die häufigen Fragen</span>
-              </span>
-              <span class="av-old">Jeden Tag dieselben Fragen am Telefon, bevor es um die Sache geht.<span class="av-arrow" aria-hidden="true">→</span></span>
-              <span class="av-new">Die häufigen Fragen sind schon beantwortet</span>
-            </button>
-            <div class="av-panel" id="av-p0" hidden>
-              <p class="av-panel-lbl">So macht es die Website</p>
-              <p class="av-panel-text">Was Sie machen, wie Sie arbeiten, wie lange es dauert — und bei Standardleistungen auch der Richtpreis. Wer danach anruft, weiss schon Bescheid: das Gespräch beginnt beim eigentlichen Anliegen.</p>
-              <div class="av-tags">
-                <span class="av-tag">KI-Assistent: antwortet rund um die Uhr</span>
-                <span class="av-tag">Kalkulatoren: Richtpreis sofort</span>
-              </div>
-            </div>
-          </div>
-          <div class="av-item">
-            <button type="button" class="av-btn" aria-expanded="false" aria-controls="av-p1">
-              <span class="av-label">
-                <span class="av-plus" aria-hidden="true">+</span>
-                <span class="av-label-text">Die Anfrage um 02:14</span>
-              </span>
-              <span class="av-old">„Rufen Sie zurück“ auf dem Anrufbeantworter.<span class="av-arrow" aria-hidden="true">→</span></span>
-              <span class="av-new">Ausserhalb der Öffnungszeiten geht es weiter</span>
-            </button>
-            <div class="av-panel" id="av-p1" hidden>
-              <p class="av-panel-lbl">So macht es die Website</p>
-              <p class="av-panel-text">Die Website beantwortet die üblichen Fragen auch nachts und nimmt das Anliegen strukturiert auf — Beschrieb, Fotos, Adresse. Am Morgen liegt alles vollständig beim Team.</p>
-              <div class="av-tags">
-                <span class="av-tag">KI-Assistent: nimmt das Anliegen auf</span>
-                <span class="av-tag">Anbindung: liegt morgens als Kontakt vor</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="av-group">
-            <span class="av-gnum" aria-hidden="true">2</span>
-            <span class="av-gtitle">Der Termin</span>
-            <span class="av-gline" aria-hidden="true"></span>
-          </div>
-          <div class="av-item">
-            <button type="button" class="av-btn" aria-expanded="false" aria-controls="av-p2">
-              <span class="av-label">
-                <span class="av-plus" aria-hidden="true">+</span>
-                <span class="av-label-text">Die Terminsuche</span>
-              </span>
-              <span class="av-old">Drei Anrufe hin und her, bis ein Termin steht.<span class="av-arrow" aria-hidden="true">→</span></span>
-              <span class="av-new">Der Kunde bucht den Termin selbst</span>
-            </button>
-            <div class="av-panel" id="av-p2" hidden>
-              <p class="av-panel-lbl">So macht es die Website</p>
-              <p class="av-panel-text">Der Kunde sieht Ihre freien Zeiten und wählt einen Termin aus. Er steht im Kalender, bevor Sie im Büro sind.</p>
-              <div class="av-tags">
-                <span class="av-tag">Buchung: Kunde wählt selbst</span>
-                <span class="av-tag">Anbindung: Termin im Outlook</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="av-group">
-            <span class="av-gnum" aria-hidden="true">3</span>
-            <span class="av-gtitle">Die Bewerbung</span>
-            <span class="av-gline" aria-hidden="true"></span>
-          </div>
-          <div class="av-item">
-            <button type="button" class="av-btn" aria-expanded="false" aria-controls="av-p3">
-              <span class="av-label">
-                <span class="av-plus" aria-hidden="true">+</span>
-                <span class="av-label-text">Die Stellensuche</span>
-              </span>
-              <span class="av-old">„Haben Sie was frei?“ auf der Combox.<span class="av-arrow" aria-hidden="true">→</span></span>
-              <span class="av-new">Die Bewerbung kommt vollständig</span>
-            </button>
-            <div class="av-panel" id="av-p3" hidden>
-              <p class="av-panel-lbl">So macht es die Website</p>
-              <p class="av-panel-text">Wer eine Stelle sucht, schaut abends — und findet einen Betrieb, der zeigt, wie bei ihm gearbeitet wird. Die Bewerbung kommt mit allen Angaben.</p>
-              <div class="av-tags">
-                <span class="av-tag">Karriere: Bewerbung mit allen Angaben</span>
-                <span class="av-tag">KI-Assistent: sortiert nach Ihren Kriterien</span>
-              </div>
-            </div>
+            <span class="kicker">was jede website von uns kann</span>
+            <h2>Unser Standard. Ihre Werkzeuge.</h2>
           </div>
         </div>
-      </section>
+      </div>
 
-      <!-- RECHNER — Struktur 1:1 von der Picassino-Demo übernommen
-           ┌──────────────────────────────────────────────────────────────┐
-           │ VORBILD: handwerker-agent/demos/picassino.html               │
-           │          Section #kostenrechner                              │
-           │                                                              │
-           │ ÜBERNOMMEN: Tätigkeitszeilen mit Slider, Stundenwert und     │
-           │ Jahreskosten. Darunter ein dunkler Ergebnisbalken in drei    │
-           │ Spalten mit Pfeilen: Kosten heute → Anteil → Ersparnis über  │
-           │ 1/5/10 Jahre. Rechenformel offen.                            │
-           │                                                              │
-           │ ENTFERNT: die Umschaltung "ausgelastet / Kapazität frei".    │
-           │ Sie war eine eigene Idee, hat aber niemandem geholfen und    │
-           │ das Layout zerrissen. Ein Pfad, ein Bild.                    │
-           │                                                              │
-           │ ZWEI POSTEN STATT VIER: "Preis- & Leistungsauskünfte" und   │
-           │ "Auftragsstatus & Rückfragen" hatten je einen eigenen        │
-           │ Regler und damit ein Viertel der Sectionhöhe. Sie stecken    │
-           │ jetzt als Nebenpunkt in der Beschreibung der beiden          │
-           │ verbliebenen Posten — Rückfragen bei "Termine & Rückrufe",   │
-           │ Preisfragen bei "Anfragen aufnehmen". Weil die zwei Regler   │
-           │ nun mehr abdecken, sind ihre Startwerte um die weggefallenen │
-           │ Stunden erhöht (3→5 und 2→4): die Summe bleibt bei 9 Std.    │
-           │ und 33'120 CHF, das Argument also gleich stark.              │
-           │                                                              │
-           │ NICHT übernommen von Picassino:                              │
-           │  · 52 Wochen — zählt Ferien als Arbeitszeit. Hier 46.        │
-           │  · fixe "50 % automatisierbar, gemäss Studien". Hier setzt   │
-           │    der Besucher den Anteil selbst — wir behaupten keine      │
-           │    Quote, die wir nicht belegen können.                      │
-           │                                                              │
-           │ Annahmen zentral in der JS-Konstante CALC.                   │
-           └──────────────────────────────────────────────────────────────┘ -->
-      <section class="sec" id="rechner">
+      <section class="sec" id="sichtbarkeit">
         <div class="wrap">
-          <div class="rc-top">
-            <div>
-              <span class="kicker">ihr persönlicher rechner</span>
-              <h2>Was kostet Sie das heute wirklich?</h2>
-            </div>
-            <div class="rc-rate-head">
-              <label class="rc-rate-lbl" for="rc-rate">Stundensatz der Person, die das macht</label>
-              <div class="rc-rate-field">
-                <input type="number" class="rc-rate-input" id="rc-rate" min="0" max="999" step="1" value="80"
-                       inputmode="numeric" aria-label="Stundensatz in Franken">
-                <span class="rc-rate-unit">CHF/Std.</span>
-              </div>
-            </div>
-          </div>
+          <p class="std-sublabel">Kein Extra, kein Aufpreis — das ist unser Standard.</p>
 
-          <!-- Eine Karte, zwei Zeilen statt vier Karten: derselbe Glas-Look,
-               aber ohne vierfache Polsterung und ohne Tick-Leiste. Der
-               aktuelle Wert steht ohnehin live neben dem Titel.
-               Die beiden gestrichenen Posten laufen als Nebenpunkt in der
-               jeweiligen Beschreibung mit — Startwerte entsprechend erhöht. -->
-          <div class="rc-items">
-            <div class="rc-row">
-              <div class="rc-row-main">
-                <p class="rc-item-head">
-                  <span class="rc-item-title">Termine &amp; Rückrufe</span>
-                  <span class="rc-item-val" id="rc-v-termine">5 Std./Wo.</span>
-                </p>
-                <p class="rc-item-desc">Terminvereinbarung, Rückrufe am Abend, Verschiebungen abstimmen —
-                  dazu laufend „Wann kommen Sie?“ und „Ist es fertig?“.</p>
-              </div>
-              <div class="rc-slider-wrap">
-                <input type="range" class="rc-slider" id="rc-termine" min="0" max="15" step="1" value="5"
-                       aria-label="Stunden pro Woche für Termine, Rückrufe und Auftragsstatus">
-                <output class="rc-slider-bubble" id="rc-b-termine" aria-hidden="true">5 Std./Wo.</output>
-              </div>
-              <p class="rc-item-cost">
-                <span class="rc-cost-num" id="rc-c-termine">18'400</span>
-                <span class="rc-cost-unit">CHF/Jahr</span>
-              </p>
+          <div class="std-list">
+            <div class="std-row">
+              <strong class="std-name">SSL</strong>
+              <span class="std-lead">Verschlüsselte Verbindung ab Tag eins.</span>
             </div>
-
-            <div class="rc-row">
-              <div class="rc-row-main">
-                <p class="rc-item-head">
-                  <span class="rc-item-title">Anfragen aufnehmen</span>
-                  <span class="rc-item-val" id="rc-v-anfragen">4 Std./Wo.</span>
-                </p>
-                <p class="rc-item-desc">Adresse und Fotos nachfordern, Angaben zusammensuchen —
-                  dazu immer dieselben Fragen zu Preis, Region und Dauer.</p>
-              </div>
-              <div class="rc-slider-wrap">
-                <input type="range" class="rc-slider" id="rc-anfragen" min="0" max="15" step="1" value="4"
-                       aria-label="Stunden pro Woche für Anfragen und Auskünfte">
-                <output class="rc-slider-bubble" id="rc-b-anfragen" aria-hidden="true">4 Std./Wo.</output>
-              </div>
-              <p class="rc-item-cost">
-                <span class="rc-cost-num" id="rc-c-anfragen">14'720</span>
-                <span class="rc-cost-unit">CHF/Jahr</span>
-              </p>
+            <div class="std-row">
+              <strong class="std-name">SEO</strong>
+              <span class="std-lead">Jede Seite für Suchmaschinen aufgebaut — Titel, Texte, Struktur.</span>
+            </div>
+            <div class="std-row">
+              <strong class="std-name">KI-Sichtbarkeit</strong>
+              <span class="std-lead">ChatGPT, Perplexity und Google AI können Ihre Seite zitieren — nicht nur verlinken.</span>
+            </div>
+            <div class="std-row">
+              <strong class="std-name">Mobile</strong>
+              <span class="std-lead">Funktioniert auf jedem Gerät ohne Abstriche.</span>
+            </div>
+            <div class="std-row">
+              <strong class="std-name">Performance</strong>
+              <span class="std-lead">Lädt schnell — kein WordPress, kein Plugin-Ballast.</span>
+            </div>
+            <div class="std-row">
+              <strong class="std-name">Datenschutz</strong>
+              <span class="std-lead">Impressum, Datenschutzerklärung, keine versteckten Tracker.</span>
+            </div>
+            <div class="std-row">
+              <strong class="std-name">Barrierefreiheit</strong>
+              <span class="std-lead">Nutzbar für alle — auch ohne Maus oder bei eingeschränktem Sehvermögen.</span>
             </div>
           </div>
-
-          <p class="rc-rate-note">Bei eigener Arbeit Ihr Verrechnungssatz — bei einer Angestellten deren Vollkosten inklusive Sozialabgaben.</p>
-
-          <!-- Ergebnisbalken: drei Spalten mit Pfeilen dazwischen -->
-          <div class="rc-bar">
-            <div class="rc-cell">
-              <p class="rc-cell-lbl">Das bindet bei Ihnen</p>
-              <strong class="rc-cell-big" id="rc-total">33'120 CHF</strong>
-              <p class="rc-cell-sub">pro Jahr</p>
-              <p class="rc-formula" id="rc-formula">9 Std./Wo. × 80 CHF × 46 Wo.</p>
-              <p class="rc-cell-extra" id="rc-extra">414 Stunden · 21 % einer Vollzeitstelle</p>
-            </div>
-
-            <span class="rc-arrow" aria-hidden="true">→</span>
-
-            <div class="rc-cell rc-cell--mid">
-              <p class="rc-cell-lbl">Davon übernimmt die Website</p>
-              <strong class="rc-cell-big" id="rc-share">50 %</strong>
-              <input type="range" class="rc-slider rc-slider--light" id="rc-share-in" min="0" max="100" step="5" value="50"
-                     aria-label="Anteil, den die Website übernimmt">
-              <p class="rc-cell-sub rc-cell-sub--dim">Ihre Einschätzung — wir behaupten keine Quote.</p>
-              <!-- Anhaltspunkt aus einer Primaerquelle, nicht Teil der Rechnung.
-                   Gartner-Pressemitteilung vom 19.08.2024, Umfrage unter 5'728
-                   Kunden (Dezember 2023).
-                   ACHTUNG beim Aendern: Die frueher hier verlinkte Seite
-                   "Rethink Your Customer Service Strategy" nennt 70 %, nicht
-                   73 % — Zahl und Link stammten aus zwei verschiedenen
-                   Erhebungen. Auch die Formulierung war zu weit: gemessen ist
-                   "irgendwann im Serviceweg", nicht "wenn es angeboten wird".
-                   Dieselbe Mitteilung sagt ausserdem, dass nur 14 % der
-                   Anliegen per Selbstbedienung vollstaendig geloest werden —
-                   das gilt fuer Selbstbedienung von der Stange und ist kein
-                   Widerspruch zu unserem Angebot, aber wer die Quelle
-                   nachschlaegt, liest es mit. -->
-              <p class="rc-source">Zur Orientierung: <strong>73 %</strong> der Kunden nutzen irgendwann in ihrem Serviceweg Selbstbedienung —
-                <a href="https://www.gartner.com/en/newsroom/press-releases/2024-08-19-gartner-survey-finds-only-14-percent-of-customer-service-issues-are-fully-resolved-in-self-service" target="_blank" rel="noopener">Gartner</a>.</p>
-            </div>
-
-            <span class="rc-arrow" aria-hidden="true">→</span>
-
-            <div class="rc-cell rc-cell--right">
-              <p class="rc-cell-lbl">Das würde frei</p>
-              <ul class="rc-years">
-                <li><span>1 Jahr</span><strong id="rc-y1">16'560</strong></li>
-                <li><span>5 Jahre</span><strong id="rc-y5">82'800</strong></li>
-                <li><span>10 Jahre</span><strong id="rc-y10">165'600</strong></li>
-              </ul>
-            </div>
-          </div>
-
-          <p class="rc-foot">Gerechnet mit 46 Arbeitswochen pro Jahr. Der Anteil oben ist Ihre eigene Einschätzung — wir behaupten keine Quote.</p>
         </div>
       </section>
 
-      <!-- KI-POTENZIAL-CHECK
-           Wiederverwendetes Standalone-Template (ki-check-template.html).
-           Styles: ki-check.css · Logik: ki-check-prototyp.js · Backend: ai-check.php
-           Die Seite argumentiert mit "empfohlen von KI-Assistenten" — hier kann der
-           Besucher selbst eine Frage stellen, statt bis zum Gespräch zu warten. -->
+      <section class="sec" id="werkzeuge">
+        <div class="wrap">
+          <p class="std-sublabel">Auf Ihr Unternehmen angepasst — wählen Sie ein Werkzeug.</p>
+
+          <nav class="wtab-nav" aria-label="Werkzeug-Kategorien">
+            <button class="wtab-btn is-active" data-wtab="0" type="button">Rechner</button>
+            <button class="wtab-btn" data-wtab="1" type="button">Buchung</button>
+            <button class="wtab-btn" data-wtab="2" type="button">KI-Assistent</button>
+            <button class="wtab-btn" data-wtab="3" type="button">Automation</button>
+            <button class="wtab-btn" data-wtab="4" type="button">Karriere</button>
+          </nav>
+
+          <div class="wtab-panel-wrap">
+            <div class="wtab-panel is-active" id="wtab-0">
+              <div class="wtab-split">
+                <div class="wtab-body">
+                  <p class="wtab-panel-title">Rechner &amp; Kalkulatoren</p>
+                  <p class="wtab-panel-text">Ob Preiskalkulator, Konfigurationsassistent oder Kostenrechner — Besucher erhalten ihr Ergebnis sofort auf der Website. Kein Formular, kein Anruf, keine Wartezeit. Das senkt die Hemmschwelle und liefert Ihnen qualifizierte Anfragen statt vager Kontaktaufnahmen.</p>
+                </div>
+                <div class="wtab-ex">
+                  <p class="wtab-ex-lbl">Zum Beispiel</p>
+                  <ul class="wtab-ex-list">
+                    <li>Umzugskostenrechner</li>
+                    <li>Solaranlage-Kalkulator</li>
+                    <li>Druckkosten-Konfigurator</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="wtab-panel" id="wtab-1">
+              <div class="wtab-split">
+                <div class="wtab-body">
+                  <p class="wtab-panel-title">Buchung &amp; Termine</p>
+                  <p class="wtab-panel-text">Kunden buchen direkt auf Ihrer Website — ohne Telefonanruf, ohne Hin-und-Her per E-Mail. Der Termin landet automatisch in Ihrem Kalender, Erinnerungen werden verschickt, Stornierungen verwalten sich selbst. Auch nachts und am Wochenende.</p>
+                </div>
+                <div class="wtab-ex">
+                  <p class="wtab-ex-lbl">Zum Beispiel</p>
+                  <ul class="wtab-ex-list">
+                    <li>Coiffeur-Termin online buchen</li>
+                    <li>Beratungsgespräch reservieren</li>
+                    <li>Servicetermin in der Werkstatt</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="wtab-panel" id="wtab-2">
+              <div class="wtab-split">
+                <div class="wtab-body">
+                  <p class="wtab-panel-title">KI-Assistent auf Ihrer Website</p>
+                  <p class="wtab-panel-text">Nicht nur ein Chat, der Fragen beantwortet: Der Assistent nimmt Anliegen auf, stellt die Rückfragen, die Sie sonst am Telefon stellen, liest hochgeladene Fotos und schätzt sie ein, und leitet an die richtige Person weiter. Er antwortet in der Sprache, in der geschrieben wird — auch in einer, die Sie nicht sprechen.</p>
+                </div>
+                <div class="wtab-ex">
+                  <p class="wtab-ex-lbl">Zum Beispiel</p>
+                  <ul class="wtab-ex-list">
+                    <li>Anliegen aufnehmen und die richtigen Rückfragen stellen</li>
+                    <li>Hochgeladene Fotos lesen und einschätzen</li>
+                    <li>Offerten-Entwurf vorbereiten, Sie geben frei</li>
+                    <li>Bewerbungen vorsortieren nach Ihren Kriterien</li>
+                    <li>Antwortet in jeder Sprache, in der gefragt wird</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="wtab-panel" id="wtab-3">
+              <div class="wtab-split">
+                <div class="wtab-body">
+                  <p class="wtab-panel-title">Automatisierung &amp; Support</p>
+                  <p class="wtab-panel-text">Wiederkehrende Abläufe wie Auftragsbestätigungen, Erinnerungsmails, Rechnungsversand oder interne Benachrichtigungen laufen vollständig automatisch. Und die Anfrage bleibt nicht im Postfach liegen: Sie wird zum Kontakt in Ihrer Software, der gebuchte Termin erscheint in Ihrem Kalender — zum Beispiel <strong>bexio</strong> und <strong>Outlook</strong>. Kein Abtippen, keine zweite Liste.</p>
+                </div>
+                <div class="wtab-ex">
+                  <p class="wtab-ex-lbl">Zum Beispiel</p>
+                  <ul class="wtab-ex-list">
+                    <li>Anfrage wird zum Kontakt in bexio — auf Wunsch samt Offerten-Entwurf</li>
+                    <li>Termin landet im Outlook-Kalender, mit Einladung an den Kunden</li>
+                    <li>Andere Systeme genauso, sofern sie eine Schnittstelle haben</li>
+                    <li>Automatische Auftragsbestätigung per Mail</li>
+                    <li>Internes Alert bei neuer Anfrage</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="wtab-panel" id="wtab-4">
+              <div class="wtab-split">
+                <div class="wtab-body">
+                  <p class="wtab-panel-title">Karriereseite &amp; Bewerbungen</p>
+                  <p class="wtab-panel-text">Für viele Betriebe ist Personal das dringendere Problem als Kundenakquise. Eine Karriereseite zeigt, wie bei Ihnen gearbeitet wird, und nimmt Bewerbungen strukturiert auf: Angaben, Lebenslauf und Zeugnisse in einem Schritt, statt einer Rückrufbitte auf dem Anrufbeantworter. Offene Stellen werden für Google und KI-Assistenten separat auffindbar gemacht.</p>
+                </div>
+                <div class="wtab-ex">
+                  <p class="wtab-ex-lbl">Zum Beispiel</p>
+                  <ul class="wtab-ex-list">
+                    <li>Offene Stellen mit eigener Unterseite</li>
+                    <li>Bewerbungsformular mit Dateiupload</li>
+                    <li>Lehrstellen-Seite für Schulabgänger</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p class="tools-foot">Nicht dabei? Fragen Sie — was technisch machbar ist, bauen wir.</p>
+        </div>
+      </section>
+
+
+
+      <!-- GEFUNDEN WERDEN -->
+
+      <!-- REFERENZEN — echte, live geschaltete Projekte -->
+      <section class="sec sec--dark" id="referenzen">
+        <div class="wrap">
+          <div class="sec-head">
+            <span class="kicker">gebaut und live</span>
+            <h2>Sehen Sie selbst, was wir bauen.</h2>
+            <p>Drei Projekte, die Sie direkt öffnen können — jedes mit einer anderen Aufgabe.</p>
+          </div>
+
+          <div class="ref-grid">
+            <a class="ref-card" href="https://cora-immobilien.ch/" target="_blank" rel="noopener">
+              <span class="ref-logo-row">
+                <img class="ref-logo" src="/Logos/Cora-Immobilien.png" alt="CORA Immobilien"
+                     width="613" height="407" loading="lazy" decoding="async">
+              </span>
+              <span class="ref-branch">Immobilien</span>
+              <span class="ref-name">CORA Immobilien</span>
+              <span class="ref-text">Bewirtschaftung, Vermietung, Verkauf und Beratung klar getrennt — mit Team-Seite, die Vertrauen aufbaut, bevor jemand anruft.</span>
+              <span class="ref-link">cora-immobilien.ch <span aria-hidden="true">→</span></span>
+            </a>
+
+            <a class="ref-card" href="https://bambi-staub.ch/" target="_blank" rel="noopener">
+              <span class="ref-logo-row"></span>
+              <span class="ref-branch">Kosmetik &amp; Beauty</span>
+              <span class="ref-name">Bambi Staub</span>
+              <span class="ref-text">Termine direkt auf der Website buchen — kein Telefonanruf, kein Hin-und-Her per Nachricht.</span>
+              <span class="ref-link">bambi-staub.ch <span aria-hidden="true">→</span></span>
+            </a>
+
+            <a class="ref-card" href="https://project-future.ch/" target="_blank" rel="noopener">
+              <span class="ref-logo-row">
+                <img class="ref-logo ref-logo--round" src="/Logos/Ruay-Thai-Noodle.avif" alt="Ruay Thai Noodle"
+                     width="44" height="44" loading="lazy" decoding="async">
+              </span>
+              <span class="ref-branch">Restaurant</span>
+              <span class="ref-name">Ruay Thai Noodle</span>
+              <span class="ref-text">Menü, Mittagsbuffet und Vorbestellung zum Abholen — die Gäste bestellen vor, statt am Mittag anzustehen.</span>
+              <span class="ref-link">project-future.ch <span aria-hidden="true">→</span></span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- RETAINER -->
+      <section class="sec sec--dark" id="betrieb">
+        <div class="wrap">
+          <div class="sec-head">
+            <span class="kicker">laufender betrieb · monatlich</span>
+            <h2>Das Sorglos-Paket.</h2>
+            <p>Ihre Website läuft, wird überwacht — und Sie wissen jeden Monat, wie sie steht.</p>
+          </div>
+
+          <div class="sorglos-card">
+            <ul class="tier-list sorglos-list">
+              <li>Ihre Website ist jederzeit erreichbar</li>
+              <li>Uptime-Monitoring rund um die Uhr — Sie werden informiert, bevor Kunden es merken</li>
+              <li>Monatlicher Rapport: Besucher, Sichtbarkeit &amp; Zustand</li>
+              <li>1 Änderung pro Monat <span class="lidesc">— Texte, Bilder, Preise</span></li>
+              <li>Persönlicher Ansprechpartner</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- KI-CHECK -->
       <section id="ki-check" aria-label="KI-Potenzial-Check">
 
         <div class="fc-side fc-side-left" id="fc-side-left" aria-hidden="true">
@@ -813,339 +761,8 @@
         </div>
       </section>
 
-
-
-
-      <!-- GEFUNDEN WERDEN — organisch + bezahlt zusammen
-           Zusammengelegt aus der ehemaligen #basics-Karte "Gefunden bei Google —
-           und von KI-Assistenten" (inklusive) und der Section #google-ads (Addon).
-           Beides beantwortet dieselbe Frage: werde ich gefunden? Die Trennung
-           inklusive ↔ Addon muss sichtbar bleiben, damit niemand denkt, Ads
-           seien im Fixpreis enthalten.
-           Die alte ID google-ads bleibt als Anker erhalten (Deeplinks/Nav). -->
-      <!-- GEFUNDEN WERDEN — als Kanalliste
-           Vorher zwei grosse Karten plus ein Kasten mit fuenf weiteren
-           Kanaelen, zusammen ueber 800 Pixel. Jetzt sieben Zeilen mit
-           Aufklappen: der Besucher sieht alle Wege auf einen Blick und
-           oeffnet nur, was ihn betrifft. Kein Inhalt entfaellt.
-           Der Anker #google-ads wird aus der Hauptnavigation angesprungen. -->
-      <section class="sec" id="sichtbarkeit">
-        <div class="wrap">
-          <span id="google-ads" class="anchor-alias" aria-hidden="true"></span>
-
-          <div class="sec-head">
-            <span class="kicker">gefunden werden</span>
-            <h2>Wie Kunden Sie finden.</h2>
-            <p>Zwei Wege sind die Basis, fünf weitere kommen dazu, wenn sie zu Ihnen passen.</p>
-          </div>
-
-          <div class="vch-list">
-            <div class="vch">
-              <button type="button" class="vch-head" aria-expanded="false" aria-controls="vch-1">
-                <span class="vch-tag vch-tag--incl">im Preis</span>
-                <span class="vch-name">Google &amp; KI-Assistenten</span>
-                <span class="vch-lead">SEO &amp; GEO ab Werk — Sie ranken bei Google und werden von ChatGPT zitiert.</span>
-                <span class="vch-icon" aria-hidden="true">⌄</span>
-              </button>
-              <div class="vch-body" id="vch-1" hidden>
-                <p class="vch-body-text">Sie ranken bei Google und werden von ChatGPT, Perplexity und Google AI direkt zitiert — nicht nur als Link, sondern als Antwort.</p>
-                <ul class="vch-plus">
-                  <li>Auch von Fachkräften gefunden, die eine Stelle suchen</li>
-                  <li>Google-Firmenprofil und Bewertungen inklusive — automatisch angefragt nach Auftragsabschluss</li>
-                </ul>
-                <p class="vch-note">Dauerhaft — braucht aber Wochen bis Monate.</p>
-              </div>
-            </div>
-
-            <div class="vch">
-              <button type="button" class="vch-head" aria-expanded="false" aria-controls="vch-2">
-                <span class="vch-tag vch-tag--addon">Addon</span>
-                <span class="vch-name">Google Search Ads</span>
-                <span class="vch-lead">Besucher ab Tag eins — wirkt sofort, kostet laufend.</span>
-                <span class="vch-icon" aria-hidden="true">⌄</span>
-              </button>
-              <div class="vch-body" id="vch-2" hidden>
-                <p class="vch-body-text">Wir bauen die Kampagne, schreiben die Anzeigen und optimieren laufend, damit jeder Franken wirkt.</p>
-                <ul class="vch-plus">
-                  <li>Keyword-Recherche, Kampagnenaufbau, Anzeigentexte und Tracking von uns</li>
-                  <li>Monatliches Reporting &amp; Optimierung — Sie sehen, was jeder Franken bringt</li>
-                </ul>
-                <p class="vch-note">Wirkt sofort — nur solange Sie zahlen.</p>
-                <a class="vch-cta" href="/formular">Ads anfragen <span aria-hidden="true">→</span></a>
-              </div>
-            </div>
-
-            <div class="vch">
-              <button type="button" class="vch-head" aria-expanded="false" aria-controls="vch-3">
-                <span class="vch-tag vch-tag--opt">auf Anfrage</span>
-                <span class="vch-name">local.ch &amp; search.ch</span>
-                <span class="vch-lead">Wo Schweizer zuerst suchen.</span>
-                <span class="vch-icon" aria-hidden="true">⌄</span>
-              </button>
-              <div class="vch-body" id="vch-3" hidden>
-                <p class="vch-body-text">Die beiden Verzeichnisse werden in der Schweiz nach wie vor stark genutzt, gerade bei lokalen Dienstleistungen. Ein vollständiger, gepflegter Eintrag kostet wenig und wirkt sofort.</p>
-              </div>
-            </div>
-
-            <div class="vch">
-              <button type="button" class="vch-head" aria-expanded="false" aria-controls="vch-4">
-                <span class="vch-tag vch-tag--opt">auf Anfrage</span>
-                <span class="vch-name">Anzeigen in KI-Assistenten</span>
-                <span class="vch-lead">Bezahlte Platzierung in ChatGPT und Perplexity.</span>
-                <span class="vch-icon" aria-hidden="true">⌄</span>
-              </button>
-              <div class="vch-body" id="vch-4" hidden>
-                <p class="vch-body-text">Bezahlte Platzierungen in KI-Assistenten sind neu und noch nicht in jedem Markt verfügbar. Sobald es für Ihren Markt offen ist, richten wir es ein — vorher sagen wir Ihnen, dass es noch nicht geht.</p>
-              </div>
-            </div>
-
-            <div class="vch">
-              <button type="button" class="vch-head" aria-expanded="false" aria-controls="vch-5">
-                <span class="vch-tag vch-tag--opt">auf Anfrage</span>
-                <span class="vch-name">Meta Ads</span>
-                <span class="vch-lead">Instagram und Facebook, wenn Ihre Kundschaft dort ist.</span>
-                <span class="vch-icon" aria-hidden="true">⌄</span>
-              </button>
-              <div class="vch-body" id="vch-5" hidden>
-                <p class="vch-body-text">Lohnt sich, wo visuell entschieden wird und die Zielgruppe ohnehin scrollt — Gastronomie, Einrichtung, Körperpflege. Bei erklärungsbedürftigen Handwerksleistungen meist weniger als Google.</p>
-              </div>
-            </div>
-
-            <div class="vch">
-              <button type="button" class="vch-head" aria-expanded="false" aria-controls="vch-6">
-                <span class="vch-tag vch-tag--opt">auf Anfrage</span>
-                <span class="vch-name">Bewertungsplattformen</span>
-                <span class="vch-lead">Google, TripAdvisor, branchenspezifische Portale.</span>
-                <span class="vch-icon" aria-hidden="true">⌄</span>
-              </button>
-              <div class="vch-body" id="vch-6" hidden>
-                <p class="vch-body-text">Bewertungen entscheiden oft, wer von zwei gefundenen Betrieben angerufen wird. Die Website kann sie nach Auftragsabschluss automatisch anfragen — das ist im Preis enthalten. Die Pflege der Portale selbst kommt dazu.</p>
-              </div>
-            </div>
-
-            <div class="vch">
-              <button type="button" class="vch-head" aria-expanded="false" aria-controls="vch-7">
-                <span class="vch-tag vch-tag--opt">auf Anfrage</span>
-                <span class="vch-name">Newsletter</span>
-                <span class="vch-lead">Der einzige Kanal, der Ihnen selbst gehört.</span>
-                <span class="vch-icon" aria-hidden="true">⌄</span>
-              </button>
-              <div class="vch-body" id="vch-7" hidden>
-                <p class="vch-body-text">Bei Google und Meta zahlen Sie für jeden Kontakt neu. Eine Adressliste bleibt Ihnen — auch wenn sich Algorithmen oder Preise ändern.</p>
-              </div>
-            </div>
-          </div>
-
-          <p class="vch-foot">Was davon lohnt, hängt an Ihrer Branche und Region. Wir sagen Ihnen offen, wenn ein Kanal bei Ihnen nichts bringt.</p>
-        </div>
-      </section>
-
-      <!-- REFERENZEN — echte, live geschaltete Projekte
-           Die Beschreibungen stammen aus den Seiten selbst (Stand 13.08.2026),
-           nicht aus Annahmen. Bei Änderungen an den Projekten hier nachziehen. -->
-      <section class="sec sec--dark" id="referenzen">
-        <div class="wrap">
-          <div class="sec-head">
-            <span class="kicker">gebaut und live</span>
-            <h2>Sehen Sie selbst, was wir bauen.</h2>
-            <p>Drei Projekte, die Sie direkt öffnen können — jedes mit einer anderen Aufgabe.</p>
-          </div>
-
-          <div class="ref-grid">
-            <a class="ref-card" href="https://cora-immobilien.ch/" target="_blank" rel="noopener">
-              <span class="ref-logo-row">
-                <img class="ref-logo" src="/Logos/Cora-Immobilien.png" alt="CORA Immobilien"
-                     width="613" height="407" loading="lazy" decoding="async">
-              </span>
-              <span class="ref-branch">Immobilien</span>
-              <span class="ref-name">CORA Immobilien</span>
-              <span class="ref-text">Bewirtschaftung, Vermietung, Verkauf und Beratung klar getrennt — mit Team-Seite, die Vertrauen aufbaut, bevor jemand anruft.</span>
-              <span class="ref-link">cora-immobilien.ch <span aria-hidden="true">→</span></span>
-            </a>
-
-            <a class="ref-card" href="https://gastro-cycle.ch/" target="_blank" rel="noopener">
-              <span class="ref-logo-row">
-                <img class="ref-logo ref-logo--wide" src="/Logos/GastroCycle.png" alt="GastroCycle"
-                     width="228" height="74" loading="lazy" decoding="async">
-              </span>
-              <span class="ref-branch">Gastro-Ausstattung</span>
-              <span class="ref-name">GastroCycle</span>
-              <span class="ref-text">Gerätekatalog zum Mieten und Kaufen, mit Anfrageformular direkt am Gerät — statt Telefonliste und PDF-Prospekt.</span>
-              <span class="ref-link">gastro-cycle.ch <span aria-hidden="true">→</span></span>
-            </a>
-
-            <a class="ref-card" href="https://project-future.ch/" target="_blank" rel="noopener">
-              <span class="ref-logo-row">
-                <img class="ref-logo ref-logo--round" src="/Logos/Ruay-Thai-Noodle.avif" alt="Ruay Thai Noodle"
-                     width="44" height="44" loading="lazy" decoding="async">
-              </span>
-              <span class="ref-branch">Restaurant</span>
-              <span class="ref-name">Ruay Thai Noodle</span>
-              <span class="ref-text">Menü, Mittagsbuffet und Vorbestellung zum Abholen — die Gäste bestellen vor, statt am Mittag anzustehen.</span>
-              <span class="ref-link">project-future.ch <span aria-hidden="true">→</span></span>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <!-- PRICING -->
-      <section class="sec" id="preise">
-        <div class="wrap">
-          <div class="sec-head">
-            <span class="kicker">erstellung · fixpreise</span>
-            <h2>Drei Pakete. Klarer Zweck.</h2>
-            <p>Nicht „mehr Design für mehr Geld“, sondern mehr Werkzeug für mehr Wachstum. Sie wählen nach Ziel, nicht nach Seitenzahl.</p>
-          </div>
-
-          <div class="tiers">
-            <div class="tier">
-              <p class="tier-name">Der Auftritt</p>
-              <p class="promise">„Sie sind online."</p>
-              <p class="price">2'999<span class="price-cur">CHF</span></p>
-              <p class="who">Für Kleinstbetriebe, Einzelunternehmer, den sauberen Start.</p>
-              <button type="button" class="tier-more" aria-expanded="false" hidden>
-                <span class="tier-more-lbl">Leistungen anzeigen</span>
-                <span class="tier-more-icon" aria-hidden="true">⌄</span>
-              </button>
-              <ul class="tier-list">
-                <li>Eine Seite, alle Infos</li>
-                <li>Alle Standard-Leistungen inklusive</li>
-                <li>Kontaktformular</li>
-                <li>Offene Stellen als eigener Abschnitt</li>
-                <li>Startklar in wenigen Tagen</li>
-              </ul>
-              <a href="/formular" class="tier-cta">Anfragen</a>
-            </div>
-
-            <div class="tier featured">
-              <span class="tag">KMU-Match</span>
-              <p class="tier-name">Das Arbeitspferd</p>
-              <p class="promise">„Ihre Website arbeitet."</p>
-              <p class="price">4'999<span class="price-cur">CHF</span></p>
-              <p class="who">Der Standard für Dienstleister &amp; KMU. Deckt den echten Bedarf komplett ab.</p>
-              <button type="button" class="tier-more" aria-expanded="false" hidden>
-                <span class="tier-more-lbl">Leistungen anzeigen</span>
-                <span class="tier-more-icon" aria-hidden="true">⌄</span>
-              </button>
-              <ul class="tier-list">
-                <li>5 Inhaltsseiten (Rechtsseiten inklusive)</li>
-                <li>Leistungen, Team, Karriere, Kontakt</li>
-                <li>Alle Standard-Leistungen inklusive</li>
-                <li>Kontaktformular &amp; Karte</li>
-                <li>Vertrauens-Elemente (Bewertungen, USP)</li>
-              </ul>
-              <a href="/formular" class="tier-cta">Anfragen</a>
-            </div>
-
-            <div class="tier">
-              <p class="tier-name">Die Maschine</p>
-              <p class="promise">„Läuft von selbst."</p>
-              <p class="price"><span class="price-from">Ab </span>8'900<span class="price-cur">CHF</span></p>
-              <p class="who">Wenn die Website Aufgaben übernehmen soll: rechnen, buchen, automatisieren — rund um die Uhr.</p>
-              <button type="button" class="tier-more" aria-expanded="false" hidden>
-                <span class="tier-more-lbl">Leistungen anzeigen</span>
-                <span class="tier-more-icon" aria-hidden="true">⌄</span>
-              </button>
-              <ul class="tier-list">
-                <li>Bis ~10 Seiten inkl. Leistungs-Landingpages</li>
-                <li>Interaktive Werkzeuge (Rechner, Buchung, Konfigurator)</li>
-                <li>KI-Assistent: nimmt Anliegen auf, antwortet in jeder Sprache</li>
-                <li>Terminbuchung &amp; automatische Kalenderverbindung</li>
-                <li>Karriereseite mit Bewerbungsformular &amp; Lehrstellen</li>
-                <li>Google-Firmenprofil &amp; lokale Sichtbarkeit</li>
-                <li>Blog &amp; FAQ — für Google und KI-Suche sichtbar · optional Mehrsprachigkeit</li>
-              </ul>
-              <a href="/formular" class="tier-cta">Anfragen</a>
-            </div>
-          </div>
-
-          <p class="tier-note">Grössere Projekte, Shops, Individuallösungen — auf Anfrage, transparent kalkuliert.</p>
-
-          <!-- Wie viele Feedback-Runden im Paket stecken, ist eine Preisfrage
-               und gehoert deshalb hierher, nicht in eine eigene Section. -->
-          <div class="loops">
-            <p class="loops-head">Feedback-Runden je Paket</p>
-            <div class="loop-row">
-              <p class="lname"><strong>Der Auftritt</strong> <span>· 2'999</span></p>
-              <div class="loop-dots">
-                <i class="ldot ldot--demo" title="Demo"></i>
-                <i class="ldot" title="Feedback-Runde"></i>
-                <i class="ldot" title="Feedback-Runde"></i>
-                <span class="lcount">Demo + 2 Runden</span>
-              </div>
-            </div>
-            <div class="loop-row">
-              <p class="lname"><strong>Das Arbeitspferd</strong> <span>· 4'999</span></p>
-              <div class="loop-dots">
-                <i class="ldot ldot--demo" title="Demo"></i>
-                <i class="ldot" title="Feedback-Runde"></i>
-                <i class="ldot" title="Feedback-Runde"></i>
-                <i class="ldot" title="Feedback-Runde"></i>
-                <span class="lcount">Demo + 3 Runden</span>
-              </div>
-            </div>
-            <div class="loop-row">
-              <p class="lname"><strong>Die Maschine</strong> <span>· 8'900</span></p>
-              <div class="loop-dots">
-                <i class="ldot ldot--demo" title="Demo"></i>
-                <i class="ldot" title="Feedback-Runde"></i>
-                <i class="ldot" title="Feedback-Runde"></i>
-                <i class="ldot" title="Feedback-Runde"></i>
-                <i class="ldot" title="Feedback-Runde"></i>
-                <span class="lcount">Demo + 4 Runden</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- RETAINER -->
-      <section class="sec sec--dark" id="betrieb">
-        <div class="wrap">
-          <div class="sec-head">
-            <span class="kicker">laufender betrieb · monatlich</span>
-            <h2>Betrieb &amp; Pflege</h2>
-            <p>Weil wir kein WordPress warten, ist unser Aufwand minimal — und Ihr Preis ehrlich tief.</p>
-          </div>
-
-          <div class="retainer-grid">
-            <div class="rcard">
-              <p class="price">49<span class="price-cur">CHF / Monat</span></p>
-              <p class="tier-name">Basic</p>
-              <p class="promise">„Ihre Website läuft — zuverlässig."</p>
-              <button type="button" class="tier-more" aria-expanded="false" hidden>
-                <span class="tier-more-lbl">Leistungen anzeigen</span>
-                <span class="tier-more-icon" aria-hidden="true">⌄</span>
-              </button>
-              <ul class="tier-list">
-                <li>Ihre Website ist jederzeit erreichbar</li>
-                <li>Automatische Überwachung rund um die Uhr</li>
-                <li>Ihre Daten sind gesichert</li>
-              </ul>
-            </div>
-
-            <div class="rcard rfeatured">
-              <span class="tag">Empfohlen</span>
-              <p class="price">99<span class="price-cur">CHF / Monat</span></p>
-              <p class="tier-name">Advanced</p>
-              <p class="promise">„Läuft, wächst, zeigt Ergebnisse."</p>
-              <button type="button" class="tier-more" aria-expanded="false" hidden>
-                <span class="tier-more-lbl">Leistungen anzeigen</span>
-                <span class="tier-more-icon" aria-hidden="true">⌄</span>
-              </button>
-              <ul class="tier-list">
-                <li><strong>Alles aus Basic</strong></li>
-                <li><strong>Monatlicher Report: Besucher, Sichtbarkeit &amp; Zustand</strong></li>
-                <li>1 Änderung pro Monat <span class="lidesc">— Texte, Bilder, Preise</span></li>
-                <li>Ihre Inhalte bleiben aktuell</li>
-                <li>Persönlicher Ansprechpartner</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
     </div><!-- /.wa-wrap -->
+
 
     <!-- ── Section 5: CTA ─────────────────────────────────────── -->
     <!-- ── FAQ ───────────────────────────────────────────────── -->
@@ -1491,6 +1108,23 @@
   };
   </script>
   <script src="/ki-check-prototyp.js"></script>
+  <script>
+  /* Werkzeug-Tabs */
+  (function() {
+    var btns = document.querySelectorAll('.wtab-btn');
+    var panels = document.querySelectorAll('.wtab-panel');
+    btns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var idx = this.dataset.wtab;
+        btns.forEach(function(b) { b.classList.remove('is-active'); });
+        panels.forEach(function(p) { p.classList.remove('is-active'); });
+        this.classList.add('is-active');
+        document.getElementById('wtab-' + idx).classList.add('is-active');
+      });
+    });
+  })();
+  </script>
+
   <script>
   /* ── Kanalliste in #sichtbarkeit ──
      Immer nur eine Zeile offen, wie im Entwurf. Das display wird direkt am
