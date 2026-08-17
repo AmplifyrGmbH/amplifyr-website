@@ -1357,7 +1357,7 @@
    Nur --wa-sec-bg wird nachgezogen, damit Elemente, die den Sectionsgrund
    aufnehmen, stimmen. */
 .wa-wrap section.sec--soft {
-  background: #f4f6f9;
+  background: #fff;
   /* Ohne eigenen z-index liegt der Lichtschleier von .wa-wrap::before
      (absolut, inset:0) UEBER dem Sectionsgrund und toent ihn
      ungleichmaessig — oben blaeulich, unten aus. Der Grund wirkte
@@ -2781,7 +2781,7 @@
   aspect-ratio: 16 / 9;
   border-radius: 14px;
   overflow: hidden;
-  background: var(--wa-navy);
+  background: #fff;
   box-shadow: 0 2px 6px var(--wa-glass-sh);
 }
 .wa-wrap .wd-video {
