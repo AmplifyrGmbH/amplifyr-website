@@ -184,7 +184,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url('/Bilder/RaketeAnimation.jpg');
+  background-image: url('/Bilder/RaketeAnimation.webp');
   background-size: cover;
   background-position: 72% center;
   opacity: 0;
