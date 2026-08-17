@@ -215,6 +215,52 @@
   }
 
   /* ============================================================
+     SHARED: SCROLL-LEGENDE (.jrail)
+     Aktiviert automatisch auf jeder Seite mit <nav class="jrail">.
+     Der Kontrast über verschiedene Hintergründe (dunkle Sections,
+     weisse Sections, Übergänge) läuft rein über CSS mix-blend-mode
+     (siehe style.css) — kein manuelles Hell/Dunkel-Tracking hier.
+  ============================================================ */
+  function initJrail() {
+    var rail = document.querySelector('.jrail');
+    if (!rail) return;
+    var links = [].slice.call(rail.querySelectorAll('a'));
+    var ziele = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+    var hero  = document.querySelector('.fsh') || document.querySelector('main section');
+    var wartet = false, aktiv = -1;
+
+    function oben(el) { return el.getBoundingClientRect().top + window.pageYOffset; }
+
+    function mal() {
+      wartet = false;
+      var y = window.pageYOffset, h = window.innerHeight, n = ziele.length;
+      rail.classList.toggle('on', y > (hero ? oben(hero) + hero.offsetHeight - 140 : 200));
+
+      var thresh = y + 80;
+      var i = 0;
+      for (var k = n - 1; k >= 0; k--) { if (ziele[k] && oben(ziele[k]) <= thresh) { i = k; break; } }
+      if ((y + h) >= document.documentElement.scrollHeight - 10) { i = n - 1; }
+
+      var activeLi = rail.querySelectorAll('li')[i];
+      var fillPx = activeLi ? activeLi.offsetTop + activeLi.offsetHeight / 2 : 0;
+      rail.style.setProperty('--p', fillPx + 'px');
+
+      if (i === aktiv) return;
+      aktiv = i;
+      links.forEach(function (a, k) {
+        if (k === i) a.setAttribute('aria-current', 'true');
+        else a.removeAttribute('aria-current');
+      });
+    }
+
+    function tick() { if (!wartet) { wartet = true; requestAnimationFrame(mal); } }
+    window.addEventListener('scroll', tick, { passive: true });
+    window.addEventListener('resize', tick);
+    if ('ResizeObserver' in window) new ResizeObserver(tick).observe(document.body);
+    mal();
+  }
+
+  /* ============================================================
      INIT
   ============================================================ */
   document.addEventListener('DOMContentLoaded', function () {
@@ -223,6 +269,7 @@
     initMobileMenu();
     initMobileSubMenus();
     initKitFaq();
+    initJrail();
   });
 
 }());

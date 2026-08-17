@@ -107,29 +107,7 @@
   @media(max-width:400px){.topnav .amplifyr-logo{height:36px}.brand .kundenlogo{height:36px}}
   @media(max-width:420px){.datum{display:none}}
 
-  /* ── NAVIGATION RAIL ── */
-  .jrail{--zeile:56px;position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:50;opacity:0;pointer-events:none;transition:opacity .35s}
-  .jrail.on{opacity:1;pointer-events:auto}
-  .jrail ol{list-style:none;position:relative;margin:0;padding:0}
-  .jrail ol::before,.jrail ol::after{content:"";position:absolute;right:5px;top:calc(var(--zeile)/2);width:2px;border-radius:2px}
-  .jrail ol::before{bottom:calc(var(--zeile)/2);background:#d3dcea}
-  .jrail ol::after{height:var(--p,0px);background:var(--brand-dark);transition:height .3s}
-  .jrail a{display:grid;grid-template-columns:1fr 12px;align-items:center;gap:10px;height:var(--zeile);text-decoration:none}
-  .jrail a span{font-size:.875rem;line-height:1.3;text-align:right;color:#6b7488;font-weight:600;white-space:nowrap;transition:.2s}
-  .jrail a i{width:10px;height:10px;margin-left:1px;border-radius:50%;background:#fff;border:2px solid var(--brand-mid);transition:.2s}
-  .jrail a:hover span{color:var(--brand-dark)}
-  .jrail a:focus-visible{outline:3px solid var(--brand-dark);outline-offset:4px;border-radius:4px}
-  .jrail a[aria-current="true"] span{color:var(--brand-dark);font-weight:800}
-  .jrail a[aria-current="true"] i{background:var(--brand-dark);border-color:var(--brand-dark);transform:scale(1.2)}
-  .jrail.dunkel ol::before{background:rgba(255,255,255,.20)}
-  .jrail.dunkel ol::after{background:var(--brand-mid)}
-  .jrail.dunkel a span{color:rgba(255,255,255,.75)}
-  .jrail.dunkel a[aria-current="true"] span{color:#fff}
-  .jrail.dunkel a i{background:transparent;border-color:rgba(255,255,255,.45)}
-  .jrail.dunkel a[aria-current="true"] i{background:var(--brand-mid);border-color:var(--brand-mid)}
-  .jrail.dunkel a:hover span{color:#fff}
-  @media(max-width:1100px){.jrail a span{display:none}.jrail a{grid-template-columns:12px}}
-  @media(max-width:900px){.jrail{display:none}}
+  /* ── NAVIGATION RAIL: siehe .jrail in style.css (geteilte Komponente) ── */
 
   /* ── HERO ── */
   .fsh-overlay{background:rgba(10,18,40,.52)}
@@ -376,7 +354,7 @@
   }
 </style>
 
-  <link rel="stylesheet" href="/style.css?v=6">
+  <link rel="stylesheet" href="/style.css?v=8">
   <link rel="stylesheet" href="/fchat.css">
 <style>
   /* Amplifyr header integration */
@@ -528,10 +506,9 @@
         </div>
         <div class="mobile-nav-group__sub">
           <a href="/it-solutions#sec-support">Support &amp; Beratung</a>
-          <a href="/it-solutions#sec-cloud">Cloudlösungen</a>
-          <a href="/it-solutions#sec-managed">IT-Betrieb &amp; Wartung</a>
-          <a href="/it-solutions#sec-outsourcing">IT-Outsourcing</a>
-          <a href="/it-solutions#sec-relocation">IT-Umzug &amp; Verkabelungen</a>
+          <a href="/it-solutions#sec-managed">Managed Services</a>
+          <a href="/it-solutions#sec-sla">SLA &amp; Support-Stunden</a>
+          <a href="/it-solutions#sec-projekte">Projekte &amp; Migrationen</a>
         </div>
       </div>
 
@@ -577,8 +554,8 @@
 
 <section class="fsh" id="fsh-hw">
   <video class="fsh-video" autoplay muted loop playsinline preload="metadata">
-    <source src="Animationen/Animation_Handwerker.webm" type="video/webm">
-    <source src="Animationen/Animation_Handwerker.mp4" type="video/mp4">
+    <source src="Animationen/Animation_Handwerker_boomerang.webm" type="video/webm">
+    <source src="Animationen/Animation_Handwerker_boomerang.mp4" type="video/mp4">
   </video>
   <div class="fsh-overlay" aria-hidden="true"></div>
   <div class="container fsh-inner">
@@ -1378,7 +1355,7 @@
     </a>
   </div>
 
-  <script src="/main.js"></script>
+  <script src="/main.js?v=3"></script>
 
 <script>
 (function(){
@@ -1387,40 +1364,7 @@
   document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
 })();
 
-(function(){
-  var rail=document.querySelector('.jrail');
-  if(!rail)return;
-  var links=[].slice.call(rail.querySelectorAll('a'));
-  var ziele=links.map(function(a){return document.querySelector(a.getAttribute('href'));});
-  var hero=document.querySelector('.hero');
-  var dunkel=document.querySelector('.cta');
-  var wartet=false,aktiv=-1;
-  function oben(el){return el.getBoundingClientRect().top+window.pageYOffset;}
-  function mal(){
-    wartet=false;
-    var y=window.pageYOffset,h=window.innerHeight,n=ziele.length;
-    rail.classList.toggle('on',y>(hero?oben(hero)+hero.offsetHeight-140:200));
-    if(dunkel){rail.classList.toggle('dunkel',dunkel.getBoundingClientRect().top<rail.getBoundingClientRect().bottom);}
-    // Fill exactly to center of active dot
-    var activeLi=rail.querySelectorAll('li')[i];
-    var fillPx=activeLi?activeLi.offsetTop+activeLi.offsetHeight/2:0;
-    rail.style.setProperty('--p',fillPx+'px');
-    // Active: last section whose top is within upper 35% of viewport
-    var thresh=y+80;
-    var i=0;
-    for(var k=n-1;k>=0;k--){if(ziele[k]&&oben(ziele[k])<=thresh){i=k;break;}}
-    // At bottom of page: force last section active
-    if((y+h)>=document.documentElement.scrollHeight-10){i=n-1;}
-    if(i===aktiv)return;
-    aktiv=i;
-    links.forEach(function(a,k){if(k===i)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current');});
-  }
-  function tick(){if(!wartet){wartet=true;requestAnimationFrame(mal);}}
-  window.addEventListener('scroll',tick,{passive:true});
-  window.addEventListener('resize',tick);
-  if('ResizeObserver' in window)new ResizeObserver(tick).observe(document.body);
-  mal();
-})();
+/* .jrail-Logik: siehe initJrail() in main.js (geteilte Komponente) */
 
 (function(){
   var el=document.getElementById('zs-root');

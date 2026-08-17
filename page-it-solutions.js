@@ -9,6 +9,9 @@
   var EASE = 'cubic-bezier(0.22, 1, 0.36, 1)';
 
   document.addEventListener('DOMContentLoaded', function () {
+    /* Managed Services — Modul-Picker (reine Interaktion, unabhängig von Reduced-Motion) */
+    initMspPicker();
+
     var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduced) {
       /* Hover-Klassen sofort setzen, keine Animation */
@@ -19,16 +22,8 @@
     }
 
     /* Section Headers — gestaffelt */
-    window.animateOnScroll('#sec-outsourcing .its-section-header > *', { stagger: 80, duration: 500 });
-    window.animateOnScroll('#sec-managed .its-section-header > *',    { stagger: 80, duration: 500 });
-    window.animateOnScroll('#sec-cloud .its-section-header > *',      { stagger: 80, duration: 500 });
-
-    /* IT-Outsourcing Cards */
-    initCardGrid('.ito-card', 120);
-
-    /* Managed Services Tiles */
-    initCardGrid('.ms-tile', 100);
-
+    window.animateOnScroll('#sec-managed .its-section-header > *',  { stagger: 80, duration: 500 });
+    window.animateOnScroll('#sec-projekte .its-section-header > *', { stagger: 80, duration: 500 });
 
     /* M365 Showcase Tabs */
     initM365Tabs();
@@ -103,6 +98,77 @@
     }, { threshold: 0.1 });
 
     obs.observe(anchor);
+  }
+
+  function initMspPicker() {
+    var root = document.querySelector('.msp-grid');
+    if (!root) return;
+
+    var MODULES = [
+      { id: 'security',   name: 'Managed Security',              layers: ['work'],          benefit: 'Angriffe werden abgefangen — und Ihr Team erkennt, was durchkommt' },
+      { id: 'backup',     name: 'Managed Backup',                layers: ['data'],          benefit: 'Ihre Daten sind gesichert und im Ernstfall in Minuten zurück' },
+      { id: 'server',     name: 'Managed Server',                layers: ['infra'],         benefit: 'Server werden geplant gewartet, statt im Notfall repariert' },
+      { id: 'network',    name: 'Managed Network & WLAN',        layers: ['infra'],         benefit: 'Das Netzwerk läuft stabil, unbefugte Zugriffe bleiben draussen' },
+      { id: 'workplace',  name: 'Managed Workplace',             layers: ['work'],          benefit: 'Neue Mitarbeitende sind am ersten Tag startklar' },
+      { id: 'cloud',      name: 'Managed Cloud / Microsoft 365', layers: ['data'],          benefit: 'Zugriffe sind sauber geregelt, Lizenzen laufend optimiert' },
+      { id: 'monitoring', name: 'Monitoring & Patching',         layers: ['infra', 'work'], benefit: 'Störungen fallen uns auf, bevor Ihr Team sie merkt' },
+      { id: 'helpdesk',   name: 'Managed Helpdesk',              layers: ['work'],          benefit: 'Ihre Mitarbeitenden erreichen bei jedem Anliegen dieselbe Stelle' }
+    ];
+
+    var buttons        = [].slice.call(root.querySelectorAll('.msp-module'));
+    var layerEls       = [].slice.call(root.querySelectorAll('.msp-layer'));
+    var countEl        = document.getElementById('msp-count');
+    var benefitsList   = document.getElementById('msp-benefits-list');
+    var benefitsEmpty  = document.getElementById('msp-benefits-empty');
+
+    var selected = { security: true, backup: true };
+
+    function render() {
+      var selCount = 0;
+
+      buttons.forEach(function (btn) {
+        var on = !!selected[btn.getAttribute('data-module')];
+        btn.classList.toggle('is-active', on);
+        if (on) selCount++;
+      });
+      if (countEl) countEl.textContent = String(selCount);
+
+      layerEls.forEach(function (layerEl) {
+        var layer = layerEl.getAttribute('data-layer');
+        var covering = MODULES.filter(function (m) {
+          return selected[m.id] && m.layers.indexOf(layer) !== -1;
+        });
+        var chips = layerEl.querySelector('.msp-layer-chips');
+        chips.innerHTML = covering.map(function (m) {
+          return '<span>' + m.name + '</span>';
+        }).join('');
+        layerEl.classList.toggle('is-covered', covering.length > 0);
+        layerEl.querySelector('.msp-layer-status').textContent = covering.length > 0 ? 'Betreut' : 'Nicht abgedeckt';
+      });
+
+      var chosen = MODULES.filter(function (m) { return selected[m.id]; });
+      if (chosen.length) {
+        benefitsList.innerHTML = chosen.map(function (m) {
+          return '<div class="msp-benefit-row"><span class="msp-benefit-check">&#10003;</span><span>' + m.benefit + '</span></div>';
+        }).join('');
+        benefitsList.hidden = false;
+        benefitsEmpty.hidden = true;
+      } else {
+        benefitsList.innerHTML = '';
+        benefitsList.hidden = true;
+        benefitsEmpty.hidden = false;
+      }
+    }
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var id = btn.getAttribute('data-module');
+        selected[id] = !selected[id];
+        render();
+      });
+    });
+
+    render();
   }
 
   function initM365Tabs() {

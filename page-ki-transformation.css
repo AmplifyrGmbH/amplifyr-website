@@ -30,15 +30,33 @@
 }
 
 /* ============================================================
-   PARTNERSCHAFT — Overrides
+   PARTNERSCHAFT — Overrides (Navy-Hintergrund statt geteiltem
+   Hell-Theme aus page-index-prototyp.css)
 ============================================================ */
 #kit-partnerschaft {
+  background: var(--navy);
   padding-block: clamp(4rem, 8vw, 6rem);
 }
 
-#kit-partnerschaft .ptl-label {
-  color: var(--navy);
-  opacity: 1;
+#kit-partnerschaft .ptl-header h2 {
+  color: #fff;
+}
+
+#kit-partnerschaft .ptl-sub {
+  color: rgba(255,255,255,0.7);
+}
+
+#kit-partnerschaft .ptl-step-dot {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.35);
+}
+
+#kit-partnerschaft .ptl-step h3 {
+  color: #fff;
+}
+
+#kit-partnerschaft .ptl-step p {
+  color: rgba(255,255,255,0.68);
 }
 
 
@@ -1491,7 +1509,7 @@
    CHATBOTS & TELEFONIE
 ============================================================ */
 .kit-bot-section {
-  background: var(--navy);
+  background: var(--bg-white);
   padding-block: clamp(4rem, 8vw, 7rem);
 }
 
@@ -1502,13 +1520,13 @@
 }
 
 .kit-bot-header h2 {
-  color: #fff;
+  color: var(--navy);
   margin-block: var(--space-3) var(--space-5);
   font-size: clamp(1.7rem, 3.2vw, 2.6rem);
 }
 
 .kit-bot-lead {
-  color: rgba(228,235,245,0.68);
+  color: var(--text-muted);
   font-size: 1.02rem;
   line-height: 1.75;
   text-wrap: pretty;
@@ -1530,8 +1548,8 @@
 }
 
 .kit-bot-demo {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(26,39,68,0.03);
+  border: 1px solid rgba(106,171,223,0.22);
   border-radius: var(--radius-lg);
   padding: 22px 22px 20px;
 }
@@ -1542,7 +1560,7 @@
   gap: 9px;
   padding-bottom: 14px;
   margin-bottom: 14px;
-  border-bottom: 1px solid rgba(255,255,255,0.12);
+  border-bottom: 1px solid rgba(26,39,68,0.1);
 }
 
 .kit-bot-dot {
@@ -1556,7 +1574,7 @@
 .kit-bot-demo-name {
   font-size: 0.86rem;
   font-weight: 600;
-  color: #fff;
+  color: var(--navy);
 }
 
 .kit-bot-demo-live {
@@ -1565,7 +1583,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.09em;
-  color: rgba(228,235,245,0.5);
+  color: var(--text-muted);
 }
 
 .kit-bot-bub {
@@ -1578,9 +1596,9 @@
 }
 
 .kit-bot-bub--u {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.14);
-  color: rgba(255,255,255,0.86);
+  background: rgba(26,39,68,0.05);
+  border: 1px solid rgba(26,39,68,0.1);
+  color: var(--navy);
   border-bottom-right-radius: 4px;
   margin-left: auto;
 }
@@ -1599,20 +1617,20 @@
 }
 
 .kit-bot-channel {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(26,39,68,0.025);
+  border: 1px solid rgba(26,39,68,0.08);
   border-radius: var(--radius-md);
   padding: 16px 18px;
 }
 
 .kit-bot-channel h3 {
-  color: #fff;
+  color: var(--navy);
   font-size: 1rem;
   margin-bottom: 5px;
 }
 
 .kit-bot-channel p {
-  color: rgba(228,235,245,0.65);
+  color: var(--text-muted);
   font-size: 0.87rem;
   line-height: 1.6;
 }
