@@ -2417,6 +2417,7 @@
 .wa-wrap .ref-logo-row {
   display: flex;
   align-items: center;
+  justify-content: center;
   height: 64px;
   margin: 0 0 16px;
 }
@@ -2447,18 +2448,13 @@
 .wa-wrap .sec--dark .ref-logo-row {
   height: auto;
   align-self: center;
-  /* Knapp halten: Die Platte umschliesst die Bildbox, und die bringt bei CORA
-     reichlich eigenen Leerraum mit — mit 8px/12px und der 62px hohen Bildbox
-     wirkte sie wie eine Karte um ein kleines Zeichen. Enger und mit
-     niedrigerem Logo liest sie sich als Chip. */
-  padding: 5px 9px;
+  padding: 4px 6px;
   border-radius: 8px;
   background: #ffffff;
 }
-/* Nur das hochformatige Logo (CORA) wird kleiner — das querformatige
-   GastroCycle steht mit 32px ohnehin flach, das runde bekommt keine Platte. */
 .wa-wrap .sec--dark .ref-logo:not(.ref-logo--wide):not(.ref-logo--round) {
-  height: 42px;
+  height: 58px;
+  max-width: 200px;
 }
 .wa-wrap .sec--dark .ref-logo-row:has(.ref-logo--round) {
   background: none;
