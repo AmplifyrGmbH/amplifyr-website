@@ -2394,6 +2394,8 @@
 .wa-wrap .ref-card {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   text-decoration: none;
   background: var(--wa-glass-bg2);
   border: 1px solid var(--wa-glass-bd);
@@ -2425,7 +2427,7 @@
   width: auto;
   max-width: 170px;
   object-fit: contain;
-  object-position: left center;
+  object-position: center;
 }
 .wa-wrap .ref-logo--wide { height: 32px; max-width: 170px; }
 .wa-wrap .ref-logo--round {
@@ -2444,7 +2446,7 @@
    dieselbe Grundlage haben. Der runde Bildausschnitt braucht keine. */
 .wa-wrap .sec--dark .ref-logo-row {
   height: auto;
-  align-self: flex-start;
+  align-self: center;
   /* Knapp halten: Die Platte umschliesst die Bildbox, und die bringt bei CORA
      reichlich eigenen Leerraum mit — mit 8px/12px und der 62px hohen Bildbox
      wirkte sie wie eine Karte um ein kleines Zeichen. Enger und mit
