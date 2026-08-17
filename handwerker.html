@@ -132,51 +132,12 @@
   @media(max-width:900px){.jrail{display:none}}
 
   /* ── HERO ── */
-  .hero{padding:0;position:relative;overflow:hidden;color:#fff;min-height:calc(100vh - 62px);display:flex;flex-direction:column;justify-content:center}
-  .hero-bg-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
-  .hero-bg-overlay{position:absolute;inset:0;background:linear-gradient(158deg,rgba(21,30,50,.72),rgba(38,52,84,.55));z-index:1}
-  .hero-in{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;padding:28px 0}
-  @media(max-width:880px){.hero-in{grid-template-columns:1fr;gap:16px;padding:28px 0 24px;text-align:center}}
-  .hero .eyebrow{color:var(--brand-mid)}
-  .hero h1{font-size:clamp(1.75rem,3.8vw,3rem);color:#fff}
-  .hero h1 .u{color:var(--brand-accent)}
-  .hero p.lead{font-size:1rem;color:#cfd9ea;margin:10px 0 16px;max-width:46ch}
-  .hero p.lead b{color:#fff;font-weight:700}
-  @media(max-width:880px){.hero p.lead{margin-inline:auto;margin-bottom:8px}}
-  .credlead{font-weight:800;letter-spacing:.12em;text-transform:uppercase;font-size:.75rem;color:var(--brand-accent);margin:12px 0 6px}
-  .herocred{display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin:0 0 4px}
-  .hcr{display:inline-flex;align-items:center;gap:12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:4px 20px 4px 4px;font-size:.875rem;font-weight:700;color:#fff;text-decoration:none;transition:.2s}
-  .hcr:hover{background:rgba(255,255,255,.16);border-color:var(--brand-accent)}
-  .hcr b{display:block;font-size:1rem;line-height:1.3}
-  .hcr i{display:block;font-style:normal;font-weight:600;font-size:.8125rem;color:#cfd9ea;line-height:1.3}
-  .hcr-foto{width:52px;height:52px;border-radius:50%;object-fit:cover;flex:none;margin:-4px 8px -4px 0;border:2px solid var(--brand-accent)}
-  .hcr-av{width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.15);border:2px solid var(--brand-accent);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',Georgia,serif;font-size:1.25rem;font-weight:700;color:#fff;flex:none;margin:-4px 8px -4px 0}
-  @media(max-width:880px){
-    .hero-in{display:flex;flex-direction:column}
-    .hero-in>div:first-child{display:contents}
-    .hero-in h1{order:0}
-    .hero-in>div:last-child{order:1}
-    .hero-in .lead{order:2}
-    .credlead{order:3;margin-top:14px}
-    .herocred{order:4;align-items:center;padding-inline:14px}
-  }
-  @media(max-width:400px){.hcr{font-size:.75rem;padding:4px 12px 4px 4px}}
-  .herophoto{position:relative;border-radius:18px;overflow:hidden;box-shadow:0 32px 74px -28px rgba(0,0,0,.72);border:1px solid rgba(255,255,255,.16);aspect-ratio:4/3.2}
-  .herophoto img,.herophoto video{width:100%;height:100%;object-fit:cover;object-position:top center}
-  .herophoto .hptag{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(transparent,rgba(7,32,47,.94));color:#fff;font-weight:700;font-size:.875rem;padding:32px 16px 12px;z-index:2}
-  .herophoto .hptag small{display:block;margin-top:4px;font-weight:600;font-size:.75rem;color:rgba(255,255,255,.66)}
-  /* Hero card (fallback wenn kein Foto) */
-  .herocard{border-radius:18px;background:linear-gradient(145deg,rgba(255,255,255,.12),rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.18);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 32px;gap:20px;min-height:340px;box-shadow:0 32px 74px -28px rgba(0,0,0,.60)}
-  .herocard-logo{max-height:72px;max-width:200px;object-fit:contain;filter:brightness(0) invert(1);opacity:.9}
-  .herocard-name{font-family:'Fraunces',Georgia,serif;font-size:1.5rem;font-weight:600;color:#fff;text-align:center;line-height:1.2}
-  .herocard-tag{font-size:.875rem;color:#cfd9ea;text-align:center;letter-spacing:.04em}
-  .herocard-text{font-size:.9375rem;color:#cfd9ea;text-align:center;line-height:1.6;max-width:34ch;border-top:1px solid rgba(255,255,255,.15);padding-top:20px;font-style:italic}
+  .fsh-overlay{background:rgba(10,18,40,.52)}
 
   /* ── ARBEITSTAG ── */
   .pstrip{background:var(--card);border-bottom:1px solid var(--line);padding:72px 0}
   @media(max-width:640px){.pstrip{padding:40px 0}
-  .flow{border-top:none}
-  .hero-lead-detail{display:none}}
+  .flow{border-top:none}}
 
   /* ── ZEITSTRAHL ── */
   .flow{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -606,19 +567,18 @@
   </ol>
 </nav>
 
-<section class="hero">
-  <video class="hero-bg-video" autoplay muted loop playsinline>
+<section class="fsh">
+  <video class="fsh-video" autoplay muted loop playsinline preload="metadata">
     <source src="Animationen/Animation_Handwerker.webm" type="video/webm">
     <source src="Animationen/Animation_Handwerker.mp4" type="video/mp4">
   </video>
-  <div class="hero-bg-overlay"></div>
-  <div class="wrap hero-in">
-    <div>
-      <p class="eyebrow">Handwerk amplified.</p>
-      <h1>Ihr digitaler Generalunternehmer.</h1>
-      <p class="lead">Von der Website bis zur Handwerkersoftware — wir digitalisieren Ihren Betrieb aus einer Hand. Sie konzentrieren sich aufs Handwerk, wir sorgen dafür, dass Aufträge kommen und der Büroaufwand sinkt.</p>
+  <div class="fsh-overlay" aria-hidden="true"></div>
+  <div class="container fsh-inner">
+    <div class="fsh-content">
+      <p class="eyebrow" style="color:var(--steel);margin:0 0 16px">Handwerk amplified.</p>
+      <h1 class="fsh-heading">Ihr digitaler Generalunternehmer.</h1>
+      <p class="fsh-sub">Von der Website bis zur Handwerkersoftware — wir digitalisieren Ihren Betrieb aus einer Hand. Sie konzentrieren sich aufs Handwerk, wir sorgen dafür, dass Aufträge kommen und der Büroaufwand sinkt.</p>
     </div>
-    <div></div>
   </div>
 </section>
 
