@@ -217,19 +217,30 @@
   /* ============================================================
      SHARED: SCROLL-LEGENDE (.jrail)
      Aktiviert automatisch auf jeder Seite mit <nav class="jrail">.
-     Der Kontrast über verschiedene Hintergründe (dunkle Sections,
-     weisse Sections, Übergänge) läuft rein über CSS mix-blend-mode
-     (siehe style.css) — kein manuelles Hell/Dunkel-Tracking hier.
+     data-dark am <nav> (CSS-Selektor) listet die dunklen Sections
+     der Seite auf — Default ".site-cta". Da die Legende fixiert
+     ist, wird JEDER Listenpunkt einzeln geprüft, über welchem
+     Abschnitt er gerade steht (mix-blend-mode ist auf fixierten
+     Elementen browserübergreifend nicht zuverlässig).
   ============================================================ */
   function initJrail() {
     var rail = document.querySelector('.jrail');
     if (!rail) return;
     var links = [].slice.call(rail.querySelectorAll('a'));
+    var lis   = [].slice.call(rail.querySelectorAll('li'));
     var ziele = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
     var hero  = document.querySelector('.fsh') || document.querySelector('main section');
+    var dunkelEls = [].slice.call(document.querySelectorAll(rail.getAttribute('data-dark') || '.site-cta'));
     var wartet = false, aktiv = -1;
 
     function oben(el) { return el.getBoundingClientRect().top + window.pageYOffset; }
+
+    function istDunkel(y) {
+      return dunkelEls.some(function (el) {
+        var r = el.getBoundingClientRect();
+        return y >= r.top && y <= r.bottom;
+      });
+    }
 
     function mal() {
       wartet = false;
@@ -241,9 +252,15 @@
       for (var k = n - 1; k >= 0; k--) { if (ziele[k] && oben(ziele[k]) <= thresh) { i = k; break; } }
       if ((y + h) >= document.documentElement.scrollHeight - 10) { i = n - 1; }
 
-      var activeLi = rail.querySelectorAll('li')[i];
+      var activeLi = lis[i];
       var fillPx = activeLi ? activeLi.offsetTop + activeLi.offsetHeight / 2 : 0;
       rail.style.setProperty('--p', fillPx + 'px');
+      rail.classList.toggle('dunkel-active', activeLi ? istDunkel(activeLi.getBoundingClientRect().top + activeLi.offsetHeight / 2) : false);
+
+      lis.forEach(function (li) {
+        var r = li.getBoundingClientRect();
+        li.classList.toggle('dunkel', istDunkel(r.top + r.height / 2));
+      });
 
       if (i === aktiv) return;
       aktiv = i;
