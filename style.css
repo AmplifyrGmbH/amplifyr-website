@@ -1609,7 +1609,8 @@ footer {
 .jrail.on{opacity:1;pointer-events:auto}
 .jrail ol{list-style:none;position:relative;margin:0;padding:0}
 .jrail ol::before,.jrail ol::after{content:"";position:absolute;right:5px;top:calc(var(--zeile)/2);width:2px;border-radius:2px}
-.jrail ol::before{bottom:calc(var(--zeile)/2);background:rgba(140,150,170,0.45)}
+.jrail ol::before{bottom:calc(var(--zeile)/2);background:rgba(0,0,0,0.2);transition:background .2s}
+.jrail.dunkel-active ol::before{background:rgba(255,255,255,0.25)}
 .jrail ol::after{height:var(--p,0px);background:var(--steel);transition:height .3s,background .2s}
 .jrail a{display:grid;grid-template-columns:1fr 12px;align-items:center;gap:10px;height:var(--zeile);text-decoration:none}
 .jrail a span{font-size:.875rem;line-height:1.3;text-align:right;color:var(--steel);opacity:.6;font-weight:600;white-space:nowrap;transition:.2s}
