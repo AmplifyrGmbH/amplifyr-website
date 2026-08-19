@@ -58,6 +58,8 @@
         if(d.success){
           var f=document.getElementById('fchatCwinForm');var ok=document.getElementById('fchatCwinOk');
           if(f) f.style.display='none';if(ok) ok.style.display='flex';
+          window.dataLayer=window.dataLayer||[];
+          window.dataLayer.push({event:'cta_formular_absenden',cta_location:'chat_widget'});
         } else {cwinSubmit.disabled=false;cwinSubmit.textContent='Absenden \u2192';}
       }).catch(function(){cwinSubmit.disabled=false;cwinSubmit.textContent='Absenden \u2192';});
   });

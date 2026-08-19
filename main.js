@@ -278,6 +278,25 @@
   }
 
   /* ============================================================
+     GTM CTA TRACKING
+     Generischer Click-Delegator: jedes Element mit data-gtm-event
+     pusht sein Event (+ optionalen data-gtm-location-Parameter)
+     in den GTM dataLayer. Neue CTAs brauchen nur die Attribute,
+     keinen weiteren JS-Edit.
+  ============================================================ */
+  function initGtmCtaTracking() {
+    document.querySelectorAll('[data-gtm-event]').forEach(function (el) {
+      el.addEventListener('click', function () {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: el.dataset.gtmEvent,
+          cta_location: el.dataset.gtmLocation || ''
+        });
+      });
+    });
+  }
+
+  /* ============================================================
      INIT
   ============================================================ */
   document.addEventListener('DOMContentLoaded', function () {
@@ -287,6 +306,7 @@
     initMobileSubMenus();
     initKitFaq();
     initJrail();
+    initGtmCtaTracking();
   });
 
 }());
