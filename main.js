@@ -230,6 +230,7 @@
     var lis   = [].slice.call(rail.querySelectorAll('li'));
     var ziele = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
     var hero  = document.querySelector('.fsh') || document.querySelector('main section');
+    var footer = document.querySelector('footer');
     var dunkelEls = [].slice.call(document.querySelectorAll(rail.getAttribute('data-dark') || '.site-cta'));
     var wartet = false, aktiv = -1;
 
@@ -247,13 +248,19 @@
       var y = window.pageYOffset, h = window.innerHeight, n = ziele.length;
       rail.classList.toggle('on', y > (hero ? oben(hero) + hero.offsetHeight - 140 : 200));
 
+      var railH = rail.offsetHeight;
+      var mitte = h / 2;
+      if (footer) mitte = Math.min(mitte, footer.getBoundingClientRect().top - 20 - railH / 2);
+      mitte = Math.min(mitte, h - 100 - railH / 2); // Platz für fixierten Chat-Button (.fchat) unten rechts freihalten
+      rail.style.top = mitte + 'px';
+
       var thresh = y + 80;
       var i = 0;
       for (var k = n - 1; k >= 0; k--) { if (ziele[k] && oben(ziele[k]) <= thresh) { i = k; break; } }
       if ((y + h) >= document.documentElement.scrollHeight - 10) { i = n - 1; }
 
       var activeLi = lis[i];
-      var fillPx = activeLi ? activeLi.offsetTop + activeLi.offsetHeight / 2 : 0;
+      var fillPx = activeLi ? activeLi.offsetTop : 0;
       rail.style.setProperty('--p', fillPx + 'px');
       rail.classList.toggle('dunkel-active', activeLi ? istDunkel(activeLi.getBoundingClientRect().top + activeLi.offsetHeight / 2) : false);
 
