@@ -300,6 +300,22 @@ p {
   box-shadow: 0 8px 30px rgba(176,196,222,0.3);
 }
 
+/* Kompakte Variante für den Demo-Button in der Header-Navigation */
+.btn--nav-demo {
+  padding: 9px 18px;
+  font-size: 0.85rem;
+}
+
+/* Outline-Variante für helle Hintergründe */
+.btn--outline-dark {
+  background: transparent;
+  color: var(--navy);
+  border-color: var(--navy);
+}
+.btn--outline-dark:hover {
+  background: rgba(26,39,68,0.06);
+}
+
 .btn--outline {
   background: transparent;
   color: #fff;

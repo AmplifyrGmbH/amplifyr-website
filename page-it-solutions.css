@@ -399,8 +399,11 @@
 /* ============================================================
    HERO OVERLAY (page-specific)
 ============================================================ */
+#fsh-it {
+  background: url('/Bilder/hero-it-solutions.webp') center/cover no-repeat;
+}
 .fsh-overlay {
-  background: none;
+  background: radial-gradient(70% 65% at 50% 45%, rgba(0, 0, 0, 0.52), rgba(0, 0, 0, 0.08) 70%, transparent 100%);
 }
 
 /* ============================================================
