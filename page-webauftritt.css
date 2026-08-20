@@ -44,16 +44,8 @@
   --wa-num: "DM Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
 }
 
-/* ---- Hero → erste Section Übergang ---- */
-#fsh-wd::after {
-  content: "";
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 140px;
-  background: linear-gradient(to bottom, transparent, #ffffff);
-  z-index: 3;
-  pointer-events: none;
-}
+/* ---- Hero → erste Section Übergang ----
+   Bewusst kein Fade: der Hero endet hart an der Kante zu #problem. */
 
 /* ---- Wrapper ---- */
 .wa-wrap {
