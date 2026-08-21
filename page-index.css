@@ -398,19 +398,16 @@
   margin-top: var(--space-5);
 }
 
-.warum-gu-link {
-  color: var(--steel);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  transition: color 0.2s;
+#warum-gu .gu-team-text {
+  margin-top: var(--space-8);
 }
 
-.warum-gu-link:hover {
-  color: #fff;
+#warum-gu .gu-team-btn {
+  margin-top: var(--space-5);
 }
 
 #warum-gu .gu-bridge {
-  margin-top: var(--space-8);
+  margin-top: var(--space-10);
   font-weight: 600;
   color: #fff;
 }

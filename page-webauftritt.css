@@ -2380,7 +2380,7 @@
   gap: 16px;
 }
 @media (min-width: 861px) {
-  .wa-wrap .ref-grid { grid-template-columns: repeat(3, 1fr); }
+  .wa-wrap .ref-grid { grid-template-columns: repeat(2, 1fr); max-width: 700px; margin-inline: auto; }
 }
 
 .wa-wrap .ref-card {

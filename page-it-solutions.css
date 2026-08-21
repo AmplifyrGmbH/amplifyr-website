@@ -3,6 +3,10 @@
    Seitenspezifische Styles für it-solutions.html
 ============================================================ */
 
+#fsh-it .fsh-heading {
+  font-size: clamp(2rem, 4.8vw, 4rem);
+}
+
 .its-section-header {
   max-width: 720px;
   margin-inline: auto;
