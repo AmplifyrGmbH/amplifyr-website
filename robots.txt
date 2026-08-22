@@ -1,6 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /Prompt New Website/
 Disallow: /.env
 
 # KI-Crawler explizit erlauben

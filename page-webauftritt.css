@@ -49,7 +49,7 @@
 
 /* ---- Wrapper ---- */
 .wa-wrap {
-  /* Nur drei Gruende auf der Seite: Weiss, Dunkelblau, einmal Hellblau. */
+  /* Sections wechseln sich zwischen Weiss und Hellblau (--steel-light) ab. */
   background: #ffffff;
   color: var(--wa-ink);
   position: relative;
@@ -402,58 +402,6 @@
 .wa-wrap .page-node li::before { content: "–"; position: absolute; left: 0; color: var(--wa-ink-dim); }
 .wa-wrap .page-node.legal { border-style: dashed; opacity: .75; }
 .wa-wrap .page-node.legal h4 .dot { background: var(--wa-ink-dim); box-shadow: none; }
-
-/* ---- FAQ — angepasst an Seitenstil ---- */
-#sec-faq {
-  background: #ffffff;
-}
-#sec-faq .kit-faq-header {
-  margin-bottom: 44px;
-}
-#sec-faq .section-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--wa-mono, monospace);
-  font-size: .72rem;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--wa-navy-mid, #4a6280);
-  font-weight: 500;
-}
-#sec-faq .section-label::before {
-  content: "";
-  display: inline-block;
-  width: 24px;
-  height: 2px;
-  background: #B0C4DE;
-  border-radius: 2px;
-}
-#sec-faq #wd-faq-h {
-  font-family: Georgia, "Times New Roman", serif;
-  /* kein font-weight: die 900 aus style.css sollen gelten, wie auf den
-     anderen Subpages. Vorher stand hier normal, die Titel wirkten duenn. */
-  font-size: clamp(1.7rem, 4vw, 2.5rem);
-  /* Die Section steht auf Weiss, die Ueberschrift also dunkel. Die Regel hat
-     Spezifitaet 2,0,0 und schlaegt jedes spaetere #sec-faq h2 — die Farbe
-     muss deshalb hier stehen und nicht weiter unten. */
-  color: var(--wa-navy, #1A2744);
-  margin-top: 14px;
-}
-#sec-faq .kit-faq-item {
-  border-bottom-color: rgba(176, 196, 222,0.22);
-}
-#sec-faq .kit-faq-item:first-child {
-  border-top-color: rgba(176, 196, 222,0.22);
-}
-#sec-faq .kit-faq-btn {
-  color: #1a2744;
-  font-size: 1rem;
-  padding-block: 20px;
-}
-#sec-faq .kit-faq-btn:hover { color: #B0C4DE; }
-#sec-faq .kit-faq-chevron { color: #B0C4DE; }
-#sec-faq .kit-faq-answer p { color: #4a6280; }
 
 /* ---- Problem section ---- */
 .wa-wrap .check-list {
@@ -1011,43 +959,55 @@
   to   { opacity: 1; transform: none; }
 }
 .wa-wrap .wtab-nav {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 8px;
-  margin: 0 0 14px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px 28px;
+  margin: 0 0 32px;
   background: none;
   border: none;
+  border-bottom: 1px solid rgba(176, 196, 222, 0.35);
   padding: 0;
 }
 .wa-wrap .wtab-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
   font: inherit;
   font-size: 0.86rem;
   font-weight: 600;
-  letter-spacing: 0.02em;
-  padding: 11px 8px;
-  border-radius: 9px;
+  letter-spacing: 0.01em;
+  padding: 0 2px 14px;
+  margin-bottom: -1px;
+  border-radius: 0;
   cursor: pointer;
   text-align: center;
-  background: var(--wa-glass-bg2);
-  color: var(--wa-ink-soft);
-  border: 1px solid var(--wa-glass-bd);
-  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  background: none;
+  color: var(--wa-ink-dim);
+  border: none;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+.wa-wrap .wtab-btn svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  flex-shrink: 0;
 }
 .wa-wrap .wtab-btn:hover {
   color: var(--wa-navy);
-  border-color: rgba(176, 196, 222, 0.55);
 }
 .wa-wrap .wtab-btn.is-active {
-  background: var(--wa-navy);
-  color: #ffffff;
-  border-color: var(--wa-navy);
+  background: none;
+  color: var(--wa-navy);
+  border-color: var(--wa-accent-text);
 }
 .wa-wrap .wtab-panel-wrap {
-  background: var(--wa-glass-bg2);
-  border: 1px solid var(--wa-glass-bd);
-  border-radius: 12px;
-  padding: 30px 34px;
-  box-shadow: 0 2px 6px var(--wa-glass-sh);
+  background: none;
+  border: none;
+  padding: 0;
+  box-shadow: none;
 }
 .wa-wrap .wtab-panel { display: none; }
 .wa-wrap .wtab-panel.is-active { display: block; }
@@ -1077,10 +1037,9 @@
   color: var(--wa-navy);
 }
 .wa-wrap .wtab-ex {
-  background: rgba(176, 196, 222, 0.09);
-  border: 1px solid rgba(176, 196, 222, 0.3);
-  border-radius: 10px;
-  padding: 16px 18px;
+  background: none;
+  border: none;
+  padding: 0;
   align-self: start;
 }
 .wa-wrap .wtab-ex-lbl {
@@ -1090,20 +1049,24 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--wa-accent-text);
-  margin: 0 0 10px;
+  margin: 0 0 12px;
 }
 .wa-wrap .wtab-ex-list {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 8px;
 }
 .wa-wrap .wtab-ex-list li {
-  font-size: 0.86rem;
+  font-size: 0.82rem;
+  font-weight: 600;
   line-height: 1.4;
-  color: var(--wa-ink);
+  color: var(--wa-navy);
+  background: rgba(176, 196, 222, 0.16);
+  border-radius: 999px;
+  padding: 7px 14px;
 }
 .wa-wrap .tools-foot {
   margin: 14px 0 0;
@@ -1113,8 +1076,9 @@
 }
 .wa-wrap .wtab-body { min-width: 0; }
 @media (max-width: 760px) {
-  .wa-wrap .wtab-nav { grid-template-columns: 1fr 1fr; }
-  .wa-wrap .wtab-panel-wrap { padding: 22px 20px; }
+  .wa-wrap .wtab-nav { gap: 4px 16px; }
+  .wa-wrap .wtab-btn { font-size: 0.76rem; padding-bottom: 12px; }
+  .wa-wrap .wtab-btn svg { width: 17px; height: 17px; }
 }
 
 /* ============================================================
@@ -1490,13 +1454,13 @@
    ki-check.css bleiben unangetastet, damit andere Seiten nichts abbekommen.
 ============================================================ */
 
-/* ── Sectionsgruende wechseln ab: weiss / dunkelblau / weiss / … ──
+/* ── Sectionsgruende wechseln ab: weiss / steel-light / … ──
    Der Wechsel wird ueber die Klassen im HTML gesteuert (.sec bzw.
-   .sec--dark), nicht hier. Die frueheren Sonderfaelle sind entfallen:
-   #werkzeuge existiert nicht mehr, und #sec-faq und #sec-cta stehen
-   wieder auf ihrem urspruenglichen Grund — FAQ hell, CTA dunkel.
-   Wer eine Section einfuegt oder entfernt, muss den Wechsel danach
-   durchziehen, sonst stossen zwei gleiche Gruende aneinander. */
+   .section--steel-light), nicht hier. Die FAQ ist keine eigene Section
+   mehr, sondern liegt eingeklappt zuunterst in #sec-cta (dunkel) —
+   siehe .site-cta-faq-Regeln in style.css. Wer eine Section einfuegt
+   oder entfernt, muss den Wechsel danach durchziehen, sonst stossen
+   zwei gleiche Gruende aneinander. */
 
 
 /* ── Leicht grauer Grund fuer die erste Section nach dem Hero ──
@@ -1506,15 +1470,23 @@
    Nur --wa-sec-bg wird nachgezogen, damit Elemente, die den Sectionsgrund
    aufnehmen, stimmen. */
 .wa-wrap section.sec--soft {
-  background: #fff;
+  background: var(--steel-light);
   /* Ohne eigenen z-index liegt der Lichtschleier von .wa-wrap::before
      (absolut, inset:0) UEBER dem Sectionsgrund und toent ihn
      ungleichmaessig — oben blaeulich, unten aus. Der Grund wirkte
-     dadurch nach unten hin weiss. Anheben loest das, dieselbe
-     Korrektur brauchte #ki-check schon. */
+     dadurch nach unten hin weiss. Anheben loest das. */
   position: relative;
   z-index: 1;
-  --wa-sec-bg: #f4f6f9;
+  --wa-sec-bg: var(--steel-light);
+}
+
+/* Zweite Hellblau-Section der Seite (#referenzen) — derselbe
+   Anheben-Kniff wie bei .sec--soft, siehe Kommentar dort. */
+.wa-wrap .sec.section--steel-light {
+  background: var(--steel-light);
+  position: relative;
+  z-index: 1;
+  --wa-sec-bg: var(--steel-light);
 }
 /* Der Video-Platzhalter stand auf halbtransparentem Weiss — auf grauem
    Grund braucht er mehr Deckung, sonst verschwimmt die Flaeche. */

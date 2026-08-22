@@ -153,7 +153,7 @@
    TEAM-SEKTION
 ============================================================ */
 .ua-team {
-  background: var(--bg-fog, #f4f6f9);
+  background: var(--steel-light);
 }
 
 /* Split-Screen: Titel + Grafik links, Akkordeon rechts */
@@ -408,6 +408,7 @@
 
 .ua-acc-photo img {
   width: 100%;
+  height: auto;
   border-radius: var(--radius-md);
   aspect-ratio: 3 / 4;
   object-fit: cover;

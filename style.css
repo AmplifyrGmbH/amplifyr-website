@@ -1221,6 +1221,10 @@ footer {
   background: var(--bg-white);
 }
 
+.section--steel-light {
+  background: var(--steel-light);
+}
+
 .section-label--steel {
   color: var(--steel);
   opacity: 0.85;
@@ -1253,7 +1257,7 @@ footer {
   z-index: 1;
   text-align: center;
   color: #fff;
-  max-width: 680px;
+  max-width: 820px;
   margin-inline: auto;
   display: flex;
   flex-direction: column;
@@ -1270,6 +1274,60 @@ footer {
   color: rgba(255,255,255,0.75);
   font-size: 1rem;
   margin: 0;
+}
+
+.kontakt-channels {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+}
+
+/* ── FAQ innerhalb der dunklen CTA (eingeklappt, zuunterst) ── */
+.site-cta-faq {
+  width: 100%;
+  margin-top: var(--space-3);
+  padding-top: var(--space-7);
+  border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+.site-cta-faq .kit-faq-list {
+  text-align: left;
+}
+
+.site-cta .faq-toggle {
+  color: #fff;
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.28);
+}
+
+.site-cta .faq-toggle:hover {
+  background: rgba(255,255,255,0.18);
+  border-color: rgba(255,255,255,0.4);
+}
+
+.site-cta .kit-faq-item {
+  border-bottom-color: rgba(255,255,255,0.16);
+}
+
+.site-cta .kit-faq-item:first-child {
+  border-top-color: rgba(255,255,255,0.16);
+}
+
+.site-cta .kit-faq-btn {
+  color: #fff;
+}
+
+.site-cta .kit-faq-btn:hover {
+  color: var(--steel);
+}
+
+.site-cta .kit-faq-chevron {
+  color: var(--steel);
+}
+
+.site-cta .kit-faq-answer p {
+  color: rgba(255,255,255,0.75);
 }
 
 /* ── Aurora Blobs ── */

@@ -215,6 +215,36 @@
   }
 
   /* ============================================================
+     SHARED: FAQ-BLOCK ZUKLAPPBAR (.faq-toggle)
+     Aktiviert automatisch auf jeder Seite mit .faq-toggle. Ohne JS
+     bleibt der Button versteckt (hidden-Attribut im HTML) und der
+     Fragenblock offen — nie unbenutzbar, nur länger.
+  ============================================================ */
+  function initFaqToggle() {
+    var toggles = document.querySelectorAll('.faq-toggle');
+    toggles.forEach(function (btn) {
+      var list = document.getElementById(btn.getAttribute('aria-controls'));
+      var lbl  = btn.querySelector('.faq-toggle-label');
+      if (!list || !lbl) return;
+
+      btn.removeAttribute('hidden');
+
+      function set(open) {
+        list.classList.toggle('is-collapsed', !open);
+        list.style.display = open ? '' : 'none'; // unabhaengig von der CSS-Datei
+        list.hidden = !open;
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        btn.classList.toggle('is-open', open);
+        lbl.textContent = open ? 'Antworten ausblenden' : 'Antworten anzeigen';
+      }
+      set(false); // zugeklappt starten
+      btn.addEventListener('click', function () {
+        set(btn.getAttribute('aria-expanded') !== 'true');
+      });
+    });
+  }
+
+  /* ============================================================
      SHARED: SCROLL-LEGENDE (.jrail)
      Aktiviert automatisch auf jeder Seite mit <nav class="jrail">.
      data-dark am <nav> (CSS-Selektor) listet die dunklen Sections
@@ -312,6 +342,7 @@
     initMobileMenu();
     initMobileSubMenus();
     initKitFaq();
+    initFaqToggle();
     initJrail();
     initGtmCtaTracking();
   });

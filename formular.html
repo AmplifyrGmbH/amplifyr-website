@@ -30,10 +30,10 @@
   <meta name="twitter:image"       content="https://www.amplifyr.ch/Logos/Open_Graph_Image_Amplifyr.webp">
 
   <!-- Favicons -->
-  <link rel="icon"             href="/Favicon/favicon.ico">
-  <link rel="icon"             href="/Favicon/favicon_32x32.png" sizes="32x32" type="image/png">
-  <link rel="icon"             href="/Favicon/favicon_16x16.png" sizes="16x16" type="image/png">
-  <link rel="apple-touch-icon" href="/Favicon/favicon_180x180.png">
+  <link rel="icon"             href="/Favicon/favicon.ico?v=3">
+  <link rel="icon"             href="/Favicon/favicon_32x32.png?v=3" sizes="32x32" type="image/png">
+  <link rel="icon"             href="/Favicon/favicon_16x16.png?v=3" sizes="16x16" type="image/png">
+  <link rel="apple-touch-icon" href="/Favicon/favicon_180x180.png?v=3">
   <link rel="manifest"         href="/site.webmanifest">
   <meta name="theme-color" content="#1a2744">
 
@@ -48,8 +48,8 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap"></noscript>
 
   <!-- CSS -->
-  <link rel="stylesheet" href="/style.css?v=10">
-  <link rel="stylesheet" href="/page-formular.css?v=1">
+  <link rel="stylesheet" href="/style.css?v=14">
+  <link rel="stylesheet" href="/page-formular.css?v=2">
   <script defer src="https://cloud.umami.is/script.js" data-website-id="a5638b4a-87cc-4014-a56d-b5b83ae8ccd5"></script>
 </head>
 <body>
@@ -71,13 +71,13 @@
       <nav class="site-nav" aria-label="Hauptnavigation">
         <ul class="site-nav__list">
           <li class="site-nav__item">
+            <a href="/it-solutions" class="site-nav__link nav-link">IT-Lösungen</a>
+          </li>
+          <li class="site-nav__item">
             <a href="/handwerker" class="site-nav__link nav-link">Handwerker</a>
           </li>
           <li class="site-nav__item">
             <a href="/bewirtschaftung" class="site-nav__link nav-link">Bewirtschaftung</a>
-          </li>
-          <li class="site-nav__item">
-            <a href="/it-solutions" class="site-nav__link nav-link">IT-Lösungen</a>
           </li>
           <li class="site-nav__item">
             <a href="/webdesign" class="site-nav__link nav-link">Digitaler Auftritt</a>
@@ -120,8 +120,6 @@
 
     <div class="mobile-menu__nav">
 
-      <a href="/handwerker" class="mobile-nav-link">Handwerker</a>
-      <a href="/bewirtschaftung" class="mobile-nav-link">Bewirtschaftung</a>
       <div class="mobile-nav-group">
         <div class="mobile-nav-group__row">
           <a href="/it-solutions" class="mobile-nav-link">IT-Lösungen</a>
@@ -139,6 +137,8 @@
         </div>
       </div>
 
+      <a href="/handwerker" class="mobile-nav-link">Handwerker</a>
+      <a href="/bewirtschaftung" class="mobile-nav-link">Bewirtschaftung</a>
       <div class="mobile-nav-group">
         <div class="mobile-nav-group__row">
           <a href="/webdesign" class="mobile-nav-link">Digitaler Auftritt</a>
@@ -176,9 +176,9 @@
         <!-- Optionskarten -->
         <div class="fs-options">
 
-          <!-- Demo des Betriebs anfordern (Steel-Karte) -->
-          <a class="fs-option-card fs-option-card--steel" href="/demo">
-            <div class="fs-option-icon fs-option-icon--steel" aria-hidden="true">
+          <!-- Demo des Betriebs anfordern -->
+          <a class="fs-option-card fs-option-card--light" href="/demo">
+            <div class="fs-option-icon" aria-hidden="true" style="background:rgba(176,196,222,0.14)">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                 <rect x="2" y="3" width="20" height="14" rx="2" stroke="#1a2744" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M8 21h8M12 17v4" stroke="#1a2744" stroke-width="1.7" stroke-linecap="round"/>
@@ -201,11 +201,11 @@
           <a class="fs-option-card fs-option-card--light"
              href="https://outlook.office.com/book/Amplifyr1@amplifyr.ch/s/WS-NdYDJS0OKzyBuFjz--A2"
              target="_blank" rel="noopener">
-            <div class="fs-option-icon fs-option-icon--light" aria-hidden="true">
+            <div class="fs-option-icon" aria-hidden="true" style="background:rgba(79,82,178,0.14)">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                <rect x="3" y="4" width="18" height="18" rx="2" stroke="#1a2744" stroke-width="1.7"/>
-                <path d="M16 2v4M8 2v4M3 10h18" stroke="#1a2744" stroke-width="1.7" stroke-linecap="round"/>
-                <path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01" stroke="#1a2744" stroke-width="2" stroke-linecap="round"/>
+                <rect x="3" y="4" width="18" height="18" rx="2" stroke="#4F52B2" stroke-width="1.7"/>
+                <path d="M16 2v4M8 2v4M3 10h18" stroke="#4F52B2" stroke-width="1.7" stroke-linecap="round"/>
+                <path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01" stroke="#4F52B2" stroke-width="2" stroke-linecap="round"/>
               </svg>
             </div>
             <div class="fs-option-text">
@@ -220,26 +220,45 @@
             </span>
           </a>
 
-          <!-- Nachricht senden (dunkle Karte) -->
-          <button class="fs-option-card fs-option-card--dark" id="toggle-form-fs"
+          <!-- Nachricht senden (helle Karte) -->
+          <button class="fs-option-card fs-option-card--light" id="toggle-form-fs"
                   type="button" aria-expanded="false" aria-controls="form-collapse-fs">
-            <div class="fs-option-icon fs-option-icon--dark" aria-hidden="true">
+            <div class="fs-option-icon" aria-hidden="true" style="background:rgba(26,39,68,0.10)">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
-                      stroke="#B0C4DE" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                      stroke="#1a2744" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </div>
             <div class="fs-option-text">
-              <p class="fs-option-title fs-option-title--dark">Nachricht senden</p>
-              <p class="fs-option-desc fs-option-desc--dark">Schildern Sie Ihr Anliegen — wir melden uns prompt.</p>
+              <p class="fs-option-title fs-option-title--light">Nachricht senden</p>
+              <p class="fs-option-desc">Schildern Sie Ihr Anliegen — wir melden uns prompt.</p>
             </div>
-            <span class="fs-option-cta fs-option-cta--dark">
+            <span class="fs-option-cta fs-option-cta--light">
               Zum Formular
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
                 <path d="M6 2v8M3 7l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </span>
           </button>
+
+          <!-- WhatsApp (helle Karte) -->
+          <a class="fs-option-card fs-option-card--light"
+             href="https://wa.me/41442445995"
+             target="_blank" rel="noopener">
+            <div class="fs-option-icon" aria-hidden="true" style="background:rgba(37,211,102,0.14)">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.526 5.845L.057 23.928a.5.5 0 0 0 .623.607l6.267-1.643A11.942 11.942 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.682-.524-5.204-1.435l-.373-.22-3.873 1.015 1.031-3.763-.242-.387A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            </div>
+            <div class="fs-option-text">
+              <p class="fs-option-title fs-option-title--light">WhatsApp</p>
+              <p class="fs-option-desc">Schreiben Sie uns direkt — schnelle Antwort ohne Formular.</p>
+            </div>
+            <span class="fs-option-cta fs-option-cta--light">
+              Chat öffnen
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                <path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </a>
 
         </div><!-- /fs-options -->
 
@@ -271,7 +290,6 @@
               <label class="form-label" for="fs-subject">Thema *</label>
               <select class="form-input form-select" id="fs-subject" name="subject" required>
                 <option value="" disabled selected>Thema wählen …</option>
-                <option value="Demo anfordern">Demo anfordern</option>
                 <option value="Handwerk">Handwerk</option>
                 <option value="Bewirtschaftung">Bewirtschaftung</option>
                 <option value="IT-Lösungen">IT-Lösungen</option>
@@ -396,7 +414,7 @@
     </div>
   </footer>
 
-  <script src="/main.js"></script>
+  <script defer src="/main.js"></script>
   <script src="/page-formular.js"></script>
   <script>
   (function() {

@@ -414,27 +414,11 @@
    MANAGED SERVICES
 ============================================================ */
 #sec-managed {
-  background: var(--navy);
-}
-
-#sec-managed .its-section-header h2 {
-  color: #fff;
-}
-
-#sec-managed .its-section-header .its-intro {
-  color: rgba(255,255,255,0.75);
+  background: var(--bg-white);
 }
 
 #sec-projekte {
-  background: var(--navy);
-}
-
-#sec-projekte .its-section-header h2 {
-  color: #fff;
-}
-
-#sec-projekte .its-section-header .its-intro {
-  color: rgba(255,255,255,0.75);
+  background: var(--bg-white);
 }
 
 .ms-grid {
@@ -1144,7 +1128,7 @@
 /* ============================================================
    MANAGED SERVICES — MODUL-PICKER (msp-*)
 ============================================================ */
-.msp-accent { color: var(--steel); }
+.msp-accent { color: var(--navy); }
 
 .msp-grid {
   display: grid;
@@ -1173,12 +1157,12 @@
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.55);
+  color: var(--text-muted);
 }
 
-.msp-benefits-label { color: var(--steel); margin: 0 0 18px; }
+.msp-benefits-label { color: var(--navy); margin: 0 0 18px; }
 
-.msp-picker-count { font-size: 0.9rem; color: var(--steel); white-space: nowrap; }
+.msp-picker-count { font-size: 0.9rem; color: var(--navy); white-space: nowrap; }
 
 .msp-environment-label { margin-bottom: var(--space-5); display: block; }
 
@@ -1194,8 +1178,8 @@
   align-items: flex-start;
   text-align: left;
   width: 100%;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(176,196,222,0.28);
+  background: #fff;
+  border: 1px solid var(--border-light);
   border-radius: 10px;
   padding: 16px 18px;
   cursor: pointer;
@@ -1203,11 +1187,11 @@
   transition: background 0.18s, border-color 0.18s;
 }
 
-.msp-module:hover { background: rgba(255,255,255,0.09); }
+.msp-module:hover { background: rgba(176,196,222,0.14); }
 
 .msp-module.is-active {
   border-color: var(--steel);
-  background: rgba(176,196,222,0.09);
+  background: rgba(176,196,222,0.16);
 }
 
 .msp-module-mark {
@@ -1215,14 +1199,14 @@
   width: 24px;
   height: 24px;
   border-radius: 6px;
-  border: 1px solid rgba(176,196,222,0.5);
+  border: 1px solid var(--steel);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 0.875rem;
   font-weight: 600;
   margin-top: 2px;
-  color: var(--steel);
+  color: var(--navy);
   transition: background 0.18s, color 0.18s;
 }
 
@@ -1231,8 +1215,8 @@
 .msp-module.is-active .msp-module-mark::before { content: '✓'; }
 
 .msp-module-body { display: flex; flex-direction: column; gap: 5px; }
-.msp-module-name { font-size: 1.0625rem; font-weight: 600; color: #fff; }
-.msp-module-desc { font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.5; }
+.msp-module-name { font-size: 1.0625rem; font-weight: 600; color: var(--navy); }
+.msp-module-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; }
 
 .msp-layers {
   display: flex;
@@ -1241,10 +1225,11 @@
 }
 
 .msp-layer {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(176,196,222,0.2);
+  background: #fff;
+  border: 1px solid var(--border-light);
   border-radius: 12px;
   padding: 22px 24px;
+  box-shadow: 0 1px 2px rgba(26,39,68,0.05), 0 12px 30px -22px rgba(26,39,68,0.5);
 }
 
 .msp-layer-head {
@@ -1255,20 +1240,20 @@
   margin-bottom: 6px;
 }
 
-.msp-layer-title { font-family: var(--font-display); font-weight: 600; font-size: 1.25rem; color: #fff; }
+.msp-layer-title { font-family: var(--font-display); font-weight: 600; font-size: 1.25rem; color: var(--navy); }
 
 .msp-layer-status {
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.45);
+  color: rgba(26,39,68,0.4);
   white-space: nowrap;
 }
 
-.msp-layer.is-covered .msp-layer-status { color: var(--steel); }
+.msp-layer.is-covered .msp-layer-status { color: var(--navy); }
 
-.msp-layer-sub { font-size: 0.875rem; color: rgba(255,255,255,0.5); margin: 0 0 14px; }
+.msp-layer-sub { font-size: 0.875rem; color: var(--text-muted); margin: 0 0 14px; }
 
 .msp-layer-chips { display: flex; flex-wrap: wrap; gap: 8px; }
 .msp-layer-chips:empty { display: none; }
@@ -1283,8 +1268,8 @@
 
 .msp-layer-empty {
   font-size: 0.875rem;
-  color: rgba(255,255,255,0.45);
-  border-top: 1px dashed rgba(176,196,222,0.25);
+  color: rgba(26,39,68,0.45);
+  border-top: 1px dashed var(--border);
   padding-top: 12px;
   margin: 0;
 }
@@ -1293,10 +1278,12 @@
 .msp-layer:not(.is-covered) .msp-layer-chips { display: none; }
 
 .msp-benefits {
-  background: rgba(255,255,255,0.06);
+  background: #fff;
+  border: 1px solid var(--border-light);
   border-radius: 12px;
   padding: 26px 26px 28px;
   margin-top: 14px;
+  box-shadow: 0 1px 2px rgba(26,39,68,0.05), 0 12px 30px -22px rgba(26,39,68,0.5);
 }
 
 .msp-benefits-list { display: flex; flex-direction: column; }
@@ -1305,16 +1292,16 @@
   display: flex;
   gap: 12px;
   padding: 12px 0;
-  border-bottom: 1px solid rgba(176,196,222,0.16);
+  border-bottom: 1px solid var(--border-light);
   font-size: 0.9375rem;
-  color: rgba(255,255,255,0.85);
+  color: rgba(26,39,68,0.85);
   line-height: 1.5;
 }
 
 .msp-benefit-row:last-child { border-bottom: none; }
-.msp-benefit-check { color: var(--steel); font-weight: 600; flex: none; }
+.msp-benefit-check { color: var(--navy); font-weight: 600; flex: none; }
 
-.msp-benefits-empty { font-size: 0.9375rem; color: rgba(255,255,255,0.55); line-height: 1.6; margin: 0; }
+.msp-benefits-empty { font-size: 0.9375rem; color: var(--text-muted); line-height: 1.6; margin: 0; }
 
 .msp-benefits-cta {
   display: flex;
@@ -1324,7 +1311,7 @@
   margin-top: 22px;
 }
 
-.msp-benefits-note { font-size: 0.85rem; color: rgba(255,255,255,0.5); }
+.msp-benefits-note { font-size: 0.85rem; color: var(--text-muted); }
 
 /* ============================================================
    PROJEKTE & MIGRATIONEN — Themen-Karten (ohne Tabs/Grafik)
@@ -1342,24 +1329,25 @@
 }
 
 .projekte-topic {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(176,196,222,0.2);
+  background: #fff;
+  border: 1px solid var(--border-light);
   border-radius: 12px;
   padding: var(--space-7) var(--space-6);
   display: flex;
   flex-direction: column;
+  box-shadow: 0 1px 2px rgba(26,39,68,0.05), 0 12px 30px -22px rgba(26,39,68,0.5);
 }
 
 .projekte-topic h3 {
   font-family: var(--font-display);
   font-size: 1.2rem;
   font-weight: 600;
-  color: #fff;
+  color: var(--navy);
   margin: 0 0 var(--space-3);
 }
 
 .projekte-topic p {
-  color: rgba(255,255,255,0.68);
+  color: var(--text-muted);
   font-size: 0.92rem;
   line-height: 1.65;
   margin: 0 0 var(--space-5);
