@@ -315,6 +315,31 @@
   }
 
   /* ============================================================
+     SHARED: MOBILE-FORTSCHRITTSLEISTE (.mobile-progress)
+     Ersatz fuer .jrail auf schmalen Screens (dort ab 900px per CSS
+     ausgeblendet, siehe style.css) — zeigt als duenner Balken ganz
+     oben, wie weit man auf der Seite gescrollt hat.
+  ============================================================ */
+  function initMobileProgress() {
+    var fill = document.querySelector('.mobile-progress-fill');
+    if (!fill) return;
+    var wartet = false;
+
+    function mal() {
+      wartet = false;
+      var scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      var pct = scrollable > 0 ? (window.pageYOffset / scrollable) * 100 : 0;
+      fill.style.width = Math.min(100, Math.max(0, pct)) + '%';
+    }
+
+    function tick() { if (!wartet) { wartet = true; requestAnimationFrame(mal); } }
+    window.addEventListener('scroll', tick, { passive: true });
+    window.addEventListener('resize', tick);
+    if ('ResizeObserver' in window) new ResizeObserver(tick).observe(document.body);
+    mal();
+  }
+
+  /* ============================================================
      GTM CTA TRACKING
      Generischer Click-Delegator: jedes Element mit data-gtm-event
      pusht sein Event (+ optionalen data-gtm-location-Parameter)
@@ -344,6 +369,7 @@
     initKitFaq();
     initFaqToggle();
     initJrail();
+    initMobileProgress();
     initGtmCtaTracking();
   });
 

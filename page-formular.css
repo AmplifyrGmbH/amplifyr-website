@@ -48,9 +48,21 @@
   margin-bottom: var(--space-4);
 }
 
+/* Mobil (1 Spalte): "Nachricht senden" klappt nach unten auf, deshalb
+   zuunterst — sonst schiebt sich WhatsApp beim Aufklappen weiter weg. */
+.fs-options > *:nth-child(3) { order: 4; }
+.fs-options > *:nth-child(4) { order: 3; }
+
 @media (min-width: 600px) {
   .fs-options {
     grid-template-columns: 1fr 1fr;
+  }
+
+  /* Ab hier 2x2-Raster in normaler DOM-Reihenfolge, die Mobil-Umsortierung
+     gilt nur für die gestapelte 1-Spalten-Ansicht. */
+  .fs-options > *:nth-child(3),
+  .fs-options > *:nth-child(4) {
+    order: 0;
   }
 }
 

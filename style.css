@@ -300,6 +300,22 @@ p {
   box-shadow: 0 8px 30px rgba(176,196,222,0.3);
 }
 
+/* Groesser, weiss + leuchtend im Hero, damit der CTA gegen die grosse
+   Ueberschrift bestehen kann — gleiches Prinzip wie .btn--white im site-cta.
+   Bewusst nur im Hero (nicht z.B. .msp-benefits-cta), daher ueber
+   .fsh-actions skaliert. */
+.fsh-actions .btn--hero-pill {
+  background: #fff;
+  padding: 18px 40px;
+  font-size: 1.05rem;
+  box-shadow: 0 10px 40px rgba(255,255,255,0.22), 0 4px 16px rgba(0,0,0,0.2);
+}
+
+.fsh-actions .btn--hero-pill:hover {
+  background: var(--steel-light);
+  box-shadow: 0 14px 50px rgba(255,255,255,0.32), 0 6px 20px rgba(0,0,0,0.25);
+}
+
 /* Kompakte Variante für den Demo-Button in der Header-Navigation */
 .btn--nav-demo {
   padding: 9px 18px;
@@ -396,11 +412,17 @@ p {
   color: var(--navy);
   border-color: #fff;
   font-weight: 700;
+  padding: 18px 40px;
+  font-size: 1.05rem;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 10px 40px rgba(255,255,255,0.22), 0 4px 16px rgba(0,0,0,0.2);
 }
 
 .btn--white:hover {
   background: var(--steel-light);
   border-color: var(--steel-light);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 50px rgba(255,255,255,0.32), 0 6px 20px rgba(0,0,0,0.25);
 }
 
 /* ============================================================
@@ -947,6 +969,48 @@ p {
   width: 100%;
 }
 
+/* Kundenportal — bewusst anders als die restlichen Menüpunkte, aber
+   zierlich statt vollflächig: duenne Outline statt Farbfuellung,
+   auf Inhaltsbreite statt volle Breite, zuunterst ausserhalb des
+   scrollbaren Nav-Bereichs. */
+.mobile-menu__cta {
+  display: flex;
+  justify-content: center;
+}
+
+.mobile-portal-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 9px 16px;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  border: 1.5px solid var(--border);
+  color: var(--navy);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: background var(--duration) var(--ease), border-color var(--duration) var(--ease);
+}
+
+.mobile-portal-link:hover {
+  background: var(--accent-light);
+  border-color: var(--steel);
+}
+
+.mobile-portal-link svg:first-child {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+}
+
+.mobile-portal-link svg:last-child {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  color: var(--text-muted);
+}
+
 /* ============================================================
    8. DROPDOWN NAVIGATION (DESKTOP)
 ============================================================ */
@@ -1390,6 +1454,7 @@ footer {
 
 @media (max-width: 640px) {
   .site-cta-blob { filter: blur(50px); animation-duration: 35s; }
+  .site-cta-content > p { display: none; }
 }
 
 /* ── FSH — Full-Screen Hero (shared across service pages) ── */
@@ -1704,3 +1769,8 @@ footer {
 .jrail.dunkel-active ol::after{background:var(--steel)}
 @media(max-width:1100px){.jrail a span{display:none}.jrail a{grid-template-columns:12px}}
 @media(max-width:900px){.jrail{display:none}}
+
+/* ── Mobile-Fortschrittsleiste — Ersatz fuer .jrail auf schmalen Screens ── */
+.mobile-progress{display:none;position:fixed;top:0;left:0;right:0;height:3px;background:rgba(0,0,0,0.08);z-index:1001;pointer-events:none}
+.mobile-progress-fill{height:100%;width:0%;background:var(--navy)}
+@media(max-width:900px){.mobile-progress{display:block}}

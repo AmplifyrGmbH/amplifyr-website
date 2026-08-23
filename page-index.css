@@ -221,9 +221,14 @@
    DER UNTERSCHIED / WANN / MASCHINENRAUM / KETTE / KONTAKT
 ============================================================ */
 #unterschied .container,
-#kette .container,
-#kontakt-abschluss .container {
+#kette .container {
   max-width: 760px;
+  text-align: center;
+}
+
+/* Breiter als #unterschied/#kette, damit alle 4 CTA-Buttons in einer Zeile bleiben. */
+#kontakt-abschluss .container {
+  max-width: 900px;
   text-align: center;
 }
 

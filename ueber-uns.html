@@ -71,10 +71,10 @@
   </script>
 
   <!-- CSS -->
-  <link rel="stylesheet" href="/style.css?v=14">
+  <link rel="stylesheet" href="/style.css?v=23">
   <link rel="stylesheet" href="/fchat.css">
   <link rel="stylesheet" href="/page-blog.css?v=2">
-  <link rel="stylesheet" href="/page-ueber-uns.css?v=10">
+  <link rel="stylesheet" href="/page-ueber-uns.css?v=14">
   <script defer src="https://cloud.umami.is/script.js" data-website-id="a5638b4a-87cc-4014-a56d-b5b83ae8ccd5"></script>
 </head>
 <body>
@@ -159,11 +159,53 @@
           <a href="/it-solutions#sec-managed">Managed Services</a>
           <a href="/it-solutions#sec-sla">SLA &amp; Support-Stunden</a>
           <a href="/it-solutions#sec-projekte">Projekte &amp; Migrationen</a>
+          <a href="/it-solutions#ki-berater">KI-Berater</a>
+          <a href="/it-solutions#sec-cta">Kontakt &amp; FAQ</a>
         </div>
       </div>
 
-      <a href="/handwerker" class="mobile-nav-link">Handwerker</a>
-      <a href="/bewirtschaftung" class="mobile-nav-link">Bewirtschaftung</a>
+      <div class="mobile-nav-group">
+        <div class="mobile-nav-group__row">
+          <a href="/handwerker" class="mobile-nav-link">Handwerker</a>
+          <button class="mobile-nav-group__chevron-btn" aria-label="Handwerker Untermenü">
+            <svg class="mobile-nav-group__chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+        <div class="mobile-nav-group__sub">
+          <a href="/handwerker#alltag">Video</a>
+          <a href="/handwerker#kostenrechner">Kostenrechner</a>
+          <a href="/handwerker#ablauf">Auftragsablauf</a>
+          <a href="/handwerker#generalunternehmer">Unser Prinzip</a>
+          <a href="/handwerker#fahrplan">Fahrplan</a>
+          <a href="/handwerker#ueberuns">Wer wir sind</a>
+          <a href="/handwerker#ki-berater">KI-Berater</a>
+          <a href="/handwerker#cta">Kontakt &amp; FAQ</a>
+        </div>
+      </div>
+
+      <div class="mobile-nav-group">
+        <div class="mobile-nav-group__row">
+          <a href="/bewirtschaftung" class="mobile-nav-link">Bewirtschaftung</a>
+          <button class="mobile-nav-group__chevron-btn" aria-label="Bewirtschaftung Untermenü">
+            <svg class="mobile-nav-group__chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+        <div class="mobile-nav-group__sub">
+          <a href="/bewirtschaftung#alltag">Video</a>
+          <a href="/bewirtschaftung#kostenrechner">Aufwandrechner</a>
+          <a href="/bewirtschaftung#ablauf">Zwei Fälle</a>
+          <a href="/bewirtschaftung#generalunternehmer">Unser Prinzip</a>
+          <a href="/bewirtschaftung#fahrplan">Fahrplan</a>
+          <a href="/bewirtschaftung#ueberuns">Wer wir sind</a>
+          <a href="/bewirtschaftung#ki-berater">Ihre Bedenken</a>
+          <a href="/bewirtschaftung#cta">Kontakt &amp; FAQ</a>
+        </div>
+      </div>
+
       <div class="mobile-nav-group">
         <div class="mobile-nav-group__row">
           <a href="/webdesign" class="mobile-nav-link">Digitaler Auftritt</a>
@@ -174,13 +216,29 @@
           </button>
         </div>
         <div class="mobile-nav-group__sub">
+          <a href="/webdesign#problem">Problem</a>
           <a href="/webdesign#werkzeuge">Werkzeuge</a>
+          <a href="/webdesign#referenzen">Referenzen</a>
           <a href="/webdesign#betrieb">Pakete &amp; Preise</a>
-          <a href="/webdesign#sec-faq">FAQ</a>
+          <a href="/webdesign#ki-berater">Chatbot</a>
+          <a href="/webdesign#sec-cta">Kontakt &amp; FAQ</a>
         </div>
       </div>
       <a href="/ueber-uns" class="mobile-nav-link">Über uns</a>
 
+    </div>
+
+    <div class="mobile-menu__cta">
+      <a href="https://portal.amplifyr.ch/" target="_blank" rel="noopener" class="mobile-portal-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="20" height="20">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
+        <span>Kundenportal</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
     </div>
   </nav>
 
@@ -223,8 +281,116 @@
         <div class="ua-team-split">
 
           <div class="ua-team-left">
-            <div class="ua-team-visual">
-              <img src="/Bilder/Drei_Perspektiven_Grafik.webp" alt="Drei ineinandergreifende Segmente: Markt &amp; Strategie, Systeme &amp; Engineering, Prozesse &amp; Data Science" width="930" height="820" loading="lazy" decoding="async">
+            <div class="ua-ring-wrap" id="ua-ring-wrap">
+              <svg class="ua-ring" viewBox="0 0 400 400" aria-hidden="true">
+                <defs>
+                  <linearGradient id="tNavy" x1="0.1" y1="0" x2="0.8" y2="1">
+                    <stop offset="0" stop-color="#4B5B80"></stop>
+                    <stop offset="0.5" stop-color="#33405C"></stop>
+                    <stop offset="1" stop-color="#232D43"></stop>
+                  </linearGradient>
+                  <linearGradient id="tBlue" x1="0.1" y1="0" x2="0.8" y2="1">
+                    <stop offset="0" stop-color="#CCD5E2"></stop>
+                    <stop offset="0.5" stop-color="#AEBACD"></stop>
+                    <stop offset="1" stop-color="#8B99B1"></stop>
+                  </linearGradient>
+                  <linearGradient id="tMarkt" x1="0.1" y1="0" x2="0.8" y2="1">
+                    <stop offset="0" stop-color="#A9CBEF"></stop>
+                    <stop offset="0.5" stop-color="#7FAEE0"></stop>
+                    <stop offset="1" stop-color="#5A8FCB"></stop>
+                  </linearGradient>
+                  <linearGradient id="tsNavy" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#222C42"></stop>
+                    <stop offset="1" stop-color="#141B2A"></stop>
+                  </linearGradient>
+                  <linearGradient id="tsBlue" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#8A98B0"></stop>
+                    <stop offset="1" stop-color="#6C7A94"></stop>
+                  </linearGradient>
+                  <linearGradient id="tsMarkt" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#6F9BD0"></stop>
+                    <stop offset="1" stop-color="#4A70A0"></stop>
+                  </linearGradient>
+                  <radialGradient id="tHole" cx="0.5" cy="0.42" r="0.62">
+                    <stop offset="0" stop-color="#D3DCEB"></stop>
+                    <stop offset="0.75" stop-color="#E0E7F2"></stop>
+                    <stop offset="1" stop-color="#E4EBF5"></stop>
+                  </radialGradient>
+                  <radialGradient id="tShadow" cx="0.5" cy="0.5" r="0.5">
+                    <stop offset="0" stop-color="#1a2744" stop-opacity="0.24"></stop>
+                    <stop offset="0.6" stop-color="#1a2744" stop-opacity="0.11"></stop>
+                    <stop offset="1" stop-color="#1a2744" stop-opacity="0"></stop>
+                  </radialGradient>
+                </defs>
+
+                <ellipse cx="200" cy="340" rx="196" ry="52" fill="url(#tShadow)"></ellipse>
+
+                <g class="ua-ring-walls">
+                  <circle class="ua-ring-wall" data-seg="0" cx="200" cy="200" r="148" stroke="url(#tsNavy)" style="--ty:16px; --rot:-90deg;"></circle>
+                  <circle class="ua-ring-wall" data-seg="1" cx="200" cy="200" r="148" stroke="url(#tsBlue)" style="--ty:16px; --rot:30deg;"></circle>
+                  <circle class="ua-ring-wall" data-seg="2" cx="200" cy="200" r="148" stroke="url(#tsMarkt)" style="--ty:16px; --rot:150deg;"></circle>
+                  <circle class="ua-ring-wall" data-seg="0" cx="200" cy="200" r="148" stroke="url(#tsNavy)" style="--ty:13.44px; --rot:-90deg;"></circle>
+                  <circle class="ua-ring-wall" data-seg="1" cx="200" cy="200" r="148" stroke="url(#tsBlue)" style="--ty:13.44px; --rot:30deg;"></circle>
+                  <circle class="ua-ring-wall" data-seg="2" cx="200" cy="200" r="148" stroke="url(#tsMarkt)" style="--ty:13.44px; --rot:150deg;"></circle>
+                  <circle class="ua-ring-wall" data-seg="0" cx="200" cy="200" r="148" stroke="url(#tsNavy)" style="--ty:10.88px; --rot:-90deg;"></circle>
+                  <circle class="ua-ring-wall" data-seg="1" cx="200" cy="200" r="148" stroke="url(#tsBlue)" style="--ty:10.88px; --rot:30deg;"></circle>
+                  <circle class="ua-ring-wall" data-seg="2" cx="200" cy="200" r="148" stroke="url(#tsMarkt)" style="--ty:10.88px; --rot:150deg;"></circle>
+                  <circle class="ua-ring-wall" data-seg="0" cx="200" cy="200" r="148" stroke="url(#tsNavy)" style="--ty:8.32px; --rot:-90deg;"></circle>
+                  <circle class="ua-ring-wall" data-seg="1" cx="200" cy="200" r="148" stroke="url(#tsBlue)" style="--ty:8.32px; --rot:30deg;"></circle>
+                  <circle class="ua-ring-wall" data-seg="2" cx="200" cy="200" r="148" stroke="url(#tsMarkt)" style="--ty:8.32px; --rot:150deg;"></circle>
+                  <circle class="ua-ring-wall" data-seg="0" cx="200" cy="200" r="148" stroke="url(#tsNavy)" style="--ty:5.76px; --rot:-90deg;"></circle>
+                  <circle class="ua-ring-wall" data-seg="1" cx="200" cy="200" r="148" stroke="url(#tsBlue)" style="--ty:5.76px; --rot:30deg;"></circle>
+                  <circle class="ua-ring-wall" data-seg="2" cx="200" cy="200" r="148" stroke="url(#tsMarkt)" style="--ty:5.76px; --rot:150deg;"></circle>
+                  <circle class="ua-ring-wall" data-seg="0" cx="200" cy="200" r="148" stroke="url(#tsNavy)" style="--ty:3.2px; --rot:-90deg;"></circle>
+                  <circle class="ua-ring-wall" data-seg="1" cx="200" cy="200" r="148" stroke="url(#tsBlue)" style="--ty:3.2px; --rot:30deg;"></circle>
+                  <circle class="ua-ring-wall" data-seg="2" cx="200" cy="200" r="148" stroke="url(#tsMarkt)" style="--ty:3.2px; --rot:150deg;"></circle>
+                </g>
+
+                <circle cx="200" cy="200" r="102" fill="url(#tHole)"></circle>
+
+                <g class="ua-ring-tops">
+                  <circle class="ua-ring-top" data-seg="0" cx="200" cy="200" r="148" stroke="url(#tNavy)" style="--ty:0px; --rot:-90deg;"></circle>
+                  <circle class="ua-ring-top" data-seg="1" cx="200" cy="200" r="148" stroke="url(#tBlue)" style="--ty:0px; --rot:30deg;"></circle>
+                  <circle class="ua-ring-top" data-seg="2" cx="200" cy="200" r="148" stroke="url(#tMarkt)" style="--ty:0px; --rot:150deg;"></circle>
+                </g>
+              </svg>
+
+              <div class="ua-ring-labels">
+                <div class="ua-ring-center">
+                  <p class="ua-ring-center-title">Ganzheitliche Transformation</p>
+                  <p class="ua-ring-center-text">Bereich wählen</p>
+                </div>
+
+                <button type="button" class="ua-ring-corner ua-ring-corner--0" data-seg="0" aria-label="Systeme &amp; Engineering anzeigen">
+                  <svg width="28" height="28" viewBox="0 0 42 42" fill="none" stroke="#E4E8F1" stroke-width="1.8" aria-hidden="true">
+                    <rect x="1" y="1" width="40" height="40" rx="12"></rect>
+                    <rect x="10" y="12" width="22" height="7" rx="2"></rect>
+                    <rect x="10" y="23" width="22" height="7" rx="2"></rect>
+                    <circle cx="14.5" cy="15.5" r="1.4" fill="#E4E8F1" stroke="none"></circle>
+                    <circle cx="14.5" cy="26.5" r="1.4" fill="#E4E8F1" stroke="none"></circle>
+                  </svg>
+                  <span>Systeme &amp;<br>Engineering</span>
+                </button>
+
+                <button type="button" class="ua-ring-corner ua-ring-corner--1" data-seg="1" aria-label="Prozesse &amp; Data Science anzeigen">
+                  <svg width="28" height="28" viewBox="0 0 42 42" fill="none" stroke="#1a2744" stroke-width="1.8" aria-hidden="true">
+                    <rect x="1" y="1" width="40" height="40" rx="12"></rect>
+                    <rect x="12" y="22" width="5" height="9" fill="#1a2744" stroke="none"></rect>
+                    <rect x="19" y="17" width="5" height="14" fill="#1a2744" stroke="none"></rect>
+                    <rect x="26" y="11" width="5" height="20" fill="#1a2744" stroke="none"></rect>
+                  </svg>
+                  <span>Prozesse &amp;<br>Data Science</span>
+                </button>
+
+                <button type="button" class="ua-ring-corner ua-ring-corner--2" data-seg="2" aria-label="Markt &amp; Strategie anzeigen">
+                  <svg width="28" height="28" viewBox="0 0 42 42" fill="none" stroke="#1a2744" stroke-width="1.8" aria-hidden="true">
+                    <rect x="1" y="1" width="40" height="40" rx="12"></rect>
+                    <circle cx="21" cy="21" r="11"></circle>
+                    <path d="M26 16 L23 23 L16 26 L19 19 Z" fill="#1a2744" stroke="none"></path>
+                  </svg>
+                  <span>Markt &amp;<br>Strategie</span>
+                </button>
+              </div>
             </div>
           </div>
 
@@ -660,7 +826,7 @@
     </div>
   </footer>
 
-  <script defer src="/main.js?v=10"></script>
+  <script defer src="/main.js?v=11"></script>
   <script src="/blog-config.js"></script>
   <script src="/page-blog.js"></script>
   <script src="/page-ueber-uns.js"></script>
@@ -703,7 +869,7 @@
       <span class="fchat-opt-icon" style="background:rgba(26,39,68,0.10);">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1a2744" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
       </span>
-      <div class="fchat-opt-label"><b>Nachricht senden</b><span>Wir melden uns bei Ihnen</span></div>
+      <div class="fchat-opt-label"><b>Kontakt aufnehmen</b><span>Wir melden uns bei Ihnen</span></div>
       <svg class="fchat-opt-chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
     </a>
   </div>

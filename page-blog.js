@@ -172,7 +172,7 @@ function loadBlogPreview() {
       grid.setAttribute('aria-busy', 'false');
 
       if (!data.items || data.items.length === 0) {
-        if (section) section.hidden = true;
+        grid.innerHTML = '<div class="blog-empty">Noch keine Posts vorhanden – bald gibt es hier Einblicke!</div>';
         return;
       }
 
@@ -180,7 +180,8 @@ function loadBlogPreview() {
       grid.innerHTML = data.items.map(function (item) { return renderBlogCard(item, assets); }).join('');
     })
     .catch(function () {
-      if (section) section.hidden = true;
+      grid.setAttribute('aria-busy', 'false');
+      grid.innerHTML = '<div class="blog-error">Posts konnten nicht geladen werden. Bitte später nochmals versuchen.</div>';
     });
 }
 
@@ -239,8 +240,9 @@ function loadBlogPost() {
           : '<div class="post-teaser">' + renderRichText(teaserRaw) + '</div>';
       }
 
-      // Body (Rich Text)
-      var bodyHtml = f.body ? renderRichText(f.body) : '';
+      // Body (Rich Text) — Contentful-Feld heisst "content" (Inhalt), nicht "body"
+      var bodyRaw  = f.content || f.body;
+      var bodyHtml = bodyRaw ? renderRichText(bodyRaw) : '';
 
       // Meta-Tags dynamisch setzen
       document.title = title + ' | Amplifyr Blog';

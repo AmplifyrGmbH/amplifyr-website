@@ -113,10 +113,10 @@
   </script>
 
   <!-- CSS -->
-  <link rel="stylesheet" href="/style.css?v=14">
+  <link rel="stylesheet" href="/style.css?v=23">
   <link rel="stylesheet" href="/fchat.css">
   <link rel="stylesheet" href="/page-it-solutions.css?v=12">
-  <link rel="stylesheet" href="/ki-berater.css?v=1">
+  <link rel="stylesheet" href="/ki-berater.css?v=2">
   <script defer src="https://cloud.umami.is/script.js" data-website-id="a5638b4a-87cc-4014-a56d-b5b83ae8ccd5"></script>
 </head>
 <body>
@@ -201,11 +201,53 @@
           <a href="/it-solutions#sec-managed">Managed Services</a>
           <a href="/it-solutions#sec-sla">SLA &amp; Support-Stunden</a>
           <a href="/it-solutions#sec-projekte">Projekte &amp; Migrationen</a>
+          <a href="/it-solutions#ki-berater">KI-Berater</a>
+          <a href="/it-solutions#sec-cta">Kontakt &amp; FAQ</a>
         </div>
       </div>
 
-      <a href="/handwerker" class="mobile-nav-link">Handwerker</a>
-      <a href="/bewirtschaftung" class="mobile-nav-link">Bewirtschaftung</a>
+      <div class="mobile-nav-group">
+        <div class="mobile-nav-group__row">
+          <a href="/handwerker" class="mobile-nav-link">Handwerker</a>
+          <button class="mobile-nav-group__chevron-btn" aria-label="Handwerker Untermenü">
+            <svg class="mobile-nav-group__chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+        <div class="mobile-nav-group__sub">
+          <a href="/handwerker#alltag">Video</a>
+          <a href="/handwerker#kostenrechner">Kostenrechner</a>
+          <a href="/handwerker#ablauf">Auftragsablauf</a>
+          <a href="/handwerker#generalunternehmer">Unser Prinzip</a>
+          <a href="/handwerker#fahrplan">Fahrplan</a>
+          <a href="/handwerker#ueberuns">Wer wir sind</a>
+          <a href="/handwerker#ki-berater">KI-Berater</a>
+          <a href="/handwerker#cta">Kontakt &amp; FAQ</a>
+        </div>
+      </div>
+
+      <div class="mobile-nav-group">
+        <div class="mobile-nav-group__row">
+          <a href="/bewirtschaftung" class="mobile-nav-link">Bewirtschaftung</a>
+          <button class="mobile-nav-group__chevron-btn" aria-label="Bewirtschaftung Untermenü">
+            <svg class="mobile-nav-group__chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+        <div class="mobile-nav-group__sub">
+          <a href="/bewirtschaftung#alltag">Video</a>
+          <a href="/bewirtschaftung#kostenrechner">Aufwandrechner</a>
+          <a href="/bewirtschaftung#ablauf">Zwei Fälle</a>
+          <a href="/bewirtschaftung#generalunternehmer">Unser Prinzip</a>
+          <a href="/bewirtschaftung#fahrplan">Fahrplan</a>
+          <a href="/bewirtschaftung#ueberuns">Wer wir sind</a>
+          <a href="/bewirtschaftung#ki-berater">Ihre Bedenken</a>
+          <a href="/bewirtschaftung#cta">Kontakt &amp; FAQ</a>
+        </div>
+      </div>
+
       <div class="mobile-nav-group">
         <div class="mobile-nav-group__row">
           <a href="/webdesign" class="mobile-nav-link">Digitaler Auftritt</a>
@@ -216,13 +258,29 @@
           </button>
         </div>
         <div class="mobile-nav-group__sub">
+          <a href="/webdesign#problem">Problem</a>
           <a href="/webdesign#werkzeuge">Werkzeuge</a>
+          <a href="/webdesign#referenzen">Referenzen</a>
           <a href="/webdesign#betrieb">Pakete &amp; Preise</a>
-          <a href="/webdesign#sec-faq">FAQ</a>
+          <a href="/webdesign#ki-berater">Chatbot</a>
+          <a href="/webdesign#sec-cta">Kontakt &amp; FAQ</a>
         </div>
       </div>
       <a href="/ueber-uns" class="mobile-nav-link">Über uns</a>
 
+    </div>
+
+    <div class="mobile-menu__cta">
+      <a href="https://portal.amplifyr.ch/" target="_blank" rel="noopener" class="mobile-portal-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="20" height="20">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
+        <span>Kundenportal</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
     </div>
   </nav>
 
@@ -231,6 +289,7 @@
   ============================================================ -->
   <main>
 
+    <div class="mobile-progress" aria-hidden="true"><div class="mobile-progress-fill"></div></div>
     <nav class="jrail" aria-label="Abschnitte dieser Seite" data-dark=".site-cta">
       <ol>
         <li><a href="#sec-support"><span>Support &amp; Beratung</span><i></i></a></li>
@@ -250,7 +309,7 @@
           <h1 class="fsh-heading">IT,<br><em class="fsh-em">die einfach läuft.</em></h1>
           <p class="fsh-sub">Wir schaffen die technologische Grundlage für stabile, sichere und skalierbare Unternehmenssysteme — eine rundum funktionierende und zukunftsgerichtete IT.</p>
           <div class="fsh-actions">
-            <a class="btn btn--hero-pill" href="/formular" data-gtm-event="cta_demo_klick" data-gtm-location="hero">Kostenloses Erstgespräch anfordern</a>
+            <a class="btn btn--hero-pill" href="/formular" data-gtm-event="cta_demo_klick" data-gtm-location="hero">Jetzt unverbindlich anfragen</a>
           </div>
         </div>
       </div>
@@ -606,7 +665,7 @@
 
     <!-- ── Chatbot: KI-Berater ── -->
     <section id="ki-berater" class="section section--steel-light"
-      data-endpoint="https://chat-api.amplifyr-digital.ch/api/v1/chat/amplifyr-it-solutions"
+      data-endpoint="https://chat-api.amplifyr-digital.ch/api/v1/chat/website_it_solutions"
       data-firmenname="Ihr Unternehmen"
       data-firmenprofil="Amplifyr übernimmt IT-Outsourcing und Managed Services für Schweizer KMU — Support, Cloud, Microsoft 365 und Projekte, mit einem Ansprechpartner statt vielen.">
       <div class="container">
@@ -659,13 +718,10 @@
       </div>
       <div class="container site-cta-content">
         <p class="section-label section-label--steel">Der erste Schritt</p>
-        <h2>Lieber direkt sprechen? Wir sind erreichbar.</h2>
+        <h2>Bereit für IT, die einfach läuft? Wir sind erreichbar.</h2>
         <p>Sie wissen schon, worum es geht? Melden Sie sich — wir schauen uns Ihre IT gemeinsam an.</p>
         <div class="kontakt-channels">
-          <a href="https://outlook.office.com/book/Amplifyr1@amplifyr.ch/s/WS-NdYDJS0OKzyBuFjz--A2?ismsaljsauthenabled" target="_blank" rel="noopener" class="btn btn--white" data-gtm-event="cta_termin_klick" data-gtm-location="cta_final">30-Minuten-Gespräch</a>
-          <a href="/formular" class="btn btn--outline" data-gtm-event="cta_nachricht_klick" data-gtm-location="cta_final">Nachricht senden</a>
-          <a href="tel:+41442445995" class="btn btn--outline" data-gtm-event="cta_telefon_klick" data-gtm-location="cta_final">044 244 59 95</a>
-          <a href="https://wa.me/41442445995" target="_blank" rel="noopener" class="btn btn--outline" data-gtm-event="cta_whatsapp_klick" data-gtm-location="cta_final">WhatsApp</a>
+          <a href="/formular" class="btn btn--white" data-gtm-event="cta_kontakt_klick" data-gtm-location="cta_final">Kontakt aufnehmen</a>
         </div>
 
         <!-- ── Häufige Fragen (deckt sich mit dem FAQPage-Schema im Head) ── -->
@@ -765,7 +821,7 @@
     </div>
   </footer>
 
-  <script defer src="/main.js?v=10"></script>
+  <script defer src="/main.js?v=11"></script>
   <script defer src="/ki-berater.js?v=1"></script>
   <script src="/page-it-solutions.js?v=2"></script>
   <!-- Floating Side Widgets -->
@@ -807,7 +863,7 @@
       <span class="fchat-opt-icon" style="background:rgba(26,39,68,0.10);">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1a2744" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
       </span>
-      <div class="fchat-opt-label"><b>Nachricht senden</b><span>Wir melden uns bei Ihnen</span></div>
+      <div class="fchat-opt-label"><b>Kontakt aufnehmen</b><span>Wir melden uns bei Ihnen</span></div>
       <svg class="fchat-opt-chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
     </a>
   </div>

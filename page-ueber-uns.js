@@ -5,10 +5,19 @@
 
 'use strict';
 
-// ── Akkordeon ─────────────────────────────────────────────────
-(function initAccordion() {
-  var items   = Array.from(document.querySelectorAll('.ua-acc-item'));
-  var headerH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h-compact')) || 68;
+// ── Akkordeon + 3D-Ring ───────────────────────────────────────
+(function initTeamSection() {
+  var items    = Array.from(document.querySelectorAll('.ua-acc-item'));
+  var ringWrap = document.getElementById('ua-ring-wrap');
+  if (!items.length) return;
+
+  // Akkordeon-Reihenfolge im DOM: 0=Markt, 1=Prozesse, 2=Systeme
+  // Ring-Segmente (data-seg): 0=Systeme, 1=Prozesse, 2=Markt
+  var RING_OF_ACC = [2, 1, 0];
+  var ACC_OF_RING = [2, 1, 0];
+
+  var openAcc   = null;
+  var hoverRing = null;
 
   function openItem(item) {
     var body = item.querySelector('.ua-acc-body');
@@ -32,42 +41,109 @@
   items.forEach(function (item) {
     var body = item.querySelector('.ua-acc-body');
     if (!body) return;
-    if (item.classList.contains('is-open')) {
-      body.style.maxHeight = body.scrollHeight + 'px';
-    } else {
-      body.style.maxHeight = '0';
-    }
+    body.style.maxHeight = item.classList.contains('is-open') ? body.scrollHeight + 'px' : '0';
   });
 
-  // Klick-Handler
-  items.forEach(function (item) {
+  function toggleAcc(i) {
+    var item   = items[i];
+    var isOpen = item.classList.contains('is-open');
+
+    items.forEach(closeItem);
+    openAcc = null;
+
+    if (!isOpen) {
+      openItem(item);
+      openAcc = i;
+      setTimeout(function () {
+        item.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 420);
+    }
+    renderRing();
+  }
+
+  items.forEach(function (item, i) {
     var btn = item.querySelector('.ua-acc-header');
     if (!btn) return;
 
-    function toggleAccordion() {
-      var isOpen = item.classList.contains('is-open');
-
-      // Alle schliessen
-      items.forEach(closeItem);
-
-      // Geklicktes öffnen (wenn vorher geschlossen)
-      if (!isOpen) {
-        openItem(item);
-        setTimeout(function () {
-          item.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 420);
-      }
-    }
-
-    btn.addEventListener('click', toggleAccordion);
-
+    btn.addEventListener('click', function () { toggleAcc(i); });
     btn.addEventListener('keydown', function (e) {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        toggleAccordion();
+        toggleAcc(i);
       }
     });
+    btn.addEventListener('mouseenter', function () { hoverRing = RING_OF_ACC[i]; renderRing(); });
+    btn.addEventListener('mouseleave', function () { hoverRing = null; renderRing(); });
   });
+
+  // ── Ring: Hover/Klick pro Segment, synchron mit dem Akkordeon ──
+  if (!ringWrap) return;
+
+  var ringEl        = ringWrap.querySelector('.ua-ring');
+  var centerTitleEl = ringWrap.querySelector('.ua-ring-center-title');
+  var centerTextEl  = ringWrap.querySelector('.ua-ring-center-text');
+
+  var SEG_META = {
+    0: { title: 'Systeme & Engineering',  text: 'Baut stabile technische Fundamente.' },
+    1: { title: 'Prozesse & Data Science', text: 'Analysiert Abläufe und Daten.' },
+    2: { title: 'Markt & Strategie',       text: 'Verbindet Strategie und Zielgruppe.' }
+  };
+  var DEFAULT_TITLE = 'Ganzheitliche Transformation';
+  var DEFAULT_TEXT  = 'Bereich wählen';
+
+  var segEls = {};
+  [0, 1, 2].forEach(function (seg) {
+    segEls[seg] = {
+      tops:   Array.from(ringWrap.querySelectorAll('.ua-ring-top[data-seg="' + seg + '"]')),
+      walls:  Array.from(ringWrap.querySelectorAll('.ua-ring-wall[data-seg="' + seg + '"]')),
+      corner: ringWrap.querySelector('.ua-ring-corner[data-seg="' + seg + '"]')
+    };
+  });
+
+  function activeRing() {
+    if (hoverRing !== null) return hoverRing;
+    if (openAcc !== null) return RING_OF_ACC[openAcc];
+    return null;
+  }
+
+  function renderRing() {
+    var active = activeRing();
+    if (ringEl) ringEl.classList.toggle('has-active', active !== null);
+
+    [0, 1, 2].forEach(function (seg) {
+      var isActive = active === seg;
+      segEls[seg].tops.forEach(function (el)  { el.classList.toggle('is-active', isActive); });
+      segEls[seg].walls.forEach(function (el) { el.classList.toggle('is-active', isActive); });
+      if (segEls[seg].corner) segEls[seg].corner.classList.toggle('is-active', isActive);
+    });
+
+    if (centerTitleEl) centerTitleEl.textContent = active === null ? DEFAULT_TITLE : SEG_META[active].title;
+    if (centerTextEl)  centerTextEl.textContent  = active === null ? DEFAULT_TEXT  : SEG_META[active].text;
+  }
+
+  [0, 1, 2].forEach(function (seg) {
+    var acc  = ACC_OF_RING[seg];
+    var els  = segEls[seg].tops.slice();
+    if (segEls[seg].corner) els.push(segEls[seg].corner);
+
+    els.forEach(function (el) {
+      el.addEventListener('mouseenter', function () { hoverRing = seg; renderRing(); });
+      el.addEventListener('click', function () { toggleAcc(acc); });
+    });
+
+    if (segEls[seg].corner) {
+      segEls[seg].corner.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleAcc(acc);
+        }
+      });
+    }
+  });
+
+  ringWrap.addEventListener('mouseleave', function () { hoverRing = null; renderRing(); });
+
+  renderRing();
 }());
 
 

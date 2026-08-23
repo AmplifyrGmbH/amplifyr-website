@@ -106,90 +106,32 @@ function renderRichText(node) {
 
 // ── Statischer Header / Footer ────────────────────────────────
 
-const HEADER = `  <header id="site-header" class="legal-mode">
-    <div class="container header-inner">
-      <a href="/" class="site-logo" aria-label="Amplifyr – Startseite">
-        <img class="logo-img logo-img--light" src="/Logos/amplifyr_logo/amplifyr-logo-weiss-hellblau.svg" alt="Amplifyr" height="40">
-        <img class="logo-img logo-img--dark"  src="/Logos/amplifyr_logo/amplifyr-logo-blau-hellblau.svg"  alt="" height="40" aria-hidden="true">
-      </a>
-      <nav class="site-nav" aria-label="Hauptnavigation">
-        <ul class="site-nav__list">
-          <li class="site-nav__item">
-            <a href="/ki-transformation" class="site-nav__link nav-link">KI-Transformation</a>
-          </li>
-          <li class="site-nav__item">
-            <a href="/handwerker" class="site-nav__link nav-link">Handwerker</a>
-          </li>
-          <li class="site-nav__item"><a href="/it-solutions"      class="site-nav__link nav-link">IT-Lösungen</a></li>
-          <li class="site-nav__item"><a href="/webdesign"         class="site-nav__link nav-link">Digitaler Auftritt</a></li>
-        </ul>
-      </nav>
-      <nav class="site-nav site-nav--right header-portal-btn" aria-label="Weitere Navigation">
-        <ul class="site-nav__list">
-          <li class="site-nav__item"><a href="/ueber-uns" class="site-nav__link nav-link">Über uns</a></li>
-        </ul>
-      </nav>
-      <button id="burger-btn" class="burger-btn" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
+// ── Seiten-Chrome (Header/Mobile-Menü/Footer/Head-Assets) ─────
+// Wird NICHT mehr dupliziert/hart hinterlegt, sondern zur Build-Zeit
+// direkt aus der aktuellen blog.html extrahiert — damit Post-Seiten
+// bei jedem Nav-/Header-Umbau automatisch aktuell bleiben, statt wie
+// bisher separat von Hand nachgepflegt werden zu muessen (das ist
+// bereits zweimal auseinandergedriftet: /ki-transformation statt
+// /bewirtschaftung, altes flaches Mobile-Menue, fehlendes GTM-Tracking).
+function extractBlock(html, re, label) {
+  const m = html.match(re);
+  if (!m) throw new Error('build-blog.js: Konnte "' + label + '" nicht aus blog.html extrahieren — hat sich die Struktur geändert?');
+  return m[0].trim();
+}
 
-  <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile Navigation">
-    <div class="mobile-menu__header">
-      <a href="/" class="mobile-menu__logo" aria-label="Amplifyr – Startseite">
-        <img class="logo-img" src="/Logos/amplifyr_logo/amplifyr-logo-blau-hellblau.svg" alt="Amplifyr">
-      </a>
-      <button id="mobile-menu-close" class="mobile-menu__close" aria-label="Menü schliessen">
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
-      </button>
-    </div>
-    <div class="mobile-menu__nav">
-      <a href="/ki-transformation" class="mobile-nav-link">KI-Transformation</a>
-      <a href="/handwerker"        class="mobile-nav-link">Handwerker</a>
-      <a href="/it-solutions"      class="mobile-nav-link">IT-Lösungen</a>
-      <a href="/webdesign"         class="mobile-nav-link">Digitaler Auftritt</a>
-      <a href="/ueber-uns"         class="mobile-nav-link">Über uns</a>
-    </div>
-    <div class="mobile-menu__cta">
-      <a href="https://portal.amplifyr.ch/" class="btn btn--primary" target="_blank" rel="noopener">Kundenportal</a>
-    </div>
-  </nav>`;
-
-const FOOTER = `  <footer>
-    <div class="container">
-      <div class="footer-inner">
-        <a href="/" class="footer-logo" aria-label="Amplifyr – Startseite">
-          <img class="logo-img" src="/Logos/amplifyr_logo/amplifyr-logo-blau-hellblau.svg" alt="Amplifyr">
-        </a>
-        <p class="footer-copy">© 2026 Amplifyr GmbH · Mettlenstrasse 11, 8142 Uitikon Waldegg · <a href="tel:+41442445995" class="footer-tel">044 244 59 95</a></p>
-        <nav class="footer-links" aria-label="Rechtliches">
-          <a href="/impressum">Impressum</a>
-          <a href="/datenschutz">Datenschutz</a>
-          <a href="/agb">AGB</a>
-        </nav>
-      </div>
-    </div>
-  </footer>`;
-
-const HEAD_COMMON = `  <link rel="icon"             href="/Favicon/favicon.ico">
-  <link rel="icon"             href="/Favicon/favicon_32x32.png" sizes="32x32" type="image/png">
-  <link rel="icon"             href="/Favicon/favicon_16x16.png" sizes="16x16" type="image/png">
-  <link rel="apple-touch-icon" href="/Favicon/favicon_180x180.png">
-  <link rel="manifest"         href="/site.webmanifest">
-  <meta name="theme-color" content="#1a2744">
-  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap">
-  <link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap"></noscript>
-  <link rel="stylesheet" href="/style.css?v=6">
-  <link rel="stylesheet" href="/page-blog.css">`;
+function extractChrome(blogHtmlSrc) {
+  const gtmHead   = extractBlock(blogHtmlSrc, /<!-- Google Tag Manager -->[\s\S]*?<!-- End Google Tag Manager -->/, 'GTM Head-Snippet');
+  const gtmBody   = extractBlock(blogHtmlSrc, /<!-- Google Tag Manager \(noscript\) -->[\s\S]*?<!-- End Google Tag Manager \(noscript\) -->/, 'GTM Body-Snippet');
+  const headCommon = extractBlock(blogHtmlSrc, /<!-- Favicons -->[\s\S]*?(?=\n<\/head>)/, 'Head-Assets (Favicons/Fonts/CSS)');
+  const header    = extractBlock(blogHtmlSrc, /<header id="site-header"[\s\S]*?<\/header>/, 'Header');
+  const mobileMenu = extractBlock(blogHtmlSrc, /<nav class="mobile-menu"[\s\S]*?<\/nav>/, 'Mobile-Menü');
+  const footer    = extractBlock(blogHtmlSrc, /<footer>[\s\S]*?<\/footer>/, 'Footer');
+  return { gtmHead, gtmBody, headCommon, header, mobileMenu, footer };
+}
 
 // ── Post-Seite generieren ─────────────────────────────────────
 
-function generatePostHtml(f, slug, assets) {
+function generatePostHtml(f, slug, assets, chrome) {
   const title   = f.titel || f.title || '';
   const dateIso = f.date  || '';
   const dateFmt = formatDate(dateIso);
@@ -207,8 +149,9 @@ function generatePostHtml(f, slug, assets) {
         : '<div class="post-teaser">' + renderRichText(teaserRaw) + '</div>')
     : '';
 
-  // Body
-  const bodyHtml = f.body ? renderRichText(f.body) : '';
+  // Body — Contentful-Feld heisst "content" (Inhalt), nicht "body"
+  const bodyRaw  = f.content || f.body;
+  const bodyHtml = bodyRaw ? renderRichText(bodyRaw) : '';
 
   // Cover image
   const imgRef = f.coverImage || f.titelbild;
@@ -253,6 +196,7 @@ function generatePostHtml(f, slug, assets) {
   return '<!DOCTYPE html>\n'
     + '<html lang="de-CH">\n'
     + '<head>\n'
+    + chrome.gtmHead + '\n'
     + '  <meta charset="UTF-8">\n'
     + '  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n\n'
     + '  <title>' + esc(title) + ' | Amplifyr Blog</title>\n'
@@ -271,10 +215,12 @@ function generatePostHtml(f, slug, assets) {
     + '  <meta name="twitter:image"       content="' + esc(ogImg) + '">\n\n'
     + '  <script type="application/ld+json">\n' + articleSchema + '\n  </script>\n'
     + '  <script type="application/ld+json">\n' + breadcrumbSchema + '\n  </script>\n\n'
-    + HEAD_COMMON + '\n'
+    + chrome.headCommon + '\n'
     + '</head>\n'
-    + '<body>\n\n'
-    + HEADER + '\n\n'
+    + '<body>\n'
+    + chrome.gtmBody + '\n\n'
+    + chrome.header + '\n\n'
+    + chrome.mobileMenu + '\n\n'
     + '  <main>\n'
     + '    <div class="post-wrap">\n'
     + '      <a class="post-back" href="/blog">\n'
@@ -300,8 +246,8 @@ function generatePostHtml(f, slug, assets) {
     + '      </article>\n'
     + '    </div>\n'
     + '  </main>\n\n'
-    + FOOTER + '\n\n'
-    + '  <script src="/main.js"></script>\n'
+    + chrome.footer + '\n\n'
+    + '  <script defer src="/main.js"></script>\n'
     + '</body>\n'
     + '</html>\n';
 }
@@ -363,6 +309,14 @@ async function main() {
 
   const assets = buildAssetMap(data.includes);
 
+  // Seiten-Chrome (Header/Mobile-Menü/Footer/Head-Assets) einmal aus
+  // der aktuellen blog.html extrahieren — siehe extractChrome() weiter
+  // oben. Dieselbe Datei wird unten für die Karten-Injection erneut
+  // gebraucht, daher hier nur einmal einlesen.
+  const srcBlogHtml   = path.join(SITE_ROOT, 'blog.html');
+  const blogHtmlSrc   = fs.readFileSync(srcBlogHtml, 'utf8');
+  const chrome        = extractChrome(blogHtmlSrc);
+
   // Output-Verzeichnisse anlegen
   const distBlogDir = path.join(DIST_DIR, 'blog');
   fs.mkdirSync(distBlogDir, { recursive: true });
@@ -371,7 +325,7 @@ async function main() {
   for (const item of data.items) {
     const f    = item.fields;
     const slug = f.slug || item.sys.id;
-    const html = generatePostHtml(f, slug, assets);
+    const html = generatePostHtml(f, slug, assets, chrome);
     fs.writeFileSync(path.join(distBlogDir, slug + '.html'), html, 'utf8');
     console.log('  + blog/' + slug + '.html');
   }
@@ -381,9 +335,8 @@ async function main() {
     .map(item => generateCardHtml(item.fields, item.fields.slug || item.sys.id, assets))
     .join('\n');
 
-  const srcBlogHtml  = path.join(SITE_ROOT, 'blog.html');
-  const distBlogHtml = path.join(DIST_DIR,  'blog.html');
-  let   blogHtml     = fs.readFileSync(srcBlogHtml, 'utf8');
+  const distBlogHtml = path.join(DIST_DIR, 'blog.html');
+  let   blogHtml     = blogHtmlSrc;
 
   blogHtml = blogHtml.replace(
     /<!-- BLOG_CARDS_START -->[\s\S]*?<!-- BLOG_CARDS_END -->/,

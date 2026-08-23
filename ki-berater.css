@@ -16,6 +16,14 @@
   padding: 80px 0;
 }
 
+/* Gleiche effektive Breite wie die Referenz-Inline-Kopie (handwerker/
+   bewirtschaftung: .wrap{max-width:1020px;padding:0 20px}) — der
+   sitewide .container bleibt fuer alle anderen Sections unangetastet. */
+#ki-berater .container {
+  max-width: 1020px;
+  padding-inline: 20px;
+}
+
 #ki-berater .kb-chip {
   font-family: inherit;
   font-size: .8rem;
@@ -69,6 +77,7 @@
 
 @media (max-width: 640px) {
   #ki-berater { min-height: 85vh; background: var(--kb-brand-dark) !important; border-color: transparent !important; display: flex; align-items: center; padding: 60px 0; }
+  #ki-berater .container { padding-inline: 16px; }
   #ki-berater h2 { color: #fff; font-size: clamp(1.4rem, 6.5vw, 1.9rem); text-align: center; white-space: nowrap; }
   #ki-berater > div > p { color: rgba(255,255,255,.65); text-align: center; }
   #ki-berater #kb-send { background: rgba(255,255,255,.15) !important; box-shadow: none !important; }
