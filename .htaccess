@@ -60,6 +60,7 @@ RewriteEngine On
 # 0. Permanente Weiterleitungen (301)
 RewriteRule ^automatisierung/?$ / [R=301,L]
 RewriteRule ^ki-transformation/?$ / [R=301,L]
+RewriteRule ^branchen-software/?$ /it-solutions [R=301,L]
 
 # 1. non-www (http + https) → https://www
 RewriteCond %{HTTP_HOST} ^amplifyr\.ch [NC]
