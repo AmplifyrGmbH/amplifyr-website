@@ -1,0 +1,1930 @@
+<!DOCTYPE html>
+<html lang="de-CH">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Picassino Malerei GmbH — Demo von Amplifyr</title>
+
+
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23C13B2A'/><text x='16' y='24' font-family='system-ui,sans-serif' font-weight='900' font-size='23' fill='%23ffffff' text-anchor='middle'>P</text></svg>">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Picassino Malerei GmbH — Demo von Amplifyr">
+<meta property="og:description" content="Picassino Malerei GmbH, was ein Generalunternehmer fürs Bauen ist — das sind wir fürs Digitale.">
+<meta property="og:url" content="https://ihr-digitaler-handwerksbetrieb.ch/picassino-malerei-gmbh-zuerich">
+<meta property="og:image" content="https://handwerker-api.amplifyr-digital.ch/static/img/handwerker-zufrieden.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --brand:#C13B2A;
+    --brand-dark:#38140f;
+    --brand-dark-alt:#5f231c;
+    --brand-accent:#C13B2A;
+    --brand-mid:#c46f64;
+    --brand-light:#f2eeee;
+    --c-brand:#C13B2A;
+    --c-brand-2:#C13B2A;
+    --c-link:#38140f;
+    --c-accent:#C13B2A;
+    --navy:#38140f;
+    --blue:#c46f64;
+    --blue-d:#38140f;
+    --gold:#C13B2A;
+    --ink:#16203a;--ink2:#3c4658;--muted:#676f84;
+    --paper:#fbfcfe;--card:#fff;--line:#e4e9f2;--soft:#f2eeee;
+    --radius:18px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:96px}
+  body{font-family:'Manrope',system-ui,sans-serif;color:var(--ink);background:var(--paper);line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3{text-wrap:balance;font-family:'Fraunces',Georgia,serif;line-height:1.1;font-weight:600;letter-spacing:-.015em}
+  img{max-width:100%;display:block}
+  .wrap{max-width:1020px;margin:0 auto;padding:0 20px}
+  section{padding:72px 0}
+  /* Rechner Blöcke */
+  .rblock-label{font-family:'Manrope',system-ui,sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);margin:0 0 4px}
+  /* Manrope statt Fraunces: Fraunces zeichnet die Null kleiner als 1 oder 7,
+     wodurch Betraege tanzen. Ein Font-Feature dagegen gibt es nicht. */
+  .rblock-num{font-family:'Manrope',system-ui,sans-serif;font-size:clamp(1.5rem,3vw,2.25rem);font-weight:800;margin:0;line-height:1.15;letter-spacing:-.01em}
+  .rblock-sub{font-size:.8125rem;color:rgba(255,255,255,.5);margin:4px 0 0;font-family:'Manrope',system-ui,sans-serif}
+  .rarrow{display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:rgba(255,255,255,.35);padding:0 4px;align-self:center}
+    @media(max-width:640px){section{padding:40px 0}}
+  .eyebrow{font-weight:800;letter-spacing:.12em;text-transform:uppercase;font-size:.75rem;color:var(--blue-d);margin-bottom:12px}
+  .sec-head{max-width:760px;margin-bottom:32px}
+  .sec-head.c{margin-inline:auto;text-align:center}
+  .sec-head h2{font-size:clamp(1.625rem,3.7vw,2.875rem)}
+  section h2{text-align:center;font-size:clamp(1.625rem,3.7vw,2.875rem);font-weight:700;color:var(--brand-dark);line-height:1.15}
+  .sec-head p{color:var(--muted);font-size:1rem;margin-top:12px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:none;cursor:pointer;font-family:'Manrope';font-weight:700;font-size:1rem;padding:16px 24px;border-radius:999px;text-decoration:none;transition:.2s}
+  .btn-gold{background:var(--brand-accent);color:#ffffff;box-shadow:0 14px 30px -14px rgba(56,20,15,.35)}
+  .btn-gold:hover{transform:translateY(-2px)}
+  .btn-primary{background:var(--brand-dark);color:#fff;box-shadow:0 14px 30px -14px rgba(56,20,15,.45)}
+  .btn-primary:hover{background:var(--brand-dark-alt);transform:translateY(-2px)}
+  .ic{width:20px;height:20px;stroke:currentColor;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;flex:none}
+  .reveal{opacity:0;transform:translateY(20px);transition:.7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal{transition:none;transition-delay:0s!important}}
+
+  /* ── HEADER ── */
+  header.top{position:sticky;top:0;z-index:60;background:rgba(251,252,254,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .top-in{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;height:62px;gap:12px;position:relative}
+  .top-in .topnav{justify-self:end}
+  @media(max-width:520px){
+    .top-in{grid-template-columns:minmax(0,1fr) auto}
+    .datum{display:none}
+  }
+  .brand{display:flex;align-items:center;gap:0;min-width:0}
+  .brand .kundenlogo{height:42px;width:auto;object-fit:contain}
+  .brand .logo-pill{background:var(--brand-dark);border-radius:8px;padding:5px 12px;display:inline-flex;align-items:center}
+  .fuerzeile{font-size:.75rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+  .brand .fuerzeile{color:#C13B2A}
+  .datum{font-size:.75rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--brand-dark);line-height:1;text-align:center;white-space:nowrap}
+  .topnav{display:flex;align-items:center;gap:12px;justify-content:flex-end}
+  .topnav .fuerzeile{color:var(--brand-dark)}
+  .topnav .amplifyr-logo{height:42px;width:auto;display:block}
+  @media(max-width:640px){.brand .kundenlogo{height:42px}.topnav .amplifyr-logo{height:42px}.fuerzeile{font-size:.6875rem}}
+  @media(max-width:400px){.topnav .amplifyr-logo{height:36px}.brand .kundenlogo{height:36px}}
+  @media(max-width:420px){.datum{display:none}}
+
+  /* ── NAVIGATION RAIL ── */
+  .jrail{--zeile:56px;position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:50;opacity:0;pointer-events:none;transition:opacity .35s}
+  .jrail.on{opacity:1;pointer-events:auto}
+  .jrail ol{list-style:none;position:relative;margin:0;padding:0}
+  .jrail ol::before,.jrail ol::after{content:"";position:absolute;right:5px;top:calc(var(--zeile)/2);width:2px;border-radius:2px}
+  .jrail ol::before{bottom:calc(var(--zeile)/2);background:#d3dcea}
+  .jrail ol::after{height:var(--p,0px);background:var(--brand-dark);transition:height .3s}
+  .jrail a{display:grid;grid-template-columns:1fr 12px;align-items:center;gap:10px;height:var(--zeile);text-decoration:none}
+  .jrail a span{font-size:.875rem;line-height:1.3;text-align:right;color:#6b7488;font-weight:600;white-space:nowrap;transition:.2s}
+  .jrail a i{width:10px;height:10px;margin-left:1px;border-radius:50%;background:#fff;border:2px solid var(--brand-mid);transition:.2s}
+  .jrail a:hover span{color:var(--brand-dark)}
+  .jrail a:focus-visible{outline:3px solid var(--brand-dark);outline-offset:4px;border-radius:4px}
+  .jrail a[aria-current="true"] span{color:var(--brand-dark);font-weight:800}
+  .jrail a[aria-current="true"] i{background:var(--brand-dark);border-color:var(--brand-dark);transform:scale(1.2)}
+  .jrail.dunkel ol::before{background:rgba(255,255,255,.20)}
+  .jrail.dunkel ol::after{background:var(--brand-mid)}
+  .jrail.dunkel a span{color:rgba(255,255,255,.75)}
+  .jrail.dunkel a[aria-current="true"] span{color:#fff}
+  .jrail.dunkel a i{background:transparent;border-color:rgba(255,255,255,.45)}
+  .jrail.dunkel a[aria-current="true"] i{background:var(--brand-mid);border-color:var(--brand-mid)}
+  .jrail.dunkel a:hover span{color:#fff}
+  @media(max-width:1100px){.jrail a span{display:none}.jrail a{grid-template-columns:12px}}
+  @media(max-width:900px){.jrail{display:none}}
+
+  /* ── HERO ── */
+  .hero{padding:0;position:relative;overflow:hidden;color:#fff;background:radial-gradient(780px 440px at 84% 10%,rgba(193,59,42,.30),transparent 62%),linear-gradient(158deg,#5f231c,#38140f);min-height:calc(100vh - 62px);display:flex;flex-direction:column;justify-content:center}
+  .hero-in{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;padding:28px 0}
+  .hero-in>div:last-child{align-self:stretch}
+  @media(max-width:880px){.hero-in{grid-template-columns:1fr;gap:16px;padding:28px 0 24px;text-align:center}}
+  .hero .eyebrow{color:var(--brand-mid)}
+  .hero h1{font-size:clamp(1.75rem,3.8vw,3rem);color:#fff}
+  .hero h1 .u{color:var(--brand-accent)}
+  .hero p.lead{font-size:1rem;color:#cfd9ea;margin:10px 0 16px;max-width:46ch}
+  .hero p.lead b{color:#fff;font-weight:700}
+  @media(max-width:880px){.hero p.lead{margin-inline:auto;margin-bottom:8px}}
+  .credlead{font-weight:800;letter-spacing:.12em;text-transform:uppercase;font-size:.75rem;color:var(--brand-accent);margin:12px 0 6px}
+  .herocred{display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin:0 0 4px}
+  .hcr{display:inline-flex;align-items:center;gap:12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:4px 20px 4px 4px;font-size:.875rem;font-weight:700;color:#fff;text-decoration:none;transition:.2s}
+  .hcr:hover{background:rgba(255,255,255,.16);border-color:var(--brand-accent)}
+  .hcr b{display:block;font-size:1rem;line-height:1.3}
+  .hcr i{display:block;font-style:normal;font-weight:600;font-size:.8125rem;color:#cfd9ea;line-height:1.3}
+  .hcr-foto{width:52px;height:52px;border-radius:50%;object-fit:cover;flex:none;margin:-4px 8px -4px 0;border:2px solid var(--brand-accent)}
+  .hcr-av{width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.15);border:2px solid var(--brand-accent);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',Georgia,serif;font-size:1.25rem;font-weight:700;color:#fff;flex:none;margin:-4px 8px -4px 0}
+  @media(max-width:880px){
+    .hero-in{display:flex;flex-direction:column}
+    .hero-in>div:first-child{display:contents}
+    .hero-in h1{order:0}
+    .hero-in>div:last-child{order:1}
+    .hero-in .lead{order:2}
+    .credlead{order:3;margin-top:14px}
+    .herocred{order:4;align-items:center;padding-inline:14px}
+  }
+  @media(max-width:400px){.hcr{font-size:.75rem;padding:4px 12px 4px 4px}}
+  .herophoto{position:relative;height:100%;min-height:340px;border-radius:18px;overflow:hidden;box-shadow:0 32px 74px -28px rgba(0,0,0,.72);border:1px solid rgba(255,255,255,.16)}
+  .herophoto img{width:100%;height:100%;object-fit:cover;object-position:top center}
+  .herophoto .hptag{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(transparent,rgba(7,32,47,.94));color:#fff;font-weight:700;font-size:.875rem;padding:32px 16px 12px;z-index:2}
+  .herophoto .hptag small{display:block;margin-top:4px;font-weight:600;font-size:.75rem;color:rgba(255,255,255,.66)}
+  /* Hero card (fallback wenn kein Foto) */
+  .herocard{border-radius:18px;background:linear-gradient(145deg,rgba(255,255,255,.12),rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.18);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 32px;gap:20px;min-height:340px;box-shadow:0 32px 74px -28px rgba(0,0,0,.60)}
+  .herocard-logo{max-height:72px;max-width:200px;object-fit:contain;filter:brightness(0) invert(1);opacity:.9}
+  .herocard-name{font-family:'Fraunces',Georgia,serif;font-size:1.5rem;font-weight:600;color:#fff;text-align:center;line-height:1.2}
+  .herocard-tag{font-size:.875rem;color:#cfd9ea;text-align:center;letter-spacing:.04em}
+  .herocard-text{font-size:.9375rem;color:#cfd9ea;text-align:center;line-height:1.6;max-width:34ch;border-top:1px solid rgba(255,255,255,.15);padding-top:20px;font-style:italic}
+
+  /* ── ARBEITSTAG ── */
+  .pstrip{background:var(--card);border-bottom:1px solid var(--line);padding:72px 0}
+  @media(max-width:640px){.pstrip{padding:40px 0}
+  .flow{border-top:none}
+  .hero-lead-detail{display:none}}
+
+  /* ── ZEITSTRAHL ── */
+  .flow{background:var(--soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  /* Karten-Akkordeon, zentriert unter der Ueberschrift. Zusammengeklappt
+     zeigen die sieben Karten den Ablauf auf einen Blick; geoeffnet wird
+     immer nur eine (siehe Skript am Ende der Section). */
+  #zs-root{display:flex;flex-direction:column;gap:10px;counter-reset:zs-step;max-width:780px;margin-inline:auto}
+  #zs-root .zs-rail{display:none}
+  #zs-root .zs-row{position:relative;counter-increment:zs-step;display:grid;grid-template-columns:1fr;align-items:start;padding:0;border-radius:14px;border:1px solid var(--line);background:var(--card);box-shadow:0 2px 8px rgba(0,0,0,.05);overflow:hidden;transition:border-color .2s,background .2s}
+  #zs-root .zs-tick{display:none}
+  #zs-root .zs-num{display:none}
+  #zs-root .zs-side{display:flex;flex-direction:column;gap:8px;padding:18px 24px;width:100%}
+  #zs-root .zs-side .zs-detail{display:none;margin-top:12px}
+  #zs-root .zs-side ul{display:flex;flex-direction:column}
+  #zs-root .zs-side h3{cursor:pointer;display:flex;align-items:center;gap:12px;font-size:1.1875rem;color:var(--navy);line-height:1.25;font-family:'Fraunces',Georgia,serif;font-weight:600;user-select:none}
+  /* Nummer und Aufklapp-Pfeil in der Kopfzeile */
+  #zs-root .zs-side h3::before{content:counter(zs-step);display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:var(--navy);color:#fff;font-size:.75rem;font-weight:800;font-family:'Manrope',system-ui,sans-serif;flex:none;transition:background .2s}
+  #zs-root .zs-side h3::after{content:'\203A';font-family:'Manrope',system-ui,sans-serif;font-size:1.4rem;font-weight:700;color:var(--blue);flex:none;margin-left:auto;display:inline-block;transform:rotate(0deg);transition:transform .25s cubic-bezier(.4,0,.2,1);line-height:1}
+  #zs-root .zs-row.zs-open .zs-side{padding-bottom:22px}
+  #zs-root .zs-row.zs-open .zs-side .zs-detail{display:flex;flex-direction:column;gap:14px}
+  #zs-root .zs-row.zs-open .zs-side h3::after{transform:rotate(90deg)}
+  #zs-root .zs-row.zs-open .zs-side h3::before{background:var(--blue)}
+  #zs-root .zs-row.zs-open{border-color:var(--blue);border-left:3px solid var(--blue);background:linear-gradient(135deg,color-mix(in srgb,var(--blue) 5%,var(--soft)) 0%,var(--soft) 100%)}
+  #zs-root .zs-side p{font-family:'Fraunces',Georgia,serif;font-size:1.125rem;font-weight:500;color:var(--navy);line-height:1.42;max-width:46ch;text-wrap:pretty}
+  #zs-root .zs-side p.zs-detail-title{margin:0;font-size:1.1875rem;font-weight:700;line-height:1.25}
+  #zs-root .zs-chipswrap{display:flex;flex-direction:column;gap:8px}
+  #zs-root .zs-side p.zs-chips-label{margin:0;font-family:'Fraunces',Georgia,serif;font-size:1.1875rem;font-weight:700;color:var(--navy);max-width:none}
+  #zs-root .zs-chips{display:flex;flex-wrap:wrap;gap:8px}
+  #zs-root .zs-chips span{display:inline-flex;align-items:baseline;gap:8px;padding:4px 12px;border-radius:999px;background:var(--soft);border:1px solid var(--blue)}
+  #zs-root .zs-chips b{font-size:.75rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--navy)}
+  #zs-root .zs-chips i{font-style:normal;font-size:.75rem;color:var(--muted);white-space:nowrap}
+  #zs-root .zs-l,#zs-root .zs-r{grid-column:1;padding:0;text-align:left}
+  #zs-root .zs-l ul,#zs-root .zs-r ul{text-align:left;align-items:flex-start}
+  #zs-root .zs-l .zs-chips,#zs-root .zs-r .zs-chips{justify-content:flex-start}
+  #zs-root .zs-it{position:relative;height:16px;margin-top:32px;box-sizing:border-box;border-left:2px solid var(--navy);border-right:2px solid var(--navy)}
+  #zs-root .zs-it::before{content:"";position:absolute;left:0;right:0;top:7px;height:2px;background:var(--navy)}
+  #zs-root .zs-it span{position:absolute;left:0;right:0;top:-1px;display:flex;justify-content:center}
+  #zs-root .zs-it em{font-style:normal;background:var(--card);padding:0 16px;font-size:1rem;font-weight:700;color:var(--navy);white-space:nowrap}
+  @keyframes zsIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  @keyframes zsPop{from{opacity:0;transform:translateX(-50%) scale(.6)}to{opacity:1;transform:translateX(-50%) scale(1)}}
+  #zs-root .zs-row,#zs-root .zs-num,#zs-root .zs-it{opacity:0}
+  #zs-root.zs-anim .zs-row{animation:zsIn .34s cubic-bezier(.2,.7,.2,1) forwards}
+  #zs-root.zs-anim .zs-num{animation:zsIn .3s cubic-bezier(.2,.7,.2,1) forwards}
+  #zs-root.zs-anim .zs-it{animation:zsIn .34s cubic-bezier(.2,.7,.2,1) .62s forwards}
+
+  /* ── Desktop: Master-Detail ────────────────────────────────────────────
+     Die Zeilen bilden links eine schmale Auswahlliste, der Inhalt der
+     geoeffneten Zeile liegt rechts daneben in einer Karte. Dadurch bleibt
+     die Hoehe beim Umschalten konstant, und die Seite nutzt ihre Breite
+     wie die Waben-Grafik darunter. */
+  @media(min-width:721px){
+    /* Kein Grid: die Zeilen bekommen eine feste Breite, das Detail-Panel
+       wird absolut daneben gelegt. Mit Grid landeten die Zeilen trotz
+       grid-column:1 in der zweiten Spalte. */
+    #zs-root{position:relative;display:block;max-width:none;margin-inline:0;min-height:360px}
+    #zs-root .sec-head{margin-bottom:40px!important}
+    /* Auswahlliste links */
+    /* overflow:hidden der Karten-Basis wuerde das Detail-Panel abschneiden */
+    #zs-root .zs-row{width:350px;position:static;box-shadow:none;
+                     border-radius:12px;margin-bottom:8px;overflow:visible}
+    #zs-root .zs-side{padding:14px 18px;gap:0}
+    #zs-root .zs-side h3{font-size:1.1875rem;gap:12px}
+    #zs-root .zs-side h3::before{width:28px;height:28px;font-size:.78rem}
+    #zs-root .zs-side h3::after{font-size:1.25rem}
+    #zs-root .zs-row:not(.zs-open):hover{border-color:var(--blue);
+                     background:var(--soft);cursor:pointer}
+    /* Die Einblend-Animation nutzt transform — das macht jede Zeile zum
+       Bezugsrahmen fuer das absolut positionierte Panel, das dann neben der
+       geklickten Karte landet statt oben rechts. Auf Desktop blenden die
+       Zeilen deshalb ohne transform ein. */
+    #zs-root .zs-row{opacity:1}
+    #zs-root.zs-anim .zs-row{animation:none}
+    #zs-root .zs-row.zs-open{border-left-width:3px}
+    #zs-root .zs-row.zs-open .zs-side{padding-bottom:14px}
+    /* Detail-Karte rechts: an #zs-root ausgerichtet, nicht an der Zeile */
+    #zs-root .zs-row.zs-open .zs-side .zs-detail{
+      position:absolute;left:386px;right:0;top:0;width:auto;
+      margin:0;padding:28px 32px;
+      background:var(--card);border:1px solid var(--line);border-radius:14px;
+      box-shadow:0 2px 10px rgba(0,0,0,.05);
+      display:flex;flex-direction:column;gap:28px;max-width:none}
+    #zs-root .zs-row.zs-open .zs-side .zs-detail ul li{margin-left:1.1em}
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    #zs-root .zs-row,#zs-root .zs-num,#zs-root .zs-it{opacity:1;animation:none!important}
+  }
+
+
+  /* ── ZUSAMMENSPIEL ── */
+  .greifen{background:var(--card);padding-top:48px}
+  .greifen .sec-head{margin-bottom:16px}
+  .bildfuss{text-align:center;margin:14px auto 0;font-size:.9375rem;line-height:1.55;color:var(--muted);max-width:min(1020px,76vw);text-wrap:pretty}
+  .nur-finger{display:none}
+  @media(max-width:640px){
+    .bildfuss{max-width:100%;padding:0 16px}
+    .nur-maus{display:none}
+    .nur-finger{display:inline}
+  }
+
+  /* ── KI-ASSISTENT ── */
+  .ki-section{background:var(--soft);border-top:1px solid var(--line)}
+  .chat-wrap{max-width:760px;margin:32px auto 0}
+  .chat-win{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:0 14px 38px -30px rgba(56,20,15,.5)}
+  .chat-bar{background:var(--brand-dark);padding:14px 20px;display:flex;align-items:center;gap:10px}
+  .chat-bar-dot{width:8px;height:8px;border-radius:50%;background:var(--brand-mid);opacity:.7}
+  .chat-bar b{color:#fff;font-size:.9375rem;flex:1}
+  .chat-bar small{color:rgba(255,255,255,.55);font-size:.75rem}
+  .chat-msgs{padding:20px;display:flex;flex-direction:column;gap:12px;min-height:220px;max-height:360px;overflow-y:auto}
+  .msg{display:flex;gap:10px;align-items:flex-end}
+  .bubble{padding:11px 15px;border-radius:15px;font-size:.9375rem;line-height:1.55;max-width:76%}
+  .msg-ai .bubble{background:var(--soft);border:1px solid var(--line);color:var(--ink);border-bottom-left-radius:4px}
+  .msg-user{flex-direction:row-reverse}
+  .msg-user .bubble{background:var(--brand-dark);color:#fff;border-bottom-right-radius:4px}
+  .av{width:30px;height:30px;border-radius:50%;background:var(--brand-dark);display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:800;color:var(--brand-mid);flex:none}
+  .typing-dots{display:inline-flex;gap:4px;padding:10px 15px;background:var(--soft);border:1px solid var(--line);border-radius:15px;border-bottom-left-radius:4px}
+  .typing-dots span{width:6px;height:6px;border-radius:50%;background:var(--brand-mid);animation:pulse 1.2s infinite}
+  .typing-dots span:nth-child(2){animation-delay:.2s}
+  .typing-dots span:nth-child(3){animation-delay:.4s}
+  @keyframes pulse{0%,80%,100%{opacity:.4;transform:scale(1)}40%{opacity:1;transform:scale(1.15)}}
+  .chat-form{border-top:1px solid var(--line);padding:12px 14px;display:flex;gap:8px}
+  .chat-inp{flex:1;border:1px solid var(--line);border-radius:10px;padding:11px 14px;font-family:'Manrope',system-ui;font-size:.9375rem;outline:none;resize:none;background:var(--paper);min-height:44px;max-height:120px}
+  .chat-inp:focus{border-color:var(--brand-dark)}
+  .chat-btn{background:var(--brand-dark);color:#fff;border:none;border-radius:10px;padding:11px 18px;cursor:pointer;font-family:'Manrope';font-weight:700;font-size:.875rem;transition:.2s;align-self:flex-end}
+  .chat-btn:hover{background:var(--brand)}
+  .chat-note{text-align:center;font-size:.8125rem;color:var(--muted);margin-top:14px;line-height:1.5}
+
+  /* ── ÜBER UNS ── */
+  .why{background:var(--soft);border-bottom:1px solid var(--line)}
+  .tcards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:4px}
+  @media(max-width:860px){.tcards{grid-template-columns:1fr;max-width:460px;margin-inline:auto}}
+  .tcard{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px 20px;box-shadow:0 14px 38px -30px rgba(56,20,15,.5);text-align:center;display:flex;flex-direction:column}
+  .tcard img{width:88px;height:88px;border-radius:50%;object-fit:cover;margin:0 auto 14px;border:3px solid #fff;box-shadow:0 8px 22px -10px rgba(56,20,15,.55)}
+  .tcard-av{width:88px;height:88px;border-radius:50%;background:var(--brand-dark);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;border:3px solid #fff;box-shadow:0 8px 22px -10px rgba(56,20,15,.55);font-family:'Fraunces',Georgia,serif;font-size:2rem;font-weight:600;color:var(--brand-mid)}
+  .tcard>b{display:block;font-family:'Fraunces',Georgia,serif;font-size:1.125rem;color:var(--brand-dark);font-weight:600}
+  .tcard .rl{display:inline-block;font-size:.75rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--brand-dark);background:var(--soft);border-radius:999px;padding:4px 12px;margin:8px 0 12px}
+  .tcard p{font-size:.875rem;color:var(--ink2);line-height:1.5;text-align:left;margin-bottom:12px}
+  .tcard p b{color:var(--brand-dark)}
+  .tcard>ul{list-style:none;margin-top:auto;padding-top:12px;border-top:1px solid var(--line);text-align:left}
+  .tcard>ul li{font-size:.875rem;color:var(--muted);font-weight:600;padding-left:15px;position:relative;margin-bottom:4px}
+  .tcard>ul li::before{content:"›";position:absolute;left:0;color:var(--brand-accent);font-weight:800}
+  .expander{margin-top:8px;text-align:center}
+  .expander summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:8px;font-weight:800;color:var(--brand-dark);font-size:1rem;padding:12px 20px;border:1.5px solid var(--line);border-radius:999px;background:var(--card);transition:.2s}
+  .expander summary::-webkit-details-marker{display:none}
+  .expander summary:hover{border-color:var(--brand-accent)}
+  .expander summary .arr{display:flex;transition:transform .25s}
+  .expander summary .arr svg{width:16px;height:16px;display:block;stroke:currentColor;stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .expander[open] summary{margin-bottom:32px}
+  .expander[open] summary .arr{transform:rotate(180deg)}
+
+  /* ── EINWÄNDE ── */
+  .qas{background:var(--card)}
+  .objchips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:20px}
+  .ochip{font-family:'Manrope',system-ui,sans-serif;font-weight:700;font-size:.875rem;cursor:pointer;background:var(--card);border:1.5px solid var(--line);color:var(--ink2);border-radius:999px;padding:8px 16px;transition:.18s;white-space:nowrap}
+  .ochip:hover{border-color:var(--blue);color:var(--brand-dark)}
+  .ochip:focus-visible{outline:3px solid var(--brand-dark);outline-offset:3px}
+  .ochip[aria-selected="true"]{background:var(--brand-dark);border-color:var(--brand-dark);color:#fff}
+  @media(max-width:560px){.ochip{white-space:normal}}
+  .o-mobile-sel{display:none;width:100%;padding:10px 14px;font-size:1rem;font-family:'Manrope',system-ui;font-weight:600;border:1.5px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);cursor:pointer;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b7488' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:36px;margin-bottom:16px}
+  .obody{display:none;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;max-width:660px;margin:0 auto;min-height:132px;box-shadow:0 14px 38px -30px rgba(56,20,15,.5)}
+  .obody.on{display:block}
+  .oq{font-family:'Fraunces',Georgia,serif;font-size:1.125rem;color:var(--brand-dark);margin-bottom:8px;font-weight:600}
+  .oa{font-size:1rem;color:var(--ink2);line-height:1.62}
+  .oa b{color:var(--ink)}
+  .qexp{text-align:center}
+  .qexp .objx{text-align:left}
+
+  /* ── CTA ── */
+  .cta{background:radial-gradient(700px 380px at 50% 0%,rgba(193,59,42,.30),transparent 62%),var(--brand-dark);color:#fff;text-align:center}
+  .cta .eyebrow{color:var(--brand-accent)}
+  .cta h2{font-size:clamp(2.125rem,4.4vw,2.875rem);color:#fff}
+  .cta .saison{display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.30);color:var(--brand-accent);font-weight:700;font-size:.875rem;padding:8px 16px;border-radius:999px;margin-bottom:20px}
+  .cta .sub{color:#c3cfe2;max-width:60ch;margin:16px auto 28px;font-size:1rem}
+  .cta .sub b{color:#fff}
+  .ctabtns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .cta .btn-wa{background:#25D366;color:#fff;box-shadow:0 14px 30px -14px rgba(37,211,102,.4);}
+  .cta .btn-wa:hover{background:#1ebe5d;transform:translateY(-2px);}
+  .cta .btn-primary{background:transparent;border:1px solid rgba(255,255,255,.5);box-shadow:none}
+  .cta .btn-primary:hover{background:rgba(255,255,255,.12);border-color:#fff}
+  .btn-teams{background:#5B5FC7;color:#fff;box-shadow:0 14px 30px -14px rgba(91,95,199,.5);}
+  .btn-teams:hover{background:#7B7EB8;transform:translateY(-2px);}
+  .ctafuss{margin-top:32px}
+  .ctafuss small{display:block;max-width:68ch;margin:0 auto;font-size:.75rem;color:rgba(255,255,255,.50);line-height:1.5}
+  footer{background:var(--brand-dark);border-top:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.65);text-align:center;padding:32px 0;font-size:.875rem}
+
+  /* ── FLOATING AMPLIFYR BERATER ── */
+  .fchat{position:fixed;bottom:24px;right:24px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:12px}
+  @keyframes cwPulse{
+    0%,100%{box-shadow:0 4px 20px rgba(56,20,15,.45),0 0 0 0 rgba(56,20,15,.35)}
+    60%{box-shadow:0 4px 20px rgba(56,20,15,.45),0 0 0 10px rgba(56,20,15,0)}
+  }
+    .fchat-fab{width:56px;height:56px;border-radius:50%;background:var(--brand-dark);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;animation:cwPulse 2.4s ease-in-out infinite;box-shadow:0 8px 24px -8px rgba(56,20,15,.55);transition:.2s;flex:none}
+  .fchat-fab:hover{background:var(--brand-dark-alt);transform:scale(1.06)}
+  .fchat-fab svg{width:24px;height:24px;stroke:#fff;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .fchat-fab .fc-x{display:none}
+  .fchat.open-opts .fchat-fab .fc-chat,.fchat.open-chat .fchat-fab .fc-chat,.fchat.open-contact .fchat-fab .fc-chat{display:none}
+  .fchat.open-opts .fchat-fab .fc-x,.fchat.open-chat .fchat-fab .fc-x,.fchat.open-contact .fchat-fab .fc-x{display:block}
+  .fchat-badge{position:absolute;top:1px;right:1px;width:13px;height:13px;background:#22c55e;border-radius:50%;border:2px solid #fff;z-index:1;}
+  @keyframes fcbadge{0%,80%{opacity:1}100%{opacity:0;pointer-events:none}}
+  .fchat-win{width:340px;background:#fff;border-radius:18px;box-shadow:0 20px 60px -20px rgba(56,20,15,.55),0 0 0 1px rgba(56,20,15,.07);overflow:hidden;display:none;flex-direction:column;max-height:480px}
+  /* .fchat.open-chat .fchat-win handled below */
+  @media(max-width:400px){.fchat-win{width:calc(100vw - 32px)}.fchat{right:16px;bottom:16px}}
+
+  /* ── MOBILE OPTIMIERUNGEN ── */
+  @media(max-width:480px){
+    /* iOS input zoom prevention: font-size muss >= 16px sein */
+    input,textarea,select{font-size:1rem!important}
+    /* Chat-Fenster: full-width auf kleinen Screens */
+    .fchat-win{width:calc(100vw - 24px);max-height:calc(100vh - 110px)}
+    /* Kontakt-Fenster: gleiche Behandlung wie Chat-Fenster */
+    .fchat-contact-win{max-height:calc(100vh - 110px)}
+    .fchat{right:12px;bottom:12px}
+    /* Chat-Optionen: full-width */
+    .fchat-opts{width:calc(100vw - 24px);left:0;right:0;margin:0 12px}
+    /* Chat FAB: minimal touch target */
+    .fchat-fab{width:52px;height:52px}
+    /* CTA-Buttons: stacken und full-width */
+    .ctabtns{flex-direction:column;align-items:stretch}
+    .ctabtns .btn{width:100%;justify-content:center}
+  }
+  @media(max-width:640px){
+    /* Scroll-Offset angepasst an Header-Höhe (62px) */
+    html{scroll-padding-top:64px}
+    /* Hero: nicht ganzer Screen, damit Content sichtbar ist */
+    .hero{min-height:auto;padding:48px 0 40px}
+    /* Herocard schlanker auf Mobile */
+    .herocard{min-height:220px;padding:28px 20px;gap:14px}
+    .wrap{padding:0 16px}
+    /* Touch-Targets: min 44px */
+    .btn-primary,.btn-gold{min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+    .hcr{min-height:44px}
+    /* Einwände-Chips: volle Touch-Target-Grösse */
+    .ochip{padding:9px 14px;min-height:44px;display:inline-flex;align-items:center}
+    .o-mobile-sel{display:block}
+    .objchips{display:none}
+    /* Über-uns Cards */
+    .expander summary{padding:10px 16px;font-size:.9375rem}
+    /* Zeitstrahl: kompaktere Abstände und lesbarere Schrift */
+    #zs-root{gap:20px}
+    #zs-root .zs-side h3{font-size:1.125rem}
+    #zs-root .zs-side ul{font-size:1rem}
+    /* Zu jeder Zeit: weniger Padding auf kleinen Screens */
+    .zu-jeder-zeit{padding:20px 16px!important;margin-top:28px!important}
+    .tcards .tcard:nth-child(2){order:-1}
+    .greifen{padding-top:0;padding-bottom:0;background:#38140f}
+    .greifen picture{width:100%!important;margin-inline:0!important}
+    /* Rechner mobile */
+    .rechner .wrap{padding:28px 14px!important}
+    .rechner h2{font-size:1.125rem!important;margin-bottom:6px!important}
+    .rechner .eyebrow{margin-bottom:6px!important}
+    #rechner-items{grid-template-columns:1fr!important;gap:0!important;margin-bottom:14px!important;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+    .ritem{padding:11px 14px!important;border-radius:0!important;border:none!important;border-bottom:1px solid var(--line)!important;box-shadow:none!important}
+    .ritem:last-child{border-bottom:none!important}
+    .ritem>div:first-child{margin-bottom:8px!important}
+    .ritem p:first-child{font-size:.875rem!important}
+    .ritem p:nth-child(2){display:none!important}
+    .rval{font-size:.875rem!important;margin-left:8px!important}
+    /* Result box mobile: 3 Sektionen gestapelt */
+    #rechner-box{grid-template-columns:1fr!important}
+    .rarrow{display:none!important}
+    /* Block 1: kompakte Zeile oben */
+    #rblock-1{padding:14px 20px!important;border-bottom:1px solid rgba(255,255,255,.15)!important;display:flex!important;flex-direction:column!important;align-items:center!important;text-align:center!important;gap:4px!important}
+    #rblock-1 .rblock-label{margin:0!important;align-self:center}
+    #rblock-1 .rblock-num{font-size:1.375rem!important;margin:0!important}
+    #rblock-1 .rblock-sub{display:none!important}
+    /* Block 2: 50% kompakt zentriert */
+    #rblock-2{display:block!important;padding:14px 20px!important;text-align:center!important;border-left:none!important;border-right:none!important;border-bottom:1px solid rgba(255,255,255,.15)!important}
+    #rblock-2 span[style*="2.5rem"]{font-size:1.75rem!important}
+    /* Block 3: Savings-Tabelle unten */
+    #rblock-3{padding:14px 20px!important;text-align:left!important}
+    #rblock-3 .rblock-label{margin-bottom:10px!important}
+    #rblock-3 div[style*="flex-direction:column"]{gap:6px!important;margin-top:0!important}
+    #rblock-3 div[style*="align-items:baseline"]{justify-content:space-between!important;gap:8px!important;border-bottom:1px solid rgba(255,255,255,.08);padding-bottom:6px!important}
+    #rblock-3 div[style*="align-items:baseline"]:last-child{border-bottom:none!important;padding-bottom:0!important}
+    #rblock-3 .rblock-num{font-size:1.125rem!important}
+    #rblock-3 .rblock-sub{white-space:nowrap}
+  }
+  @media(max-width:720px){
+    /* Akkordeon ist Basis — hier nur engere Masse fuer kleine Schirme */
+    #zs-root .zs-side{padding:16px 20px}
+    #zs-root .zs-side h3{font-size:1rem;gap:10px}
+  }
+  @media(min-width:560px) and (max-width:860px){
+    .tcards{grid-template-columns:repeat(2,1fr);max-width:none}
+  }
+  /* Optionen-Panel */
+  .fchat-opts{display:none;background:#fff;border-radius:16px;box-shadow:0 8px 40px rgba(56,20,15,.22);width:300px;overflow-y:auto;overflow-x:hidden;max-height:calc(100vh - 80px);border:1px solid #e4e8f0;margin-bottom:12px;}
+  .fchat.open-opts .fchat-opts{display:block;}
+  .fchat.open-chat .fchat-win{display:flex;}
+  .fchat-win{display:none;}
+  .fchat-opts-head{background:var(--brand-dark);padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:8px;}
+  .fchat-opts-head b{color:#fff;font-size:.9375rem;display:block;}
+  .fchat-opts-head span{color:rgba(193,59,42,.8);font-size:.75rem;}
+  .fchat-opt-row{display:flex;align-items:center;gap:12px;padding:13px 16px;border-bottom:1px solid #f0f3f7;text-decoration:none;transition:background .15s;cursor:pointer;width:100%;background:none;border-left:none;border-right:none;border-top:none;font-family:inherit;text-align:left;}
+  .fchat-opt-row:hover{background:#f8fafc;}
+  .fchat-opt-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .fchat-opt-label b{font-size:.875rem;color:var(--brand-dark);display:block;line-height:1.2;}
+  .fchat-opt-label span{font-size:.75rem;color:#6b7488;}
+  .fchat-opt-chev{margin-left:auto;color:#c3cee0;flex-shrink:0;}
+  .fchat.open-contact .fchat-contact-win{display:flex;}
+  .fchat-contact-win{display:none;width:340px;background:#fff;border-radius:18px;box-shadow:0 20px 60px -20px rgba(56,20,15,.55),0 0 0 1px rgba(56,20,15,.07);overflow:hidden;flex-direction:column;max-height:480px;}
+  .fchat-cwin-body{flex:1;overflow-y:auto;padding:20px 16px 16px;}
+  .fchat-cwin-radios{display:flex;gap:8px;margin-bottom:14px;}
+  .fchat-cwin-radio{flex:1;display:flex;align-items:center;justify-content:center;gap:7px;padding:9px;border:1.5px solid #e4e8f0;border-radius:10px;cursor:pointer;font-size:.8125rem;font-weight:600;color:var(--brand-dark);transition:border-color .15s,background .15s;}
+  .fchat-cwin-radio input[type=radio]{width:15px;height:15px;accent-color:var(--brand-dark);flex-shrink:0;cursor:pointer;}
+  .fchat-cwin-radio.selected{border-color:var(--brand-dark);background:var(--brand-light);}
+  .fchat-cwin-inp,.fchat-cwin-ta{width:100%;border:1.5px solid #e4e8f0;border-radius:10px;padding:10px 12px;font-size:.875rem;font-family:inherit;outline:none;box-sizing:border-box;color:var(--brand-dark);background:#fbfcfe;transition:border-color .15s;}
+  .fchat-cwin-inp:focus,.fchat-cwin-ta:focus{border-color:var(--brand-dark);}
+  .fchat-cwin-ta{resize:none;min-height:80px;margin-top:8px;}
+  .fchat-cwin-submit{width:100%;margin-top:10px;background:var(--brand-dark);color:#fff;border:none;border-radius:10px;padding:11px;font-size:.875rem;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .15s;}
+  .fchat-cwin-submit:hover{opacity:.88;}
+  .fchat-cwin-ok{display:none;text-align:center;padding:36px 16px;flex-direction:column;align-items:center;gap:12px;}
+  .fchat-cwin-ok svg{width:56px;height:56px;}
+  .fchat-cwin-ok p{font-size:1rem;font-weight:700;color:#15803d;margin:0;}
+  .fchat-cwin-ok span{font-size:.875rem;color:#6b7488;margin:0;}
+  @media(max-width:400px){.fchat-contact-win{width:calc(100vw - 32px)}}
+  .fchat-bar{background:var(--brand-dark);padding:14px 16px;display:flex;align-items:center;gap:10px;flex:none}
+  .fchat-bar-logo{flex:none}
+  .fchat-bar-info{flex:1;min-width:0}
+  .fchat-bar-info b{display:block;color:#fff;font-size:.875rem;font-weight:700}
+  .fchat-bar-info small{color:rgba(255,255,255,.60);font-size:.75rem}
+  .fchat-msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;min-height:160px}
+  .fc-msg{display:flex;gap:8px;align-items:flex-end}
+  .fc-bub{padding:10px 13px;border-radius:14px;font-size:.875rem;line-height:1.52;max-width:80%}
+  .fc-msg-ai .fc-bub{background:#eef2f9;border:1px solid #e4e9f2;color:#16203a;border-bottom-left-radius:4px}
+  .fc-msg-user{flex-direction:row-reverse}
+  .fc-msg-user .fc-bub{background:var(--brand-dark);color:#fff;border-bottom-right-radius:4px}
+  .fc-av{width:28px;height:28px;border-radius:50%;background:var(--brand-dark);display:flex;align-items:center;justify-content:center;flex:none}
+  .fc-av svg{width:15px;height:15px;stroke:#c46f64;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .fc-typing{display:inline-flex;gap:3px;padding:9px 13px;background:#eef2f9;border:1px solid #e4e9f2;border-radius:14px;border-bottom-left-radius:4px}
+  .fc-typing span{width:5px;height:5px;border-radius:50%;background:var(--brand-mid);animation:pulse 1.2s infinite}
+  .fc-typing span:nth-child(2){animation-delay:.2s}
+  .fc-typing span:nth-child(3){animation-delay:.4s}
+  .fchat-form{border-top:1px solid #e4e9f2;padding:10px 12px;display:flex;gap:8px;flex:none}
+  .fchat-inp{flex:1;border:1px solid #e4e9f2;border-radius:10px;padding:9px 12px;font-family:'Manrope',system-ui;font-size:.875rem;outline:none;resize:none;background:#fbfcfe;min-height:38px;max-height:90px}
+  .fchat-inp:focus{border-color:var(--brand-dark)}
+  .fchat-send{background:var(--brand-dark);color:#fff;border:none;border-radius:10px;padding:9px 14px;cursor:pointer;font-family:'Manrope';font-weight:700;font-size:.8125rem;transition:.2s;align-self:flex-end;white-space:nowrap}
+  .fchat-send:hover{background:var(--brand)}
+  .fchat-hint{padding:0 16px 12px;font-size:.75rem;color:#676f84;text-align:center;line-height:1.45;flex:none}
+
+  /* ── Verlaufs-Section: Mobile ──────────────────────────────────────────── */
+  @media(max-width:700px){
+    #fahrplan>div{padding:36px 16px!important}
+    #fahrplan [style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:1fr 1fr!important;gap:10px!important}
+    .fp-card{padding:16px 18px!important}
+    #fahrplan h2{font-size:clamp(1.375rem,4.5vw,1.875rem)!important}
+    /* Vorher/Nachher: Karten stapeln, Pfad quer dazwischen statt seitlich */
+    #fp-vn{grid-template-columns:1fr!important;gap:12px!important}
+    #fp-vn>div:nth-child(2){transform:rotate(90deg)}
+  }
+  @media(max-width:400px){
+    #fahrplan [style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:1fr!important}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top-in">
+    <div class="brand">
+      
+        <span style="font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:1.125rem;color:var(--brand-dark)">Picassino Malerei GmbH</span>
+      
+    </div>
+    <span class="datum">August 2026</span>
+    <nav class="topnav">
+      <a href="https://amplifyr.ch" target="_blank" rel="noopener" style="display:flex;align-items:center;line-height:0;">
+        <svg class="amplifyr-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120" width="113" height="34" role="img" aria-label="Amplifyr">
+          <path fill="#1a2744" d="M91.1504 78.8789L91.1504 81.3027Q89.6895 81.9336 87.6973 82.4648Q85.7051 82.9961 83.4805 82.9961Q79.3965 82.9961 77.4707 81.7842Q75.5449 80.5723 74.8477 78.3145L74.6484 78.3145Q73.5195 79.4434 72.4736 80.2402Q71.4277 81.0371 70.2324 81.6016Q68.6719 82.3320 67.2275 82.6807Q65.7832 83.0293 63.1934 83.0293Q59.3418 83.0293 56.6191 80.7549Q53.8965 78.4805 53.8965 74.7285Q53.8965 72.5703 54.4941 71.0596Q55.0918 69.5488 56.1875 68.3867Q57.1836 67.3242 58.4951 66.6270Q59.8066 65.9297 61.3672 65.3320Q64.3555 64.2363 68.5391 63.0576Q72.7227 61.8789 74.6484 60.9492L74.6484 57.7617Q74.6484 56.9316 74.5156 55.5703Q74.3828 54.2090 73.9512 53.2793Q73.4863 52.2168 72.4902 51.4863Q71.4941 50.7559 69.8672 50.7559Q68.4063 50.7559 67.4268 51.1709Q66.4473 51.5859 65.8496 52.0176Q65.9492 52.6816 66.4141 54.0430Q66.8789 55.4043 66.8789 56.6660Q66.8789 57.2305 66.5801 58.0771Q66.2813 58.9238 65.7168 59.4219Q64.9531 60.0859 64.0068 60.4512Q63.0605 60.8164 61.1016 60.8164Q58.3125 60.8164 56.8848 59.4717Q55.4570 58.1270 55.4570 55.9688Q55.4570 54.1094 56.9346 52.6318Q58.4121 51.1543 60.5371 50.1914Q62.6289 49.1953 65.3516 48.6475Q68.0742 48.0996 70.3984 48.0996Q73.6191 48.0996 76.3086 48.4814Q78.9980 48.8633 81.1563 50.0586Q83.2148 51.2207 84.4268 53.4287Q85.6387 55.6367 85.6387 59.1895Q85.6387 62.9414 85.4893 68.0879Q85.3398 73.2344 85.3398 74.8613Q85.3398 76.3555 85.7881 77.2188Q86.2363 78.0820 87.1660 78.5137Q87.7305 78.7793 88.9424 78.8291Q90.1543 78.8789 91.1504 78.8789M74.5156 75.2598L74.6484 64.0039Q72.7891 64.6348 70.9629 65.4482Q69.1367 66.2617 67.9746 67.1582Q66.7461 68.0879 66.0488 69.5322Q65.3516 70.9766 65.3516 72.9355Q65.3516 75.5254 66.5303 76.6875Q67.7090 77.8496 69.4355 77.8496Q71.2617 77.8496 72.4404 77.1025Q73.6191 76.3555 74.5156 75.2598 M157.6816 79.5762L157.6816 82L137.8926 82L137.8926 79.5762Q138.6230 79.4766 139.4199 79.4102Q140.2168 79.3438 140.7480 79.0781Q141.4785 78.7461 141.6777 77.9658Q141.8770 77.1855 141.8770 75.9570L141.8770 60.4512Q141.8770 57.0313 140.6650 55.3213Q139.4531 53.6113 137.1953 53.6113Q135.7676 53.6113 134.6553 54.0596Q133.5430 54.5078 132.6133 55.1719Q131.6504 55.8691 131.1191 56.5664Q130.5879 57.2637 130.2227 57.7617L130.2227 75.5918Q130.2227 76.7871 130.5049 77.5342Q130.7871 78.2813 131.5508 78.7129Q132.0820 79.0117 132.7627 79.2441Q133.4434 79.4766 134.2070 79.5762L134.2070 82L115.2480 82L115.2480 79.5762Q115.8789 79.5098 116.7754 79.4102Q117.6719 79.3105 118.1035 79.0781Q118.8008 78.7129 119.0166 78.0156Q119.2324 77.3184 119.2324 75.9570L119.2324 60.4512Q119.2324 57.0313 118.0205 55.3213Q116.8086 53.6113 114.5508 53.6113Q113.1230 53.6113 112.0107 54.0596Q110.8984 54.5078 109.9688 55.1719Q109.0059 55.8691 108.4746 56.5664Q107.9434 57.2637 107.5781 57.7617L107.5781 75.5918Q107.5781 76.7539 107.8770 77.5176Q108.1758 78.2813 108.9395 78.7129Q109.4707 79.0117 110.1514 79.2441Q110.8320 79.4766 111.5957 79.5762L111.5957 82L91.7070 82L91.7070 79.5762Q92.5703 79.5098 93.4004 79.4102Q94.2305 79.3105 94.8281 79.0781Q95.8906 78.6797 96.2891 77.9326Q96.6875 77.1855 96.6875 75.9570L96.6875 56.6328Q96.6875 55.5703 96.1230 54.5576Q95.5586 53.5449 94.7617 52.9805Q94.1641 52.5820 93.2510 52.3164Q92.3379 52.0508 91.2422 51.9512L91.2422 49.5273L107.0801 48.6641L107.5781 49.1621L107.5781 53.8438L107.7109 53.8438Q108.6406 53.0137 109.9189 51.8682Q111.1973 50.7227 112.3262 50.0254Q113.5547 49.2285 115.4805 48.6973Q117.4063 48.1660 119.6973 48.1660Q123.4824 48.1660 126.0225 49.8096Q128.5625 51.4531 129.6250 54.1758L129.9238 54.1758Q130.8867 53.2793 132.2813 52.0674Q133.6758 50.8555 134.8379 50.1250Q136.1328 49.2949 138.1416 48.7305Q140.1504 48.1660 142.4414 48.1660Q147.4551 48.1660 150.1611 51.1211Q152.8672 54.0762 152.8672 59.5215L152.8672 75.6582Q152.8672 76.8867 153.2324 77.6338Q153.5977 78.3809 154.5605 78.7793Q155.0918 79.0117 155.8721 79.2441Q156.6523 79.4766 157.6816 79.5762 M199.2109 65.8301Q199.2109 72.8359 194.5293 77.8496Q189.8477 82.8633 182.6758 82.8633Q179.4883 82.8633 177.4961 82.2158Q175.5039 81.5684 174.2090 80.6387L173.9434 80.6387L173.9434 89.9688Q173.9434 91.1309 174.4580 91.9941Q174.9727 92.8574 175.9023 93.2559Q176.7988 93.6211 178.4424 93.9199Q180.0859 94.2188 181.1816 94.2852L181.1816 96.7422L157.2090 96.7422L157.2090 94.2852Q158.0391 94.2188 159.3008 94.0361Q160.5625 93.8535 161.1934 93.6543Q162.2559 93.2891 162.6377 92.4092Q163.0195 91.5293 163.0195 90.4004L163.0195 56.4336Q162.9199 55.3379 162.5049 54.5078Q162.0898 53.6777 161.1934 53.0469Q160.5293 52.6152 159.4336 52.3330Q158.3379 52.0508 157.2754 51.9512L157.2754 49.5273L173.4453 48.6641L173.9434 49.0957L173.9434 52.7813L174.2090 52.8477Q176.4004 50.6230 179.0732 49.3945Q181.7461 48.1660 184.3691 48.1660Q191.2422 48.1660 195.2266 53.0303Q199.2109 57.8945 199.2109 65.8301M187.2910 65.9629Q187.2910 63.4727 186.9258 61.1982Q186.5605 58.9238 185.6309 57.1309Q184.7344 55.3379 183.2568 54.2754Q181.7793 53.2129 179.6543 53.2129Q177.4961 53.2129 176.2012 53.9600Q174.9063 54.7070 173.9434 55.9023L173.9434 74.7285Q174.1426 75.3926 174.7070 76.4385Q175.2715 77.4844 175.8359 78.1152Q176.6660 79.0117 177.7285 79.4434Q178.7910 79.8750 180.0527 79.8750Q183.3398 79.8750 185.3154 76.3389Q187.2910 72.8027 187.2910 65.9629 M221.7148 79.5762L221.7148 82L200.8965 82L200.8965 79.5762Q201.7598 79.5098 202.5732 79.4102Q203.3867 79.3105 204.0176 79.0781Q205.0801 78.6797 205.4619 77.9326Q205.8438 77.1855 205.8438 75.9570L205.8438 39.1680Q205.8438 37.9063 205.3291 36.8271Q204.8145 35.7480 203.9512 35.1836Q203.2871 34.7520 201.9424 34.3535Q200.5977 33.9551 199.5684 33.8887L199.5684 31.4648L216.2695 30.6016L216.7676 31.1328L216.7676 75.5254Q216.7676 76.7539 217.1992 77.5176Q217.6309 78.2813 218.5938 78.7129Q219.2578 79.0117 219.9883 79.2441Q220.7188 79.4766 221.7148 79.5762 M243.8867 79.5762L243.8867 82L222.9023 82L222.9023 79.5762Q223.7656 79.5098 224.5957 79.4102Q225.4258 79.3105 226.0234 79.0781Q227.0859 78.6797 227.5176 77.9326Q227.9492 77.1855 227.9492 75.9570L227.9492 56.6328Q227.9492 55.4707 227.4180 54.5908Q226.8867 53.7109 226.0898 53.1797Q225.4922 52.7813 224.2803 52.4160Q223.0684 52.0508 222.0723 51.9512L222.0723 49.5273L238.3418 48.6641L238.8398 49.1621L238.8398 75.5254Q238.8398 76.6875 239.3379 77.5010Q239.8359 78.3145 240.7656 78.7129Q241.4297 79.0117 242.2266 79.2441Q243.0234 79.4766 243.8867 79.5762M239.0391 36.7109Q239.0391 39.2344 237.0967 41.0107Q235.1543 42.7871 232.4980 42.7871Q229.8086 42.7871 227.8662 41.0107Q225.9238 39.2344 225.9238 36.7109Q225.9238 34.1875 227.8662 32.3945Q229.8086 30.6016 232.4980 30.6016Q235.1875 30.6016 237.1133 32.3945Q239.0391 34.1875 239.0391 36.7109"/>
+          <path fill="#B0C4DE" d="M273.8359 53.1797L265.6016 53.1797Q263.9414 61.3809 262.7295 67.4072Q261.5176 73.4336 259.8242 80.0078Q258.9941 83.2285 257.0850 86.3330Q255.1758 89.4375 252.5859 91.6953Q249.8633 94.0859 246.6924 95.4141Q243.5215 96.7422 240.1680 96.7422Q237.1465 96.7422 235.2705 96.1445Q233.3945 95.5469 232.3320 94.6172Q231.3027 93.6875 230.9375 92.5586Q230.5723 91.4297 230.5723 90.3340Q230.5723 88.4082 231.9502 86.9307Q233.3281 85.4531 235.6523 85.4531Q237.4453 85.4531 238.7568 86.3994Q240.0684 87.3457 240.9980 88.6738Q241.9277 89.9688 242.6416 91.5625Q243.3555 93.1563 243.7539 94.0527Q245.1484 92.5254 246.3770 89.4541Q247.6055 86.3828 248.6680 81.2695L254.6113 53.1797L248.1699 53.1797L248.9668 49.7598L255.3418 49.7598L255.9063 47.2031Q256.6035 44.0820 258.4463 41.0771Q260.2891 38.0723 262.9121 35.7148Q265.4355 33.3906 268.7393 31.9297Q272.0430 30.4688 275.3633 30.4688Q278.2520 30.4688 280.1611 31.0166Q282.0703 31.5645 283.1660 32.5273Q284.1621 33.4238 284.5107 34.5361Q284.8594 35.6484 284.8594 36.7441Q284.8594 37.4746 284.5771 38.3711Q284.2949 39.2676 283.6973 39.9980Q282.9668 40.8281 282.1533 41.2930Q281.3398 41.7578 279.7793 41.7578Q277.9863 41.7578 276.6914 40.8115Q275.3965 39.8652 274.5000 38.5703Q273.5371 37.2090 272.8730 35.6484Q272.2090 34.0879 271.7773 33.1582Q270.4160 34.7188 269.3203 37.7070Q268.2246 40.6953 267.0625 45.9414L266.2324 49.7598L274.6328 49.7598 M295.5762 76.6875L295.3438 76.6875Q291.5918 80.1074 288.4375 81.4355Q285.2832 82.7637 281.4648 82.7637Q277.7793 82.7637 275.7373 80.7051Q273.6953 78.6465 273.6953 75.7578Q273.6953 74.7285 273.8115 73.6660Q273.9277 72.6035 274.4258 70.6777L276.9160 61.6133Q277.1484 60.6836 277.4639 59.0732Q277.7793 57.4629 277.7793 56.6992Q277.7793 54.8066 277.0322 54.0928Q276.2852 53.3789 274.1270 53.3789Q273.0645 53.3789 271.9521 53.7109Q270.8398 54.0430 270.0430 54.3418L270.7734 51.3535Q273.4629 50.2578 275.9199 49.4775Q278.3770 48.6973 280.5684 48.6973Q284.5195 48.6973 286.6611 50.6729Q288.8027 52.6484 288.8027 55.5703Q288.8027 56.1680 288.6699 57.7617Q288.5371 59.3555 288.1387 60.7168L285.7148 69.3496Q285.3828 70.5117 285.1836 71.8398Q284.9844 73.1680 284.9844 73.7656Q284.9844 75.4258 285.7979 76.2891Q286.6113 77.1523 288.3711 77.1523Q289.8320 77.1523 292.0732 76.0400Q294.3145 74.9277 296.2070 73.0684L301.2539 49.2617L311.7793 48.7969L312.2441 49.3281L306.4336 76.3223Q305.1055 82.3652 302.7148 86.2998Q300.3242 90.2344 297.1699 92.5586Q294.1484 94.7832 290.6289 95.7627Q287.1094 96.7422 283.4902 96.7422Q279.5391 96.7422 276.9326 96.1611Q274.3262 95.5801 272.8652 94.5508Q271.5371 93.6211 271.0557 92.4756Q270.5742 91.3301 270.5742 90.2344Q270.5742 88.3086 271.9355 86.8145Q273.2969 85.3203 275.6543 85.3203Q277.4473 85.3203 278.8584 86.2832Q280.2695 87.2461 281.3320 88.6074Q282.3613 89.9023 283.1748 91.4795Q283.9883 93.0566 284.4199 94.0527Q285.0176 93.9531 285.8975 93.6377Q286.7773 93.3223 287.3750 92.9238Q288.2383 92.3594 288.9023 91.7949Q289.5664 91.2305 290.4297 90.0684Q292.0898 87.8438 293.3848 84.5566Q294.6797 81.2695 295.5762 76.6875 M349.1582 55.2051Q349.1582 56.6992 348.7266 58.0938Q348.2949 59.4883 347.4316 60.4844Q346.4688 61.6133 345.4063 62.1611Q344.3438 62.7090 342.4180 62.7090Q339.9277 62.7090 338.5000 61.4805Q337.0723 60.2520 337.0723 58.7246Q337.0723 57.2969 337.4873 56.2676Q337.9023 55.2383 338.7988 53.1465Q336.5742 54.0762 334.9805 55.4209Q333.3867 56.7656 331.9258 58.4922L326.6797 82L315.6895 82L320.2715 61.5801Q320.4707 60.6504 320.7861 59.1563Q321.1016 57.6621 321.1016 56.6660Q321.1016 54.7402 320.3545 54.0430Q319.6074 53.3457 317.4824 53.3457Q316.4199 53.3457 315.3076 53.6777Q314.1953 54.0098 313.3984 54.3086L314.1289 51.3203Q316.8184 50.2246 319.2754 49.4443Q321.7324 48.6641 323.9238 48.6641Q327.8418 48.6641 329.7842 50.2080Q331.7266 51.7520 332.3574 54.5410L332.5898 54.5410Q335.8770 51.0547 338.1680 49.6768Q340.4590 48.2988 343.0820 48.2988Q345.9043 48.2988 347.5313 50.0752Q349.1582 51.8516 349.1582 55.2051"/>
+        </svg>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<nav class="jrail" aria-label="Abschnitte dieser Seite">
+  <ol>
+    <li><a href="#alltag"><span>Video</span><i></i></a></li>
+    <li><a href="#kostenrechner"><span>Aufwandrechner</span><i></i></a></li>
+    <li><a href="#generalunternehmer"><span>Generalunternehmer</span><i></i></a></li>
+    <li><a href="#ablauf"><span>Auftragsablauf</span><i></i></a></li>
+    <li><a href="#fahrplan"><span>Fahrplan</span><i></i></a></li>
+    <li><a href="#ki-berater"><span>Ihre Fragen</span><i></i></a></li>
+    <li><a href="#ueberuns"><span>Wer wir sind</span><i></i></a></li>
+    <li><a href="#cta"><span>Kontakt</span><i></i></a></li>
+  </ol>
+</nav>
+
+<section class="pstrip" id="alltag">
+  <div class="wrap reveal" style="text-align:center;max-width:820px;margin:0 auto">
+    <h2 id="alltag-h" style="margin:0 0 16px">2026 – Es ist noch nicht zu spät!</h2>
+    <p style="font-size:clamp(1rem,1.6vw,1.125rem);color:#444;line-height:1.6;margin:0 auto 32px;max-width:640px">Viele Handwerker denken, es sei ein riesiger Schritt, sich hocheffizient zu digitalisieren. Doch dieser Prozess ist mit enger Begleitung, neben dem Tagesgeschäft, in wenigen Wochen umsetzbar.</p>
+    <div style="border-radius:16px;overflow:hidden;box-shadow:0 24px 60px -20px rgba(56,20,15,.35)">
+      <video controls preload="none"
+        poster="https://pub-e99a6cc0592a41d3906183633a0ead00.r2.dev/handwerker/videos/erklaervideo_poster.png"
+        style="width:100%;display:block"
+        aria-label="Erklärvideo: So digitalisiert Amplifyr Ihren Handwerksbetrieb">
+        <source src="https://pub-e99a6cc0592a41d3906183633a0ead00.r2.dev/handwerker/videos/erklaervideo.mp4?v=2" type="video/mp4">
+      </video>
+    </div>
+
+    <p style="font-size:clamp(1.05rem,1.7vw,1.2rem);color:#444;line-height:1.5;margin:28px auto 0;max-width:620px">Sitzt bei Picassino Malerei GmbH abends noch jemand über Offerten, statt am Familientisch?</p>
+  </div>
+</section>
+
+<section class="rechner" id="kostenrechner" style="background:var(--soft);border-top:1px solid var(--line);padding:0">
+  <div class="wrap" style="max-width:1000px;margin-inline:auto;padding:72px 24px">
+    <p class="eyebrow" style="font-weight:800;letter-spacing:.12em;text-transform:uppercase;font-size:.75rem;color:var(--brand-accent);margin:0 0 12px;text-align:center">Ihr persönlicher Admin-Rechner</p>
+    <div style="text-align:center;margin-bottom:32px">
+      <h2 style="margin:0 0 8px">Was kostet Sie die Büroarbeit wirklich?</h2>
+      <p style="font-size:.875rem;color:var(--muted);margin:0">Ansatz: <strong style="color:var(--brand-dark)">100 CHF/Std.</strong></p>
+    </div>
+
+    <div id="rechner-items" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px">
+
+      <div class="ritem" style="background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 22px;box-shadow:0 2px 6px rgba(0,0,0,.05);display:flex;flex-direction:column">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2px">
+          <p style="font-family:'Fraunces',Georgia,serif;font-size:1rem;font-weight:700;color:var(--navy);margin:0">Offerten &amp; Nachkalkulation</p>
+          <span class="rval" style="font-family:'Manrope',system-ui,sans-serif;font-weight:800;font-size:.9375rem;color:var(--brand-accent);white-space:nowrap;margin-left:12px">3 Std./Wo.</span>
+        </div>
+        <p style="font-size:.8125rem;color:var(--muted);margin:0 0 12px;font-family:'Manrope',system-ui,sans-serif;line-height:1.4;flex:1">Materialpreise zusammenstellen, Offerte am Abend tippen.</p>
+        <input type="range" class="rslider" list="rechner-ticks" min="0" max="15" value="3" step="0.5" style="width:100%;accent-color:var(--brand-accent)">
+        <div style="display:flex;justify-content:space-between;margin-top:2px;padding:0 2px"><span style="font-size:.6875rem;color:var(--muted);font-family:'Manrope',system-ui,sans-serif">0</span><span style="font-size:.6875rem;color:var(--muted);font-family:'Manrope',system-ui,sans-serif">5</span><span style="font-size:.6875rem;color:var(--muted);font-family:'Manrope',system-ui,sans-serif">10</span><span style="font-size:.6875rem;color:var(--muted);font-family:'Manrope',system-ui,sans-serif">15</span></div>
+        <p class="rcost" style="font-size:.75rem;color:var(--brand-accent);font-family:'Manrope',system-ui,sans-serif;font-weight:700;margin:8px 0 0;text-align:right">= 15'600 CHF/Jahr</p>
+      </div>
+
+      <div class="ritem" style="background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 22px;box-shadow:0 2px 6px rgba(0,0,0,.05);display:flex;flex-direction:column">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2px">
+          <p style="font-family:'Fraunces',Georgia,serif;font-size:1rem;font-weight:700;color:var(--navy);margin:0">Rapporte &amp; Dokumentation</p>
+          <span class="rval" style="font-family:'Manrope',system-ui,sans-serif;font-weight:800;font-size:.9375rem;color:var(--brand-accent);white-space:nowrap;margin-left:12px">2 Std./Wo.</span>
+        </div>
+        <p style="font-size:.8125rem;color:var(--muted);margin:0 0 12px;font-family:'Manrope',system-ui,sans-serif;line-height:1.4;flex:1">Regierapporte, Stundenzettel, Notizen vor der Abrechnung.</p>
+        <input type="range" class="rslider" list="rechner-ticks" min="0" max="15" value="3" step="0.5" style="width:100%;accent-color:var(--brand-accent)">
+        <div style="display:flex;justify-content:space-between;margin-top:2px;padding:0 2px"><span style="font-size:.6875rem;color:var(--muted);font-family:'Manrope',system-ui,sans-serif">0</span><span style="font-size:.6875rem;color:var(--muted);font-family:'Manrope',system-ui,sans-serif">5</span><span style="font-size:.6875rem;color:var(--muted);font-family:'Manrope',system-ui,sans-serif">10</span><span style="font-size:.6875rem;color:var(--muted);font-family:'Manrope',system-ui,sans-serif">15</span></div>
+        <p class="rcost" style="font-size:.75rem;color:var(--brand-accent);font-family:'Manrope',system-ui,sans-serif;font-weight:700;margin:8px 0 0;text-align:right">= 10'400 CHF/Jahr</p>
+      </div>
+
+      <div class="ritem" style="background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 22px;box-shadow:0 2px 6px rgba(0,0,0,.05);display:flex;flex-direction:column">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2px">
+          <p style="font-family:'Fraunces',Georgia,serif;font-size:1rem;font-weight:700;color:var(--navy);margin:0">Belege &amp; Buchhaltung</p>
+          <span class="rval" style="font-family:'Manrope',system-ui,sans-serif;font-weight:800;font-size:.9375rem;color:var(--brand-accent);white-space:nowrap;margin-left:12px">2 Std./Wo.</span>
+        </div>
+        <p style="font-size:.8125rem;color:var(--muted);margin:0 0 12px;font-family:'Manrope',system-ui,sans-serif;line-height:1.4;flex:1">Kassenbons suchen, Rechnungen abheften, Ordnung machen für den Treuhänder.</p>
+        <input type="range" class="rslider" list="rechner-ticks" min="0" max="15" value="3" step="0.5" style="width:100%;accent-color:var(--brand-accent)">
+        <div style="display:flex;justify-content:space-between;margin-top:2px;padding:0 2px"><span style="font-size:.6875rem;color:var(--muted);font-family:'Manrope',system-ui,sans-serif">0</span><span style="font-size:.6875rem;color:var(--muted);font-family:'Manrope',system-ui,sans-serif">5</span><span style="font-size:.6875rem;color:var(--muted);font-family:'Manrope',system-ui,sans-serif">10</span><span style="font-size:.6875rem;color:var(--muted);font-family:'Manrope',system-ui,sans-serif">15</span></div>
+        <p class="rcost" style="font-size:.75rem;color:var(--brand-accent);font-family:'Manrope',system-ui,sans-serif;font-weight:700;margin:8px 0 0;text-align:right">= 10'400 CHF/Jahr</p>
+      </div>
+
+      <div class="ritem" style="background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 22px;box-shadow:0 2px 6px rgba(0,0,0,.05);display:flex;flex-direction:column">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2px">
+          <p style="font-family:'Fraunces',Georgia,serif;font-size:1rem;font-weight:700;color:var(--navy);margin:0">Telefon &amp; Rückruf-Management</p>
+          <span class="rval" style="font-family:'Manrope',system-ui,sans-serif;font-weight:800;font-size:.9375rem;color:var(--brand-accent);white-space:nowrap;margin-left:12px">2 Std./Wo.</span>
+        </div>
+        <p style="font-size:.8125rem;color:var(--muted);margin:0 0 12px;font-family:'Manrope',system-ui,sans-serif;line-height:1.4;flex:1">Abends zurückrufen, Terminfindung per Telefon, ewiges Hin und Her.</p>
+        <input type="range" class="rslider" list="rechner-ticks" min="0" max="15" value="3" step="0.5" style="width:100%;accent-color:var(--brand-accent)">
+        <div style="display:flex;justify-content:space-between;margin-top:2px;padding:0 2px"><span style="font-size:.6875rem;color:var(--muted);font-family:'Manrope',system-ui,sans-serif">0</span><span style="font-size:.6875rem;color:var(--muted);font-family:'Manrope',system-ui,sans-serif">5</span><span style="font-size:.6875rem;color:var(--muted);font-family:'Manrope',system-ui,sans-serif">10</span><span style="font-size:.6875rem;color:var(--muted);font-family:'Manrope',system-ui,sans-serif">15</span></div>
+        <p class="rcost" style="font-size:.75rem;color:var(--brand-accent);font-family:'Manrope',system-ui,sans-serif;font-weight:700;margin:8px 0 0;text-align:right">= 10'400 CHF/Jahr</p>
+      </div>
+
+    </div>
+    <datalist id="rechner-ticks"><option value="0"><option value="5"><option value="10"><option value="15"></datalist>
+
+    <div id="rechner-box" style="display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:stretch;background:linear-gradient(135deg,var(--brand-dark) 0%,color-mix(in srgb,var(--brand-mid) 25%,var(--brand-dark)) 100%);border-radius:16px;overflow:hidden;position:relative">
+      <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(255,255,255,.04) 0%,transparent 70%);pointer-events:none"></div>
+      <!-- Block 1: Admin-Kosten -->
+      <div id="rblock-1" class="rblock" style="padding:26px 28px">
+        <p class="rblock-label">Admin-Arbeit kostet Sie</p>
+        <p id="rechner-result" class="rblock-num" style="color:#fff">23'400 CHF</p>
+        <p class="rblock-sub">pro Jahr</p>
+        <p id="rechner-formula" class="rblock-sub" style="margin-top:6px;font-style:italic;opacity:.7"><span id="rf-hours">9</span> Std./Wo. &times; 100 CHF &times; 52 Wo.</p>
+      </div>
+      <div class="rarrow">→</div>
+      <!-- Block 2: Potenzial -->
+      <div id="rblock-2" class="rblock" style="padding:26px 28px;text-align:center;border-left:1px solid rgba(255,255,255,.1);border-right:1px solid rgba(255,255,255,.1)">
+        <p class="rblock-label">Davon automatisierbar *</p>
+        <div style="margin:10px 0 4px">
+          <span style="color:#fff;font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:2.5rem;line-height:1">50 %</span>
+        </div>
+        <p class="rblock-sub">(konservativer Ansatz gemäss Studien)</p>
+      </div>
+      <div class="rarrow">→</div>
+      <!-- Block 3: Ersparnis -->
+      <div id="rblock-3" class="rblock" style="padding:26px 28px;text-align:right">
+        <p class="rblock-label">Sie sparen</p>
+        <div style="margin-top:10px;display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;justify-content:flex-end;align-items:baseline;gap:8px">
+            <span class="rblock-sub">1 Jahr</span>
+            <span id="rechner-saving" class="rblock-num" style="color:color-mix(in srgb,var(--brand-mid) 50%,#fff);font-size:1.625rem">23'400 CHF</span>
+          </div>
+          <p id="rechner-saving-hours" class="rblock-sub" style="margin:-4px 0 0;font-style:italic;opacity:.75">≈ 234 Std. gewonnene Zeit im Jahr</p>
+          <div style="display:flex;justify-content:flex-end;align-items:baseline;gap:8px">
+            <span class="rblock-sub">5 Jahre</span>
+            <span id="rechner-saving-5y" class="rblock-num" style="color:color-mix(in srgb,var(--brand-mid) 50%,#fff);font-size:1.375rem">117'000 CHF</span>
+          </div>
+          <div style="display:flex;justify-content:flex-end;align-items:baseline;gap:8px">
+            <span class="rblock-sub">10 Jahre</span>
+            <span id="rechner-saving-20y" class="rblock-num" style="color:color-mix(in srgb,var(--brand-mid) 50%,#fff);font-size:1.125rem">234'000 CHF</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:.875rem;color:var(--muted);margin:10px 0 0;font-family:'Manrope',system-ui,sans-serif;line-height:1.5">* Gemäss IfM Bonn, IW Köln 2025 und weiteren Studien sind rund 64 % der Admin-Aufgaben im Handwerk automatisierbar.</p>
+    <div style="display:flex;align-items:center;gap:14px;margin-top:16px;padding:16px 22px;background:color-mix(in srgb,var(--brand-mid) 14%,#fff);border:1px solid var(--brand-mid);border-radius:12px">
+      <span style="width:30px;height:30px;border-radius:50%;background:var(--brand-dark);color:#fff;display:flex;align-items:center;justify-content:center;flex:none">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </span>
+      <p style="margin:0;font-size:.9375rem;color:var(--brand-dark);font-family:'Manrope',system-ui,sans-serif;line-height:1.5;text-wrap:pretty"><b>Unsere Umsetzung rechnet sich in aller Regel schon im ersten Jahr.</b> Und entlastet Ihren Betrieb spürbar.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var items=document.querySelectorAll('#rechner-items .ritem');
+  function formatChf(n){
+    return Math.round(n).toLocaleString('de-CH').replace(/,/g,"'")+' CHF';
+  }
+  function updateRechner(){
+    var total=0;
+    items.forEach(function(item){
+      var slider=item.querySelector('.rslider');
+      var label=item.querySelector('.rval');
+      var rcost=item.querySelector('.rcost');
+      var h=parseFloat(slider.value);
+      var disp=h===Math.round(h)?h.toFixed(0):h.toFixed(1);
+      label.textContent=disp+' Std./Wo.';
+      if(rcost)rcost.textContent='= '+formatChf(h*100*52)+'/Jahr';
+      total+=h;
+    });
+    var yearly=total*100*52;
+    var pct=50;
+    var saving=yearly*(pct/100);
+    var totalDisp=total===Math.round(total)?total.toFixed(0):total.toFixed(1);
+    if(document.getElementById('rf-hours'))document.getElementById('rf-hours').textContent=totalDisp;
+    document.getElementById('rechner-result').textContent=formatChf(yearly);
+    document.getElementById('rechner-saving').textContent=formatChf(saving);
+    document.getElementById('rechner-saving-5y').textContent=formatChf(saving*5);
+    document.getElementById('rechner-saving-20y').textContent=formatChf(saving*10);
+    var elSavingHours=document.getElementById('rechner-saving-hours');
+    if(elSavingHours){
+      var savingHours=Math.round(saving/100);
+      elSavingHours.textContent='≈ '+savingHours+' Std. gewonnene Zeit im Jahr';
+    }
+  }
+  items.forEach(function(item){
+    item.querySelector('.rslider').addEventListener('input',updateRechner);
+  });
+  updateRechner();
+})();
+</script>
+
+<section id="generalunternehmer" style="padding:0">
+<style>
+  #generalunternehmer .gu-wrap{font-family:'Manrope',system-ui,sans-serif;background:#FAFCFC;border-top:1px solid var(--line);padding:72px 32px;display:flex;justify-content:center}
+  #generalunternehmer .gu-inner{width:100%;max-width:1000px}
+  #generalunternehmer .gu-head{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;margin-bottom:34px}
+  #generalunternehmer .gu-eyeb{font-family:'Manrope',system-ui,sans-serif;font-size:.75rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#C13B2A}
+  #generalunternehmer h2{margin:0;font-family:'Fraunces',Georgia,serif;font-size:clamp(1.625rem,3.4vw,2.25rem);font-weight:700;color:#38140f;line-height:1.15}
+  #generalunternehmer .gu-lead{margin:0;font-size:1rem;color:#3A4A50;line-height:1.62;max-width:62ch;text-wrap:pretty}
+  #generalunternehmer .gu-sub{margin:0;font-size:.9375rem;color:#63737A;line-height:1.6;max-width:56ch}
+  #generalunternehmer .gu-hint{display:inline-flex;align-items:center;gap:9px;margin-top:4px;background:#f2eeee;border:1px solid #C3D3D7;border-radius:999px;padding:7px 16px;font-size:.8125rem;font-weight:600;color:#C13B2A}
+  #generalunternehmer .gu-hint svg{width:15px;height:15px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;flex:none}
+  #generalunternehmer .gu-stage{display:flex;flex-wrap:wrap;gap:40px;align-items:center;justify-content:center}
+  #generalunternehmer .gu-combwrap{width:min(508px,100%);flex:none}
+  @supports (width:1cqw){#generalunternehmer .gu-combwrap{container-type:inline-size}}
+  #generalunternehmer .gu-comb{position:relative;width:100%;aspect-ratio:508/541;font-size:16px}
+  @supports (width:1cqw){#generalunternehmer .gu-comb{font-size:clamp(9px,3.15cqw,16px)}}
+  @keyframes guIn{from{opacity:0;transform:translate(-50%,-50%) scale(.88)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+  #generalunternehmer .gu-hex{position:absolute;left:var(--l);top:var(--t);width:40.945%;height:33.272%;transform:translate(-50%,-50%);cursor:pointer;outline:none;animation:guIn .5s ease-out var(--d) both;transition:transform .2s cubic-bezier(.2,.7,.2,1)}
+  #generalunternehmer .gu-hex.on{z-index:2;transform:translate(-50%,-50%) scale(1.05)}
+  #generalunternehmer .gu-o{position:absolute;inset:0;background:#c46f64;clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%);transition:background .2s}
+  #generalunternehmer .gu-hex.on .gu-o,#generalunternehmer .gu-hex:focus-visible .gu-o{background:#C13B2A}
+  #generalunternehmer .gu-i{position:absolute;inset:2px;clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.2em;padding:0 14%;text-align:center}
+  #generalunternehmer .gu-i span{font-family:'Fraunces',Georgia,serif;font-weight:700;color:#38140f;line-height:1.2}
+  #generalunternehmer .gu-light .gu-i{background:#f2eeee}
+  #generalunternehmer .gu-sand .gu-i{background:#F7EFDC}
+  #generalunternehmer .gu-dark .gu-i{background:linear-gradient(135deg,#38140f,#5f231c)}
+  #generalunternehmer .gu-dark .gu-i span{color:#fff;line-height:1.15}
+  #generalunternehmer .gu-card-wrap{display:flex;flex-direction:column;gap:14px;flex:1 1 300px;max-width:380px}
+  #generalunternehmer .gu-notebox{display:flex;flex-direction:column;gap:6px;background:#f2eeee;border:1px solid #C3D3D7;border-radius:14px;padding:16px 22px;font-size:.875rem;color:#38140f;line-height:1.5}
+  #generalunternehmer .gu-note-eyeb{margin:0;font-family:'Manrope',system-ui,sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#C13B2A}
+  #generalunternehmer .gu-card{display:flex;align-items:center;min-height:250px}
+  #generalunternehmer .gu-cardin{width:100%;box-sizing:border-box;background:#fff;border:1px solid #DDE6E8;border-radius:16px;padding:26px 28px;display:flex;flex-direction:column;gap:12px;box-shadow:0 14px 38px -30px rgba(18,48,56,.5)}
+  #generalunternehmer .gu-ceyeb{margin:0;font-family:'Manrope',system-ui,sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#C13B2A}
+  #generalunternehmer .gu-ctitle{margin:0;font-family:'Fraunces',Georgia,serif;font-size:1.1875rem;font-weight:600;color:#38140f;line-height:1.3}
+  #generalunternehmer .gu-items{display:flex;flex-direction:column;gap:8px}
+  #generalunternehmer .gu-item{display:flex;gap:10px;font-size:.875rem;color:#3A4A50;line-height:1.45}
+  #generalunternehmer .gu-item i{font-style:normal;color:#c46f64;flex:none}
+  #generalunternehmer .gu-bridge{margin-top:34px;display:flex;align-items:center;justify-content:center;gap:14px;background:linear-gradient(135deg,#38140f,#5f231c);border-radius:16px;padding:20px 30px;text-align:center}
+  #generalunternehmer .gu-bridge p{margin:0;font-size:.95rem;line-height:1.5;color:#f2eeee}
+  #generalunternehmer .gu-bridge b{color:#fff;font-weight:700}
+  @media(max-width:640px){
+    #generalunternehmer .gu-wrap{padding:44px 16px}
+    #generalunternehmer .gu-stage{gap:24px}
+    #generalunternehmer .gu-card-wrap{max-width:none;flex:1 1 100%}
+    #generalunternehmer .gu-card{min-height:0}
+  }
+  @media(prefers-reduced-motion:reduce){
+    #generalunternehmer .gu-hex{animation:none;transition:none}
+    #generalunternehmer .gu-hex.on{transform:translate(-50%,-50%)}
+  }
+</style>
+
+<div class="gu-wrap">
+  <div class="gu-inner">
+
+    <div class="gu-head">
+      <span class="gu-eyeb">Digitaler Generalunternehmer</span>
+      <h2>Sechs Teile, eine Fläche.</h2>
+      <p class="gu-lead">Auf der Baustelle koordiniert der Generalunternehmer alle Gewerke, hält die Termine zusammen und steht am Ende fürs Ganze gerade — Sie kennen das. <b style="color:#38140f">Fürs Digitale übernehmen wir genau diese Rolle.</b></p>
+      <span class="gu-hint"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11V6a2 2 0 0 1 4 0v5"></path><path d="M13 11V9a2 2 0 0 1 4 0v2"></path><path d="M17 12v-1a2 2 0 0 1 4 0v5a6 6 0 0 1-6 6h-2a7 7 0 0 1-7-7v-3a2 2 0 0 1 4 0"></path></svg>Wabe anfahren oder antippen</span>
+    </div>
+
+    <div class="gu-stage">
+      <div class="gu-combwrap">
+        <div class="gu-comb" id="gu-comb">
+        <div class="gu-hex gu-dark" style="--l:50%;--t:50.092%;--d:0s" tabindex="0" role="button" aria-label="Ihr Betrieb — Details anzeigen">
+          <div class="gu-o"><div class="gu-i"><span style="font-size:1.25em">Ihr Betrieb</span></div></div>
+        </div>
+        <div class="gu-hex gu-light" style="--l:50%;--t:16.636%;--d:.12s" tabindex="0" role="button" aria-label="Handwerkersoftware — Details anzeigen">
+          <div class="gu-o"><div class="gu-i"><span style="font-size:1em">Handwerker-<br>software</span></div></div>
+        </div>
+        <div class="gu-hex gu-light" style="--l:80.709%;--t:33.272%;--d:.24s" tabindex="0" role="button" aria-label="Offerten in Sekunden — Details anzeigen">
+          <div class="gu-o"><div class="gu-i"><span style="font-size:1em">Offerten in<br>Sekunden</span></div></div>
+        </div>
+        <div class="gu-hex gu-sand" style="--l:80.709%;--t:66.728%;--d:.36s" tabindex="0" role="button" aria-label="KI, die mitarbeitet — Details anzeigen">
+          <div class="gu-o"><div class="gu-i"><span style="font-size:1em">KI, die<br>mitarbeitet</span></div></div>
+        </div>
+        <div class="gu-hex gu-light" style="--l:50%;--t:83.364%;--d:.48s" tabindex="0" role="button" aria-label="IT wie ein Grossbetrieb — Details anzeigen">
+          <div class="gu-o"><div class="gu-i"><span style="font-size:1em">IT wie ein<br>Grossbetrieb</span></div></div>
+        </div>
+        <div class="gu-hex gu-light" style="--l:19.291%;--t:66.728%;--d:.6s" tabindex="0" role="button" aria-label="Weniger für den Treuhänder — Details anzeigen">
+          <div class="gu-o"><div class="gu-i"><span style="font-size:1em">Weniger für den<br>Treuhänder</span></div></div>
+        </div>
+        <div class="gu-hex gu-light" style="--l:19.291%;--t:33.272%;--d:.72s" tabindex="0" role="button" aria-label="Keine Anfrage geht verloren — Details anzeigen">
+          <div class="gu-o"><div class="gu-i"><span style="font-size:1em">Keine Anfrage<br>geht verloren</span></div></div>
+        </div>
+        </div>
+      </div>
+
+      <div class="gu-card-wrap">
+        <div class="gu-card">
+          <div class="gu-cardin">
+            <p class="gu-ceyeb" id="gu-ceyeb">Ihr Betrieb</p>
+            <p class="gu-ctitle" id="gu-ctitle">Alles greift ineinander</p>
+            <div class="gu-items" id="gu-citems" aria-live="polite"></div>
+          </div>
+        </div>
+        <div class="gu-notebox">
+          <p class="gu-note-eyeb">Modular umsetzbar</p>
+          <p style="margin:0">Einzeln oder alle sechs zusammen — beides funktioniert für sich.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="gu-bridge">
+      <p>Sechs Teile, ein Vertrag, ein Ansprechpartner — <b>und einer, der fürs Ganze geradesteht.</b></p>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  var comb=document.getElementById('gu-comb');
+  if(!comb)return;
+  var D=[
+    {e:"Ihr Betrieb",           t:"Alles greift ineinander",        i:["Sechs Bausteine, ein Ansprechpartner","Ein Anruf, wenn etwas klemmt","Schnittstellen sind unser Thema","Wabe anfahren oder antippen"]},
+    {e:"Kernsystem",            t:"Aufträge, Termine, Material",   i:["Alle Aufträge an einem Ort","Disposition für das ganze Team","Stunden und Rapporte digital","Ihr System bleibt, wie es ist"]},
+    {e:"Dazu kommt",            t:"Von der Anfrage zur Offerte",    i:["Offerten entstehen automatisch","Preise aus Ihren eigenen Vorlagen","Vom Kunden digital angenommen","Kein Abend mehr fürs Schreiben"]},
+    {e:"Quer durch alles",      t:"KI arbeitet überall mit",        i:["In jedem Baustein mit dabei","Bereitet vor, Sie entscheiden","Lernt Ihre Preise und Texte","Wird mit der Zeit besser"]},
+    {e:"Gesamte IT",            t:"Betreut wie eine grosse Firma",  i:["Büro, Baustelle, Handy — ein System","Telefonie und Zusammenarbeit","Ein Ansprechpartner, keine Hotline","Daten gesichert und geschützt"]},
+    {e:"Das Büro",              t:"Saubere Zahlen, kleinere Rechnung",  i:["Belege fliessen automatisch ein","MWST und Lohn vorbereitet","Der Treuhänder muss nichts aufräumen","Sie sehen, welcher Auftrag trägt"]},
+    {e:"Rund um die Uhr",       t:"Ihre Website antwortet für Sie",  i:["Nimmt Anfragen auf und klärt ab","Beantwortet, was immer gefragt wird","Auch am Abend und am Wochenende","Aus Besuchern werden Anfragen"]}
+  ];
+  var eyeb=document.getElementById('gu-ceyeb'),
+      tit =document.getElementById('gu-ctitle'),
+      list=document.getElementById('gu-citems'),
+      hexes=[].slice.call(comb.querySelectorAll('.gu-hex')),
+      pinned=null, shown=-1;
+
+  function render(n){
+    if(n===shown)return;
+    shown=n;
+    var d=D[n];
+    eyeb.textContent=d.e;
+    tit.textContent=d.t;
+    while(list.firstChild)list.removeChild(list.firstChild);
+    d.i.forEach(function(txt){
+      var row=document.createElement('span');
+      row.className='gu-item';
+      var dash=document.createElement('i');
+      dash.textContent='\u2014';
+      row.appendChild(dash);
+      row.appendChild(document.createTextNode(txt));
+      list.appendChild(row);
+    });
+    hexes.forEach(function(h,k){h.classList.toggle('on',k===n);});
+  }
+
+  hexes.forEach(function(h,k){
+    h.addEventListener('mouseenter',function(){if(pinned===null)render(k);});
+    h.addEventListener('mouseleave',function(){if(pinned===null)render(0);});
+    h.addEventListener('focus',     function(){if(pinned===null)render(k);});
+    h.addEventListener('blur',      function(){if(pinned===null)render(0);});
+    h.addEventListener('click',function(){
+      pinned=(pinned===k)?null:k;
+      render(pinned===null?0:pinned);
+    });
+    h.addEventListener('keydown',function(ev){
+      if(ev.key==='Enter'||ev.key===' '||ev.key==='Spacebar'){ev.preventDefault();h.click();}
+    });
+  });
+
+  render(0);
+})();
+</script>
+</section>
+
+<section class="flow" id="ablauf">
+  <div class="wrap">
+    <div id="zs-root">
+      <div class="sec-head c" style="margin-bottom:0">
+        <div class="eyebrow">Ein Auftrag, von Anfang bis Ende</div>
+        <h2 id="ablauf-h">Mit uns als Ihrem digitalem Generalunternehmer läuft ein Auftrag wie folgt ab:</h2>
+      </div>
+
+      <div style="position:relative;display:flex;flex-direction:column">
+        <div class="zs-rail"></div>
+
+        <div class="zs-row zs-open" style="animation-delay:.00s">
+          <span class="zs-num" style="animation-delay:.00s">1</span>
+          <div class="zs-side zs-l">
+            <h3>Präsenz im digitalen Raum</h3>
+            <div class="zs-detail">
+            <p class="zs-detail-title">Präsenz im digitalen Raum</p>
+            <ul style="list-style:disc;padding-left:1.3em;margin:0;gap:7px;font-family:'Fraunces',Georgia,serif;font-size:1.125rem;font-weight:500;color:var(--navy);line-height:1.42;max-width:46ch;text-wrap:pretty">
+              <li>Ihre Website beantwortet häufig gestellte Fragen selbst — auch ausserhalb der Bürozeiten</li>
+              <li>Bei „Maler Zürich" erscheinen Sie ganz oben — per Anzeige, die sich selbst abschaltet, sobald Sie ausgelastet sind</li>
+              <li>Viele echte Bewertungen sprechen für Sie, bevor Sie ein Wort gesagt haben</li>
+            </ul>
+            <div class="zs-chipswrap">
+              <p class="zs-chips-label">Betroffene Bereiche</p>
+              <div class="zs-chips"><span><b>Website</b><i>beantwortet häufige Fragen</i></span><span><b>KI</b><i>schaltet Anzeigen selbst ab</i></span></div>
+            </div>
+            </div>
+          </div>
+          <span class="zs-tick" style="margin-right:50%"></span>
+        </div>
+
+        <div class="zs-row" style="animation-delay:.10s">
+          <span class="zs-num" style="animation-delay:.10s">2</span>
+          <span class="zs-tick" style="margin-left:50%"></span>
+          <div class="zs-side zs-r">
+            <h3>Die Anfrage</h3>
+            <div class="zs-detail">
+            <p class="zs-detail-title">Die Anfrage</p>
+            <ul style="list-style:disc;padding-left:1.3em;margin:0;gap:7px;font-family:'Fraunces',Georgia,serif;font-size:1.125rem;font-weight:500;color:var(--navy);line-height:1.42;max-width:46ch;text-wrap:pretty">
+              <li>Anfragen kommen über verschiedene Kanäle (Ticketsystem, WhatsApp, Anruf, E-Mail) und werden strukturiert erfasst</li>
+              <li>Ein Anruf um 22 Uhr wird automatisch beantwortet</li>
+              <li>Jede Anfrage landet strukturiert — mit Adresse, Bildern und Beschreibung, direkt am richtigen Ort</li>
+            </ul>
+            <div class="zs-chipswrap">
+              <p class="zs-chips-label">Betroffene Bereiche</p>
+              <div class="zs-chips"><span><b>Software</b><i>erfasst strukturiert</i></span><span><b>KI</b><i>beantwortet ausserhalb der Bürozeiten</i></span></div>
+            </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="zs-row" style="animation-delay:.20s">
+          <span class="zs-num" style="animation-delay:.20s">3</span>
+          <div class="zs-side zs-l">
+            <h3>Der Termin &amp; Besichtigung</h3>
+            <div class="zs-detail">
+            <p class="zs-detail-title">Der Termin &amp; Besichtigung</p>
+            <ul style="list-style:disc;padding-left:1.3em;margin:0;gap:7px;font-family:'Fraunces',Georgia,serif;font-size:1.125rem;font-weight:500;color:var(--navy);line-height:1.42;max-width:46ch;text-wrap:pretty">
+              <li>Der Kunde bucht sich selbst einen freien Termin, ganz ohne Telefonat</li>
+              <li>Bei kleineren Fällen reicht ein kurzer Videoanruf statt einer Fahrt</li>
+              <li>Sie machen bei der Besichtigung ein Sprachmemo — Transkript und Zusammenfassung sind fertig, bevor Sie zurück im Auto sitzen</li>
+            </ul>
+            <div class="zs-chipswrap">
+              <p class="zs-chips-label">Betroffene Bereiche</p>
+              <div class="zs-chips"><span><b>Software</b><i>verwaltet Termine</i></span><span><b>KI</b><i>transkribiert &amp; fasst zusammen</i></span></div>
+            </div>
+            </div>
+          </div>
+          <span class="zs-tick" style="margin-right:50%"></span>
+        </div>
+
+        <div class="zs-row" style="animation-delay:.30s">
+          <span class="zs-num" style="animation-delay:.30s">4</span>
+          <span class="zs-tick" style="margin-left:50%"></span>
+          <div class="zs-side zs-r">
+            <h3>Die Offerte</h3>
+            <div class="zs-detail">
+            <p class="zs-detail-title">Die Offerte</p>
+            <ul style="list-style:disc;padding-left:1.3em;margin:0;gap:7px;font-family:'Fraunces',Georgia,serif;font-size:1.125rem;font-weight:500;color:var(--navy);line-height:1.42;max-width:46ch;text-wrap:pretty">
+              <li>Es wird automatisch eine Offerte mit KI vorbereitet</li>
+              <li>Sie lesen die Offerte, machen Anpassungen und versenden sie anschliessend</li>
+              <li>Der Kunde nimmt die Offerte mit einem Klick an</li>
+              <li>Datenblätter und Normen sind in Minuten durchleuchtet, nicht in Stunden</li>
+            </ul>
+            <div class="zs-chipswrap">
+              <p class="zs-chips-label">Betroffene Bereiche</p>
+              <div class="zs-chips"><span><b>KI</b><i>bereitet vor &amp; prüft Normen</i></span><span><b>Software</b><i>erstellt &amp; holt Freigabe</i></span></div>
+            </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="zs-row" style="animation-delay:.40s">
+          <span class="zs-num" style="animation-delay:.40s">5</span>
+          <div class="zs-side zs-l">
+            <h3>Die Einsatzplanung</h3>
+            <div class="zs-detail">
+            <p class="zs-detail-title">Die Einsatzplanung</p>
+            <ul style="list-style:disc;padding-left:1.3em;margin:0;gap:7px;font-family:'Fraunces',Georgia,serif;font-size:1.125rem;font-weight:500;color:var(--navy);line-height:1.42;max-width:46ch;text-wrap:pretty">
+              <li>Sie sehen auf einen Blick, wer im Einsatz ist, wer frei ist — und wo sich jeder gerade befindet</li>
+              <li>Terminänderungen erreichen den Mitarbeiter direkt aufs Handy, ohne Anruf</li>
+              <li>Ferienplanung digital: Der Mitarbeiter stellt die Anfrage per App — Sie genehmigen mit einem Klick</li>
+            </ul>
+            <div class="zs-chipswrap">
+              <p class="zs-chips-label">Betroffene Bereiche</p>
+              <div class="zs-chips"><span><b>Software</b><i>plant &amp; disponiert</i></span><span><b>Gerät · IT</b><i>Plan direkt aufs Handy</i></span></div>
+            </div>
+            </div>
+          </div>
+          <span class="zs-tick" style="margin-right:50%"></span>
+        </div>
+
+        <div class="zs-row" style="animation-delay:.50s">
+          <span class="zs-num" style="animation-delay:.50s">6</span>
+          <span class="zs-tick" style="margin-left:50%"></span>
+          <div class="zs-side zs-r">
+            <h3>Beim Kunden</h3>
+            <div class="zs-detail">
+            <p class="zs-detail-title">Beim Kunden</p>
+            <ul style="list-style:disc;padding-left:1.3em;margin:0;gap:7px;font-family:'Fraunces',Georgia,serif;font-size:1.125rem;font-weight:500;color:var(--navy);line-height:1.42;max-width:46ch;text-wrap:pretty">
+              <li>Der Rapport ist fertig, bevor der Mitarbeiter den Lieferwagen erreicht</li>
+              <li>Bilder und Kommentare sind dem Auftrag zugeordnet</li>
+              <li>Auch im Keller ohne Empfang läuft alles weiter und gleicht sich später ab</li>
+            </ul>
+            <div class="zs-chipswrap">
+              <p class="zs-chips-label">Betroffene Bereiche</p>
+              <div class="zs-chips"><span><b>Software</b><i>erfasst &amp; quittiert</i></span><span><b>Gerät · IT</b><i>läuft auch offline</i></span></div>
+            </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="zs-row" style="animation-delay:.60s">
+          <span class="zs-num" style="animation-delay:.60s">7</span>
+          <div class="zs-side zs-l">
+            <h3>Die Rechnung</h3>
+            <div class="zs-detail">
+            <p class="zs-detail-title">Die Rechnung</p>
+            <ul style="list-style:disc;padding-left:1.3em;margin:0;gap:7px;font-family:'Fraunces',Georgia,serif;font-size:1.125rem;font-weight:500;color:var(--navy);line-height:1.42;max-width:46ch;text-wrap:pretty">
+              <li>Bei der Rechnungsstellung wird der Rapport berücksichtigt</li>
+              <li>Nichts, was geleistet wurde, geht beim Verrechnen unter</li>
+              <li>Der Zahlungseingang gleicht sich automatisch mit dem Bankkonto ab — niemand muss Zahlungen von Hand zuordnen</li>
+            </ul>
+            <div class="zs-chipswrap">
+              <p class="zs-chips-label">Betroffene Bereiche</p>
+              <div class="zs-chips"><span><b>Software</b><i>stellt aus</i></span><span><b>Treuhand</b><i>bekommt es laufend</i></span></div>
+            </div>
+            </div>
+          </div>
+          <span class="zs-tick" style="margin-right:50%"></span>
+        </div>
+
+
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var rows=document.querySelectorAll('#zs-root .zs-row');
+
+  function syncDetailHeights(){
+    var max=0;
+    var details=[];
+    rows.forEach(function(row){
+      var side=row.querySelector('.zs-side');
+      var detail=side&&side.querySelector('.zs-detail');
+      if(!detail)return;
+      detail.style.minHeight='';
+      var wasOpen=row.classList.contains('zs-open');
+      if(!wasOpen)row.classList.add('zs-open');
+      var h=detail.scrollHeight;
+      if(h>max)max=h;
+      if(!wasOpen)row.classList.remove('zs-open');
+      details.push(detail);
+    });
+    details.forEach(function(d){ d.style.minHeight=max+'px'; });
+  }
+
+  syncDetailHeights();
+  var resizeTimer;
+  window.addEventListener('resize',function(){
+    clearTimeout(resizeTimer);
+    resizeTimer=setTimeout(syncDetailHeights,150);
+  });
+
+  rows.forEach(function(row){
+    var side=row.querySelector('.zs-side');
+    if(!side)return;
+    side.addEventListener('click',function(e){
+      var ul=side.querySelector('ul');
+      if(ul&&ul.contains(e.target))return;
+      var isOpen=row.classList.contains('zs-open');
+      rows.forEach(function(r){r.classList.remove('zs-open');});
+      if(!isOpen)row.classList.add('zs-open');
+    });
+  });
+})();
+</script>
+
+<section id="fahrplan" style="padding:0">
+<style>
+#fahrplan .fp-table-head{display:grid;grid-template-columns:28px minmax(0,1fr) max-content 24px;gap:0 20px;padding:14px 0 12px;font-family:'Manrope',system-ui,sans-serif;font-size:.75rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#8B93A4;border-bottom:1px solid #38140f;white-space:nowrap}
+#fahrplan .fp-table-head span:nth-child(3){text-align:right}
+#fahrplan .fp-row{border-top:1px solid #E7EBF0}
+#fahrplan .fp-row.fp-row--first{border-top:1px solid #38140f}
+#fahrplan .fp-row.fp-row--outline{border-top:1px dashed #DDE6E8}
+#fahrplan .fp-row-head{display:grid;grid-template-columns:28px minmax(0,1fr) max-content 24px;gap:0 20px;align-items:start;padding:18px 0;cursor:pointer;box-shadow:inset 3px 0 0 transparent;transition:box-shadow .15s}
+#fahrplan .fp-row-head:hover,#fahrplan .fp-row.open .fp-row-head{background:#f2eeee;border-radius:10px}
+#fahrplan .fp-num{width:28px;height:28px;border-radius:50%;background:#38140f;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.8125rem;font-weight:700;flex:none;font-family:'Manrope',system-ui,sans-serif}
+#fahrplan .fp-num-alt{background:#f2eeee;border:1px solid #c46f64;color:#38140f;font-size:1rem}
+#fahrplan .fp-row-text{min-width:0;padding-top:2px}
+#fahrplan .fp-row-eyeb{font-family:'Manrope',system-ui,sans-serif;font-size:.6875rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#8B93A4}
+#fahrplan .fp-row-title-line{display:flex;align-items:center;gap:8px}
+#fahrplan .fp-row-title{font-family:'Fraunces',Georgia,serif;font-size:1.3125rem;font-weight:700;color:#38140f;line-height:1.25}
+#fahrplan .fp-row-sub{font-size:.8125rem;color:#8B93A4;margin-top:2px}
+#fahrplan .fp-hours{display:flex;flex-direction:column;align-items:flex-end;gap:4px;padding-top:2px;white-space:nowrap}
+#fahrplan .fp-hours-num{display:flex;align-items:baseline;gap:2px}
+#fahrplan .fp-hours-val{font-family:'Fraunces',Georgia,serif;font-size:1.875rem;font-weight:700;color:#38140f;line-height:1}
+#fahrplan .fp-hours-unit{font-size:1rem;font-weight:600;color:#38140f;line-height:1}
+#fahrplan .fp-hours-cap{font-size:.6875rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#C13B2A}
+#fahrplan .fp-hours-status{flex-direction:row;align-items:center;gap:9px;align-self:center;padding-top:0}
+#fahrplan .fp-status-dot{width:10px;height:10px;border-radius:50%;background:#22c55e;flex:none;animation:fpStatusPulse 1.8s ease-in-out infinite}
+#fahrplan .fp-status-label{font-size:1rem;font-weight:700;color:#38140f}
+@keyframes fpStatusPulse{0%,100%{opacity:1}50%{opacity:.35}}
+#fahrplan .fp-chev{display:none}
+#fahrplan .fp-panel{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .35s cubic-bezier(.4,0,.2,1),opacity .25s ease}
+#fahrplan .fp-row.open .fp-panel{grid-template-rows:1fr;opacity:1}
+#fahrplan .fp-panel-inner{overflow:hidden;min-height:0}
+#fahrplan .fp-desc{margin:4px 0 0;padding-left:48px;font-size:.9375rem;line-height:1.65;color:#4A5468;max-width:62ch;text-wrap:pretty}
+#fahrplan .fp-ex-label{margin-top:18px;padding:14px 0 0 48px;font-size:.6875rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#8B93A4;border-top:1px solid #F0F2F6}
+#fahrplan .fp-examples{display:flex;flex-direction:column;gap:8px;margin:10px 0 20px;padding-left:48px}
+#fahrplan .fp-tag{display:flex;align-items:baseline;gap:8px;font-size:.9375rem;font-weight:400;color:#4A5468}
+#fahrplan .fp-tag::before{content:'✓';flex:none;font-size:.75rem;font-weight:700;color:#C13B2A}
+#fahrplan .fp-row-head:focus-visible{outline:2px solid #C13B2A;outline-offset:2px}
+#fahrplan .fp-total{display:flex;flex-direction:column;gap:6px;margin:16px -32px -20px;padding:22px 32px 26px;background:#f2eeee;border-radius:0 0 20px 20px}
+#fahrplan .fp-total-num{display:flex;align-items:baseline;gap:8px}
+#fahrplan .fp-total-val{font-family:'Fraunces',Georgia,serif;font-size:2.25rem;font-weight:700;color:#38140f;line-height:1}
+#fahrplan .fp-total-unit{font-size:.9375rem;font-weight:600;color:#C13B2A}
+#fahrplan .fp-total-calc{margin:0;font-size:.75rem;font-weight:600;color:#8B93A4}
+#fahrplan .fp-total-desc{margin:0;font-size:.9375rem;line-height:1.6;color:#3A4A50}
+@media(max-width:700px){
+  #fahrplan .fp-table-head{display:none}
+  #fahrplan .fp-row-head{grid-template-columns:28px minmax(0,1fr);gap:0 16px}
+  #fahrplan .fp-hours{grid-column:2;align-items:flex-start;padding-top:10px}
+  #fahrplan .fp-hours-status{align-items:center}
+  #fahrplan .fp-desc,#fahrplan .fp-ex-label,#fahrplan .fp-examples{padding-left:40px}
+}
+</style>
+<div style="font-family:'Manrope',system-ui,sans-serif;background:#fff;border-top:1px solid #DDE6E8;padding:72px 32px;display:flex;justify-content:center">
+  <div style="width:100%;max-width:860px">
+
+    <div style="display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;margin-bottom:36px">
+      <div style="font-family:'Manrope',system-ui,sans-serif;font-size:.75rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#C13B2A">Der Verlauf</div>
+      <h2 style="margin:0;font-family:'Fraunces',Georgia,serif;font-size:2.25rem;font-weight:700;color:#38140f;line-height:1.15;max-width:26ch;text-wrap:balance">Jede Phase gibt Ihnen einen Abend zurück.</h2>
+      <p style="margin:0;font-size:1rem;line-height:1.6;color:#3A4A50;max-width:60ch;text-wrap:pretty">Wir starten mit dem Teil, der bei Ihnen zuerst brennt — bereits das funktioniert für sich. Nach jeder Phase entscheiden Sie neu, ob es weitergeht.</p>
+    </div>
+
+    <div style="background:#fff;border:1px solid #DDE6E8;border-radius:20px;padding:0 32px 20px">
+
+      <div class="fp-table-head"><span></span><span>Phase</span><span>Zeitgewinn</span><span></span></div>
+
+      <div class="fp-row fp-row--first open">
+        <div class="fp-row-head" role="button" tabindex="0" aria-expanded="true">
+          <span class="fp-num">1</span>
+          <div class="fp-row-text">
+            <div class="fp-row-eyeb">Phase 1</div>
+            <div class="fp-row-title-line"><span class="fp-row-title">Die dringendsten Hebel</span></div>
+            <div class="fp-row-sub">Sie entscheiden danach</div>
+          </div>
+          <div class="fp-hours"><div class="fp-hours-num"><span class="fp-hours-val">1</span><span class="fp-hours-unit">h</span></div><div class="fp-hours-cap">pro Tag</div></div>
+          <span class="fp-chev">▾</span>
+        </div>
+        <div class="fp-panel">
+          <div class="fp-panel-inner">
+            <p class="fp-desc">Wir starten dort, wo der Druck am grössten ist — die Erreichbarkeit am Abend, die Offerten, was auch immer bei Ihnen brennt. Bereits das allein funktioniert für sich.</p>
+            <div class="fp-ex-label">Beispiele</div>
+            <div class="fp-examples"><span class="fp-tag">Abends automatisch geantwortet</span><span class="fp-tag">Offerte in Minuten statt Tagen</span><span class="fp-tag">Keine Anfrage geht verloren</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fp-row">
+        <div class="fp-row-head" role="button" tabindex="0" aria-expanded="false">
+          <span class="fp-num">2</span>
+          <div class="fp-row-text">
+            <div class="fp-row-eyeb">Phase 2</div>
+            <div class="fp-row-title-line"><span class="fp-row-title">Der nächste Baustein</span></div>
+            <div class="fp-row-sub">Sie geben das Tempo vor</div>
+          </div>
+          <div class="fp-hours"><div class="fp-hours-num"><span class="fp-hours-val">2</span><span class="fp-hours-unit">h</span></div><div class="fp-hours-cap">pro Tag</div></div>
+          <span class="fp-chev">▾</span>
+        </div>
+        <div class="fp-panel">
+          <div class="fp-panel-inner">
+            <p class="fp-desc">Schritt für Schritt kommt weiteres dazu — in der Reihenfolge, die für Sie Sinn ergibt, nicht nach starrem Schema.</p>
+            <div class="fp-ex-label">Beispiele</div>
+            <div class="fp-examples"><span class="fp-tag">Rapporte sofort vom Handy</span><span class="fp-tag">Einsatzplanung ohne Excel</span><span class="fp-tag">Offerten von KI vorbereitet</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fp-row">
+        <div class="fp-row-head" role="button" tabindex="0" aria-expanded="false">
+          <span class="fp-num">3</span>
+          <div class="fp-row-text">
+            <div class="fp-row-eyeb">Phase 3</div>
+            <div class="fp-row-title-line"><span class="fp-row-title">Der Betrieb als Ganzes</span></div>
+            <div class="fp-row-sub">Von der Anfrage bis zur Schlussrechnung</div>
+          </div>
+          <div class="fp-hours"><div class="fp-hours-num"><span class="fp-hours-val">3</span><span class="fp-hours-unit">h</span></div><div class="fp-hours-cap">pro Tag</div></div>
+          <span class="fp-chev">▾</span>
+        </div>
+        <div class="fp-panel">
+          <div class="fp-panel-inner">
+            <p class="fp-desc">Am Ende ist der Betrieb durchgängig digital — von der Anfrage bis zur Schlussrechnung, von der Baustelle bis zur Buchhaltung. Büroarbeit bleibt, aber sie ist eine kurze Runde am Nachmittag statt ein Abend.</p>
+            <div class="fp-ex-label">Beispiele</div>
+            <div class="fp-examples"><span class="fp-tag">Zahlungen laufend abgeglichen</span><span class="fp-tag">Treuhänder bekommt es laufend</span><span class="fp-tag">Schlussrechnung sofort fertig</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fp-row fp-row--outline">
+        <div class="fp-row-head" role="button" tabindex="0" aria-expanded="false">
+          <span class="fp-num fp-num-alt">∞</span>
+          <div class="fp-row-text">
+            <div class="fp-row-eyeb">Danach</div>
+            <div class="fp-row-title-line"><span class="fp-row-title">Dauerhaft an Ihrer Seite</span></div>
+            <div class="fp-row-sub">Fortlaufend · kein Abschied nach dem Projekt</div>
+          </div>
+          <div class="fp-hours fp-hours-status"><span class="fp-status-dot"></span><span class="fp-status-label">Systeme laufen</span></div>
+          <span class="fp-chev">▾</span>
+        </div>
+        <div class="fp-panel">
+          <div class="fp-panel-inner">
+            <p class="fp-desc">Kein Abschied nach dem Projekt: Betrieb, Updates, Hochsaison, Lastspitzen. Ihr digitaler Generalunternehmer bleibt — dauerhaft. Damit der Feierabend wieder Feierabend ist.</p>
+            <div class="fp-ex-label">Beispiele</div>
+            <div class="fp-examples"><span class="fp-tag">Support &amp; Updates laufend</span><span class="fp-tag">Läuft zuverlässig, ohne Aufwand</span><span class="fp-tag">Wächst mit, wenn Sie wachsen</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fp-total">
+        <div class="fp-total-num"><span class="fp-total-val">15 h</span><span class="fp-total-unit">pro Woche</span></div>
+        <p class="fp-total-calc">3 h/Tag aus Phase 3 (5 Arbeitstage)</p>
+        <p class="fp-total-desc">Drei Abende, an denen das Büro geschlossen bleibt und Sie bei der Familie sind.</p>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+<script>
+(function(){
+  var rows=[].slice.call(document.querySelectorAll('#fahrplan .fp-row'));
+  rows.forEach(function(row){
+    var head=row.querySelector('.fp-row-head');
+    function toggle(){
+      var willOpen=!row.classList.contains('open');
+      rows.forEach(function(r){
+        r.classList.remove('open');
+        r.querySelector('.fp-row-head').setAttribute('aria-expanded','false');
+      });
+      if(willOpen){
+        row.classList.add('open');
+        head.setAttribute('aria-expanded','true');
+      }
+    }
+    head.addEventListener('click',toggle);
+    head.addEventListener('keydown',function(ev){
+      if(ev.key==='Enter'||ev.key===' '||ev.key==='Spacebar'){ev.preventDefault();toggle();}
+    });
+  });
+})();
+</script>
+</section>
+
+<section id="vertrauen" style="background:var(--soft);padding:64px 24px;display:flex;justify-content:center">
+<style>
+@media(max-width:700px){
+  #vertrauen .vt-grid{grid-template-columns:1fr!important;gap:26px!important;text-align:center!important}
+  #vertrauen .vt-badge{margin-inline:auto}
+}
+</style>
+<div style="width:100%;max-width:860px;text-align:center;font-family:'Manrope',system-ui,sans-serif">
+
+  <div style="font-size:.75rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#C13B2A;margin-bottom:14px">Ihre Sicherheit</div>
+  <h2 style="margin:0 0 40px;font-family:'Fraunces',Georgia,serif;font-size:2rem;font-weight:700;color:#38140f;line-height:1.2">So arbeiten wir mit Ihnen.</h2>
+
+  <div class="vt-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px;text-align:left">
+
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <span class="vt-badge" style="width:34px;height:34px;border-radius:50%;background:#fff;border:1px solid #c46f64;color:#38140f;display:flex;align-items:center;justify-content:center;font-size:.9375rem;font-weight:700">✓</span>
+      <p style="margin:0;font-size:1rem;line-height:1.55;color:#3A4A50">Sie richten nichts selbst ein — wir übernehmen die Umsetzung.</p>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <span class="vt-badge" style="width:34px;height:34px;border-radius:50%;background:#fff;border:1px solid #c46f64;color:#38140f;display:flex;align-items:center;justify-content:center;font-size:.9375rem;font-weight:700">✓</span>
+      <p style="margin:0;font-size:1rem;line-height:1.55;color:#3A4A50">Wir sind da, wenn's hakt — direkter Kontakt, keine Warteschlange.</p>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <span class="vt-badge" style="width:34px;height:34px;border-radius:50%;background:#fff;border:1px solid #c46f64;color:#38140f;display:flex;align-items:center;justify-content:center;font-size:.9375rem;font-weight:700">✓</span>
+      <p style="margin:0;font-size:1rem;line-height:1.55;color:#3A4A50">Sie entscheiden das Tempo — jederzeit stoppen, ohne dass etwas zusammenbricht.</p>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<section id="ki-berater" style="background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:80px 0">
+  <div class="wrap">
+
+    <!-- Heading -->
+    <h2 class="reveal" style="margin:0 0 12px">Was möchten Sie wissen?</h2>
+    <p style="color:var(--muted);font-size:1rem;margin:0 0 28px;text-align:center">Fragen Sie, was Ihnen unklar ist — Sie bekommen sofort eine Antwort.</p>
+
+    <!-- Conversation thread (hidden initially) -->
+    <div id="kb-thread" style="display:none;flex-direction:column;gap:16px;margin-bottom:20px"></div>
+
+    <!-- Input shell -->
+    <div id="kb-shell" style="background:#fff;border:1px solid var(--line);border-radius:20px;padding:16px;box-shadow:0 4px 24px -8px rgba(56,20,15,.1);transition:border-color .2s,box-shadow .2s">
+      <div style="display:flex;align-items:flex-start;gap:12px">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--brand)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;flex-shrink:0;margin-top:6px;opacity:.85" aria-hidden="true">
+          <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.582a.5.5 0 0 1 0 .963L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/>
+          <path d="M20 3v4M22 5h-4M4 17v2M5 18H3"/>
+        </svg>
+        <textarea id="kb-inp" rows="3" placeholder=""style="flex:1;background:transparent;border:none;outline:none;resize:none;font-family:'Manrope',system-ui,sans-serif;font-size:.9375rem;color:var(--navy);line-height:1.55;min-height:82px;max-height:180px"></textarea>
+        <button id="kb-send" type="button" style="flex-shrink:0;width:44px;height:44px;border-radius:50%;border:none;background:var(--brand-dark);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:opacity .15s,transform .12s;box-shadow:0 4px 14px -4px rgba(56,20,15,.4)">
+          <svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:#fff;stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </div>
+      <!-- Chips inside shell -->
+      <div id="kb-chips" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px">
+        <button class="kb-chip kb-chip-desktop" type="button">«Wie digitalisiere ich meine Offerten?»</button>
+        <button class="kb-chip kb-chip-desktop" type="button">«Was läuft danach automatisch?»</button>
+        <button class="kb-chip kb-chip-desktop" type="button">«Wie viel Arbeit macht die Umstellung?»</button>
+        <button class="kb-chip kb-chip-desktop" type="button">«Funktioniert das mit meiner Software?»</button>
+        <button class="kb-chip kb-chip-mobile" type="button">«Was kostet das für meinen Betrieb?»</button>
+        <button class="kb-chip kb-chip-mobile" type="button">«Wie lange dauert die Umstellung?»</button>
+        <button class="kb-chip kb-chip-mobile" type="button">«Was ändert sich für mein Team?»</button>
+      </div>
+    </div>
+
+    <!-- Neugier-Balken (misst Eingabelänge, immer im DOM) -->
+    <div id="kb-progress" style="display:flex;align-items:center;gap:12px;margin-top:16px;opacity:0;transition:opacity .5s">
+      <div style="flex:1;height:2px;background:var(--line);border-radius:2px;overflow:hidden">
+        <div id="kb-progress-fill" style="height:100%;width:8%;background:var(--brand-dark);border-radius:2px;transition:width .35s ease"></div>
+      </div>
+      <span id="kb-progress-label" style="font-size:.72rem;color:var(--muted);white-space:nowrap;letter-spacing:.03em;transition:color .3s">System bereit für Input …</span>
+    </div>
+
+
+  </div>
+</section>
+
+<style>
+/* Chat-Bereich schmaler als die Section: auf voller 1020px-Breite wirkt die
+   Eingabebox wie ein flacher Balken und die Textzeilen werden zu lang. */
+#kb-thread,#kb-shell,#kb-progress{max-width:760px;margin-left:auto;margin-right:auto}
+/* Die mobil formulierten Chips gehören nicht auf den Desktop — sonst stehen
+   sieben Chips in zwei Reihen, einer davon doppelt. */
+#ki-berater .kb-chip-mobile{display:none}
+#ki-berater .kb-chip{font-family:'Manrope',system-ui,sans-serif;font-size:.8rem;color:var(--muted);background:#fff;border:1px solid var(--line);border-radius:100px;padding:5px 14px;cursor:pointer;transition:background .15s,border-color .15s,color .15s;white-space:nowrap}
+#ki-berater .kb-chip:hover{background:var(--soft);border-color:var(--brand);color:var(--navy)}
+#ki-berater #kb-inp::placeholder{color:var(--muted)}
+.kb-typing{display:flex;align-items:center;gap:5px;padding:14px 18px;background:#fff;border:1px solid var(--line);border-radius:14px 14px 14px 4px;width:fit-content}
+.kb-typing span{width:7px;height:7px;border-radius:50%;background:var(--muted);display:block;animation:kbDot 1.2s ease-in-out infinite}
+.kb-typing span:nth-child(2){animation-delay:.2s}
+.kb-typing span:nth-child(3){animation-delay:.4s}
+@keyframes kbDot{0%,80%,100%{transform:scale(.7);opacity:.4}40%{transform:scale(1);opacity:1}}
+@media(max-width:640px){
+  #ki-berater{min-height:85vh;background:var(--brand-dark)!important;border-color:transparent!important;display:flex;align-items:center;padding:60px 0}
+  #ki-berater h2{color:#fff;font-size:clamp(1.4rem,6.5vw,1.9rem);text-align:center;white-space:nowrap}
+  #ki-berater>div>p{color:rgba(255,255,255,.65);text-align:center}
+  #kb-send{background:rgba(255,255,255,.15)!important;box-shadow:none!important}
+  #ki-berater #kb-progress-label{color:rgba(255,255,255,.95)!important}
+  #ki-berater #kb-progress-fill{background:var(--brand)!important}
+  #ki-berater #kb-progress>div{background:rgba(255,255,255,.30)!important}
+  #ki-berater .kb-umsg{background:rgba(255,255,255,.18)!important}
+  /* Shell glassmorphism on dark bg */
+  #kb-shell{background:rgba(255,255,255,.08)!important;border-color:rgba(255,255,255,.18)!important;box-shadow:0 8px 32px rgba(0,0,0,.25)!important;backdrop-filter:blur(12px)}
+  /* Bigger input */
+  #kb-inp{min-height:52px!important;color:#fff!important;font-size:1rem!important}
+  #kb-inp::placeholder{color:rgba(255,255,255,.45)!important}
+  /* AI spark icon */
+  #kb-shell svg[viewBox="0 0 24 24"]:first-of-type{stroke:rgba(255,255,255,.6)!important}
+  /* Pills: stacked full-width on mobile, only mobile-tagged chips */
+  [id=kb-chips]{display:flex;flex-direction:column;gap:6px;margin-top:14px}
+  #ki-berater .kb-chip-desktop{display:none!important}
+  #ki-berater .kb-chip-mobile{display:block!important;white-space:normal;text-align:left;border-radius:100px;padding:7px 14px;font-size:.8rem;background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18);color:rgba(255,255,255,.75);width:auto;align-self:flex-start}
+  #ki-berater .kb-chip-mobile:hover{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.40);color:#fff}
+}
+</style>
+
+<section class="why" id="ueberuns">
+  <div class="wrap">
+    <div class="sec-head c reveal">
+      <div class="eyebrow">Und wer sind wir?</div>
+      <h2 id="ueberuns-h">Drei Fachleute, die auch Ihr Handwerk verstehen.</h2>
+    </div>
+    <details class="expander" open>
+      <summary>Team kennenlernen <span class="arr"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+      <p style="text-align:center;color:var(--muted);margin-bottom:24px">Zu dritt decken wir alle vier Bereiche ab — statt dass Sie für jeden jemand anderen suchen.</p>
+      <div class="tcards">
+        <div class="tcard">
+          <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4QOQRXhpZgAASUkqAAgAAAADAA4BAgCMAQAAMgAAADsBAgAlAAAAvgEAAGmHBAABAAAA4wEAAAAAAABTaWduYXR1cmU6IFEySGFEcEZJRERvTGJ5UHhoNWQ1ellxUFpoeTBnc1Z5OWRtdnI3OGthNU13RCtRVlBOYUhjRFB1NnZDbUZtMEo2anpTTkNTWXZWOEY0WVJUcWwzdnhWN1ZOUHlpUVg1YmxrUHZmellrRWpocDlhcnhpS0Q4Z2dsay9QTnFYS3dSQllpZWlNRzJnOUx5eS83SG9CN1RJR2xKbXp1UWpqSWdCN3gvTk9LREx2aE5TcnNJTG5DZzUwZnhxbllTNlc5REJDUW9qdzRzVy92bEEybU5LR3ZtSXBWRERYYTZUbHRzbVBEWkNwTG54Z0d3bVhMQ1pKTERFTERQenpSU0VoZ1EraWU2cGtBckY1V0FiTlZpV0pucnBOaGhad3JOMzlXdWFXbXZqdENGNWFiM2RHSU4zQk1mRzFFUkppZSt4STZQL3RVMUFscGxTTGVDZ24wOW4rNE50bzE2TFJQWU84UU9yQnY2QmhRb1UvWnNRQkROdUFWRVQvYzBkVzFwT0ZXUgA2ZWRlMTg5ZS03MTM0LTQ2NzQtYmQ4Ny03NmVmY2U1NGU5NzUAAQCGkgcAkwEAAPUBAAAAAAAAQVNDSUkAAABTaWduYXR1cmU6IFEySGFEcEZJRERvTGJ5UHhoNWQ1ellxUFpoeTBnc1Z5OWRtdnI3OGthNU13RCtRVlBOYUhjRFB1NnZDbUZtMEo2anpTTkNTWXZWOEY0WVJUcWwzdnhWN1ZOUHlpUVg1YmxrUHZmellrRWpocDlhcnhpS0Q4Z2dsay9QTnFYS3dSQllpZWlNRzJnOUx5eS83SG9CN1RJR2xKbXp1UWpqSWdCN3gvTk9LREx2aE5TcnNJTG5DZzUwZnhxbllTNlc5REJDUW9qdzRzVy92bEEybU5LR3ZtSXBWRERYYTZUbHRzbVBEWkNwTG54Z0d3bVhMQ1pKTERFTERQenpSU0VoZ1EraWU2cGtBckY1V0FiTlZpV0pucnBOaGhad3JOMzlXdWFXbXZqdENGNWFiM2RHSU4zQk1mRzFFUkppZSt4STZQL3RVMUFscGxTTGVDZ24wOW4rNE50bzE2TFJQWU84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" alt="Timo Steinfort">
+          <b>Timo Steinfort</b>
+          <span class="rl">Markt &amp; Strategie</span>
+          <p>Zehn Jahre <b>Immobilien-Bewirtschaftung</b>, Finanzen und Versicherung. Er weiss, welche Handwerker Aufträge bekommen — und welche nicht. Er hat selbst viele Handwerker beauftragt.</p>
+          <ul><li>Kaufmann EFZ</li><li>Double MSc in Real Estate &amp; Finance</li><li>M.I.T. — KI &amp; Transformation</li></ul>
+        </div>
+        <div class="tcard">
+          <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4QPARXhpZgAASUkqAAgAAAADAA4BAgCkAQAAMgAAADsBAgAlAAAA1gEAAGmHBAABAAAA+wEAAAAAAABTaWduYXR1cmU6IDNUWVc4UU9SR0FLWjNxL2gzaWp3VVZBMEVNQTBaMTdSSUlLWW5mMlgrSTZsYXRERGZwajRYNFV3N0dtL2JLWDBWNE9pWUhhQ2NxRWRoK1lVZWxLT2dpeE5aNWNkMk40S1JER0lWd0Y2TWdObWNGdW1LVlNFV1Bxc3R3M242eW1rK0NuOFdsRkUveWhOUDBUaVFKenhoaE5ZN0FpUGlsVTZmK3NPK3FaU3pyZCtCQ1kxajdNZ0lBN25Ua1NyMnpxTHBKU0llNnVxVHVZZk8zakgybGc2MjY2SVU1bm5DZy9JMWtRNUhtZUxGdlFTdzBYSElZTGFsZ1A3ekcyVFRSVTM0ZE5yazcwTnluT2M2VkNBVkVLN1liamUyN3V0R0xzM3FuOGJXaVlJdGRBSUtzTUU5QnVTbU5yZ3VyNFJVQzVNYTVvdDRGS3Vob2FjRUhpYU8wdDk1dmxHNnQyVFRZUUFnbUY2WE4yT09DOWoxMXJmL3J4U3BCTS8yT2xGY0JTcFVXeDd1UWo4UExWQjRwemt3aTJ0MlE9PQA4NzAwNGVhMy00YmFiLTRiNzItOTdlMi03MTI4MjAxYTMxMWUAAQCGkgcAqwEAAA0CAAAAAAAAQVNDSUkAAABTaWduYXR1cmU6IDNUWVc4UU9SR0FLWjNxL2gzaWp3VVZBMEVNQTBaMTdSSUlLWW5mMlgrSTZsYXRERGZwajRYNFV3N0dtL2JLWDBWNE9pWUhhQ2NxRWRoK1lVZWxLT2dpeE5aNWNkMk40S1JER0lWd0Y2TWdObWNGdW1LVlNFV1Bxc3R3M242eW1rK0NuOFdsRkUveWhOUDBUaVFKenhoaE5ZN0FpUGlsVTZmK3NPK3FaU3pyZCtCQ1kxajdNZ0lBN25Ua1NyMnpxTHBKU0llNnVxVHVZZk8zakgybGc2MjY2SVU1bm5DZy9JMWtRNUhtZUxGdlFTdzBYSElZTGFsZ1A3ekcyVFRSVTM0ZE5yazcwTnluT2M2VkNBVkVLN1liamUyN3V0R0xzM3FuOGJXaVlJdGRBSUtzTUU5QnVTbU5yZ3VyNFJVQzVNYTVvdDRG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" alt="David Staub">
+          <b>David Staub</b>
+          <span class="rl">Prozesse &amp; Abläufe</span>
+          <p>Gelernter <b>Elektroinstallateur EFZ</b>, später Data Science studiert. Er versteht Arbeitsplanung im Detail und weiss genau, was im Handwerker-Alltag wichtig ist.</p>
+          <ul><li>Elektroinstallateur EFZ</li><li>Offizier der Schweizer Armee</li><li>MSc Data Science</li></ul>
+        </div>
+        <div class="tcard">
+          <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4QNARXhpZgAASUkqAAgAAAADAA4BAgBkAQAAMgAAADsBAgAlAAAAlgEAAGmHBAABAAAAuwEAAAAAAABTaWduYXR1cmU6IExiTTZHVmdsaUE3ZmFtcUNyOFRXWkZxUENCcW04OTY3NHVONWszMWJ4Y2M2c3R5c2d0WmFzRDhNT3liTVdYamhMcFVWcCtlVjVnZU1oS1ZiS2ZidnYvb1c3QTkrbjF4S3pBR2taY1Z1ME9Ibm1zOGRGU3p1TkoxNm5KUVZJMWllZHpEZkk2OUxwZFE1WGNqNUhVRGpERlMwaFZXSi9WSWVSMjM4WGVaL0wyZzBqS2o1aERIRTk1dnFRd2p5Uys0Zk1CVHh2WEJXc1MwVndKMk9VOFFqKzgwQVAxY2dWWndKTWNaNUxvNXZXTUdWa2YrTExXMmNtOEdvNUovMGhyWGdLWEFGbVVsMTFMRjlybUtpRHRwSVB1cTdHd0xGdmZVTDRKcUNDUGoxZWJZY2crSmNVcGxQQUM4aEZuWTRSUWRDZlNIekd0RHFNTmtsVlp4aStjZndyZz09ADFjZjU4ZjYwLWFjMWItNDJlMS1iMmY5LTE1MjFjZmIzY2U4ZQABAIaSBwBrAQAAzQEAAAAAAABBU0NJSQAAAFNpZ25hdHVyZTogTGJNNkdWZ2xpQTdmYW1xQ3I4VFdaRnFQQ0JxbTg5Njc0dU41azMxYnhjYzZzdHlzZ3RaYXNEOE1PeWJNV1hqaExwVVZwK2VWNWdlTWhLVmJLZmJ2di9vVzdBOStuMXhLekFHa1pjVnUwT0hubXM4ZEZTenVOSjE2bkpRVkkxaWVkekRmSTY5THBkUTVYY2o1SFVEakRGUzBoVldKL1ZJZVIyMzhYZVovTDJnMGpLajVoREhFOTV2cVF3anlTKzRmTUJUeHZYQldzUzBWd0oyT1U4UWorODBBUDFjZ1Zad0pNY1o1TG81dldNR1ZrZitMTFcyY204R281Si8waHJYZ0tYQUZtVWwxMUxGOXJtS2lEdHBJUHVxN0d3TEZ2ZlVMNEpxQ0NQajFlYlljZytKY1VwbFBBQzhoRm5ZNFJRZENmU0h6R3REcU1Oa2xWWnhpK2Nmd3JnPT3/2wBDAAUEBAQEAwUEBAQGBQUGCA0ICAcHCBALDAkNExAUExIQEhIUFx0ZFBYc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" alt="Sinan Sen">
+          <b>Sinan Sen</b>
+          <span class="rl">Systeme &amp; Technik</span>
+          <p>Betreut seit über zehn Jahren <b>die IT von Schweizer Betrieben</b>. Er sorgt dafür, dass die Technik läuft — und er ist derjenige, den Sie anrufen, wenn sie es nicht tut.</p>
+          <ul><li>Systemtechniker EFZ</li><li>10+ Jahre System Engineering</li><li>Microsoft- &amp; Cloud-Experte</li></ul>
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<script>
+(function(){
+  var CHECK_URL='https://chat-api.amplifyr-digital.ch/api/v1/chat/demo_handwerker';
+  var SESSION_ID=(function(){var k='amp_sid',v=sessionStorage.getItem(k);if(!v){v='s-'+Math.random().toString(36).slice(2,11);sessionStorage.setItem(k,v);}return v;})();
+  var PLACE_ID='demo';
+  var ctx={firmenname:"Picassino Malerei GmbH",firmenprofil:"Picassino Malerei GmbH ist ein Malergesch\u00e4ft in Z\u00fcrich mit 12 Jahren Erfahrung. Wir sind spezialisiert auf Innen- und Aussenanstriche, Fassadenrenovierungen und dekorative Oberfl\u00e4chen. Unser Team aus 8 Fachleuten arbeitet sorgf\u00e4ltig und p\u00fcnktlich.",inhaber_name:"Marco Rossi",inhaber_namen:[]};
+  var thread=document.getElementById('kb-thread');
+  var inp=document.getElementById('kb-inp');
+  var send=document.getElementById('kb-send');
+  var shell=document.getElementById('kb-shell');
+  var chips=document.getElementById('kb-chips');
+  var progress=document.getElementById('kb-progress');
+  var progressFill=document.getElementById('kb-progress-fill');
+  var progressLabel=document.getElementById('kb-progress-label');
+  if(!thread||!inp||!send)return;
+
+  var history=[];
+  var busy=false;
+  var MAX_CHARS=80, PASSIVE=8;
+
+  /* ── Neugier-Balken: per IntersectionObserver einblenden ── */
+  if('IntersectionObserver' in window){
+    var ioP=new IntersectionObserver(function(es){
+      if(!es[0].isIntersecting)return;
+      ioP.disconnect();
+      progress.style.opacity='1';
+      setTimeout(function(){progressFill.style.width=PASSIVE+'%';},200);
+    },{threshold:.3});
+    ioP.observe(document.getElementById('ki-berater'));
+  } else {
+    progress.style.opacity='1';
+    progressFill.style.width=PASSIVE+'%';
+  }
+
+  /* ── Neugier-Balken: Länge der Eingabe messen ── */
+  function updateProgressBar(len){
+    if(len===0){
+      progressFill.style.width=PASSIVE+'%';
+      progressLabel.textContent='System bereit f\u00fcr Input \u2026';
+      progressLabel.style.color='var(--muted)';
+    } else {
+      var pct=PASSIVE+Math.min(len/MAX_CHARS,1)*(92-PASSIVE);
+      progressFill.style.width=pct.toFixed(1)+'%';
+      progressLabel.textContent=pct>=80?'Genug f\u00fcr eine Analyse \u2026':'Analyse wird vorbereitet \u2026';
+      progressLabel.style.color='var(--brand)';
+    }
+  }
+
+  /* ── Ladebalken w\u00e4hrend API-Call ── */
+  function loadingProgress(on){
+    if(on){progressFill.style.width='92%';progressLabel.textContent='Analysiere \u2026';progressLabel.style.color='var(--brand)';}
+    else{progressFill.style.width=PASSIVE+'%';progressLabel.textContent='System bereit f\u00fcr Input \u2026';progressLabel.style.color='var(--muted)';}
+  }
+
+  function showThread(){
+    if(thread.style.display==='flex')return;
+    thread.style.display='flex';
+  }
+
+  function addUserMsg(text){
+    showThread();
+    var d=document.createElement('div');
+    d.style.cssText='display:flex;justify-content:flex-end';
+    var b=document.createElement('div');
+    b.className='kb-umsg';
+    b.style.cssText='background:var(--brand-dark);color:#fff;border-radius:14px 14px 4px 14px;padding:10px 16px;font-size:.9375rem;line-height:1.55;max-width:82%';
+    b.textContent=text;
+    d.appendChild(b);thread.appendChild(d);
+  }
+
+  function addTyping(){
+    showThread();
+    var d=document.createElement('div');
+    d.className='kb-typing';
+    d.innerHTML='<span></span><span></span><span></span>';
+    thread.appendChild(d);
+    thread.scrollTop=thread.scrollHeight;
+    return d;
+  }
+
+  function addAiMsg(data){
+    showThread();
+    var d=document.createElement('div');
+    d.style.cssText='display:flex;flex-direction:column;gap:8px';
+    var card=document.createElement('div');
+    card.style.cssText='background:#fff;border:1px solid var(--line);border-radius:14px 14px 14px 4px;padding:16px 18px;font-size:.9375rem;line-height:1.65;color:var(--navy)';
+    card.textContent=data.antwort||'';
+    d.appendChild(card);
+    thread.appendChild(d);
+    thread.scrollTop=thread.scrollHeight;
+  }
+
+  function submit(text){
+    if(busy)return;
+    text=(text||'').trim();
+    if(!text)return;
+    busy=true;send.disabled=true;
+    inp.dataset.sent='1';
+    addUserMsg(text);
+    inp.value='';inp.placeholder='';inp.style.height='auto';
+    history.push({role:'user',content:text});
+    loadingProgress(true);
+    var typing=addTyping();
+    fetch(CHECK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text,messages:history,context:ctx,session_id:SESSION_ID})})
+      .then(function(r){
+        if(!r.ok||!r.body)throw new Error('network');
+        var reader=r.body.getReader();
+        var decoder=new TextDecoder();
+        var buf='';
+        var card=null;
+        var fullText='';
+        function read(){
+          reader.read().then(function(chunk){
+            if(chunk.done)return;
+            buf+=decoder.decode(chunk.value,{stream:true});
+            var parts=buf.split('\n\n');
+            buf=parts.pop();
+            parts.forEach(function(part){
+              if(!part.startsWith('data:'))return;
+              try{
+                var ev=JSON.parse(part.slice(5).trim());
+                if(ev.t!==undefined){
+                  if(!card){
+                    typing.remove();
+                    var wrap=document.createElement('div');
+                    wrap.style.cssText='display:flex;flex-direction:column;gap:8px';
+                    card=document.createElement('div');
+                    card.style.cssText='background:#fff;border:1px solid var(--line);border-radius:14px 14px 14px 4px;padding:16px 18px;font-size:.9375rem;line-height:1.65;color:var(--navy)';
+                    wrap.appendChild(card);
+                    thread.appendChild(wrap);
+                  }
+                  fullText+=ev.t;
+                  card.textContent=fullText;
+                  thread.scrollTop=thread.scrollHeight;
+                } else if(ev.done){
+                  loadingProgress(false);
+                  history.push({role:'assistant',content:ev.antwort||fullText});
+                  busy=false;send.disabled=false;
+                }
+              }catch(e){}
+            });
+            read();
+          }).catch(function(){
+            typing.remove();
+            loadingProgress(false);
+            addAiMsg({antwort:'Momentan nicht erreichbar \u2014 bitte gleich nochmal versuchen.'});
+            busy=false;send.disabled=false;
+          });
+        }
+        read();
+      })
+      .catch(function(){
+        typing.remove();
+        loadingProgress(false);
+        addAiMsg({antwort:'Momentan nicht erreichbar \u2014 bitte gleich nochmal versuchen.'});
+        busy=false;send.disabled=false;
+      });
+  }
+
+  document.querySelectorAll('#ki-berater .kb-chip').forEach(function(c){
+    c.addEventListener('click',function(){submit(this.textContent);});
+  });
+
+  inp.addEventListener('input',function(){
+    this.style.height='auto';this.style.height=Math.min(this.scrollHeight,140)+'px';
+    if(!busy)updateProgressBar(this.value.trim().length);
+  });
+  inp.addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();submit(inp.value);}});
+  inp.addEventListener('focus',function(){shell.style.borderColor='var(--brand)';shell.style.boxShadow='0 0 0 3px rgba(56,20,15,.08)';});
+  inp.addEventListener('blur',function(){shell.style.borderColor='var(--line)';shell.style.boxShadow='0 4px 24px -8px rgba(56,20,15,.1)';});
+  send.addEventListener('click',function(){submit(inp.value);});
+
+  /* ── Autoplay-Demo: tippt Beispiele solange kein Fokus ── */
+  (function(){
+    var DEMOS=[
+      '\u00abZu teuer f\u00fcr meinen kleinen Betrieb\u00bb',
+      '\u00abZu kompliziert f\u00fcr mich und mein Team\u00bb',
+      '\u00abHab schon Software und IT-ler\u00bb',
+      '\u00abBin sowieso ausgebucht\u00bb',
+      '\u00abWas geht automatisch raus?\u00bb',
+      '\u00abWie viel Arbeit f\u00fcr mich?\u00bb'
+    ];
+    var stopped=false,timers=[],demoIdx=0;
+
+    function later(fn,ms){
+      if(stopped)return;
+      var t=setTimeout(function(){if(!stopped)fn();},ms);
+      timers.push(t);
+    }
+
+    function stopDemo(clearFld){
+      if(stopped)return;
+      stopped=true;
+      timers.forEach(clearTimeout);timers=[];
+      if(clearFld){inp.value='';updateProgressBar(0);}
+    }
+
+    ['focus','click','keydown'].forEach(function(ev){
+      inp.addEventListener(ev,function(){stopDemo(true);},{passive:true,once:false});
+    });
+    send.addEventListener('click',function(){stopDemo(false);},{once:false});
+
+    function typeText(text,done){
+      inp.value='';
+      var i=0;
+      function next(){
+        if(stopped)return;
+        if(i<text.length){
+          inp.value=text.slice(0,++i);
+          updateProgressBar(inp.value.trim().length);
+          later(next,20+Math.random()*18);
+        } else { done(); }
+      }
+      later(next,0);
+    }
+
+    function runDemo(){
+      if(stopped)return;
+      var text=DEMOS[demoIdx%DEMOS.length];demoIdx++;
+      typeText(text,function(){
+        /* kurz warten, dann löschen und nächsten starten */
+        later(function(){
+          if(stopped)return;
+          /* Feld leeren */
+          inp.value='';updateProgressBar(0);
+          later(runDemo,600);
+        },2200);
+      });
+    }
+
+    /* Start per IntersectionObserver, nur auf Desktop */
+    if('IntersectionObserver' in window&&window.innerWidth>640){
+      var ioAuto=new IntersectionObserver(function(es){
+        if(!es[0].isIntersecting||stopped)return;
+        ioAuto.disconnect();
+        later(runDemo,800);
+      },{threshold:.25});
+      ioAuto.observe(document.getElementById('ki-berater'));
+    }
+  })();
+
+  // Typewriter placeholder
+  (function(){
+    var hints=[
+      '«Zu teuer für meinen kleinen Betrieb»',
+      '«Zu kompliziert für mich und mein Team»',
+      '«Bin sowieso ausgebucht»'
+    ];
+    var el=document.getElementById('kb-inp');
+    if(!el)return;
+    var idx=0,pos=0,del=false,t;
+    function tick(){
+      if(el.dataset.sent||el.dataset.typed){el.placeholder='';return;}
+      var s=hints[idx];
+      if(!del){pos++;el.placeholder=s.slice(0,pos);if(pos>=s.length){del=true;t=setTimeout(tick,1800);return;}}
+      else{pos--;el.placeholder=s.slice(0,pos);if(pos<=0){del=false;idx=(idx+1)%hints.length;t=setTimeout(tick,400);return;}}
+      t=setTimeout(tick,del?28:58);
+    }
+    if(window.innerWidth<=640)t=setTimeout(tick,1000);
+    el.addEventListener('focus',function(){clearTimeout(t);el.placeholder='';});
+    el.addEventListener('input',function(){if(el.value)el.dataset.typed='1';});
+    el.addEventListener('blur',function(){if(!el.value&&!el.dataset.sent&&!el.dataset.typed){pos=0;del=false;t=setTimeout(tick,800);}});
+  })();
+})();
+</script>
+
+<section class="cta" id="cta">
+  <div class="wrap">
+    <div class="eyebrow">Und jetzt?</div>
+<h2 id="cta-h">Ein Gespräch. Danach erkennen Sie, was für Sie drinliegt.</h2>
+    <p class="sub">Am Telefon oder bei Ihnen vor Ort. Wir gehen Ihre Abläufe durch — von der Offerte bis zur Buchhaltung — und zeigen Ihnen, wie viel Büroaufwand wegfällt.</p>
+    <div class="ctabtns">
+      <a href="https://cal.com/amplifyr/demo" target="_blank" rel="noopener" class="btn btn-teams">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        30-Minuten-Termin buchen
+      </a>
+      <a href="https://wa.me/41790000000" target="_blank" rel="noopener" class="btn btn-wa">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.526 5.845L.057 23.928a.5.5 0 0 0 .623.607l6.267-1.643A11.942 11.942 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.682-.524-5.204-1.435l-.373-.22-3.873 1.015 1.031-3.763-.242-.387A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+    <p class="ctafuss"><small>Beispielhafte Darstellung, wie Picassino Malerei GmbH digital aufgestellt sein könnte. Erstellt im August 2026 von Amplifyr — Inhalte basieren auf picassino.ch.</small></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Amplifyr GmbH · <a href="mailto:info@amplifyr.ch" style="color:inherit">info@amplifyr.ch</a></div>
+</footer>
+
+<div id="fchat" class="fchat">
+
+  <!-- Optionen-Panel (erscheint zuerst) -->
+  <div class="fchat-opts" id="fchatOpts">
+    <div class="fchat-opts-head">
+      <div>
+        <b>Kontakt aufnehmen</b>
+        <span>Wählen Sie Ihren Kanal</span>
+      </div>
+      <button id="fchatOptsClose" aria-label="Schliessen" style="background:none;border:none;cursor:pointer;padding:4px;color:rgba(193,59,42,.8);line-height:0;flex-shrink:0;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <a class="fchat-opt-row" href="https://cal.com/amplifyr/demo" target="_blank" rel="noopener">
+      <span class="fchat-opt-icon" style="background:rgba(56,20,15,.10);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38140f" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      </span>
+      <div class="fchat-opt-label"><b>30-Minuten-Termin</b><span>Direkt im Kalender buchen</span></div>
+      <svg class="fchat-opt-chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+    </a>
+
+    <a class="fchat-opt-row" href="https://wa.me/41790000000" target="_blank" rel="noopener">
+      <span class="fchat-opt-icon" style="background:#25D366;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.526 5.845L.057 23.928a.5.5 0 0 0 .623.607l6.267-1.643A11.942 11.942 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.682-.524-5.204-1.435l-.373-.22-3.873 1.015 1.031-3.763-.242-.387A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+      </span>
+      <div class="fchat-opt-label"><b>WhatsApp</b><span>Schreiben Sie uns direkt!</span></div>
+      <svg class="fchat-opt-chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+    </a>
+
+    <a class="fchat-opt-row" href="tel:+41 79 000 00 00">
+      <span class="fchat-opt-icon" style="background:#f0f3f7;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38140f" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2.1z"/></svg>
+      </span>
+      <div class="fchat-opt-label"><b>+41 79 000 00 00</b><span>Jetzt anrufen</span></div>
+      <svg class="fchat-opt-chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+    </a>
+    <a class="fchat-opt-row" href="mailto:info@amplifyr.ch">
+      <span class="fchat-opt-icon" style="background:#f0f3f7;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38140f" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </span>
+      <div class="fchat-opt-label"><b>E-Mail schreiben</b><span>info@amplifyr.ch</span></div>
+      <svg class="fchat-opt-chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+    </a>
+
+    <button class="fchat-opt-row" id="fchatOptContact" type="button">
+      <span class="fchat-opt-icon" style="background:rgba(56,20,15,.10);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38140f" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 9h8M8 13h5"/></svg>
+      </span>
+      <div class="fchat-opt-label"><b>Kontaktieren Sie mich!</b><span>Wir melden uns bei Ihnen</span></div>
+      <svg class="fchat-opt-chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+  </div>
+
+  <!-- Kontakt-Formular-Fenster -->
+  <div class="fchat-contact-win" id="fchatContactWin">
+    <div class="fchat-bar">
+      <div class="fchat-bar-info">
+        <b>Kontaktieren Sie mich</b>
+        <small>Wir melden uns schnellstmöglich</small>
+      </div>
+      <button id="fchatContactWinClose" aria-label="Schliessen" style="background:none;border:none;cursor:pointer;padding:4px;color:rgba(193,59,42,.8);line-height:0;margin-left:auto;flex-shrink:0;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="fchat-cwin-body">
+      <div id="fchatCwinForm">
+        <div class="fchat-cwin-radios">
+          <label class="fchat-cwin-radio selected" id="fchatRadioEmailLabel">
+            <input type="radio" name="fchatKanal" value="email" id="fchatRadioEmail" checked>
+            E-Mail
+          </label>
+          <label class="fchat-cwin-radio" id="fchatRadioTelLabel">
+            <input type="radio" name="fchatKanal" value="tel" id="fchatRadioTel">
+            Telefon
+          </label>
+        </div>
+        <input id="fchatCwinInp" class="fchat-cwin-inp" type="email" placeholder="Ihre E-Mail-Adresse">
+        <textarea id="fchatCwinTa" class="fchat-cwin-ta" placeholder="Ihr Kommentar…" rows="3"></textarea>
+        <button type="button" id="fchatCwinSubmit" class="fchat-cwin-submit">Absenden &#8594;</button>
+      </div>
+      <div class="fchat-cwin-ok" id="fchatCwinOk">
+        <svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="28" cy="28" r="28" fill="#dcfce7"/>
+          <circle cx="28" cy="28" r="22" fill="#16a34a"/>
+          <path d="M18 28.5l7 7 13-14" stroke="#fff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <p>Danke &#8212; wir melden uns bald!</p>
+        <span>Sie können dieses Fenster schliessen.</span>
+      </div>
+    </div>
+  </div>
+
+  <button class="fchat-fab" id="fchatBtn" aria-label="Kontakt aufnehmen" aria-expanded="false">
+    <div class="fchat-badge"></div>
+    <img class="fc-chat" src="https://pub-e99a6cc0592a41d3906183633a0ead00.r2.dev/handwerker/img/berater-david.jpg" alt="Berater" aria-hidden="true" style="width:56px;height:56px;object-fit:cover;border-radius:50%;display:block;">
+    <svg class="fc-x" viewBox="0 0 24 24" aria-hidden="true" style="width:22px;height:22px;stroke:#fff;stroke-width:2.5;fill:none;display:none;"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+</div>
+
+<script>
+(function(){
+  if(!('IntersectionObserver' in window)){document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in')});return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0,rootMargin:"0px 0px -60px 0px"});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+})();
+
+(function(){
+  var rail=document.querySelector('.jrail');
+  if(!rail)return;
+  var links=[].slice.call(rail.querySelectorAll('a'));
+  var ziele=links.map(function(a){return document.querySelector(a.getAttribute('href'));});
+  var hero=document.querySelector('.hero');
+  var dunkel=document.querySelector('.cta');
+  var wartet=false,aktiv=-1;
+  function oben(el){return el.getBoundingClientRect().top+window.pageYOffset;}
+  function mal(){
+    wartet=false;
+    var y=window.pageYOffset,h=window.innerHeight,n=ziele.length;
+    rail.classList.toggle('on',y>(hero?oben(hero)+hero.offsetHeight-140:200));
+    if(dunkel){rail.classList.toggle('dunkel',dunkel.getBoundingClientRect().top<rail.getBoundingClientRect().bottom);}
+    // Fill exactly to center of active dot
+    var activeLi=rail.querySelectorAll('li')[i];
+    var fillPx=activeLi?activeLi.offsetTop+activeLi.offsetHeight/2:0;
+    rail.style.setProperty('--p',fillPx+'px');
+    // Active: last section whose top is within upper 35% of viewport
+    var thresh=y+80;
+    var i=0;
+    for(var k=n-1;k>=0;k--){if(ziele[k]&&oben(ziele[k])<=thresh){i=k;break;}}
+    // At bottom of page: force last section active
+    if((y+h)>=document.documentElement.scrollHeight-10){i=n-1;}
+    if(i===aktiv)return;
+    aktiv=i;
+    links.forEach(function(a,k){if(k===i)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current');});
+  }
+  function tick(){if(!wartet){wartet=true;requestAnimationFrame(mal);}}
+  window.addEventListener('scroll',tick,{passive:true});
+  window.addEventListener('resize',tick);
+  if('ResizeObserver' in window)new ResizeObserver(tick).observe(document.body);
+  mal();
+})();
+
+(function(){
+  var el=document.getElementById('zs-root');
+  if(!el)return;
+  if(!('IntersectionObserver' in window)){el.classList.add('zs-anim');return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){el.classList.add('zs-anim');io.disconnect();}});},{threshold:0,rootMargin:"0px 0px -120px 0px"});
+  io.observe(el);
+})();
+
+(function(){
+  var btn=document.getElementById('fchatBtn');
+  var wrap=document.getElementById('fchat');
+  if(!btn)return;
+
+  btn.addEventListener('click',function(){
+    if(wrap.classList.contains('open-opts')||wrap.classList.contains('open-contact')){
+      wrap.classList.remove('open-opts','open-contact');
+      btn.setAttribute('aria-expanded','false');
+    } else {
+      wrap.classList.add('open-opts');
+      btn.setAttribute('aria-expanded','true');
+    }
+  });
+
+  var optsClose=document.getElementById('fchatOptsClose');
+  if(optsClose) optsClose.addEventListener('click',function(){
+    wrap.classList.remove('open-opts','open-contact');
+    btn.setAttribute('aria-expanded','false');
+  });
+
+  var optContact=document.getElementById('fchatOptContact');
+  if(optContact) optContact.addEventListener('click',function(){
+    wrap.classList.remove('open-opts');
+    wrap.classList.add('open-contact');
+  });
+
+  var contactWinClose=document.getElementById('fchatContactWinClose');
+  if(contactWinClose) contactWinClose.addEventListener('click',function(){
+    wrap.classList.remove('open-opts','open-contact');
+    btn.setAttribute('aria-expanded','false');
+  });
+
+  var radioEmail=document.getElementById('fchatRadioEmail');
+  var radioTel=document.getElementById('fchatRadioTel');
+  var cwinInp=document.getElementById('fchatCwinInp');
+  function updateKanal(){
+    var isTel=radioTel&&radioTel.checked;
+    if(cwinInp){cwinInp.type=isTel?'tel':'email';cwinInp.placeholder=isTel?'Ihre Telefonnummer':'Ihre E-Mail-Adresse';}
+    var lE=document.getElementById('fchatRadioEmailLabel');
+    var lT=document.getElementById('fchatRadioTelLabel');
+    if(lE) lE.classList.toggle('selected',!isTel);
+    if(lT) lT.classList.toggle('selected',isTel);
+  }
+  if(radioEmail) radioEmail.addEventListener('change',updateKanal);
+  if(radioTel) radioTel.addEventListener('change',updateKanal);
+
+  var cwinSubmit=document.getElementById('fchatCwinSubmit');
+  if(cwinSubmit) cwinSubmit.addEventListener('click',function(){
+    var kanal=radioTel&&radioTel.checked?'Telefon':'E-Mail';
+    var adresse=cwinInp?cwinInp.value.trim():'';
+    var kommentar=document.getElementById('fchatCwinTa')?document.getElementById('fchatCwinTa').value.trim():'';
+    if(!adresse) return;
+    var fd=new FormData();
+    fd.append('access_key','DEMO_KEY');
+    fd.append('subject','Kontaktanfrage — Picassino Malerei GmbH');
+    fd.append('Kanal',kanal);fd.append('Adresse',adresse);fd.append('Kommentar',kommentar);
+    fd.append('Unternehmensname','Picassino Malerei GmbH');
+    cwinSubmit.disabled=true;cwinSubmit.textContent='Wird gesendet…';
+    fetch('https://api.web3forms.com/submit',{method:'POST',body:fd})
+      .then(function(r){return r.json();})
+      .then(function(d){
+        if(d.success){
+          var f=document.getElementById('fchatCwinForm');var ok=document.getElementById('fchatCwinOk');
+          if(f) f.style.display='none';if(ok) ok.style.display='flex';
+        } else {cwinSubmit.disabled=false;cwinSubmit.textContent='Absenden →';}
+      }).catch(function(){cwinSubmit.disabled=false;cwinSubmit.textContent='Absenden →';});
+  });
+})();
+
+</script>
+
+
+<script>
+fetch('https://handwerker-api.amplifyr-digital.ch'+'/api/v1/betriebe/track/picassino-malerei-gmbh-zuerich',{method:'POST'}).catch(function(){});
+</script>
+</body>

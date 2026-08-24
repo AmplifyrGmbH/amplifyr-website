@@ -24,6 +24,20 @@
   padding-inline: 20px;
 }
 
+/* Chat-Bereich schmaler als die Section: auf voller 1020px-Breite wirkt die
+   Eingabebox wie ein flacher Balken und die Textzeilen werden zu lang. */
+#ki-berater #kb-thread,
+#ki-berater #kb-shell,
+#ki-berater #kb-progress {
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#ki-berater h2 {
+  text-align: center;
+}
+
 #ki-berater .kb-chip {
   font-family: inherit;
   font-size: .8rem;
@@ -35,6 +49,14 @@
   cursor: pointer;
   transition: background .15s, border-color .15s, color .15s;
   white-space: nowrap;
+}
+
+/* Mobile-Varianten sind kürzer/anders formuliert als die Desktop-Chips
+   (siehe @media unten) — ohne diese Regel wurden bisher beide Sets
+   gleichzeitig angezeigt (Duplikate wie "Passt das (auch) für meine
+   Branche?"). Standardmässig ausgeblendet, erst <640px eingeblendet. */
+#ki-berater .kb-chip-mobile {
+  display: none;
 }
 
 #ki-berater .kb-chip:hover {
@@ -76,21 +98,12 @@
 }
 
 @media (max-width: 640px) {
-  #ki-berater { min-height: 85vh; background: var(--kb-brand-dark) !important; border-color: transparent !important; display: flex; align-items: center; padding: 60px 0; }
+  #ki-berater { min-height: 85vh; display: flex; align-items: center; padding: 60px 0; }
   #ki-berater .container { padding-inline: 16px; }
-  #ki-berater h2 { color: #fff; font-size: clamp(1.4rem, 6.5vw, 1.9rem); text-align: center; white-space: nowrap; }
-  #ki-berater > div > p { color: rgba(255,255,255,.65); text-align: center; }
-  #ki-berater #kb-send { background: rgba(255,255,255,.15) !important; box-shadow: none !important; }
-  #ki-berater #kb-progress-label { color: rgba(255,255,255,.95) !important; }
-  #ki-berater #kb-progress-fill { background: var(--kb-brand) !important; }
-  #ki-berater #kb-progress > div { background: rgba(255,255,255,.30) !important; }
-  #ki-berater .kb-umsg { background: rgba(255,255,255,.18) !important; }
-  #ki-berater #kb-shell { background: rgba(255,255,255,.08) !important; border-color: rgba(255,255,255,.18) !important; box-shadow: 0 8px 32px rgba(0,0,0,.25) !important; backdrop-filter: blur(12px); }
-  #ki-berater #kb-inp { min-height: 52px !important; color: #fff !important; font-size: 1rem !important; }
-  #ki-berater #kb-inp::placeholder { color: rgba(255,255,255,.45) !important; }
-  #ki-berater #kb-shell svg[viewBox="0 0 24 24"]:first-of-type { stroke: rgba(255,255,255,.6) !important; }
+  #ki-berater h2 { font-size: clamp(1.4rem, 6.5vw, 1.9rem); text-align: center; white-space: nowrap; }
+  #ki-berater > div > p { text-align: center; }
+  #ki-berater #kb-inp { min-height: 52px !important; font-size: 1rem !important; }
   #ki-berater [id=kb-chips] { display: flex; flex-direction: column; gap: 6px; margin-top: 14px; }
   #ki-berater .kb-chip-desktop { display: none !important; }
-  #ki-berater .kb-chip-mobile { white-space: normal; text-align: left; border-radius: 100px; padding: 7px 14px; font-size: .8rem; background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.18); color: rgba(255,255,255,.75); width: auto; align-self: flex-start; }
-  #ki-berater .kb-chip-mobile:hover { background: rgba(255,255,255,.18); border-color: rgba(255,255,255,.40); color: #fff; }
+  #ki-berater .kb-chip-mobile { display: inline-block; white-space: normal; text-align: left; border-radius: 100px; padding: 7px 14px; font-size: .8rem; width: auto; align-self: flex-start; }
 }

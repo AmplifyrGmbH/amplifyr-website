@@ -26,6 +26,7 @@
   var inp = document.getElementById('kb-inp');
   var send = document.getElementById('kb-send');
   var shell = document.getElementById('kb-shell');
+  var chips = document.getElementById('kb-chips');
   var progress = document.getElementById('kb-progress');
   var progressFill = document.getElementById('kb-progress-fill');
   var progressLabel = document.getElementById('kb-progress-label');
@@ -111,6 +112,7 @@
     if (!text) return;
     busy = true; send.disabled = true;
     inp.dataset.sent = '1';
+    if (chips) chips.style.display = 'none';
     addUserMsg(text);
     inp.value = ''; inp.placeholder = ''; inp.style.height = 'auto';
     history.push({ role: 'user', content: text });

@@ -1108,6 +1108,12 @@ footer {
   padding-block: var(--space-4);
 }
 
+/* Der fixierte Chat-Button (fchat.css, bottom-right) legt sich sonst über die
+   letzte Footer-Zeile (z.B. den AGB-Link) — hier Platz dafür reservieren. */
+@media (max-width: 640px) {
+  footer { padding-bottom: calc(var(--space-4) + 72px); }
+}
+
 
 .footer-inner {
   display: flex;
@@ -1137,6 +1143,10 @@ footer {
 .footer-copy {
   font-size: 0.85rem;
   color: var(--text-muted);
+}
+
+@media (max-width: 640px) {
+  .footer-copy { display: none; }
 }
 
 .footer-tel {
@@ -1300,7 +1310,7 @@ footer {
 .site-cta {
   position: relative;
   background: var(--navy);
-  padding-block: clamp(3rem, 6vw, 4.5rem);
+  padding-block: clamp(1.75rem, 3vw, 2.25rem);
   overflow: hidden;
 }
 
@@ -1326,15 +1336,16 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-5);
+  gap: var(--space-3);
 }
 
 .site-cta-content h2 {
   color: #fff;
   margin: 0;
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
 }
 
-.site-cta-content > p {
+.site-cta-content .site-cta-lead {
   color: rgba(255,255,255,0.75);
   font-size: 1rem;
   margin: 0;
@@ -1350,8 +1361,8 @@ footer {
 /* ── FAQ innerhalb der dunklen CTA (eingeklappt, zuunterst) ── */
 .site-cta-faq {
   width: 100%;
-  margin-top: var(--space-3);
-  padding-top: var(--space-7);
+  margin-top: var(--space-1);
+  padding-top: var(--space-4);
   border-top: 1px solid rgba(255,255,255,0.15);
 }
 
@@ -1454,7 +1465,8 @@ footer {
 
 @media (max-width: 640px) {
   .site-cta-blob { filter: blur(50px); animation-duration: 35s; }
-  .site-cta-content > p { display: none; }
+  .site-cta-content .site-cta-lead { font-size: 0.9rem; }
+  .site-cta-content > .section-label { display: none; }
 }
 
 /* ── FSH — Full-Screen Hero (shared across service pages) ── */
@@ -1530,6 +1542,8 @@ footer {
   margin-top: var(--space-8);
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-4);
 }
 
 .fsh-subnav {
@@ -1638,6 +1652,13 @@ footer {
   margin-bottom: var(--space-12);
 }
 
+/* Ohne sichtbare Liste (Standardzustand des einklappbaren FAQ-Blocks) braucht
+   es den grossen Abstand zur Liste darunter nicht — spart spuerbar Hoehe,
+   v.a. im CTA-Block, wo die FAQ meist eingeklappt startet. */
+.kit-faq-header:has(+ .kit-faq-list.is-collapsed) {
+  margin-bottom: 0;
+}
+
 .kit-faq-header h2 {
   margin-block: var(--space-3) 0;
 }
@@ -1730,6 +1751,12 @@ footer {
 }
 .faq-toggle-icon { transition: transform 0.2s; }
 .faq-toggle.is-open .faq-toggle-icon { transform: rotate(180deg); }
+
+/* Mobile: das Label "Häufige Fragen" steht im Pill selbst (siehe main.js),
+   die separate Zeile darüber wird redundant und entfaellt — spart Höhe. */
+@media (max-width: 640px) {
+  .kit-faq-header .section-label { display: none; }
+}
 
 /* ============================================================
    SHARED: SCROLL-LEGENDE (.jrail)

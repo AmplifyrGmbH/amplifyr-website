@@ -235,7 +235,11 @@
         list.hidden = !open;
         btn.setAttribute('aria-expanded', open ? 'true' : 'false');
         btn.classList.toggle('is-open', open);
-        lbl.textContent = open ? 'Antworten ausblenden' : 'Antworten anzeigen';
+        // Mobile: Pill traegt selbst das Label "Häufige Fragen" (die Zeile
+        // darueber ist dort per CSS ausgeblendet), Chevron zeigt den Zustand.
+        lbl.textContent = window.innerWidth <= 640
+          ? 'Häufige Fragen'
+          : (open ? 'Antworten ausblenden' : 'Antworten anzeigen');
       }
       set(false); // zugeklappt starten
       btn.addEventListener('click', function () {

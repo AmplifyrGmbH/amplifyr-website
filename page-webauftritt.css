@@ -4,13 +4,18 @@
    ============================================== */
 
 :root {
-  --wa-navy:      #1A2744;
+  /* Konsolidiert auf die geteilten Tokens aus style.css (einheitliches
+     Design-System) — Werte, fuer die dort bereits ein Aequivalent existiert,
+     werden referenziert statt erneut hart hinterlegt. Glass-/Mono-/Accent-
+     Tokens ohne Aequivalent bleiben vorerst bestehen (werden in den Phasen
+     zur Karten- bzw. Schriftvereinheitlichung abgeloest). */
+  --wa-navy:      var(--navy);
   --wa-navy-mid:  #2a3f6e;
-  --wa-steel:     #B0C4DE;
+  --wa-steel:     var(--steel);
   --wa-steel-dim: #d4e2f4;
-  --wa-ink:       #1A2744;
-  --wa-ink-soft:  #4a5a7a;
-  --wa-ink-dim:   #8290ab;
+  --wa-ink:       var(--navy);
+  --wa-ink-soft:  var(--text-muted);
+  --wa-ink-dim:   var(--text-muted);
 
   /* Akzent als Schrift. Auf hellem Grund braucht es einen dunkleren Ton als
      die Flaechenfarbe #B0C4DE, sonst ist er unlesbar (2,5:1). #0067A8 stammt
@@ -2736,7 +2741,7 @@
    eigentliche Punkt ist, und es gibt keinen Anfragen-Knopf.
 ============================================================ */
 
-.wa-wrap #betrieb .wrap { max-width: 760px; }
+.wa-wrap #betrieb .wrap { max-width: 1040px; }
 
 .wa-wrap .sorglos-card {
   background: var(--wa-glass-bg2);
@@ -2754,6 +2759,104 @@
 @media (max-width: 700px) {
   .wa-wrap .sorglos-card { padding: 28px 22px; }
   .wa-wrap .sorglos-list { grid-template-columns: 1fr; }
+}
+
+/* ── Sorglos-Grid: Nummerierte Karten statt Bullet-Liste (Design-Import) ── */
+.wa-wrap .sorglos-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-bottom: 20px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid var(--wa-glass-bd);
+}
+.wa-wrap .sorglos-toolbar-label {
+  font-family: var(--wa-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--wa-navy-mid);
+  opacity: 0.85;
+}
+
+.wa-wrap .sorglos-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.wa-wrap .sorglos-item {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--wa-glass-bd);
+  border-right: 1px solid var(--wa-glass-bd);
+  transition: background 180ms ease;
+}
+.wa-wrap .sorglos-item:nth-child(3n+1) {
+  padding-left: 0;
+}
+.wa-wrap .sorglos-item:nth-child(3n) {
+  padding-right: 0;
+  border-right: none;
+}
+.wa-wrap .sorglos-item:nth-child(n+7) {
+  border-bottom: none;
+}
+.wa-wrap .sorglos-item:hover {
+  background: rgba(255,255,255,0.55);
+}
+.wa-wrap .sorglos-badge {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.wa-wrap .sorglos-check {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.75);
+  border: 1px solid var(--wa-glass-bd);
+  color: var(--wa-accent-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  line-height: 1;
+}
+.wa-wrap .sorglos-num {
+  font-family: var(--wa-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.06em;
+  color: var(--wa-ink-dim);
+}
+.wa-wrap .sorglos-lead {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.4;
+  font-weight: 600;
+  color: var(--wa-navy);
+}
+@media (max-width: 700px) {
+  .wa-wrap .sorglos-grid { grid-template-columns: 1fr; }
+  .wa-wrap .sorglos-item,
+  .wa-wrap .sorglos-item:nth-child(3n+1),
+  .wa-wrap .sorglos-item:nth-child(3n) {
+    border-right: none;
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+  .wa-wrap .sorglos-item:nth-child(n+7) {
+    border-bottom: 1px solid var(--wa-glass-bd);
+  }
+  .wa-wrap .sorglos-item:last-child {
+    border-bottom: none;
+  }
 }
 
 .wa-wrap .retainer-grid {

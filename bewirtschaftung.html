@@ -117,6 +117,8 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cloud.umami.is">
+  <link rel="preconnect" href="https://chat-api.amplifyr-digital.ch">
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap">
   <link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap"></noscript>
@@ -126,23 +128,25 @@
 
 <style>
   :root{
-    --brand:#1A2744;
-    --brand-dark:#151e32;
-    --brand-dark-alt:#263454;
-    --brand-accent:#89a3dc;
-    --brand-mid:#b3bfda;
-    --brand-light:#eeeff1;
-    --c-brand:#1A2744;
-    --c-brand-2:#1A2744;
-    --c-link:#151e32;
-    --c-accent:#89a3dc;
-    --navy:#151e32;
-    --blue:#b3bfda;
-    --blue-d:#151e32;
-    --gold:#89a3dc;
-    --ink:#16203a;--ink2:#3c4658;--muted:#676f84;
-    --paper:#fbfcfe;--card:#fff;--line:#e4e9f2;--soft:#eeeff1;
-    --radius:18px;
+    /* Konsolidiert auf die geteilten Tokens aus style.css (einheitliches
+       Design-System) — vorher eigene, teils abweichende Werte (u.a. ein
+       eigenes --navy:var(--navy) statt sitewide #1a2744). */
+    --brand:var(--navy);
+    --brand-dark:var(--navy);
+    --brand-dark-alt:var(--accent-hover);
+    --brand-accent:var(--steel);
+    --brand-mid:var(--steel);
+    --brand-light:var(--accent-light);
+    --c-brand:var(--navy);
+    --c-brand-2:var(--navy);
+    --c-link:var(--navy);
+    --c-accent:var(--steel);
+    --blue:var(--steel);
+    --blue-d:var(--navy);
+    --gold:var(--steel);
+    --ink:var(--text);--ink2:var(--text-muted);--muted:var(--text-muted);
+    --paper:var(--bg-white);--card:var(--bg-white);--line:var(--border);--soft:var(--accent-light);
+    --radius:var(--radius-lg);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth;scroll-padding-top:80px}
@@ -196,6 +200,9 @@
   .fsh-wa-link:hover{background:rgba(159,224,181,.12);border-color:rgba(159,224,181,.7);transform:translateY(-2px)}
 
   /* ── KI-BERATER ── */
+  /* Chat-Bereich schmaler als die Section: auf voller 1020px-Breite wirkt die
+     Eingabebox wie ein flacher Balken und die Textzeilen werden zu lang. */
+  #kb-thread,#kb-shell,#kb-progress{max-width:760px;margin-left:auto;margin-right:auto}
   #ki-berater .kb-chip{font-family:'Manrope',system-ui,sans-serif;font-size:.8rem;color:var(--muted);background:#fff;border:1px solid var(--line);border-radius:100px;padding:5px 14px;cursor:pointer;transition:background .15s,border-color .15s,color .15s;white-space:nowrap}
   #ki-berater .kb-chip:hover{background:var(--soft);border-color:var(--brand);color:var(--navy)}
   #ki-berater #kb-inp::placeholder{color:var(--muted)}
@@ -205,22 +212,13 @@
   .kb-typing span:nth-child(3){animation-delay:.4s}
   @keyframes kbDot{0%,80%,100%{transform:scale(.7);opacity:.4}40%{transform:scale(1);opacity:1}}
   @media(max-width:640px){
-    #ki-berater{min-height:85vh;background:var(--brand-dark)!important;border-color:transparent!important;display:flex;align-items:center;padding:60px 0}
-    #ki-berater h2{color:#fff;font-size:clamp(1.4rem,6.5vw,1.9rem);text-align:center;white-space:nowrap}
-    #ki-berater>div>p{color:rgba(255,255,255,.65);text-align:center}
-    #kb-send{background:rgba(255,255,255,.15)!important;box-shadow:none!important}
-    #ki-berater #kb-progress-label{color:rgba(255,255,255,.95)!important}
-    #ki-berater #kb-progress-fill{background:var(--brand)!important}
-    #ki-berater #kb-progress>div{background:rgba(255,255,255,.30)!important}
-    #ki-berater .kb-umsg{background:rgba(255,255,255,.18)!important}
-    #kb-shell{background:rgba(255,255,255,.08)!important;border-color:rgba(255,255,255,.18)!important;box-shadow:0 8px 32px rgba(0,0,0,.25)!important;backdrop-filter:blur(12px)}
-    #kb-inp{min-height:52px!important;color:#fff!important;font-size:1rem!important}
-    #kb-inp::placeholder{color:rgba(255,255,255,.45)!important}
-    #kb-shell svg[viewBox="0 0 24 24"]:first-of-type{stroke:rgba(255,255,255,.6)!important}
+    #ki-berater{min-height:85vh;display:flex;align-items:center;padding:60px 0}
+    #ki-berater h2{font-size:clamp(1.4rem,6.5vw,1.9rem);text-align:center;white-space:nowrap}
+    #ki-berater>div>p{text-align:center}
+    #kb-inp{min-height:52px!important;font-size:1rem!important}
     [id=kb-chips]{display:flex;flex-direction:column;gap:6px;margin-top:14px}
     #ki-berater .kb-chip-desktop{display:none!important}
-    #ki-berater .kb-chip-mobile{white-space:normal;text-align:left;border-radius:100px;padding:7px 14px;font-size:.8rem;background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18);color:rgba(255,255,255,.75);width:auto;align-self:flex-start}
-    #ki-berater .kb-chip-mobile:hover{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.40);color:#fff}
+    #ki-berater .kb-chip-mobile{white-space:normal;text-align:left;border-radius:100px;padding:7px 14px;font-size:.8rem;width:auto;align-self:flex-start}
   }
 
   /* ── MOBILE: Rechner / Ablauf / Fahrplan / Über uns ── */
@@ -263,7 +261,7 @@
   }
 </style>
 
-  <link rel="stylesheet" href="/style.css?v=23">
+  <link rel="stylesheet" href="/style.css?v=30">
   <link rel="stylesheet" media="print" onload="this.media='all'" href="/fchat.css">
   <script defer src="https://cloud.umami.is/script.js" data-website-id="a5638b4a-87cc-4014-a56d-b5b83ae8ccd5"></script>
 </head>
@@ -349,7 +347,7 @@
           <a href="/it-solutions#sec-managed">Managed Services</a>
           <a href="/it-solutions#sec-sla">SLA &amp; Support-Stunden</a>
           <a href="/it-solutions#sec-projekte">Projekte &amp; Migrationen</a>
-          <a href="/it-solutions#ki-berater">KI-Berater</a>
+          <a href="/it-solutions#ki-berater">Chatbot</a>
           <a href="/it-solutions#sec-cta">Kontakt &amp; FAQ</a>
         </div>
       </div>
@@ -366,11 +364,12 @@
         <div class="mobile-nav-group__sub">
           <a href="/handwerker#alltag">Video</a>
           <a href="/handwerker#kostenrechner">Kostenrechner</a>
-          <a href="/handwerker#ablauf">Auftragsablauf</a>
           <a href="/handwerker#generalunternehmer">Unser Prinzip</a>
+          <a href="/handwerker#ablauf">Auftragsablauf</a>
           <a href="/handwerker#fahrplan">Fahrplan</a>
+          <a href="/handwerker#vertrauen">Ihre Sicherheit</a>
           <a href="/handwerker#ueberuns">Wer wir sind</a>
-          <a href="/handwerker#ki-berater">KI-Berater</a>
+          <a href="/handwerker#ki-berater">Chatbot</a>
           <a href="/handwerker#cta">Kontakt &amp; FAQ</a>
         </div>
       </div>
@@ -406,10 +405,10 @@
           </button>
         </div>
         <div class="mobile-nav-group__sub">
-          <a href="/webdesign#problem">Problem</a>
+          <a href="/webdesign#problem">Video</a>
           <a href="/webdesign#werkzeuge">Werkzeuge</a>
           <a href="/webdesign#referenzen">Referenzen</a>
-          <a href="/webdesign#betrieb">Pakete &amp; Preise</a>
+          <a href="/webdesign#betrieb">All-in-one</a>
           <a href="/webdesign#ki-berater">Chatbot</a>
           <a href="/webdesign#sec-cta">Kontakt &amp; FAQ</a>
         </div>
@@ -484,17 +483,17 @@
 <section id="kostenrechner" style="padding:0">
 <div style="font-family:'Manrope',system-ui,sans-serif;background:var(--steel-light);padding:56px 32px;display:flex;justify-content:center">
   <div style="width:100%;max-width:1120px">
-    <div style="text-align:center;max-width:62ch;margin:0 auto 28px"><p style="font-family:'IBM Plex Mono',monospace;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#1A2744;margin:0 0 12px">Kapazität pro Bewirtschafter</p><h2 style="margin:0;font-family:'Fraunces',Georgia,serif;font-weight:600;color:#151e32;line-height:1.14;font-size:clamp(1.625rem,3.4vw,2.4rem)">Wie viel Mandat läge noch drin?</h2></div>
+    <div style="text-align:center;max-width:62ch;margin:0 auto 28px"><p style="font-family:'IBM Plex Mono',monospace;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#1A2744;margin:0 0 12px">Kapazität pro Bewirtschafter</p><h2 style="margin:0;font-family:'Fraunces',Georgia,serif;font-weight:600;color:var(--navy);line-height:1.14;font-size:clamp(1.625rem,3.4vw,2.4rem)">Wie viel Mandat läge noch drin?</h2></div>
 
     <div style="display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:28px">
       <div style="display:flex;justify-content:center;align-items:center;gap:12px">
         <span style="font-size:.9375rem;font-weight:700;color:#3A4A50;white-space:nowrap;flex:none">Ihr Team:</span>
-        <input type="number" min="1" max="50" value="3" id="rk-heads" aria-label="Ihr Team, Anzahl Bewirtschafter" style="width:64px;padding:8px 10px;text-align:center;font-family:'Manrope',system-ui,sans-serif;font-size:.9375rem;font-weight:700;color:#151e32;background:#fff;border:1px solid #DDE6E8;border-radius:10px">
+        <input type="number" min="1" max="50" value="3" id="rk-heads" aria-label="Ihr Team, Anzahl Bewirtschafter" style="width:64px;padding:8px 10px;text-align:center;font-family:'Manrope',system-ui,sans-serif;font-size:.9375rem;font-weight:700;color:var(--navy);background:#fff;border:1px solid #DDE6E8;border-radius:10px">
         <span style="font-size:.9375rem;color:#63737A;white-space:nowrap;flex:none">Bewirtschafter</span>
       </div>
       <div style="display:flex;justify-content:center;align-items:center;gap:12px">
         <span style="font-size:.9375rem;font-weight:700;color:#3A4A50;white-space:nowrap;flex:none">Stundenansatz:</span>
-        <input type="number" min="0" max="500" step="5" value="100" id="rk-rate" aria-label="Stundenansatz in CHF" style="width:74px;padding:8px 10px;text-align:center;font-family:'Manrope',system-ui,sans-serif;font-size:.9375rem;font-weight:700;color:#151e32;background:#fff;border:1px solid #DDE6E8;border-radius:10px">
+        <input type="number" min="0" max="500" step="5" value="100" id="rk-rate" aria-label="Stundenansatz in CHF" style="width:74px;padding:8px 10px;text-align:center;font-family:'Manrope',system-ui,sans-serif;font-size:.9375rem;font-weight:700;color:var(--navy);background:#fff;border:1px solid #DDE6E8;border-radius:10px">
         <span style="font-size:.9375rem;color:#63737A;white-space:nowrap;flex:none">CHF pro Stunde</span>
       </div>
     </div>
@@ -509,7 +508,7 @@
 
         <div style="background:#fff;border:1px solid #DDE6E8;border-radius:14px;padding:18px 22px">
           <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px">
-            <p style="margin:0;font-family:'Fraunces',Georgia,serif;font-size:1rem;font-weight:700;color:#151e32">Versammlungen &amp; Protokolle</p>
+            <p style="margin:0;font-family:'Fraunces',Georgia,serif;font-size:1rem;font-weight:700;color:var(--navy)">Versammlungen &amp; Protokolle</p>
             <span style="font-weight:800;font-size:.9375rem;color:#A8791A;white-space:nowrap"><span id="rk-hC">2</span> Std./Wo.</span>
           </div>
           <p style="margin:4px 0 12px;font-size:.8125rem;color:#63737A;line-height:1.45">Einladungen, Traktanden, Vollmachten, Protokolle, alte Beschlüsse suchen.</p>
@@ -520,7 +519,7 @@
 
         <div style="background:#fff;border:1px solid #DDE6E8;border-radius:14px;padding:18px 22px">
           <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px">
-            <p style="margin:0;font-family:'Fraunces',Georgia,serif;font-size:1rem;font-weight:700;color:#151e32">Auskünfte &amp; Dokumentensuche</p>
+            <p style="margin:0;font-family:'Fraunces',Georgia,serif;font-size:1rem;font-weight:700;color:var(--navy)">Auskünfte &amp; Dokumentensuche</p>
             <span style="font-weight:800;font-size:.9375rem;color:#A8791A;white-space:nowrap"><span id="rk-hD">1.5</span> Std./Wo.</span>
           </div>
           <p style="margin:4px 0 12px;font-size:.8125rem;color:#63737A;line-height:1.45">Protokolle, Beschlüsse, Abrechnungen und Belege suchen und nachliefern.</p>
@@ -538,7 +537,7 @@
 
         <div style="background:#fff;border:1px solid #DDE6E8;border-radius:14px;padding:18px 22px">
           <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px">
-            <p style="margin:0;font-family:'Fraunces',Georgia,serif;font-size:1rem;font-weight:700;color:#151e32">Anliegen &amp; Rückrufe</p>
+            <p style="margin:0;font-family:'Fraunces',Georgia,serif;font-size:1rem;font-weight:700;color:var(--navy)">Anliegen &amp; Rückrufe</p>
             <span style="font-weight:800;font-size:.9375rem;color:#1A2744;white-space:nowrap"><span id="rk-hA">2.5</span> Std./Wo.</span>
           </div>
           <p style="margin:4px 0 12px;font-size:.8125rem;color:#63737A;line-height:1.45">Anruf annehmen, notieren, zurückrufen, nachfragen wo es steht.</p>
@@ -549,7 +548,7 @@
 
         <div style="background:#fff;border:1px solid #DDE6E8;border-radius:14px;padding:18px 22px">
           <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px">
-            <p style="margin:0;font-family:'Fraunces',Georgia,serif;font-size:1rem;font-weight:700;color:#151e32">Handwerker-Koordination</p>
+            <p style="margin:0;font-family:'Fraunces',Georgia,serif;font-size:1rem;font-weight:700;color:var(--navy)">Handwerker-Koordination</p>
             <span style="font-weight:800;font-size:.9375rem;color:#1A2744;white-space:nowrap"><span id="rk-hB">1.5</span> Std./Wo.</span>
           </div>
           <p style="margin:4px 0 12px;font-size:.8125rem;color:#63737A;line-height:1.45">Offerte anfragen, Termin abstimmen, nachfassen, Rechnung prüfen.</p>
@@ -561,7 +560,7 @@
 
     </div>
 
-    <div style="margin-top:20px;display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:stretch;background:linear-gradient(135deg,#151e32,#263454);border-radius:18px;overflow:hidden">
+    <div style="margin-top:20px;display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:stretch;background:linear-gradient(135deg,var(--navy),var(--accent-hover));border-radius:18px;overflow:hidden">
       <div style="padding:26px 28px;display:flex;flex-direction:column;gap:6px">
         <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:.74rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#b3bfda">Gebunden in Koordination</p>
         <p style="margin:0;font-family:'Fraunces',Georgia,serif;font-size:2rem;font-weight:700;color:#fff;line-height:1.1;white-space:nowrap"><span id="rk-totalTeam">0</span> CHF</p>
@@ -595,7 +594,7 @@
 
   <div style="text-align:center;max-width:74ch;margin:0 auto 40px">
    <p style="font-family:'IBM Plex Mono',monospace;font-size:.76rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#1A2744;margin:0 0 14px">Zwei Fälle, exemplarisch durchgespielt</p>
-   <h2 style="font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:-.02em;font-size:clamp(1.625rem,3.4vw,2.5rem);line-height:1.12;color:#151e32;margin:0;text-wrap:balance">Beide laufen künftig durch alle Systeme — ohne dass jemand sie weiterträgt.</h2>
+   <h2 style="font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:-.02em;font-size:clamp(1.625rem,3.4vw,2.5rem);line-height:1.12;color:var(--navy);margin:0;text-wrap:balance">Beide laufen künftig durch alle Systeme — ohne dass jemand sie weiterträgt.</h2>
    <p style="font-size:1rem;color:#3A4A50;line-height:1.6;margin:16px auto 0;max-width:66ch;text-wrap:pretty">Anliegen kommen rund um die Uhr strukturiert rein — über Website, App oder Chat. Was dann passiert, hängt vom Fall ab:</p>
   </div>
 
@@ -607,7 +606,7 @@
      <span style="width:42px;height:42px;border-radius:12px;flex:none;display:flex;align-items:center;justify-content:center;background:#1A2744;color:#fff;box-shadow:0 8px 18px -10px rgba(26,39,68,.9)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:21px;height:21px"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></span>
      <div style="min-width:0">
       <p style="font-family:'IBM Plex Mono',monospace;font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#7A8A90;margin:0 0 4px">Stockwerkeigentum</p>
-      <p style="font-family:'Fraunces',Georgia,serif;font-size:1.25rem;font-weight:600;color:#151e32;line-height:1.2;margin:0;letter-spacing:-.01em">Der Versammlungsabend im März</p>
+      <p style="font-family:'Fraunces',Georgia,serif;font-size:1.25rem;font-weight:600;color:var(--navy);line-height:1.2;margin:0;letter-spacing:-.01em">Der Versammlungsabend im März</p>
      </div>
     </div>
 
@@ -617,7 +616,7 @@
       <div style="position:relative;width:33px;height:33px;border-radius:50%;background:#fff;border:1px solid #B9D0D6;color:#1A2744;font-family:'IBM Plex Mono',monospace;font-size:.72rem;font-weight:600;display:flex;align-items:center;justify-content:center">01</div>
      </div>
      <div>
-      <p style="font-size:.95rem;font-weight:700;color:#151e32;margin:6px 0 5px;letter-spacing:-.005em">Einladung &amp; Vorbereitung</p>
+      <p style="font-size:.95rem;font-weight:700;color:var(--navy);margin:6px 0 5px;letter-spacing:-.005em">Einladung &amp; Vorbereitung</p>
       <p style="font-size:.865rem;color:#63737A;line-height:1.58;margin:0;text-wrap:pretty">Einladung, Traktanden und Unterlagen gehen digital oder auf Papier raus — dokumentiert, in Form und Frist Ihres Reglements.</p>
      </div>
     </div>
@@ -628,7 +627,7 @@
       <div style="position:relative;width:33px;height:33px;border-radius:50%;background:#fff;border:1px solid #B9D0D6;color:#1A2744;font-family:'IBM Plex Mono',monospace;font-size:.72rem;font-weight:600;display:flex;align-items:center;justify-content:center">02</div>
      </div>
      <div>
-      <p style="font-size:.95rem;font-weight:700;color:#151e32;margin:6px 0 5px;letter-spacing:-.005em">Vorab &amp; Vollmachten</p>
+      <p style="font-size:.95rem;font-weight:700;color:var(--navy);margin:6px 0 5px;letter-spacing:-.005em">Vorab &amp; Vollmachten</p>
       <p style="font-size:.865rem;color:#63737A;line-height:1.58;margin:0;text-wrap:pretty">Eigentümer stimmen vorab ab oder erteilen Vollmacht; das hebt die vertretenen Quoten übers Quorum — beschlussfähig, auch wenn nur die Hälfte im Saal sitzt.</p>
      </div>
     </div>
@@ -639,7 +638,7 @@
       <div style="position:relative;width:33px;height:33px;border-radius:50%;background:#fff;border:1px solid #B9D0D6;color:#1A2744;font-family:'IBM Plex Mono',monospace;font-size:.72rem;font-weight:600;display:flex;align-items:center;justify-content:center">03</div>
      </div>
      <div>
-      <p style="font-size:.95rem;font-weight:700;color:#151e32;margin:6px 0 5px;letter-spacing:-.005em">Hybride Abstimmung</p>
+      <p style="font-size:.95rem;font-weight:700;color:var(--navy);margin:6px 0 5px;letter-spacing:-.005em">Hybride Abstimmung</p>
       <p style="font-size:.865rem;color:#63737A;line-height:1.58;margin:0;text-wrap:pretty">Anwesende und Zugeschaltete stimmen gemeinsam ab; Stimmen und Mehrheiten rechnet Woonig automatisch nach Reglement.</p>
      </div>
     </div>
@@ -650,13 +649,13 @@
       <div style="position:relative;width:33px;height:33px;border-radius:50%;background:#1A2744;border:1px solid #1A2744;color:#fff;font-family:'IBM Plex Mono',monospace;font-size:.72rem;font-weight:600;display:flex;align-items:center;justify-content:center">04</div>
      </div>
      <div>
-      <p style="font-size:.95rem;font-weight:700;color:#151e32;margin:6px 0 5px;letter-spacing:-.005em">Protokoll &amp; Ablage</p>
+      <p style="font-size:.95rem;font-weight:700;color:var(--navy);margin:6px 0 5px;letter-spacing:-.005em">Protokoll &amp; Ablage</p>
       <p style="font-size:.865rem;color:#63737A;line-height:1.58;margin:0;text-wrap:pretty">Der Protokollentwurf entsteht aus der Versammlung; Beschlüsse bleiben versioniert und auch in fünf Jahren auffindbar.</p>
      </div>
     </div>
 
      <div style="padding:22px 28px;background:#F4F8F9;border-top:1px solid #E8EFF0;display:flex;flex-direction:column;gap:9px">
-      <p style="margin:0;font-family:'Fraunces',Georgia,serif;font-size:1.0625rem;font-weight:600;color:#151e32;line-height:1.4;text-wrap:pretty">Versammlung beschlussfähig, Protokollentwurf am Morgen danach, Beschlüsse im Dossier.</p>
+      <p style="margin:0;font-family:'Fraunces',Georgia,serif;font-size:1.0625rem;font-weight:600;color:var(--navy);line-height:1.4;text-wrap:pretty">Versammlung beschlussfähig, Protokollentwurf am Morgen danach, Beschlüsse im Dossier.</p>
       <p style="margin:2px 0 0;font-size:.78rem;color:#9AA7AC;line-height:1.55;text-wrap:pretty"><span style="color:#1A2744;font-weight:700">Bausteine:</span> Digitale Versammlung &amp; eVoting · Vorab-Abstimmung &amp; Vollmachten · KI-Protokoll · Eigentümer-App &amp; Portal · Digitales Dossier</p>
      </div>
    </div>
@@ -667,7 +666,7 @@
      <span style="width:42px;height:42px;border-radius:12px;flex:none;display:flex;align-items:center;justify-content:center;background:#A8791A;color:#fff;box-shadow:0 8px 18px -10px rgba(168,121,26,.9)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:21px;height:21px"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg></span>
      <div style="min-width:0">
       <p style="font-family:'IBM Plex Mono',monospace;font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#8B8377;margin:0 0 4px">Kommunikation &amp; Bewirtschaftung</p>
-      <p style="font-family:'Fraunces',Georgia,serif;font-size:1.25rem;font-weight:600;color:#151e32;line-height:1.2;margin:0;letter-spacing:-.01em">Der Wasserschaden am Sonntag</p>
+      <p style="font-family:'Fraunces',Georgia,serif;font-size:1.25rem;font-weight:600;color:var(--navy);line-height:1.2;margin:0;letter-spacing:-.01em">Der Wasserschaden am Sonntag</p>
      </div>
     </div>
 
@@ -677,7 +676,7 @@
       <div style="position:relative;width:33px;height:33px;border-radius:50%;background:#fff;border:1px solid #DEC998;color:#A8791A;font-family:'IBM Plex Mono',monospace;font-size:.72rem;font-weight:600;display:flex;align-items:center;justify-content:center">01</div>
      </div>
      <div>
-      <p style="font-size:.95rem;font-weight:700;color:#151e32;margin:6px 0 5px;letter-spacing:-.005em">Die Meldung</p>
+      <p style="font-size:.95rem;font-weight:700;color:var(--navy);margin:6px 0 5px;letter-spacing:-.005em">Die Meldung</p>
       <p style="font-size:.865rem;color:#63737A;line-height:1.58;margin:0;text-wrap:pretty">Anruf um 22 Uhr, Website, App oder Chat — alles landet als Vorgang in einem Eingang, nicht auf dem Privathandy.</p>
      </div>
     </div>
@@ -688,7 +687,7 @@
       <div style="position:relative;width:33px;height:33px;border-radius:50%;background:#fff;border:1px solid #DEC998;color:#A8791A;font-family:'IBM Plex Mono',monospace;font-size:.72rem;font-weight:600;display:flex;align-items:center;justify-content:center">02</div>
      </div>
      <div>
-      <p style="font-size:.95rem;font-weight:700;color:#151e32;margin:6px 0 5px;letter-spacing:-.005em">Beurteilung &amp; Notfall</p>
+      <p style="font-size:.95rem;font-weight:700;color:var(--navy);margin:6px 0 5px;letter-spacing:-.005em">Beurteilung &amp; Notfall</p>
       <p style="font-size:.865rem;color:#63737A;line-height:1.58;margin:0;text-wrap:pretty">Eine KI-Assistenz schlägt Kategorie und Dringlichkeit vor; die Schadenmeldung an die Gebäudeversicherung ist vorbereitet, bevor der Handwerker anrückt.</p>
      </div>
     </div>
@@ -699,7 +698,7 @@
       <div style="position:relative;width:33px;height:33px;border-radius:50%;background:#fff;border:1px solid #DEC998;color:#A8791A;font-family:'IBM Plex Mono',monospace;font-size:.72rem;font-weight:600;display:flex;align-items:center;justify-content:center">03</div>
      </div>
      <div>
-      <p style="font-size:.95rem;font-weight:700;color:#151e32;margin:6px 0 5px;letter-spacing:-.005em">Auftrag &amp; vor Ort</p>
+      <p style="font-size:.95rem;font-weight:700;color:var(--navy);margin:6px 0 5px;letter-spacing:-.005em">Auftrag &amp; vor Ort</p>
       <p style="font-size:.865rem;color:#63737A;line-height:1.58;margin:0;text-wrap:pretty">Der passende Handwerker wird vorgeschlagen und auf Ihre Freigabe beauftragt; das Abnahmeprotokoll mit Fotos liegt am Objekt, bevor Sie die Wohnung verlassen.</p>
      </div>
     </div>
@@ -710,19 +709,19 @@
       <div style="position:relative;width:33px;height:33px;border-radius:50%;background:#A8791A;border:1px solid #A8791A;color:#fff;font-family:'IBM Plex Mono',monospace;font-size:.72rem;font-weight:600;display:flex;align-items:center;justify-content:center">04</div>
      </div>
      <div>
-      <p style="font-size:.95rem;font-weight:700;color:#151e32;margin:6px 0 5px;letter-spacing:-.005em">Rechnung &amp; Dossier</p>
+      <p style="font-size:.95rem;font-weight:700;color:var(--navy);margin:6px 0 5px;letter-spacing:-.005em">Rechnung &amp; Dossier</p>
       <p style="font-size:.865rem;color:#63737A;line-height:1.58;margin:0;text-wrap:pretty">Die Rechnung wird erkannt, vorkontiert und im System visiert; der Beleg liegt am Objekt — beim Stockwerkeigentum nach Wertquoten nachvollziehbar.</p>
      </div>
     </div>
 
      <div style="padding:22px 28px;background:#FBF7F0;border-top:1px solid #F0E9DC;display:flex;flex-direction:column;gap:9px">
-      <p style="margin:0;font-family:'Fraunces',Georgia,serif;font-size:1.0625rem;font-weight:600;color:#151e32;line-height:1.4;text-wrap:pretty">Schaden behoben, Meldung zur Freigabe bereit, Beleg am Objekt.</p>
+      <p style="margin:0;font-family:'Fraunces',Georgia,serif;font-size:1.0625rem;font-weight:600;color:var(--navy);line-height:1.4;text-wrap:pretty">Schaden behoben, Meldung zur Freigabe bereit, Beleg am Objekt.</p>
       <p style="margin:2px 0 0;font-size:.78rem;color:#9AA7AC;line-height:1.55;text-wrap:pretty"><span style="color:#A8791A;font-weight:700">Bausteine:</span> Anliegen mit Status · Website, die Anliegen aufnimmt · KI-Telefonie rund um die Uhr · Automatische Abläufe · IT-Fundament</p>
      </div>
    </div>
   </div>
 
-   <div style="margin-top:24px;display:flex;align-items:center;justify-content:center;gap:14px;background:linear-gradient(135deg,#151e32,#263454);border-radius:16px;padding:18px 28px;text-align:center">
+   <div style="margin-top:24px;display:flex;align-items:center;justify-content:center;gap:14px;background:linear-gradient(135deg,var(--navy),var(--accent-hover));border-radius:16px;padding:18px 28px;text-align:center">
     <p style="margin:0;font-size:.95rem;line-height:1.5;color:#eeeff1"><b style="color:#fff;font-weight:700">Unser Prinzip:</b> Technik sortiert vor — der Mensch entscheidet.</p>
    </div>
 
@@ -736,7 +735,7 @@
   #generalunternehmer .gu-inner{width:100%;max-width:1000px}
   #generalunternehmer .gu-head{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;margin-bottom:34px}
   #generalunternehmer .gu-eyeb{font-family:'IBM Plex Mono',monospace;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#1A2744}
-  #generalunternehmer h2{margin:0;font-family:'Fraunces',Georgia,serif;font-size:clamp(1.625rem,3.4vw,2.25rem);font-weight:700;color:#151e32;line-height:1.15}
+  #generalunternehmer h2{margin:0;font-family:'Fraunces',Georgia,serif;font-size:clamp(1.625rem,3.4vw,2.25rem);font-weight:700;color:var(--navy);line-height:1.15}
   #generalunternehmer .gu-lead{margin:0;font-size:1rem;color:#3A4A50;line-height:1.62;max-width:62ch;text-wrap:pretty}
   #generalunternehmer .gu-sub{margin:0;font-size:.9375rem;color:#63737A;line-height:1.6;max-width:56ch}
   #generalunternehmer .gu-hint{display:inline-flex;align-items:center;gap:9px;margin-top:4px;background:#eeeff1;border:1px solid #C3D3D7;border-radius:999px;padding:7px 16px;font-size:.8125rem;font-weight:600;color:#1A2744}
@@ -752,19 +751,19 @@
   #generalunternehmer .gu-o{position:absolute;inset:0;background:#b3bfda;clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%);transition:background .2s}
   #generalunternehmer .gu-hex.on .gu-o,#generalunternehmer .gu-hex:focus-visible .gu-o{background:#1A2744}
   #generalunternehmer .gu-i{position:absolute;inset:2px;clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.2em;padding:0 14%;text-align:center}
-  #generalunternehmer .gu-i span{font-family:'Fraunces',Georgia,serif;font-weight:700;color:#151e32;line-height:1.2}
+  #generalunternehmer .gu-i span{font-family:'Fraunces',Georgia,serif;font-weight:700;color:var(--navy);line-height:1.2}
   #generalunternehmer .gu-light .gu-i{background:#eeeff1}
   #generalunternehmer .gu-sand .gu-i{background:#F7EFDC}
-  #generalunternehmer .gu-dark .gu-i{background:linear-gradient(135deg,#151e32,#263454)}
+  #generalunternehmer .gu-dark .gu-i{background:linear-gradient(135deg,var(--navy),var(--accent-hover))}
   #generalunternehmer .gu-dark .gu-i span{color:#fff;line-height:1.15}
   #generalunternehmer .gu-card{display:flex;align-items:center;min-height:250px;flex:1 1 300px;max-width:380px}
   #generalunternehmer .gu-cardin{width:100%;box-sizing:border-box;background:#fff;border:1px solid #DDE6E8;border-radius:16px;padding:26px 28px;display:flex;flex-direction:column;gap:12px;box-shadow:0 14px 38px -30px rgba(18,48,56,.5)}
   #generalunternehmer .gu-ceyeb{margin:0;font-family:'IBM Plex Mono',monospace;font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#1A2744}
-  #generalunternehmer .gu-ctitle{margin:0;font-family:'Fraunces',Georgia,serif;font-size:1.1875rem;font-weight:600;color:#151e32;line-height:1.3}
+  #generalunternehmer .gu-ctitle{margin:0;font-family:'Fraunces',Georgia,serif;font-size:1.1875rem;font-weight:600;color:var(--navy);line-height:1.3}
   #generalunternehmer .gu-items{display:flex;flex-direction:column;gap:8px}
   #generalunternehmer .gu-item{display:flex;gap:10px;font-size:.875rem;color:#3A4A50;line-height:1.45}
   #generalunternehmer .gu-item i{font-style:normal;color:#b3bfda;flex:none}
-  #generalunternehmer .gu-bridge{margin-top:34px;display:flex;align-items:center;justify-content:center;gap:14px;background:linear-gradient(135deg,#151e32,#263454);border-radius:16px;padding:20px 30px;text-align:center}
+  #generalunternehmer .gu-bridge{margin-top:34px;display:flex;align-items:center;justify-content:center;gap:14px;background:linear-gradient(135deg,var(--navy),var(--accent-hover));border-radius:16px;padding:20px 30px;text-align:center}
   #generalunternehmer .gu-bridge p{margin:0;font-size:.95rem;line-height:1.5;color:#eeeff1}
   #generalunternehmer .gu-bridge b{color:#fff;font-weight:700}
   @media(max-width:640px){
@@ -784,7 +783,7 @@
     <div class="gu-head">
       <span class="gu-eyeb">Das Generalunternehmer-Prinzip</span>
       <h2>Sechs Teile, eine Fläche.</h2>
-      <p class="gu-lead">Beim Bauen koordiniert der Generalunternehmer alle Gewerke, hält die Termine zusammen und steht am Ende fürs Ganze gerade — Sie sprechen mit einem statt mit sechs. <b style="color:#151e32">Genau das sind wir fürs Digitale.</b></p>
+      <p class="gu-lead">Beim Bauen koordiniert der Generalunternehmer alle Gewerke, hält die Termine zusammen und steht am Ende fürs Ganze gerade — Sie sprechen mit einem statt mit sechs. <b style="color:var(--navy)">Genau das sind wir fürs Digitale.</b></p>
       <p class="gu-sub">Jedes Teil liegt am nächsten an. Fehlt eines, bleibt eine Lücke.</p>
       <span class="gu-hint"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11V6a2 2 0 0 1 4 0v5"></path><path d="M13 11V9a2 2 0 0 1 4 0v2"></path><path d="M17 12v-1a2 2 0 0 1 4 0v5a6 6 0 0 1-6 6h-2a7 7 0 0 1-7-7v-3a2 2 0 0 1 4 0"></path></svg>Wabe anfahren oder antippen</span>
     </div>
@@ -905,7 +904,7 @@
 
     <div style="display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center">
       <div style="font-family:'IBM Plex Mono',monospace;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#63737A">Drei Firmen, ein Ansprechpartner</div>
-      <h2 style="margin:0;font-family:'Fraunces',Georgia,serif;font-size:2.6rem;font-weight:700;color:#151e32;line-height:1.12;max-width:22ch;text-wrap:balance">Software kann jeder kaufen. Das Zusammenspiel nicht.</h2>
+      <h2 style="margin:0;font-family:'Fraunces',Georgia,serif;font-size:2.6rem;font-weight:700;color:var(--navy);line-height:1.12;max-width:22ch;text-wrap:balance">Software kann jeder kaufen. Das Zusammenspiel nicht.</h2>
       <p style="margin:0;font-size:1rem;line-height:1.6;color:#3A4A50;max-width:62ch;text-wrap:pretty">Sechs Teile bedeuten normalerweise ebenso viele Anbieter — und im Störfall ebenso viele Schuldzuweisungen. Bei uns bringen drei eigenständige Firmen ihre Kompetenz zusammen: nach aussen bleibt es wie beim Generalunternehmer: ein Vertrag, ein Ansprechpartner.</p>
     </div>
 
@@ -932,11 +931,11 @@
 
         <div style="background:#FBFDFD;border:1px solid #DDE6E8;border-radius:16px;padding:24px 22px;display:flex;flex-direction:column;gap:14px;transition:transform .2s,box-shadow .2s,border-color .2s" class="kn-card">
           <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
-            <span style="width:40px;height:40px;border-radius:12px;background:#151e32;color:#8FBBC4;display:flex;align-items:center;justify-content:center;flex:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="width:21px;height:21px"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg></span>
+            <span style="width:40px;height:40px;border-radius:12px;background:var(--navy);color:#8FBBC4;display:flex;align-items:center;justify-content:center;flex:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="width:21px;height:21px"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg></span>
             <span style="font-family:'IBM Plex Mono',monospace;font-size:.7rem;font-weight:700;letter-spacing:.1em;color:#A9BCC1">01</span>
           </div>
           <div>
-            <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:.8125rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#151e32">Amplifyr</p>
+            <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:.8125rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--navy)">Amplifyr</p>
             <p style="margin:3px 0 0;font-size:.8rem;color:#63737A">IT, KI &amp; Bewi-Prozesse</p>
           </div>
           <div style="height:1px;background:#E4EDEE"></div>
@@ -949,7 +948,7 @@
             <span style="font-family:'IBM Plex Mono',monospace;font-size:.7rem;font-weight:700;letter-spacing:.1em;color:#A9BCC1">02</span>
           </div>
           <div>
-            <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:.8125rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#151e32">Partner Immobilienbranche</p>
+            <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:.8125rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--navy)">Partner Immobilienbranche</p>
             <p style="margin:3px 0 0;font-size:.8rem;color:#63737A">Bewirtschaftung</p>
           </div>
           <div style="height:1px;background:#E4EDEE"></div>
@@ -962,7 +961,7 @@
             <span style="font-family:'IBM Plex Mono',monospace;font-size:.7rem;font-weight:700;letter-spacing:.1em;color:#A9BCC1">03</span>
           </div>
           <div>
-            <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:.8125rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#151e32">Woonig</p>
+            <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:.8125rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--navy)">Woonig</p>
             <p style="margin:3px 0 0;font-size:.8rem;color:#63737A">Die Plattform</p>
           </div>
           <div style="height:1px;background:#E4EDEE"></div>
@@ -983,8 +982,8 @@
 
     <div style="display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;margin-bottom:36px">
       <div style="font-family:'IBM Plex Mono',monospace;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#1A2744">Der Verlauf</div>
-      <h2 style="margin:0;font-family:'Fraunces',Georgia,serif;font-size:2.25rem;font-weight:700;color:#151e32;line-height:1.15;max-width:26ch;text-wrap:balance">Der Aufwand steckt vorne. Die Wirkung wächst — und bleibt.</h2>
-      <p style="margin:0;font-size:1rem;line-height:1.6;color:#3A4A50;max-width:60ch;text-wrap:pretty">In mehreren Phasen — aber in <b style="color:#151e32">Ihrer</b> Reihenfolge. Wir starten mit dem Teil der Wabe, das bei Ihnen zuerst brennt, und bauen von dort aus weiter. Die Reihenfolge planen wir; koordiniert wird sie von einem.</p>
+      <h2 style="margin:0;font-family:'Fraunces',Georgia,serif;font-size:2.25rem;font-weight:700;color:var(--navy);line-height:1.15;max-width:26ch;text-wrap:balance">Der Aufwand steckt vorne. Die Wirkung wächst — und bleibt.</h2>
+      <p style="margin:0;font-size:1rem;line-height:1.6;color:#3A4A50;max-width:60ch;text-wrap:pretty">In mehreren Phasen — aber in <b style="color:var(--navy)">Ihrer</b> Reihenfolge. Wir starten mit dem Teil der Wabe, das bei Ihnen zuerst brennt, und bauen von dort aus weiter. Die Reihenfolge planen wir; koordiniert wird sie von einem.</p>
     </div>
 
     <div style="background:#FAFCFC;border:1px solid #DDE6E8;border-radius:20px;padding:26px 30px 20px">
@@ -1025,9 +1024,9 @@
           <line x1="700" y1="104" x2="700" y2="300"></line>
         </g>
         <g font-family="Manrope,sans-serif" font-weight="800" font-size="13" fill="#fff" text-anchor="middle">
-          <g style="transform-box:fill-box;transform-origin:center;animation:fpPop .45s cubic-bezier(.34,1.4,.64,1) .5s both;cursor:pointer" class="fp-dot" data-ph="1"><circle cx="170" cy="268" r="14" fill="#151e32"></circle><text x="170" y="273">1</text></g>
-          <g style="transform-box:fill-box;transform-origin:center;animation:fpPop .45s cubic-bezier(.34,1.4,.64,1) .85s both;cursor:pointer" class="fp-dot" data-ph="2"><circle cx="430" cy="200" r="14" fill="#151e32"></circle><text x="430" y="205">2</text></g>
-          <g style="transform-box:fill-box;transform-origin:center;animation:fpPop .45s cubic-bezier(.34,1.4,.64,1) 1.2s both;cursor:pointer" class="fp-dot" data-ph="3"><circle cx="700" cy="104" r="14" fill="#151e32"></circle><text x="700" y="109">3</text></g>
+          <g style="transform-box:fill-box;transform-origin:center;animation:fpPop .45s cubic-bezier(.34,1.4,.64,1) .5s both;cursor:pointer" class="fp-dot" data-ph="1"><circle cx="170" cy="268" r="14" fill="var(--navy)"></circle><text x="170" y="273">1</text></g>
+          <g style="transform-box:fill-box;transform-origin:center;animation:fpPop .45s cubic-bezier(.34,1.4,.64,1) .85s both;cursor:pointer" class="fp-dot" data-ph="2"><circle cx="430" cy="200" r="14" fill="var(--navy)"></circle><text x="430" y="205">2</text></g>
+          <g style="transform-box:fill-box;transform-origin:center;animation:fpPop .45s cubic-bezier(.34,1.4,.64,1) 1.2s both;cursor:pointer" class="fp-dot" data-ph="3"><circle cx="700" cy="104" r="14" fill="var(--navy)"></circle><text x="700" y="109">3</text></g>
         </g>
         <text x="978" y="324" font-family="Manrope,sans-serif" font-size="13" fill="#63737A" font-weight="600" text-anchor="end">Zeit →</text>
       </svg>
@@ -1036,26 +1035,26 @@
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:16px;align-items:stretch">
       <div class="fp-card" data-ph="1" style="background:#fff;border:1px solid #DDE6E8;border-radius:16px;padding:22px 24px;display:flex;flex-direction:column;gap:8px;transition:border-color .22s,box-shadow .22s,transform .22s;cursor:pointer">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:2px">
-          <span style="width:26px;height:26px;border-radius:50%;background:#151e32;color:#fff;font-size:.8125rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none">1</span>
+          <span style="width:26px;height:26px;border-radius:50%;background:var(--navy);color:#fff;font-size:.8125rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none">1</span>
           <span style="font-family:'IBM Plex Mono',monospace;font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#1A2744;line-height:1.3">Was zuerst brennt</span>
         </div>
-        <p style="margin:0;font-family:'Fraunces',Georgia,serif;font-size:1.0625rem;font-weight:600;color:#151e32;line-height:1.25">Der dringendste Hebel</p>
+        <p style="margin:0;font-family:'Fraunces',Georgia,serif;font-size:1.0625rem;font-weight:600;color:var(--navy);line-height:1.25">Der dringendste Hebel</p>
         <p style="margin:0;font-size:.875rem;color:#3A4A50;line-height:1.55;text-wrap:pretty">Wir starten dort, wo der Druck am grössten ist — die nächste Versammlung, die Erreichbarkeit, was auch immer bei Ihnen brennt.</p>
       </div>
       <div class="fp-card" data-ph="2" style="background:#fff;border:1px solid #DDE6E8;border-radius:16px;padding:22px 24px;display:flex;flex-direction:column;gap:8px;transition:border-color .22s,box-shadow .22s,transform .22s;cursor:pointer">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:2px">
-          <span style="width:26px;height:26px;border-radius:50%;background:#151e32;color:#fff;font-size:.8125rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none">2</span>
+          <span style="width:26px;height:26px;border-radius:50%;background:var(--navy);color:#fff;font-size:.8125rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none">2</span>
           <span style="font-family:'IBM Plex Mono',monospace;font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#1A2744;line-height:1.3">Die nächsten Schritte</span>
         </div>
-        <p style="margin:0;font-family:'Fraunces',Georgia,serif;font-size:1.0625rem;font-weight:600;color:#151e32;line-height:1.25">Baustein um Baustein</p>
+        <p style="margin:0;font-family:'Fraunces',Georgia,serif;font-size:1.0625rem;font-weight:600;color:var(--navy);line-height:1.25">Baustein um Baustein</p>
         <p style="margin:0;font-size:.875rem;color:#3A4A50;line-height:1.55;text-wrap:pretty">Schritt für Schritt kommt weiteres dazu — in der Reihenfolge, die für Sie Sinn ergibt, nicht nach starrem Schema.</p>
       </div>
       <div class="fp-card" data-ph="3" style="background:#fff;border:1px solid #DDE6E8;border-radius:16px;padding:22px 24px;display:flex;flex-direction:column;gap:8px;transition:border-color .22s,box-shadow .22s,transform .22s;cursor:pointer">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:2px">
-          <span style="width:26px;height:26px;border-radius:50%;background:#151e32;color:#fff;font-size:.8125rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none">3</span>
+          <span style="width:26px;height:26px;border-radius:50%;background:var(--navy);color:#fff;font-size:.8125rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none">3</span>
           <span style="font-family:'IBM Plex Mono',monospace;font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#1A2744;line-height:1.3">Alles aus einer Hand</span>
         </div>
-        <p style="margin:0;font-family:'Fraunces',Georgia,serif;font-size:1.0625rem;font-weight:600;color:#151e32;line-height:1.25">Der Betrieb als Ganzes</p>
+        <p style="margin:0;font-family:'Fraunces',Georgia,serif;font-size:1.0625rem;font-weight:600;color:var(--navy);line-height:1.25">Der Betrieb als Ganzes</p>
         <p style="margin:0;font-size:.875rem;color:#3A4A50;line-height:1.55;text-wrap:pretty">Am Ende ist der Betrieb durchgängig digital — von der Meldung bis zur Versammlung, von der Kommunikation bis zur Buchhaltung.</p>
       </div>
       <div style="background:linear-gradient(180deg,#eeeff1,#fff);border:1px solid #b3bfda;border-radius:16px;padding:22px 24px;display:flex;flex-direction:column;gap:8px">
@@ -1063,7 +1062,7 @@
           <span style="width:26px;height:26px;border-radius:50%;background:#1A2744;color:#fff;display:flex;align-items:center;justify-content:center;flex:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" style="width:13px;height:13px"><path d="M4 18 L20 18"></path><path d="M4 12 L14 12"></path></svg></span>
           <span style="font-family:'IBM Plex Mono',monospace;font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#A8791A;line-height:1.3">Danach · fortlaufend</span>
         </div>
-        <p style="margin:0;font-family:'Fraunces',Georgia,serif;font-size:1.0625rem;font-weight:600;color:#151e32;line-height:1.25">Langfristig an Ihrer Seite</p>
+        <p style="margin:0;font-family:'Fraunces',Georgia,serif;font-size:1.0625rem;font-weight:600;color:var(--navy);line-height:1.25">Langfristig an Ihrer Seite</p>
         <p style="margin:0;font-size:.875rem;color:#3A4A50;line-height:1.55;text-wrap:pretty">Kein Abschied nach dem Projekt: Betrieb, Updates, nächste Versammlungen, Lastspitzen. Ihr Digitalisierungspartner bleibt — dauerhaft.</p>
       </div>
     </div>
@@ -1075,25 +1074,25 @@
 <section id="ueberuns" style="padding:0">
 <div style="font-family:'Manrope',system-ui,sans-serif;background:var(--bg-white);padding:64px 32px;display:flex;justify-content:center">
   <div style="width:100%;max-width:1120px">
-    <div style="text-align:center;max-width:62ch;margin:0 auto 28px"><p style="font-family:'IBM Plex Mono',monospace;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#1A2744;margin:0 0 12px">Und wer sind wir?</p><h2 style="margin:0;font-family:'Fraunces',Georgia,serif;font-weight:600;color:#151e32;line-height:1.14;font-size:clamp(1.625rem,3.6vw,2.6rem)">Einer von uns hat Ihren Job gemacht.</h2></div>
+    <div style="text-align:center;max-width:62ch;margin:0 auto 28px"><p style="font-family:'IBM Plex Mono',monospace;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#1A2744;margin:0 0 12px">Und wer sind wir?</p><h2 style="margin:0;font-family:'Fraunces',Georgia,serif;font-weight:600;color:var(--navy);line-height:1.14;font-size:clamp(1.625rem,3.6vw,2.6rem)">Einer von uns hat Ihren Job gemacht.</h2></div>
 
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:stretch">
 
       <div style="background:#fff;border:1px solid #DDE6E8;border-radius:18px;padding:26px 22px 18px;display:flex;flex-direction:column;align-items:center;gap:12px;box-shadow:0 20px 50px -44px rgba(18,48,56,.8)">
         <img src="/Bilder/Bild_Timo.webp?v=2" alt="Timo Steinfort" width="96" height="96" loading="lazy" style="width:96px;height:96px;border-radius:50%;object-fit:cover;border:3px solid #fff;box-shadow:0 0 0 1px #DDE6E8,0 10px 26px -18px rgba(18,48,56,.9)">
-        <p style="margin:0;font-family:'Fraunces',Georgia,serif;font-size:1.125rem;font-weight:600;color:#151e32;text-align:center;line-height:1.25">Timo Steinfort</p>
+        <p style="margin:0;font-family:'Fraunces',Georgia,serif;font-size:1.125rem;font-weight:600;color:var(--navy);text-align:center;line-height:1.25">Timo Steinfort</p>
         <span style="font-family:'IBM Plex Mono',monospace;font-size:.74rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:#1A2744;background:#eeeff1;border-radius:999px;padding:5px 12px;text-align:center;line-height:1.4">Markt &amp; Strategie</span>
         <div style="width:100%;display:flex;flex-direction:column;gap:7px;margin-top:4px;padding-top:14px;border-top:1px solid #eeeff1">
           <p style="margin:0;display:flex;gap:8px;font-size:.8125rem;color:#3A4A50;line-height:1.45"><span style="color:#b3bfda">›</span>Kaufmann EFZ</p>
           <p style="margin:0;display:flex;gap:8px;font-size:.8125rem;color:#3A4A50;line-height:1.45"><span style="color:#b3bfda">›</span>Double MSc in Real Estate &amp; Finance</p>
           <p style="margin:0;display:flex;gap:8px;font-size:.8125rem;color:#3A4A50;line-height:1.45"><span style="color:#b3bfda">›</span>M.I.T. — KI &amp; Transformation</p>
         </div>
-        <p style="margin:0;padding-top:12px;border-top:1px solid #eeeff1;font-size:.875rem;color:#3A4A50;line-height:1.6;text-wrap:pretty">Fünf Jahre <b style="color:#151e32">Immobilien-Bewirtschaftung</b> — Nebenkostenabrechnungen, Versammlungen, der Anruf um 17.50 Uhr. Heute übersetzt er zwischen Bewirtschaftungsalltag und System.</p>
+        <p style="margin:0;padding-top:12px;border-top:1px solid #eeeff1;font-size:.875rem;color:#3A4A50;line-height:1.6;text-wrap:pretty">Fünf Jahre <b style="color:var(--navy)">Immobilien-Bewirtschaftung</b> — Nebenkostenabrechnungen, Versammlungen, der Anruf um 17.50 Uhr. Heute übersetzt er zwischen Bewirtschaftungsalltag und System.</p>
       </div>
 
       <div style="background:#fff;border:1px solid #DDE6E8;border-radius:18px;padding:26px 22px 18px;display:flex;flex-direction:column;align-items:center;gap:12px;box-shadow:0 20px 50px -44px rgba(18,48,56,.8)">
         <img src="/Bilder/Bild_David.webp" alt="David Staub" width="96" height="96" loading="lazy" style="width:96px;height:96px;border-radius:50%;object-fit:cover;border:3px solid #fff;box-shadow:0 0 0 1px #DDE6E8,0 10px 26px -18px rgba(18,48,56,.9)">
-        <p style="margin:0;font-family:'Fraunces',Georgia,serif;font-size:1.125rem;font-weight:600;color:#151e32;text-align:center;line-height:1.25">David Staub</p>
+        <p style="margin:0;font-family:'Fraunces',Georgia,serif;font-size:1.125rem;font-weight:600;color:var(--navy);text-align:center;line-height:1.25">David Staub</p>
         <span style="font-family:'IBM Plex Mono',monospace;font-size:.74rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:#1A2744;background:#eeeff1;border-radius:999px;padding:5px 12px;text-align:center;line-height:1.4">Prozesse &amp; Abläufe</span>
         <div style="width:100%;display:flex;flex-direction:column;gap:7px;margin-top:4px;padding-top:14px;border-top:1px solid #eeeff1">
           <p style="margin:0;display:flex;gap:8px;font-size:.8125rem;color:#3A4A50;line-height:1.45"><span style="color:#b3bfda">›</span>Elektroinstallateur EFZ</p>
@@ -1105,7 +1104,7 @@
 
       <div style="background:#fff;border:1px solid #DDE6E8;border-radius:18px;padding:26px 22px 18px;display:flex;flex-direction:column;align-items:center;gap:12px;box-shadow:0 20px 50px -44px rgba(18,48,56,.8)">
         <img src="/Bilder/Bild_Sinan.webp?v=2" alt="Sinan Sen" width="96" height="96" loading="lazy" style="width:96px;height:96px;border-radius:50%;object-fit:cover;border:3px solid #fff;box-shadow:0 0 0 1px #DDE6E8,0 10px 26px -18px rgba(18,48,56,.9)">
-        <p style="margin:0;font-family:'Fraunces',Georgia,serif;font-size:1.125rem;font-weight:600;color:#151e32;text-align:center;line-height:1.25">Sinan Sen</p>
+        <p style="margin:0;font-family:'Fraunces',Georgia,serif;font-size:1.125rem;font-weight:600;color:var(--navy);text-align:center;line-height:1.25">Sinan Sen</p>
         <span style="font-family:'IBM Plex Mono',monospace;font-size:.74rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:#1A2744;background:#eeeff1;border-radius:999px;padding:5px 12px;text-align:center;line-height:1.4">Systeme &amp; Technik</span>
         <div style="width:100%;display:flex;flex-direction:column;gap:7px;margin-top:4px;padding-top:14px;border-top:1px solid #eeeff1">
           <p style="margin:0;display:flex;gap:8px;font-size:.8125rem;color:#3A4A50;line-height:1.45"><span style="color:#b3bfda">›</span>Systemtechniker EFZ</p>
@@ -1135,7 +1134,7 @@
           <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.582a.5.5 0 0 1 0 .963L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/>
           <path d="M20 3v4M22 5h-4M4 17v2M5 18H3"/>
         </svg>
-        <textarea id="kb-inp" rows="2" placeholder="" style="flex:1;background:transparent;border:none;outline:none;resize:none;font-family:'Manrope',system-ui,sans-serif;font-size:.9375rem;color:var(--navy);line-height:1.55;min-height:54px;max-height:140px"></textarea>
+        <textarea id="kb-inp" rows="3" placeholder="" style="flex:1;background:transparent;border:none;outline:none;resize:none;font-family:'Manrope',system-ui,sans-serif;font-size:.9375rem;color:var(--navy);line-height:1.55;min-height:82px;max-height:180px"></textarea>
         <button id="kb-send" type="button" style="flex-shrink:0;width:44px;height:44px;border-radius:50%;border:none;background:var(--brand-dark);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:opacity .15s,transform .12s;box-shadow:0 4px 14px -4px rgba(18,48,56,.4)">
           <svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:#fff;stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </button>
@@ -1257,6 +1256,7 @@
     if(!text)return;
     busy=true;send.disabled=true;
     inp.dataset.sent='1';
+    if(chips)chips.style.display='none';
     addUserMsg(text);
     inp.value='';inp.placeholder='';inp.style.height='auto';
     history.push({role:'user',content:text});
@@ -1431,7 +1431,7 @@
   <div class="container site-cta-content">
     <p class="section-label section-label--steel">Der erste Schritt</p>
     <h2 id="cta-h">Bereit für eine automatisierte Bewirtschaftung? Wir sind erreichbar.</h2>
-    <p>Sie wissen schon, worum es geht? Melden Sie sich — wir schauen uns Ihre Situation gemeinsam an, von der Schadensmeldung bis zur Eigentümerversammlung.</p>
+    <p class="site-cta-lead">Keine neue Software, keine neuen Mitarbeitenden — nur weniger Koordinationsaufwand.</p>
     <div class="kontakt-channels">
       <a href="/formular" class="btn btn--white" data-gtm-event="cta_kontakt_klick" data-gtm-location="cta_final">Kontakt aufnehmen</a>
     </div>
@@ -1556,7 +1556,7 @@
  if(!cards.length)return;
  function sel(n){
   [].forEach.call(cards,function(c){var on=c.getAttribute('data-ph')===n;c.style.borderColor=on?"#1A2744":'#DDE6E8';c.style.boxShadow=on?'0 18px 44px -26px rgba(26,39,68,.65)':'none';c.style.transform=on?'translateY(-3px)':'none';});
-  [].forEach.call(dots,function(g){var on=g.getAttribute('data-ph')===n;var c=g.querySelector('circle');if(c){c.setAttribute('r',on?'18':'14');c.setAttribute('fill',on?"#1A2744":"#151e32");}});
+  [].forEach.call(dots,function(g){var on=g.getAttribute('data-ph')===n;var c=g.querySelector('circle');if(c){c.setAttribute('r',on?'18':'14');c.setAttribute('fill',on?"#1A2744":"var(--navy)");}});
  }
  [].forEach.call(cards,function(c){c.addEventListener('click',function(){sel(c.getAttribute('data-ph'));});});
  [].forEach.call(dots,function(g){g.addEventListener('click',function(){sel(g.getAttribute('data-ph'));});});
@@ -1576,6 +1576,7 @@
         <p class="footer-copy">© 2026 Amplifyr GmbH · Mettlenstrasse 11, 8142 Uitikon Waldegg · <a href="tel:+41442445995" class="footer-tel" data-gtm-event="cta_telefon_klick" data-gtm-location="footer">044 244 59 95</a></p>
         <nav class="footer-links" aria-label="Weitere Seiten und Rechtliches">
           <a href="https://portal.amplifyr.ch/" target="_blank" rel="noopener">Kundenportal</a>
+          <a href="/blog">Blog</a>
           <a href="/impressum">Impressum</a>
           <a href="/datenschutz">Datenschutz</a>
           <a href="/agb">AGB</a>
@@ -1652,7 +1653,7 @@
     </a>
   </div>
 
-  <script defer src="/main.js?v=11"></script>
+  <script defer src="/main.js?v=12"></script>
 
 <script>
 (function(){

@@ -7,7 +7,7 @@
    HERO
 ============================================================ */
 #fsh-index {
-  background: url('/Bilder/hero-landingpage.webp') center/cover no-repeat;
+  background: url('/Bilder/hero-landingpage.webp?v=2') center/cover no-repeat;
 }
 
 #fsh-index .fsh-overlay {
@@ -113,8 +113,22 @@
 }
 
 .qd-media {
+  position: relative;
   overflow: hidden;
   background: var(--border-light);
+}
+
+/* Farbwäsche in Markenfarbe — vereinheitlicht den Blauton der vier
+   Icon-Grafiken mit der restlichen Seite, ohne die Bildzeichnung selbst
+   zu verändern (mix-blend-mode:color übernimmt nur Farbton/Sättigung). */
+.qd-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--navy);
+  mix-blend-mode: color;
+  opacity: 0.5;
+  pointer-events: none;
 }
 
 .qd-media img {

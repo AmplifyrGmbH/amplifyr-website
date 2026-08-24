@@ -251,14 +251,15 @@
   cursor: pointer;
 }
 
-.ua-ring.has-active .ua-ring-wall:not(.is-active),
-.ua-ring.has-active .ua-ring-top:not(.is-active) {
-  opacity: 0.28;
-}
-
 .ua-ring-top.is-active,
 .ua-ring-wall.is-active {
   --lift: 8px;
+}
+
+/* Nur das gewählte Segment wird hervorgehoben (angehoben + Leuchten) —
+   die übrigen Segmente bleiben unverändert sichtbar statt verblasst. */
+.ua-ring-top.is-active {
+  filter: drop-shadow(0 6px 14px rgba(26,39,68,0.35));
 }
 
 .ua-ring-labels {
@@ -327,10 +328,6 @@
 .ua-ring-corner--0 { left: 81.94%; top: 31.61%; color: #F4F6FB; }
 .ua-ring-corner--1 { left: 50%;    top: 86.94%; color: var(--navy); }
 .ua-ring-corner--2 { left: 18.06%; top: 31.61%; color: var(--navy); }
-
-.ua-ring.has-active .ua-ring-corner:not(.is-active) {
-  opacity: 0.4;
-}
 
 @media (max-width: 480px) {
   /* Der zweizeilige Text würde bei dieser Ringgrösse umbrechen/überlappen —
