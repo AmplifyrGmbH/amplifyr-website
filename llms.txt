@@ -1,18 +1,18 @@
 # Amplifyr GmbH
 
-> Schweizer Technologiedienstleister mit Sitz in Uitikon Waldegg (Kanton Zürich). Amplifyr begleitet Schweizer KMU bei der KI-Transformation — von der Potenzialanalyse bis zur Umsetzung. Leistungen: KI & Automatisierung, IT-Lösungen, Digitaler Auftritt.
+> Digitalisierungspartner für die Bau- und Immobilienbranche in der Schweiz. Amplifyr übernimmt IT, Software, KI und den digitalen Auftritt aus einer Hand — für Handwerksbetriebe und Immobilienverwaltungen, von der Entwicklung bis zum laufenden Betrieb.
 
 Drei Gründer und Geschäftsführer: Timo Steinfort, David Staub, Sinan Sen. Telefon: +41 44 244 59 95. Adresse: Mettlenstrasse 11, 8142 Uitikon Waldegg, Schweiz. E-Mail: info@amplifyr.ch
 
 ## Hauptseiten
 
-- [Startseite](https://www.amplifyr.ch/): KI-Transformation für Schweizer KMU — Überblick über alle Leistungen
-- [Handwerker](https://www.amplifyr.ch/handwerker): Massgeschneiderte KI-Lösungen für Handwerksbetriebe
-- [IT-Lösungen](https://www.amplifyr.ch/it-solutions): IT-Outsourcing, Managed Services, Cloud, Microsoft 365
-- [Digitaler Auftritt](https://www.amplifyr.ch/webdesign): Webdesign, SEO-optimierte Websites und Rebranding für KMU
+- [Startseite](https://www.amplifyr.ch/): Digitalisierungspartner für die Bau- und Immobilienbranche — Überblick über alle Leistungen
+- [Handwerker](https://www.amplifyr.ch/handwerker): Digitale Auftragsabwicklung, Website, KI-Chatbot und IT für Handwerksbetriebe
+- [IT-Lösungen](https://www.amplifyr.ch/it-solutions): IT-Outsourcing, Managed Services und Support für Schweizer KMU
+- [Digitaler Auftritt](https://www.amplifyr.ch/webdesign): Websites, die arbeiten — Webdesign, SEO und Google Ads
 - [Über uns](https://www.amplifyr.ch/ueber-uns): Team, Gründer und Unternehmensgeschichte
-- [Kontakt & Anfrage](https://www.amplifyr.ch/formular): Kontaktformular und Potenzialanalyse anfragen
-- [Blog](https://www.amplifyr.ch/blog): Artikel zu KI, Automatisierung und digitalem Auftritt für KMU
+- [Kontakt & Anfrage](https://www.amplifyr.ch/formular): Kontaktformular und kostenloses Erstgespräch anfragen
+- [Blog](https://www.amplifyr.ch/blog): Einblicke aus dem Unternehmertum bei Amplifyr
 
 ## Profile
 
@@ -20,3 +20,4 @@ Drei Gründer und Geschäftsführer: Timo Steinfort, David Staub, Sinan Sen. Tel
 - [Instagram](https://www.instagram.com/amplifyr.ch): Amplifyr auf Instagram
 - [Google Business](https://share.google/eYm0aezDVVAf7fzIW): Google-Unternehmensprofil
 - [local.ch](https://www.local.ch/de/d/uitikon-waldegg/8142/informatikberatung/amplifyr-gmbh-ynGCJ_bt1_3XVfH6abKyhQ): Branchenverzeichnis-Eintrag
+- [search.ch](https://search.ch/tel/uitikon-waldegg/mettlenstrasse-11/amplifyr-gmbh): Branchenverzeichnis-Eintrag
