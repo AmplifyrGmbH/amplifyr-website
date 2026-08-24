@@ -7,7 +7,6 @@ Drei Gründer und Geschäftsführer: Timo Steinfort, David Staub, Sinan Sen. Tel
 ## Hauptseiten
 
 - [Startseite](https://www.amplifyr.ch/): KI-Transformation für Schweizer KMU — Überblick über alle Leistungen
-- [Bewirtschaftung](https://www.amplifyr.ch/bewirtschaftung): Digitalisierungspartner für Immobilienverwaltungen
 - [Handwerker](https://www.amplifyr.ch/handwerker): Massgeschneiderte KI-Lösungen für Handwerksbetriebe
 - [IT-Lösungen](https://www.amplifyr.ch/it-solutions): IT-Outsourcing, Managed Services, Cloud, Microsoft 365
 - [Digitaler Auftritt](https://www.amplifyr.ch/webdesign): Webdesign, SEO-optimierte Websites und Rebranding für KMU
