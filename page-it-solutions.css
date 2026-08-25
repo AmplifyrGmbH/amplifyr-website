@@ -413,14 +413,6 @@
 /* ============================================================
    MANAGED SERVICES
 ============================================================ */
-#sec-managed {
-  background: var(--bg-white);
-}
-
-#sec-projekte {
-  background: var(--bg-white);
-}
-
 .ms-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -699,8 +691,8 @@
 .m365-chips li {
   font-size: 0.75rem;
   font-weight: 600;
-  color: var(--navy);
-  background: var(--steel-light);
+  color: #fff;
+  background: var(--navy);
   border-radius: 100px;
   padding: 4px 13px;
   line-height: 1.4;
@@ -1190,9 +1182,12 @@
 .msp-module:hover { background: rgba(176,196,222,0.14); }
 
 .msp-module.is-active {
-  border-color: var(--steel);
-  background: rgba(176,196,222,0.16);
+  border-color: var(--navy);
+  background: var(--navy);
 }
+
+.msp-module.is-active .msp-module-name { color: #fff; }
+.msp-module.is-active .msp-module-desc { color: rgba(255,255,255,0.72); }
 
 .msp-module-mark {
   flex: none;
@@ -1260,8 +1255,8 @@
 .msp-layer-chips span {
   font-size: 0.8125rem;
   font-weight: 600;
-  color: var(--navy);
-  background: var(--steel);
+  color: #fff;
+  background: var(--navy);
   border-radius: 999px;
   padding: 7px 13px;
 }
@@ -1300,6 +1295,15 @@
 
 .msp-benefit-row:last-child { border-bottom: none; }
 .msp-benefit-check { color: var(--navy); font-weight: 600; flex: none; }
+
+.msp-benefits-cta .btn--hero-pill {
+  background: var(--navy);
+  color: #fff;
+}
+
+.msp-benefits-cta .btn--hero-pill:hover {
+  background: var(--accent-hover);
+}
 
 .msp-benefits-empty { font-size: 0.9375rem; color: var(--text-muted); line-height: 1.6; margin: 0; }
 

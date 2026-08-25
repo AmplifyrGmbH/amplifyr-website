@@ -111,7 +111,6 @@
       { id: 'network',    name: 'Managed Network & WLAN',        layers: ['infra'],         benefit: 'Das Netzwerk läuft stabil, unbefugte Zugriffe bleiben draussen' },
       { id: 'workplace',  name: 'Managed Workplace',             layers: ['work'],          benefit: 'Neue Mitarbeitende sind am ersten Tag startklar' },
       { id: 'cloud',      name: 'Managed Cloud / Microsoft 365', layers: ['data'],          benefit: 'Zugriffe sind sauber geregelt, Lizenzen laufend optimiert' },
-      { id: 'monitoring', name: 'Monitoring & Patching',         layers: ['infra', 'work'], benefit: 'Störungen fallen uns auf, bevor Ihr Team sie merkt' },
       { id: 'helpdesk',   name: 'Managed Helpdesk',              layers: ['work'],          benefit: 'Ihre Mitarbeitenden erreichen bei jedem Anliegen dieselbe Stelle' }
     ];
 
