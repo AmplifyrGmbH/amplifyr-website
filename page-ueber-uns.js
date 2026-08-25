@@ -26,6 +26,20 @@
     item.classList.add('is-open');
     btn.setAttribute('aria-expanded', 'true');
     body.style.maxHeight = body.scrollHeight + 'px';
+    // Höhe kann sich nach dem Öffnen noch ändern (Web-Font swapt nach,
+    // Bild lädt später) — max-height sonst dauerhaft zu klein, Inhalt
+    // bleibt abgeschnitten hängen. Solange offen, laufend nachziehen.
+    if ('ResizeObserver' in window) {
+      var profile = body.querySelector('.ua-acc-profile') || body;
+      if (!body._uaRO) {
+        body._uaRO = new ResizeObserver(function () {
+          if (item.classList.contains('is-open')) {
+            body.style.maxHeight = body.scrollHeight + 'px';
+          }
+        });
+      }
+      body._uaRO.observe(profile);
+    }
   }
 
   function closeItem(item) {
@@ -35,6 +49,7 @@
     item.classList.remove('is-open');
     btn.setAttribute('aria-expanded', 'false');
     body.style.maxHeight = '0';
+    if (body._uaRO) body._uaRO.disconnect();
   }
 
   // Initial: offene Items aufklappen
