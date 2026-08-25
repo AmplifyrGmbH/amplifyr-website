@@ -26,13 +26,15 @@
 }
 
 /* "Digitalisierungspartner" ist zu lang für sehr schmale Screens — dort
-   Trennung erlauben statt über den Rand hinauslaufen zu lassen. */
+   Trennung erlauben statt über den Rand hinauslaufen zu lassen. hyphens:
+   manual statt auto, damit nur an der manuell gesetzten Stelle (&shy; im
+   HTML) getrennt wird und nicht z.B. mitten in "Immobilienbranche". */
 @media (max-width: 400px) {
   #fsh-index .fsh-heading {
     font-size: clamp(1.5rem, 8vw, 1.9rem);
     word-break: normal;
     overflow-wrap: break-word;
-    hyphens: auto;
+    hyphens: manual;
   }
 }
 
