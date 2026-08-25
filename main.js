@@ -12,10 +12,17 @@
      beim Scrollen auftaucht/verschwindet (iOS Safari, Brave, Chrome).
   ============================================================ */
   function setVH() {
-    document.documentElement.style.setProperty('--vh', window.innerHeight * 0.01 + 'px');
+    var h = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+    document.documentElement.style.setProperty('--vh', h * 0.01 + 'px');
   }
   setVH();
   window.addEventListener('resize', setVH, { passive: true });
+  // window.resize feuert auf iOS Safari beim Ein-/Ausblenden der Adressleiste
+  // während des Scrollens nicht zuverlässig — visualViewport.resize schon,
+  // das ist der eigentliche Fix für den "Hero zoomt beim Scrollen"-Effekt.
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', setVH, { passive: true });
+  }
 
   /* ============================================================
      1. AKTIVEN NAV-LINK SETZEN

@@ -25,6 +25,17 @@
   overflow-wrap: normal;
 }
 
+/* "Digitalisierungspartner" ist zu lang für sehr schmale Screens — dort
+   Trennung erlauben statt über den Rand hinauslaufen zu lassen. */
+@media (max-width: 400px) {
+  #fsh-index .fsh-heading {
+    font-size: clamp(1.5rem, 8vw, 1.9rem);
+    word-break: normal;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+}
+
 #fsh-index .fsh-sub {
   color: #fff;
   font-size: clamp(1.3rem, 2.4vw, 1.85rem);
