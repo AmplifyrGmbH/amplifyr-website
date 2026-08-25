@@ -31,9 +31,6 @@
     /* CTA Content */
     window.animateOnScroll('.its-cta-content > *', { stagger: 100, duration: 500 });
 
-    /* Partner Ticker */
-    initTicker();
-
     /* Support-Cards — Click-to-flip & einmalige Tease-Animation */
     var supCards = document.querySelectorAll('.sup-card');
 
@@ -188,65 +185,6 @@
     tabs.forEach(function (btn, idx) {
       btn.addEventListener('click', function () { activate(idx); });
     });
-  }
-
-  function initTicker() {
-    var track = document.querySelector('.partner-ticker-track');
-    if (!track) return;
-
-    var pos      = 0;
-    var speed    = 1.0;
-    var origW    = 0; /* Breite eines Sets (= Reset-Distanz) */
-
-    function cloneUntilFull() {
-      /* Originale Items merken (vor dem Klonen) */
-      var origItems = Array.prototype.slice.call(track.querySelectorAll('.partner-item'));
-      if (!origItems.length) return;
-
-      /* Breite eines Sets messen */
-      var trackRect  = track.getBoundingClientRect();
-      var firstRect  = origItems[0].getBoundingClientRect();
-      /* origW = Abstand vom Track-Start bis zum Start des ersten Items
-                 + Gesamtbreite aller Orig-Items */
-      /* Einfacher: scrollWidth der originalen Items */
-      origW = track.scrollWidth;
-
-      /* Klonen bis Track mindestens 3× Viewport breit */
-      var minW = window.innerWidth * 3;
-      while (track.scrollWidth < minW) {
-        origItems.forEach(function (item) {
-          track.appendChild(item.cloneNode(true));
-        });
-      }
-
-      /* origW nach erstem Klon-Durchlauf neu messen:
-         = offsetLeft des ersten geklonten Items relativ zum Track */
-      var allItems  = track.querySelectorAll('.partner-item');
-      var firstClone = allItems[origItems.length];
-      if (firstClone) {
-        var tr = track.getBoundingClientRect();
-        var cr = firstClone.getBoundingClientRect();
-        origW  = cr.left - tr.left;
-      }
-    }
-
-    function step() {
-      pos -= speed;
-      if (origW > 0 && pos <= -origW) pos += origW;
-      track.style.transform = 'translateX(' + pos + 'px)';
-      requestAnimationFrame(step);
-    }
-
-    function start() {
-      cloneUntilFull();
-      requestAnimationFrame(step);
-    }
-
-    if (document.readyState === 'complete') {
-      start();
-    } else {
-      window.addEventListener('load', start);
-    }
   }
 
 }());
