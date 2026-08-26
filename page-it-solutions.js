@@ -104,8 +104,6 @@
     var MODULES = [
       { id: 'security',   name: 'Managed Security',              layers: ['work'],          benefit: 'Angriffe werden abgefangen — und Ihr Team erkennt, was durchkommt' },
       { id: 'backup',     name: 'Managed Backup',                layers: ['data'],          benefit: 'Ihre Daten sind gesichert und im Ernstfall in Minuten zurück' },
-      { id: 'server',     name: 'Managed Server',                layers: ['infra'],         benefit: 'Server werden geplant gewartet, statt im Notfall repariert' },
-      { id: 'network',    name: 'Managed Network & WLAN',        layers: ['infra'],         benefit: 'Das Netzwerk läuft stabil, unbefugte Zugriffe bleiben draussen' },
       { id: 'workplace',  name: 'Managed Workplace',             layers: ['work'],          benefit: 'Neue Mitarbeitende sind am ersten Tag startklar' },
       { id: 'cloud',      name: 'Managed Cloud / Microsoft 365', layers: ['data'],          benefit: 'Zugriffe sind sauber geregelt, Lizenzen laufend optimiert' },
       { id: 'helpdesk',   name: 'Managed Helpdesk',              layers: ['work'],          benefit: 'Ihre Mitarbeitenden erreichen bei jedem Anliegen dieselbe Stelle' }

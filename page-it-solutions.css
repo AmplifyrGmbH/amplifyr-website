@@ -1042,6 +1042,13 @@
 
 .msp-picker-count { font-size: 0.9rem; color: var(--navy); white-space: nowrap; }
 
+.msp-picker-note {
+  margin: var(--space-4) 0 0;
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--text-muted);
+}
+
 .msp-environment-label { margin-bottom: var(--space-5); display: block; }
 
 .msp-modules {
