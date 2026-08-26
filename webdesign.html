@@ -297,7 +297,7 @@
         </div>
         <div class="mobile-nav-group__sub">
           <a href="/webdesign#problem">Video</a>
-          <a href="/webdesign#werkzeuge">Werkzeuge</a>
+          <a href="/webdesign#ihre-werkzeuge">Werkzeuge</a>
           <a href="/webdesign#gefunden-werden">Gefunden werden</a>
           <a href="/webdesign#referenzen">Referenzen</a>
           <a href="/webdesign#betrieb">All-in-one</a>
@@ -332,7 +332,7 @@
     <nav class="jrail" aria-label="Abschnitte dieser Seite" data-dark=".site-cta">
       <ol>
         <li><a href="#problem"><span>Video</span><i></i></a></li>
-        <li><a href="#werkzeuge"><span>Werkzeuge</span><i></i></a></li>
+        <li><a href="#ihre-werkzeuge"><span>Werkzeuge</span><i></i></a></li>
         <li><a href="#gefunden-werden"><span>Gefunden werden</span><i></i></a></li>
         <li><a href="#referenzen"><span>Referenzen</span><i></i></a></li>
         <li><a href="#betrieb"><span>All-in-one</span><i></i></a></li>
@@ -400,135 +400,224 @@
         </div>
       </section>
 
-      <!-- WERKZEUGE — Dachüberschrift -->
-      <div class="wa-section-group">
-        <div class="wrap">
-          <div class="sec-head">
-            <span class="kicker">was jede website von uns kann</span>
-            <h2>Ihre Werkzeuge.</h2>
+      <!-- IHRE WERKZEUGE -->
+      <section class="wz" id="ihre-werkzeuge">
+        <div class="wz-ring"></div>
+        <div class="wz-inner">
+          <div class="wz-head">
+            <div class="wz-eyebrow"><span>Was jede Website von uns kann</span></div>
+            <h2 class="wz-h2">Eine Website, die <em>mitarbeitet.</em></h2>
+          </div>
+
+          <div class="wz-main">
+            <div class="wz-rail">
+              <button class="wz-tool" type="button" data-tool="rechner">
+                <span class="wz-tool-no">01</span>
+                <span class="wz-tool-body">
+                  <span class="wz-tool-name">Rechner</span>
+                  <span class="wz-tool-claim">Preis sofort, ohne Rückruf</span>
+                </span>
+              </button>
+              <button class="wz-tool" type="button" data-tool="buchung">
+                <span class="wz-tool-no">02</span>
+                <span class="wz-tool-body">
+                  <span class="wz-tool-name">Buchung</span>
+                  <span class="wz-tool-claim">Termine ohne Telefonat</span>
+                </span>
+              </button>
+              <button class="wz-tool is-active" type="button" data-tool="ki">
+                <span class="wz-tool-no">03</span>
+                <span class="wz-tool-body">
+                  <span class="wz-tool-name">KI-Assistent</span>
+                  <span class="wz-tool-claim">Antwortet nachts und in jeder Sprache</span>
+                </span>
+              </button>
+              <button class="wz-tool" type="button" data-tool="auto">
+                <span class="wz-tool-no">04</span>
+                <span class="wz-tool-body">
+                  <span class="wz-tool-name">Automation</span>
+                  <span class="wz-tool-claim">Abläufe, die im Hintergrund laufen</span>
+                </span>
+              </button>
+              <button class="wz-tool" type="button" data-tool="karriere">
+                <span class="wz-tool-no">05</span>
+                <span class="wz-tool-body">
+                  <span class="wz-tool-name">Karriere</span>
+                  <span class="wz-tool-claim">Bewerbungen kommen vorsortiert</span>
+                </span>
+              </button>
+              <p class="wz-rail-note">Nicht dabei? Fragen Sie — was technisch machbar ist, bauen wir.</p>
+            </div>
+
+            <div class="wz-stage">
+              <div class="wz-window">
+                <div class="wz-chrome">
+                  <span class="wz-dots"><i></i><i></i><i></i></span>
+                  <span class="wz-url" data-url>ihre-website.ch</span>
+                  <span class="wz-chrome-note">Live auf Ihrer Website</span>
+                </div>
+                <div class="wz-body">
+                <div class="wz-panel wz-split" data-panel="rechner">
+                  <div class="wz-col">
+                    <div class="wz-panel-title">Was kostet mein Projekt?</div>
+                    <div class="wz-field">
+                      <span class="wz-label">Fläche</span>
+                      <div class="wz-slider-row">
+                        <span class="wz-slider"><span class="wz-slider-fill"></span><span class="wz-slider-knob"></span></span>
+                        <span class="wz-mono-13">124 m²</span>
+                      </div>
+                    </div>
+                    <div class="wz-field">
+                      <span class="wz-label">Ausführung</span>
+                      <div class="wz-chips">
+                        <span class="wz-chip">Standard</span>
+                        <span class="wz-chip is-on">Hochwertig</span>
+                        <span class="wz-chip">Premium</span>
+                      </div>
+                    </div>
+                    <div class="wz-field">
+                      <span class="wz-label">Zusatzleistungen</span>
+                      <div class="wz-chips">
+                        <span class="wz-chip is-on">Entsorgung</span>
+                        <span class="wz-chip">Wochenende</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="wz-quote">
+                    <span class="wz-label wz-label-light">Ihre Richtofferte</span>
+                    <span class="wz-quote-price">CHF 18'400</span>
+                    <span class="wz-quote-note">Richtwert, aktualisiert sich bei jeder Eingabe.</span>
+                    <span class="wz-btn-light">Offerte anfordern</span>
+                  </div>
+                </div>
+                <div class="wz-panel wz-split" data-panel="buchung" hidden>
+                  <div class="wz-col">
+                    <div class="wz-panel-title">Termin wählen</div>
+                    <div class="wz-cal">
+                      <div class="wz-cal-head">
+                        <span>Mo</span><span>Di</span><span>Mi</span><span>Do</span><span>Fr</span>
+                      </div>
+                      <div class="wz-cal-grid">
+                    <span class="wz-slot is-busy">—</span>
+                    <span class="wz-slot">10:00</span>
+                    <span class="wz-slot">11:30</span>
+                    <span class="wz-slot">14:00</span>
+                    <span class="wz-slot is-busy">—</span>
+                    <span class="wz-slot">08:30</span>
+                    <span class="wz-slot is-busy">—</span>
+                    <span class="wz-slot">11:30</span>
+                    <span class="wz-slot is-sel">14:00</span>
+                    <span class="wz-slot">16:00</span>
+                    <span class="wz-slot">08:30</span>
+                    <span class="wz-slot">10:00</span>
+                    <span class="wz-slot is-busy">—</span>
+                    <span class="wz-slot">14:00</span>
+                    <span class="wz-slot">16:00</span>
+                      </div>
+                      <div class="wz-legend">
+                        <span><i class="wz-sw-free"></i>frei</span>
+                        <span><i class="wz-sw-sel"></i>gewählt</span>
+                        <span><i class="wz-sw-busy"></i>belegt</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="wz-aside">
+                    <span class="wz-label">Ihr Termin</span>
+                    <span class="wz-aside-title">Do, 3. Sept.<br />14:00</span>
+                    <div class="wz-rule"></div>
+                    <span class="wz-aside-text">Vor-Ort-Besichtigung, 45 Min. Wird direkt in Ihren Kalender eingetragen.</span>
+                    <span class="wz-btn-dark">Termin bestätigen</span>
+                  </div>
+                </div>
+                <div class="wz-panel wz-split" data-panel="ki" hidden>
+                  <div class="wz-chat">
+                    <div class="wz-live"><span class="wz-dot"><i></i></span><span class="wz-label">Assistent antwortet · 02:14 Uhr</span></div>
+                    <div class="wz-bubble wz-bubble-in">Salut, notre chauffage ne fonctionne plus. Vous pouvez venir demain?</div>
+                    <div class="wz-bubble wz-bubble-out">Bien sûr. S'agit-il d'une pompe à chaleur ou d'un chauffage au mazout? Et pouvez-vous m'envoyer une photo de l'appareil?</div>
+                    <div class="wz-bubble wz-bubble-in wz-bubble-file"><span class="wz-thumb"></span><span class="wz-mono-12">heizung.jpg</span></div>
+                    <div class="wz-bubble wz-bubble-out">Merci. C'est un modèle de 2009 — notre technicien Herr Bühler s'en occupe. Créneau demain 08:30, à Lausanne?<span class="wz-caret"> |</span></div>
+                  </div>
+                  <div class="wz-col">
+                    <span class="wz-label">Was gleichzeitig passiert</span>
+                    <div class="wz-check">Anliegen und Adresse aufgenommen</div>
+                    <div class="wz-check">Foto gelesen und Gerät eingeschätzt</div>
+                    <div class="wz-check">An den zuständigen Techniker weitergeleitet</div>
+                    <div class="wz-check">Terminvorschlag aus Ihrem Kalender</div>
+                  </div>
+                </div>
+                <div class="wz-panel" data-panel="auto" hidden>
+                  <div class="wz-panel-title">Eine Anfrage kommt rein — der Rest läuft von selbst</div>
+                  <div class="wz-flow">
+                    <div class="wz-step"><span class="wz-step-no">Schritt 1</span><span class="wz-step-name">Anfrage kommt rein</span><span class="wz-step-text">Über Formular, Rechner oder Assistent.</span></div>
+                    <div class="wz-step"><span class="wz-step-no">Schritt 2</span><span class="wz-step-name">Automatisch bestätigt</span><span class="wz-step-text">Kunde erhält Eingangsbestätigung mit Zeitrahmen.</span></div>
+                    <div class="wz-step"><span class="wz-step-no">Schritt 3</span><span class="wz-step-name">Intern verteilt</span><span class="wz-step-text">Landet bei der richtigen Person, mit allen Angaben.</span></div>
+                    <div class="wz-step is-dark"><span class="wz-step-no">Schritt 4</span><span class="wz-step-name">Nachfassen erledigt</span><span class="wz-step-text">Erinnerung geht raus, wenn niemand reagiert hat.</span></div>
+                  </div>
+                  <div class="wz-note"><span class="wz-label">Ihr Aufwand</span><span class="wz-note-text">Ein Blick ins Postfach am Morgen. Alles andere ist schon passiert.</span></div>
+                </div>
+                <div class="wz-panel wz-split" data-panel="karriere" hidden>
+                  <div class="wz-col">
+                    <div class="wz-app-head"><span class="wz-panel-title">Bewerbungen, vorsortiert</span><span class="wz-mono-11">14 eingegangen</span></div>
+                    <div class="wz-app"><span class="wz-app-body"><span class="wz-app-role">Sanitärmonteur EFZ</span><span class="wz-app-meta">6 Jahre Erfahrung · Region Zürich · sofort verfügbar</span></span><span class="wz-tag is-yes">Passt</span></div>
+                    <div class="wz-app"><span class="wz-app-body"><span class="wz-app-role">Sanitärmonteur EFZ</span><span class="wz-app-meta">3 Jahre Erfahrung · Region Zürich · ab November</span></span><span class="wz-tag is-yes">Passt</span></div>
+                    <div class="wz-app"><span class="wz-app-body"><span class="wz-app-role">Lernender Sanitär</span><span class="wz-app-meta">Schnupperlehre gemacht · Region Winterthur</span></span><span class="wz-tag is-maybe">Prüfen</span></div>
+                    <div class="wz-app"><span class="wz-app-body"><span class="wz-app-role">Quereinsteiger</span><span class="wz-app-meta">Kein Fachabschluss · Region Basel</span></span><span class="wz-tag is-no">Später</span></div>
+                  </div>
+                  <div class="wz-aside">
+                    <span class="wz-label">Ihre Kriterien</span>
+                    <span class="wz-crit">— Fachabschluss vorhanden</span>
+                    <span class="wz-crit">— Erreichbar innerhalb 30 Minuten</span>
+                    <span class="wz-crit">— Verfügbar in diesem Quartal</span>
+                    <div class="wz-rule"></div>
+                    <span class="wz-aside-text">Sie lesen nur noch die Bewerbungen, die passen.</span>
+                  </div>
+                </div>
+                </div>
+              </div>
+
+                <div class="wz-outcomes" data-outcomes="rechner">
+                  <div class="wz-outcome"><span class="wz-outcome-label">Für Ihre Kunden</span><span class="wz-outcome-text">Eine Zahl in 30 Sekunden statt drei Tage warten.</span></div>
+                  <div class="wz-outcome"><span class="wz-outcome-label">Für Sie</span><span class="wz-outcome-text">Anfragen kommen mit realistischer Erwartung an.</span></div>
+                  <div class="wz-outcome"><span class="wz-outcome-label">Weniger Aufwand</span><span class="wz-outcome-text">Keine Offerten mehr für Projekte, die nie zustande kommen.</span></div>
+                </div>
+                <div class="wz-outcomes" data-outcomes="buchung">
+                  <div class="wz-outcome"><span class="wz-outcome-label">Für Ihre Kunden</span><span class="wz-outcome-text">Buchen, wann es ihnen passt — auch um 23 Uhr.</span></div>
+                  <div class="wz-outcome"><span class="wz-outcome-label">Für Sie</span><span class="wz-outcome-text">Nur freie Zeiten sind sichtbar, Doppelbuchungen sind unmöglich.</span></div>
+                  <div class="wz-outcome"><span class="wz-outcome-label">Weniger Aufwand</span><span class="wz-outcome-text">Erinnerungen laufen automatisch, weniger Leerfahrten.</span></div>
+                </div>
+                <div class="wz-outcomes is-active" data-outcomes="ki">
+                  <div class="wz-outcome"><span class="wz-outcome-label">Für Ihre Kunden</span><span class="wz-outcome-text">Sofort eine echte Antwort, nicht ein Kontaktformular.</span></div>
+                  <div class="wz-outcome"><span class="wz-outcome-label">Für Sie</span><span class="wz-outcome-text">Anliegen kommen vollständig an — mit Fotos und Rückfragen geklärt.</span></div>
+                  <div class="wz-outcome"><span class="wz-outcome-label">Weniger Aufwand</span><span class="wz-outcome-text">Kein Telefon mehr für Fragen, die sich wiederholen.</span></div>
+                </div>
+                <div class="wz-outcomes" data-outcomes="auto">
+                  <div class="wz-outcome"><span class="wz-outcome-label">Für Ihre Kunden</span><span class="wz-outcome-text">Bestätigung in Sekunden, statt auf Antwort zu warten.</span></div>
+                  <div class="wz-outcome"><span class="wz-outcome-label">Für Sie</span><span class="wz-outcome-text">Jede Anfrage landet am richtigen Ort, nichts geht unter.</span></div>
+                  <div class="wz-outcome"><span class="wz-outcome-label">Weniger Aufwand</span><span class="wz-outcome-text">Kein Abtippen, kein Weiterleiten, kein Nachfragen.</span></div>
+                </div>
+                <div class="wz-outcomes" data-outcomes="karriere">
+                  <div class="wz-outcome"><span class="wz-outcome-label">Für Bewerbende</span><span class="wz-outcome-text">Bewerben in fünf Minuten, direkt vom Handy.</span></div>
+                  <div class="wz-outcome"><span class="wz-outcome-label">Für Sie</span><span class="wz-outcome-text">Kandidaten sind nach Ihren Kriterien vorsortiert.</span></div>
+                  <div class="wz-outcome"><span class="wz-outcome-label">Weniger Aufwand</span><span class="wz-outcome-text">Sie lesen zehn passende statt vierzig zufällige Dossiers.</span></div>
+                </div>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <section class="sec" id="werkzeuge">
-        <div class="wrap">
-          <p class="std-sublabel">Auf Ihr Unternehmen angepasst — wählen Sie ein Werkzeug.</p>
-
-          <nav class="wtab-nav" aria-label="Werkzeug-Kategorien">
-            <button class="wtab-btn is-active" data-wtab="0" type="button">
-              <svg viewBox="0 0 20 20" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2.5" width="12" height="15" rx="1.5"/><line x1="7" y1="6" x2="13" y2="6"/><line x1="7" y1="9.5" x2="7" y2="9.5"/><line x1="10" y1="9.5" x2="10" y2="9.5"/><line x1="13" y1="9.5" x2="13" y2="9.5"/><line x1="7" y1="12.5" x2="7" y2="12.5"/><line x1="10" y1="12.5" x2="10" y2="12.5"/><line x1="13" y1="12.5" x2="13" y2="12.5"/></svg>
-              <span>Rechner</span>
-            </button>
-            <button class="wtab-btn" data-wtab="1" type="button">
-              <svg viewBox="0 0 20 20" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="3.5" width="15" height="14" rx="1.5"/><line x1="2.5" y1="8" x2="17.5" y2="8"/><line x1="6" y1="2" x2="6" y2="5"/><line x1="14" y1="2" x2="14" y2="5"/></svg>
-              <span>Buchung</span>
-            </button>
-            <button class="wtab-btn" data-wtab="2" type="button">
-              <svg viewBox="0 0 20 20" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5 C3 5 6 3 10 3 C14 3 17 5 17 8.5 C17 12 14 14 10 14 C8.7 14 7.5 13.8 6.5 13.3 L3.5 14.5 L4.3 11.8 C3.5 10.9 3 9.8 3 8.5 Z"/></svg>
-              <span>KI-Assistent</span>
-            </button>
-            <button class="wtab-btn" data-wtab="3" type="button">
-              <svg viewBox="0 0 20 20" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2 L11.6 4.2 L14.2 3.4 L14.3 6.1 L16.8 7.1 L15.3 9.3 L16.8 11.5 L14.3 12.5 L14.2 15.2 L11.6 14.4 L10 16.6 L8.4 14.4 L5.8 15.2 L5.7 12.5 L3.2 11.5 L4.7 9.3 L3.2 7.1 L5.7 6.1 L5.8 3.4 L8.4 4.2 Z"/><circle cx="10" cy="9.3" r="2.6"/></svg>
-              <span>Automation</span>
-            </button>
-            <button class="wtab-btn" data-wtab="4" type="button">
-              <svg viewBox="0 0 20 20" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="15" height="10.5" rx="1.5"/><path d="M7 6 L7 4 C7 3.2 7.6 2.5 8.5 2.5 L11.5 2.5 C12.4 2.5 13 3.2 13 4 L13 6"/><line x1="2.5" y1="10.5" x2="17.5" y2="10.5"/></svg>
-              <span>Karriere</span>
-            </button>
-          </nav>
-
-          <div class="wtab-panel-wrap">
-            <div class="wtab-panel is-active" id="wtab-0">
-              <div class="wtab-split">
-                <div class="wtab-body">
-                  <p class="wtab-panel-title">Rechner &amp; Kalkulatoren</p>
-                  <p class="wtab-panel-text">Ob Preiskalkulator, Konfigurationsassistent oder Kostenrechner — Besucher erhalten ihr Ergebnis sofort auf der Website. Kein Formular, kein Anruf, keine Wartezeit. Das senkt die Hemmschwelle und liefert Ihnen qualifizierte Anfragen statt vager Kontaktaufnahmen.</p>
-                </div>
-                <div class="wtab-ex">
-                  <p class="wtab-ex-lbl">Zum Beispiel</p>
-                  <ul class="wtab-ex-list">
-                    <li>Umzugskostenrechner</li>
-                    <li>Solaranlage-Kalkulator</li>
-                    <li>Druckkosten-Konfigurator</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div class="wtab-panel" id="wtab-1">
-              <div class="wtab-split">
-                <div class="wtab-body">
-                  <p class="wtab-panel-title">Buchung &amp; Termine</p>
-                  <p class="wtab-panel-text">Kunden buchen direkt auf Ihrer Website — ohne Telefonanruf, ohne Hin-und-Her per E-Mail. Der Termin landet automatisch in Ihrem Kalender, Erinnerungen werden verschickt, Stornierungen verwalten sich selbst. Auch nachts und am Wochenende.</p>
-                </div>
-                <div class="wtab-ex">
-                  <p class="wtab-ex-lbl">Zum Beispiel</p>
-                  <ul class="wtab-ex-list">
-                    <li>Coiffeur-Termin online buchen</li>
-                    <li>Beratungsgespräch reservieren</li>
-                    <li>Servicetermin in der Werkstatt</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div class="wtab-panel" id="wtab-2">
-              <div class="wtab-split">
-                <div class="wtab-body">
-                  <p class="wtab-panel-title">KI-Assistent auf Ihrer Website</p>
-                  <p class="wtab-panel-text">Nicht nur ein Chat, der Fragen beantwortet: Der Assistent nimmt Anliegen auf, stellt die Rückfragen, die Sie sonst am Telefon stellen, liest hochgeladene Fotos und schätzt sie ein, und leitet an die richtige Person weiter. Er antwortet in der Sprache, in der geschrieben wird — auch in einer, die Sie nicht sprechen.</p>
-                </div>
-                <div class="wtab-ex">
-                  <p class="wtab-ex-lbl">Zum Beispiel</p>
-                  <ul class="wtab-ex-list">
-                    <li>Anliegen aufnehmen und die richtigen Rückfragen stellen</li>
-                    <li>Hochgeladene Fotos lesen und einschätzen</li>
-                    <li>Offerten-Entwurf vorbereiten, Sie geben frei</li>
-                    <li>Bewerbungen vorsortieren nach Ihren Kriterien</li>
-                    <li>Antwortet in jeder Sprache, in der gefragt wird</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div class="wtab-panel" id="wtab-3">
-              <div class="wtab-split">
-                <div class="wtab-body">
-                  <p class="wtab-panel-title">Automatisierung &amp; Support</p>
-                  <p class="wtab-panel-text">Wiederkehrende Abläufe wie Auftragsbestätigungen, Erinnerungsmails, Rechnungsversand oder interne Benachrichtigungen laufen vollständig automatisch. Und die Anfrage bleibt nicht im Postfach liegen: Sie wird zum Kontakt in Ihrer Software, der gebuchte Termin erscheint in Ihrem Kalender — zum Beispiel <strong>bexio</strong> und <strong>Outlook</strong>. Kein Abtippen, keine zweite Liste.</p>
-                </div>
-                <div class="wtab-ex">
-                  <p class="wtab-ex-lbl">Zum Beispiel</p>
-                  <ul class="wtab-ex-list">
-                    <li>Anfrage wird zum Kontakt in bexio — auf Wunsch samt Offerten-Entwurf</li>
-                    <li>Termin landet im Outlook-Kalender, mit Einladung an den Kunden</li>
-                    <li>Andere Systeme genauso, sofern sie eine Schnittstelle haben</li>
-                    <li>Automatische Auftragsbestätigung per Mail</li>
-                    <li>Internes Alert bei neuer Anfrage</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div class="wtab-panel" id="wtab-4">
-              <div class="wtab-split">
-                <div class="wtab-body">
-                  <p class="wtab-panel-title">Karriereseite &amp; Bewerbungen</p>
-                  <p class="wtab-panel-text">Für viele Betriebe ist Personal das dringendere Problem als Kundenakquise. Eine Karriereseite zeigt, wie bei Ihnen gearbeitet wird, und nimmt Bewerbungen strukturiert auf: Angaben, Lebenslauf und Zeugnisse in einem Schritt, statt einer Rückrufbitte auf dem Anrufbeantworter. Offene Stellen werden für Google und KI-Assistenten separat auffindbar gemacht.</p>
-                </div>
-                <div class="wtab-ex">
-                  <p class="wtab-ex-lbl">Zum Beispiel</p>
-                  <ul class="wtab-ex-list">
-                    <li>Offene Stellen mit eigener Unterseite</li>
-                    <li>Bewerbungsformular mit Dateiupload</li>
-                    <li>Lehrstellen-Seite für Schulabgänger</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+      <section class="wz wz-diff-sect">
+        <div class="wz-diff">
+          <div class="wz-diff-text">
+            <span class="wz-eyebrow-plain">Der Unterschied</span>
+            <p class="wz-diff-title">Ein Prospekt wartet.<br /><em>Ihre Website arbeitet.</em></p>
+            <p class="wz-diff-sub">Jedes Werkzeug wird auf Ihr Unternehmen zugeschnitten — Ihre Preise, Ihre Abläufe, Ihre Kalender. Kein Baukasten von der Stange.</p>
           </div>
-
-          <p class="tools-foot">Nicht dabei? Fragen Sie — was technisch machbar ist, bauen wir.</p>
+          <div class="wz-diff-grid">
+            <div class="wz-diff-cell"><span class="wz-diff-cell-title">Ihre Preise</span><span class="wz-diff-cell-text">Rechner rechnet mit Ihren Ansätzen, nicht mit Schätzwerten.</span></div>
+            <div class="wz-diff-cell"><span class="wz-diff-cell-title">Ihre Abläufe</span><span class="wz-diff-cell-text">Automationen folgen dem Weg, den eine Anfrage bei Ihnen wirklich geht.</span></div>
+            <div class="wz-diff-cell"><span class="wz-diff-cell-title">Ihr Kalender</span><span class="wz-diff-cell-text">Buchungen landen dort, wo Sie heute schon planen.</span></div>
+            <div class="wz-diff-cell"><span class="wz-diff-cell-title">Ihr Ton</span><span class="wz-diff-cell-text">Der Assistent antwortet so, wie Sie mit Kunden sprechen.</span></div>
+          </div>
         </div>
       </section>
 
@@ -1063,19 +1152,27 @@
   <script defer src="/ki-berater.js?v=2"></script>
   <script src="/page-webdesign.js"></script>
   <script>
-  /* Werkzeug-Tabs */
-  (function() {
-    var btns = document.querySelectorAll('.wtab-btn');
-    var panels = document.querySelectorAll('.wtab-panel');
-    btns.forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        var idx = this.dataset.wtab;
-        btns.forEach(function(b) { b.classList.remove('is-active'); });
-        panels.forEach(function(p) { p.classList.remove('is-active'); });
-        this.classList.add('is-active');
-        document.getElementById('wtab-' + idx).classList.add('is-active');
-      });
-    });
+  /* Ihre Werkzeuge — Werkzeug-Umschalter */
+  (function () {
+    var root = document.getElementById('ihre-werkzeuge');
+    if (!root) return;
+    var urls = {
+      rechner: 'ihre-website.ch/preisrechner',
+      buchung: 'ihre-website.ch/termin',
+      ki: 'ihre-website.ch',
+      auto: 'ihre-website.ch/anfrage',
+      karriere: 'ihre-website.ch/jobs'
+    };
+    var urlEl = root.querySelector('[data-url]');
+    var buttons = root.querySelectorAll('.wz-tool');
+    function show(key) {
+      buttons.forEach(function (b) { b.classList.toggle('is-active', b.dataset.tool === key); });
+      root.querySelectorAll('[data-panel]').forEach(function (p) { p.hidden = p.dataset.panel !== key; });
+      root.querySelectorAll('[data-outcomes]').forEach(function (o) { o.classList.toggle('is-active', o.dataset.outcomes === key); });
+      if (urlEl && urls[key]) urlEl.textContent = urls[key];
+    }
+    buttons.forEach(function (b) { b.addEventListener('click', function () { show(b.dataset.tool); }); });
+    show('ki');
   })();
   </script>
 
