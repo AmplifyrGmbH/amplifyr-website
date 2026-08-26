@@ -928,36 +928,6 @@
   text-align: center;
 }
 
-/* ── Standard-Liste (#sichtbarkeit kompakt) ── */
-.wa-wrap .std-list {
-  background: var(--wa-glass-bg2);
-  border: 1px solid var(--wa-glass-bd);
-  border-radius: 12px;
-  overflow: hidden;
-}
-.wa-wrap .std-row {
-  display: grid;
-  grid-template-columns: 160px 1fr;
-  align-items: baseline;
-  gap: 0 20px;
-  padding: 9px 20px;
-  border-bottom: 1px solid var(--wa-glass-bd);
-}
-.wa-wrap .std-row:last-child { border-bottom: none; }
-.wa-wrap .std-name {
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: var(--wa-navy);
-}
-.wa-wrap .std-lead {
-  font-size: 0.86rem;
-  line-height: 1.45;
-  color: var(--wa-ink-soft);
-}
-@media (max-width: 600px) {
-  .wa-wrap .std-row { grid-template-columns: 1fr; gap: 2px; padding: 10px 16px; }
-}
-
 /* ── Werkzeug-Tabs ── */
 @keyframes wtabFade {
   from { opacity: 0; transform: translateY(6px); }
@@ -1229,21 +1199,6 @@
 }
 
 /* ============================================================
-   GEFUNDEN WERDEN (#sichtbarkeit)
-   Organisch (inklusive) und Ads (Addon) nebeneinander. Die
-   unterschiedliche Rahmenart trennt "im Preis" von "kostet extra".
-   Ebenfalls neu geschrieben nach dem Versehen oben.
-============================================================ */
-.wa-wrap .anchor-alias {
-  display: block;
-  position: relative;
-  top: calc(-1 * var(--header-h-compact, 58px));
-  height: 0;
-}
-@media (min-width: 760px) {
-}
-
-/* ============================================================
    Nachtraege
 ============================================================ */
 
@@ -1251,10 +1206,6 @@
    Button nicht an der Amortisationsliste klebt. */
 @media (min-width: 760px) {
 }
-
-/* Die "inklusive"-Karte in #sichtbarkeit gegen die gestrichelte
-   Addon-Karte abgrenzen: durchgezogener Rand plus ein Hauch Akzent, damit
-   auf den ersten Blick klar ist, was im Preis steckt. */
 
 /* Die Zeitmarken im Zeitstrahl heissen jetzt "Nachmittags" statt "14:45" —
    exakte Uhrzeiten behaupteten eine Genauigkeit, die es nicht gibt.
@@ -1313,14 +1264,6 @@
    uebrigen Karten — gleiche Schrift, gleiche Farbe, nur eingebbar. */
 
 
-/* ============================================================
-   WEITERE KANAELE (#sichtbarkeit)
-   Schmale Zeile unter den zwei Hauptkarten. Zurueckhaltend gestaltet: sie
-   soll Kompetenzbreite zeigen, nicht mit den zwei Wegen konkurrieren, die
-   tatsaechlich im Angebot stehen.
-============================================================ */
-@media (min-width: 760px) {
-}
 
 
 
@@ -1351,11 +1294,9 @@
    ungefaehr doppelt so hoch wie noetig.
 ============================================================ */
 .wa-wrap #preise .sec-head,
-.wa-wrap #betrieb .sec-head,
-.wa-wrap #sichtbarkeit .sec-head { margin-bottom: 24px; }
+.wa-wrap #betrieb .sec-head { margin-bottom: 24px; }
 .wa-wrap #preise .sec-head p,
-.wa-wrap #betrieb .sec-head p,
-.wa-wrap #sichtbarkeit .sec-head p { font-size: 0.92rem; line-height: 1.55; }
+.wa-wrap #betrieb .sec-head p { font-size: 0.92rem; line-height: 1.55; }
 
 /* Pakete */
 
@@ -1411,20 +1352,6 @@
 /* Der Schalter in den Betriebs-Karten steht auf hellem Grund, die
    Grundregel ist fuer die dunklen Paketkarten gemacht. */
 
-/* ============================================================
-   GEFUNDEN WERDEN — KANALLISTE (#sichtbarkeit)
-   Ersetzt zwei grosse Karten plus einen Kasten mit fuenf weiteren
-   Kanaelen. Sieben Zeilen zum Aufklappen: alle Wege auf einen Blick,
-   Details nur wo gewuenscht. Eingeklappt etwa ein Drittel der alten Hoehe.
-============================================================ */
-
-/* Kopfzeile: Kennzeichnung, Name, Nutzen, Pfeil. Auf breiten Schirmen in
-   einer Zeile, auf schmalen umgebrochen — der Nutzen rutscht dann unter
-   den Namen statt ihn zu quetschen. */
-@media (min-width: 860px) {
-}
-
-/* Die zwei Basiswege heben sich ab, die fuenf Optionen treten zurueck. */
 
 
 /* Aufgeklappter Bereich. Linke Kante als Akzent, damit klar ist, wozu er
@@ -2176,172 +2103,6 @@
 }
 
 /* ============================================================
-   GEFUNDEN WERDEN (#sichtbarkeit) — Fassung aus dem Design-Projekt
-   Uebernommen: Kennzeichnungen als gefuellte Pillen, Chevron statt SVG,
-   Erklaerkasten mit vollem Rahmen und Einzug unter die Namensspalte,
-   zentrierte Fussnote.
-   Der Entwurf steht auf Weiss, diese Section auf Dunkelblau — die Farben
-   sind deshalb gespiegelt, die Struktur ist unveraendert.
-============================================================ */
-
-.wa-wrap #sichtbarkeit .wrap { max-width: 900px; }
-
-.wa-wrap .vch-list {
-  border: 1px solid var(--wa-glass-bd);
-  border-radius: 12px;
-  overflow: hidden;
-  background: var(--wa-glass-bg);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
-}
-.wa-wrap .vch { border-bottom: 1px solid var(--wa-glass-bd); }
-.wa-wrap .vch:last-child { border-bottom: none; }
-
-/* ── Kopfzeile einer Zeile ──
-   Vier Spalten: Kennzeichnung, Name, Nutzen, Chevron. */
-.wa-wrap .vch-head {
-  display: grid;
-  grid-template-columns: 112px minmax(0, 15em) 1fr 20px;
-  align-items: center;
-  gap: 0 16px;
-  width: 100%;
-  padding: 15px 18px;
-  text-align: left;
-  font: inherit;
-  color: inherit;
-  background: none;
-  border: none;
-  cursor: pointer;
-  transition: background 0.15s;
-}
-.wa-wrap .vch-head:hover { background: rgba(26, 39, 68, 0.035); }
-.wa-wrap .vch-head.is-open { background: rgba(26, 39, 68, 0.045); }
-
-.wa-wrap .vch-tag {
-  justify-self: start;
-  font-family: var(--wa-mono);
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  border-radius: 999px;
-  padding: 5px 10px;
-  white-space: nowrap;
-}
-/* Die zwei Basiswege heben sich ab, die fuenf Optionen treten zurueck.
-   Auf weissem Grund gespiegelt: gefuellte Flaeche, dunkle Schrift. Der
-   Addon-Ton bleibt derselbe Bernstein, nur dunkel genug fuer Weiss (4,9:1). */
-.wa-wrap .vch-tag--incl  { color: var(--wa-navy);    background: rgba(176, 196, 222, 0.55); }
-.wa-wrap .vch-tag--addon { color: #7d5214;           background: rgba(217, 168, 108, 0.32); }
-.wa-wrap .vch-tag--opt   { color: var(--wa-ink-soft); background: rgba(26, 39, 68, 0.055); }
-
-.wa-wrap .vch-name {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.06rem;
-  font-weight: 700;
-  color: var(--wa-navy);
-  line-height: 1.25;
-}
-.wa-wrap .vch-lead {
-  font-size: 0.88rem;
-  line-height: 1.45;
-  color: var(--wa-ink-soft);
-}
-.wa-wrap .vch-icon {
-  justify-self: end;
-  font-size: 1rem;
-  line-height: 1;
-  color: var(--wa-ink-dim);
-  transition: transform 0.18s;
-}
-.wa-wrap .vch-head.is-open .vch-icon { transform: rotate(180deg); }
-
-/* ── Erklaerung ──
-   Eingerueckt bis unter die Namensspalte, damit klar ist, wozu sie gehoert.
-   Ohne JavaScript ist sie offen — hidden greift erst, wenn das Script laeuft. */
-.wa-wrap .vch-body[hidden] { display: none; }
-.wa-wrap .vch-body {
-  margin: 0 18px 18px 146px;
-  padding: 16px 20px;
-  background: rgba(176, 196, 222, 0.10);
-  border: 1px solid rgba(176, 196, 222, 0.45);
-  border-radius: 10px;
-}
-.wa-wrap .vch-body-text {
-  font-size: 0.91rem;
-  line-height: 1.65;
-  color: var(--wa-ink-soft);
-  margin: 0 0 10px;
-}
-.wa-wrap .vch-body-text:last-child { margin-bottom: 0; }
-
-.wa-wrap .vch-plus {
-  list-style: none;
-  margin: 0 0 10px;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-}
-.wa-wrap .vch-plus li {
-  position: relative;
-  padding-left: 18px;
-  font-size: 0.88rem;
-  line-height: 1.5;
-  color: var(--wa-ink-soft);
-}
-.wa-wrap .vch-plus li::before {
-  content: "+";
-  position: absolute;
-  left: 0;
-  color: var(--wa-accent-text);
-  font-weight: 700;
-}
-
-.wa-wrap .vch-note {
-  font-size: 0.82rem;
-  /* Traegt eine Aussage ("wirkt sofort, nur solange Sie zahlen") und nicht nur
-     Dekoration — deshalb -soft und nicht -dim, das auf Weiss nur 2,9:1 kommt. */
-  color: var(--wa-ink-soft);
-  margin: 0;
-}
-.wa-wrap .vch-cta {
-  display: inline-block;
-  margin-top: 10px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--wa-accent-text);
-  text-decoration: none;
-  border-bottom: 1px solid rgba(176, 196, 222, 0.7);
-  padding-bottom: 2px;
-  transition: border-color 0.15s;
-}
-.wa-wrap .vch-cta:hover { border-color: var(--wa-navy); }
-
-.wa-wrap .vch-foot {
-  margin: 14px 0 0;
-  text-align: center;
-  font-size: 0.82rem;
-  line-height: 1.6;
-  color: var(--wa-ink-dim);
-}
-
-/* ── Schmale Schirme ──
-   Aus dem Entwurf: Kennzeichnung und Name in eine Zeile, der Nutzen darunter
-   ueber die volle Breite, Chevron entfaellt, Erklaerung ohne Einzug. */
-@media (max-width: 860px) {
-  .wa-wrap .vch-head {
-    grid-template-columns: auto 1fr;
-    grid-template-areas: "tag name" "lead lead";
-    row-gap: 6px;
-  }
-  .wa-wrap .vch-tag  { grid-area: tag; }
-  .wa-wrap .vch-name { grid-area: name; }
-  .wa-wrap .vch-lead { grid-area: lead; }
-  .wa-wrap .vch-icon { display: none; }
-  .wa-wrap .vch-body { margin-left: 18px; }
-}
-
-/* ============================================================
    REFERENZEN (#referenzen) — Fassung aus dem Design-Projekt
    Uebernommen: Untertitel, feste Logozeile, Branche als Kleinschrift ueber
    dem Namen, Link am Kartenfuss hinter einer Trennlinie, Hover mit Anheben.
@@ -3073,7 +2834,6 @@
     margin-top: 4px;
   }
   .wa-wrap .tier-cta { padding: 14px 16px; }
-  .wa-wrap .vch-head { padding: 14px 16px; }
 
   /* ── Karten enger polstern ──
      Sonst bleibt vom Inhalt zu wenig Breite uebrig. */
@@ -3085,7 +2845,6 @@
   .wa-wrap .ref-card { padding: 20px 18px 18px; }
   .wa-wrap .rc-cell { padding: 22px 20px; }
   .wa-wrap .av-panel { padding: 14px 16px; }
-  .wa-wrap .vch-body { padding: 14px 16px; }
 
   /* ── Schriftgroessen, die auf schmalen Schirmen zu gross wirken ── */
   .wa-wrap .price { font-size: 1.7rem; }
@@ -3122,11 +2881,13 @@
 ============================================================ */
 .amp-vis { font-family: var(--font-body); color: var(--navy); }
 .amp-vis p { margin: 0; }
-.amp-vis .amp-h2, .amp-vis .amp-h3, .amp-vis .amp-block-no, .amp-vis .amp-block-name, .amp-vis .amp-way-t, .amp-vis .amp-cta-title {
+.amp-vis .amp-h2, .amp-vis .amp-h3, .amp-vis .amp-way-t,
+.amp-vis .amp-teil-title, .amp-vis .amp-base-name, .amp-vis .amp-ads-title {
   font-family: var(--font-display);
 }
-.amp-mono, .amp-eyebrow, .amp-pill, .amp-step, .amp-query, .amp-adbadge, .amp-serp-no, .amp-block-tag,
-.amp-konkret-label, .amp-reason-no, .amp-cta-eyebrow, .amp-btn-ghost {
+.amp-mono, .amp-eyebrow, .amp-pill, .amp-step, .amp-query, .amp-adbadge, .amp-serp-no,
+.amp-teil-label, .amp-base-badge, .amp-base-konkret-label, .amp-midline-label,
+.amp-ads-eyebrow, .amp-ads-note-label, .amp-ads-points-label, .amp-ads-point-label {
   font-family: var(--font-body);
 }
 
@@ -3141,8 +2902,9 @@
 .amp-h2 { font-weight: 700; font-size: 54px; line-height: 1.08; letter-spacing: -0.02em; margin: 0; text-wrap: balance; }
 .amp-h2 em { font-style: italic; color: #7f96c4; }
 .amp-lead { font-size: 17px; line-height: 1.65; color: #56637c; max-width: 440px; text-wrap: pretty; }
-.amp-pills { display: flex; gap: 10px; flex-wrap: wrap; padding-top: 10px; }
+.amp-pills { display: flex; gap: 10px; flex-wrap: wrap; padding-top: 10px; align-items: center; }
 .amp-pill { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy); border: 1px solid #c3d1e6; border-radius: 999px; padding: 7px 14px; }
+.amp-pill--solid { color: #ffffff; background: var(--navy); border-color: var(--navy); }
 
 .amp-mocks { position: relative; display: flex; flex-direction: column; gap: 16px; }
 .amp-mock { background: #ffffff; border: 1px solid #e3eaf5; border-radius: 6px; padding: 18px 20px; box-shadow: 0 18px 40px -22px rgba(26,39,68,0.28); display: flex; flex-direction: column; gap: 10px; }
@@ -3176,57 +2938,69 @@
 .amp-s2 { position: relative; padding: 88px 32px 96px; background: var(--bg-white); overflow: hidden; }
 .amp-ring-c { position: absolute; bottom: -190px; left: -140px; width: 520px; height: 520px; border: 1px solid #e3eaf5; border-radius: 50%; }
 .amp-s2-inner { position: relative; max-width: 1120px; margin: 0 auto; display: flex; flex-direction: column; gap: 8px; }
-.amp-s2-head { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: end; padding-bottom: 30px; }
+.amp-s2-head { display: flex; flex-direction: column; gap: 14px; padding-bottom: 34px; }
 .amp-s2-head .amp-eyebrow { color: #7f8da6; }
 .amp-s2-head .amp-eyebrow::before { background: #a9b8d2; }
 .amp-h3 { font-weight: 700; font-size: 44px; line-height: 1.08; letter-spacing: -0.018em; margin: 0; }
 .amp-h3 em { font-style: italic; color: #7f96c4; }
-.amp-s2-lead { font-size: 17px; line-height: 1.6; color: #56637c; margin-bottom: 8px; max-width: 460px; text-wrap: pretty; }
 
-.amp-block { border-top: 1px solid var(--border-light); padding: 22px 0 24px; display: grid; grid-template-columns: 64px 1fr 1.25fr; gap: 32px; align-items: start; }
-.amp-block-no { font-size: 44px; line-height: 0.9; color: var(--navy); letter-spacing: -0.03em; }
-.amp-block-head { display: flex; flex-direction: column; gap: 8px; padding-top: 4px; }
-.amp-block-name { font-size: 25px; font-weight: 700; line-height: 1.12; letter-spacing: -0.012em; }
-.amp-block-sub { font-size: 14px; line-height: 1.5; color: #7c8aa2; }
-.amp-block-tag { display: flex; align-items: center; gap: 9px; margin-top: 6px; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #3b4a68; }
-.amp-dot { display: block; width: 5px; height: 5px; border-radius: 50%; background: var(--navy); }
-.amp-block-body { display: flex; flex-direction: column; gap: 12px; padding-top: 4px; }
-.amp-block-text { font-size: 15px; line-height: 1.62; color: #4a5772; }
-.amp-konkret { background: var(--steel-light); border-radius: 5px; padding: 12px 16px; display: flex; align-items: baseline; gap: 12px; color: var(--navy); font-size: 14px; line-height: 1.55; }
-.amp-konkret-label { font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase; color: #7f8da6; white-space: nowrap; }
+/* Teil 1 — Fundament (SEO/GEO, inklusive) */
+.amp-teil { border-top: 2px solid var(--navy); padding-top: 22px; display: flex; flex-direction: column; gap: 6px; }
+.amp-teil-head { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.amp-teil-heading { display: flex; flex-direction: column; gap: 6px; }
+.amp-teil-label { font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--navy); }
+.amp-teil-title { font-size: 28px; font-weight: 700; letter-spacing: -0.015em; }
+.amp-s2-lead { font-size: 17px; line-height: 1.6; color: #56637c; margin-top: 10px; max-width: 560px; text-wrap: pretty; }
 
-.amp-sep { border-top: 1px solid var(--border-light); margin-bottom: 40px; }
+.amp-base-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding-top: 22px; }
+.amp-base-card { background: #ffffff; border: 1px solid #d3dfef; border-radius: 6px; padding: 26px 26px 24px; display: flex; flex-direction: column; gap: 10px; }
+.amp-base-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.amp-base-name { font-size: 26px; font-weight: 700; letter-spacing: -0.012em; }
+.amp-base-badge { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--navy); background: var(--steel-light); border-radius: 999px; padding: 5px 11px; white-space: nowrap; }
+.amp-base-sub { font-size: 14.5px; line-height: 1.5; color: #7c8aa2; }
+.amp-base-text { font-size: 15px; line-height: 1.65; color: #4a5772; }
+.amp-base-konkret { margin-top: auto; padding-top: 18px; display: flex; align-items: baseline; gap: 12px; border-top: 1px solid #eaf0f8; }
+.amp-base-konkret-label { font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase; color: #a3aebf; white-space: nowrap; }
+.amp-base-konkret > span:last-child { font-size: 14px; line-height: 1.55; color: var(--navy); }
+
+/* Zwischenzeile */
+.amp-midline { display: flex; align-items: center; gap: 16px; padding: 34px 0 30px; }
+.amp-midline-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #7f8da6; white-space: nowrap; }
+
+/* Teil 2 — Google Ads (Add-on) */
+.amp-ads-box { background: var(--navy); border-radius: 6px; padding: 34px 36px 32px; display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 44px; align-items: start; box-shadow: 0 26px 50px -34px rgba(26,39,68,0.7); }
+.amp-ads-info { display: flex; flex-direction: column; gap: 10px; }
+.amp-ads-eyebrow { font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: #8ba0c6; }
+.amp-ads-title { display: block; font-size: 32px; font-weight: 700; line-height: 1.1; letter-spacing: -0.015em; color: #ffffff; }
+.amp-ads-sub { font-size: 14.5px; line-height: 1.5; color: #8ba0c6; }
+.amp-ads-text { font-size: 15.5px; line-height: 1.65; color: #d3dced; margin-top: 10px; }
+.amp-ads-note { margin-top: 22px; border: 1px solid #2c3a58; border-radius: 5px; padding: 18px 20px; display: flex; flex-direction: column; gap: 7px; }
+.amp-ads-note-label { font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase; color: #8ba0c6; }
+.amp-ads-note > span:last-child { font-size: 14.5px; line-height: 1.6; color: #d3dced; }
+.amp-ads-points { display: flex; flex-direction: column; gap: 14px; }
+.amp-ads-points-label { font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase; color: #8ba0c6; }
+.amp-ads-point { display: grid; grid-template-columns: 130px 1fr; gap: 18px; align-items: baseline; padding: 13px 0; border-top: 1px solid #2c3a58; }
+.amp-ads-point-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #ffffff; }
+.amp-ads-point > span:last-child { font-size: 14.5px; line-height: 1.55; color: #b3c0d6; }
+
+.amp-sep { border-top: 1px solid var(--border-light); margin: 52px 0 40px; }
 .amp-reasons-rule { display: block; height: 1px; background: var(--border-light); flex: 1; min-width: 40px; }
-.amp-reason-no { font-size: 13px; letter-spacing: 0.1em; color: var(--navy); }
-.amp-reason-text { font-size: 19px; line-height: 1.5; color: var(--navy); text-wrap: pretty; }
 
-.amp-cta { margin-top: 58px; background: var(--navy); border-radius: 6px; padding: 40px 44px; display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 44px; align-items: center; box-shadow: 0 26px 50px -34px rgba(26,39,68,0.7); }
-.amp-cta-text { display: flex; flex-direction: column; gap: 12px; }
-.amp-cta-eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #8ba0c6; }
-.amp-cta-title { font-weight: 700; font-size: 32px; line-height: 1.12; letter-spacing: -0.015em; color: #ffffff; }
-.amp-cta-sub { font-size: 15.5px; line-height: 1.6; color: #b3c0d6; max-width: 480px; }
-.amp-cta-actions { display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
-.amp-btn { font-size: 15px; font-weight: 600; color: var(--navy); background: #ffffff; border-radius: 4px; padding: 14px 26px; text-decoration: none; transition: background 0.15s ease; }
-.amp-btn:hover { background: var(--steel-light); color: var(--navy); }
-.amp-btn-ghost { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #b3c0d6; border-bottom: 1px solid #3d5170; padding-bottom: 3px; text-decoration: none; }
-.amp-btn-ghost:hover { color: #ffffff; }
-.amp-outro { display: flex; align-items: center; gap: 20px; padding-top: 40px; }
+.amp-outro { display: flex; align-items: center; gap: 20px; padding-top: 4px; }
 .amp-outro span.amp-reasons-rule { flex: 1; }
 .amp-outro p { font-size: 15px; line-height: 1.6; color: #56637c; text-align: center; max-width: 560px; }
 
 @media (max-width: 900px) {
   .amp-s1 { padding: 64px 20px 60px; }
   .amp-s2 { padding: 64px 20px 72px; }
-  .amp-s1-grid, .amp-s2-head { grid-template-columns: 1fr; gap: 36px; }
+  .amp-s1-grid, .amp-base-grid, .amp-ads-box { grid-template-columns: 1fr; gap: 36px; }
+  .amp-base-grid { gap: 16px; }
+  .amp-ads-box { gap: 30px; padding: 28px 24px; }
   .amp-h2 { font-size: 36px; }
   .amp-h3 { font-size: 32px; }
   .amp-ways { grid-template-columns: 1fr; gap: 22px; }
-  .amp-block { grid-template-columns: 1fr; gap: 14px; }
-  .amp-block-no { font-size: 34px; }
   .amp-mock-2, .amp-mock-3 { transform: none; }
   .amp-mock-1 { transform: none; }
-  .amp-cta { grid-template-columns: 1fr; gap: 24px; padding: 30px 24px; }
-  .amp-cta-title { font-size: 26px; }
   .amp-outro { flex-direction: column; gap: 16px; }
   .amp-outro span.amp-reasons-rule { display: none; }
 }
