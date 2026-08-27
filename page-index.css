@@ -609,21 +609,9 @@
 .lh-dot.is-2 { background: #7f96c4; border: 1px solid #7f96c4; }
 .lh-dot.is-3 { background: var(--navy); border: 1px solid var(--navy); }
 .lh-stub { display: block; width: 1px; background: #cdd8ea; margin: 0 0 -8px 5px; }
-.lh-kicker { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: #7f8da6; }
+.lh-kicker { font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); }
 .lh-step-text { font-family: var(--font-display); font-size: 23px; font-weight: 500; line-height: 1.32; letter-spacing: -0.01em; color: var(--navy); text-wrap: pretty; }
 .lh-step-note { font-size: 14.5px; line-height: 1.6; color: #56637c; }
-
-/* Team-Zeile */
-.lh-foot { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 40px; align-items: center; }
-.lh-team { display: flex; align-items: center; gap: 18px; }
-.lh-avatars { display: flex; flex: none; }
-.lh-avatar { display: block; width: 46px; height: 46px; border-radius: 50%; background: #c4d1e7; border: 2px solid var(--steel-light); overflow: hidden; }
-.lh-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.lh-avatar + .lh-avatar { margin-left: -14px; background: #b3c2dd; }
-.lh-avatar + .lh-avatar + .lh-avatar { background: #a3b4d3; }
-.lh-team-text { font-size: 16px; line-height: 1.55; color: #3b4a68; max-width: 520px; }
-.lh-btn { justify-self: end; display: flex; align-items: center; gap: 12px; font-size: 15.5px; font-weight: 600; color: #ffffff; background: var(--navy); border-radius: 5px; padding: 16px 26px; text-decoration: none; transition: background 0.15s ease; }
-.lh-btn:hover { background: var(--accent-hover); color: #ffffff; }
 
 @keyframes lh-fill { from { transform: scaleY(0); } to { transform: scaleY(1); } }
 
@@ -639,11 +627,48 @@
   .lh-sub { font-size: 21px; }
   .lh-meter { padding: 26px 24px 24px; }
   .lh-score-num { font-size: 54px; }
-  .lh-foot { grid-template-columns: 1fr; gap: 24px; }
-  .lh-btn { justify-self: start; }
 }
 @media (prefers-reduced-motion: reduce) {
   .lh-bar { animation: none !important; }
+}
+
+/* ============================================================
+   TEAM-BRÜCKE — "Wir kommen aus dieser Branche": Bindeglied
+   zwischen Problem (Rückstand) und Lösung (vier Bereiche).
+============================================================ */
+.tb { font-family: var(--font-body); color: #ffffff; background: var(--navy); position: relative; padding: 88px 32px 96px; overflow: hidden; text-align: center; }
+.tb *, .tb *::before, .tb *::after { box-sizing: border-box; }
+.tb p { margin: 0; }
+.tb-ring { position: absolute; border-radius: 50%; pointer-events: none; border: 1px solid rgba(255,255,255,0.06); }
+.tb-ring-a { bottom: -280px; left: -200px; width: 680px; height: 680px; }
+.tb-ring-b { bottom: -160px; left: -80px; width: 440px; height: 440px; border-color: rgba(255,255,255,0.05); }
+
+.tb-inner { position: relative; max-width: 880px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 56px; }
+
+.tb-head { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+.tb-eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #8ba0c6; display: flex; align-items: center; gap: 10px; }
+.tb-eyebrow::before, .tb-eyebrow::after { content: ""; display: block; width: 26px; height: 1px; background: rgba(255,255,255,0.25); }
+.tb-h { font-family: var(--font-display); font-weight: 700; font-size: 44px; line-height: 1.08; letter-spacing: -0.025em; margin: 0; text-wrap: balance; color: #ffffff; }
+.tb-h em { font-style: italic; color: #7f96c4; }
+.tb-lead { font-size: 17px; line-height: 1.65; color: #b7c4de; max-width: 560px; }
+
+.tb-grid { width: 100%; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px; }
+.tb-person { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.tb-avatar { display: block; width: 72px; height: 72px; border-radius: 50%; overflow: hidden; border: 2px solid rgba(255,255,255,0.14); }
+.tb-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.tb-name { font-family: var(--font-display); font-weight: 700; font-size: 16px; color: #ffffff; }
+.tb-tag { font-size: 13.5px; line-height: 1.5; color: #9fb0cf; max-width: 220px; }
+
+.tb-btn { display: inline-flex; align-items: center; gap: 12px; font-size: 15.5px; font-weight: 600; color: var(--navy); background: #ffffff; border-radius: 5px; padding: 16px 26px; text-decoration: none; transition: background 0.15s ease; }
+.tb-btn:hover { background: #dce4f2; }
+.tb-arrow { display: inline-block; transition: transform 0.2s ease; }
+.tb-btn:hover .tb-arrow { transform: translateX(4px); }
+
+@media (max-width: 720px) {
+  .tb { padding: 64px 20px 72px; }
+  .tb-h { font-size: 32px; }
+  .tb-lead { font-size: 15.5px; }
+  .tb-grid { grid-template-columns: 1fr; gap: 28px; }
 }
 
 /* ============================================================
