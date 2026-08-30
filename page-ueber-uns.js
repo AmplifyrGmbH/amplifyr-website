@@ -248,12 +248,6 @@
     })
     .then(function (res) {
       if (!res.ok) throw new Error('Serverfehler');
-      // Sekundäres CRM-Tracking
-      fetch('/odoo-lead.php', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      }).catch(function () {});
 
       form.hidden = true;
       success.hidden = false;

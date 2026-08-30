@@ -15,9 +15,7 @@ jobs:
 
       - name: .env aus GitHub Secrets generieren
         run: |
-          echo "ODOO_USER=${{ secrets.ODOO_USER }}" > .env
-          echo "ODOO_API_KEY=${{ secrets.ODOO_API_KEY }}" >> .env
-          echo "ANTHROPIC_API_KEY=${{ secrets.ANTHROPIC_API_KEY }}" >> .env
+          echo "ANTHROPIC_API_KEY=${{ secrets.ANTHROPIC_API_KEY }}" > .env
 
       - name: Upload via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
