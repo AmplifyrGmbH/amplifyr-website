@@ -27,4 +27,4 @@ jobs:
           port: 21
           local-dir: ./
           server-dir: /www/amplifyr.ch/
-          server-state-name: .ftp-deploy-sync-state-v3.json
+          state-name: .ftp-deploy-sync-state-v3.json

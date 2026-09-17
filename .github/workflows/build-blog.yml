@@ -3,7 +3,7 @@ name: Build & Deploy Blog
 # Wird ausgelöst durch:
 #   1. Contentful-Webhook beim Publizieren eines Posts
 #      → Contentful: Settings > Webhooks > URL:
-#        https://api.github.com/repos/AmplifyrGmbH/amplifyr-website-v2/dispatches
+#        https://api.github.com/repos/AmplifyrGmbH/amplifyr-website/dispatches
 #        Method: POST  |  Header: Authorization: Bearer [GITHUB_PAT]
 #        Body: {"event_type": "contentful-publish"}
 #   2. Manuell über GitHub Actions > "Run workflow"
@@ -42,6 +42,6 @@ jobs:
           port:              21
           local-dir:         ./_blog-dist/
           server-dir:        /www/amplifyr.ch/
-          server-state-name: .ftp-deploy-sync-state-blog.json
+          state-name:        .ftp-deploy-sync-state-blog.json
           # Nur hinzufügen/aktualisieren — niemals andere Dateien auf dem Server löschen
           dangerous-clean-slate: false
