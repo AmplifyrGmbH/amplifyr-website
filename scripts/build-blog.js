@@ -2,7 +2,7 @@
 /* ============================================================
    AMPLIFYR — scripts/build-blog.js
    Lädt alle Posts aus Contentful und generiert:
-     _blog-dist/blog.html          (Übersicht mit statischen Karten)
+     _blog-dist/blog/index.html    (Übersicht mit statischen Karten)
      _blog-dist/blog/[slug].html   (vollständige Post-Seiten)
 
    Aufruf:
@@ -344,12 +344,16 @@ async function main() {
     console.log('  + blog/' + slug + '.html');
   }
 
-  // ── blog.html — statische Karten injizieren ───────────────
+  // ── Blog-Übersicht als blog/index.html — statische Karten injizieren ───
+  // Wichtig: index.html INNERHALB von blog/, nicht blog.html daneben —
+  // sonst kollidieren Datei "blog.html" und Ordner "blog/" auf dem Server:
+  // Apache behandelt /blog dann als Verzeichnis (redirect auf /blog/),
+  // findet dort keine Index-Datei und liefert 403 statt der Übersicht.
   const cards = data.items
     .map(item => generateCardHtml(item.fields, item.fields.slug || item.sys.id, assets))
     .join('\n');
 
-  const distBlogHtml = path.join(DIST_DIR, 'blog.html');
+  const distBlogHtml = path.join(distBlogDir, 'index.html');
   let   blogHtml     = blogHtmlSrc;
 
   blogHtml = blogHtml.replace(
@@ -357,7 +361,7 @@ async function main() {
     '<!-- BLOG_CARDS_START -->\n' + cards + '\n        <!-- BLOG_CARDS_END -->'
   );
   fs.writeFileSync(distBlogHtml, blogHtml, 'utf8');
-  console.log('  + blog.html');
+  console.log('  + blog/index.html');
 
   console.log('\nFertig. ' + data.items.length + ' Posts generiert.');
 }
