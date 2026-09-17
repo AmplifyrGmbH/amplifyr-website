@@ -68,6 +68,15 @@ function formatDate(dateStr) {
   });
 }
 
+// Kürzt an der letzten Wortgrenze vor maxLen, statt mitten im Wort abzuschneiden
+function truncateAtWord(str, maxLen) {
+  const s = String(str || '').trim();
+  if (s.length <= maxLen) return s;
+  const cut = s.slice(0, maxLen);
+  const lastSpace = cut.lastIndexOf(' ');
+  return (lastSpace > 0 ? cut.slice(0, lastSpace) : cut).trim() + '…';
+}
+
 function extractText(node) {
   if (!node) return '';
   if (node.nodeType === 'text') return node.value || '';
@@ -138,16 +147,21 @@ function generatePostHtml(f, slug, assets, chrome) {
   const cat     = f.category || f.kategorie || '';
   const postUrl = BASE_URL + '/blog/' + slug;
 
-  // Teaser
+  // Teaser (sichtbarer Anrisstext auf der Seite)
   const teaserRaw  = f.teaser;
-  const teaserText = teaserRaw
-    ? (typeof teaserRaw === 'string' ? teaserRaw : extractText(teaserRaw)).slice(0, 160)
-    : '';
   const teaserHtml = teaserRaw
     ? (typeof teaserRaw === 'string'
         ? '<p class="post-teaser">' + esc(teaserRaw) + '</p>'
         : '<div class="post-teaser">' + renderRichText(teaserRaw) + '</div>')
     : '';
+
+  // Meta-Description (SEO) — eigenes Contentful-Feld "metaDescription",
+  // fällt auf den Teaser zurück, falls in Contentful nicht gepflegt
+  const metaDescField   = typeof f.metaDescription === 'string' ? f.metaDescription.trim() : '';
+  const teaserExtracted = teaserRaw
+    ? (typeof teaserRaw === 'string' ? teaserRaw : extractText(teaserRaw))
+    : '';
+  const metaDescText = truncateAtWord(metaDescField || teaserExtracted, 155);
 
   // Body — Contentful-Feld heisst "content" (Inhalt), nicht "body"
   const bodyRaw  = f.content || f.body;
@@ -168,7 +182,7 @@ function generatePostHtml(f, slug, assets, chrome) {
     '@type': 'Article',
     '@id': postUrl,
     headline: title,
-    description: teaserText,
+    description: metaDescText,
     datePublished: dateIso,
     dateModified:  dateIso,
     url: postUrl,
@@ -200,18 +214,18 @@ function generatePostHtml(f, slug, assets, chrome) {
     + '  <meta charset="UTF-8">\n'
     + '  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n\n'
     + '  <title>' + esc(title) + ' | Amplifyr Blog</title>\n'
-    + '  <meta name="description" content="' + esc(teaserText) + '">\n'
+    + '  <meta name="description" content="' + esc(metaDescText) + '">\n'
     + '  <link rel="canonical" href="' + postUrl + '">\n'
     + '  <meta name="robots" content="index,follow">\n\n'
     + '  <meta property="og:type"        content="article">\n'
     + '  <meta property="og:url"         content="' + postUrl + '">\n'
     + '  <meta property="og:title"       content="' + esc(title) + ' | Amplifyr Blog">\n'
-    + '  <meta property="og:description" content="' + esc(teaserText) + '">\n'
+    + '  <meta property="og:description" content="' + esc(metaDescText) + '">\n'
     + '  <meta property="og:image"       content="' + esc(ogImg) + '">\n'
     + '  <meta property="og:locale"      content="de_CH">\n'
     + '  <meta name="twitter:card"        content="summary_large_image">\n'
     + '  <meta name="twitter:title"       content="' + esc(title) + ' | Amplifyr Blog">\n'
-    + '  <meta name="twitter:description" content="' + esc(teaserText) + '">\n'
+    + '  <meta name="twitter:description" content="' + esc(metaDescText) + '">\n'
     + '  <meta name="twitter:image"       content="' + esc(ogImg) + '">\n\n'
     + '  <script type="application/ld+json">\n' + articleSchema + '\n  </script>\n'
     + '  <script type="application/ld+json">\n' + breadcrumbSchema + '\n  </script>\n\n'
