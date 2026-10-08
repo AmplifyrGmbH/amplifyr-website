@@ -63,6 +63,15 @@ body {
   margin-top: 4px;
 }
 
+.lk-address {
+  display: inline-block;
+  font-size: 0.85rem;
+  color: #445269;
+  text-decoration: none;
+  margin-top: 2px;
+}
+.lk-address:hover { text-decoration: underline; }
+
 /* ---- Main content ---- */
 .lk-main {
   width: 100%;
