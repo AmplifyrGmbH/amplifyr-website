@@ -11,15 +11,11 @@
   // ---- Header: transparent über dem Bild-Kopf, sonst hell ----
   var header = document.getElementById('site-header');
   var hero = document.querySelector('.hero, .page-hero');
-  // Startseite: Die Achsen im Hero sind die Navigation, das Menü erscheint erst danach
-  var planNav = document.querySelector('.axis-grid--nav');
   function updateHeader() {
     if (!header) return;
     if (!hero) { header.classList.add('is-solid'); return; }
     var threshold = hero.offsetHeight - header.offsetHeight - 8;
-    var solid = window.scrollY > threshold;
-    header.classList.toggle('is-solid', solid);
-    if (planNav) header.classList.toggle('is-over-plan', !solid);
+    header.classList.toggle('is-solid', window.scrollY > threshold);
   }
   updateHeader();
   window.addEventListener('scroll', updateHeader, { passive: true });
