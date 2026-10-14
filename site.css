@@ -104,7 +104,20 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 [data-area] .axis-bubble--area { --bubble: var(--area); --bubble-text: var(--area); }
 .axis-bubble--free { background: transparent; }
-.axis-bubble--sm { width: 22px; height: 22px; font-size: 0.68rem; border-width: 1px; }
+.axis-bubble--sm { width: auto; min-width: 22px; height: 22px; padding: 0 5px; border-radius: 999px; font-size: 0.66rem; border-width: 1px; }
+/* Codes in Navigation, Menü, Footer und Querverweisen übernehmen die Textfarbe */
+.nav-desktop .axis-bubble, .nav-mobile .axis-bubble, .site-footer .axis-bubble, .next-links .axis-bubble {
+  --bubble: currentColor; --bubble-text: currentColor; background: transparent; margin-right: 8px; opacity: 0.85;
+}
+.nav-mobile ul .axis-bubble { min-width: 28px; height: 28px; font-size: 0.78rem; margin-right: 14px; }
+.nav-mobile ul a { justify-content: flex-start; }
+.nav-mobile ul a > span:last-child:not(.axis-bubble) { margin-left: auto; }
+/* Abschnitts-Code vor einer Eyebrow (Startseite) */
+.section-code::before { display: none; }
+.section-code .axis-bubble { margin-right: 12px; }
+/* Klickbare Achskreise im Hero */
+.axis-grid a.axis-bubble { pointer-events: auto; text-decoration: none; transition: background 0.2s, color 0.2s; }
+.axis-grid a.axis-bubble:hover { background: var(--white); color: var(--navy); border-color: var(--white); }
 
 /* Achsen im Bild-Kopf */
 .axis-grid { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
@@ -219,7 +232,7 @@ main, .site-footer { position: relative; }
 .nav-desktop { display: none; }
 .nav-desktop ul { display: flex; align-items: center; gap: 4px; list-style: none; }
 .nav-desktop a {
-  display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px;
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0 10px;
   font-size: 0.95rem; font-weight: 500; text-decoration: none; color: var(--white);
   opacity: 0.9; transition: opacity 0.2s;
 }
@@ -238,7 +251,7 @@ main, .site-footer { position: relative; }
 }
 .site-header.is-solid .burger span { background: var(--navy); }
 
-@media (min-width: 1180px) {
+@media (min-width: 1240px) {
   .nav-desktop { display: block; }
   .burger { display: none; }
   .site-logo { width: 150px; }
@@ -892,3 +905,4 @@ body.menu-open { overflow: hidden; }
 @media (min-width: 1024px) {
   .page-hero--sketch .page-hero__content .cols > div { grid-column: 2 / span 6; }
 }
+.nav-mobile ul a:not(:has(.axis-bubble)) { padding-left: 42px; }
