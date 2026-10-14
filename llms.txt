@@ -1,17 +1,16 @@
 # Amplifyr GmbH
 
-> Digitalisierungspartner für die Bau- und Immobilienbranche in der Schweiz. Amplifyr übernimmt IT, Software, KI und den digitalen Auftritt aus einer Hand — für Handwerksbetriebe und Immobilienverwaltungen, von der Entwicklung bis zum laufenden Betrieb.
+> Technologiepartner für die Bau- und Immobilienbranche in der Schweiz: Technik und Business-Denken in Symbiose. Amplifyr übernimmt Büroarbeit, Automatisierung mit KI, individuelle Software, IT-Sicherheit und Website aus einer Hand, für Handwerksbetriebe, Immobilienverwaltungen und KMU, von der Planung bis zum laufenden Betrieb.
 
-Drei Gründer und Geschäftsführer: Timo Steinfort, David Staub, Sinan Sen. Telefon: +41 44 244 59 95. Adresse: Badenerstrasse 580, 8048 Zürich, Schweiz. E-Mail: info@amplifyr.ch
+Drei Gründer und Geschäftsführer: Timo Steinfort, David Staub, Sinan Sen. Telefon: +41 44 244 59 95. Adresse: Badenerstrasse 580, 8048 Zürich, Schweiz. E-Mail: info@amplifyr.ch. Bürozeiten: Montag bis Freitag, 08:00 bis 18:00.
 
 ## Hauptseiten
 
-- [Startseite](https://www.amplifyr.ch/): Digitalisierungspartner für die Bau- und Immobilienbranche — Überblick über alle Leistungen
-- [Handwerker](https://www.amplifyr.ch/handwerker): Digitale Auftragsabwicklung, Website, KI-Chatbot und IT für Handwerksbetriebe
-- [IT-Lösungen](https://www.amplifyr.ch/it-solutions): IT-Outsourcing, Managed Services und Support für Schweizer KMU
-- [Digitaler Auftritt](https://www.amplifyr.ch/webdesign): Websites, die arbeiten — Webdesign, SEO und Google Ads
-- [Über uns](https://www.amplifyr.ch/ueber-uns): Team, Gründer und Unternehmensgeschichte
-- [Kontakt & Anfrage](https://www.amplifyr.ch/formular): Kontaktformular und kostenloses Erstgespräch anfragen
+- [Startseite](https://www.amplifyr.ch/): Überblick, Ansatz, Team und Kontakt
+- [Handwerk](https://www.amplifyr.ch/handwerker): Büroarbeit, Automatisierung mit KI und individuelle Software für Handwerksbetriebe
+- [Für KMU](https://www.amplifyr.ch/kmu): Büroarbeit, IT-Sicherheit (externe IT-Abteilung, Managed Services) und Website-Sichtbarkeit (Webdesign, SEO, GEO)
+- [Vorgehen](https://www.amplifyr.ch/vorgehen): So läuft die Zusammenarbeit, vom kostenlosen Erstgespräch bis zum laufenden Betrieb
+- [Über uns](https://www.amplifyr.ch/ueber-uns): Team, Mission und Kontaktformular
 - [Blog](https://www.amplifyr.ch/blog): Einblicke aus dem Unternehmertum bei Amplifyr
 
 ## Profile

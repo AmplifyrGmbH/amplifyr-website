@@ -60,7 +60,13 @@ RewriteEngine On
 # 0. Permanente Weiterleitungen (301)
 RewriteRule ^automatisierung/?$ / [R=301,L]
 RewriteRule ^ki-transformation/?$ / [R=301,L]
-RewriteRule ^branchen-software/?$ /it-solutions [R=301,L]
+RewriteRule ^branchen-software/?$ https://www.amplifyr.ch/kmu#it-sicherheit [R=301,NE,L]
+
+# Relaunch 2026: IT und Webdesign sind in /kmu aufgegangen, Kontakt in /ueber-uns
+RewriteRule ^it-solutions(\.html)?/?$ https://www.amplifyr.ch/kmu#it-sicherheit [R=301,NE,L]
+RewriteRule ^webdesign(\.html)?/?$ https://www.amplifyr.ch/kmu#website-sichtbarkeit [R=301,NE,L]
+# Query-String (z. B. ?subject=…&domain=…) bleibt erhalten und belegt das Formular vor
+RewriteRule ^formular(\.html)?/?$ https://www.amplifyr.ch/ueber-uns?%{QUERY_STRING}#kontakt [R=301,NE,L]
 
 # 1. non-www (http + https) → https://www
 RewriteCond %{HTTP_HOST} ^amplifyr\.ch [NC]

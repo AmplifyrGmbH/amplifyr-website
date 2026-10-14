@@ -133,8 +133,8 @@ function extractChrome(blogHtmlSrc) {
   const gtmBody   = extractBlock(blogHtmlSrc, /<!-- Google Tag Manager \(noscript\) -->[\s\S]*?<!-- End Google Tag Manager \(noscript\) -->/, 'GTM Body-Snippet');
   const headCommon = extractBlock(blogHtmlSrc, /<!-- Favicons -->[\s\S]*?(?=\n<\/head>)/, 'Head-Assets (Favicons/Fonts/CSS)');
   const header    = extractBlock(blogHtmlSrc, /<header id="site-header"[\s\S]*?<\/header>/, 'Header');
-  const mobileMenu = extractBlock(blogHtmlSrc, /<nav class="mobile-menu"[\s\S]*?<\/nav>/, 'Mobile-Menü');
-  const footer    = extractBlock(blogHtmlSrc, /<footer>[\s\S]*?<\/footer>/, 'Footer');
+  const mobileMenu = extractBlock(blogHtmlSrc, /<nav [^>]*class="[^"]*\bmobile-menu\b[^"]*"[\s\S]*?<\/nav>/, 'Mobile-Menü');
+  const footer    = extractBlock(blogHtmlSrc, /<footer[\s>][\s\S]*?<\/footer>/, 'Footer');
   return { gtmHead, gtmBody, headCommon, header, mobileMenu, footer };
 }
 
@@ -261,7 +261,7 @@ function generatePostHtml(f, slug, assets, chrome) {
     + '    </div>\n'
     + '  </main>\n\n'
     + chrome.footer + '\n\n'
-    + '  <script defer src="/main.js"></script>\n'
+    + '  <script defer src="/site.js"></script>\n'
     + '</body>\n'
     + '</html>\n';
 }

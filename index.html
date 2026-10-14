@@ -48,7 +48,7 @@
   <link rel="preconnect" href="https://cloud.umami.is">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap">
 
-  <link rel="stylesheet" href="/site.css?v=2">
+  <link rel="stylesheet" href="/site.css?v=4">
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -175,11 +175,12 @@
       <nav class="nav-desktop" aria-label="Hauptnavigation">
         <ul>
           <li><a href="/handwerker">Handwerk</a></li>
-          <li><a href="/it-solutions">IT</a></li>
-          <li><a href="/webdesign">Webdesign</a></li>
-          <li><a href="/ueber-uns">Über uns</a></li>
+          <li><a href="/bewirtschaftung">Bewirtschaftung</a></li>
+          <li><a href="/kmu">Für KMU</a></li>
+          <li><a href="/vorgehen">Vorgehen</a></li>
           <li><a href="/blog">Blog</a></li>
-          <li><a class="btn btn--light" href="/formular" data-gtm-event="cta_kontakt_klick" data-gtm-location="header">Kontakt</a></li>
+          <li><a href="/ueber-uns">Über uns</a></li>
+          <li><a class="btn btn--light" href="/ueber-uns#kontakt" data-gtm-event="cta_kontakt_klick" data-gtm-location="header">Kontakt</a></li>
         </ul>
       </nav>
       <button id="burger" class="burger" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav-mobile">
@@ -188,7 +189,7 @@
     </div>
   </header>
 
-  <div id="nav-mobile" class="nav-mobile" aria-hidden="true" inert>
+  <nav id="nav-mobile" class="mobile-menu nav-mobile" aria-label="Mobile Navigation" aria-hidden="true" inert>
     <div class="nav-mobile__top">
       <a href="/" class="site-logo" aria-label="Amplifyr – Startseite">
         <img src="/Logos/amplifyr_logo/amplifyr-logo-weiss-hellblau.svg" alt="Amplifyr" width="400" height="120">
@@ -197,21 +198,20 @@
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       </button>
     </div>
-    <nav aria-label="Mobile Navigation">
-      <ul>
-        <li><a href="/handwerker">Handwerk <span aria-hidden="true">→</span></a></li>
-        <li><a href="/it-solutions">IT <span aria-hidden="true">→</span></a></li>
-        <li><a href="/webdesign">Webdesign <span aria-hidden="true">→</span></a></li>
-        <li><a href="/ueber-uns">Über uns <span aria-hidden="true">→</span></a></li>
-        <li><a href="/blog">Blog <span aria-hidden="true">→</span></a></li>
-        <li><a href="/formular" data-gtm-event="cta_kontakt_klick" data-gtm-location="mobile_menu">Kontakt <span aria-hidden="true">→</span></a></li>
-      </ul>
-    </nav>
+    <ul>
+      <li><a href="/handwerker">Handwerk <span aria-hidden="true">→</span></a></li>
+      <li><a href="/bewirtschaftung">Bewirtschaftung <span aria-hidden="true">→</span></a></li>
+      <li><a href="/kmu">Für KMU <span aria-hidden="true">→</span></a></li>
+      <li><a href="/vorgehen">Vorgehen <span aria-hidden="true">→</span></a></li>
+      <li><a href="/blog">Blog <span aria-hidden="true">→</span></a></li>
+      <li><a href="/ueber-uns">Über uns <span aria-hidden="true">→</span></a></li>
+      <li><a href="/ueber-uns#kontakt" data-gtm-event="cta_kontakt_klick" data-gtm-location="mobile_menu">Kontakt <span aria-hidden="true">→</span></a></li>
+    </ul>
     <div class="nav-mobile__contact">
       <a href="tel:+41442445995" data-gtm-event="cta_telefon_klick" data-gtm-location="mobile_menu">044 244 59 95</a>
       <a href="mailto:info@amplifyr.ch">info@amplifyr.ch</a>
     </div>
-  </div>
+  </nav>
 
   <main>
     <!-- ===================== Hero ===================== -->
@@ -273,7 +273,7 @@
         <div class="area__inner">
           <div class="container cols">
             <div class="area__head reveal">
-              <p class="eyebrow">Auftragsabwicklung · Automatisierung</p>
+              <p class="eyebrow">Büroarbeit · Automatisierung · Software</p>
               <h3 class="area__title">Handwerk</h3>
             </div>
             <div class="area__body reveal" data-delay="1">
@@ -285,49 +285,50 @@
         <a class="area__link" href="/handwerker" aria-label="Mehr erfahren: Handwerk"></a>
       </article>
 
-      <article class="area" data-area="it">
+      <article class="area" data-area="bewirtschaftung">
         <picture class="area__media">
-          <source type="image/avif" srcset="/Bilder/stock/it-800.avif 800w, /Bilder/stock/it-1600.avif 1600w" sizes="100vw">
-          <source type="image/webp" srcset="/Bilder/stock/it-800.webp 800w, /Bilder/stock/it-1600.webp 1600w" sizes="100vw">
-          <img src="/Bilder/stock/it-1600.jpg" srcset="/Bilder/stock/it-800.jpg 800w, /Bilder/stock/it-1600.jpg 1600w" sizes="100vw"
-               alt="Sauber verlegte Kabel in einem Verteilerkasten" width="1600" height="1066" loading="lazy" decoding="async">
+          <source type="image/avif" srcset="/Bilder/stock/bewirtschaftung-1200.avif 1200w, /Bilder/stock/bewirtschaftung-2400.avif 2400w" sizes="100vw">
+          <source type="image/webp" srcset="/Bilder/stock/bewirtschaftung-1200.webp 1200w, /Bilder/stock/bewirtschaftung-2400.webp 2400w" sizes="100vw">
+          <img src="/Bilder/stock/bewirtschaftung-1200.jpg" srcset="/Bilder/stock/bewirtschaftung-1200.jpg 1200w, /Bilder/stock/bewirtschaftung-2400.jpg 2400w" sizes="100vw"
+               alt="Wohnhaus mit Balkonen und Dachterrassen" width="1200" height="800" loading="lazy" decoding="async">
         </picture>
         <div class="area__inner">
           <div class="container cols">
             <div class="area__head reveal">
-              <p class="eyebrow">Support · Managed Services</p>
-              <h3 class="area__title">IT</h3>
+              <p class="eyebrow">Büroarbeit · Automatisierung · Software</p>
+              <h3 class="area__title">Bewirt&shy;schaftung</h3>
             </div>
             <div class="area__body reveal" data-delay="1">
-              <p class="lead area__text">Ihre externe IT-Abteilung: Support per Telefon, Fernwartung und vor Ort in der Region Zürich. Sicherheit, Backup, Arbeitsplätze und Microsoft 365 als Module zum monatlichen Fixpreis.</p>
+              <p class="lead area__text">Mehr Objekte betreuen, ohne mehr Personal: Wir automatisieren die Routine rund um Mieter, Eigentümer und Handwerker. Ihr bestehendes System wie ImmoTop2 bleibt.</p>
               <span class="link-arrow area__more">Mehr erfahren <span class="dot"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>
             </div>
           </div>
         </div>
-        <a class="area__link" href="/it-solutions" aria-label="Mehr erfahren: IT"></a>
+        <a class="area__link" href="/bewirtschaftung" aria-label="Mehr erfahren: Bewirtschaftung"></a>
       </article>
 
-      <article class="area" data-area="web">
+      <article class="area" data-area="kmu">
         <picture class="area__media">
-          <source type="image/avif" srcset="/Bilder/stock/web-800.avif 800w, /Bilder/stock/web-1600.avif 1600w" sizes="100vw">
-          <source type="image/webp" srcset="/Bilder/stock/web-800.webp 800w, /Bilder/stock/web-1600.webp 1600w" sizes="100vw">
-          <img src="/Bilder/stock/web-1600.jpg" srcset="/Bilder/stock/web-800.jpg 800w, /Bilder/stock/web-1600.jpg 1600w" sizes="100vw"
-               alt="Arbeitsplatz mit zwei Monitoren" width="1600" height="1066" loading="lazy" decoding="async">
+          <source type="image/avif" srcset="/Bilder/stock/kmu-1200.avif 1200w, /Bilder/stock/kmu-2400.avif 2400w" sizes="100vw">
+          <source type="image/webp" srcset="/Bilder/stock/kmu-1200.webp 1200w, /Bilder/stock/kmu-2400.webp 2400w" sizes="100vw">
+          <img src="/Bilder/stock/kmu-1200.jpg" srcset="/Bilder/stock/kmu-1200.jpg 1200w, /Bilder/stock/kmu-2400.jpg 2400w" sizes="100vw"
+               alt="Laptop auf einem Bürotisch" width="1200" height="800" loading="lazy" decoding="async">
         </picture>
         <div class="area__inner">
           <div class="container cols">
             <div class="area__head reveal">
-              <p class="eyebrow">Website · SEO · KI</p>
-              <h3 class="area__title">Webdesign</h3>
+              <p class="eyebrow">Büroarbeit · IT-Sicherheit · Website</p>
+              <h3 class="area__title">Für KMU</h3>
             </div>
             <div class="area__body reveal" data-delay="1">
-              <p class="lead area__text">Websites, die arbeiten: gefunden werden bei Google und in KI-Suchen, Anfragen und Termine direkt entgegennehmen und im Sorglos-Paket laufend betreut.</p>
+              <p class="lead area__text">Ihre externe IT-Abteilung und Ihr digitaler Auftritt aus einer Hand: sichere Arbeitsplätze, Support aus Zürich und eine Website, die gefunden wird.</p>
               <span class="link-arrow area__more">Mehr erfahren <span class="dot"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>
             </div>
           </div>
         </div>
-        <a class="area__link" href="/webdesign" aria-label="Mehr erfahren: Webdesign"></a>
+        <a class="area__link" href="/kmu" aria-label="Mehr erfahren: Für KMU"></a>
       </article>
+
     </section>
 
     <!-- ===================== Ansatz ===================== -->
@@ -362,6 +363,7 @@
             <li class="reveal" data-delay="2"><span><b>Umsetzung</b><small>Schritt für Schritt</small></span></li>
             <li class="reveal" data-delay="3"><span><b>Betrieb</b><small>laufend betreut</small></span></li>
           </ol>
+          <p class="reveal" style="margin-top:40px"><a class="btn btn--light" href="/vorgehen">So gehen wir vor <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
         </div>
       </div>
     </section>
@@ -492,7 +494,7 @@
               Termin buchen
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
-            <a class="btn btn--ghost" href="/formular" data-gtm-event="cta_kontakt_klick" data-gtm-location="cta_final">Nachricht schreiben</a>
+            <a class="btn btn--ghost" href="/ueber-uns#kontakt" data-gtm-event="cta_kontakt_klick" data-gtm-location="cta_final">Nachricht schreiben</a>
             <a class="btn btn--ghost" href="https://wa.me/41442445995" target="_blank" rel="noopener" data-gtm-event="cta_whatsapp_klick" data-gtm-location="cta_final">WhatsApp</a>
           </div>
           <ul class="contact__direct">
@@ -518,19 +520,20 @@
           </address>
         </div>
         <nav aria-labelledby="f-leistungen">
-          <h2 id="f-leistungen">Leistungen</h2>
+          <h2 id="f-leistungen">Für wen</h2>
           <ul>
             <li><a href="/handwerker">Handwerk</a></li>
-            <li><a href="/it-solutions">IT</a></li>
-            <li><a href="/webdesign">Webdesign</a></li>
+            <li><a href="/bewirtschaftung">Bewirtschaftung</a></li>
+            <li><a href="/kmu">Für KMU</a></li>
           </ul>
         </nav>
         <nav aria-labelledby="f-amplifyr">
           <h2 id="f-amplifyr">Amplifyr</h2>
           <ul>
-            <li><a href="/ueber-uns">Über uns</a></li>
+            <li><a href="/vorgehen">Vorgehen</a></li>
             <li><a href="/blog">Blog</a></li>
-            <li><a href="/formular">Kontakt</a></li>
+            <li><a href="/ueber-uns">Über uns</a></li>
+            <li><a href="/ueber-uns#kontakt">Kontakt</a></li>
           </ul>
         </nav>
         <nav aria-labelledby="f-social">
@@ -551,7 +554,7 @@
     </div>
   </footer>
 
-  <script src="/site.js?v=1" defer></script>
+  <script src="/site.js?v=4" defer></script>
   <script src="/blog-config.js" defer></script>
   <script src="/page-blog.js" defer></script>
 </body>
