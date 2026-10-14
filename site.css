@@ -908,3 +908,51 @@ body.menu-open { overflow: hidden; }
   .page-hero--sketch .page-hero__content .cols > div { grid-column: 2 / span 6; }
 }
 .nav-mobile ul a:not(:has(.axis-bubble)) { padding-left: 42px; }
+
+/* ============================================================
+   Startseite: Achsen als Navigation (vor dem Scrollen)
+   ============================================================ */
+.axis-grid--nav { pointer-events: none; }
+.axis-link {
+  pointer-events: auto; display: inline-flex; align-items: center; gap: 10px;
+  color: var(--white); text-decoration: none; min-height: 44px;
+}
+.axis-link .axis-bubble { position: static; background: transparent; transition: background 0.25s, color 0.25s, border-color 0.25s; }
+.axis-label { font-size: 0.92rem; font-weight: 500; white-space: nowrap; opacity: 0.92; }
+.axis-link:hover .axis-bubble, .axis-link:focus-visible .axis-bubble { background: var(--white); color: var(--navy); border-color: var(--white); }
+.axis-link:hover .axis-label, .axis-link:focus-visible .axis-label { opacity: 1; text-decoration: underline; text-underline-offset: 5px; }
+.axis-link:focus-visible { outline: none; }
+.axis-link:focus-visible .axis-bubble { box-shadow: 0 0 0 3px rgba(176, 196, 222, 0.6); }
+
+/* Handy: die sechs Bereiche als zweispaltige Liste oben im Hero */
+.axis-grid--nav > .container {
+  grid-template-columns: 1fr 1fr; align-content: start; column-gap: 16px; row-gap: 4px;
+  padding-top: calc(var(--header-h) + 8px);
+}
+.axis-grid--nav .axis-v { grid-column: auto !important; grid-row: auto; }
+.axis-grid--nav .axis-link .axis-bubble { width: 30px; height: 30px; font-size: 0.75rem; }
+
+@media (min-width: 1024px) {
+  .axis-grid--nav > .container { grid-template-columns: repeat(12, 1fr); column-gap: 32px; row-gap: 0; padding-top: 0; align-content: stretch; }
+  .axis-grid--nav .axis-v { grid-row: 1; }
+  .axis-grid--nav .axis-v:nth-child(1) { grid-column: 2 !important; }
+  .axis-grid--nav .axis-v:nth-child(2) { grid-column: 4 !important; }
+  .axis-grid--nav .axis-v:nth-child(3) { grid-column: 6 !important; }
+  .axis-grid--nav .axis-v:nth-child(4) { grid-column: 8 !important; }
+  .axis-grid--nav .axis-v:nth-child(5) { grid-column: 10 !important; }
+  .axis-grid--nav .axis-v:nth-child(6) { grid-column: 12 !important; }
+  .axis-grid--nav .axis-link { position: absolute; left: -18px; top: calc(var(--header-h) + 4px); }
+  .axis-grid--nav .axis-link .axis-bubble { width: 36px; height: 36px; font-size: 0.82rem; }
+  /* Hervorheben: ganze Achse, dazu die Abschnitts-Achsen 1-3 */
+  .axis-grid--nav .axis-v::before { transition: opacity 0.25s; }
+  .axis-grid--nav .axis-v:has(.axis-link:hover)::before,
+  .axis-grid--nav .axis-v:has(.axis-link:focus-visible)::before { --axis-line: rgba(255, 255, 255, 0.95); width: 2px; }
+  .axis-grid--nav:has(.axis-link:hover) .axis-h,
+  .axis-grid--nav:has(.axis-link:focus-visible) .axis-h { --axis-line: rgba(176, 196, 222, 0.75); }
+  .axis-grid--nav:has(.axis-link:hover) .axis-v:not(:has(.axis-link:hover))::before { opacity: 0.45; }
+  .axis-h { transition: opacity 0.25s; }
+}
+
+/* Header über dem Achsen-Hero: Menüpunkte ausgeblendet, Logo und Kontakt bleiben */
+.nav-desktop li { transition: opacity 0.35s var(--ease), transform 0.35s var(--ease), visibility 0.35s; }
+.site-header.is-over-plan .nav-desktop li:not(:last-child) { opacity: 0; visibility: hidden; transform: translateY(-8px); }
