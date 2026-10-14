@@ -630,7 +630,7 @@ body.menu-open { overflow: hidden; }
 .page-hero .lead strong { color: var(--white); }
 @media (min-width: 1024px) {
   .page-hero__content .cols > div { grid-column: 2 / span 9; }
-  .page-hero__content { padding-bottom: 104px; }
+  .page-hero__content { padding-top: calc(var(--header-h) + 96px); padding-bottom: 104px; }
 }
 /* Bereichsfarbe für Unterseiten */
 [data-area="handwerk"] { --area: var(--accent-handwerk); }
