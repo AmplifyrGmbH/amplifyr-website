@@ -108,17 +108,13 @@
   <meta name="theme-color" content="#1a2744">
   <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
-  <!-- LCP-Bild vorladen -->
-  <link rel="preload" as="image" type="image/avif" fetchpriority="high"
-        imagesrcset="/Bilder/stock/vorgehen-1200.avif 1200w, /Bilder/stock/vorgehen-2400.avif 2400w" imagesizes="100vw">
-
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cloud.umami.is">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap">
 
-  <link rel="stylesheet" href="/site.css?v=4">
+  <link rel="stylesheet" href="/site.css?v=6">
 
   <script defer src="https://cloud.umami.is/script.js" data-website-id="a5638b4a-87cc-4014-a56d-b5b83ae8ccd5"></script>
 </head>
@@ -128,11 +124,6 @@
 <!-- End Google Tag Manager (noscript) -->
 
   <a class="skip-link" href="#main">Zum Inhalt springen</a>
-
-  <!-- Rasterlinien (Erkennungsmerkmal) -->
-  <div class="grid-lines" aria-hidden="true">
-    <div class="container"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-  </div>
 
   <!-- ===================== Header ===================== -->
   <header id="site-header" class="site-header">
@@ -184,13 +175,30 @@
 
   <main id="main">
     <!-- ===================== Kopf ===================== -->
-    <section class="page-hero" aria-labelledby="page-title">
-      <picture class="hero__media">
-        <source type="image/avif" srcset="/Bilder/stock/vorgehen-1200.avif 1200w, /Bilder/stock/vorgehen-2400.avif 2400w" sizes="100vw">
-        <source type="image/webp" srcset="/Bilder/stock/vorgehen-1200.webp 1200w, /Bilder/stock/vorgehen-2400.webp 2400w" sizes="100vw">
-        <img src="/Bilder/stock/vorgehen-2400.jpg" srcset="/Bilder/stock/vorgehen-1200.jpg 1200w, /Bilder/stock/vorgehen-2400.jpg 2400w" sizes="100vw"
-             alt="Handschriftliche Notizen in einem Spiralblock mit Kugelschreiber" width="2400" height="1600" fetchpriority="high">
-      </picture>
+    <section class="page-hero page-hero--sketch" aria-labelledby="page-title">
+      <svg class="hero-sketch" viewBox="640 100 760 780" aria-hidden="true" focusable="false">
+        <g fill="none" stroke="rgba(176,196,222,.6)" stroke-width="2.4" stroke-linecap="square">
+          <path class="s1" d="M760 140 H1360 V780 H760 Z"/>
+          <path class="s2" d="M1020 140 V420 M760 420 H930 M990 420 H1360 M1160 420 V780 M760 600 H900"/>
+        </g>
+        <g fill="none" stroke="rgba(176,196,222,.5)" stroke-width="1.6">
+          <path class="s3" d="M930 420 A60 60 0 0 1 990 360 M990 420 V360"/>
+          <path class="s3" d="M1160 520 A60 60 0 0 0 1100 580 M1160 580 H1100"/>
+          <path class="s3" d="M840 136 H960 M840 144 H960 M1100 136 H1260 M1100 144 H1260 M1356 520 V680 M1364 520 V680"/>
+        </g>
+        <g fill="none" stroke="rgba(176,196,222,.55)" stroke-width="1.2">
+          <path class="s4" d="M760 830 H1360 M760 820 V840 M1020 820 V840 M1160 820 V840 M1360 820 V840"/>
+          <path class="s4" d="M710 140 V780 M700 140 H720 M700 420 H720 M700 780 H720"/>
+        </g>
+        <g fill="rgba(176,196,222,.8)" font-family="Inter Tight, sans-serif" font-size="15" letter-spacing="1.5">
+          <text x="890" y="858" text-anchor="middle">5.20</text><text x="1090" y="858" text-anchor="middle">2.80</text><text x="1260" y="858" text-anchor="middle">4.00</text>
+          <text x="692" y="285" text-anchor="end">5.60</text><text x="692" y="605" text-anchor="end">7.20</text>
+          <text x="890" y="290" text-anchor="middle" font-size="14">ERSTGESPRÄCH</text>
+          <text x="1190" y="290" text-anchor="middle" font-size="14">FAHRPLAN</text>
+          <text x="960" y="700" text-anchor="middle" font-size="14">UMSETZUNG</text>
+          <text x="1260" y="610" text-anchor="middle" font-size="14">BETRIEB</text>
+        </g>
+      </svg>
       <div class="page-hero__content">
         <div class="container cols">
           <div>
@@ -206,8 +214,8 @@
     <nav class="subnav" aria-label="Abschnitte dieser Seite">
       <div class="container">
         <ul>
-          <li><a href="#ablauf">Ablauf</a></li>
-          <li><a href="#prinzipien">Prinzipien</a></li>
+          <li><a href="#ablauf"><span class="axis-bubble axis-bubble--sm" aria-hidden="true">A</span>Ablauf</a></li>
+          <li><a href="#prinzipien"><span class="axis-bubble axis-bubble--sm" aria-hidden="true">B</span>Prinzipien</a></li>
           <li><a href="#faq">Fragen</a></li>
         </ul>
       </div>
@@ -228,6 +236,7 @@
 
     <!-- ===================== Ablauf ===================== -->
     <section id="ablauf" class="chapter chapter--white" aria-labelledby="ablauf-title">
+      <div class="chapter-axis" aria-hidden="true"><div class="container"><span class="axis-bubble axis-bubble--area">A</span></div></div>
       <div class="container cols">
         <div class="c-label reveal">
           <p class="eyebrow">Ablauf</p>
@@ -294,6 +303,7 @@
 
     <!-- ===================== Prinzipien ===================== -->
     <section id="prinzipien" class="chapter chapter--dark" aria-labelledby="prinzipien-title">
+      <div class="chapter-axis" aria-hidden="true"><div class="container"><span class="axis-bubble axis-bubble--area">B</span></div></div>
       <div class="container cols">
         <div class="c-label reveal">
           <p class="eyebrow">Prinzipien</p>
@@ -305,32 +315,32 @@
         <div class="c-wide">
           <ul class="principles">
             <li class="reveal">
-              <span class="num">01</span>
+              <span class="num" aria-hidden="true">1</span>
               <h3>Ein Ansprechpartner</h3>
               <p>Eine Nummer, eine Rechnung, eine Zuständigkeit. Wie ein Generalunternehmer am Bau, nur für alles Digitale.</p>
             </li>
             <li class="reveal" data-delay="1">
-              <span class="num">02</span>
+              <span class="num" aria-hidden="true">2</span>
               <h3>Bestehende Systeme bleiben</h3>
               <p>Ihre Handwerkersoftware oder Verwaltungslösung wie ImmoTop2 bleibt. Wir docken IT, KI und Website daran an, statt sie zu ersetzen.</p>
             </li>
             <li class="reveal" data-delay="2">
-              <span class="num">03</span>
+              <span class="num" aria-hidden="true">3</span>
               <h3>Sie bestimmen das Tempo</h3>
               <p>Nach jeder Phase entscheiden Sie neu. Sie können jederzeit stoppen, ohne dass etwas zusammenbricht.</p>
             </li>
             <li class="reveal">
-              <span class="num">04</span>
+              <span class="num" aria-hidden="true">4</span>
               <h3>Wir setzen um</h3>
               <p>Sie richten nichts selbst ein. Wir übernehmen die Umsetzung und erklären verständlich, ohne Fachbegriffe.</p>
             </li>
             <li class="reveal" data-delay="1">
-              <span class="num">05</span>
+              <span class="num" aria-hidden="true">5</span>
               <h3>Direkter Kontakt</h3>
               <p>Wenn es hakt, erreichen Sie jemanden, der Ihren Betrieb kennt. Keine Warteschlange, kein Erklären von vorne.</p>
             </li>
             <li class="reveal" data-delay="2">
-              <span class="num">06</span>
+              <span class="num" aria-hidden="true">6</span>
               <h3>Der Mensch entscheidet</h3>
               <p>Technik sortiert vor und übernimmt die Routine. Entscheide und Freigaben bleiben bei Ihnen.</p>
             </li>

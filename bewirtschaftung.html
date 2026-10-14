@@ -140,7 +140,7 @@
   <link rel="preconnect" href="https://cloud.umami.is">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap">
 
-  <link rel="stylesheet" href="/site.css?v=4">
+  <link rel="stylesheet" href="/site.css?v=6">
 
   <script defer src="https://cloud.umami.is/script.js" data-website-id="a5638b4a-87cc-4014-a56d-b5b83ae8ccd5"></script>
 </head>
@@ -150,11 +150,6 @@
 <!-- End Google Tag Manager (noscript) -->
 
   <a class="skip-link" href="#main">Zum Inhalt springen</a>
-
-  <!-- Rasterlinien (Erkennungsmerkmal) -->
-  <div class="grid-lines" aria-hidden="true">
-    <div class="container"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-  </div>
 
   <!-- ===================== Header ===================== -->
   <header id="site-header" class="site-header">
@@ -213,6 +208,13 @@
         <img src="/Bilder/stock/bewirtschaftung-1200.jpg" srcset="/Bilder/stock/bewirtschaftung-1200.jpg 1200w, /Bilder/stock/bewirtschaftung-2400.jpg 2400w" sizes="100vw"
              alt="Wohnhaus mit Dachterrassen" width="2400" height="1600" fetchpriority="high">
       </picture>
+      <div class="axis-grid" aria-hidden="true">
+        <div class="container">
+          <span class="axis-v" style="grid-column:2"><span class="axis-bubble">A</span></span>
+          <span class="axis-v" style="grid-column:6"><span class="axis-bubble">B</span></span>
+          <span class="axis-v" style="grid-column:10"><span class="axis-bubble">C</span></span>
+        </div>
+      </div>
       <div class="page-hero__content">
         <div class="container cols">
           <div>
@@ -228,9 +230,9 @@
     <nav class="subnav" aria-label="Abschnitte dieser Seite">
       <div class="container">
         <ul>
-          <li><a href="#bueroarbeit">Büroarbeit</a></li>
-          <li><a href="#automatisierung-ki">Automatisierung &amp; KI</a></li>
-          <li><a href="#individuelle-software">Individuelle Software</a></li>
+          <li><a href="#bueroarbeit"><span class="axis-bubble axis-bubble--sm" aria-hidden="true">A</span>Büroarbeit</a></li>
+          <li><a href="#automatisierung-ki"><span class="axis-bubble axis-bubble--sm" aria-hidden="true">B</span>Automatisierung &amp; KI</a></li>
+          <li><a href="#individuelle-software"><span class="axis-bubble axis-bubble--sm" aria-hidden="true">C</span>Individuelle Software</a></li>
           <li><a href="#faq">Fragen</a></li>
         </ul>
       </div>
@@ -258,9 +260,9 @@
 
     <!-- ===================== Büroarbeit ===================== -->
     <section id="bueroarbeit" class="chapter chapter--white" data-area="bewirtschaftung" aria-labelledby="buero-title">
+      <div class="chapter-axis" aria-hidden="true"><div class="container"><span class="axis-bubble axis-bubble--area">A</span></div></div>
       <div class="container cols">
         <div class="c-label reveal">
-          <span class="chapter__num">01</span>
           <p class="eyebrow">Büroarbeit</p>
         </div>
         <div class="c-body">
@@ -297,9 +299,9 @@
 
     <!-- ===================== Automatisierung & KI ===================== -->
     <section id="automatisierung-ki" class="chapter chapter--dark" data-area="bewirtschaftung" aria-labelledby="ki-title">
+      <div class="chapter-axis" aria-hidden="true"><div class="container"><span class="axis-bubble axis-bubble--area">B</span></div></div>
       <div class="container cols">
         <div class="c-label reveal">
-          <span class="chapter__num">02</span>
           <p class="eyebrow">Automatisierung &amp; KI</p>
         </div>
         <div class="c-body">
@@ -356,9 +358,9 @@
 
     <!-- ===================== Individuelle Software ===================== -->
     <section id="individuelle-software" class="chapter" data-area="bewirtschaftung" aria-labelledby="software-title">
+      <div class="chapter-axis" aria-hidden="true"><div class="container"><span class="axis-bubble axis-bubble--area">C</span></div></div>
       <div class="container cols">
         <div class="c-label reveal">
-          <span class="chapter__num">03</span>
           <p class="eyebrow">Individuelle Software</p>
         </div>
         <div class="c-body">
