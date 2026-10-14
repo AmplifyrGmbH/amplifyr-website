@@ -922,3 +922,4 @@ body.menu-open { overflow: hidden; }
 .head-axis::after { background-image: none; background-color: var(--axis-line); height: 2px; }
 .process > li::after { background-image: none; background-color: var(--axis-line); width: 2px; }
 .chapter-axis .axis-bubble { justify-self: start; }
+.nav-mobile ul a:not(:has(.axis-bubble)) { padding-left: 0; }
