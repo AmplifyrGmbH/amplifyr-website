@@ -909,60 +909,6 @@ body.menu-open { overflow: hidden; }
 }
 .nav-mobile ul a:not(:has(.axis-bubble)) { padding-left: 42px; }
 
-/* ============================================================
-   Grundriss statt Achsraster
-   Hero: Räume = Kapitel (Startseite A-F) bzw. Abschnitte (Unterseiten A1-A3).
-   Übergänge: Wandlinie mit Türschwenkung, Raumschild statt Achskreis.
-   ============================================================ */
-.hero-plan { position: absolute; inset: 0; z-index: 1; }
-.hero-plan > .container { height: 100%; display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: auto; align-content: start; padding-top: calc(var(--header-h) + 8px); }
-.plan-room {
-  position: relative; display: block; min-height: 64px; padding: 10px;
-  border: 1.5px solid var(--wall, rgba(176, 196, 222, 0.6)); margin: 0 -0.75px -1.5px 0;
-  color: var(--white); text-decoration: none; transition: background 0.25s var(--ease);
-}
-.plan-room:hover, .plan-room:focus-visible { background: rgba(176, 196, 222, 0.16); outline: none; }
-.room-tag {
-  display: inline-flex; align-items: center; gap: 8px; max-width: 100%;
-  font-size: 0.78rem; font-weight: 500; line-height: 1.2;
-}
-.room-tag b {
-  flex-shrink: 0; display: inline-grid; place-content: center; min-width: 30px; height: 24px; padding: 0 6px;
-  border: 1.2px solid currentColor; border-radius: 4px; font-size: 0.75rem; font-weight: 600;
-  transition: background 0.25s, color 0.25s;
-}
-.room-tag span { opacity: 0.9; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.plan-room:hover .room-tag b, .plan-room:focus-visible .room-tag b { background: var(--white); color: var(--navy); border-color: var(--white); }
-.plan-room:hover .room-tag span, .plan-room:focus-visible .room-tag span { text-decoration: underline; text-underline-offset: 4px; }
-/* Text des Heros liegt über dem Plan, lässt Klicks aber zu den Räumen durch */
-.hero .hero__content, .page-hero .page-hero__content { pointer-events: none; }
-.hero .hero__content a, .page-hero .page-hero__content a { pointer-events: auto; }
-
-@media (min-width: 1024px) {
-  .hero-plan > .container {
-    grid-template-columns: repeat(12, 1fr); column-gap: 0;
-    align-content: stretch; padding-top: calc(var(--header-h) + 16px); padding-bottom: 40px;
-  }
-  .plan-room { min-height: 0; padding: 16px 18px; border-width: 2px; margin: 0 -1px 0 0; }
-  .plan-room .room-tag { font-size: 0.92rem; }
-  .room-tag b { min-width: 36px; height: 28px; font-size: 0.82rem; }
-  /* Türschwenkung unten links in jedem Raum */
-  .plan-room::after {
-    content: ""; position: absolute; left: -2px; bottom: 0; width: 56px; height: 56px;
-    border-top: 1.5px solid var(--wall, rgba(176, 196, 222, 0.6)); border-right: 1.5px solid var(--wall, rgba(176, 196, 222, 0.6));
-    border-top-right-radius: 56px; opacity: 0.8;
-  }
-  /* Bemassungskette über den Räumen */
-  .hero-plan > .container::before {
-    content: ""; position: absolute; left: var(--gutter); right: var(--gutter); top: calc(var(--header-h) + 2px); height: 1px;
-    background: rgba(176, 196, 222, 0.35);
-  }
-}
-@media (max-width: 1023px) {
-  /* Handy: Mini-Grundriss oben im Hero, Räume als 3er-Raster */
-  .plan-room { grid-column: auto !important; }
-}
-
 /* Raumschild statt Achskreis (überall, wo bisher Kreise standen) */
 .axis-bubble { border-radius: 4px; width: auto; min-width: 36px; padding: 0 7px; }
 .axis-bubble--sm { border-radius: 3px; min-width: 24px; padding: 0 5px; }
@@ -973,30 +919,6 @@ body.menu-open { overflow: hidden; }
   background-image: none; background-color: var(--axis-line); height: 2px;
 }
 .chapter-axis .axis-bubble { position: relative; }
-.chapter-axis .axis-bubble::after {
-  /* Türschwenkung neben dem Raumschild */
-  content: ""; position: absolute; left: calc(100% + 10px); top: 50%; width: 44px; height: 44px;
-  border-top: 1.5px solid var(--axis-line); border-right: 1.5px solid var(--axis-line); border-top-right-radius: 44px;
-}
 .head-axis::after { background-image: none; background-color: var(--axis-line); height: 2px; }
 .process > li::after { background-image: none; background-color: var(--axis-line); width: 2px; }
-@media (min-width: 1024px) {
-  .hero-plan--2rows > .container { grid-template-rows: 58fr 42fr; }
-  /* Türen an unterschiedlichen Stellen, damit es wie ein Plan wirkt */
-  .plan-room:nth-child(even)::after { left: auto; right: -2px; transform: scaleX(-1); }
-  .plan-room:nth-child(3n)::after { bottom: auto; top: 0; transform: scaleY(-1); }
-}
 .chapter-axis .axis-bubble { justify-self: start; }
-@media (max-width: 1023px) {
-  .plan-room { grid-row: auto !important; }
-}
-.plan-room { overflow: hidden; }
-.room-tag { min-width: 0; }
-@media (min-width: 1024px) {
-  .hero-plan--2rows .plan-room[style*="grid-row:2"] { display: flex; align-items: flex-end; }
-  .hero .hero-plan--2rows .plan-room[style*="grid-row:2"]::after { bottom: auto; top: 0; }
-}
-@media (max-width: 1023px) {
-  .page-hero .room-tag span { display: none; }
-  .page-hero .plan-room { min-height: 52px; }
-}
