@@ -89,7 +89,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .chapter--white, .areas, .faq, .refs { --axis-bg: var(--white); }
 
 /* Strichpunkt: langer Strich, Lücke, Punkt, Lücke */
-.axis-line-h, .chapter::before, .area::before {
+.axis-line-h, .axis-h, .chapter::before, .area::before {
   background-image: linear-gradient(90deg, var(--axis-line) 0 22px, transparent 22px 28px, var(--axis-line) 28px 31px, transparent 31px 37px);
   background-size: 37px 1px; background-repeat: repeat-x;
 }
@@ -906,50 +906,3 @@ body.menu-open { overflow: hidden; }
   .page-hero--sketch .page-hero__content .cols > div { grid-column: 2 / span 6; }
 }
 .nav-mobile ul a:not(:has(.axis-bubble)) { padding-left: 42px; }
-
-/* ============================================================
-   Startseite: Plan der Website im Hero (Deckblatt des Plansets)
-   ============================================================ */
-.hero--plan { justify-content: center; min-height: auto; padding: calc(var(--header-h) + 32px) 0 96px; }
-.hero--plan .hero__content { padding-bottom: 0; }
-.hero--plan .hero__brand { font-size: clamp(3.8rem, 17vw, 7.6rem); }
-.hero__plan { margin-top: 40px; }
-.site-plan { display: block; width: 100%; height: auto; overflow: visible; }
-.sp-walls { stroke: rgba(176, 196, 222, 0.75); stroke-width: 2.4; stroke-linecap: square; }
-.sp-inner { stroke: rgba(176, 196, 222, 0.4); stroke-width: 1.3; }
-.sp-dim   { stroke: rgba(176, 196, 222, 0.45); stroke-width: 1; }
-.sp-room, .sp-sub { cursor: pointer; }
-.sp-room rect, .sp-sub rect { fill: transparent; transition: fill 0.25s var(--ease); }
-.sp-room:hover rect, .sp-room:focus-visible rect { fill: rgba(176, 196, 222, 0.12); }
-.sp-sub:hover rect, .sp-sub:focus-visible rect { fill: rgba(176, 196, 222, 0.2); }
-.sp-room:focus-visible rect, .sp-sub:focus-visible rect { stroke: var(--white); stroke-width: 2; }
-.sp-room circle { fill: none; stroke: var(--c, rgba(223, 231, 242, 0.85)); stroke-width: 1.4; }
-.sp-room--a { --c: var(--accent-handwerk); }
-.sp-room--b { --c: var(--accent-bewirtschaftung); }
-.sp-room--c { --c: var(--accent-kmu); }
-.site-plan text { font-family: var(--font); font-weight: 600; }
-.sp-code { fill: var(--c, #dfe7f2); font-size: 14px; }
-.sp-name { fill: rgba(223, 231, 242, 0.92); font-size: 12px; letter-spacing: 0.12em; }
-.sp-subcode { fill: rgba(176, 196, 222, 0.85); font-size: 13px; letter-spacing: 0.06em; }
-.sp-sub:hover .sp-subcode { fill: var(--white); }
-.sp-caption { fill: rgba(176, 196, 222, 0.6); font-size: 11px; font-weight: 500; letter-spacing: 0.14em; }
-.site-plan .s1, .site-plan .s2, .site-plan .s3, .site-plan .s4 { stroke-dasharray: 2400; stroke-dashoffset: 2400; animation: sketch-draw 2.4s var(--ease) forwards; }
-.site-plan .s2 { animation-delay: 0.4s; } .site-plan .s3 { animation-delay: 0.8s; } .site-plan .s4 { animation-delay: 1.2s; }
-.site-plan text, .site-plan circle { opacity: 0; animation: sketch-fade 0.8s 1.4s forwards; }
-@media (prefers-reduced-motion: reduce) { .site-plan * { stroke-dashoffset: 0 !important; opacity: 1 !important; } }
-@media (min-width: 1024px) {
-  .hero--plan { min-height: 100vh; min-height: 100svh; padding-bottom: 72px; }
-  .hero--plan .cols { align-items: center; }
-  .hero--plan .hero__content .cols > .hero__text { grid-column: 2 / span 5; }
-  .hero--plan .hero__content .cols > .hero__plan { grid-column: 7 / span 6; margin-top: 0; }
-  .hero--plan .hero__brand { font-size: clamp(4.4rem, 7.4vw, 7.6rem); }
-  .hero--plan .hero__claim { font-size: clamp(1.35rem, 2vw, 1.9rem); }
-}
-@media (max-width: 699px) {
-  .hero--plan .hero__scroll { display: none; }
-  .hero--plan { padding-bottom: 56px; }
-  .sp-name { display: none; }
-  .sp-code { font-size: 18px; }
-  .sp-subcode { font-size: 18px; }
-  .sp-caption { font-size: 16px; }
-}
