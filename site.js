@@ -86,6 +86,21 @@
     }, { passive: true });
   }
 
+  // ---- Rundgang: Raum im Grundriss und Eintrag in der Liste gemeinsam hervorheben ----
+  document.querySelectorAll('.tour').forEach(function (tour) {
+    var els = tour.querySelectorAll('[data-room]');
+    function setActive(id) {
+      els.forEach(function (el) { el.classList.toggle('is-active', el.getAttribute('data-room') === id); });
+    }
+    els.forEach(function (el) {
+      var id = el.getAttribute('data-room');
+      el.addEventListener('mouseenter', function () { setActive(id); });
+      el.addEventListener('focus', function () { setActive(id); });
+      el.addEventListener('mouseleave', function () { setActive(null); });
+      el.addEventListener('blur', function () { setActive(null); });
+    });
+  });
+
   // ---- Einblendungen beim Scrollen ----
   var items = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {

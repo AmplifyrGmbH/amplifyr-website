@@ -167,7 +167,7 @@
   <link rel="preconnect" href="https://cloud.umami.is">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap">
 
-  <link rel="stylesheet" href="/site.css?v=15">
+  <link rel="stylesheet" href="/site.css?v=20">
 
   <script defer src="https://cloud.umami.is/script.js" data-website-id="a5638b4a-87cc-4014-a56d-b5b83ae8ccd5"></script>
 </head>
@@ -281,6 +281,66 @@
             <li class="reveal" data-delay="1"><b>5</b><span>Managed-Services-Bausteine, einzeln buchbar zur festen Monatspauschale.</span></li>
             <li class="reveal" data-delay="2"><b>&lt; 2 s</b><span>Ladezeit unserer Websites, handgeschrieben ohne Baukasten.</span></li>
           </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Rundgang ===================== -->
+    <section class="chapter chapter--white tour" data-area="kmu" aria-labelledby="tour-title">
+      <div class="container cols">
+        <div class="c-label reveal">
+          <p class="eyebrow">Rundgang</p>
+        </div>
+        <div class="c-body">
+          <h2 id="tour-title" class="h-section reveal">Ein Rundgang durch Ihr Büro.</h2>
+          <p class="lead reveal" data-delay="1">Vom Arbeitsplatz bis zum Serverraum: Fahren Sie über einen Raum und sehen Sie, wo wir übernehmen. Ein Klick führt zum passenden Abschnitt.</p>
+        </div>
+        <div class="c-wide">
+          <div class="tour__grid">
+            <div class="tour__plan reveal">
+            <svg class="floorplan" viewBox="0 0 800 560" role="img" aria-labelledby="fp-kmu-title">
+              <title id="fp-kmu-title">Grundriss eines KMU-Büros</title>
+              <a class="fp-room" href="#bueroarbeit" data-room="arbeitsplaetze" aria-label="C1: Arbeitsplätze. Microsoft 365, zentral verwaltete Geräte und Abläufe, die sich selbst erledigen.">
+                <rect class="fp-area" x="40" y="40" width="440" height="300"/>
+                <g class="fp-tag" transform="translate(62,64)"><rect class="fp-code" x="0" y="0" width="34" height="22" rx="11"/><text class="fp-code-t" x="17" y="15" text-anchor="middle">C1</text><text class="fp-name" x="44" y="15">ARBEITSPLÄTZE</text></g>
+              </a>
+              <a class="fp-room" href="#bueroarbeit" data-room="sitzung" aria-label="C1: Sitzungszimmer. Termine landen im Outlook-Kalender, Anfragen werden in bexio zum Kontakt.">
+                <rect class="fp-area" x="480" y="40" width="280" height="300"/>
+                <g class="fp-tag" transform="translate(502,64)"><rect class="fp-code" x="0" y="0" width="34" height="22" rx="11"/><text class="fp-code-t" x="17" y="15" text-anchor="middle">C1</text><text class="fp-name" x="44" y="15">SITZUNGSZIMMER</text></g>
+              </a>
+              <a class="fp-room" href="#website-sichtbarkeit" data-room="empfang" aria-label="C3: Empfang. Ihre Website ist der Empfang im Netz: gefunden werden, Anfragen und Termine entgegennehmen.">
+                <rect class="fp-area" x="40" y="340" width="290" height="180"/>
+                <g class="fp-tag" transform="translate(62,364)"><rect class="fp-code" x="0" y="0" width="34" height="22" rx="11"/><text class="fp-code-t" x="17" y="15" text-anchor="middle">C3</text><text class="fp-name" x="44" y="15">EMPFANG</text></g>
+              </a>
+              <a class="fp-room" href="#it-sicherheit" data-room="server" aria-label="C2: Serverraum. Security, Backup und Support als Bausteine zur festen Monatspauschale.">
+                <rect class="fp-area" x="330" y="340" width="190" height="180"/>
+                <g class="fp-tag" transform="translate(352,364)"><rect class="fp-code" x="0" y="0" width="34" height="22" rx="11"/><text class="fp-code-t" x="17" y="15" text-anchor="middle">C2</text></g>
+              </a>
+              <a class="fp-room" href="#it-sicherheit" data-room="archiv" aria-label="C2: Technik &amp; Archiv. Getestete Datensicherung und ein fester Ansprechpartner, wenn es hakt.">
+                <rect class="fp-area" x="520" y="340" width="240" height="180"/>
+                <g class="fp-tag" transform="translate(542,364)"><rect class="fp-code" x="0" y="0" width="34" height="22" rx="11"/><text class="fp-code-t" x="17" y="15" text-anchor="middle">C2</text><text class="fp-name" x="44" y="15">TECHNIK &amp; ARCHIV</text></g>
+              </a>
+              <g class="fp-detail" fill="none">
+                <rect x="80" y="90" width="90" height="50" rx="2"/><rect x="200" y="90" width="90" height="50" rx="2"/><rect x="320" y="90" width="90" height="50" rx="2"/>
+                <rect x="80" y="220" width="90" height="50" rx="2"/><rect x="200" y="220" width="90" height="50" rx="2"/><rect x="320" y="220" width="90" height="50" rx="2"/>
+                <rect x="540" y="130" width="160" height="110" rx="55"/>
+                <path d="M80 400 H220 V450"/>
+                <rect x="360" y="380" width="36" height="100" rx="2"/><rect x="410" y="380" width="36" height="100" rx="2"/><rect x="460" y="380" width="36" height="100" rx="2"/>
+                <path d="M560 380 H730 M560 410 H730 M560 440 H730"/>
+              </g>
+              <g class="fp-window" fill="none"><path d="M100 40 H400" pathLength="1"/><path d="M540 40 H700" pathLength="1"/><path d="M760 120 V260" pathLength="1"/><path d="M40 400 V480" pathLength="1"/></g>
+              <g class="fp-door" fill="none"><path d="M480 280 A44 44 0 0 1 436 324" pathLength="1"/><path d="M200 340 A44 44 0 0 1 244 296" pathLength="1"/><path d="M330 470 A40 40 0 0 0 370 510" pathLength="1"/><path d="M600 340 A40 40 0 0 0 640 300" pathLength="1"/></g>
+              <g class="fp-walls" fill="none"><rect x="40" y="40" width="440" height="300" pathLength="1"/><rect x="480" y="40" width="280" height="300" pathLength="1"/><rect x="40" y="340" width="290" height="180" pathLength="1"/><rect x="330" y="340" width="190" height="180" pathLength="1"/><rect x="520" y="340" width="240" height="180" pathLength="1"/></g>
+            </svg>
+            </div>
+            <ul class="tour__list reveal" data-delay="1">
+              <li><a class="tour__item" href="#bueroarbeit" data-room="arbeitsplaetze"><span class="axis-bubble axis-bubble--sm" aria-hidden="true">C1</span><span><b>Arbeitsplätze</b><small>Microsoft 365, zentral verwaltete Geräte und Abläufe, die sich selbst erledigen.</small></span></a></li>
+              <li><a class="tour__item" href="#bueroarbeit" data-room="sitzung"><span class="axis-bubble axis-bubble--sm" aria-hidden="true">C1</span><span><b>Sitzungszimmer</b><small>Termine landen im Outlook-Kalender, Anfragen werden in bexio zum Kontakt.</small></span></a></li>
+              <li><a class="tour__item" href="#website-sichtbarkeit" data-room="empfang"><span class="axis-bubble axis-bubble--sm" aria-hidden="true">C3</span><span><b>Empfang</b><small>Ihre Website ist der Empfang im Netz: gefunden werden, Anfragen und Termine entgegennehmen.</small></span></a></li>
+              <li><a class="tour__item" href="#it-sicherheit" data-room="server"><span class="axis-bubble axis-bubble--sm" aria-hidden="true">C2</span><span><b>Serverraum</b><small>Security, Backup und Support als Bausteine zur festen Monatspauschale.</small></span></a></li>
+              <li><a class="tour__item" href="#it-sicherheit" data-room="archiv"><span class="axis-bubble axis-bubble--sm" aria-hidden="true">C2</span><span><b>Technik &amp; Archiv</b><small>Getestete Datensicherung und ein fester Ansprechpartner, wenn es hakt.</small></span></a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
@@ -659,6 +719,6 @@
     </div>
   </footer>
 
-  <script src="/site.js?v=4" defer></script>
+  <script src="/site.js?v=5" defer></script>
 </body>
 </html>

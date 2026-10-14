@@ -908,3 +908,60 @@ body.menu-open { overflow: hidden; }
   .page-hero--sketch .page-hero__content .cols > div { grid-column: 2 / span 6; }
 }
 .nav-mobile ul a:not(:has(.axis-bubble)) { padding-left: 42px; }
+
+/* ============================================================
+   Grundrisse (Werkstatt, Mehrfamilienhaus, Büro)
+   ============================================================ */
+.floorplan { display: block; width: 100%; height: auto; color: var(--navy); overflow: visible; }
+.fp-walls  { stroke: currentColor; stroke-width: 3; stroke-linejoin: miter; }
+.fp-detail { stroke: currentColor; stroke-width: 1.2; opacity: 0.4; }
+.fp-window { stroke: currentColor; stroke-width: 7; opacity: 0.22; }
+.fp-door   { stroke: currentColor; stroke-width: 1.2; opacity: 0.6; }
+.fp-area   { fill: transparent; transition: fill 0.25s var(--ease); }
+.fp-room   { cursor: pointer; outline: none; }
+.fp-code   { fill: none; stroke: currentColor; stroke-width: 1.2; transition: fill 0.25s; }
+.floorplan text { font-family: var(--font); font-weight: 600; font-size: 12px; }
+.fp-code-t { fill: currentColor; }
+.fp-name   { fill: currentColor; letter-spacing: 0.12em; opacity: 0.75; }
+.fp-room:hover .fp-area, .fp-room:focus-visible .fp-area, .fp-room.is-active .fp-area { fill: rgba(176, 196, 222, 0.38); }
+.fp-room:hover .fp-code, .fp-room:focus-visible .fp-code, .fp-room.is-active .fp-code { fill: var(--navy); stroke: var(--navy); }
+.fp-room:hover .fp-code-t, .fp-room:focus-visible .fp-code-t, .fp-room.is-active .fp-code-t { fill: var(--white); }
+.fp-room:focus-visible .fp-area { stroke: var(--navy); stroke-width: 3; }
+
+/* Rundgang auf den Bereichsseiten */
+.tour__grid { margin-top: 48px; display: grid; gap: 32px; }
+.tour__plan { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; }
+.tour__list { list-style: none; display: grid; gap: 8px; align-content: start; }
+.tour__item {
+  display: flex; gap: 14px; align-items: flex-start; padding: 14px 16px;
+  border: 1px solid var(--line); border-radius: var(--radius); text-decoration: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+.tour__item b { display: block; font-weight: 600; }
+.tour__item small { display: block; margin-top: 2px; color: var(--text-muted); font-size: 0.92rem; line-height: 1.45; }
+.tour__item .axis-bubble--sm { --bubble: var(--navy); --bubble-text: var(--navy); background: transparent; margin-top: 1px; }
+.tour__item:hover, .tour__item:focus-visible, .tour__item.is-active { border-color: var(--navy); background: var(--sky-soft); }
+@media (min-width: 1024px) {
+  .tour__grid { grid-template-columns: 7fr 5fr; gap: 48px; align-items: start; }
+  .tour__plan { padding: 28px; }
+}
+
+/* Teaser der Startseite: Grundriss statt Foto */
+.area__media--plan { background: var(--sky-soft); }
+.area__media--plan .floorplan { position: absolute; top: 16px; left: 16px; width: calc(100% - 32px); height: calc(100% - 32px); }
+.area__media--plan::after { display: none; }
+@media (min-width: 1024px) {
+  .area__media--plan { background: var(--navy); }
+  .area__media--plan .floorplan { color: var(--sky); top: 36px; left: 50%; width: 46%; height: calc(100% - 72px); }
+  .area:hover .area__media--plan .fp-walls > *, .area:focus-within .area__media--plan .fp-walls > * {
+    stroke-dasharray: 1; stroke-dashoffset: 1; animation: sketch-draw 1.4s var(--ease) forwards;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .area .fp-walls > * { stroke-dasharray: none !important; stroke-dashoffset: 0 !important; }
+}
+.fp-walls, .fp-detail, .fp-window, .fp-door { pointer-events: none; }
+@media (min-width: 1024px) {
+  .area__media--plan .floorplan { opacity: 0.32; }
+  .area:hover, .area:focus-within { --axis-ink: rgba(223, 231, 242, 0.88); }
+}
