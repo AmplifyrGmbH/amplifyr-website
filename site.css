@@ -1066,3 +1066,120 @@ body.menu-open { overflow: hidden; }
 .page-head--after-hero .intro__text { margin-top: 0; }
 @media (min-width: 1024px) { .page-head--after-hero { padding-top: 96px; } }
 .faq details.faq__all { border-bottom: 0; }
+
+/* ============================================================
+   Bereichsseiten (Handwerk, Bewirtschaftung, Für KMU)
+   ============================================================ */
+/* Ausgangslage */
+.pains { margin-top: 48px; list-style: none; display: grid; gap: 12px; }
+@media (min-width: 700px) { .pains { grid-template-columns: 1fr 1fr; } }
+.pain { position: relative; padding: 22px 24px 22px 56px; background: var(--white); border: 1px solid var(--line); border-radius: 10px; }
+.pain::before {
+  content: ""; position: absolute; left: 22px; top: 25px; width: 18px; height: 18px; border-radius: 50%;
+  border: 1.5px solid var(--text-muted);
+  background: linear-gradient(var(--text-muted), var(--text-muted)) center / 8px 1.5px no-repeat;
+}
+.pain b { display: block; font-size: 1.1rem; font-weight: 600; }
+.pain span { display: block; margin-top: 4px; color: var(--text-muted); }
+.aus-stat { margin-top: 32px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.aus-stat b { font-size: clamp(2.4rem, 5vw, 3.4rem); line-height: 1; font-weight: 600; letter-spacing: -0.03em; }
+.aus-stat span { color: var(--text-muted); max-width: 40ch; }
+.aus-stat small { display: block; margin-top: 4px; font-size: 0.8rem; opacity: 0.8; }
+
+/* Unser Ansatz: Ihr Betrieb in der Mitte, sechs Bereiche drumherum */
+.hub { margin-top: 56px; list-style: none; display: grid; gap: 12px; }
+.hub__core {
+  display: grid; place-content: center; text-align: center; gap: 4px; padding: 28px;
+  border-radius: 16px; background: var(--sky); color: var(--navy);
+}
+.hub__core span { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.01em; }
+.hub__core small { font-size: 0.85rem; font-weight: 500; opacity: 0.8; }
+.hub__tile {
+  display: flex; flex-direction: column; gap: 6px; padding: 22px;
+  border: 1px solid rgba(176, 196, 222, 0.25); border-radius: 12px; background: rgba(255, 255, 255, 0.03);
+}
+.hub__icon { width: 42px; height: 42px; border-radius: 50%; display: grid; place-content: center; background: rgba(176, 196, 222, 0.16); color: var(--sky); margin-bottom: 6px; }
+.hub__tile b { font-size: 1.08rem; font-weight: 600; }
+.hub__tile span:last-child { color: rgba(255, 255, 255, 0.72); font-size: 0.95rem; line-height: 1.5; }
+@media (min-width: 700px) {
+  .hub { grid-template-columns: 1fr 1fr; }
+  .hub__core { grid-column: 1 / -1; }
+}
+@media (min-width: 1024px) {
+  .hub { grid-template-columns: 1fr 280px 1fr; grid-auto-flow: column; grid-template-rows: repeat(3, auto); gap: 14px 40px; position: relative; }
+  .hub__core { grid-column: 2; grid-row: 1 / 4; width: 260px; height: 260px; border-radius: 50%; justify-self: center; align-self: center; position: relative; z-index: 1; }
+  .hub__tile--1, .hub__tile--2, .hub__tile--3 { grid-column: 1; }
+  .hub__tile--4, .hub__tile--5, .hub__tile--6 { grid-column: 3; }
+  .hub__tile--1, .hub__tile--4 { grid-row: 1; }
+  .hub__tile--2, .hub__tile--5 { grid-row: 2; }
+  .hub__tile--3, .hub__tile--6 { grid-row: 3; }
+  /* Verbindungslinien vom Betrieb zu den Bereichen */
+  .hub::before {
+    content: ""; position: absolute; left: 25%; right: 25%; top: 50%; height: 1px; background: rgba(176, 196, 222, 0.35);
+  }
+  .hub__core::before { content: ""; position: absolute; inset: -14px; border-radius: 50%; border: 1px dashed rgba(176, 196, 222, 0.5); }
+  .hub__tile { flex-direction: row; align-items: flex-start; gap: 16px; }
+  .hub__tile .hub__icon { flex-shrink: 0; margin: 0; }
+  .hub__tile { display: grid; grid-template-columns: 42px 1fr; column-gap: 16px; row-gap: 4px; }
+  .hub__tile .hub__icon { grid-row: 1 / span 2; }
+}
+.principles--4 { margin-top: 64px; }
+@media (min-width: 900px) { .principles--4 { grid-template-columns: repeat(4, 1fr); } }
+
+/* Im Alltag: Ablauf eines Auftrags */
+.flow { margin-top: 48px; list-style: none; display: grid; gap: 12px; counter-reset: fl; }
+@media (min-width: 700px) { .flow { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1024px) { .flow { grid-template-columns: repeat(3, 1fr); gap: 16px; } }
+.flow li { position: relative; padding: 24px; border: 1px solid var(--line); border-radius: 10px; background: var(--paper); }
+.flow__n { display: inline-grid; place-content: center; width: 32px; height: 32px; border-radius: 50%; background: var(--navy); color: var(--white); font-size: 0.85rem; font-weight: 600; }
+.flow h3 { margin-top: 14px; font-size: 1.15rem; font-weight: 600; }
+.flow p { margin-top: 6px; color: var(--text-muted); }
+
+/* Im Alltag: zwei Fälle (Bewirtschaftung) */
+.cases { margin-top: 48px; display: grid; gap: 16px; }
+@media (min-width: 900px) { .cases { grid-template-columns: 1fr 1fr; gap: 24px; } }
+.case { padding: 28px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); }
+.case h3 { font-size: 1.35rem; font-weight: 600; letter-spacing: -0.01em; }
+.case__steps { margin-top: 20px; list-style: none; counter-reset: cs; display: grid; gap: 0; }
+.case__steps li { counter-increment: cs; position: relative; padding: 0 0 20px 44px; }
+.case__steps li::before {
+  content: counter(cs); position: absolute; left: 0; top: 0; width: 28px; height: 28px; border-radius: 50%;
+  display: grid; place-content: center; background: var(--navy); color: var(--white); font-size: 0.8rem; font-weight: 600;
+}
+.case__steps li::after { content: ""; position: absolute; left: 13.5px; top: 32px; bottom: 4px; width: 1px; background: var(--line); }
+.case__steps li:last-child { padding-bottom: 0; }
+.case__steps li:last-child::after { display: none; }
+.case__steps b { display: block; font-weight: 600; }
+.case__steps span { display: block; margin-top: 2px; color: var(--text-muted); font-size: 0.95rem; }
+
+/* Im Alltag: vorher / nachher (KMU) */
+.compare { margin-top: 48px; list-style: none; display: grid; gap: 16px; }
+@media (min-width: 900px) { .compare { grid-template-columns: 1fr 1fr; gap: 24px; } }
+.cmp { padding: 24px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); }
+.cmp h3 { font-size: 1.2rem; font-weight: 600; }
+.cmp p { margin-top: 12px; padding: 12px 14px; border-radius: 8px; font-size: 0.97rem; }
+.cmp small { display: block; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 2px; }
+.cmp__before { background: var(--white); color: var(--text-muted); }
+.cmp__before small { color: var(--text-muted); }
+.cmp__after { background: var(--navy); color: var(--white); }
+.cmp__after small { color: var(--sky); }
+
+/* Ablauf in vier Schritten */
+.steps4 { margin-top: 48px; list-style: none; counter-reset: s4; display: grid; gap: 12px; }
+@media (min-width: 900px) { .steps4 { grid-template-columns: repeat(4, 1fr); gap: 0; } }
+.steps4 li { counter-increment: s4; position: relative; padding: 20px 20px 20px 64px; border: 1px solid var(--line); border-radius: 10px; background: var(--white); }
+.steps4 li::before {
+  content: counter(s4); position: absolute; left: 20px; top: 20px; width: 30px; height: 30px; border-radius: 50%;
+  display: grid; place-content: center; background: var(--sky-soft); color: var(--navy); font-weight: 600; font-size: 0.85rem;
+}
+.steps4 li:first-child::before { background: var(--navy); color: var(--white); }
+.steps4 b { display: block; font-weight: 600; }
+.steps4 span { display: block; margin-top: 4px; color: var(--text-muted); font-size: 0.93rem; }
+@media (min-width: 900px) {
+  .steps4 li { padding: 64px 22px 24px; border-radius: 0; margin-left: -1px; }
+  .steps4 li:first-child { border-radius: 10px 0 0 10px; }
+  .steps4 li:last-child { border-radius: 0 10px 10px 0; }
+  .steps4 li::before { left: 22px; top: 22px; }
+}
+.steps4__cta { margin-top: 32px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; }
+.hub__tile { background: #1f2c4a; position: relative; z-index: 1; align-content: start; }
