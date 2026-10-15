@@ -1238,3 +1238,11 @@ body.menu-open { overflow: hidden; }
   .hero:has(.hero__statement) > .container:last-child { display: grid; grid-template-columns: repeat(12, 1fr); column-gap: 32px; }
   .hero:has(.hero__statement) .hero__scroll { grid-column: 2; }
 }
+/* Hero: echtes Logo + Kernaussage in einem Fluss */
+.hero__logo { display: block; width: 180px; height: auto; margin-left: -22px; }
+.hero__statement { max-width: 30ch; font-size: clamp(1.7rem, 3.2vw, 2.9rem); line-height: 1.22; }
+.hero__statement h1, .hero__statement p { display: inline; font: inherit; letter-spacing: inherit; color: inherit; margin: 0; }
+.hero__statement p { color: rgba(255, 255, 255, 0.82); }
+.hero__statement p strong { color: var(--white); }
+@media (min-width: 1024px) { .hero__logo { width: 220px; margin-left: -27px; } }
+@media (min-width: 1024px) { .hero__statement { font-size: clamp(2rem, 2.7vw, 2.6rem); max-width: 34ch; } }
