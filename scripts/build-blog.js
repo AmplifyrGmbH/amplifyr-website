@@ -187,10 +187,10 @@ function generatePostHtml(f, slug, assets, chrome) {
     dateModified:  dateIso,
     url: postUrl,
     image: ogImg,
-    author: { '@type': 'Organization', name: 'Amplifyr', url: BASE_URL },
+    author: { '@type': 'Organization', name: 'amplifyr', url: BASE_URL },
     publisher: {
       '@type': 'Organization',
-      name: 'Amplifyr',
+      name: 'amplifyr',
       url: BASE_URL,
       logo: { '@type': 'ImageObject', url: BASE_URL + '/Logos/amplifyr_logo/amplifyr-logo-blau-hellblau.svg' }
     },
@@ -213,18 +213,18 @@ function generatePostHtml(f, slug, assets, chrome) {
     + chrome.gtmHead + '\n'
     + '  <meta charset="UTF-8">\n'
     + '  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n\n'
-    + '  <title>' + esc(title) + ' | Amplifyr Blog</title>\n'
+    + '  <title>' + esc(title) + ' | amplifyr Blog</title>\n'
     + '  <meta name="description" content="' + esc(metaDescText) + '">\n'
     + '  <link rel="canonical" href="' + postUrl + '">\n'
     + '  <meta name="robots" content="index,follow">\n\n'
     + '  <meta property="og:type"        content="article">\n'
     + '  <meta property="og:url"         content="' + postUrl + '">\n'
-    + '  <meta property="og:title"       content="' + esc(title) + ' | Amplifyr Blog">\n'
+    + '  <meta property="og:title"       content="' + esc(title) + ' | amplifyr Blog">\n'
     + '  <meta property="og:description" content="' + esc(metaDescText) + '">\n'
     + '  <meta property="og:image"       content="' + esc(ogImg) + '">\n'
     + '  <meta property="og:locale"      content="de_CH">\n'
     + '  <meta name="twitter:card"        content="summary_large_image">\n'
-    + '  <meta name="twitter:title"       content="' + esc(title) + ' | Amplifyr Blog">\n'
+    + '  <meta name="twitter:title"       content="' + esc(title) + ' | amplifyr Blog">\n'
     + '  <meta name="twitter:description" content="' + esc(metaDescText) + '">\n'
     + '  <meta name="twitter:image"       content="' + esc(ogImg) + '">\n\n'
     + '  <script type="application/ld+json">\n' + articleSchema + '\n  </script>\n'

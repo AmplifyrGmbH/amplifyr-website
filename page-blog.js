@@ -245,7 +245,7 @@ function loadBlogPost() {
       var bodyHtml = bodyRaw ? renderRichText(bodyRaw) : '';
 
       // Meta-Tags dynamisch setzen
-      document.title = title + ' | Amplifyr Blog';
+      document.title = title + ' | amplifyr Blog';
       var metaDesc = document.getElementById('meta-desc');
       if (metaDesc && teaserRaw) {
         metaDesc.setAttribute('content', typeof teaserRaw === 'string'
