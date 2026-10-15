@@ -1328,3 +1328,12 @@ body.menu-open { overflow: hidden; }
 .faq--dark summary .plus svg { width: 12px; height: 12px; }
 .faq--dark details p { font-size: 0.92rem; padding-bottom: 16px; color: rgba(255, 255, 255, 0.6); }
 .contact__faq-title { margin-bottom: 12px; }
+/* Kontakt: Social oben */
+.kt-follow { margin-top: 28px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 12px; }
+.kt-follow span { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); margin-right: 6px; }
+.kt-follow__btn {
+  display: inline-flex; align-items: center; gap: 10px; min-height: 46px; padding: 0 20px 0 16px; border-radius: 999px;
+  background: var(--navy); color: var(--white); font-weight: 600; text-decoration: none; transition: background 0.2s, transform 0.2s var(--ease);
+}
+.kt-follow__btn:hover { background: var(--navy-deep); transform: translateY(-2px); }
+.kt-follow__btn { font-size: 0.95rem; min-height: 44px; }
