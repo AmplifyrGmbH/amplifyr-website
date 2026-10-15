@@ -1246,3 +1246,42 @@ body.menu-open { overflow: hidden; }
 .hero__statement p strong { color: var(--white); }
 @media (min-width: 1024px) { .hero__logo { width: 220px; margin-left: -27px; } }
 @media (min-width: 1024px) { .hero__statement { font-size: clamp(2rem, 2.7vw, 2.6rem); max-width: 34ch; } }
+
+/* Startseite: Unser Vorgehen */
+.ap-head { display: grid; gap: 28px; align-items: end; }
+.ap-head .approach__claim { margin-top: 14px; }
+.ap-text { color: rgba(255, 255, 255, 0.75); font-size: 1.12rem; line-height: 1.65; max-width: 46ch; }
+@media (min-width: 1024px) { .ap-head { grid-template-columns: 7fr 5fr; gap: 64px; } .ap-text { padding-bottom: 10px; } }
+
+.ap-cards { margin-top: 64px; list-style: none; display: grid; gap: 16px; }
+@media (min-width: 900px) { .ap-cards { grid-template-columns: repeat(3, 1fr); gap: 20px; } }
+.ap-card {
+  position: relative; padding: 32px 28px 30px; border-radius: 14px;
+  background: linear-gradient(160deg, rgba(176, 196, 222, 0.12), rgba(176, 196, 222, 0.03));
+  border: 1px solid rgba(176, 196, 222, 0.18); transition: border-color 0.25s, transform 0.25s var(--ease);
+}
+.ap-card:hover { border-color: rgba(176, 196, 222, 0.45); transform: translateY(-3px); }
+.ap-card__n { display: block; font-size: 2.4rem; line-height: 1; font-weight: 600; letter-spacing: -0.03em; color: var(--sky); }
+.ap-card h3 { margin-top: 22px; font-size: 1.3rem; font-weight: 600; letter-spacing: -0.01em; }
+.ap-card p { margin-top: 10px; color: rgba(255, 255, 255, 0.7); line-height: 1.6; }
+
+.ap-flow { margin-top: 56px; padding: 32px 28px; border-radius: 14px; background: var(--navy-deep); display: grid; gap: 28px; }
+.ap-flow__label { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sky); }
+.ap-steps { list-style: none; display: grid; gap: 18px; position: relative; }
+.ap-steps li { display: grid; grid-template-columns: 36px 1fr; column-gap: 14px; align-items: center; }
+.ap-dot { grid-row: 1 / span 2; width: 36px; height: 36px; border-radius: 50%; display: grid; place-content: center; background: var(--sky); color: var(--navy); font-weight: 700; font-size: 0.9rem; position: relative; z-index: 1; }
+.ap-steps b { font-weight: 600; }
+.ap-steps small { color: rgba(255, 255, 255, 0.6); font-size: 0.88rem; }
+.ap-flow .btn { justify-self: start; }
+@media (min-width: 900px) {
+  .ap-flow { grid-template-columns: 1fr auto; padding: 36px 40px; align-items: center; row-gap: 22px; }
+  .ap-flow__label { grid-column: 1 / -1; }
+  .ap-steps { grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .ap-steps::before { content: ""; position: absolute; left: 18px; right: 18%; top: 18px; height: 1px; background: rgba(176, 196, 222, 0.35); }
+  .ap-steps li { grid-template-columns: 1fr; row-gap: 10px; align-items: start; }
+  .ap-dot { grid-row: auto; }
+  .ap-flow .btn { justify-self: end; }
+}
+.ap-head .approach__claim { font-size: clamp(2.6rem, 6vw, 5.6rem); white-space: nowrap; }
+@media (min-width: 1024px) { .ap-head { grid-template-columns: auto 1fr; } .ap-head .approach__claim { font-size: clamp(3.4rem, 5.2vw, 5.2rem); } }
+@media (max-width: 420px) { .ap-head .approach__claim { white-space: normal; } }
