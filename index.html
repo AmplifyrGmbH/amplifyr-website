@@ -49,7 +49,7 @@
   <link rel="preconnect" href="https://cloud.umami.is">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&display=swap">
 
-  <link rel="stylesheet" href="/site.css?v=55">
+  <link rel="stylesheet" href="/site.css?v=56">
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -412,50 +412,38 @@
       </div>
     </section>
 
-    <!-- ===================== FAQ ===================== -->
-    <section class="section faq" aria-labelledby="faq-title">
-      <div class="container cols">
-        <div class="c-label">
-          <p class="eyebrow reveal">FAQ</p>
-          <h2 id="faq-title" class="h-section reveal" data-delay="1" style="margin-top:12px">Häufige Fragen</h2>
-        </div>
-        <div class="c-body faq__wrap reveal" data-delay="1">
-          <details class="faq__all">
-            <summary class="faq__toggle"><span class="faq__toggle-open">4 Fragen anzeigen</span><span class="faq__toggle-close">Fragen ausblenden</span><span class="plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary>
-            <div class="faq__list">
-            <details>
-            <summary>Was heisst 'Technologiepartner'?<span class="plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary>
-            <p>Amplifyr übernimmt für Ihren Betrieb, was sonst eine eigene Digital-Abteilung tun würde: Website, Software und IT aufbauen, verbinden und laufend betreiben, mit einem Ansprechpartner. Vergleichbar mit dem Prinzip eines Generalunternehmers am Bau, aber für alles Digitale.</p>
-            </details>
-            <details>
-            <summary>Für welche Unternehmen ist amplifyr geeignet?<span class="plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary>
-            <p>Amplifyr ist auf die Bau- und Immobilienbranche spezialisiert: Firmen, die zu klein für eine eigene IT-Abteilung und zu beschäftigt für Digitalisierung nebenbei sind. Vorkenntnisse braucht es keine, nur den Willen zur Veränderung.</p>
-            </details>
-            <details>
-            <summary>Wie startet die Zusammenarbeit mit amplifyr?<span class="plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary>
-            <p>Mit einem kostenlosen Erstgespräch statt einer Offerte ins Blaue. Danach folgt ein Digitalisierungs-Fahrplan mit priorisiertem Umsetzungsplan, und erst dann entscheiden Sie über den laufenden Betrieb.</p>
-            </details>
-            <details>
-            <summary>Muss unser bestehendes System gewechselt werden?<span class="plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary>
-            <p>Nein. Ihr Kernsystem, ob Handwerkersoftware oder Immobilienverwaltungslösung wie ImmoTop2, bleibt bestehen. Amplifyr dockt IT, KI und digitalen Auftritt daran an, statt es zu ersetzen.</p>
-            </details>
-            </div>
-          </details>
-        </div>
-      </div>
-    </section>
-
     <!-- ===================== Kontakt ===================== -->
-    <section class="section contact contact--slim" aria-labelledby="contact-title">
+    <section class="section contact contact--slim contact--faq" aria-labelledby="contact-title">
       <div class="container cols">
-        <div class="c-wide contact__row">
-          <div>
+        <div class="c-wide contact__row contact__row--faq">
+          <div class="contact__main">
             <h2 id="contact-title" class="contact__title reveal">Lassen Sie uns <em>reden.</em></h2>
             <p class="contact__text reveal" data-delay="1">Im kostenlosen Erstgespräch schauen wir gemeinsam, was sich für Ihren Betrieb lohnt.</p>
-          </div>
-          <a class="btn btn--light reveal" data-delay="2" href="/kontakt" data-gtm-event="cta_kontakt_klick" data-gtm-location="cta_final">Kontakt aufnehmen
+            <p class="contact__btn"><a class="btn btn--light reveal" data-delay="2" href="/kontakt" data-gtm-event="cta_kontakt_klick" data-gtm-location="cta_final">Kontakt aufnehmen
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
+          </a></p>
+          </div>
+          <div id="faq" class="faq faq--dark contact__faq reveal" data-delay="1">
+            <h3 class="contact__faq-title">Häufige Fragen</h3>
+            <div class="faq__list">
+              <details>
+                <summary>Was heisst 'Technologiepartner'?<span class="plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary>
+                <p>Amplifyr übernimmt für Ihren Betrieb, was sonst eine eigene Digital-Abteilung tun würde: Website, Software und IT aufbauen, verbinden und laufend betreiben, mit einem Ansprechpartner. Vergleichbar mit dem Prinzip eines Generalunternehmers am Bau, aber für alles Digitale.</p>
+                </details>
+              <details>
+                <summary>Für welche Unternehmen ist amplifyr geeignet?<span class="plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary>
+                <p>Amplifyr ist auf die Bau- und Immobilienbranche spezialisiert: Firmen, die zu klein für eine eigene IT-Abteilung und zu beschäftigt für Digitalisierung nebenbei sind. Vorkenntnisse braucht es keine, nur den Willen zur Veränderung.</p>
+                </details>
+              <details>
+                <summary>Wie startet die Zusammenarbeit mit amplifyr?<span class="plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary>
+                <p>Mit einem kostenlosen Erstgespräch statt einer Offerte ins Blaue. Danach folgt ein Digitalisierungs-Fahrplan mit priorisiertem Umsetzungsplan, und erst dann entscheiden Sie über den laufenden Betrieb.</p>
+                </details>
+              <details>
+                <summary>Muss unser bestehendes System gewechselt werden?<span class="plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary>
+                <p>Nein. Ihr Kernsystem, ob Handwerkersoftware oder Immobilienverwaltungslösung wie ImmoTop2, bleibt bestehen. Amplifyr dockt IT, KI und digitalen Auftritt daran an, statt es zu ersetzen.</p>
+                </details>
+            </div>
+          </div>
         </div>
       </div>
     </section>

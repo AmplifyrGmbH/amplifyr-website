@@ -1301,3 +1301,17 @@ body.menu-open { overflow: hidden; }
 .insights .blog-card-category { color: var(--sky); }
 .insights .blog-card-img-placeholder { background: rgba(176, 196, 222, 0.12); }
 .insights .blog-empty, .insights .blog-error { color: rgba(255, 255, 255, 0.7); }
+
+/* Kontakt-CTA mit Häufigen Fragen */
+.contact__row--faq { display: grid; gap: 48px; align-items: start; }
+@media (min-width: 1024px) { .contact__row--faq { grid-template-columns: 5fr 6fr; gap: 80px; } }
+.contact__btn { margin-top: 28px; }
+.faq--dark { background: transparent; color: var(--white); }
+.contact__faq-title { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sky); margin-bottom: 8px; }
+.faq--dark .faq__list { border-top: 1px solid rgba(176, 196, 222, 0.2); margin-top: 0; }
+.faq--dark details { border-bottom: 1px solid rgba(176, 196, 222, 0.2); }
+.faq--dark summary { min-height: 60px; padding: 14px 0; font-size: 1.02rem; font-weight: 500; }
+.faq--dark summary .plus { width: 30px; height: 30px; border-color: rgba(176, 196, 222, 0.35); color: var(--sky); }
+.faq--dark .faq__list > details[open] > summary .plus { background: rgba(176, 196, 222, 0.15); }
+.faq--dark details p { color: rgba(255, 255, 255, 0.72); padding-bottom: 18px; font-size: 0.97rem; }
+.faq--dark summary:hover { color: var(--sky); }
