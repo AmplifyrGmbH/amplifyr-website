@@ -923,3 +923,14 @@ body.menu-open { overflow: hidden; }
 .process > li::after { background-image: none; background-color: var(--axis-line); width: 2px; }
 .chapter-axis .axis-bubble { justify-self: start; }
 .nav-mobile ul a:not(:has(.axis-bubble)) { padding-left: 0; }
+
+/* Kontakt-CTA schlanker */
+.section.contact { padding: 64px 0 56px; }
+@media (min-width: 1024px) { .section.contact { padding: 88px 0 72px; } }
+.contact__title { font-size: clamp(2.2rem, 5.5vw, 4.2rem); margin-top: 12px; }
+.contact__text { margin-top: 16px; font-size: clamp(1.05rem, 1.5vw, 1.25rem); }
+.contact__actions { margin-top: 28px; }
+.contact__direct { margin-top: 40px; }
+.contact__direct li { padding: 14px 0; }
+.contact__direct a, .contact__direct span { font-size: 1.05rem; }
+@media (min-width: 768px) { .contact__direct li { padding: 16px 24px 16px 0; } }
