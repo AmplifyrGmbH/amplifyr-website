@@ -1364,3 +1364,7 @@ body.menu-open { overflow: hidden; }
   .mosaic { grid-template-columns: 1fr 1fr; }
   .mosaic__item--1, .mosaic__caption { grid-column: 1 / -1; }
 }
+.kt-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 24px; }
+.kt-follow--top { margin-top: 12px; }
+@media (min-width: 900px) { .kt-follow--top { margin-top: 18px; } }
+@media (max-width: 599px) { .kt-follow--top span { width: 100%; } }
