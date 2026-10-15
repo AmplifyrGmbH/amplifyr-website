@@ -82,7 +82,7 @@
   <link rel="preconnect" href="https://cloud.umami.is">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap">
 
-  <link rel="stylesheet" href="/site.css?v=33">
+  <link rel="stylesheet" href="/site.css?v=36">
 
   <script defer src="https://cloud.umami.is/script.js" data-website-id="a5638b4a-87cc-4014-a56d-b5b83ae8ccd5"></script>
 </head>
@@ -142,44 +142,49 @@
   </nav>
 
   <main id="main">
-    <!-- ===================== Kopf ===================== -->
-    <section class="page-head" aria-labelledby="page-title">
+    <!-- ===================== Einleitung ===================== -->
+    <section class="page-head page-head--intro" aria-labelledby="page-title">
       <div class="container cols">
         <div class="c-wide">
-          <p class="eyebrow reveal">Kontakt</p>
-          <h1 id="page-title" class="reveal" data-delay="1">Lassen Sie uns reden.</h1>
-          <p class="lead reveal" data-delay="2">Im kostenlosen Erstgespräch schauen wir gemeinsam, wo Ihr Betrieb digital steht und was sich am meisten lohnt. Wählen Sie den Weg, der Ihnen am besten passt.</p>
+          <h1 id="page-title" class="intro__title reveal">Kontakt</h1>
+          <p class="intro__sub reveal" data-delay="1">Lassen Sie uns reden.</p>
+        </div>
+        <div class="intro__text">
+          <p class="reveal" data-delay="2">Im kostenlosen Erstgespräch schauen wir gemeinsam, wo Ihr Betrieb digital steht und was sich am meisten lohnt. Wählen Sie den Weg, der Ihnen am besten passt. Wir antworten innert 24 Stunden.</p>
         </div>
       </div>
     </section>
 
-    <!-- ===================== Termin, Anruf, Nachricht ===================== -->
-    <section id="schreiben" class="chapter chapter--white" aria-labelledby="schreiben-title" style="padding-top:56px">
+    <!-- ===================== Kontaktwege ===================== -->
+    <section class="kt-ways" aria-label="Kontaktwege">
       <div class="container cols">
-        <div class="c-label reveal">
-          <p class="eyebrow">Kontakt</p>
-        </div>
-        <div class="c-body">
-          <h2 id="schreiben-title" class="h-section reveal">Termin, Anruf oder Nachricht.</h2>
-          <p class="lead reveal" data-delay="1">Buchen Sie direkt einen Termin, rufen Sie an oder schreiben Sie uns. Wir antworten innert 24 Stunden.</p>
-        </div>
-        <div class="c-wide">
-          <div class="split">
-            <div class="reveal">
-              <p><a class="btn btn--solid" href="https://outlook.office.com/book/Amplifyr1@amplifyr.ch/s/WS-NdYDJS0OKzyBuFjz--A2" target="_blank" rel="noopener" data-gtm-event="cta_termin_klick" data-gtm-location="kontaktseite">Termin buchen <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></p>
-              <p class="muted" style="margin-top:10px">30 Minuten per Microsoft Teams, direkt im Kalender.</p>
-              <ul class="person__contact" style="margin-top:28px">
-                <li><a href="tel:+41442445995" data-gtm-event="cta_telefon_klick" data-gtm-location="kontaktseite"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8 9.8a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z"/></svg>044 244 59 95</a></li>
-                <li><a href="mailto:info@amplifyr.ch"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>info@amplifyr.ch</a></li>
-                <li><a href="https://wa.me/41442445995" target="_blank" rel="noopener" data-gtm-event="cta_whatsapp_klick" data-gtm-location="kontaktseite"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 01-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1121 11.5z"/></svg>WhatsApp schreiben</a></li>
-              </ul>
-              <p class="eyebrow" style="margin-top:32px">Büro</p>
-              <p style="margin-top:8px">Amplifyr GmbH<br>Badenerstrasse 580<br>8048 Zürich</p>
-              <p class="eyebrow" style="margin-top:24px">Bürozeiten</p>
-              <p style="margin-top:8px">Montag bis Freitag, 08:00 bis 18:00 Uhr</p>
-            </div>
+        <ul class="kt-tiles c-wide">
+          <li class="reveal"><a class="kt-tile kt-tile--primary" href="https://outlook.office.com/book/Amplifyr1@amplifyr.ch/s/WS-NdYDJS0OKzyBuFjz--A2" target="_blank" rel="noopener" data-gtm-event="cta_termin_klick" data-gtm-location="kontaktseite">
+            <span class="kt-tile__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9.5h18M8 3v3M16 3v3M8 14h3"/></svg></span><b>Termin buchen</b><small>30 Minuten per Microsoft Teams, direkt im Kalender</small><span class="kt-tile__go"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></li>
+          <li class="reveal" data-delay="1"><a class="kt-tile" href="tel:+41442445995" data-gtm-event="cta_telefon_klick" data-gtm-location="kontaktseite">
+            <span class="kt-tile__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8 9.8a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z"/></svg></span><b>044 244 59 95</b><small>Mo–Fr, 08:00–18:00</small><span class="kt-tile__go"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></li>
+          <li class="reveal" data-delay="2"><a class="kt-tile" href="https://wa.me/41442445995" target="_blank" rel="noopener" data-gtm-event="cta_whatsapp_klick" data-gtm-location="kontaktseite">
+            <span class="kt-tile__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 01-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1121 11.5z"/></svg></span><b>WhatsApp</b><small>Schreiben Sie uns, wann es Ihnen passt</small><span class="kt-tile__go"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></li>
+          <li class="reveal" data-delay="3"><a class="kt-tile" href="mailto:info@amplifyr.ch">
+            <span class="kt-tile__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><b>info@amplifyr.ch</b><small>Für Anfragen mit Unterlagen</small><span class="kt-tile__go"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></li>
+        </ul>
+      </div>
+    </section>
 
-            <div class="contact-card reveal" data-delay="1">
+    <!-- ===================== Formular ===================== -->
+    <section id="schreiben" class="kt-form" aria-labelledby="schreiben-title">
+      <div class="container cols">
+        <div class="kt-form__grid c-wide">
+          <div class="kt-form__aside reveal">
+            <p class="eyebrow">Nachricht</p>
+            <h2 id="schreiben-title" class="h-section">Lieber schriftlich?</h2>
+            <p class="lead muted">Schreiben Sie uns kurz, worum es geht. Wir melden uns innert 24 Stunden.</p>
+            <dl class="kt-facts">
+              <div><dt><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.1-7-11.5a7 7 0 0114 0C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Büro</dt><dd>Amplifyr GmbH<br>Badenerstrasse 580<br>8048 Zürich<br><a href="https://www.google.com/maps/search/?api=1&amp;query=Amplifyr+GmbH+Badenerstrasse+580+8048+Z%C3%BCrich" target="_blank" rel="noopener">Route planen</a></dd></div>
+              <div><dt><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Bürozeiten</dt><dd>Montag bis Freitag<br>08:00 bis 18:00 Uhr</dd></div>
+            </dl>
+          </div>
+          <div class="contact-card kt-form__card reveal" data-delay="1">
               <form id="contact-form" class="form" novalidate>
                 <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
                 <input type="hidden" name="access_key" value="48d27eea-a77f-4826-9835-4f308573f036">
@@ -221,78 +226,81 @@
                 <button type="submit" class="btn btn--solid">Nachricht senden <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
                 <p class="form__status" role="status" aria-live="polite"></p>
               </form>
-            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ===================== Team direkt ===================== -->
+    <!-- ===================== Team ===================== -->
     <section id="team" class="chapter" aria-labelledby="team-title">
       <div class="container cols">
-        <div class="c-label reveal">
-          <p class="eyebrow">Direkt zum Team</p>
-        </div>
+        <div class="c-label reveal"><p class="eyebrow">Direkt zum Team</p></div>
         <div class="c-body">
           <h2 id="team-title" class="h-section reveal">Sie wissen schon, mit wem?</h2>
-          <p class="lead reveal" data-delay="1">Jeder Gründer ist direkt erreichbar, per Telefon, E-Mail oder LinkedIn.</p>
+          <p class="lead reveal" data-delay="1">Jeder Gründer ist direkt erreichbar.</p>
         </div>
         <div class="c-wide">
-          <ul class="features features--3">
-            <li class="feature reveal">
+          <ul class="kt-team">
+          <li class="kt-person reveal">
+            <img src="/Bilder/Bild_Timo.webp" alt="Porträt von Timo Steinfort" width="912" height="1136" loading="lazy" decoding="async">
+            <div>
               <h3>Timo Steinfort</h3>
-              <p>Co-Founder · Markt &amp; Strategie</p>
-              <ul class="person__contact" style="margin-top:16px">
-                <li><a href="tel:+41442445998" data-gtm-event="cta_telefon_klick" data-gtm-location="kontaktseite_team"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8 9.8a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z"/></svg>+41 44 244 59 98</a></li>
-                <li><a href="mailto:timo@amplifyr.ch"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>timo@amplifyr.ch</a></li>
-                <li><a href="https://www.linkedin.com/in/timo-steinfort-8571971a4/" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 014 0v4M12 10v7"/></svg>LinkedIn<span class="visually-hidden"> von Timo Steinfort (öffnet in neuem Tab)</span></a></li>
-                <li><a href="/vcards/Timo_Steinfort.vcf" download><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Kontakt speichern (vCard)</a></li>
+              <p class="kt-person__role">Co-Founder · Markt &amp; Strategie</p>
+              <p class="kt-person__lines"><a href="tel:+41442445998" data-gtm-event="cta_telefon_klick" data-gtm-location="kontaktseite_team">+41 44 244 59 98</a><br><a href="mailto:timo@amplifyr.ch">timo@amplifyr.ch</a></p>
+              <ul class="member__links">
+                <li><a href="https://www.linkedin.com/in/timo-steinfort-8571971a4/" target="_blank" rel="noopener" aria-label="LinkedIn von Timo Steinfort (öffnet in neuem Tab)"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 11-.01 5 2.5 2.5 0 01.01-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.84-2.05 3.78-2.05 4.04 0 4.79 2.66 4.79 6.12V21h-4v-5.5c0-1.31-.02-3-1.83-3-1.83 0-2.11 1.43-2.11 2.9V21H9z"/></svg></a></li>
+                <li><a href="/vcards/Timo_Steinfort.vcf" download aria-label="Kontakt von Timo Steinfort speichern (vCard)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg></a></li>
               </ul>
-            </li>
-            <li class="feature reveal" data-delay="1">
+            </div>
+          </li>
+          <li class="kt-person reveal" data-delay="1">
+            <img src="/Bilder/Bild_David.webp" alt="Porträt von David Staub" width="912" height="1136" loading="lazy" decoding="async">
+            <div>
               <h3>David Staub</h3>
-              <p>Co-Founder · Prozesse &amp; Data Science</p>
-              <ul class="person__contact" style="margin-top:16px">
-                <li><a href="tel:+41442445997" data-gtm-event="cta_telefon_klick" data-gtm-location="kontaktseite_team"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8 9.8a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z"/></svg>+41 44 244 59 97</a></li>
-                <li><a href="mailto:david@amplifyr.ch"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>david@amplifyr.ch</a></li>
-                <li><a href="https://www.linkedin.com/in/david-staub-456331237/" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 014 0v4M12 10v7"/></svg>LinkedIn<span class="visually-hidden"> von David Staub (öffnet in neuem Tab)</span></a></li>
-                <li><a href="/vcards/David_Staub.vcf" download><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Kontakt speichern (vCard)</a></li>
+              <p class="kt-person__role">Co-Founder · Prozesse &amp; Data Science</p>
+              <p class="kt-person__lines"><a href="tel:+41442445997" data-gtm-event="cta_telefon_klick" data-gtm-location="kontaktseite_team">+41 44 244 59 97</a><br><a href="mailto:david@amplifyr.ch">david@amplifyr.ch</a></p>
+              <ul class="member__links">
+                <li><a href="https://www.linkedin.com/in/david-staub-456331237/" target="_blank" rel="noopener" aria-label="LinkedIn von David Staub (öffnet in neuem Tab)"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 11-.01 5 2.5 2.5 0 01.01-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.84-2.05 3.78-2.05 4.04 0 4.79 2.66 4.79 6.12V21h-4v-5.5c0-1.31-.02-3-1.83-3-1.83 0-2.11 1.43-2.11 2.9V21H9z"/></svg></a></li>
+                <li><a href="/vcards/David_Staub.vcf" download aria-label="Kontakt von David Staub speichern (vCard)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg></a></li>
               </ul>
-            </li>
-            <li class="feature reveal" data-delay="2">
+            </div>
+          </li>
+          <li class="kt-person reveal" data-delay="2">
+            <img src="/Bilder/Bild_Sinan.webp" alt="Porträt von Sinan Sen" width="912" height="1136" loading="lazy" decoding="async">
+            <div>
               <h3>Sinan Sen</h3>
-              <p>Co-Founder · Systeme &amp; Engineering</p>
-              <ul class="person__contact" style="margin-top:16px">
-                <li><a href="tel:+41442445996" data-gtm-event="cta_telefon_klick" data-gtm-location="kontaktseite_team"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8 9.8a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z"/></svg>+41 44 244 59 96</a></li>
-                <li><a href="mailto:sinan@amplifyr.ch"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>sinan@amplifyr.ch</a></li>
-                <li><a href="https://www.linkedin.com/in/sinan-sen-61299a22b/" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 014 0v4M12 10v7"/></svg>LinkedIn<span class="visually-hidden"> von Sinan Sen (öffnet in neuem Tab)</span></a></li>
-                <li><a href="/vcards/Sinan_Sen.vcf" download><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Kontakt speichern (vCard)</a></li>
+              <p class="kt-person__role">Co-Founder · Systeme &amp; Engineering</p>
+              <p class="kt-person__lines"><a href="tel:+41442445996" data-gtm-event="cta_telefon_klick" data-gtm-location="kontaktseite_team">+41 44 244 59 96</a><br><a href="mailto:sinan@amplifyr.ch">sinan@amplifyr.ch</a></p>
+              <ul class="member__links">
+                <li><a href="https://www.linkedin.com/in/sinan-sen-61299a22b/" target="_blank" rel="noopener" aria-label="LinkedIn von Sinan Sen (öffnet in neuem Tab)"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 11-.01 5 2.5 2.5 0 01.01-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.84-2.05 3.78-2.05 4.04 0 4.79 2.66 4.79 6.12V21h-4v-5.5c0-1.31-.02-3-1.83-3-1.83 0-2.11 1.43-2.11 2.9V21H9z"/></svg></a></li>
+                <li><a href="/vcards/Sinan_Sen.vcf" download aria-label="Kontakt von Sinan Sen speichern (vCard)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg></a></li>
               </ul>
-            </li>
+            </div>
+          </li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- ===================== Kunden & Social ===================== -->
-    <section id="kunden" class="chapter chapter--white" aria-labelledby="kunden-title">
+    <!-- ===================== Support & Social ===================== -->
+    <section id="kunden" class="chapter chapter--dark" aria-labelledby="kunden-title">
       <div class="container cols">
-        <div class="c-label reveal">
-          <p class="eyebrow">Bestehende Kunden &amp; Social Media</p>
-        </div>
+        <div class="c-label reveal"><p class="eyebrow">Bestehende Kunden</p></div>
         <div class="c-body">
           <h2 id="kunden-title" class="h-section reveal">Support und mehr.</h2>
-          <p class="lead reveal" data-delay="1">Sie sind bereits Kunde? Hier geht es direkt zu Portal und Fernwartung. Und wer uns folgen möchte, findet uns auf LinkedIn und Instagram.</p>
+          <p class="lead muted reveal" data-delay="1">Sie sind bereits Kunde? Hier geht es direkt zu Portal und Fernwartung.</p>
         </div>
         <div class="c-wide">
-          <ul class="next-links">
-            <li class="reveal"><a href="https://portal.amplifyr.ch/" target="_blank" rel="noopener"><span>Kundenportal<small>Tickets erfassen und Status verfolgen</small></span><span aria-hidden="true">→</span></a></li>
-            <li class="reveal" data-delay="1"><a href="https://www.teamviewer.com/de/download/" target="_blank" rel="noopener"><span>Fernwartung<small>TeamViewer herunterladen, wenn wir Sie darum bitten</small></span><span aria-hidden="true">→</span></a></li>
-            <li class="reveal" data-delay="2"><a href="tel:+41442445995" data-gtm-event="cta_telefon_klick" data-gtm-location="kontaktseite_support"><span>Support-Telefon<small>044 244 59 95, Mo–Fr 08:00–18:00</small></span><span aria-hidden="true">→</span></a></li>
-            <li class="reveal"><a href="https://www.linkedin.com/company/amplifyr.ch" target="_blank" rel="noopener"><span>LinkedIn<small>Neuigkeiten und Einblicke</small></span><span aria-hidden="true">→</span></a></li>
-            <li class="reveal" data-delay="1"><a href="https://www.instagram.com/amplifyr.ch" target="_blank" rel="noopener"><span>Instagram<small>Hinter den Kulissen</small></span><span aria-hidden="true">→</span></a></li>
-            <li class="reveal" data-delay="2"><a href="https://www.google.com/maps/search/?api=1&amp;query=Amplifyr+GmbH+Badenerstrasse+580+8048+Z%C3%BCrich" target="_blank" rel="noopener"><span>Anfahrt<small>Badenerstrasse 580, 8048 Zürich</small></span><span aria-hidden="true">→</span></a></li>
-          </ul>
+          <div class="kt-support">
+            <a class="kt-sup reveal" href="https://portal.amplifyr.ch/" target="_blank" rel="noopener"><b>Kundenportal</b><small>Tickets erfassen und Status verfolgen</small><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a class="kt-sup reveal" data-delay="1" href="https://www.teamviewer.com/de/download/" target="_blank" rel="noopener"><b>Fernwartung</b><small>TeamViewer herunterladen, wenn wir Sie darum bitten</small><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a class="kt-sup reveal" data-delay="2" href="tel:+41442445995" data-gtm-event="cta_telefon_klick" data-gtm-location="kontaktseite_support"><b>Support-Telefon</b><small>044 244 59 95, Mo–Fr 08:00–18:00</small><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8 9.8a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z"/></svg></a>
+          </div>
+          <div class="kt-social reveal">
+            <span>Folgen Sie uns</span>
+            <a href="https://www.linkedin.com/company/amplifyr.ch" target="_blank" rel="noopener">LinkedIn <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a href="https://www.instagram.com/amplifyr.ch" target="_blank" rel="noopener">Instagram <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
         </div>
       </div>
     </section>
