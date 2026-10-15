@@ -1291,3 +1291,13 @@ body.menu-open { overflow: hidden; }
   .person { display: flex; flex-direction: column; height: 100%; }
   .person .bio { flex: 1; }
 }
+
+/* Startseite: Insights dunkel (Wechsel hell/dunkel) */
+.insights { background: var(--navy); color: var(--white); }
+.insights .eyebrow { color: var(--sky); }
+.insights .link-arrow { color: var(--white); }
+.insights .blog-card { color: var(--white); }
+.insights .blog-card-meta, .insights .blog-card-teaser { color: rgba(255, 255, 255, 0.7); }
+.insights .blog-card-category { color: var(--sky); }
+.insights .blog-card-img-placeholder { background: rgba(176, 196, 222, 0.12); }
+.insights .blog-empty, .insights .blog-error { color: rgba(255, 255, 255, 0.7); }
