@@ -1183,3 +1183,8 @@ body.menu-open { overflow: hidden; }
 }
 .steps4__cta { margin-top: 32px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; }
 .hub__tile { background: #1f2c4a; position: relative; z-index: 1; align-content: start; }
+@media (min-width: 1024px) {
+  .faq .cols { align-items: start; }
+  .faq__wrap { align-self: center; }
+  .faq__wrap:has(.faq__all[open]) { align-self: start; }
+}
