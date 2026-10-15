@@ -1212,3 +1212,29 @@ body.menu-open { overflow: hidden; }
 @media (min-width: 1024px) {
   .intro-grid { grid-template-columns: 5fr 6fr; gap: 80px; margin-top: 72px; padding-top: 56px; }
 }
+
+/* Startseite: Hero im etrex-Stil (Marke klein, Aussage gross) */
+.hero__mark { font-family: var(--font-brand); font-weight: 700; font-size: clamp(1.6rem, 2.6vw, 2.2rem); letter-spacing: -0.02em; color: var(--white); }
+.hero__mark em { font-style: italic; color: var(--sky); }
+.hero__statement {
+  margin-top: 18px; max-width: 20ch;
+  font-size: clamp(2.2rem, 5.2vw, 4.6rem); line-height: 1.12; font-weight: 300; letter-spacing: -0.02em; color: var(--white);
+}
+.hero__statement strong { font-weight: 600; }
+.hero__sub { margin-top: 28px; max-width: 54ch; font-size: clamp(1.02rem, 1.4vw, 1.2rem); line-height: 1.6; color: rgba(255, 255, 255, 0.78); }
+@media (min-width: 1024px) {
+  .hero__content .cols > .hero__text { grid-column: 2 / span 9; }
+}
+.hero__mark { font-family: var(--font); font-weight: 600; font-size: 1rem; letter-spacing: 0.14em; color: var(--sky); }
+.hero__mark em { font-style: normal; color: inherit; }
+.hero__statement { font-size: clamp(2rem, 4vw, 3.7rem); line-height: 1.14; max-width: 22ch; }
+.hero:has(.hero__statement) { justify-content: center; }
+.hero:has(.hero__statement) .hero__content { padding-top: var(--header-h); padding-bottom: 72px; }
+@media (min-width: 1024px) { .hero:has(.hero__statement) .hero__content { padding-bottom: 40px; } }
+.hero:has(.hero__statement) > .container:last-child { position: absolute !important; left: 0; right: 0; bottom: 32px; }
+.hero:has(.hero__statement) .hero__scroll { position: static; }
+@media (max-width: 699px) { .hero:has(.hero__statement) .hero__scroll { display: none; } }
+@media (min-width: 1024px) {
+  .hero:has(.hero__statement) > .container:last-child { display: grid; grid-template-columns: repeat(12, 1fr); column-gap: 32px; }
+  .hero:has(.hero__statement) .hero__scroll { grid-column: 2; }
+}
