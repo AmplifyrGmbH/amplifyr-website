@@ -39,6 +39,9 @@ ABLAUF = [
 
 PAGES = {
  'handwerker': dict(
+  mosaic=[('hw-baustelle',(600,1200),'Bauarbeiter vor einem Arbeitsfahrzeug'),('hw-schaltschrank',(600,1200),'Sicherungsautomat mit Verkabelung'),('handwerk',(800,1600),'Werkzeugschrank mit Hobeln')],
+  mosaic_caption='Auf der Baustelle zu Hause. Wir kennen den Alltag von Elektroinstallateuren, Sanitären und Schreinern, weil einer von uns selbst Elektroinstallateur ist.',
+  quote='Der Rapport ist fertig, bevor der Lieferwagen losfährt.',
   key='handwerk', img='handwerk', sizes=(800, 1600), w=1600, h=1066, alt='Werkzeugschrank mit Hobeln und Holzwerkzeug',
   eyebrow='Handwerk', h1='Ihr Handwerk, <em>digital organisiert.</em>',
   lead='Wir schauen uns Ihren Betrieb als Ganzes an und lösen alle digitalen Baustellen <strong>aus einer Hand</strong>: von der Offerte bis zur IT. Damit das Büro wieder eine kurze Runde am Nachmittag ist.',
@@ -73,6 +76,9 @@ PAGES = {
        ('Lohnt sich das auch für einen kleinen Betrieb?', 'Ja. Gerade kleine Betriebe haben niemanden, der sich ums Digitale kümmert. Wir passen den Umfang an Ihre Grösse an.')],
  ),
  'bewirtschaftung': dict(
+  mosaic=[('bw-wohnhaus',(600,1200),'Mehrfamilienhaus mit Balkonen'),('bw-schluessel',(600,1200),'Alte Schlüssel an einer Truhe'),('bw-innenhof',(600,1200),'Blick nach oben aus einem Innenhof')],
+  mosaic_caption='Liegenschaften, Mieter, Eigentümer und Handwerker: Wir kennen die Bewirtschaftung von innen, weil einer von uns selbst Bewirtschafter war.',
+  quote='Der Wasserschaden am Sonntag landet nicht mehr auf Ihrem Privathandy.',
   key='bewirtschaftung', img='bewirtschaftung', sizes=(1200, 2400), w=2400, h=1600, alt='Wohnhaus mit Balkonen und Dachterrassen',
   eyebrow='Immobilienbewirtschaftung', h1='Ihre Bewirtschaftung, <em>mit mehr Zeit für Mandate.</em>',
   lead='Ein grosser Teil der Woche geht in Koordination. Wir schauen uns Ihre Verwaltung als Ganzes an und holen diese Zeit zurück, <strong>ohne Ihr Kernsystem zu ersetzen</strong>.',
@@ -111,6 +117,9 @@ PAGES = {
        ('Wie lange dauert die Umstellung?', 'Wir starten mit dem dringendsten Hebel, etwa der nächsten Versammlung oder der Erreichbarkeit, und bauen von dort weiter aus, in Ihrer Reihenfolge.')],
  ),
  'kmu': dict(
+  mosaic=[('kmu-lobby',(600,1200),'Empfangsbereich eines Büros'),('it',(800,1600),'Sauber verlegte Kabel in einem Verteilerkasten'),('web',(800,1600),'Arbeitsplatz mit zwei Monitoren')],
+  mosaic_caption='Vom Empfang über die Arbeitsplätze bis zum Serverschrank: Wir schauen uns das ganze Unternehmen an, nicht nur die Computer.',
+  quote='Eine Nummer für alles Digitale.',
   key='kmu', img='kmu', sizes=(1200, 2400), w=2400, h=1600, alt='Laptop auf einem Bürotisch',
   eyebrow='Für KMU', h1='Alles Digitale, <em>aus einer Hand.</em>',
   lead='Wir kommen nicht nur für WLAN und Computer. Wir schauen uns Ihre <strong>Abläufe</strong> an, finden heraus, wo Zeit verloren geht, und lösen alle digitalen Baustellen mit <strong>einem Ansprechpartner</strong>.',
@@ -205,6 +214,34 @@ def build(name, c):
           <ul class="pains">
 {pains}          </ul>
 {stat}        </div>
+      </div>
+    </section>
+''')
+    # Bildmosaik + Zitat
+    figs=''
+    for j,(img,(a2,b2),alt) in enumerate(c['mosaic']):
+        figs+=f'''          <figure class="mosaic__item mosaic__item--{j+1} reveal"{f' data-delay="{j}"' if j else ''}>
+            <picture>
+              <source type="image/avif" srcset="/Bilder/stock/{img}-{a2}.avif {a2}w, /Bilder/stock/{img}-{b2}.avif {b2}w" sizes="(min-width: 1024px) 50vw, 100vw">
+              <source type="image/webp" srcset="/Bilder/stock/{img}-{a2}.webp {a2}w, /Bilder/stock/{img}-{b2}.webp {b2}w" sizes="(min-width: 1024px) 50vw, 100vw">
+              <img src="/Bilder/stock/{img}-{a2}.jpg" srcset="/Bilder/stock/{img}-{a2}.jpg {a2}w, /Bilder/stock/{img}-{b2}.jpg {b2}w" sizes="(min-width: 1024px) 50vw, 100vw" alt="{alt}" loading="lazy" decoding="async" width="{a2}" height="{a2*3//4}">
+            </picture>
+          </figure>
+'''
+    o.append(f'''
+    <!-- ===================== Bilder ===================== -->
+    <section class="mosaic-sec" aria-label="Eindrücke">
+      <div class="container">
+        <div class="mosaic">
+{figs}          <p class="mosaic__caption reveal">{c['mosaic_caption']}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Zitat ===================== -->
+    <section class="quote-band" aria-label="Kernaussage">
+      <div class="container">
+        <p class="quote-band__text reveal">«{c['quote']}»</p>
       </div>
     </section>
 ''')

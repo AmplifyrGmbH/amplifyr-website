@@ -19,3 +19,14 @@ Nachtrag (Unterseiten):
 | `kmu-*` | Laptop auf schwarzem Tisch im Büro | https://wordpress.org/photos/photo/20567bcef7/ (CC0) |
 | `vorgehen-*` | Notizbuch mit Stift | https://wordpress.org/photos/photo/632620a981/ (CC0) |
 | `ueber-uns-*` | Zürich (bestehendes Bild `Bilder/Bild_Zurich_end`) | eigenes Bild |
+
+Nachtrag (Bereichsseiten, alle CC0, WordPress Photo Directory):
+
+| Datei | Motiv | Quelle |
+|---|---|---|
+| `hw-schaltschrank-*` | Sicherungsautomat mit Verkabelung | https://wordpress.org/photos/photo/515687aa4e/ |
+| `hw-baustelle-*` | Bauarbeiter vor Arbeitsfahrzeug | https://wordpress.org/photos/photo/12664ef761/ |
+| `bw-schluessel-*` | Alte Schlüssel | https://wordpress.org/photos/photo/5146798827/ |
+| `bw-innenhof-*` | Blick aus einem Innenhof | https://wordpress.org/photos/photo/3946926445/ |
+| `bw-wohnhaus-*` | Mehrfamilienhaus | https://wordpress.org/photos/photo/1606979817/ |
+| `kmu-lobby-*` | Empfangsbereich Büro | https://wordpress.org/photos/photo/191670d480/ |
