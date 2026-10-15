@@ -1285,3 +1285,9 @@ body.menu-open { overflow: hidden; }
 .ap-head .approach__claim { font-size: clamp(2.6rem, 6vw, 5.6rem); white-space: nowrap; }
 @media (min-width: 1024px) { .ap-head { grid-template-columns: auto 1fr; } .ap-head .approach__claim { font-size: clamp(3.4rem, 5.2vw, 5.2rem); } }
 @media (max-width: 420px) { .ap-head .approach__claim { white-space: normal; } }
+/* Team-Karten: Kontaktzeilen auf gleicher Höhe */
+@media (min-width: 768px) {
+  .team__grid { align-items: stretch; }
+  .person { display: flex; flex-direction: column; height: 100%; }
+  .person .bio { flex: 1; }
+}
