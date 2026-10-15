@@ -1188,3 +1188,12 @@ body.menu-open { overflow: hidden; }
   .faq__wrap { align-self: center; }
   .faq__wrap:has(.faq__all[open]) { align-self: start; }
 }
+
+/* FAQ: Überschrift und Knopf übereinander, mittig */
+.faq .cols { display: flex !important; flex-direction: column; align-items: center; text-align: center; }
+.faq .c-label, .faq .c-body { width: 100%; max-width: 760px; }
+.faq .c-label .eyebrow { justify-content: center; }
+.faq__wrap { margin-top: 28px; align-self: center !important; }
+.faq__all > summary.faq__toggle { margin: 0 auto; }
+.faq__all { display: flex; flex-direction: column; align-items: center; }
+.faq__all > .faq__list { width: 100%; text-align: left; }
