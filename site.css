@@ -552,7 +552,7 @@ body.menu-open { overflow: hidden; }
   border: 1px solid var(--line); display: grid; place-content: center;
   transition: transform 0.3s var(--ease), background 0.3s;
 }
-.faq details[open] summary .plus { transform: rotate(45deg); background: var(--sky-soft); }
+.faq__list > details[open] > summary .plus { transform: rotate(45deg); background: var(--sky-soft); }
 .faq details p { padding: 0 0 24px; max-width: 62ch; color: var(--text-muted); }
 
 /* ============================================================
@@ -1043,3 +1043,26 @@ body.menu-open { overflow: hidden; }
 .ueber-bild img { width: 100%; height: 100%; object-fit: cover; }
 .page-head--intro + .ueber-bild + .chapter::before { display: none; }
 @media (max-width: 699px) { .ueber-bild picture { aspect-ratio: 4 / 3; } }
+
+/* FAQ: ganzer Block zugeklappt */
+.faq__all > summary.faq__toggle {
+  list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 14px;
+  min-height: 52px; padding: 0 8px 0 22px; border: 1px solid var(--line); border-radius: 999px;
+  font-weight: 600; font-size: 1rem; transition: border-color 0.2s, background 0.2s;
+}
+.faq__all > summary.faq__toggle::-webkit-details-marker { display: none; }
+.faq__all > summary.faq__toggle:hover { border-color: var(--navy); }
+.faq__all > summary .plus { width: 36px; height: 36px; border-radius: 50%; display: grid; place-content: center; transition: transform 0.3s var(--ease); }
+.faq__all[open] > summary .plus { transform: rotate(45deg); }
+.faq__toggle-close, .faq__all[open] .faq__toggle-open { display: none; }
+.faq__all[open] .faq__toggle-close { display: inline; }
+.faq__all > .faq__list { margin-top: 28px; border-top: 1px solid var(--line); }
+@media (min-width: 1024px) { .faq__wrap { align-self: end; } }
+
+/* Über uns: Titel im Bild-Kopf, Text darunter */
+.page-hero .intro__title { color: var(--white); margin-top: 0; }
+.page-hero .intro__sub { color: rgba(255, 255, 255, 0.85); }
+.page-head--after-hero { padding-top: 64px; }
+.page-head--after-hero .intro__text { margin-top: 0; }
+@media (min-width: 1024px) { .page-head--after-hero { padding-top: 96px; } }
+.faq details.faq__all { border-bottom: 0; }
