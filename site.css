@@ -955,3 +955,15 @@ body.menu-open { overflow: hidden; }
 .site-footer address { font-style: normal; line-height: 1.6; }
 .site-footer address a { white-space: nowrap; }
 .ft-legal { display: flex; flex-wrap: wrap; gap: 4px 20px; }
+
+/* Über uns: Einleitung im etrex-Stil */
+.page-head--intro { background: var(--white); padding-bottom: 24px; }
+.intro__title { font-size: clamp(3rem, 9vw, 6.4rem); line-height: 0.95; font-weight: 700; letter-spacing: -0.02em; text-transform: uppercase; }
+.intro__sub { margin-top: 10px; font-size: clamp(1.3rem, 2.4vw, 1.9rem); font-weight: 400; color: var(--text-muted); }
+.intro__text { margin-top: 48px; font-size: clamp(1.05rem, 1.5vw, 1.3rem); line-height: 1.6; color: var(--text-muted); max-width: 62ch; }
+@media (min-width: 1024px) {
+  .page-head--intro .cols > .c-wide { grid-column: 2 / span 10; }
+  .intro__text { grid-column: 4 / span 8; margin-top: 72px; }
+}
+.page-head--intro + .chapter::before { display: none; }
+.page-head--intro + .chapter { padding-top: 24px; }
