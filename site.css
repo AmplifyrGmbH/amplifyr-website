@@ -934,3 +934,11 @@ body.menu-open { overflow: hidden; }
 .contact__direct li { padding: 14px 0; }
 .contact__direct a, .contact__direct span { font-size: 1.05rem; }
 @media (min-width: 768px) { .contact__direct li { padding: 16px 24px 16px 0; } }
+
+/* Schlanker CTA unten auf jeder Seite -> /kontakt */
+.section.contact--slim { padding: 56px 0; }
+@media (min-width: 1024px) { .section.contact--slim { padding: 72px 0; } }
+.contact__row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px 48px; }
+.contact--slim .contact__title { margin-top: 0; font-size: clamp(2rem, 4.5vw, 3.4rem); }
+.contact--slim .contact__text { margin-top: 10px; }
+.contact--slim .btn { flex-shrink: 0; }

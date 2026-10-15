@@ -167,7 +167,7 @@
   <link rel="preconnect" href="https://cloud.umami.is">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap">
 
-  <link rel="stylesheet" href="/site.css?v=29">
+  <link rel="stylesheet" href="/site.css?v=30">
 
   <script defer src="https://cloud.umami.is/script.js" data-website-id="a5638b4a-87cc-4014-a56d-b5b83ae8ccd5"></script>
 </head>
@@ -193,7 +193,7 @@
           <li><a href="/vorgehen">Vorgehen</a></li>
           <li><a href="/ueber-uns">Über uns</a></li>
           <li><a href="/blog">Blog</a></li>
-          <li><a class="btn btn--light" href="/ueber-uns#kontakt" data-gtm-event="cta_kontakt_klick" data-gtm-location="header">Kontakt</a></li>
+          <li><a class="btn btn--light" href="/kontakt" data-gtm-event="cta_kontakt_klick" data-gtm-location="header">Kontakt</a></li>
         </ul>
       </nav>
       <button id="burger" class="burger" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav-mobile">
@@ -218,7 +218,7 @@
       <li><a href="/vorgehen">Vorgehen <span aria-hidden="true">→</span></a></li>
       <li><a href="/ueber-uns">Über uns <span aria-hidden="true">→</span></a></li>
       <li><a href="/blog">Blog <span aria-hidden="true">→</span></a></li>
-      <li><a href="/ueber-uns#kontakt" data-gtm-event="cta_kontakt_klick" data-gtm-location="mobile_menu">Kontakt <span aria-hidden="true">→</span></a></li>
+      <li><a href="/kontakt" data-gtm-event="cta_kontakt_klick" data-gtm-location="mobile_menu">Kontakt <span aria-hidden="true">→</span></a></li>
     </ul>
     <div class="nav-mobile__contact">
       <a href="tel:+41442445995" data-gtm-event="cta_telefon_klick" data-gtm-location="mobile_menu">044 244 59 95</a>
@@ -568,25 +568,16 @@
     </section>
 
     <!-- ===================== Kontakt ===================== -->
-    <section class="section contact" aria-labelledby="contact-title">
+    <section class="section contact contact--slim" aria-labelledby="contact-title">
       <div class="container cols">
-        <div class="c-wide">
-          <p class="eyebrow reveal">Kontakt</p>
-          <h2 id="contact-title" class="contact__title reveal" data-delay="1">Lassen Sie uns <em>reden.</em></h2>
-          <p class="lead contact__text reveal" data-delay="2">Im kostenlosen Erstgespräch schauen wir gemeinsam, wo Ihr Betrieb digital steht und was sich am meisten lohnt.</p>
-          <div class="contact__actions reveal" data-delay="2">
-            <a class="btn btn--light" href="https://outlook.office.com/book/Amplifyr1@amplifyr.ch/s/WS-NdYDJS0OKzyBuFjz--A2" target="_blank" rel="noopener" data-gtm-event="cta_termin_klick" data-gtm-location="cta_final">
-              Termin buchen
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-            <a class="btn btn--ghost" href="/ueber-uns#kontakt" data-gtm-event="cta_kontakt_klick" data-gtm-location="cta_final">Nachricht schreiben</a>
-            <a class="btn btn--ghost" href="https://wa.me/41442445995" target="_blank" rel="noopener" data-gtm-event="cta_whatsapp_klick" data-gtm-location="cta_final">WhatsApp</a>
+        <div class="c-wide contact__row">
+          <div>
+            <h2 id="contact-title" class="contact__title reveal">Lassen Sie uns <em>reden.</em></h2>
+            <p class="contact__text reveal" data-delay="1">Im kostenlosen Erstgespräch schauen wir gemeinsam, was sich für Ihren Betrieb lohnt.</p>
           </div>
-          <ul class="contact__direct">
-            <li class="reveal"><small>Telefon</small><a href="tel:+41442445995" data-gtm-event="cta_telefon_klick" data-gtm-location="cta_final">044 244 59 95</a></li>
-            <li class="reveal" data-delay="1"><small>E-Mail</small><a href="mailto:info@amplifyr.ch">info@amplifyr.ch</a></li>
-            <li class="reveal" data-delay="2"><small>Büro</small><span>Badenerstrasse 580, 8048 Zürich</span></li>
-          </ul>
+          <a class="btn btn--light reveal" data-delay="2" href="/kontakt" data-gtm-event="cta_kontakt_klick" data-gtm-location="cta_final">Kontakt aufnehmen
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
         </div>
       </div>
     </section>
@@ -625,6 +616,7 @@
             <li><a href="/vorgehen">Vorgehen</a></li>
             <li><a href="/ueber-uns">Über uns</a></li>
             <li><a href="/blog">Blog</a></li>
+            <li><a href="/kontakt">Kontakt</a></li>
           </ul>
         </nav>
         <div class="pk-cell pk-meta pk-wide"><span class="pk-label">Stand</span><span>© 2026 Amplifyr GmbH</span></div>
