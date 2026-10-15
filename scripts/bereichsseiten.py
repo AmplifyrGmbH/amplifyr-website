@@ -2,7 +2,7 @@
 """Erzeugt die drei Bereichsseiten (Handwerk, Bewirtschaftung, Für KMU) mit identischer Struktur:
 Kopf · Ausgangslage · Unser Ansatz (ganzheitlich, sechs Bereiche) · Im Alltag · Ablauf · FAQ · CTA.
 Nur die Inhalte unterscheiden sich."""
-import json, os, html
+import json, os, html, re
 
 S = os.path.dirname(os.path.abspath(__file__))
 E = lambda t: html.escape(t, quote=False)
@@ -39,6 +39,8 @@ ABLAUF = [
 
 PAGES = {
  'handwerker': dict(
+  order=['ausgangslage','alltag','quote','ansatz','mosaic','ablauf'],
+  bg={'ausgangslage':'','alltag':' chapter--white','ablauf':''},
   mosaic=[('hw-baustelle',(600,1200),'Bauarbeiter vor einem Arbeitsfahrzeug'),('hw-schaltschrank',(600,1200),'Sicherungsautomat mit Verkabelung'),('handwerk',(800,1600),'Werkzeugschrank mit Hobeln')],
   mosaic_caption='Auf der Baustelle zu Hause. Wir kennen den Alltag von Elektroinstallateuren, Sanitären und Schreinern, weil einer von uns selbst Elektroinstallateur ist.',
   quote='Der Rapport ist fertig, bevor der Lieferwagen losfährt.',
@@ -76,6 +78,8 @@ PAGES = {
        ('Lohnt sich das auch für einen kleinen Betrieb?', 'Ja. Gerade kleine Betriebe haben niemanden, der sich ums Digitale kümmert. Wir passen den Umfang an Ihre Grösse an.')],
  ),
  'bewirtschaftung': dict(
+  order=['alltag','quote','ausgangslage','mosaic','ansatz','ablauf'],
+  bg={'alltag':' chapter--white','ausgangslage':'','ablauf':''},
   mosaic=[('bw-wohnhaus',(600,1200),'Mehrfamilienhaus mit Balkonen'),('bw-schluessel',(600,1200),'Alte Schlüssel an einer Truhe'),('bw-innenhof',(600,1200),'Blick nach oben aus einem Innenhof')],
   mosaic_caption='Liegenschaften, Mieter, Eigentümer und Handwerker: Wir kennen die Bewirtschaftung von innen, weil einer von uns selbst Bewirtschafter war.',
   quote='Der Wasserschaden am Sonntag landet nicht mehr auf Ihrem Privathandy.',
@@ -117,6 +121,8 @@ PAGES = {
        ('Wie lange dauert die Umstellung?', 'Wir starten mit dem dringendsten Hebel, etwa der nächsten Versammlung oder der Erreichbarkeit, und bauen von dort weiter aus, in Ihrer Reihenfolge.')],
  ),
  'kmu': dict(
+  order=['ansatz','alltag','mosaic','quote','ausgangslage','ablauf'],
+  bg={'alltag':'','ausgangslage':'','ablauf':' chapter--white'},
   mosaic=[('kmu-lobby',(600,1200),'Empfangsbereich eines Büros'),('it',(800,1600),'Sauber verlegte Kabel in einem Verteilerkasten'),('web',(800,1600),'Arbeitsplatz mit zwei Monitoren')],
   mosaic_caption='Vom Empfang über die Arbeitsplätze bis zum Serverschrank: Wir schauen uns das ganze Unternehmen an, nicht nur die Computer.',
   quote='Eine Nummer für alles Digitale.',
@@ -166,7 +172,8 @@ def picture(c, hero=True):
 def build(name, c):
     k = c['key']
     o = []
-    o.append(f'''    <!-- ===================== Kopf ===================== -->
+    sec = {}
+    head=(f'''    <!-- ===================== Kopf ===================== -->
     <section class="page-hero" data-area="{k}" aria-labelledby="page-title">
 {picture(c)}
       <div class="page-hero__content">
@@ -184,11 +191,7 @@ def build(name, c):
     <nav class="subnav" aria-label="Abschnitte dieser Seite">
       <div class="container">
         <ul>
-          <li><a href="#ausgangslage">Ausgangslage</a></li>
-          <li><a href="#ansatz">Unser Ansatz</a></li>
-          <li><a href="#alltag">Im Alltag</a></li>
-          <li><a href="#ablauf">Ablauf</a></li>
-          <li><a href="#faq">Fragen</a></li>
+@@SUBNAV@@
         </ul>
       </div>
     </nav>
@@ -201,7 +204,7 @@ def build(name, c):
         v, t, src = c['stat']
         stat = f'''          <p class="aus-stat reveal"><b>{v}</b><span>{t}<small>{src}</small></span></p>
 '''
-    o.append(f'''
+    sec['ausgangslage']=(f'''
     <!-- ===================== Ausgangslage ===================== -->
     <section id="ausgangslage" class="chapter" data-area="{k}" aria-labelledby="aus-title">
       <div class="container cols">
@@ -228,7 +231,7 @@ def build(name, c):
             </picture>
           </figure>
 '''
-    o.append(f'''
+    sec['mosaic']=(f'''
     <!-- ===================== Bilder ===================== -->
     <section class="mosaic-sec" aria-label="Eindrücke">
       <div class="container">
@@ -237,7 +240,8 @@ def build(name, c):
         </div>
       </div>
     </section>
-
+''')
+    sec['quote']=(f'''
     <!-- ===================== Zitat ===================== -->
     <section class="quote-band" aria-label="Kernaussage">
       <div class="container">
@@ -250,7 +254,7 @@ def build(name, c):
 ''' for i, (t, d) in enumerate(ANSATZ))
     tiles = ''.join(f'''            <li class="hub__tile hub__tile--{i + 1} reveal"><span class="hub__icon">{icon(ic)}</span><b>{lab}</b><span>{c['hub'][i]}</span></li>
 ''' for i, (ic, lab) in enumerate(BEREICHE))
-    o.append(f'''
+    sec['ansatz']=(f'''
     <!-- ===================== Unser Ansatz ===================== -->
     <section id="ansatz" class="chapter chapter--dark" data-area="{k}" aria-labelledby="ansatz-title">
       <div class="container cols">
@@ -295,7 +299,7 @@ def build(name, c):
 ''' for i, (t, b, a) in enumerate(c['compare']))
         alltag = f'''          <ul class="compare">
 {rows}          </ul>'''
-    o.append(f'''
+    sec['alltag']=(f'''
     <!-- ===================== Im Alltag ===================== -->
     <section id="alltag" class="chapter chapter--white" data-area="{k}" aria-labelledby="alltag-title">
       <div class="container cols">
@@ -313,7 +317,7 @@ def build(name, c):
     # Ablauf
     ab = ''.join(f'''            <li class="reveal"{f' data-delay="{i}"' if i else ''}><b>{t}</b><span>{d}</span></li>
 ''' for i, (t, d) in enumerate(ABLAUF))
-    o.append(f'''
+    sec['ablauf']=(f'''
     <!-- ===================== Ablauf ===================== -->
     <section id="ablauf" class="chapter" data-area="{k}" aria-labelledby="ablauf-title">
       <div class="container cols">
@@ -339,7 +343,7 @@ def build(name, c):
                 <p>{a}</p>
               </details>
 ''' for q, a in c['faq'])
-    o.append(f'''
+    sec['faq']=(f'''
     <!-- ===================== FAQ ===================== -->
     <section id="faq" class="section faq" aria-labelledby="faq-title">
       <div class="container cols">
@@ -359,7 +363,18 @@ def build(name, c):
 
 {{{{CONTACT}}}}
 ''')
-    body = ''.join(o)
+    labels={'ausgangslage':'Ausgangslage','ansatz':'Unser Ansatz','alltag':'Im Alltag','ablauf':'Ablauf'}
+    order=c['order']
+    sub=''.join(f'          <li><a href="#{x}">{labels[x]}</a></li>\n' for x in order if x in labels)+'          <li><a href="#faq">Fragen</a></li>'
+    parts=[head.replace('@@SUBNAV@@',sub.rstrip())]
+    for x in order:
+        h=sec[x]
+        bg=c.get('bg',{}).get(x)
+        if bg is not None:
+            h=re.sub(r'class="chapter(?: chapter--white| chapter--dark)?"', f'class="chapter{bg}"', h, count=1)
+        parts.append(h)
+    parts.append(sec['faq'])
+    body = ''.join(parts)
     open(f'{S}/pages/body/{name}.html', 'w', encoding='utf-8').write(body)
 
     page = name if name != 'kmu' else 'kmu'

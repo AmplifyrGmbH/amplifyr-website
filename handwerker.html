@@ -206,8 +206,8 @@
       <div class="container">
         <ul>
           <li><a href="#ausgangslage">Ausgangslage</a></li>
-          <li><a href="#ansatz">Unser Ansatz</a></li>
           <li><a href="#alltag">Im Alltag</a></li>
+          <li><a href="#ansatz">Unser Ansatz</a></li>
           <li><a href="#ablauf">Ablauf</a></li>
           <li><a href="#faq">Fragen</a></li>
         </ul>
@@ -234,32 +234,23 @@
       </div>
     </section>
 
-    <!-- ===================== Bilder ===================== -->
-    <section class="mosaic-sec" aria-label="Eindrücke">
-      <div class="container">
-        <div class="mosaic">
-          <figure class="mosaic__item mosaic__item--1 reveal">
-            <picture>
-              <source type="image/avif" srcset="/Bilder/stock/hw-baustelle-600.avif 600w, /Bilder/stock/hw-baustelle-1200.avif 1200w" sizes="(min-width: 1024px) 50vw, 100vw">
-              <source type="image/webp" srcset="/Bilder/stock/hw-baustelle-600.webp 600w, /Bilder/stock/hw-baustelle-1200.webp 1200w" sizes="(min-width: 1024px) 50vw, 100vw">
-              <img src="/Bilder/stock/hw-baustelle-600.jpg" srcset="/Bilder/stock/hw-baustelle-600.jpg 600w, /Bilder/stock/hw-baustelle-1200.jpg 1200w" sizes="(min-width: 1024px) 50vw, 100vw" alt="Bauarbeiter vor einem Arbeitsfahrzeug" loading="lazy" decoding="async" width="600" height="450">
-            </picture>
-          </figure>
-          <figure class="mosaic__item mosaic__item--2 reveal" data-delay="1">
-            <picture>
-              <source type="image/avif" srcset="/Bilder/stock/hw-schaltschrank-600.avif 600w, /Bilder/stock/hw-schaltschrank-1200.avif 1200w" sizes="(min-width: 1024px) 50vw, 100vw">
-              <source type="image/webp" srcset="/Bilder/stock/hw-schaltschrank-600.webp 600w, /Bilder/stock/hw-schaltschrank-1200.webp 1200w" sizes="(min-width: 1024px) 50vw, 100vw">
-              <img src="/Bilder/stock/hw-schaltschrank-600.jpg" srcset="/Bilder/stock/hw-schaltschrank-600.jpg 600w, /Bilder/stock/hw-schaltschrank-1200.jpg 1200w" sizes="(min-width: 1024px) 50vw, 100vw" alt="Sicherungsautomat mit Verkabelung" loading="lazy" decoding="async" width="600" height="450">
-            </picture>
-          </figure>
-          <figure class="mosaic__item mosaic__item--3 reveal" data-delay="2">
-            <picture>
-              <source type="image/avif" srcset="/Bilder/stock/handwerk-800.avif 800w, /Bilder/stock/handwerk-1600.avif 1600w" sizes="(min-width: 1024px) 50vw, 100vw">
-              <source type="image/webp" srcset="/Bilder/stock/handwerk-800.webp 800w, /Bilder/stock/handwerk-1600.webp 1600w" sizes="(min-width: 1024px) 50vw, 100vw">
-              <img src="/Bilder/stock/handwerk-800.jpg" srcset="/Bilder/stock/handwerk-800.jpg 800w, /Bilder/stock/handwerk-1600.jpg 1600w" sizes="(min-width: 1024px) 50vw, 100vw" alt="Werkzeugschrank mit Hobeln" loading="lazy" decoding="async" width="800" height="600">
-            </picture>
-          </figure>
-          <p class="mosaic__caption reveal">Auf der Baustelle zu Hause. Wir kennen den Alltag von Elektroinstallateuren, Sanitären und Schreinern, weil einer von uns selbst Elektroinstallateur ist.</p>
+    <!-- ===================== Im Alltag ===================== -->
+    <section id="alltag" class="chapter chapter--white" data-area="handwerk" aria-labelledby="alltag-title">
+      <div class="container cols">
+        <div class="c-label reveal"><p class="eyebrow">Im Alltag</p></div>
+        <div class="c-body">
+          <h2 id="alltag-title" class="h-section reveal">Ein Auftrag, von der Anfrage bis zur Rechnung.</h2>
+          <p class="lead reveal" data-delay="1">So läuft ein Auftrag, wenn alle Teile ineinandergreifen:</p>
+        </div>
+        <div class="c-wide">
+          <ol class="flow">
+            <li class="reveal"><span class="flow__n" aria-hidden="true">1</span><h3>Die Anfrage</h3><p>Ob Anruf, WhatsApp oder E-Mail: Jede Anfrage landet mit Adresse, Bildern und Beschreibung am richtigen Ort.</p></li>
+            <li class="reveal" data-delay="1"><span class="flow__n" aria-hidden="true">2</span><h3>Termin &amp; Besichtigung</h3><p>Der Kunde bucht selbst. Ein Sprachmemo vor Ort wird zur fertigen Notiz.</p></li>
+            <li class="reveal" data-delay="2"><span class="flow__n" aria-hidden="true">3</span><h3>Die Offerte</h3><p>Die Offerte ist vorbereitet. Sie prüfen, passen an und versenden.</p></li>
+            <li class="reveal"><span class="flow__n" aria-hidden="true">4</span><h3>Die Einsatzplanung</h3><p>Sie sehen, wer wo im Einsatz ist. Änderungen gehen direkt aufs Handy.</p></li>
+            <li class="reveal" data-delay="1"><span class="flow__n" aria-hidden="true">5</span><h3>Beim Kunden</h3><p>Der Rapport ist fertig, bevor der Mitarbeiter beim Lieferwagen ist.</p></li>
+            <li class="reveal" data-delay="2"><span class="flow__n" aria-hidden="true">6</span><h3>Die Rechnung</h3><p>Der Rapport fliesst in die Rechnung, Zahlungen werden automatisch zugeordnet.</p></li>
+          </ol>
         </div>
       </div>
     </section>
@@ -299,23 +290,32 @@
       </div>
     </section>
 
-    <!-- ===================== Im Alltag ===================== -->
-    <section id="alltag" class="chapter chapter--white" data-area="handwerk" aria-labelledby="alltag-title">
-      <div class="container cols">
-        <div class="c-label reveal"><p class="eyebrow">Im Alltag</p></div>
-        <div class="c-body">
-          <h2 id="alltag-title" class="h-section reveal">Ein Auftrag, von der Anfrage bis zur Rechnung.</h2>
-          <p class="lead reveal" data-delay="1">So läuft ein Auftrag, wenn alle Teile ineinandergreifen:</p>
-        </div>
-        <div class="c-wide">
-          <ol class="flow">
-            <li class="reveal"><span class="flow__n" aria-hidden="true">1</span><h3>Die Anfrage</h3><p>Ob Anruf, WhatsApp oder E-Mail: Jede Anfrage landet mit Adresse, Bildern und Beschreibung am richtigen Ort.</p></li>
-            <li class="reveal" data-delay="1"><span class="flow__n" aria-hidden="true">2</span><h3>Termin &amp; Besichtigung</h3><p>Der Kunde bucht selbst. Ein Sprachmemo vor Ort wird zur fertigen Notiz.</p></li>
-            <li class="reveal" data-delay="2"><span class="flow__n" aria-hidden="true">3</span><h3>Die Offerte</h3><p>Die Offerte ist vorbereitet. Sie prüfen, passen an und versenden.</p></li>
-            <li class="reveal"><span class="flow__n" aria-hidden="true">4</span><h3>Die Einsatzplanung</h3><p>Sie sehen, wer wo im Einsatz ist. Änderungen gehen direkt aufs Handy.</p></li>
-            <li class="reveal" data-delay="1"><span class="flow__n" aria-hidden="true">5</span><h3>Beim Kunden</h3><p>Der Rapport ist fertig, bevor der Mitarbeiter beim Lieferwagen ist.</p></li>
-            <li class="reveal" data-delay="2"><span class="flow__n" aria-hidden="true">6</span><h3>Die Rechnung</h3><p>Der Rapport fliesst in die Rechnung, Zahlungen werden automatisch zugeordnet.</p></li>
-          </ol>
+    <!-- ===================== Bilder ===================== -->
+    <section class="mosaic-sec" aria-label="Eindrücke">
+      <div class="container">
+        <div class="mosaic">
+          <figure class="mosaic__item mosaic__item--1 reveal">
+            <picture>
+              <source type="image/avif" srcset="/Bilder/stock/hw-baustelle-600.avif 600w, /Bilder/stock/hw-baustelle-1200.avif 1200w" sizes="(min-width: 1024px) 50vw, 100vw">
+              <source type="image/webp" srcset="/Bilder/stock/hw-baustelle-600.webp 600w, /Bilder/stock/hw-baustelle-1200.webp 1200w" sizes="(min-width: 1024px) 50vw, 100vw">
+              <img src="/Bilder/stock/hw-baustelle-600.jpg" srcset="/Bilder/stock/hw-baustelle-600.jpg 600w, /Bilder/stock/hw-baustelle-1200.jpg 1200w" sizes="(min-width: 1024px) 50vw, 100vw" alt="Bauarbeiter vor einem Arbeitsfahrzeug" loading="lazy" decoding="async" width="600" height="450">
+            </picture>
+          </figure>
+          <figure class="mosaic__item mosaic__item--2 reveal" data-delay="1">
+            <picture>
+              <source type="image/avif" srcset="/Bilder/stock/hw-schaltschrank-600.avif 600w, /Bilder/stock/hw-schaltschrank-1200.avif 1200w" sizes="(min-width: 1024px) 50vw, 100vw">
+              <source type="image/webp" srcset="/Bilder/stock/hw-schaltschrank-600.webp 600w, /Bilder/stock/hw-schaltschrank-1200.webp 1200w" sizes="(min-width: 1024px) 50vw, 100vw">
+              <img src="/Bilder/stock/hw-schaltschrank-600.jpg" srcset="/Bilder/stock/hw-schaltschrank-600.jpg 600w, /Bilder/stock/hw-schaltschrank-1200.jpg 1200w" sizes="(min-width: 1024px) 50vw, 100vw" alt="Sicherungsautomat mit Verkabelung" loading="lazy" decoding="async" width="600" height="450">
+            </picture>
+          </figure>
+          <figure class="mosaic__item mosaic__item--3 reveal" data-delay="2">
+            <picture>
+              <source type="image/avif" srcset="/Bilder/stock/handwerk-800.avif 800w, /Bilder/stock/handwerk-1600.avif 1600w" sizes="(min-width: 1024px) 50vw, 100vw">
+              <source type="image/webp" srcset="/Bilder/stock/handwerk-800.webp 800w, /Bilder/stock/handwerk-1600.webp 1600w" sizes="(min-width: 1024px) 50vw, 100vw">
+              <img src="/Bilder/stock/handwerk-800.jpg" srcset="/Bilder/stock/handwerk-800.jpg 800w, /Bilder/stock/handwerk-1600.jpg 1600w" sizes="(min-width: 1024px) 50vw, 100vw" alt="Werkzeugschrank mit Hobeln" loading="lazy" decoding="async" width="800" height="600">
+            </picture>
+          </figure>
+          <p class="mosaic__caption reveal">Auf der Baustelle zu Hause. Wir kennen den Alltag von Elektroinstallateuren, Sanitären und Schreinern, weil einer von uns selbst Elektroinstallateur ist.</p>
         </div>
       </div>
     </section>
