@@ -1368,3 +1368,7 @@ body.menu-open { overflow: hidden; }
 .kt-follow--top { margin-top: 12px; }
 @media (min-width: 900px) { .kt-follow--top { margin-top: 18px; } }
 @media (max-width: 599px) { .kt-follow--top span { width: 100%; } }
+.page-hero[data-area="bewirtschaftung"] .hero__media::after {
+  background: linear-gradient(180deg, rgba(18, 28, 51, 0.72) 0%, rgba(18, 28, 51, 0.6) 45%, rgba(18, 28, 51, 0.9) 100%),
+              linear-gradient(90deg, rgba(18, 28, 51, 0.55) 0%, rgba(18, 28, 51, 0) 75%);
+}

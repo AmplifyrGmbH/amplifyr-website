@@ -83,7 +83,7 @@ PAGES = {
   mosaic=[('bw-wohnhaus',(600,1200),'Mehrfamilienhaus mit Balkonen'),('bw-schluessel',(600,1200),'Alte Schlüssel an einer Truhe'),('bw-innenhof',(600,1200),'Blick nach oben aus einem Innenhof')],
   mosaic_caption='Liegenschaften, Mieter, Eigentümer und Handwerker: Wir kennen die Bewirtschaftung von innen, weil einer von uns selbst Bewirtschafter war.',
   quote='Der Wasserschaden am Sonntag landet nicht mehr auf Ihrem Privathandy.',
-  key='bewirtschaftung', img='bewirtschaftung', sizes=(1200, 2400), w=2400, h=1600, alt='Wohnhaus mit Balkonen und Dachterrassen',
+  key='bewirtschaftung', img='bewirtschaftung', sizes=(1200, 2400), w=2400, h=1600, alt='Altstadthäuser an der Reuss in Luzern',
   eyebrow='Immobilienbewirtschaftung', h1='Ihre Bewirtschaftung, <em>mit mehr Zeit für Mandate.</em>',
   lead='Ein grosser Teil der Woche geht in Koordination. Wir schauen uns Ihre Verwaltung als Ganzes an und holen diese Zeit zurück, <strong>ohne Ihr Kernsystem zu ersetzen</strong>.',
   title='Digitalisierung für Immobilienverwaltungen | amplifyr',
