@@ -1420,3 +1420,23 @@ body:not([data-page]) .eyebrow::before, [data-page="404"] .eyebrow::before { -we
 [data-page="index"] .insights { --eb-icon: var(--icon-stift); }
 /* Eyebrows mit eigenem Stil zurücksetzen */
 .area__head .eyebrow::before { display: inline-block !important; }
+
+/* ============================================================
+   Abschnittsköpfe zentriert (Variante B)
+   Label, Titel und Einleitung stehen mittig übereinander.
+   ============================================================ */
+.chapter .cols > .c-label,
+.chapter .cols > .c-body { grid-column: 1 / -1; text-align: center; }
+.chapter .cols > .c-label .eyebrow { justify-content: center; }
+.chapter .cols > .c-body .h-section { max-width: 20ch; margin-left: auto; margin-right: auto; }
+.chapter .cols > .c-body .lead, .chapter .cols > .c-body > p { max-width: 58ch; margin-left: auto; margin-right: auto; }
+.chapter .cols > .c-label + .c-body { margin-top: 14px; }
+.chapter .cols { row-gap: 0; }
+@media (min-width: 1024px) {
+  .chapter .cols > .c-label, .chapter .cols > .c-body { grid-column: 2 / span 10; }
+}
+/* Inhalte unterhalb der zentrierten Köpfe bleiben linksbündig */
+.chapter .cols > .c-wide { text-align: left; }
+/* Kapitel, deren Körper Fliesstext ist (Rechtliches, Blog-Kopf): links lassen */
+.chapter:has(.prose) .cols > .c-label, .chapter:has(.prose) .cols > .c-body { text-align: left; }
+.chapter:has(.prose) .cols > .c-label .eyebrow { justify-content: flex-start; }
