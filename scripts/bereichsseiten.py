@@ -365,7 +365,7 @@ def build(name, c):
 ''')
     labels={'ausgangslage':'Ausgangslage','ansatz':'Unser Ansatz','alltag':'Im Alltag','ablauf':'Ablauf'}
     order=c['order']
-    sub=''.join(f'          <li><a href="#{x}">{labels[x]}</a></li>\n' for x in order if x in labels)+'          <li><a href="#faq">Fragen</a></li>'
+    sub=''.join(f'          <li><a href="#{x}">{labels[x]}</a></li>\n' for x in order if x in labels)
     parts=[head.replace('@@SUBNAV@@',sub.rstrip())]
     for x in order:
         h=sec[x]
