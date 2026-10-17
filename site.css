@@ -1449,3 +1449,17 @@ body:not([data-page]) .eyebrow::before, [data-page="404"] .eyebrow::before { -we
 .site-footer { background: #070D19; --axis-bg: #070D19; }
 /* Folgt der CTA direkt auf einen dunklen Abschnitt, nimmt er Navy-Deep, damit die Flächen nicht verschmelzen */
 .chapter--dark + .contact, .approach + .contact, .insights + .contact { background: var(--navy-deep); --axis-bg: var(--navy-deep); }
+/* FAQ im CTA: komplett zugeklappt */
+.contact__faq-all { display: block; }
+.contact__faq-all > summary.contact__faq-title {
+  list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 12px; margin-bottom: 0;
+  min-height: 44px; padding: 0; border: 0;
+}
+.contact__faq-all > summary::-webkit-details-marker { display: none; }
+.contact__faq-all > summary .plus { width: 20px; height: 20px; border: 0; color: var(--sky); transition: transform 0.3s var(--ease); }
+.contact__faq-all[open] > summary .plus { transform: rotate(45deg); }
+.contact__faq-all[open] > .faq__list { margin-top: 12px; }
+.contact__row--faq { align-items: center; }
+.contact__faq-all > summary.contact__faq-title { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sky); }
+.contact__faq-all > summary.contact__faq-title:hover { color: var(--white); }
+@media (min-width: 1024px) { .contact__faq { justify-self: end; } .contact__faq-all[open] { width: 100%; } .contact__faq:has(details[open]) { justify-self: stretch; } }
