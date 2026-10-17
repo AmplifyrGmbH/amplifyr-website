@@ -5,7 +5,7 @@ Alle Fotos stammen aus dem WordPress Photo Directory und stehen unter **CC0** (g
 | Datei | Motiv | Quelle |
 |---|---|---|
 | `hero-*` | Baustelle mit gelben Kränen | https://wordpress.org/photos/photo/661682727a/ |
-| `handwerk-*` | Schrank mit Holzbearbeitungswerkzeug | https://wordpress.org/photos/photo/4136662eec/ |
+| `handwerk-*` | Baustelle mit Kränen in Andermatt, Foto: Steffen Lemmerzahl | https://unsplash.com/photos/jmWFNK7ZvbY (Unsplash-Lizenz) |
 | `it-*` | Kabel in einem Verteilerkasten | https://wordpress.org/photos/photo/57961f039c/ |
 | `web-*` | Büro mit zwei Monitoren | https://wordpress.org/photos/photo/7606323b31/ |
 
@@ -39,5 +39,5 @@ Nachtrag (Bild + Zitat, Platzhalter bis eigene Fotos vorliegen, alle CC0):
 | `zitat-handwerk-*` | Luftaufnahme Zürich mit Limmat und Grossmünster, Foto: Henrique Ferreira | https://unsplash.com/photos/omiTbS-nb_M (Unsplash-Lizenz) |
 | `zitat-bewirtschaftung-*` | Mehrfamilienhäuser | https://wordpress.org/photos/photo/132689233a/ |
 | `zitat-kmu-*` | Hand hält Smartphone, Foto: Frederik Lipfert | https://unsplash.com/photos/ufgQeGgv6ts (Unsplash-Lizenz) |
-| `handwerk-hero-*` | Bauarbeiter vor Arbeitsfahrzeug (Kopfbild Handwerk) | https://wordpress.org/photos/photo/12664ef761/ (CC0) |
+| `handwerk-hero-*` | Baustelle mit Kränen in Andermatt (Kopfbild Handwerk), Foto: Steffen Lemmerzahl | https://unsplash.com/photos/jmWFNK7ZvbY (Unsplash-Lizenz) |
 | `blog-hero-*` | Laptop, Notizbuch und Kaffee im Licht, Foto: sonia jahandari | https://unsplash.com/photos/Iz_dQ_t_9HE (Unsplash-Lizenz) |
