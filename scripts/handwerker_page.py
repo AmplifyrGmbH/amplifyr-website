@@ -67,9 +67,7 @@ def body():
         <div class="container cols">
           <div>
             <p class="eyebrow reveal">Handwerk</p>
-            <h1 id="page-title" class="reveal" data-delay="1">Weniger Verwaltung, <em>mehr Zeit für Aufträge.</em></h1>
-            <p class="lead reveal" data-delay="2">Wir organisieren Ihren Handwerksbetrieb digital, <strong>aus einer Hand</strong>: Abläufe, Software, IT und Website, zugeschnitten auf Ihre Grösse.</p>
-            <p class="reveal" data-delay="3" style="margin-top:28px"><a class="btn btn--light" href="/kontakt" data-gtm-event="cta_kontakt_klick" data-gtm-location="hero_handwerk">Kostenloses Erstgespräch {ARROW}</a></p>
+            <h1 id="page-title" class="page-statement reveal" data-delay="1">Wir organisieren Ihren Handwerksbetrieb <strong>digital</strong> und <strong>aus einer Hand</strong>: Abläufe, Software, IT und Website, zugeschnitten auf Ihre Grösse.</h1>
           </div>
         </div>
       </div>

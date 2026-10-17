@@ -1591,3 +1591,8 @@ button.contact__faq-title[aria-expanded="true"] .plus { transform: rotate(45deg)
 .photo-quote__inner { position: relative; z-index: 2; padding-top: 140px; padding-bottom: 64px; }
 .photo-quote__text p { font-family: var(--font-brand); font-style: italic; font-size: clamp(1.8rem, 4.2vw, 3.4rem); line-height: 1.18; max-width: 22ch; }
 @media (min-width: 1024px) { .photo-quote { min-height: 78vh; } .photo-quote__inner { padding-bottom: 96px; } .photo-quote__text { margin-left: calc((100% - 0px) / 12); } }
+/* Unterseiten-Kopf: ein Satz im Fokus */
+.page-hero h1.page-statement {
+  font-size: clamp(2rem, 4.2vw, 3.6rem); line-height: 1.14; font-weight: 300; letter-spacing: -0.02em; max-width: 24ch;
+}
+.page-hero h1.page-statement strong { font-weight: 600; color: var(--white); }
