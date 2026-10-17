@@ -1682,3 +1682,8 @@ body:has(:is(.chapter--dark, .approach, .insights) + .contact) .site-footer a:ho
 body:has(:is(.chapter--dark, .approach, .insights) + .contact) .site-footer > .container { border-top-color: var(--line); }
 body:has(:is(.chapter--dark, .approach, .insights) + .contact) .ft-logo__light { display: none; }
 body:has(:is(.chapter--dark, .approach, .insights) + .contact) .ft-logo__dark { display: block; }
+
+/* Startseite: Titel und Unterzeile getrennt */
+.hero__statement { max-width: 34ch; }
+.hero__statement h1 { display: block; font-size: clamp(2.2rem, 4.6vw, 4.2rem); line-height: 1.08; letter-spacing: -0.025em; font-weight: 400; }
+.hero__statement p { display: block; margin-top: 20px; font-size: clamp(1.1rem, 1.6vw, 1.45rem); line-height: 1.4; }
