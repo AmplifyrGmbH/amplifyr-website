@@ -104,7 +104,7 @@ def body():
         <div class="c-label reveal"><p class="eyebrow">Ihr Betrieb</p></div>
         <div class="c-body">
           <h2 id="betrieb-title" class="h-section reveal">Ob 3 oder 80 Mitarbeitende.</h2>
-          <p class="lead reveal" data-delay="1">Ob kleiner oder grösserer Betrieb: Im Büro geht Zeit verloren, die auf der Baustelle fehlt.</p>
+          <p class="lead reveal" data-delay="1">Im Büro geht Zeit verloren, die auf der Baustelle fehlt. Im kleinen wie im grösseren Betrieb.</p>
         </div>
         <div class="c-wide">
           <div class="hw-sizes">
