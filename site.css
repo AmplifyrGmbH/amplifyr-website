@@ -1655,5 +1655,7 @@ main:has(> .contact:last-child) > .contact:last-child { padding-bottom: 56px; }
 .hw-pains li { position: relative; padding-left: 28px; color: var(--text-muted); line-height: 1.5; }
 .hw-pains li::before { content: ""; position: absolute; left: 4px; top: 0.72em; width: 12px; height: 2px; border-radius: 2px; background: var(--sky); }
 
-/* KMU-Zitat: Kopf der Person nicht abschneiden */
-[data-page="kmu"] .photo-quote__media img { object-position: 50% 10%; }
+/* KMU-Zitat: Smartphone im Bild halten, Text links abdunkeln */
+[data-page="kmu"] .photo-quote__media img { object-position: 75% 50%; }
+[data-page="kmu"] .photo-quote__media::after { background: linear-gradient(180deg, rgba(18, 28, 51, 0) 30%, rgba(18, 28, 51, 0.8) 100%), linear-gradient(90deg, rgba(18, 28, 51, 0.45) 0%, rgba(18, 28, 51, 0) 55%); }
+@media (max-width: 767px) { [data-page="kmu"] .photo-quote__media::after { background: linear-gradient(180deg, rgba(18, 28, 51, 0.1) 0%, rgba(18, 28, 51, 0.88) 65%); } }
