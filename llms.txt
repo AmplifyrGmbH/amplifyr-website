@@ -7,7 +7,8 @@ Drei Gründer und Geschäftsführer: Timo Steinfort, David Staub, Sinan Sen. Tel
 ## Hauptseiten
 
 - [Startseite](https://www.amplifyr.ch/): Überblick, Ansatz, Team und Kontakt
-- [Handwerk](https://www.amplifyr.ch/handwerker): Ganzheitliche Digitalisierung für Handwerksbetriebe, Spezialisierung von amplifyr
+- [Handwerk](https://www.amplifyr.ch/handwerker): Ganzheitliche Digitalisierung für Handwerksbetriebe, von der Akquise bis zur Rechnung aus einer Hand
+- [Bewirtschaftung](https://www.amplifyr.ch/bewirtschaftung): Digitalisierung für Immobilienverwaltungen und Bewirtschaftungen: Abläufe, Software, IT und Erreichbarkeit aus einer Hand, ohne das Kernsystem zu ersetzen
 - [Für KMU](https://www.amplifyr.ch/kmu): Dieselbe ganzheitliche Dienstleistung für alle anderen KMU: Abläufe, Software, IT und Website aus einer Hand
 - [Vorgehen](https://www.amplifyr.ch/vorgehen): So läuft die Zusammenarbeit, vom kostenlosen Erstgespräch bis zum laufenden Betrieb
 - [Über uns](https://www.amplifyr.ch/ueber-uns): Team und Mission
