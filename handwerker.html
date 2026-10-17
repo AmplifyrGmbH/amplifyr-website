@@ -122,7 +122,7 @@
   <link rel="preconnect" href="https://cloud.umami.is">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&display=swap">
 
-  <link rel="stylesheet" href="/site.css?v=82">
+  <link rel="stylesheet" href="/site.css?v=84">
 
   <script defer src="https://cloud.umami.is/script.js" data-website-id="a5638b4a-87cc-4014-a56d-b5b83ae8ccd5"></script>
 </head>
@@ -320,9 +320,8 @@
           </a></p>
           </div>
           <div id="faq" class="faq faq--dark contact__faq reveal" data-delay="1">
-            <details class="faq__all contact__faq-all">
-            <summary class="contact__faq-title">Häufige Fragen<span class="plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary>
-            <div class="faq__list">
+            <button type="button" class="contact__faq-title" aria-expanded="false" aria-controls="cta-faq-list">Häufige Fragen<span class="plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></button>
+            <div class="faq__list" id="cta-faq-list" hidden>
               <details>
                 <summary>Muss ich meine bestehende Handwerkersoftware wechseln?<span class="plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary>
                 <p>Nein. Ihre bestehende Software bleibt. Wir verbinden sie mit Büro, IT und Website, statt sie zu ersetzen.</p>
@@ -340,7 +339,6 @@
                 <p>Ja. Gerade kleine Betriebe haben niemanden, der sich ums Digitale kümmert. Wir passen den Umfang an Ihre Grösse an.</p>
                 </details>
             </div>
-            </details>
           </div>
         </div>
       </div>
@@ -376,6 +374,6 @@
     </div>
   </footer>
 
-  <script src="/site.js?v=4" defer></script>
+  <script src="/site.js?v=6" defer></script>
 </body>
 </html>

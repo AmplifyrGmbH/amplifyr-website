@@ -25,12 +25,10 @@ def combine(html):
             <p class="contact__btn">{btn.strip()}</p>
           </div>
           <div id="faq" class="faq faq--dark contact__faq reveal" data-delay="1">
-            <details class="faq__all contact__faq-all">
-            <summary class="contact__faq-title">Häufige Fragen<span class="plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary>
-            <div class="faq__list">
+            <button type="button" class="contact__faq-title" aria-expanded="false" aria-controls="cta-faq-list">Häufige Fragen<span class="plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></button>
+            <div class="faq__list" id="cta-faq-list" hidden>
 {lst}
             </div>
-            </details>
           </div>
         ''' + c.group(3))
     html = html[:c.start()] + new + html[c.end():]

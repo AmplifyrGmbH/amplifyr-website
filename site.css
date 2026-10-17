@@ -1543,3 +1543,23 @@ body:not([data-page]) .eyebrow::before, [data-page="404"] .eyebrow::before { -we
 .hw-trust__who .link-arrow { display: inline-flex; margin-left: 4px; color: var(--navy); }
 /* Kontakt: Abstand zwischen zentriertem Kopf und Kacheln */
 .kt-support, .kt-team { margin-top: 48px; }
+
+/* CTA: Button und "Häufige Fragen" nebeneinander, Fragenliste darunter */
+.contact__row--faq { display: grid !important; grid-template-columns: auto auto; justify-content: center; align-items: center; column-gap: 32px; row-gap: 24px; }
+.contact__row--faq .contact__main, .contact__row--faq .contact__faq, .contact__row--faq .contact__faq-all { display: contents; }
+.contact__row--faq .contact__title { grid-column: 1 / -1; grid-row: 1; }
+.contact__row--faq .contact__btn { grid-column: 1; grid-row: 2; margin: 0; }
+.contact__row--faq .contact__faq-title { grid-column: 2; grid-row: 2; }
+.contact__row--faq .faq__list { grid-column: 1 / -1; grid-row: 3; width: min(720px, 100%); justify-self: center; text-align: left; margin-top: 8px; }
+.contact__row--faq .contact__faq { display: contents; }
+button.contact__faq-title { background: none; border: 0; cursor: pointer; display: inline-flex; align-items: center; gap: 12px; min-height: 44px; font: inherit; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sky); white-space: nowrap; }
+button.contact__faq-title:hover { color: var(--white); }
+button.contact__faq-title .plus { width: 20px; height: 20px; display: grid; place-content: center; border: 0; transition: transform 0.3s var(--ease); }
+button.contact__faq-title[aria-expanded="true"] .plus { transform: rotate(45deg); }
+.contact__row--faq .contact__btn .btn { white-space: nowrap; }
+@media (max-width: 559px) {
+  .contact__row--faq { grid-template-columns: 1fr; justify-items: center; }
+  .contact__row--faq .contact__btn, .contact__row--faq .contact__faq-title, .contact__row--faq .faq__list { grid-column: 1; }
+  .contact__row--faq .contact__faq-title { grid-row: 3; }
+  .contact__row--faq .faq__list { grid-row: 4; }
+}

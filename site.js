@@ -86,6 +86,17 @@
     }, { passive: true });
   }
 
+  // ---- Häufige Fragen im Kontaktblock auf-/zuklappen ----
+  document.querySelectorAll('.contact__faq-title[aria-controls]').forEach(function (btn) {
+    var list = document.getElementById(btn.getAttribute('aria-controls'));
+    if (!list) return;
+    btn.addEventListener('click', function () {
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+      list.hidden = open;
+    });
+  });
+
   // ---- Einblendungen beim Scrollen ----
   var items = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
