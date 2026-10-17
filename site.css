@@ -1711,3 +1711,9 @@ body:has(:is(.chapter--dark, .approach, .insights) + .contact) .ft-logo__dark { 
 .hero__statement h1 { font-weight: 600; }
 .hero__statement p { font-size: clamp(1.45rem, 2.6vw, 2.35rem); color: var(--sky); }
 .hero__statement p { color: var(--white); font-family: var(--font-brand); font-style: italic; font-weight: 400; letter-spacing: 0; }
+.br-desk { display: none; }
+@media (min-width: 1024px) { .br-desk { display: inline; } .hero__statement h1 { max-width: none; } }
+@media (min-width: 1024px) {
+  .hero__content .cols > .hero__text { grid-column: 2 / -1; }
+  .hero__statement h1 { font-size: clamp(2.6rem, 4.6vw, 5rem); }
+}
