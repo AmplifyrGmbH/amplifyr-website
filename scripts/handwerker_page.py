@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Handwerkerseite: kompakt, spricht kleine und grössere Betriebe an.
-Kopf · Ob 3 oder 80 Mitarbeitende · Was wir tun · So arbeiten wir · (FAQ im Kontaktblock)"""
+Kopf · Was uns unterscheidet · Ob 3 oder 80 Mitarbeitende · So arbeiten wir · (FAQ im Kontaktblock)"""
 import os, sys, json, html
 S = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, S)
@@ -25,12 +25,6 @@ SIZES = [
      ['Einsatzplanung und Rapporte an einem Ort', 'Einheitliche Abläufe für alle Teams', 'Sichere, zentral betreute IT']),
 ]
 
-WHAT = [
-    ('buero', 'Abläufe analysieren', 'Wir gehen Ihre Prozesse von der Anfrage bis zur Rechnung durch und finden, wo Zeit verloren geht.'),
-    ('auto', 'Passende Lösung umsetzen', 'Software, Automatisierung und KI dort, wo sie etwas bringen. Ihre bestehende Software bleibt, wo sie passt.'),
-    ('it', 'IT, Website und Betreuung', 'Sichere IT, eine Website, die Anfragen bringt, und ein Ansprechpartner, der bleibt.'),
-]
-
 FLOW = ['Anfrage', 'Termin', 'Offerte', 'Einsatzplanung', 'Rapport', 'Rechnung']
 
 PHASES = [('Erstgespräch', 'Kostenlos. Wir schauen, wo Zeit verloren geht.'),
@@ -50,8 +44,6 @@ def body():
               <ul class="checklist">{li}</ul>
             </article>
 '''
-    what = ''.join(f'''            <li class="hw-tile reveal"{f' data-delay="{i}"' if i else ''}><span class="hub__icon">{icon(ic)}</span><b>{t}</b><span>{d}</span></li>
-''' for i, (ic, t, d) in enumerate(WHAT))
     flow = ''.join(f'<li>{s}</li>' for s in FLOW)
     ph = ''.join(f'''            <li class="reveal"{f' data-delay="{i}"' if i else ''}><b>{t}</b><span>{d}</span></li>
 ''' for i, (t, d) in enumerate(PHASES))
@@ -79,7 +71,6 @@ def body():
         <ul>
           <li><a href="#unterschied">Was uns unterscheidet</a></li>
           <li><a href="#betrieb">Ihr Betrieb</a></li>
-          <li><a href="#leistung">Was wir tun</a></li>
           <li><a href="#zusammenarbeit">So arbeiten wir</a></li>
         </ul>
       </div>
@@ -125,36 +116,20 @@ def body():
       </div>
     </section>
 
-    <!-- ===================== Was wir tun ===================== -->
-    <section id="leistung" class="chapter chapter--dark" data-area="handwerk" aria-labelledby="leistung-title">
-      <div class="container cols">
-        <div class="c-label reveal"><p class="eyebrow">Was wir tun</p></div>
-        <div class="c-body">
-          <h2 id="leistung-title" class="h-section reveal">Vom Ablauf zur Lösung.</h2>
-          <p class="lead muted reveal" data-delay="1">Wie ein Generalunternehmer auf der Baustelle koordinieren wir alle digitalen Gewerke, mit einer Nummer für alles.</p>
-        </div>
-        <div class="c-wide">
-          <ul class="hw-tiles">
-{what}          </ul>
-          <div class="hw-flow reveal">
-            <p>Ein Auftrag, durchgängig digital:</p>
-            <ol>{flow}</ol>
-          </div>
-        </div>
-      </div>
-    </section>
-
 {photo_quote('zitat-handwerk','Arbeiter beim Schweissen','Der Rapport ist fertig, bevor der Lieferwagen losfährt.')}
     <!-- ===================== So arbeiten wir ===================== -->
-    <section id="zusammenarbeit" class="chapter chapter--white" data-area="handwerk" aria-labelledby="zus-title">
+    <section id="zusammenarbeit" class="chapter chapter--dark" data-area="handwerk" aria-labelledby="zus-title">
       <div class="container cols">
         <div class="c-label reveal"><p class="eyebrow">So arbeiten wir</p></div>
         <div class="c-body">
-          <h2 id="zus-title" class="h-section reveal">Schritt für Schritt, ohne Unterbruch.</h2>
-          <p class="lead reveal" data-delay="1">Sie richten nichts selbst ein und bestimmen das Tempo. Einer von uns ist <strong>gelernter Elektroinstallateur</strong> und kennt den Alltag auf der Baustelle von innen.</p>
+          <h2 id="zus-title" class="h-section reveal">Ein Auftrag, durchgängig digital.</h2>
         </div>
         <div class="c-wide">
-          <ol class="steps4">
+          <div class="hw-flow hw-flow--lead reveal">
+            <ol>{flow}</ol>
+          </div>
+          <p class="lead muted hw-zus-text reveal" data-delay="1">Sie richten nichts selbst ein und bestimmen das Tempo. Einer von uns ist <strong>gelernter Elektroinstallateur</strong> und kennt den Alltag auf der Baustelle von innen.</p>
+          <ol class="steps4 steps4--dark">
 {ph}          </ol>
           <p class="reveal" style="margin-top:28px;text-align:center"><a class="link-arrow" href="/vorgehen">Mehr zum Vorgehen {ARROW}</a></p>
         </div>
