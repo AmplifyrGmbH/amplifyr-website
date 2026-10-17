@@ -40,3 +40,4 @@ Nachtrag (Bild + Zitat, Platzhalter bis eigene Fotos vorliegen, alle CC0):
 | `zitat-bewirtschaftung-*` | Mehrfamilienhäuser | https://wordpress.org/photos/photo/132689233a/ |
 | `zitat-kmu-*` | Team an Laptops | https://wordpress.org/photos/photo/83563ef334/ |
 | `handwerk-hero-*` | Bauarbeiter vor Arbeitsfahrzeug (Kopfbild Handwerk) | https://wordpress.org/photos/photo/12664ef761/ (CC0) |
+| `blog-hero-*` | Laptop, Notizbuch und Kaffee im Licht, Foto: sonia jahandari | https://unsplash.com/photos/Iz_dQ_t_9HE (Unsplash-Lizenz) |
