@@ -1541,3 +1541,5 @@ body:not([data-page]) .eyebrow::before, [data-page="404"] .eyebrow::before { -we
 .hw-trust__who { font-size: 1.05rem; line-height: 1.6; color: var(--text-muted); }
 .hw-trust__who strong { color: var(--navy); }
 .hw-trust__who .link-arrow { display: inline-flex; margin-left: 4px; color: var(--navy); }
+/* Kontakt: Abstand zwischen zentriertem Kopf und Kacheln */
+.kt-support, .kt-team { margin-top: 48px; }
