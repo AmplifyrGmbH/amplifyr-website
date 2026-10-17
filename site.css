@@ -1726,3 +1726,11 @@ body:has(:is(.chapter--dark, .approach, .insights) + .contact) .ft-logo__dark { 
   .nav-desktop a { font-size: 1.22rem; padding: 0 13px; }
   .nav-desktop .btn { font-size: 1.22rem; }
 }
+
+/* Handwerk «Was uns unterscheidet»: Texte grösser */
+.hw-not s { font-size: clamp(1.3rem, 2vw, 1.65rem); }
+.hw-not span { font-size: 1.05rem; }
+.hw-us__label { font-size: 1.3rem; }
+.hw-us__text { font-size: clamp(1.15rem, 1.5vw, 1.35rem); max-width: 60ch; }
+#unterschied .lead { font-size: clamp(1.25rem, 1.9vw, 1.6rem); }
+@media (max-width: 599px) { .hw-not li { padding: 18px 16px; } .hw-not s { font-size: 1.12rem; } .hw-not span { font-size: 0.98rem; } }
