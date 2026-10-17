@@ -1443,3 +1443,9 @@ body:not([data-page]) .eyebrow::before, [data-page="404"] .eyebrow::before { -we
 
 /* Footer farblich vom CTA getrennt: CTA navy-deep, Footer Navy */
 .site-footer { background: var(--navy); --axis-bg: var(--navy); }
+
+/* CTA heller (Navy), Footer dunkel (#070D19) */
+.contact { background: var(--navy); --axis-bg: var(--navy); }
+.site-footer { background: #070D19; --axis-bg: #070D19; }
+/* Folgt der CTA direkt auf einen dunklen Abschnitt, nimmt er Navy-Deep, damit die Flächen nicht verschmelzen */
+.chapter--dark + .contact, .approach + .contact, .insights + .contact { background: var(--navy-deep); --axis-bg: var(--navy-deep); }
