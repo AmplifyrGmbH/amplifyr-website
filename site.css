@@ -1623,3 +1623,6 @@ button.contact__faq-title[aria-expanded="true"] .plus { transform: rotate(45deg)
 .hw-us__text strong { color: var(--white); }
 .hw-us__name img { display: inline-block; width: clamp(180px, 22vw, 260px); height: auto; margin-top: 4px; }
 .hw-not s { white-space: nowrap; }
+/* Sprungnavigation mittig (auf schmalen Bildschirmen scrollbar ab links) */
+.subnav ul > li:first-child { margin-left: auto; }
+.subnav ul > li:last-child { margin-right: auto; }
