@@ -97,7 +97,7 @@ def body():
       </div>
     </section>
 
-{photo_quote('zitat-handwerk','Luftaufnahme von Zürich mit Limmat, Grossmünster und Zürichsee','Alles Digitale für Handwerksbetriebe aus einer Hand? Gab es in der Schweiz bisher nicht.<br>Dann kam amplifyr.')}
+{photo_quote('zitat-handwerk','Luftaufnahme von Zürich mit Limmat, Grossmünster und Zürichsee','Alles Digitale für Handwerksbetriebe aus einer Hand? Gab es in der Schweiz bisher nicht. Dann kam amplifyr.')}
     <!-- ===================== Ihr Betrieb ===================== -->
     <section id="betrieb" class="chapter chapter--white" data-area="handwerk" aria-labelledby="betrieb-title">
       <div class="container cols">
