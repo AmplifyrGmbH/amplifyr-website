@@ -67,7 +67,7 @@ def body():
         <div class="container cols">
           <div>
             <p class="eyebrow reveal">Handwerk</p>
-            <h1 id="page-title" class="page-statement reveal" data-delay="1">Wir machen Ihren Handwerksbetrieb <strong>durchgängig digital</strong>: von den <strong>Abläufen</strong> über Software und IT bis zur Website, aus einer Hand.</h1>
+            <h1 id="page-title" class="page-statement reveal" data-delay="1">Wir machen Ihren Handwerksbetrieb <strong>durchgängig digital</strong>: von den <strong>Abläufen</strong> über Software und IT bis zur Website, <strong>alles aus einer Hand</strong>.</h1>
           </div>
         </div>
       </div>
