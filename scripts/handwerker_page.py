@@ -94,12 +94,17 @@ def body():
           <p class="lead reveal" data-delay="1">Wir beginnen bei Ihren Abläufen, nicht bei einem Programm. Mit Ausbildung in Prozessoptimierung, Business-Verständnis und Erfahrung aus dem Handwerk bringen wir alles Digitale zusammen.</p>
         </div>
         <div class="c-wide">
-          <ul class="hw-compare">
-            <li class="reveal"><p class="hw-compare__who">Softwareanbieter</p><p>Liefert ein Programm. Ob es zu Ihren Abläufen passt, bleibt Ihre Sache.</p></li>
-            <li class="reveal" data-delay="1"><p class="hw-compare__who">IT-Betrieb</p><p>Kümmert sich um Geräte und Netzwerk. Die Abläufe im Büro bleiben, wie sie sind.</p></li>
-            <li class="hw-compare__us reveal" data-delay="2"><p class="hw-compare__who">amplifyr</p><p>Analysiert Ihre Abläufe, wählt oder baut die passende Software, richtet IT und Website ein und betreut alles weiter. <strong>Ein Ansprechpartner für das Ganze.</strong></p></li>
+          <ul class="hw-not">
+            <li class="reveal"><s>Softwareanbieter</s><span>liefert ein Programm</span></li>
+            <li class="reveal" data-delay="1"><s>IT&#8209;Betrieb</s><span>betreut Geräte und Netzwerk</span></li>
+            <li class="reveal" data-delay="2"><s>Webdesigner</s><span>baut eine Website</span></li>
+            <li class="reveal" data-delay="3"><s>KI&#8209;Agentur</s><span>verkauft ein KI-Tool</span></li>
           </ul>
-          <p class="hw-claim reveal">Spezialisiert auf Handwerksbetriebe.</p>
+          <div class="hw-us reveal">
+            <p class="hw-us__label">Alles in einem</p>
+            <p class="hw-us__name"><img src="/Logos/amplifyr_logo/amplifyr-logo-weiss-hellblau.svg" alt="amplifyr" width="400" height="120" loading="lazy"></p>
+            <p class="hw-us__text">Wir analysieren Ihre Abläufe, wählen oder bauen die passende Software, richten IT und Website ein, setzen KI dort ein, wo sie etwas bringt, und betreuen alles weiter. <strong>Ein Ansprechpartner für das Ganze, spezialisiert auf Handwerksbetriebe.</strong></p>
+          </div>
         </div>
       </div>
     </section>
