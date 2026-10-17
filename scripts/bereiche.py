@@ -388,7 +388,6 @@ def build(name, c):
       'body': f'body/{name}.html',
     }
     if not cfg['preload']: cfg.pop('preload')
-    if name == 'bewirtschaftung': cfg['robots'] = 'noindex, follow'
     json.dump(cfg, open(f'{S}/pages/{name}.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=2)
     print(name, len(c['title']), len(c['desc']))
 
