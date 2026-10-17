@@ -925,7 +925,7 @@ body.menu-open { overflow: hidden; }
 .member__img { aspect-ratio: 5 / 4; overflow: hidden; border-radius: var(--radius); background: var(--sky-soft); }
 .member__img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; }
 .member__role { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.04em; color: var(--text-muted); }
-.member h3 { margin-top: 6px; font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 600; letter-spacing: -0.02em; line-height: 1.1; }
+.member h3, .member h2.member__name { margin-top: 6px; font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 600; letter-spacing: -0.02em; line-height: 1.1; }
 .member__bio { margin-top: 16px; font-size: 1.08rem; line-height: 1.6; max-width: 52ch; }
 .member__creds { margin-top: 14px; font-size: 0.9rem; color: var(--text-muted); max-width: 56ch; }
 .member__mail { margin-top: 22px; }
@@ -1839,3 +1839,4 @@ body:has(:is(.chapter--dark, .approach, .insights) + .contact) .ft-logo__dark { 
 }
 .member__role { font-size: 0.85rem; }
 .kt-facts dt { font-size: 0.82rem; }
+.hw-not s { color: rgba(26, 39, 68, 0.7); }
