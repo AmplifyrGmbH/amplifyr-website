@@ -100,6 +100,7 @@ def body():
       </div>
     </section>
 
+{photo_quote('zitat-handwerk','Arbeiter beim Schweissen','Der Rapport ist fertig, bevor der Lieferwagen losfährt.')}
     <!-- ===================== Ihr Betrieb ===================== -->
     <section id="betrieb" class="chapter chapter--white" data-area="handwerk" aria-labelledby="betrieb-title">
       <div class="container cols">
@@ -116,7 +117,6 @@ def body():
       </div>
     </section>
 
-{photo_quote('zitat-handwerk','Arbeiter beim Schweissen','Der Rapport ist fertig, bevor der Lieferwagen losfährt.')}
     <!-- ===================== So arbeiten wir ===================== -->
     <section id="zusammenarbeit" class="chapter chapter--dark" data-area="handwerk" aria-labelledby="zus-title">
       <div class="container cols">
