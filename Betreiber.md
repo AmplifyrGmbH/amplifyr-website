@@ -18,7 +18,8 @@ Name, Adresse und Telefon müssen überall identisch sein:
 **amplifyr GmbH · Badenerstrasse 580 · 8048 Zürich · 044 244 59 95**
 
 - [x] **local.ch** und **search.ch** zeigen die aktuelle Adresse. Die Links im Schema (`sameAs`) und in `llms.txt` zeigen direkt auf die neuen Zürcher Einträge.
-- [ ] **Google Business Profil:** Adresse, Öffnungszeiten (Mo–Fr 08:00–18:00), Telefon und Website prüfen. Regelmässig Fotos und Beiträge ergänzen.
+- [ ] **Google Business Profil:** Adresse, Öffnungszeiten (Mo–Fr 08:00–19:00), Telefon und Website prüfen. Regelmässig Fotos und Beiträge ergänzen.
+- [x] **Öffnungszeiten:** Website, Schema und `llms.txt` zeigen neu Mo–Fr 08:00–19:00, gleich wie local.ch und search.ch.
 - [ ] **Bewertungen:** Zufriedene Kunden aktiv um eine Google-Bewertung bitten und jede Bewertung beantworten.
 - [ ] **LinkedIn und Instagram:** Adresse und Website-Link aktuell halten.
 
