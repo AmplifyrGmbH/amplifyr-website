@@ -26,9 +26,9 @@ SIZES = [
 ]
 
 WHAT = [
-    ('buero', 'Ein Partner für alles Digitale', 'Wir betrachten Ihren Betrieb ganzheitlich, mit Business-Denken, und schneiden jede Lösung auf Ihre Grösse zu.'),
-    ('auto', 'Durchgängige Abläufe', 'Von der Anfrage bis zur Rechnung greift alles ineinander. Nichts wird doppelt erfasst.'),
-    ('it', 'Umsetzung ohne Unterbruch', 'Schritt für Schritt neben dem Tagesgeschäft. Wir setzen um und betreuen danach weiter.'),
+    ('buero', 'Abläufe analysieren', 'Wir gehen Ihre Prozesse von der Anfrage bis zur Rechnung durch und finden, wo Zeit verloren geht.'),
+    ('auto', 'Passende Lösung umsetzen', 'Software, Automatisierung und KI dort, wo sie etwas bringen. Ihre bestehende Software bleibt, wo sie passt.'),
+    ('it', 'IT, Website und Betreuung', 'Sichere IT, eine Website, die Anfragen bringt, und ein Ansprechpartner, der bleibt.'),
 ]
 
 FLOW = ['Anfrage', 'Termin', 'Offerte', 'Einsatzplanung', 'Rapport', 'Rechnung']
@@ -67,7 +67,7 @@ def body():
         <div class="container cols">
           <div>
             <p class="eyebrow reveal">Handwerk</p>
-            <h1 id="page-title" class="page-statement reveal" data-delay="1">Wir organisieren Ihren Handwerksbetrieb <strong>digital</strong> und <strong>aus einer Hand</strong>: Abläufe, Software, IT und Website, zugeschnitten auf Ihre Grösse.</h1>
+            <h1 id="page-title" class="page-statement reveal" data-delay="1">Wir machen Ihren Handwerksbetrieb <strong>durchgängig digital</strong>: von den <strong>Abläufen</strong> über Software und IT bis zur Website, aus einer Hand.</h1>
           </div>
         </div>
       </div>
@@ -77,6 +77,7 @@ def body():
     <nav class="subnav" aria-label="Abschnitte dieser Seite">
       <div class="container">
         <ul>
+          <li><a href="#unterschied">Was uns unterscheidet</a></li>
           <li><a href="#betrieb">Ihr Betrieb</a></li>
           <li><a href="#leistung">Was wir tun</a></li>
           <li><a href="#zusammenarbeit">So arbeiten wir</a></li>
@@ -84,8 +85,27 @@ def body():
       </div>
     </nav>
 
+    <!-- ===================== Was uns unterscheidet ===================== -->
+    <section id="unterschied" class="chapter" data-area="handwerk" aria-labelledby="unterschied-title">
+      <div class="container cols">
+        <div class="c-label reveal"><p class="eyebrow">Was uns unterscheidet</p></div>
+        <div class="c-body">
+          <h2 id="unterschied-title" class="h-section reveal">Mehr als Software.<br>Mehr als IT.</h2>
+          <p class="lead reveal" data-delay="1">Wir beginnen bei Ihren Abläufen, nicht bei einem Programm. Mit Ausbildung in Prozessoptimierung, Business-Verständnis und Erfahrung aus dem Handwerk bringen wir alles Digitale zusammen.</p>
+        </div>
+        <div class="c-wide">
+          <ul class="hw-compare">
+            <li class="reveal"><p class="hw-compare__who">Softwareanbieter</p><p>Liefert ein Programm. Ob es zu Ihren Abläufen passt, bleibt Ihre Sache.</p></li>
+            <li class="reveal" data-delay="1"><p class="hw-compare__who">IT-Betrieb</p><p>Kümmert sich um Geräte und Netzwerk. Die Abläufe im Büro bleiben, wie sie sind.</p></li>
+            <li class="hw-compare__us reveal" data-delay="2"><p class="hw-compare__who">amplifyr</p><p>Analysiert Ihre Abläufe, wählt oder baut die passende Software, richtet IT und Website ein und betreut alles weiter. <strong>Ein Ansprechpartner für das Ganze.</strong></p></li>
+          </ul>
+          <p class="hw-claim reveal">Spezialisiert auf Handwerksbetriebe.</p>
+        </div>
+      </div>
+    </section>
+
     <!-- ===================== Ihr Betrieb ===================== -->
-    <section id="betrieb" class="chapter" data-area="handwerk" aria-labelledby="betrieb-title">
+    <section id="betrieb" class="chapter chapter--white" data-area="handwerk" aria-labelledby="betrieb-title">
       <div class="container cols">
         <div class="c-label reveal"><p class="eyebrow">Ihr Betrieb</p></div>
         <div class="c-body">
@@ -105,8 +125,8 @@ def body():
       <div class="container cols">
         <div class="c-label reveal"><p class="eyebrow">Was wir tun</p></div>
         <div class="c-body">
-          <h2 id="leistung-title" class="h-section reveal">Ihr digitaler Generalunternehmer.</h2>
-          <p class="lead muted reveal" data-delay="1">Auf der Baustelle koordiniert der Generalunternehmer alle Gewerke. Fürs Digitale übernehmen wir diese Rolle, mit einer Nummer für alles.</p>
+          <h2 id="leistung-title" class="h-section reveal">Vom Ablauf zur Lösung.</h2>
+          <p class="lead muted reveal" data-delay="1">Wie ein Generalunternehmer auf der Baustelle koordinieren wir alle digitalen Gewerke, mit einer Nummer für alles.</p>
         </div>
         <div class="c-wide">
           <ul class="hw-tiles">
@@ -161,7 +181,7 @@ if __name__ == '__main__':
     j = f'{S}/pages/handwerker.json'
     d = json.load(open(j, encoding='utf-8'))
     d['og_title'] = 'Weniger Verwaltung, mehr Zeit für Aufträge | amplifyr'
-    d['description'] = 'amplifyr organisiert Handwerksbetriebe digital, aus einer Hand: Abläufe, Software, IT und Website, für kleine und grössere Betriebe. Kostenloses Erstgespräch.'
+    d['description'] = 'Mehr als Software: amplifyr analysiert die Abläufe von Handwerksbetrieben und macht sie durchgängig digital, mit Software, IT und Website aus einer Hand.'
     for s in d['schemas']:
         if s.get('@type') == 'FAQPage':
             s['mainEntity'] = [{'@type': 'Question', 'name': html.unescape(q), 'acceptedAnswer': {'@type': 'Answer', 'text': html.unescape(a)}} for q, a in FAQ]
