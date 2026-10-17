@@ -1440,3 +1440,6 @@ body:not([data-page]) .eyebrow::before, [data-page="404"] .eyebrow::before { -we
 /* Kapitel, deren Körper Fliesstext ist (Rechtliches, Blog-Kopf): links lassen */
 .chapter:has(.prose) .cols > .c-label, .chapter:has(.prose) .cols > .c-body { text-align: left; }
 .chapter:has(.prose) .cols > .c-label .eyebrow { justify-content: flex-start; }
+
+/* Footer farblich vom CTA getrennt: CTA navy-deep, Footer Navy */
+.site-footer { background: var(--navy); --axis-bg: var(--navy); }
