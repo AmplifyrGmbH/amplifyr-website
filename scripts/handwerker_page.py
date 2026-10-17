@@ -18,11 +18,9 @@ FAQ = [
 
 SIZES = [
     ('Kleiner Betrieb', 'Sie sind Chef, Büro und Disposition in einer Person.',
-     'Wir nehmen Ihnen Offerten, Rapporte und Rechnungen ab, damit der Feierabend wieder Feierabend ist.',
-     ['Offerten in Minuten statt am Abend', 'Anrufe und Anfragen gehen nicht verloren', 'IT, um die Sie sich nicht kümmern müssen']),
+     ['Offerten und Rechnungen schreiben Sie abends oder am Wochenende', 'Auf der Baustelle verpassen Sie Anrufe und Anfragen', 'Bei IT-Problemen sind Sie auf sich allein gestellt']),
     ('Grösserer Betrieb', 'Ihr Team arbeitet in mehreren Programmen nebeneinander.',
-     'Wir verbinden die Systeme, schaffen Übersicht und entlasten Büro und Disposition, damit Sie wachsen können, ohne mehr Verwaltung.',
-     ['Einsatzplanung und Rapporte an einem Ort', 'Einheitliche Abläufe für alle Teams', 'Sichere, zentral betreute IT']),
+     ['Daten werden doppelt erfasst, Fehler schleichen sich ein', 'Wer wann wo im Einsatz ist, weiss nur die Disposition', 'Mit jedem Auftrag wächst auch die Arbeit im Büro']),
 ]
 
 FLOW = ['Anfrage', 'Termin', 'Offerte', 'Einsatzplanung', 'Rapport', 'Rechnung']
@@ -35,13 +33,12 @@ PHASES = [('Erstgespräch', 'Kostenlos. Wir schauen, wo Zeit verloren geht.'),
 
 def body():
     sizes = ''
-    for i, (lab, h, t, pts) in enumerate(SIZES):
+    for i, (lab, h, pts) in enumerate(SIZES):
         li = ''.join(f'<li>{p}</li>' for p in pts)
         sizes += f'''            <article class="hw-size reveal"{' data-delay="1"' if i else ''}>
               <p class="hw-size__label">{lab}</p>
               <h3>{h}</h3>
-              <p>{t}</p>
-              <ul class="checklist">{li}</ul>
+              <ul class="hw-pains">{li}</ul>
             </article>
 '''
     flow = ''.join(f'<li>{s}</li>' for s in FLOW)
@@ -107,7 +104,7 @@ def body():
         <div class="c-label reveal"><p class="eyebrow">Ihr Betrieb</p></div>
         <div class="c-body">
           <h2 id="betrieb-title" class="h-section reveal">Ob 3 oder 80 Mitarbeitende.</h2>
-          <p class="lead reveal" data-delay="1">Die Verwaltung frisst Zeit, die auf der Baustelle fehlt. Beim kleinen Betrieb die des Chefs, beim grösseren die des ganzen Büros.</p>
+          <p class="lead reveal" data-delay="1">Die Verwaltung frisst Zeit, die auf der Baustelle fehlt. Wo es klemmt, hängt von der Grösse ab.</p>
         </div>
         <div class="c-wide">
           <div class="hw-sizes">
