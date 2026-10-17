@@ -1510,3 +1510,34 @@ body:not([data-page]) .eyebrow::before, [data-page="404"] .eyebrow::before { -we
 .ap-step:not(:last-child)::after { content: ""; position: absolute; left: -29px; top: 23px; bottom: -48px; width: 1px; background: rgba(176, 196, 222, 0.45); }
 .ap-step:has(+ .ap-step--flow)::after { bottom: -74px; }
 @media (min-width: 900px) { .ap-step:not(:last-child)::after { left: -49px; } }
+
+/* ============================================================
+   Handwerkerseite (kompakt)
+   ============================================================ */
+.hw-calc { margin-top: 32px; padding: 28px 28px 24px; border-radius: 14px; background: var(--navy); color: var(--white); }
+.hw-calc__label { font-family: var(--font-brand); font-style: italic; color: var(--sky); font-size: 1.05rem; }
+.hw-calc__math { margin-top: 10px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; font-size: clamp(1.05rem, 1.8vw, 1.35rem); color: rgba(255, 255, 255, 0.8); }
+.hw-calc__math b { font-size: clamp(1.6rem, 3.2vw, 2.4rem); font-weight: 600; letter-spacing: -0.02em; color: var(--white); }
+.hw-calc__note { margin-top: 12px; font-size: 0.95rem; color: rgba(255, 255, 255, 0.65); }
+.hw-calc__note small { opacity: 0.75; margin-left: 4px; }
+
+.hw-tiles { margin-top: 48px; list-style: none; display: grid; gap: 12px; }
+@media (min-width: 700px) { .hw-tiles { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1024px) { .hw-tiles { grid-template-columns: repeat(3, 1fr); gap: 16px; } }
+.hw-tile { display: grid; grid-template-columns: 42px 1fr; column-gap: 16px; row-gap: 4px; align-content: start; padding: 24px; border-radius: 12px; border: 1px solid rgba(176, 196, 222, 0.22); background: #1f2c4a; }
+.hw-tile .hub__icon { grid-row: 1 / span 2; margin: 0; }
+.hw-tile b { font-size: 1.12rem; font-weight: 600; }
+.hw-tile span:last-child { color: rgba(255, 255, 255, 0.72); font-size: 0.95rem; line-height: 1.5; }
+
+.hw-phases { margin-top: 48px; list-style: none; display: grid; gap: 12px; }
+@media (min-width: 900px) { .hw-phases { grid-template-columns: repeat(3, 1fr); gap: 16px; } }
+.hw-phase { padding: 26px 24px; border-radius: 12px; background: var(--white); border: 1px solid var(--line); }
+.hw-phase__gain { display: inline-flex; align-items: baseline; gap: 6px; padding: 6px 12px; border-radius: 999px; background: var(--sky-soft); color: var(--text-muted); font-size: 0.85rem; }
+.hw-phase__gain b { font-size: 1.05rem; color: var(--navy); }
+.hw-phase h3 { margin-top: 16px; font-size: 1.2rem; font-weight: 600; }
+.hw-phase p { margin-top: 6px; color: var(--text-muted); }
+.hw-trust { margin-top: 32px; display: grid; gap: 24px; align-items: center; }
+@media (min-width: 900px) { .hw-trust { grid-template-columns: 1fr 1fr; gap: 48px; } }
+.hw-trust__who { font-size: 1.05rem; line-height: 1.6; color: var(--text-muted); }
+.hw-trust__who strong { color: var(--navy); }
+.hw-trust__who .link-arrow { display: inline-flex; margin-left: 4px; color: var(--navy); }

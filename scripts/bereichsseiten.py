@@ -397,4 +397,6 @@ def build(name, c):
 
 if __name__ == '__main__':
     for n, c in PAGES.items():
+        if n == 'handwerker':
+            continue  # eigene Seite: siehe handwerker_page.py
         build(n, c)
