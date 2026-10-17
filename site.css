@@ -1659,3 +1659,26 @@ main:has(> .contact:last-child) > .contact:last-child { padding-bottom: 56px; }
 [data-page="kmu"] .photo-quote__media img { object-position: 75% 50%; }
 [data-page="kmu"] .photo-quote__media::after { background: linear-gradient(180deg, rgba(18, 28, 51, 0) 30%, rgba(18, 28, 51, 0.8) 100%), linear-gradient(90deg, rgba(18, 28, 51, 0.45) 0%, rgba(18, 28, 51, 0) 55%); }
 @media (max-width: 767px) { [data-page="kmu"] .photo-quote__media::after { background: linear-gradient(180deg, rgba(18, 28, 51, 0.1) 0%, rgba(18, 28, 51, 0.88) 65%); } }
+
+/* Endet die Seite mit einem dunklen Abschnitt, werden CTA und Footer hell */
+.ft-logo__dark { display: none; }
+:is(.chapter--dark, .approach, .insights) + .contact { background: var(--paper); color: var(--navy); --axis-bg: var(--paper); }
+:is(.chapter--dark, .approach, .insights) + .contact .contact__title { color: var(--navy); }
+:is(.chapter--dark, .approach, .insights) + .contact .contact__title em { color: var(--text-muted); }
+:is(.chapter--dark, .approach, .insights) + .contact .contact__text { color: var(--text-muted); }
+:is(.chapter--dark, .approach, .insights) + .contact .btn--light { background: var(--navy); color: var(--white); }
+:is(.chapter--dark, .approach, .insights) + .contact .btn--light:hover { background: var(--navy-deep); }
+:is(.chapter--dark, .approach, .insights) + .contact button.contact__faq-title { color: var(--text-muted); }
+:is(.chapter--dark, .approach, .insights) + .contact button.contact__faq-title:hover { color: var(--navy); }
+:is(.chapter--dark, .approach, .insights) + .contact .faq--dark { color: var(--navy); }
+:is(.chapter--dark, .approach, .insights) + .contact .faq--dark .faq__list,
+:is(.chapter--dark, .approach, .insights) + .contact .faq--dark details { border-color: var(--line); }
+:is(.chapter--dark, .approach, .insights) + .contact .faq--dark summary { color: var(--text); }
+:is(.chapter--dark, .approach, .insights) + .contact .faq--dark summary:hover { color: var(--text-muted); }
+:is(.chapter--dark, .approach, .insights) + .contact .faq--dark summary .plus { color: var(--text-muted); }
+:is(.chapter--dark, .approach, .insights) + .contact .faq--dark details p { color: var(--text-muted); }
+body:has(:is(.chapter--dark, .approach, .insights) + .contact) .site-footer { background: var(--paper); --axis-bg: var(--paper); color: var(--text-muted); }
+body:has(:is(.chapter--dark, .approach, .insights) + .contact) .site-footer a:hover { color: var(--navy); }
+body:has(:is(.chapter--dark, .approach, .insights) + .contact) .site-footer > .container { border-top-color: var(--line); }
+body:has(:is(.chapter--dark, .approach, .insights) + .contact) .ft-logo__light { display: none; }
+body:has(:is(.chapter--dark, .approach, .insights) + .contact) .ft-logo__dark { display: block; }
