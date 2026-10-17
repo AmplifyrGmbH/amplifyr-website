@@ -1778,3 +1778,22 @@ body:has(:is(.chapter--dark, .approach, .insights) + .contact) .ft-logo__dark { 
 }
 .hw-journey__end { margin: 40px auto 0; max-width: 34ch; text-align: center; font-family: var(--font-brand); font-style: italic; font-size: clamp(1.4rem, 2.4vw, 2rem); line-height: 1.3; color: var(--white); }
 @media (min-width: 900px) { .hw-step b { align-self: start; } .hw-journey::before { bottom: 60px; } }
+
+/* Unternavigation: ruhige Tab-Leiste mit Unterstrich statt Pillen */
+.subnav { background: rgba(255, 255, 255, 0.92); border-bottom: 1px solid var(--line); box-shadow: 0 8px 24px -20px rgba(26, 39, 68, 0.35); }
+.subnav ul { gap: clamp(20px, 3.4vw, 48px); padding: 0; }
+.subnav a {
+  position: relative; min-height: 58px; padding: 0 2px; border: 0; border-radius: 0; background: none;
+  font-size: 1rem; font-weight: 500; letter-spacing: 0.005em; color: var(--text-muted);
+}
+.subnav a::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; border-radius: 2px;
+  background: var(--navy); transform: scaleX(0); transform-origin: center; transition: transform 0.3s var(--ease);
+}
+.subnav a:hover { color: var(--navy); border: 0; }
+.subnav a:hover::after { transform: scaleX(0.35); background: var(--sky); }
+.subnav a.is-active { background: none; color: var(--navy); font-weight: 600; border: 0; }
+.subnav a.is-active::after { transform: scaleX(1); background: var(--navy); }
+.subnav a:focus-visible { outline: 2px solid var(--navy); outline-offset: 4px; border-radius: 4px; }
+@media (max-width: 699px) { .subnav a { min-height: 50px; font-size: 0.95rem; } .subnav ul { gap: 22px; } }
+.subnav a::after { bottom: 0; height: 3px; }
