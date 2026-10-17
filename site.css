@@ -1722,3 +1722,7 @@ body:has(:is(.chapter--dark, .approach, .insights) + .contact) .ft-logo__dark { 
 .hero__statement h1 { line-height: 1.2; }
 .hero__statement h1 { line-height: 1.32; }
 .hero__statement p { font-size: clamp(1.6rem, 3vw, 2.8rem); max-width: none; }
+@media (min-width: 1240px) {
+  .nav-desktop a { font-size: 1.22rem; padding: 0 13px; }
+  .nav-desktop .btn { font-size: 1.22rem; }
+}
