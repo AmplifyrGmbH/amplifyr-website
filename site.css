@@ -1626,3 +1626,11 @@ button.contact__faq-title[aria-expanded="true"] .plus { transform: rotate(45deg)
 /* Sprungnavigation mittig (auf schmalen Bildschirmen scrollbar ab links) */
 .subnav ul > li:first-child { margin-left: auto; }
 .subnav ul > li:last-child { margin-right: auto; }
+
+/* CTA und Footer aus einem Guss: gleicher Grund, keine Footer-Navigation */
+.site-footer { background: var(--navy); --axis-bg: var(--navy); padding: 0 0 32px; }
+body:has(:is(.chapter--dark, .approach, .insights) + .contact) .site-footer { background: var(--navy-deep); --axis-bg: var(--navy-deep); }
+main:has(> .contact:last-child) > .contact:last-child { padding-bottom: 56px; }
+.site-footer > .container { border-top: 1px solid rgba(176, 196, 222, 0.14); padding-top: 28px; }
+.ft-top { border-bottom: 0; padding-bottom: 10px; }
+.ft-bottom { padding-top: 6px; }
