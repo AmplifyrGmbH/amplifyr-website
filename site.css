@@ -1852,3 +1852,45 @@ body:has(:is(.chapter--dark, .approach, .insights) + .contact) .ft-logo__dark { 
 /* Helle Flächen: eigener Stahlblau-Ton mit ausreichendem Kontrast (WCAG AA für grosse Schrift) */
 :root { --sky-ink: #5F7CA8; }
 :is(.chapter--dark, .approach, .insights) + .contact .contact__title em { color: var(--sky-ink); }
+
+/* ============================================================
+   Mobile: Bereichs-Teaser als Bildkachel mit Text darauf
+   (am Desktop erscheint das Bild erst beim Hover, auf dem Handy
+   gibt es keinen Hover — dort steht der Text direkt auf dem Bild)
+   ============================================================ */
+@media (max-width: 1023px) {
+  .area { color: var(--white); border-bottom: 0; }
+  .area:last-child { border-bottom: 0; }
+  /* feine Linie als Trennung zwischen den Kacheln */
+  .area + .area::before { background: rgba(255, 255, 255, 0.22); }
+  .area__media {
+    position: absolute; inset: 0; aspect-ratio: auto; z-index: -1; opacity: 1;
+  }
+  .area__media::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(18, 28, 51, 0.55) 0%, rgba(18, 28, 51, 0.82) 55%, rgba(18, 28, 51, 0.94) 100%);
+  }
+  .area__inner { padding: 48px 0 44px; min-height: 60vh; display: flex; align-items: flex-end; }
+  .area__inner > .container { width: 100%; }
+  .area .eyebrow { color: rgba(255, 255, 255, 0.78); }
+  .area__title { color: var(--area); margin-top: 8px; }
+  .area__text { color: rgba(255, 255, 255, 0.85); max-width: 34ch; }
+  .area__head .eyebrow::before { background: var(--area); }
+  .area__more { font-weight: 600; }
+}
+
+/* Footer: Adresse als Zeilen statt als Kette mit Trennzeichen */
+.site-footer address { display: flex; flex-wrap: wrap; gap: 2px 10px; }
+.ft-nap + .ft-nap::before { content: "·"; margin-right: 10px; opacity: 0.5; }
+@media (max-width: 767px) {
+  .site-footer { padding-bottom: 32px; }
+  .site-footer > .container { padding-top: 24px; }
+  .ft-top { padding-bottom: 20px; }
+  .site-footer address { flex-direction: column; gap: 0; line-height: 1.8; }
+  .ft-nap + .ft-nap::before { content: none; }
+  .ft-nap a { display: block; }
+  .ft-bottom { gap: 20px; padding-top: 4px; }
+  /* Links in zwei gleichmässige Dreierzeilen statt einer gebrochenen Reihe */
+  .ft-legal { display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: 2px 24px; }
+  .ft-legal a { min-height: 38px; }
+}
