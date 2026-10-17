@@ -1687,3 +1687,7 @@ body:has(:is(.chapter--dark, .approach, .insights) + .contact) .ft-logo__dark { 
 .hero__statement { max-width: 34ch; }
 .hero__statement h1 { display: block; font-size: clamp(2.2rem, 4.6vw, 4.2rem); line-height: 1.08; letter-spacing: -0.025em; font-weight: 400; }
 .hero__statement p { display: block; margin-top: 20px; font-size: clamp(1.1rem, 1.6vw, 1.45rem); line-height: 1.4; }
+
+/* Startseite: Name ausgeschrieben statt Logo */
+.hero__brand { font-family: var(--font); font-style: normal; font-size: 1rem; font-weight: 600; letter-spacing: 0.14em; color: var(--sky); margin: 0 0 18px; }
+@media (min-width: 1024px) { .hero__brand { font-size: 1.15rem; margin-bottom: 22px; } }
