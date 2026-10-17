@@ -17,9 +17,9 @@ FAQ = [
 ]
 
 SIZES = [
-    ('Kleiner Betrieb', 'Sie sind Chef, Büro und Disposition in einer Person.',
+    ('3 Mitarbeitende', 'Sie sind Chef, Büro und Disposition in einer Person.',
      ['Offerten und Rechnungen schreiben Sie abends oder am Wochenende', 'Auf der Baustelle verpassen Sie Anrufe und Anfragen', 'Bei IT-Problemen sind Sie auf sich allein gestellt']),
-    ('Grösserer Betrieb', 'Ihr Team arbeitet in mehreren Programmen nebeneinander.',
+    ('80 Mitarbeitende', 'Ihr Team arbeitet in mehreren Programmen nebeneinander.',
      ['Daten werden doppelt erfasst, Fehler schleichen sich ein', 'Wer wann wo im Einsatz ist, weiss nur die Disposition', 'Mit jedem Auftrag wächst auch die Arbeit im Büro']),
 ]
 
@@ -103,14 +103,13 @@ def body():
       <div class="container cols">
         <div class="c-label reveal"><p class="eyebrow">Ihr Betrieb</p></div>
         <div class="c-body">
-          <h2 id="betrieb-title" class="h-section reveal"><span class="hw-num">64 %</span> der Büroarbeit im Handwerk lässt sich automatisieren.</h2>
-          <p class="lead reveal" data-delay="1">Trotzdem geht im Büro noch immer Zeit verloren, die auf der Baustelle fehlt.</p>
-          <p class="hw-source reveal" data-delay="1">Quelle: IfM Bonn, IW Köln 2025</p>
+          <h2 id="betrieb-title" class="h-section reveal"><span class="hw-num">68&nbsp;%</span> der Büroarbeit könnte heute ein Computer erledigen.<sup class="fn"><a href="#fn-iab" aria-describedby="fn-iab">1</a></sup></h2>
+          <p class="lead reveal" data-delay="1">Im Handwerk machen das meist noch Menschen, von Hand und nach Feierabend. Ob 3 oder 80 Mitarbeitende, nur die Probleme unterscheiden sich.</p>
         </div>
         <div class="c-wide">
-          <h3 class="hw-sizes-title reveal">Ob 3 oder 80 Mitarbeitende.</h3>
           <div class="hw-sizes">
 {sizes}          </div>
+          <p class="hw-footnote" id="fn-iab"><sup>1</sup> Anteil der Tätigkeiten in Berufen der Unternehmensführung und -organisation (u.&nbsp;a. Büro- und Sekretariatsberufe), die potenziell von Computern erledigt werden könnten, Deutschland, Stand 2022. Quelle: Grienberger, K., Matthes, B. &amp; Paulus, W. (2024). <cite>Vor allem Hochqualifizierte bekommen die Digitalisierung verstärkt zu spüren.</cite> IAB-Kurzbericht 5/2024. Institut für Arbeitsmarkt- und Berufsforschung, Nürnberg. <a href="https://doku.iab.de/kurzber/2024/kb2024-05.pdf" target="_blank" rel="noopener">PDF öffnen</a></p>
         </div>
       </div>
     </section>
