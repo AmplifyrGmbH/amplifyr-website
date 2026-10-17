@@ -51,6 +51,17 @@ AddType text/vcard .vcf
   Require all denied
 </FilesMatch>
 
+# Arbeitsdateien, die nicht ins Web gehören. Der Deploy lädt sie zwar nicht
+# mehr hoch (siehe exclude in .github/workflows/deploy.yml), ältere Deploys
+# haben aber Reste auf dem Server hinterlassen.
+<FilesMatch "\.(md|py|sh|yml|yaml|bak|log|sql|ini)$">
+  Require all denied
+</FilesMatch>
+RedirectMatch 404 ^/(scripts|archiv|\.github)(/|$)
+<Files "dev-router.php">
+  Require all denied
+</Files>
+
 # ── Fehlerseite ───────────────────────────────────────────
 ErrorDocument 404 /404.html
 
