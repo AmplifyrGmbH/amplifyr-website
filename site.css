@@ -1841,3 +1841,10 @@ body:has(:is(.chapter--dark, .approach, .insights) + .contact) .ft-logo__dark { 
 .kt-facts dt { font-size: 0.82rem; }
 .hw-not s { color: rgba(26, 39, 68, 0.7); }
 .blog-card-img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+
+/* Belegte Kennzahl in der Ausgangslage: Quelle mehrzeilig und lesbar */
+.aus-stat small { display: block; margin-top: 10px; font-size: 0.8rem; line-height: 1.5; opacity: 0.8; }
+.aus-stat small cite { font-style: italic; }
+.aus-stat small a { color: inherit; display: inline-block; padding: 6px 2px; margin: -6px -2px; }
+.aus-stat { align-items: start; justify-content: center; text-align: left; }
+.aus-stat b { line-height: 0.9; }

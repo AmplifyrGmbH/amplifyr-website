@@ -100,7 +100,7 @@ PAGES = {
          ('Handwerker koordinieren', 'Offerte anfragen, Termin abstimmen, nachfassen und die Rechnung prüfen.'),
          ('Versammlungen', 'Einladungen, Traktanden, Vollmachten und Protokolle vorbereiten und nachführen.'),
          ('Unterlagen suchen', 'Protokolle, Beschlüsse, Abrechnungen und Belege zusammensuchen und nachliefern.')],
-  stat=('rund 40 %', 'kürzere Bearbeitungszeiten durch Digitalisierung in der Immobilienbranche.', 'Quelle: Digital-Real-Estate-Umfrage 2024'),
+  stat=('4,6', 'von 10 Punkten: So digital ist die Immobilienbewirtschaftung heute.', 'Digitalisierungsgrad Real Estate Management, Skala 1–10. Quelle: pom+Consulting AG (2026). <cite>Digital Real Estate &amp; Construction Studie</cite>, Befragung von rund 200 Fach- und Führungskräften. <a href="https://www.pom.ch/de/investitions-und-kostenfragen-bremsen-die-digitale-transformation-der-bau-und-immobilienwirtschaft" target="_blank" rel="noopener">Ergebnisse ansehen</a>'),
   hub=['Anliegen, Rückrufe und Handwerker-Koordination laufen strukturiert.',
        'Ihr Kernsystem bleibt. Wir binden alles andere daran an.',
        'Versammlungen, Protokolle und Rechnungsprüfung laufen von selbst an.',
