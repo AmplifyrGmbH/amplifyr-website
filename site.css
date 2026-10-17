@@ -1563,3 +1563,6 @@ button.contact__faq-title[aria-expanded="true"] .plus { transform: rotate(45deg)
   .contact__row--faq .contact__faq-title { grid-row: 3; }
   .contact__row--faq .faq__list { grid-row: 4; }
 }
+.contact__row--faq .contact__btn { display: flex; align-items: center; line-height: 1; }
+.contact__row--faq button.contact__faq-title { min-height: 48px; line-height: 1; align-self: center; }
+.contact__row--faq button.contact__faq-title { margin: 0; }
