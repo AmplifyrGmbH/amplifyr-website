@@ -1691,3 +1691,15 @@ body:has(:is(.chapter--dark, .approach, .insights) + .contact) .ft-logo__dark { 
 /* Startseite: Name ausgeschrieben statt Logo */
 .hero__brand { font-family: var(--font); font-style: normal; font-size: 1rem; font-weight: 600; letter-spacing: 0.14em; color: var(--sky); margin: 0 0 18px; }
 @media (min-width: 1024px) { .hero__brand { font-size: 1.15rem; margin-bottom: 22px; } }
+
+/* Header deutlich grösser */
+:root { --header-h: 84px; }
+@media (min-width: 768px) { :root { --header-h: 112px; } }
+.site-logo { width: 160px; }
+.burger span { width: 30px; }
+@media (min-width: 1240px) {
+  .site-logo { width: 210px; }
+  .nav-desktop ul { gap: 8px; }
+  .nav-desktop a { font-size: 1.08rem; padding: 0 12px; min-height: 48px; }
+  .nav-desktop .btn { margin-left: 16px; min-height: 52px; padding: 0 26px; font-size: 1.08rem; }
+}
