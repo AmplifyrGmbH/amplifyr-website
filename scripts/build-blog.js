@@ -61,6 +61,15 @@ function buildAssetMap(includes) {
   return map;
 }
 
+// Contentful liefert Originaldateien aus (teils mehrere MB). Die Images-API
+// skaliert und komprimiert on the fly — ohne das wiegt eine Blog-Seite
+// schnell ein Vielfaches des Rests der Website.
+function cfImg(url, width) {
+  if (!url || url.indexOf('images.ctfassets.net') === -1) return url;
+  const sep = url.indexOf('?') === -1 ? '?' : '&';
+  return url + sep + 'w=' + width + '&fm=webp&q=72&fit=fill';
+}
+
 function formatDate(dateStr) {
   if (!dateStr) return '';
   return new Date(dateStr).toLocaleDateString('de-CH', {
@@ -168,8 +177,9 @@ function generatePostHtml(f, slug, assets, chrome) {
   // Cover image
   const imgRef = f.coverImage || f.titelbild;
   const imgId  = imgRef && imgRef.sys ? imgRef.sys.id : null;
-  const imgUrl = imgId && assets[imgId] ? assets[imgId] : null;
-  const ogImg  = imgUrl || (BASE_URL + '/Logos/Open_Graph_Image_Amplifyr.webp');
+  const imgRaw = imgId && assets[imgId] ? assets[imgId] : null;
+  const imgUrl = cfImg(imgRaw, 1200);
+  const ogImg  = cfImg(imgRaw, 1200) || (BASE_URL + '/Logos/Open_Graph_Image_Amplifyr.webp');
   const coverHtml = imgUrl
     ? '<img class="post-cover" src="' + esc(imgUrl) + '" alt="' + esc(title) + '" width="1200" height="630" loading="eager" decoding="async">'
     : '';
@@ -270,7 +280,7 @@ function generateCardHtml(f, slug, assets) {
   const cat    = f.category || f.kategorie || '';
   const imgRef = f.coverImage || f.titelbild;
   const imgId  = imgRef && imgRef.sys ? imgRef.sys.id : null;
-  const imgUrl = imgId && assets[imgId] ? assets[imgId] : null;
+  const imgUrl = cfImg(imgId && assets[imgId] ? assets[imgId] : null, 800);
   const teaser = typeof f.teaser === 'string'
     ? f.teaser
     : extractText(f.teaser).slice(0, 160);
