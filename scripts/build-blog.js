@@ -359,6 +359,17 @@ async function main() {
   fs.writeFileSync(distBlogHtml, blogHtml, 'utf8');
   console.log('  + blog/index.html');
 
+  // ── Vorschau für die Startseite: die drei neusten Karten als HTML-Fragment ───
+  // Die Startseite lädt /blog/preview.html (gleiche Domain) statt Contentful
+  // im Browser abzufragen. So braucht die Startseite keinen Zugriffsschlüssel.
+  const preview = data.items.slice(0, 3)
+    .map(item => generateCardHtml(item.fields, item.fields.slug || item.sys.id, assets)
+      .replace('<h2 class="blog-card-title">', '<h3 class="blog-card-title">')
+      .replace('</h2>', '</h3>'))
+    .join('\n');
+  fs.writeFileSync(path.join(distBlogDir, 'preview.html'), preview + '\n', 'utf8');
+  console.log('  + blog/preview.html');
+
   console.log('\nFertig. ' + data.items.length + ' Posts generiert.');
 }
 

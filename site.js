@@ -177,6 +177,19 @@
     });
   }
 
+  // ---- Blog-Vorschau auf der Startseite (statisch gebaut von scripts/build-blog.js) ----
+  var preview = document.getElementById('blog-preview-grid');
+  if (preview) {
+    fetch('/blog/preview.html')
+      .then(function (res) { if (!res.ok) throw new Error(res.status); return res.text(); })
+      .then(function (html) {
+        if (!html.trim()) throw new Error('leer');
+        preview.innerHTML = html;
+        preview.setAttribute('aria-busy', 'false');
+      })
+      .catch(function () { preview.hidden = true; preview.setAttribute('aria-busy', 'false'); });
+  }
+
   // ---- Klick-Tracking über Umami (Attribute data-gtm-* aus der früheren GTM-Konvention) ----
   document.addEventListener('click', function (e) {
     var el = e.target.closest('[data-gtm-event]');

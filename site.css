@@ -1840,3 +1840,4 @@ body:has(:is(.chapter--dark, .approach, .insights) + .contact) .ft-logo__dark { 
 .member__role { font-size: 0.85rem; }
 .kt-facts dt { font-size: 0.82rem; }
 .hw-not s { color: rgba(26, 39, 68, 0.7); }
+.blog-card-img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
