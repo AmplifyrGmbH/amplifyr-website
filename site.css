@@ -1463,3 +1463,10 @@ body:not([data-page]) .eyebrow::before, [data-page="404"] .eyebrow::before { -we
 .contact__faq-all > summary.contact__faq-title { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sky); }
 .contact__faq-all > summary.contact__faq-title:hover { color: var(--white); }
 @media (min-width: 1024px) { .contact__faq { justify-self: end; } .contact__faq-all[open] { width: 100%; } .contact__faq:has(details[open]) { justify-self: stretch; } }
+
+/* CTA mit FAQ: alles mittig übereinander */
+.contact__row--faq, .contact__row { display: flex !important; flex-direction: column; align-items: center; text-align: center; gap: 28px; }
+.contact__main { display: flex; flex-direction: column; align-items: center; }
+.contact__faq, .contact__faq:has(details[open]) { justify-self: auto; width: 100%; max-width: 720px; display: flex; flex-direction: column; align-items: center; }
+.contact__faq-all { display: flex; flex-direction: column; align-items: center; width: 100%; }
+.contact__faq-all > .faq__list { width: 100%; text-align: left; }
