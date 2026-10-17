@@ -107,9 +107,9 @@ def body():
           <p class="lead reveal" data-delay="1">Im Büro geht Zeit verloren, die auf der Baustelle fehlt. Im kleinen wie im grösseren Betrieb.</p>
         </div>
         <div class="c-wide">
+          <p class="hw-stat hw-stat--big reveal"><b>64 %</b><span>der Admin-Aufgaben im Handwerk gelten als automatisierbar.</span><small>Quelle: IfM Bonn, IW Köln 2025</small></p>
           <div class="hw-sizes">
 {sizes}          </div>
-          <p class="hw-stat reveal"><b>64 %</b> der Admin-Aufgaben im Handwerk gelten als automatisierbar. <small>Quelle: IfM Bonn, IW Köln 2025</small></p>
         </div>
       </div>
     </section>
