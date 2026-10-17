@@ -329,10 +329,6 @@ def build(name, c):
         <div class="c-wide">
           <ol class="steps4">
 {ab}          </ol>
-          <p class="steps4__cta reveal">
-            <a class="btn btn--solid" href="/kontakt" data-gtm-event="cta_kontakt_klick" data-gtm-location="ablauf_{k}">Kostenlose Potenzialanalyse {ARROW}</a>
-            <a class="link-arrow" href="/vorgehen">So gehen wir vor {ARROW}</a>
-          </p>
         </div>
       </div>
     </section>
