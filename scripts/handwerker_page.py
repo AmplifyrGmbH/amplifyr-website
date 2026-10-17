@@ -103,11 +103,12 @@ def body():
       <div class="container cols">
         <div class="c-label reveal"><p class="eyebrow">Ihr Betrieb</p></div>
         <div class="c-body">
-          <h2 id="betrieb-title" class="h-section reveal">Ob 3 oder 80 Mitarbeitende.</h2>
-          <p class="lead reveal" data-delay="1">Im Büro geht Zeit verloren, die auf der Baustelle fehlt. Im kleinen wie im grösseren Betrieb.</p>
+          <h2 id="betrieb-title" class="h-section reveal"><span class="hw-num">64 %</span> der Büroarbeit im Handwerk lässt sich automatisieren.</h2>
+          <p class="lead reveal" data-delay="1">Trotzdem geht im Büro noch immer Zeit verloren, die auf der Baustelle fehlt.</p>
+          <p class="hw-source reveal" data-delay="1">Quelle: IfM Bonn, IW Köln 2025</p>
         </div>
         <div class="c-wide">
-          <p class="hw-stat hw-stat--big reveal"><b>64 %</b><span>der Admin-Aufgaben im Handwerk gelten als automatisierbar.</span><small>Quelle: IfM Bonn, IW Köln 2025</small></p>
+          <h3 class="hw-sizes-title reveal">Ob 3 oder 80 Mitarbeitende.</h3>
           <div class="hw-sizes">
 {sizes}          </div>
         </div>
