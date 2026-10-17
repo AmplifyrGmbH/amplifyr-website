@@ -1721,3 +1721,4 @@ body:has(:is(.chapter--dark, .approach, .insights) + .contact) .ft-logo__dark { 
 @media (min-width: 1024px) { .hero__statement p { margin-top: 48px; } }
 .hero__statement h1 { line-height: 1.2; }
 .hero__statement h1 { line-height: 1.32; }
+.hero__statement p { font-size: clamp(1.6rem, 3vw, 2.8rem); max-width: none; }
