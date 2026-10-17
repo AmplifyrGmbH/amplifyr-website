@@ -36,7 +36,7 @@ Nachtrag (Bild + Zitat, Platzhalter bis eigene Fotos vorliegen, alle CC0):
 | Datei | Motiv | Quelle |
 |---|---|---|
 | `zitat-start-*` | Person arbeitet am Laptop | https://wordpress.org/photos/photo/42765c339a/ |
-| `zitat-handwerk-*` | Limmat in Zürich am Abend mit Landesmuseum | https://wordpress.org/photos/photo/88367bf395/ (CC0) |
+| `zitat-handwerk-*` | Luftaufnahme Zürich mit Limmat und Grossmünster, Foto: Henrique Ferreira | https://unsplash.com/photos/omiTbS-nb_M (Unsplash-Lizenz) |
 | `zitat-bewirtschaftung-*` | Mehrfamilienhäuser | https://wordpress.org/photos/photo/132689233a/ |
 | `zitat-kmu-*` | Team an Laptops | https://wordpress.org/photos/photo/83563ef334/ |
 | `handwerk-hero-*` | Bauarbeiter vor Arbeitsfahrzeug (Kopfbild Handwerk) | https://wordpress.org/photos/photo/12664ef761/ (CC0) |
