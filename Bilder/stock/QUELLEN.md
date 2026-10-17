@@ -30,3 +30,12 @@ Nachtrag (Bereichsseiten, alle CC0, WordPress Photo Directory):
 | `bw-innenhof-*` | Blick aus einem Innenhof | https://wordpress.org/photos/photo/3946926445/ |
 | `bw-wohnhaus-*` | Mehrfamilienhaus | https://wordpress.org/photos/photo/1606979817/ |
 | `kmu-lobby-*` | Empfangsbereich Büro | https://wordpress.org/photos/photo/191670d480/ |
+
+Nachtrag (Bild + Zitat, Platzhalter bis eigene Fotos vorliegen, alle CC0):
+
+| Datei | Motiv | Quelle |
+|---|---|---|
+| `zitat-start-*` | Person arbeitet am Laptop | https://wordpress.org/photos/photo/42765c339a/ |
+| `zitat-handwerk-*` | Arbeiter beim Schweissen | https://wordpress.org/photos/photo/81366759a5/ |
+| `zitat-bewirtschaftung-*` | Mehrfamilienhäuser | https://wordpress.org/photos/photo/132689233a/ |
+| `zitat-kmu-*` | Team an Laptops | https://wordpress.org/photos/photo/83563ef334/ |

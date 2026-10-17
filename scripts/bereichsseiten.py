@@ -2,7 +2,9 @@
 """Erzeugt die drei Bereichsseiten (Handwerk, Bewirtschaftung, Für KMU) mit identischer Struktur:
 Kopf · Ausgangslage · Unser Ansatz (ganzheitlich, sechs Bereiche) · Im Alltag · Ablauf · FAQ · CTA.
 Nur die Inhalte unterscheiden sich."""
-import json, os, html, re
+import json, os, html, re, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from photoquote import photo_quote
 
 S = os.path.dirname(os.path.abspath(__file__))
 E = lambda t: html.escape(t, quote=False)
@@ -39,7 +41,8 @@ ABLAUF = [
 
 PAGES = {
  'handwerker': dict(
-  order=['ausgangslage','alltag','quote','ansatz','mosaic','ablauf'],
+  order=['ausgangslage','alltag','quote','ansatz','ablauf'],
+  zimg=('zitat-handwerk','Arbeiter beim Schweissen'),
   bg={'ausgangslage':'','alltag':' chapter--white','ablauf':''},
   mosaic=[('hw-baustelle',(600,1200),'Bauarbeiter vor einem Arbeitsfahrzeug'),('hw-schaltschrank',(600,1200),'Sicherungsautomat mit Verkabelung'),('handwerk',(800,1600),'Werkzeugschrank mit Hobeln')],
   mosaic_caption='Auf der Baustelle zu Hause. Wir kennen den Alltag von Elektroinstallateuren, Sanitären und Schreinern, weil einer von uns selbst Elektroinstallateur ist.',
@@ -78,7 +81,8 @@ PAGES = {
        ('Lohnt sich das auch für einen kleinen Betrieb?', 'Ja. Gerade kleine Betriebe haben niemanden, der sich ums Digitale kümmert. Wir passen den Umfang an Ihre Grösse an.')],
  ),
  'bewirtschaftung': dict(
-  order=['alltag','quote','ausgangslage','mosaic','ansatz','ablauf'],
+  order=['alltag','quote','ausgangslage','ansatz','ablauf'],
+  zimg=('zitat-bewirtschaftung','Moderne Mehrfamilienhäuser unter bewölktem Himmel'),
   bg={'alltag':' chapter--white','ausgangslage':'','ablauf':''},
   mosaic=[('bw-wohnhaus',(600,1200),'Mehrfamilienhaus mit Balkonen'),('bw-schluessel',(600,1200),'Alte Schlüssel an einer Truhe'),('bw-innenhof',(600,1200),'Blick nach oben aus einem Innenhof')],
   mosaic_caption='Liegenschaften, Mieter, Eigentümer und Handwerker: Wir kennen die Bewirtschaftung von innen, weil einer von uns selbst Bewirtschafter war.',
@@ -121,7 +125,8 @@ PAGES = {
        ('Wie lange dauert die Umstellung?', 'Wir starten mit dem dringendsten Hebel, etwa der nächsten Versammlung oder der Erreichbarkeit, und bauen von dort weiter aus, in Ihrer Reihenfolge.')],
  ),
  'kmu': dict(
-  order=['ausgangslage','ansatz','alltag','mosaic','quote','ablauf'],
+  order=['ausgangslage','ansatz','alltag','quote','ablauf'],
+  zimg=('zitat-kmu','Team arbeitet gemeinsam an Laptops'),
   bg={'alltag':'','ausgangslage':'','ablauf':' chapter--white'},
   mosaic=[('kmu-lobby',(600,1200),'Empfangsbereich eines Büros'),('it',(800,1600),'Sauber verlegte Kabel in einem Verteilerkasten'),('web',(800,1600),'Arbeitsplatz mit zwei Monitoren')],
   mosaic_caption='Vom Empfang über die Arbeitsplätze bis zum Serverschrank: Wir schauen uns das ganze Unternehmen an, nicht nur die Computer.',
@@ -241,14 +246,7 @@ def build(name, c):
       </div>
     </section>
 ''')
-    sec['quote']=(f'''
-    <!-- ===================== Zitat ===================== -->
-    <section class="quote-band" aria-label="Kernaussage">
-      <div class="container">
-        <p class="quote-band__text reveal">«{c['quote']}»</p>
-      </div>
-    </section>
-''')
+    sec['quote']=photo_quote(c['zimg'][0], c['zimg'][1], c['quote'])
     # Ansatz + Hub
     steps = ''.join(f'''            <li class="reveal"{f' data-delay="{i}"' if i else ''}><span class="num" aria-hidden="true">{i + 1}</span><h3>{t}</h3><p>{d}</p></li>
 ''' for i, (t, d) in enumerate(ANSATZ))

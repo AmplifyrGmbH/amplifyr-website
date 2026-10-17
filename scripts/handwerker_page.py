@@ -5,6 +5,7 @@ import os, sys, json, html
 S = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, S)
 from bereiche import icon, ARROW, PLUS, PAGES, picture
+from photoquote import photo_quote
 
 c = PAGES['handwerker']
 
@@ -120,6 +121,7 @@ def body():
       </div>
     </section>
 
+{photo_quote('zitat-handwerk','Arbeiter beim Schweissen','Der Rapport ist fertig, bevor der Lieferwagen losfährt.')}
     <!-- ===================== So arbeiten wir ===================== -->
     <section id="zusammenarbeit" class="chapter chapter--white" data-area="handwerk" aria-labelledby="zus-title">
       <div class="container cols">
