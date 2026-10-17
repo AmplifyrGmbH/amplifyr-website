@@ -1475,3 +1475,6 @@ body:not([data-page]) .eyebrow::before, [data-page="404"] .eyebrow::before { -we
   .area:hover .eyebrow::before, .area:focus-within .eyebrow::before { background: var(--sky); }
   .area:hover .eyebrow, .area:focus-within .eyebrow { color: rgba(255, 255, 255, 0.85); }
 }
+.ap-text { display: grid; gap: 14px; }
+.ap-text b { color: var(--white); font-weight: 600; }
+@media (min-width: 1024px) { .ap-head { align-items: center; } .ap-text { padding-bottom: 0; } }
