@@ -1,54 +1,64 @@
 #!/usr/bin/env python3
-"""Handwerkerseite: kompakt, eigene Struktur (Kopf · Ausgangslage · Generalunternehmer · Auftrag A–Z · Zitat · So starten wir · FAQ)."""
-import os, sys
+"""Handwerkerseite: kompakt, spricht kleine und grössere Betriebe an.
+Kopf · Ob 3 oder 80 Mitarbeitende · Was wir tun · So arbeiten wir · (FAQ im Kontaktblock)"""
+import os, sys, json, html
 S = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, S)
 from bereiche import icon, ARROW, PLUS, PAGES, picture
 
 c = PAGES['handwerker']
 
-PAINS = [('Offerten am Abend', 'Materialpreise zusammensuchen und Offerten tippen, wenn eigentlich Feierabend wäre.'),
-         ('Rapporte und Belege', 'Regierapporte abschreiben, Stundenzettel nachtragen, Belege für den Treuhänder suchen.'),
-         ('Telefon auf der Baustelle', 'Anrufe kommen, wenn die Hände voll sind. Zurückgerufen wird am Abend.'),
-         ('Programme, die nicht reden', 'Offerte, Planung und Rechnung liegen in verschiedenen Programmen und werden doppelt erfasst.')]
-
-BAUSTEINE = [
-    ('software', 'Ihre Handwerkersoftware', 'Aufträge, Termine und Material an einem Ort. Ihr System bleibt, wie es ist.'),
-    ('buero', 'Offerten in Minuten', 'Aus Ihren eigenen Vorlagen vorbereitet, vom Kunden digital angenommen.'),
-    ('auto', 'KI, die mitarbeitet', 'Bereitet vor, Sie entscheiden. In jedem Baustein mit dabei.'),
-    ('it', 'IT wie ein Grossbetrieb', 'Büro, Baustelle und Handy in einem System, Daten gesichert.'),
-    ('buero', 'Weniger für den Treuhänder', 'Belege fliessen automatisch ein, MWST und Lohn sind vorbereitet.'),
-    ('tel', 'Keine Anfrage geht verloren', 'Ihre Website nimmt Anfragen auf und antwortet auch am Abend.'),
+FAQ = [
+    ('Für welche Betriebsgrösse eignet sich das?', 'Für Einzelunternehmen genauso wie für Betriebe mit mehreren Teams. Wir passen Umfang und Tempo an Ihre Grösse und Ihre Abläufe an.'),
+    ('Muss ich meine bestehende Software wechseln?', 'Nein. Ihre bestehende Software bleibt in der Regel. Wir verbinden sie mit dem Rest und ergänzen nur dort, wo es sich lohnt.'),
+    ('Was kostet das?', 'Das hängt davon ab, was Ihr Betrieb braucht. Das Erstgespräch ist kostenlos und zeigt, was sich lohnt. Danach erhalten Sie eine Offerte, bevor Sie etwas entscheiden.'),
+    ('Stört die Umstellung den laufenden Betrieb?', 'Nein. Wir arbeiten Schritt für Schritt neben dem Tagesgeschäft, setzen selbst um und schulen Ihr Team. Nach jeder Phase entscheiden Sie, wie es weitergeht.'),
 ]
 
-FLOW = [('Gefunden werden', 'Ihre Website beantwortet häufige Fragen selbst, echte Bewertungen sprechen für Sie.'),
-        ('Die Anfrage', 'Ob Anruf, WhatsApp oder E-Mail: Jede Anfrage landet mit Adresse, Bildern und Beschreibung am richtigen Ort.'),
-        ('Termin &amp; Offerte', 'Der Kunde bucht selbst. Die Offerte ist vorbereitet, Sie prüfen und versenden.'),
-        ('Einsatzplanung', 'Sie sehen, wer wo im Einsatz ist. Änderungen gehen direkt aufs Handy.'),
-        ('Beim Kunden', 'Rapport und Fotos sind erfasst, bevor der Mitarbeiter beim Lieferwagen ist.'),
-        ('Die Rechnung', 'Der Rapport fliesst in die Rechnung, Zahlungen werden automatisch zugeordnet.')]
+SIZES = [
+    ('Kleiner Betrieb', 'Sie sind Chef, Büro und Disposition in einer Person.',
+     'Wir nehmen Ihnen Offerten, Rapporte und Rechnungen ab, damit der Feierabend wieder Feierabend ist.',
+     ['Offerten in Minuten statt am Abend', 'Anrufe und Anfragen gehen nicht verloren', 'IT, um die Sie sich nicht kümmern müssen']),
+    ('Grösserer Betrieb', 'Ihr Team arbeitet in mehreren Programmen nebeneinander.',
+     'Wir verbinden die Systeme, schaffen Übersicht und entlasten Büro und Disposition, damit Sie wachsen können, ohne mehr Verwaltung.',
+     ['Einsatzplanung und Rapporte an einem Ort', 'Einheitliche Abläufe für alle Teams', 'Sichere, zentral betreute IT']),
+]
 
-PHASES = [('1 Std.', 'Der dringendste Hebel', 'Wir starten dort, wo es am meisten brennt, etwa bei der Erreichbarkeit am Abend oder den Offerten.'),
-          ('2 Std.', 'Der nächste Baustein', 'Schritt für Schritt kommt weiteres dazu, in der Reihenfolge, die für Sie Sinn ergibt.'),
-          ('3 Std.', 'Der Betrieb als Ganzes', 'Von der Anfrage bis zur Schlussrechnung durchgängig digital. Das Büro ist eine kurze Runde am Nachmittag.')]
+WHAT = [
+    ('buero', 'Ein Partner für alles Digitale', 'Wir betrachten Ihren Betrieb ganzheitlich, mit Business-Denken, und schneiden jede Lösung auf Ihre Grösse zu.'),
+    ('auto', 'Durchgängige Abläufe', 'Von der Anfrage bis zur Rechnung greift alles ineinander. Nichts wird doppelt erfasst.'),
+    ('it', 'Umsetzung ohne Unterbruch', 'Schritt für Schritt neben dem Tagesgeschäft. Wir setzen um und betreuen danach weiter.'),
+]
 
-PROMISES = ['Sie richten nichts selbst ein, wir setzen um.', 'Direkter Kontakt, wenn es hakt, keine Hotline.', 'Sie bestimmen das Tempo und können jederzeit stoppen.']
+FLOW = ['Anfrage', 'Termin', 'Offerte', 'Einsatzplanung', 'Rapport', 'Rechnung']
+
+PHASES = [('Erstgespräch', 'Kostenlos. Wir schauen, wo Zeit verloren geht.'),
+          ('Erster Hebel', 'Wir starten dort, wo es am meisten bringt.'),
+          ('Ausbau', 'Schritt für Schritt, in Ihrem Tempo.'),
+          ('Betreuung', 'Wir bleiben Ihr Ansprechpartner.')]
 
 
 def body():
-    pains = ''.join(f'            <li class="pain reveal"{" data-delay=\"1\"" if i % 2 else ""}><b>{t}</b><span>{d}</span></li>\n' for i, (t, d) in enumerate(PAINS))
-    bst = ''.join(f'''            <li class="hw-tile reveal"{f' data-delay="{i % 3}"' if i % 3 else ''}><span class="hub__icon">{icon(ic)}</span><b>{t}</b><span>{d}</span></li>
-''' for i, (ic, t, d) in enumerate(BAUSTEINE))
-    flow = ''.join(f'''            <li class="reveal"{f' data-delay="{i % 3}"' if i % 3 else ''}><span class="flow__n" aria-hidden="true">{i + 1}</span><h3>{t}</h3><p>{d}</p></li>
-''' for i, (t, d) in enumerate(FLOW))
-    ph = ''.join(f'''            <li class="hw-phase reveal"{f' data-delay="{i}"' if i else ''}><span class="hw-phase__gain"><b>+{g}</b> pro Tag</span><h3>{t}</h3><p>{d}</p></li>
-''' for i, (g, t, d) in enumerate(PHASES))
-    prom = ''.join(f'<li>{p}</li>' for p in PROMISES)
+    sizes = ''
+    for i, (lab, h, t, pts) in enumerate(SIZES):
+        li = ''.join(f'<li>{p}</li>' for p in pts)
+        sizes += f'''            <article class="hw-size reveal"{' data-delay="1"' if i else ''}>
+              <p class="hw-size__label">{lab}</p>
+              <h3>{h}</h3>
+              <p>{t}</p>
+              <ul class="checklist">{li}</ul>
+            </article>
+'''
+    what = ''.join(f'''            <li class="hw-tile reveal"{f' data-delay="{i}"' if i else ''}><span class="hub__icon">{icon(ic)}</span><b>{t}</b><span>{d}</span></li>
+''' for i, (ic, t, d) in enumerate(WHAT))
+    flow = ''.join(f'<li>{s}</li>' for s in FLOW)
+    ph = ''.join(f'''            <li class="reveal"{f' data-delay="{i}"' if i else ''}><b>{t}</b><span>{d}</span></li>
+''' for i, (t, d) in enumerate(PHASES))
     det = ''.join(f'''              <details>
                 <summary>{q}{PLUS}</summary>
                 <p>{a}</p>
               </details>
-''' for q, a in c['faq'])
+''' for q, a in FAQ)
     return f'''    <!-- ===================== Kopf ===================== -->
     <section class="page-hero" data-area="handwerk" aria-labelledby="page-title">
 {picture(c)}
@@ -56,8 +66,8 @@ def body():
         <div class="container cols">
           <div>
             <p class="eyebrow reveal">Handwerk</p>
-            <h1 id="page-title" class="reveal" data-delay="1">Ihr Handwerk, <em>digital organisiert.</em></h1>
-            <p class="lead reveal" data-delay="2">Wir sind Ihr <strong>digitaler Generalunternehmer</strong>: Offerten, Rapporte, Software, IT und Website aus einer Hand. Damit das Büro wieder eine kurze Runde am Nachmittag ist.</p>
+            <h1 id="page-title" class="reveal" data-delay="1">Weniger Verwaltung, <em>mehr Zeit für Aufträge.</em></h1>
+            <p class="lead reveal" data-delay="2">Wir organisieren Ihren Handwerksbetrieb digital, <strong>aus einer Hand</strong>: Abläufe, Software, IT und Website, zugeschnitten auf Ihre Grösse.</p>
             <p class="reveal" data-delay="3" style="margin-top:28px"><a class="btn btn--light" href="/kontakt" data-gtm-event="cta_kontakt_klick" data-gtm-location="hero_handwerk">Kostenloses Erstgespräch {ARROW}</a></p>
           </div>
         </div>
@@ -68,85 +78,60 @@ def body():
     <nav class="subnav" aria-label="Abschnitte dieser Seite">
       <div class="container">
         <ul>
-          <li><a href="#ausgangslage">Ausgangslage</a></li>
-          <li><a href="#generalunternehmer">Generalunternehmer</a></li>
-          <li><a href="#alltag">Im Alltag</a></li>
-          <li><a href="#start">So starten wir</a></li>
+          <li><a href="#betrieb">Ihr Betrieb</a></li>
+          <li><a href="#leistung">Was wir tun</a></li>
+          <li><a href="#zusammenarbeit">So arbeiten wir</a></li>
         </ul>
       </div>
     </nav>
 
-    <!-- ===================== Ausgangslage ===================== -->
-    <section id="ausgangslage" class="chapter" data-area="handwerk" aria-labelledby="aus-title">
+    <!-- ===================== Ihr Betrieb ===================== -->
+    <section id="betrieb" class="chapter" data-area="handwerk" aria-labelledby="betrieb-title">
       <div class="container cols">
-        <div class="c-label reveal"><p class="eyebrow">Ausgangslage</p></div>
+        <div class="c-label reveal"><p class="eyebrow">Ihr Betrieb</p></div>
         <div class="c-body">
-          <h2 id="aus-title" class="h-section reveal">Sitzt bei Ihnen abends noch jemand über Offerten?</h2>
-          <p class="lead reveal" data-delay="1">Ob Elektroinstallateur, Sanitär oder Schreiner: Die Arbeit auf der Baustelle läuft. Was liegen bleibt, ist das Büro.</p>
+          <h2 id="betrieb-title" class="h-section reveal">Ob 3 oder 80 Mitarbeitende.</h2>
+          <p class="lead reveal" data-delay="1">Die Verwaltung frisst Zeit, die auf der Baustelle fehlt. Beim kleinen Betrieb die des Chefs, beim grösseren die des ganzen Büros.</p>
         </div>
         <div class="c-wide">
-          <ul class="pains">
-{pains}          </ul>
-          <div class="hw-calc reveal">
-            <p class="hw-calc__label">Beispielrechnung</p>
-            <p class="hw-calc__math"><span>9 Std. Büro pro Woche</span><span>×</span><span>CHF 100</span><span>×</span><span>52 Wochen</span><span>=</span><b>CHF 46'800 pro Jahr</b></p>
-            <p class="hw-calc__note">Rund 64 % der Admin-Aufgaben im Handwerk gelten als automatisierbar. <small>Quelle: IfM Bonn, IW Köln 2025</small></p>
-          </div>
+          <div class="hw-sizes">
+{sizes}          </div>
+          <p class="hw-stat reveal"><b>64 %</b> der Admin-Aufgaben im Handwerk gelten als automatisierbar. <small>Quelle: IfM Bonn, IW Köln 2025</small></p>
         </div>
       </div>
     </section>
 
-    <!-- ===================== Generalunternehmer ===================== -->
-    <section id="generalunternehmer" class="chapter chapter--dark" data-area="handwerk" aria-labelledby="gu-title">
+    <!-- ===================== Was wir tun ===================== -->
+    <section id="leistung" class="chapter chapter--dark" data-area="handwerk" aria-labelledby="leistung-title">
       <div class="container cols">
-        <div class="c-label reveal"><p class="eyebrow">Ihr digitaler Generalunternehmer</p></div>
+        <div class="c-label reveal"><p class="eyebrow">Was wir tun</p></div>
         <div class="c-body">
-          <h2 id="gu-title" class="h-section reveal">Sechs Teile, ein Ansprechpartner.</h2>
-          <p class="lead muted reveal" data-delay="1">Auf der Baustelle koordiniert der Generalunternehmer alle Gewerke und steht fürs Ganze gerade. Fürs Digitale übernehmen wir genau diese Rolle. Jeder Baustein funktioniert für sich, zusammen greifen sie ineinander.</p>
+          <h2 id="leistung-title" class="h-section reveal">Ihr digitaler Generalunternehmer.</h2>
+          <p class="lead muted reveal" data-delay="1">Auf der Baustelle koordiniert der Generalunternehmer alle Gewerke. Fürs Digitale übernehmen wir diese Rolle, mit einer Nummer für alles.</p>
         </div>
         <div class="c-wide">
           <ul class="hw-tiles">
-{bst}          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== Im Alltag ===================== -->
-    <section id="alltag" class="chapter chapter--white" data-area="handwerk" aria-labelledby="alltag-title">
-      <div class="container cols">
-        <div class="c-label reveal"><p class="eyebrow">Im Alltag</p></div>
-        <div class="c-body">
-          <h2 id="alltag-title" class="h-section reveal">Ein Auftrag, von der Anfrage bis zur Rechnung.</h2>
-        </div>
-        <div class="c-wide">
-          <ol class="flow">
-{flow}          </ol>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== Zitat ===================== -->
-    <section class="quote-band" aria-label="Kernaussage">
-      <div class="container">
-        <p class="quote-band__text reveal">«Der Rapport ist fertig, bevor der Lieferwagen losfährt.»</p>
-      </div>
-    </section>
-
-    <!-- ===================== So starten wir ===================== -->
-    <section id="start" class="chapter" data-area="handwerk" aria-labelledby="start-title">
-      <div class="container cols">
-        <div class="c-label reveal"><p class="eyebrow">So starten wir</p></div>
-        <div class="c-body">
-          <h2 id="start-title" class="h-section reveal">Jede Phase gibt Ihnen einen Abend zurück.</h2>
-          <p class="lead reveal" data-delay="1">Wir beginnen mit einem kostenlosen Erstgespräch und arbeiten neben Ihrem Tagesgeschäft. Nach jeder Phase entscheiden Sie neu.</p>
-        </div>
-        <div class="c-wide">
-          <ol class="hw-phases">
-{ph}          </ol>
-          <div class="hw-trust reveal">
-            <ul class="checklist">{prom}</ul>
-            <p class="hw-trust__who">Einer von uns ist <strong>gelernter Elektroinstallateur</strong>. Wir kennen den Alltag auf der Baustelle von innen. <a class="link-arrow" href="/vorgehen">So gehen wir vor {ARROW}</a></p>
+{what}          </ul>
+          <div class="hw-flow reveal">
+            <p>Ein Auftrag, durchgängig digital:</p>
+            <ol>{flow}</ol>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== So arbeiten wir ===================== -->
+    <section id="zusammenarbeit" class="chapter chapter--white" data-area="handwerk" aria-labelledby="zus-title">
+      <div class="container cols">
+        <div class="c-label reveal"><p class="eyebrow">So arbeiten wir</p></div>
+        <div class="c-body">
+          <h2 id="zus-title" class="h-section reveal">Schritt für Schritt, ohne Unterbruch.</h2>
+          <p class="lead reveal" data-delay="1">Sie richten nichts selbst ein und bestimmen das Tempo. Einer von uns ist <strong>gelernter Elektroinstallateur</strong> und kennt den Alltag auf der Baustelle von innen.</p>
+        </div>
+        <div class="c-wide">
+          <ol class="steps4">
+{ph}          </ol>
+          <p class="reveal" style="margin-top:28px;text-align:center"><a class="link-arrow" href="/vorgehen">Mehr zum Vorgehen {ARROW}</a></p>
         </div>
       </div>
     </section>
@@ -170,6 +155,15 @@ def body():
 {{{{CONTACT}}}}
 '''
 
+
 if __name__ == '__main__':
     open(f'{S}/pages/body/handwerker.html', 'w', encoding='utf-8').write(body())
-    print('handwerker body ok')
+    j = f'{S}/pages/handwerker.json'
+    d = json.load(open(j, encoding='utf-8'))
+    d['og_title'] = 'Weniger Verwaltung, mehr Zeit für Aufträge | amplifyr'
+    d['description'] = 'amplifyr organisiert Handwerksbetriebe digital, aus einer Hand: Abläufe, Software, IT und Website, für kleine und grössere Betriebe. Kostenloses Erstgespräch.'
+    for s in d['schemas']:
+        if s.get('@type') == 'FAQPage':
+            s['mainEntity'] = [{'@type': 'Question', 'name': html.unescape(q), 'acceptedAnswer': {'@type': 'Answer', 'text': html.unescape(a)}} for q, a in FAQ]
+    json.dump(d, open(j, 'w', encoding='utf-8'), ensure_ascii=False, indent=2)
+    print('handwerker ok', len(d['description']))

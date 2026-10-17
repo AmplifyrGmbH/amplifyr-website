@@ -1566,3 +1566,20 @@ button.contact__faq-title[aria-expanded="true"] .plus { transform: rotate(45deg)
 .contact__row--faq .contact__btn { display: flex; align-items: center; line-height: 1; }
 .contact__row--faq button.contact__faq-title { min-height: 48px; line-height: 1; align-self: center; }
 .contact__row--faq button.contact__faq-title { margin: 0; }
+
+/* Handwerk: klein / gross */
+.hw-sizes { margin-top: 48px; display: grid; gap: 16px; }
+@media (min-width: 900px) { .hw-sizes { grid-template-columns: 1fr 1fr; gap: 24px; } }
+.hw-size { padding: 32px 28px; border-radius: 14px; background: var(--white); border: 1px solid var(--line); }
+.hw-size__label { font-family: var(--font-brand); font-style: italic; color: var(--text-muted); font-size: 1.1rem; }
+.hw-size h3 { margin-top: 8px; font-size: 1.4rem; line-height: 1.25; font-weight: 600; letter-spacing: -0.01em; }
+.hw-size > p:not(.hw-size__label) { margin-top: 10px; color: var(--text-muted); line-height: 1.6; }
+.hw-size .checklist { margin-top: 20px; }
+.hw-stat { margin-top: 28px; text-align: center; color: var(--text-muted); }
+.hw-stat b { color: var(--navy); font-size: 1.3rem; margin-right: 4px; }
+.hw-stat small { opacity: 0.75; margin-left: 6px; }
+.hw-flow { margin-top: 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px 16px; }
+.hw-flow p { color: rgba(255, 255, 255, 0.7); }
+.hw-flow ol { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.hw-flow li { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; border: 1px solid rgba(176, 196, 222, 0.3); color: var(--white); font-size: 0.92rem; }
+.hw-flow li + li::before { content: "→"; color: var(--sky); margin-right: 4px; margin-left: -4px; }
