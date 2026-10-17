@@ -129,13 +129,11 @@ function extractBlock(html, re, label) {
 }
 
 function extractChrome(blogHtmlSrc) {
-  const gtmHead   = extractBlock(blogHtmlSrc, /<!-- Google Tag Manager -->[\s\S]*?<!-- End Google Tag Manager -->/, 'GTM Head-Snippet');
-  const gtmBody   = extractBlock(blogHtmlSrc, /<!-- Google Tag Manager \(noscript\) -->[\s\S]*?<!-- End Google Tag Manager \(noscript\) -->/, 'GTM Body-Snippet');
   const headCommon = extractBlock(blogHtmlSrc, /<!-- Favicons -->[\s\S]*?(?=\n<\/head>)/, 'Head-Assets (Favicons/Fonts/CSS)');
   const header    = extractBlock(blogHtmlSrc, /<header id="site-header"[\s\S]*?<\/header>/, 'Header');
   const mobileMenu = extractBlock(blogHtmlSrc, /<nav [^>]*class="[^"]*\bmobile-menu\b[^"]*"[\s\S]*?<\/nav>/, 'Mobile-Menü');
   const footer    = extractBlock(blogHtmlSrc, /<footer[\s>][\s\S]*?<\/footer>/, 'Footer');
-  return { gtmHead, gtmBody, headCommon, header, mobileMenu, footer };
+  return { headCommon, header, mobileMenu, footer };
 }
 
 // ── Post-Seite generieren ─────────────────────────────────────
@@ -210,7 +208,6 @@ function generatePostHtml(f, slug, assets, chrome) {
   return '<!DOCTYPE html>\n'
     + '<html lang="de-CH">\n'
     + '<head>\n'
-    + chrome.gtmHead + '\n'
     + '  <meta charset="UTF-8">\n'
     + '  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n\n'
     + '  <title>' + esc(title) + ' | amplifyr Blog</title>\n'
@@ -232,7 +229,6 @@ function generatePostHtml(f, slug, assets, chrome) {
     + chrome.headCommon + '\n'
     + '</head>\n'
     + '<body>\n'
-    + chrome.gtmBody + '\n\n'
     + chrome.header + '\n\n'
     + chrome.mobileMenu + '\n\n'
     + '  <main>\n'

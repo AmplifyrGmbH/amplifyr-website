@@ -36,8 +36,6 @@ def main():
     cfg = json.load(open(cfg_path, encoding='utf-8'))
     idx = open(os.path.join(REPO, 'index.html'), encoding='utf-8').read()
 
-    gtm_head = block(idx, '<!-- Google Tag Manager -->', '<!-- End Google Tag Manager -->')
-    gtm_body = block(idx, '<!-- Google Tag Manager (noscript) -->', '<!-- End Google Tag Manager (noscript) -->')
     favicons = block(idx, '  <!-- Favicons -->', '<link rel="sitemap" type="application/xml" href="/sitemap.xml">')
     fonts = block(idx, '  <!-- Fonts -->', '\n  <!-- Structured Data -->', include_end=False).rstrip()
     umami = block(idx, '  <script defer src="https://cloud.umami.is/script.js"', '</script>')
@@ -77,7 +75,6 @@ def main():
     html = f'''<!DOCTYPE html>
 <html lang="de-CH">
 <head>
-{gtm_head}
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -112,7 +109,6 @@ def main():
 {umami}
 </head>
 <body data-page="{os.path.splitext(cfg['out'])[0]}">
-{gtm_body}
 
   <a class="skip-link" href="#main">Zum Inhalt springen</a>
 

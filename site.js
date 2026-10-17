@@ -163,8 +163,7 @@
             status.textContent = successText;
             status.classList.add('is-ok');
           }
-          window.dataLayer = window.dataLayer || [];
-          window.dataLayer.push({ event: 'formular_gesendet', cta_location: 'kontakt' });
+          if (window.umami) window.umami.track('formular_gesendet', { location: 'kontakt' });
         })
         .catch(function () {
           if (status) {
@@ -178,14 +177,12 @@
     });
   }
 
-  // ---- GTM-Klick-Tracking (Konvention aus main.js) ----
-  window.dataLayer = window.dataLayer || [];
+  // ---- Klick-Tracking über Umami (Attribute data-gtm-* aus der früheren GTM-Konvention) ----
   document.addEventListener('click', function (e) {
     var el = e.target.closest('[data-gtm-event]');
-    if (!el) return;
-    window.dataLayer.push({
-      event: el.getAttribute('data-gtm-event'),
-      cta_location: el.getAttribute('data-gtm-location') || ''
+    if (!el || !window.umami) return;
+    window.umami.track(el.getAttribute('data-gtm-event'), {
+      location: el.getAttribute('data-gtm-location') || ''
     });
   });
 })();
