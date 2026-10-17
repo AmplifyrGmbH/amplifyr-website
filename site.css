@@ -1470,3 +1470,8 @@ body:not([data-page]) .eyebrow::before, [data-page="404"] .eyebrow::before { -we
 .contact__faq, .contact__faq:has(details[open]) { justify-self: auto; width: 100%; max-width: 720px; display: flex; flex-direction: column; align-items: center; }
 .contact__faq-all { display: flex; flex-direction: column; align-items: center; width: 100%; }
 .contact__faq-all > .faq__list { width: 100%; text-align: left; }
+/* Teaser-Hover: Symbol auf dem Bild sichtbar halten */
+@media (min-width: 1024px) {
+  .area:hover .eyebrow::before, .area:focus-within .eyebrow::before { background: var(--sky); }
+  .area:hover .eyebrow, .area:focus-within .eyebrow { color: rgba(255, 255, 255, 0.85); }
+}
