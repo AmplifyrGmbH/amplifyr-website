@@ -1664,7 +1664,7 @@ main:has(> .contact:last-child) > .contact:last-child { padding-bottom: 56px; }
 .ft-logo__dark { display: none; }
 :is(.chapter--dark, .approach, .insights) + .contact { background: var(--paper); color: var(--navy); --axis-bg: var(--paper); }
 :is(.chapter--dark, .approach, .insights) + .contact .contact__title { color: var(--navy); }
-:is(.chapter--dark, .approach, .insights) + .contact .contact__title em { color: var(--text-muted); }
+:is(.chapter--dark, .approach, .insights) + .contact .contact__title em { color: var(--sky); }
 :is(.chapter--dark, .approach, .insights) + .contact .contact__text { color: var(--text-muted); }
 :is(.chapter--dark, .approach, .insights) + .contact .btn--light { background: var(--navy); color: var(--white); }
 :is(.chapter--dark, .approach, .insights) + .contact .btn--light:hover { background: var(--navy-deep); }
