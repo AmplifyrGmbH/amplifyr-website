@@ -1797,3 +1797,45 @@ body:has(:is(.chapter--dark, .approach, .insights) + .contact) .ft-logo__dark { 
 .subnav a:focus-visible { outline: 2px solid var(--navy); outline-offset: 4px; border-radius: 4px; }
 @media (max-width: 699px) { .subnav a { min-height: 50px; font-size: 0.95rem; } .subnav ul { gap: 22px; } }
 .subnav a::after { bottom: 0; height: 3px; }
+
+/* =========================================================
+   Mobile-Optimierung (Audit 390 px / 360 px)
+   ========================================================= */
+/* Klickflächen mindestens 44 px */
+.ft-logo { display: inline-flex; align-items: center; min-height: 44px; }
+.fn a { display: inline-block; padding: 6px 4px; margin: -6px -4px; }
+.kt-info a[href*="maps"], a[href*="google.com/maps"] { display: inline-flex; align-items: center; min-height: 44px; }
+.site-footer .ft-legal a { display: inline-flex; align-items: center; min-height: 36px; }
+
+/* Kleine Texte nicht unter 13 px */
+.ap-flow__label, button.contact__faq-title, .contact__faq-title { font-size: 0.82rem; }
+.cmp__before small, .cmp__after small { font-size: 0.78rem; }
+
+@media (max-width: 699px) {
+  /* Unternavigation: kompakter, Hinweis, dass man wischen kann */
+  .subnav ul { gap: 20px; padding-inline: 2px; -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent); mask-image: linear-gradient(90deg, #000 85%, transparent); }
+  .subnav ul > li:last-child { padding-right: 40px; }
+  .subnav a { font-size: 0.92rem; min-height: 48px; }
+
+  /* Startseite Team: kompakte Karten mit Porträt links statt grosser Bilder */
+  .team__grid { gap: 28px; }
+  .person { display: grid !important; grid-template-columns: 96px 1fr; column-gap: 18px; align-items: start; }
+  .person__img { grid-row: 1 / span 4; width: 96px; height: 120px; aspect-ratio: auto; border-radius: 10px; overflow: hidden; }
+  .person h3 { margin-top: 0; font-size: 1.2rem; }
+  .person .role { font-size: 0.88rem; }
+  .person p.bio { margin-top: 8px; font-size: 0.95rem; }
+  .person__contact { grid-column: 1 / -1; margin-top: 14px; }
+
+  /* Lange Fliesstexte in zentrierten Boxen links ausrichten (besser lesbar) */
+  .hw-us__text { text-align: left; }
+
+  /* Hero-Texte etwas ruhiger */
+  .page-hero h1.page-statement { font-size: clamp(1.75rem, 7.6vw, 2.25rem); line-height: 1.18; }
+  .hero__statement h1 { line-height: 1.15; }
+  .hero__statement p { margin-top: 24px; }
+
+  /* Abstände zwischen Abschnitten etwas knapper */
+  .chapter { padding-top: 64px; padding-bottom: 64px; }
+}
+.member__role { font-size: 0.85rem; }
+.kt-facts dt { font-size: 0.82rem; }
