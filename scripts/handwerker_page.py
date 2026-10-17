@@ -23,12 +23,17 @@ SIZES = [
      ['Daten werden doppelt erfasst, Fehler schleichen sich ein', 'Wer wann wo im Einsatz ist, weiss nur die Disposition', 'Mit jedem Auftrag wächst auch die Arbeit im Büro']),
 ]
 
-FLOW = ['Anfrage', 'Termin', 'Offerte', 'Einsatzplanung', 'Rapport', 'Rechnung']
+JOURNEY = [
+    ('Gefunden werden', 'Bei passenden Suchbegriffen erscheinen Sie weit oben. Ihre Website beantwortet häufige Fragen auch nach Feierabend.'),
+    ('Die Anfrage', 'Ob Anruf, WhatsApp oder E-Mail: Jede Anfrage landet mit Adresse, Fotos und Beschreibung am richtigen Ort. Auch der Anruf um 22 Uhr wird beantwortet.'),
+    ('Termin und Besichtigung', 'Der Kunde bucht selbst einen freien Termin. Ihr Sprachmemo von der Besichtigung ist zusammengefasst, bevor Sie wieder im Auto sitzen.'),
+    ('Die Offerte', 'Die Offerte ist vorbereitet, Sie prüfen und versenden sie. Der Kunde nimmt sie mit einem Klick an.'),
+    ('Die Einsatzplanung', 'Sie sehen auf einen Blick, wer wo im Einsatz ist. Änderungen landen direkt auf dem Handy Ihrer Mitarbeitenden.'),
+    ('Beim Kunden', 'Der Rapport ist fertig, bevor der Lieferwagen losfährt. Fotos hängen am Auftrag, auch im Keller ohne Empfang.'),
+    ('Die Rechnung', 'Die Rechnung entsteht aus dem Rapport, nichts geht vergessen. Zahlungen gleichen sich mit dem Konto ab, der Treuhänder hat alles laufend.'),
+]
 
-PHASES = [('Erstgespräch', 'Kostenlos. Wir schauen, wo Zeit verloren geht.'),
-          ('Erster Hebel', 'Wir starten dort, wo es am meisten bringt.'),
-          ('Ausbau', 'Schritt für Schritt, in Ihrem Tempo.'),
-          ('Betreuung', 'Wir bleiben Ihr Ansprechpartner.')]
+
 
 
 def body():
@@ -41,9 +46,8 @@ def body():
               <ul class="hw-pains">{li}</ul>
             </article>
 '''
-    flow = ''.join(f'<li>{s}</li>' for s in FLOW)
-    ph = ''.join(f'''            <li class="reveal"{f' data-delay="{i}"' if i else ''}><b>{t}</b><span>{d}</span></li>
-''' for i, (t, d) in enumerate(PHASES))
+    jr = ''.join(f'''            <li class="hw-step reveal"><b>{n}</b><p>{d}</p></li>
+''' for n, d in JOURNEY)
     det = ''.join(f'''              <details>
                 <summary>{q}{PLUS}</summary>
                 <p>{a}</p>
@@ -68,7 +72,7 @@ def body():
         <ul>
           <li><a href="#unterschied">Was uns unterscheidet</a></li>
           <li><a href="#betrieb">Ihr Betrieb</a></li>
-          <li><a href="#zusammenarbeit">So arbeiten wir</a></li>
+          <li><a href="#zusammenarbeit">Ihr Alltag danach</a></li>
         </ul>
       </div>
     </nav>
@@ -114,21 +118,19 @@ def body():
       </div>
     </section>
 
-    <!-- ===================== So arbeiten wir ===================== -->
+    <!-- ===================== Ihr Alltag danach ===================== -->
     <section id="zusammenarbeit" class="chapter chapter--dark" data-area="handwerk" aria-labelledby="zus-title">
       <div class="container cols">
-        <div class="c-label reveal"><p class="eyebrow">So arbeiten wir</p></div>
+        <div class="c-label reveal"><p class="eyebrow">Ihr Alltag danach</p></div>
         <div class="c-body">
           <h2 id="zus-title" class="h-section reveal">Ein Auftrag, durchgängig digital.</h2>
+          <p class="lead muted reveal" data-delay="1">So läuft ein Auftrag in Ihrem Betrieb, wenn alles zusammenspielt.</p>
         </div>
         <div class="c-wide">
-          <div class="hw-flow hw-flow--lead reveal">
-            <ol>{flow}</ol>
-          </div>
-          <p class="lead muted hw-zus-text reveal" data-delay="1">Sie richten nichts selbst ein und bestimmen das Tempo. Einer von uns ist <strong>gelernter Elektroinstallateur</strong> und kennt den Alltag auf der Baustelle von innen.</p>
-          <ol class="steps4 steps4--dark">
-{ph}          </ol>
-          <p class="reveal" style="margin-top:28px;text-align:center"><a class="link-arrow" href="/vorgehen">Mehr zum Vorgehen {ARROW}</a></p>
+          <ol class="hw-journey">
+{jr}          </ol>
+          <p class="hw-journey__end reveal">Büroarbeit bleibt. Aber sie ist eine kurze Runde am Nachmittag statt ein ganzer Abend.</p>
+          <p class="reveal" style="margin-top:28px;text-align:center"><a class="link-arrow" href="/vorgehen">So kommen Sie dorthin {ARROW}</a></p>
         </div>
       </div>
     </section>
