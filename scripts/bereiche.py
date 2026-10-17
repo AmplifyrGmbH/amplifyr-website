@@ -126,7 +126,7 @@ PAGES = {
  ),
  'kmu': dict(
   order=['ausgangslage','ansatz','alltag','quote','ablauf'],
-  zimg=('zitat-kmu','Schwarzes Tischtelefon auf einem Bürotisch'),
+  zimg=('zitat-kmu','Mann telefoniert mit dem Smartphone am Schreibtisch mit Laptop'),
   bg={'alltag':'','ausgangslage':'','ablauf':' chapter--white'},
   mosaic=[('kmu-lobby',(600,1200),'Empfangsbereich eines Büros'),('it',(800,1600),'Sauber verlegte Kabel in einem Verteilerkasten'),('web',(800,1600),'Arbeitsplatz mit zwei Monitoren')],
   mosaic_caption='Vom Empfang über die Arbeitsplätze bis zum Serverschrank: Wir schauen uns das ganze Unternehmen an, nicht nur die Computer.',

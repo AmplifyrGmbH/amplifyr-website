@@ -1654,3 +1654,6 @@ main:has(> .contact:last-child) > .contact:last-child { padding-bottom: 56px; }
 .hw-pains { list-style: none; margin-top: 20px; display: grid; gap: 12px; }
 .hw-pains li { position: relative; padding-left: 28px; color: var(--text-muted); line-height: 1.5; }
 .hw-pains li::before { content: ""; position: absolute; left: 4px; top: 0.72em; width: 12px; height: 2px; border-radius: 2px; background: var(--sky); }
+
+/* KMU-Zitat: Kopf der Person nicht abschneiden */
+[data-page="kmu"] .photo-quote__media img { object-position: 50% 10%; }
