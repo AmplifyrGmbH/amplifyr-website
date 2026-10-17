@@ -187,7 +187,13 @@
         preview.innerHTML = html;
         preview.setAttribute('aria-busy', 'false');
       })
-      .catch(function () { preview.hidden = true; preview.setAttribute('aria-busy', 'false'); });
+      .catch(function () {
+        // Noch kein Blog-Build gelaufen: ganzen Abschnitt ausblenden statt
+        // einen leeren Block stehen zu lassen.
+        var section = document.getElementById('blog-preview-section');
+        if (section) section.hidden = true; else preview.hidden = true;
+        preview.setAttribute('aria-busy', 'false');
+      });
   }
 
   // ---- Klick-Tracking über Umami (Attribute data-gtm-* aus der früheren GTM-Konvention) ----

@@ -48,6 +48,7 @@ PAGES = {
   mosaic_caption='Auf der Baustelle zu Hause. Wir kennen den Alltag von Elektroinstallateuren, Sanitären und Schreinern, weil einer von uns selbst Elektroinstallateur ist.',
   quote='Der Rapport ist fertig, bevor der Lieferwagen losfährt.',
   key='handwerk', img='handwerk-hero', sizes=(1200, 2400), w=2400, h=1600, alt='Baustelle mit Kränen und einem Rohbau in den Schweizer Bergen',
+  cta='Mehr Feierabend, <em>weniger Büro.</em>',
   eyebrow='Handwerk', h1='Ihr Handwerk, <em>digital organisiert.</em>',
   lead='Wir schauen uns Ihren Betrieb als Ganzes an und lösen alle digitalen Baustellen <strong>aus einer Hand</strong>: von der Offerte bis zur IT. Damit das Büro wieder eine kurze Runde am Nachmittag ist.',
   title='Digitalisierung für Handwerksbetriebe | amplifyr Zürich',
@@ -88,6 +89,7 @@ PAGES = {
   mosaic_caption='Liegenschaften, Mieter, Eigentümer und Handwerker: Wir kennen die Bewirtschaftung von innen, weil einer von uns selbst Bewirtschafter war.',
   quote='Der Wasserschaden am Sonntag landet nicht mehr auf Ihrem Privathandy.',
   key='bewirtschaftung', img='bewirtschaftung', sizes=(1200, 2400), w=2400, h=1600, alt='Altstadthäuser an der Reuss in Luzern',
+  cta='Mehr Zeit <em>für Ihre Mandate.</em>',
   eyebrow='Immobilienbewirtschaftung', h1='Ihre Bewirtschaftung, <strong>durchgängig digital</strong>. Mehr Zeit für Mandate, <strong>ohne Ihr Kernsystem zu ersetzen</strong>.',
   lead='',
   title='Digitalisierung für Immobilienverwaltungen | amplifyr',
@@ -132,6 +134,7 @@ PAGES = {
   mosaic_caption='Vom Empfang über die Arbeitsplätze bis zum Serverschrank: Wir schauen uns das ganze Unternehmen an, nicht nur die Computer.',
   quote='Eine Nummer für alles Digitale.',
   key='kmu', img='kmu', sizes=(1200, 2400), w=2400, h=1600, alt='Laptop auf einem Bürotisch',
+  cta='Weniger IT-Sorgen, <em>mehr Geschäft.</em>',
   eyebrow='Für KMU', h1='Ihr KMU, <strong>durchgängig digital</strong>. Von den Abläufen über IT bis zur Website, <strong>alles aus einer Hand</strong>.',
   lead='',
   title='Digitalisierung für KMU aus einer Hand | amplifyr Zürich',
@@ -387,6 +390,7 @@ def build(name, c):
       ],
       'body': f'body/{name}.html',
     }
+    if c.get('cta'): cfg['cta'] = c['cta']
     if not cfg['preload']: cfg.pop('preload')
     json.dump(cfg, open(f'{S}/pages/{name}.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=2)
     print(name, len(c['title']), len(c['desc']))
