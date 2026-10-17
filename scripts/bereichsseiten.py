@@ -47,7 +47,7 @@ PAGES = {
   mosaic=[('hw-baustelle',(600,1200),'Bauarbeiter vor einem Arbeitsfahrzeug'),('hw-schaltschrank',(600,1200),'Sicherungsautomat mit Verkabelung'),('handwerk',(800,1600),'Werkzeugschrank mit Hobeln')],
   mosaic_caption='Auf der Baustelle zu Hause. Wir kennen den Alltag von Elektroinstallateuren, Sanitären und Schreinern, weil einer von uns selbst Elektroinstallateur ist.',
   quote='Der Rapport ist fertig, bevor der Lieferwagen losfährt.',
-  key='handwerk', img='handwerk', sizes=(800, 1600), w=1600, h=1066, alt='Werkzeugschrank mit Hobeln und Holzwerkzeug',
+  key='handwerk', img='handwerk-hero', sizes=(1200, 2400), w=2400, h=1600, alt='Zwei Bauarbeiter mit Helm vor einem Arbeitsfahrzeug mit Hubarbeitsbühne',
   eyebrow='Handwerk', h1='Ihr Handwerk, <em>digital organisiert.</em>',
   lead='Wir schauen uns Ihren Betrieb als Ganzes an und lösen alle digitalen Baustellen <strong>aus einer Hand</strong>: von der Offerte bis zur IT. Damit das Büro wieder eine kurze Runde am Nachmittag ist.',
   title='Digitalisierung für Handwerksbetriebe | amplifyr Zürich',
