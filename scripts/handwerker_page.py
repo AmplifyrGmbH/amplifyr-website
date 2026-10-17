@@ -95,7 +95,7 @@ def body():
           <div class="hw-us reveal">
             <p class="hw-us__label">Alles in einem</p>
             <p class="hw-us__name"><img src="/Logos/amplifyr_logo/amplifyr-logo-weiss-hellblau.svg" alt="amplifyr" width="400" height="120" loading="lazy"></p>
-            <p class="hw-us__text">Wir beginnen bei Ihren Abläufen, nicht bei einem Programm. Mit Ausbildung in Prozessoptimierung, Business-Verständnis und Erfahrung aus dem Handwerk übernehmen wir das Ganze: Software, IT, Website und KI, eingerichtet und weiter betreut. <strong>Ein Ansprechpartner, spezialisiert auf Handwerksbetriebe.</strong></p>
+            <p class="hw-us__text">Wir beginnen bei Ihren Abläufen, nicht bei einem Programm. Mit Ausbildung in Prozessoptimierung, Business-Verständnis und Erfahrung aus dem Handwerk übernehmen wir das Ganze: Software, IT, Website und KI, eingerichtet und weiter betreut. Einer von uns ist <strong>gelernter Elektroinstallateur</strong> und kennt den Alltag auf der Baustelle von innen. <strong>Ein Ansprechpartner, spezialisiert auf Handwerksbetriebe.</strong></p>
           </div>
         </div>
       </div>

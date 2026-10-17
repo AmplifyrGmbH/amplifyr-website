@@ -1848,3 +1848,7 @@ body:has(:is(.chapter--dark, .approach, .insights) + .contact) .ft-logo__dark { 
 .aus-stat small a { color: inherit; display: inline-block; padding: 6px 2px; margin: -6px -2px; }
 .aus-stat { align-items: start; justify-content: center; text-align: left; }
 .aus-stat b { line-height: 0.9; }
+
+/* Helle Flächen: eigener Stahlblau-Ton mit ausreichendem Kontrast (WCAG AA für grosse Schrift) */
+:root { --sky-ink: #5F7CA8; }
+:is(.chapter--dark, .approach, .insights) + .contact .contact__title em { color: var(--sky-ink); }
