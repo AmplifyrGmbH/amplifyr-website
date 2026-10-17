@@ -1645,3 +1645,9 @@ main:has(> .contact:last-child) > .contact:last-child { padding-bottom: 56px; }
 .steps4--dark li:first-child::before { background: var(--sky); color: var(--navy); }
 .steps4--dark b { color: var(--white); }
 .steps4--dark span { color: rgba(255, 255, 255, 0.68); }
+
+/* Handwerk-Zitat: unruhiges Ziegelbild, links stärker abdunkeln, Dachdecker rechts halten */
+[data-page="handwerker"] .photo-quote__media img { object-position: 70% 50%; }
+[data-page="handwerker"] .photo-quote__media::after { background: linear-gradient(90deg, rgba(18, 28, 51, 0.88) 0%, rgba(18, 28, 51, 0.7) 45%, rgba(18, 28, 51, 0.1) 75%), linear-gradient(180deg, rgba(18, 28, 51, 0) 50%, rgba(18, 28, 51, 0.6) 100%); }
+@media (max-width: 767px) { [data-page="handwerker"] .photo-quote__media::after { background: linear-gradient(180deg, rgba(18, 28, 51, 0.15) 0%, rgba(18, 28, 51, 0.88) 60%); } }
+[data-page="handwerker"] .photo-quote__text p { max-width: 17ch; }
