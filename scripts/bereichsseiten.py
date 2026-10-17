@@ -121,7 +121,7 @@ PAGES = {
        ('Wie lange dauert die Umstellung?', 'Wir starten mit dem dringendsten Hebel, etwa der nächsten Versammlung oder der Erreichbarkeit, und bauen von dort weiter aus, in Ihrer Reihenfolge.')],
  ),
  'kmu': dict(
-  order=['ansatz','alltag','mosaic','quote','ausgangslage','ablauf'],
+  order=['ausgangslage','ansatz','alltag','mosaic','quote','ablauf'],
   bg={'alltag':'','ausgangslage':'','ablauf':' chapter--white'},
   mosaic=[('kmu-lobby',(600,1200),'Empfangsbereich eines Büros'),('it',(800,1600),'Sauber verlegte Kabel in einem Verteilerkasten'),('web',(800,1600),'Arbeitsplatz mit zwei Monitoren')],
   mosaic_caption='Vom Empfang über die Arbeitsplätze bis zum Serverschrank: Wir schauen uns das ganze Unternehmen an, nicht nur die Computer.',
