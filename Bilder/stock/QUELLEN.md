@@ -15,7 +15,7 @@ Nachtrag (Unterseiten):
 
 | Datei | Motiv | Quelle |
 |---|---|---|
-| `bewirtschaftung-*` | Altstadthäuser an der Reuss, Luzern | https://wordpress.org/photos/photo/97864f47dd/ (CC0) |
+| `bewirtschaftung-*` | Limmat in Zürich mit Altstadt und St. Peter, Foto: Tobias Reich | https://unsplash.com/photos/HaSP_2rSh_Y (Unsplash-Lizenz) |
 | `kmu-*` | Laptop auf schwarzem Tisch im Büro | https://wordpress.org/photos/photo/20567bcef7/ (CC0) |
 | `vorgehen-*` | Notizbuch mit Stift | https://wordpress.org/photos/photo/632620a981/ (CC0) |
 | `ueber-uns-*` | Zürich (bestehendes Bild `Bilder/Bild_Zurich_end`) | eigenes Bild |
