@@ -1860,3 +1860,31 @@ a[href*="google.com/maps"] { display: inline-flex; align-items: center; min-heig
   .br-mob { display: inline; }
   [data-page="vorgehen"] .photo-quote__text p { font-size: 1.55rem; max-width: none; }
 }
+
+/* ============================================================
+   Slogan in zwei Hälften: Fundament und fertiges Gebäude
+   ============================================================ */
+.slogan-split { background: var(--navy-deep); padding-bottom: 56px; }
+.slogan-split__grid { display: grid; }
+@media (min-width: 768px) { .slogan-split__grid { grid-template-columns: 1fr 1fr; } }
+/* Feste Höhe statt aspect-ratio: Sonst begrenzt max-height auch die Breite
+   und die Hälften füllen ihre Spalte nicht aus. */
+.slogan-half { position: relative; margin: 0; overflow: hidden; isolation: isolate; width: 100%; height: clamp(380px, 62vh, 560px); }
+@media (min-width: 768px) { .slogan-half { height: clamp(460px, 72vh, 680px); } }
+.slogan-half img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.slogan-half::after {
+  content: ""; position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(180deg, rgba(15, 26, 49, 0.2) 0%, rgba(15, 26, 49, 0.88) 72%, rgba(15, 26, 49, 0.96) 100%);
+}
+.slogan-half__text { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; padding: 0 clamp(20px, 4vw, 44px) clamp(28px, 4vw, 48px); display: grid; gap: 10px; }
+.slogan-half__claim {
+  font-family: var(--font-brand); font-style: italic; color: var(--white);
+  font-size: clamp(1.9rem, 4vw, 3rem); line-height: 1.1; letter-spacing: -0.01em;
+}
+.slogan-half__note { color: var(--sky); font-size: clamp(1rem, 1.4vw, 1.15rem); line-height: 1.5; max-width: 34ch; }
+.slogan-split__note {
+  margin: 28px auto 0; max-width: var(--container); padding-inline: var(--gutter);
+  color: rgba(255, 255, 255, 0.68); font-size: 0.95rem; text-align: center;
+}
+/* Trennlinie zwischen den Hälften */
+@media (min-width: 768px) { .slogan-half + .slogan-half { box-shadow: -1px 0 0 rgba(176, 196, 222, 0.22); } }

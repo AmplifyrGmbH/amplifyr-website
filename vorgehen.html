@@ -113,7 +113,7 @@
   <link rel="preconnect" href="https://cloud.umami.is">
 
   <link rel="preload" as="font" type="font/woff2" href="/Fonts/inter-tight-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="/site.css?v=161">
+  <link rel="stylesheet" href="/site.css?v=163">
 
   <script defer src="https://cloud.umami.is/script.js" data-website-id="a5638b4a-87cc-4014-a56d-b5b83ae8ccd5"></script>
 </head>
@@ -207,17 +207,36 @@
       </div>
     </section>
 
-    <!-- ===================== Bild + Zitat (Platzhalter: später eigenes Foto und persönliches Zitat) ===================== -->
-    <section class="photo-quote" aria-label="Zitat">
-      <picture class="photo-quote__media">
-        <source type="image/avif" srcset="/Bilder/stock/zitat-start-1200.avif 1200w, /Bilder/stock/zitat-start-2400.avif 2400w" sizes="100vw">
-        <source type="image/webp" srcset="/Bilder/stock/zitat-start-1200.webp 1200w, /Bilder/stock/zitat-start-2400.webp 2400w" sizes="100vw">
-        <img src="/Bilder/stock/zitat-start-2400.jpg" srcset="/Bilder/stock/zitat-start-1200.jpg 1200w, /Bilder/stock/zitat-start-2400.jpg 2400w" sizes="100vw" alt="Bauarbeiter auf einem weiten Feld aus Bewehrungsstahl, kurz vor dem Betonieren" width="2400" height="1350" loading="lazy" decoding="async">
-      </picture>
-      <div class="container photo-quote__inner">
-        <blockquote class="photo-quote__text reveal"><p>«Build the base.<br class="br-mob"> Lead the race.<br>Genau in dieser Reihenfolge.»</p></blockquote>
-        <p class="photo-quote__note reveal" data-delay="1">Unser Slogan, und zugleich die Reihenfolge, in der wir arbeiten.</p>
+    <!-- ===================== Slogan: Basis und Vorsprung ===================== -->
+    <section class="slogan-split" aria-labelledby="slogan-title">
+      <h2 id="slogan-title" class="visually-hidden">Unser Slogan</h2>
+      <div class="slogan-split__grid">
+        <figure class="slogan-half">
+          <picture>
+            <source type="image/avif" srcset="/Bilder/stock/slogan-base-600.avif 600w, /Bilder/stock/slogan-base-1200.avif 1200w" sizes="(min-width: 768px) 50vw, 100vw">
+            <source type="image/webp" srcset="/Bilder/stock/slogan-base-600.webp 600w, /Bilder/stock/slogan-base-1200.webp 1200w" sizes="(min-width: 768px) 50vw, 100vw">
+            <img src="/Bilder/stock/slogan-base-1200.jpg" srcset="/Bilder/stock/slogan-base-600.jpg 600w, /Bilder/stock/slogan-base-1200.jpg 1200w" sizes="(min-width: 768px) 50vw, 100vw"
+                 alt="Bauarbeiter auf einem weiten Feld aus Bewehrungsstahl, kurz vor dem Betonieren" width="1200" height="1600" loading="lazy" decoding="async">
+          </picture>
+          <figcaption class="slogan-half__text reveal">
+            <span class="slogan-half__claim">Build the base.</span>
+            <span class="slogan-half__note">Zuerst die Grundlagen: Abläufe, Daten und IT.</span>
+          </figcaption>
+        </figure>
+        <figure class="slogan-half">
+          <picture>
+            <source type="image/avif" srcset="/Bilder/stock/slogan-race-600.avif 600w, /Bilder/stock/slogan-race-1200.avif 1200w" sizes="(min-width: 768px) 50vw, 100vw">
+            <source type="image/webp" srcset="/Bilder/stock/slogan-race-600.webp 600w, /Bilder/stock/slogan-race-1200.webp 1200w" sizes="(min-width: 768px) 50vw, 100vw">
+            <img src="/Bilder/stock/slogan-race-1200.jpg" srcset="/Bilder/stock/slogan-race-600.jpg 600w, /Bilder/stock/slogan-race-1200.jpg 1200w" sizes="(min-width: 768px) 50vw, 100vw"
+                 alt="Der Prime Tower über den Dächern von Zürich im Abendlicht" width="1200" height="1600" loading="lazy" decoding="async">
+          </picture>
+          <figcaption class="slogan-half__text reveal" data-delay="1">
+            <span class="slogan-half__claim">Lead the race.</span>
+            <span class="slogan-half__note">Dann vorne mitspielen, in Ihrem Markt.</span>
+          </figcaption>
+        </figure>
       </div>
+      <p class="slogan-split__note reveal">Unser Slogan, und zugleich die Reihenfolge, in der wir arbeiten.</p>
     </section>
 
     <!-- ===================== Ablauf ===================== -->
