@@ -249,8 +249,6 @@ main, .site-footer { position: relative; }
   min-height: 60px; font-size: 1.5rem; font-weight: 500; text-decoration: none;
 }
 .nav-mobile ul a[aria-current="page"] { color: var(--sky); }
-.nav-mobile__contact { margin-top: auto; display: grid; gap: 6px; color: var(--sky); }
-.nav-mobile__contact a { text-decoration: none; min-height: 44px; display: flex; align-items: center; }
 body.menu-open { overflow: hidden; }
 
 /* ============================================================
