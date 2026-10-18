@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+  # Von Hand auslösbar, falls der Server neu bespielt werden muss
+  workflow_dispatch:
 
 jobs:
   ftp-deploy:
@@ -27,7 +29,7 @@ jobs:
           port: 21
           local-dir: ./
           server-dir: /www/amplifyr.ch/
-          state-name: .ftp-deploy-sync-state-v3.json
+          state-name: .ftp-deploy-sync-state-v4.json
           # Nur die Website hochladen, keine Arbeitsdateien
           exclude: |
             **/.git*
