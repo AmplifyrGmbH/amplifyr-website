@@ -85,8 +85,9 @@ RewriteRule ^blog-post(\.html)?/?$ https://www.amplifyr.ch/blog [R=301,NE,L]
 # Relaunch 2026: IT und Webdesign sind in /kmu aufgegangen, Kontakt hat eine eigene Seite
 RewriteRule ^it-solutions(\.html)?/?$ https://www.amplifyr.ch/kmu [R=301,NE,L]
 RewriteRule ^webdesign(\.html)?/?$ https://www.amplifyr.ch/kmu [R=301,NE,L]
-# Die frühere Demo-Seite: Anfrage läuft über das Kontaktformular (Thema «Demo» vorbelegt)
-RewriteRule ^demo(\.html)?/?$ https://www.amplifyr.ch/kontakt?subject=Demo [R=301,NE,L]
+# Die frühere Demo-Seite (Website-Demo): Anfragen laufen über das Kontaktformular,
+# das Thema KMU deckt Website und Auftritt ab.
+RewriteRule ^demo(\.html)?/?$ https://www.amplifyr.ch/kontakt?subject=KMU [R=301,NE,L]
 # Query-String (z. B. ?subject=…&domain=…) bleibt erhalten und belegt das Formular vor
 RewriteRule ^formular(\.html)?/?$ https://www.amplifyr.ch/kontakt?%{QUERY_STRING} [R=301,NE,L]
 
