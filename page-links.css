@@ -52,18 +52,9 @@ body {
 }
 
 .lk-tagline {
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: #1a2744;
-  margin-top: 4px;
-}
-
-.lk-claim {
-  font-family: Georgia, 'Times New Roman', serif;
-  font-style: italic;
-  font-size: 0.95rem;
-  color: #5F7CA8;
-  margin-top: 6px;
+  font-size: 0.9rem;
+  color: #445269;
+  margin-top: 2px;
 }
 
 .lk-address {
@@ -357,8 +348,7 @@ body {
 /* ---- Desktop ---- */
 @media (min-width: 540px) {
   .lk-logo img { width: 230px; }
-  .lk-tagline { font-size: 1.05rem; }
-  .lk-claim { font-size: 1.05rem; }
+  .lk-tagline { font-size: 0.95rem; }
   .lk-btn { padding: 16px 20px; }
   .lk-person { padding: 0; } /* mobile: no outer padding, inner handles spacing */
 }
