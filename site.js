@@ -11,20 +11,16 @@
   // ---- Header: transparent über dem Bild-Kopf, sonst hell ----
   var header = document.getElementById('site-header');
   var hero = document.querySelector('.hero, .page-hero');
-  // Auf Touch-Breiten gibt es keinen Hover und der Hero-Text reicht bis an den
-  // Rand: Dort würde das helle Logo über dem Text stehen. Deshalb wird der
-  // Header schon beim ersten Scrollen hell, am Desktop erst nach dem Bild-Kopf.
-  var schmal = window.matchMedia('(max-width: 1239px)');
+  // Ganz oben transparent über dem Bild, ab dem ersten Scrollen hell: Sonst
+  // schiebt sich der Hero-Text unter Logo und Navigation durch.
   function updateHeader() {
     if (!header) return;
     if (!hero) { header.classList.add('is-solid'); return; }
-    var threshold = schmal.matches ? 8 : hero.offsetHeight - header.offsetHeight - 8;
-    header.classList.toggle('is-solid', window.scrollY > threshold);
+    header.classList.toggle('is-solid', window.scrollY > 8);
   }
   updateHeader();
   window.addEventListener('scroll', updateHeader, { passive: true });
   window.addEventListener('resize', updateHeader);
-  if (schmal.addEventListener) schmal.addEventListener('change', updateHeader);
 
   // ---- Mobile-Menü ----
   var menu = document.getElementById('nav-mobile');
