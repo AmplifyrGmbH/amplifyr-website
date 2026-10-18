@@ -17,7 +17,7 @@ Nachtrag (Unterseiten):
 |---|---|---|
 | `bewirtschaftung-*` | Limmat in Zürich mit Altstadt und St. Peter, Foto: Tobias Reich | https://unsplash.com/photos/HaSP_2rSh_Y (Unsplash-Lizenz) |
 | `kmu-*` | Laptop auf schwarzem Tisch im Büro | https://wordpress.org/photos/photo/20567bcef7/ (CC0) |
-| `vorgehen-*` | Notizbuch mit Stift | https://wordpress.org/photos/photo/632620a981/ (CC0) |
+| `vorgehen-*` | Bergstrasse mit Kehren über einem Talboden im Herbst, Foto: Patrick Robert Doyle | https://unsplash.com/photos/xHOdbffXb6k (Unsplash-Lizenz) |
 | `ueber-uns-*` | Zürich (bestehendes Bild `Bilder/Bild_Zurich_end`) | eigenes Bild |
 
 Nachtrag (Bereichsseiten, alle CC0, WordPress Photo Directory):
