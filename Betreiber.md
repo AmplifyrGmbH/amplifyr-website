@@ -19,7 +19,18 @@ Reihenfolge beim Deploy auf `main`:
 1. **Branch `anpassungen` nach `main` mergen und pushen.** Der Deploy läuft automatisch und lädt die neue `.htaccess` mit allen Weiterleitungen mit.
 2. **Blog-Workflow einmal von Hand starten:** GitHub → Actions → „Build & Deploy Blog" → Run workflow. Erst danach existiert `/blog/preview.html`, das die Blog-Vorschau auf der Startseite füllt. Ohne diesen Schritt blendet die Startseite den Insights-Abschnitt aus.
 3. **Reste früherer Deploys per FTP löschen.** Diese Dateien liegen auf dem Server, gehören aber nicht ins Web: `CLAUDE.md`, `dev-router.php`, die Ordner `scripts/` und `archiv/` sowie die alten Seiten `it-solutions.html`, `webdesign.html` und alles Weitere, was nicht mehr im Repository ist. Die neue `.htaccess` sperrt sie zwar, löschen ist aber sauberer.
-4. **Weiterleitungen prüfen.** Jede dieser URLs muss mit 301 auf das neue Ziel zeigen: `/it-solutions` und `/webdesign` → `/kmu`, `/demo` → `/kontakt?subject=Demo`, `/formular` → `/kontakt`, `/ki-transformation` und `/automatisierung` → `/`, `/branchen-software` → `/kmu`.
+4. **Weiterleitungen prüfen.** Jede dieser URLs muss mit genau einem 301 auf das neue Ziel zeigen, jeweils auch mit `.html` am Ende:
+
+   | Alte URL | Ziel |
+   |---|---|
+   | `/it-solutions`, `/webdesign`, `/branchen-software`, `/digitalisierung-kmu` | `/kmu` |
+   | `/digitalisierung-handwerker` | `/handwerker` |
+   | `/demo` | `/kontakt?subject=Demo` |
+   | `/formular` | `/kontakt` (Parameter bleiben erhalten) |
+   | `/blog-post` | `/blog` |
+   | `/ki-transformation`, `/automatisierung`, `/ki-prozesse`, `/business-amplification` | `/` |
+
+   Reine Prototypen von früher (`eisberg-artifact`, `shadow-variants`, `ki-check-template`, `prozessgrafik-artifact`, `handwerker-demo-ohne-hero`, `amplifyr-landingpage-standalone`) waren nie verlinkt und dürfen weiterhin 404 liefern.
 5. **Google Search Console:** Sitemap `https://www.amplifyr.ch/sitemap.xml` neu einreichen und die neuen Seiten `/kmu`, `/vorgehen`, `/kontakt`, `/bewirtschaftung` zur Indexierung anmelden.
 6. **Alte Seiten aus dem Index entfernen:** In der Search Console unter „Entfernen" einen Antrag für `/it-solutions`, `/webdesign` und `/ki-transformation` stellen. Das wirkt sofort für rund sechs Monate; dauerhaft verschwinden sie durch die 301-Weiterleitungen, sobald Google neu crawlt (ein bis vier Wochen).
 7. **Nach dem Deploy prüfen:** [PageSpeed Insights](https://pagespeed.web.dev/) und [Rich-Results-Test](https://search.google.com/test/rich-results) über Startseite, Handwerk und Kontakt laufen lassen.
