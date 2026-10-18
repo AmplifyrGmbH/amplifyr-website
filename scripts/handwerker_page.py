@@ -130,7 +130,7 @@ def body():
           <ol class="hw-journey">
 {jr}          </ol>
           <p class="hw-journey__end reveal">Büroarbeit bleibt. Aber sie ist eine kurze Runde am Nachmittag statt ein ganzer Abend.</p>
-          <p class="reveal" style="margin-top:28px;text-align:center"><a class="link-arrow" href="/vorgehen">So kommen Sie dorthin {ARROW}</a></p>
+          <p class="reveal" style="margin-top:28px;text-align:center"><a class="link-arrow" href="/vorgehen">So sieht die Zusammenarbeit aus {ARROW}</a></p>
         </div>
       </div>
     </section>
