@@ -100,7 +100,10 @@ RewriteCond %{HTTP_HOST} ^www\.amplifyr\.ch [NC]
 RewriteRule ^(.*)$ https://www.amplifyr.ch/$1 [R=301,L]
 
 # 3. Clean URLs: .html → ohne Endung (301 Redirect)
+# Ausnahme: /blog/preview.html ist ein HTML-Fragment, das die Startseite per
+# fetch() lädt — eine Weiterleitung würde die Blog-Vorschau unbrauchbar machen.
 RewriteCond %{THE_REQUEST} ^[A-Z]+\ /([^.]+)\.html [NC]
+RewriteCond %{REQUEST_URI} !^/blog/preview\.html$
 RewriteRule ^ /%1 [R=301,L]
 
 # 4. Clean URLs: saubere URL intern auf .html-Datei mappen
