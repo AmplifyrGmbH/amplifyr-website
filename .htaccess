@@ -69,12 +69,13 @@ ErrorDocument 404 /404.html
 RewriteEngine On
 
 # 0. Permanente Weiterleitungen (301)
-RewriteRule ^automatisierung(\.html)?/?$ / [R=301,L]
-RewriteRule ^ki-transformation(\.html)?/?$ / [R=301,L]
+# KI, Automatisierung und Branchensoftware sind in /kmu aufgegangen
+RewriteRule ^automatisierung(\.html)?/?$ https://www.amplifyr.ch/kmu [R=301,NE,L]
+RewriteRule ^ki-transformation(\.html)?/?$ https://www.amplifyr.ch/kmu [R=301,NE,L]
 RewriteRule ^branchen-software(\.html)?/?$ https://www.amplifyr.ch/kmu [R=301,NE,L]
 
 # Frühere Seitennamen, die es im Lauf der Zeit gab
-RewriteRule ^ki-prozesse(\.html)?/?$ / [R=301,L]
+RewriteRule ^ki-prozesse(\.html)?/?$ https://www.amplifyr.ch/kmu [R=301,NE,L]
 RewriteRule ^business-amplification(\.html)?/?$ / [R=301,L]
 RewriteRule ^digitalisierung-handwerker(\.html)?/?$ https://www.amplifyr.ch/handwerker [R=301,NE,L]
 RewriteRule ^digitalisierung-kmu(\.html)?/?$ https://www.amplifyr.ch/kmu [R=301,NE,L]

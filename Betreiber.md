@@ -28,7 +28,8 @@ Reihenfolge beim Deploy auf `main`:
    | `/demo` | `/kontakt?subject=Demo` |
    | `/formular` | `/kontakt` (Parameter bleiben erhalten) |
    | `/blog-post` | `/blog` |
-   | `/ki-transformation`, `/automatisierung`, `/ki-prozesse`, `/business-amplification` | `/` |
+   | `/ki-transformation`, `/automatisierung`, `/ki-prozesse` | `/kmu` |
+   | `/business-amplification` | `/` |
 
    Reine Prototypen von früher (`eisberg-artifact`, `shadow-variants`, `ki-check-template`, `prozessgrafik-artifact`, `handwerker-demo-ohne-hero`, `amplifyr-landingpage-standalone`) waren nie verlinkt und dürfen weiterhin 404 liefern.
 5. **Google Search Console:** Sitemap `https://www.amplifyr.ch/sitemap.xml` neu einreichen und die neuen Seiten `/kmu`, `/vorgehen`, `/kontakt`, `/bewirtschaftung` zur Indexierung anmelden.
