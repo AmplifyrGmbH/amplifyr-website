@@ -1814,3 +1814,11 @@ a[href*="google.com/maps"] { display: inline-flex; align-items: center; min-heig
   .ft-legal a { min-height: 38px; }
 }
 
+
+/* Kontakt-Team: Zeilen über die Karten hinweg ausrichten, auch wenn
+   eine Rolle zweizeilig umbricht */
+@media (min-width: 900px) {
+  .kt-person > div { display: flex; flex-direction: column; flex: 1; }
+  .kt-person__role { min-height: calc(2 * 1.6em); }
+  .kt-person .member__links { margin-top: auto; padding-top: 6px; }
+}
