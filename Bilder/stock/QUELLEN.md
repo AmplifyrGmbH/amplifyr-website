@@ -35,7 +35,7 @@ Nachtrag (Bild + Zitat, Platzhalter bis eigene Fotos vorliegen, alle CC0):
 
 | Datei | Motiv | Quelle |
 |---|---|---|
-| `zitat-start-*` | Person arbeitet am Laptop | https://wordpress.org/photos/photo/42765c339a/ |
+| `zitat-start-*` | Bauarbeiter auf Bewehrungsstahl, Foto: Toni Reed | https://unsplash.com/photos/dSjrv4w1g1Q (Unsplash-Lizenz) |
 | `zitat-handwerk-*` | Luftaufnahme Zürich mit Limmat und Grossmünster, Foto: Henrique Ferreira | https://unsplash.com/photos/omiTbS-nb_M (Unsplash-Lizenz) |
 | `zitat-bewirtschaftung-*` | Mehrfamilienhäuser | https://wordpress.org/photos/photo/132689233a/ |
 | `zitat-kmu-*` | Hand hält Smartphone, Foto: Frederik Lipfert | https://unsplash.com/photos/ufgQeGgv6ts (Unsplash-Lizenz) |

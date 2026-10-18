@@ -1842,3 +1842,21 @@ a[href*="google.com/maps"] { display: inline-flex; align-items: center; min-heig
   .kt-person__role { min-height: calc(2 * 1.6em); }
   .kt-person .member__links { margin-top: auto; padding-top: 6px; }
 }
+
+/* Bildzitat: kurze Einordnung unter dem Zitat */
+.photo-quote__note { margin-top: 16px; max-width: 46ch; font-size: 0.95rem; color: rgba(255, 255, 255, 0.72); }
+@media (min-width: 1024px) { .photo-quote__note { margin-left: calc((100% - 0px) / 12); font-size: 1rem; } }
+
+/* Vorgehen-Zitat: Slogan auf einer Zeile, Text auf dem Gittermuster abdunkeln */
+[data-page="vorgehen"] .photo-quote__text p { max-width: 30ch; }
+[data-page="vorgehen"] .photo-quote__media::after {
+  background: linear-gradient(180deg, rgba(18, 28, 51, 0.15) 0%, rgba(18, 28, 51, 0.9) 100%),
+              linear-gradient(90deg, rgba(18, 28, 51, 0.7) 0%, rgba(18, 28, 51, 0.15) 70%);
+}
+/* Der Slogan bricht auf schmalen Bildschirmen in seine zwei Hälften,
+   wie auf der Startseite; am Desktop steht er auf einer Zeile. */
+.br-mob { display: none; }
+@media (max-width: 767px) {
+  .br-mob { display: inline; }
+  [data-page="vorgehen"] .photo-quote__text p { font-size: 1.55rem; max-width: none; }
+}
