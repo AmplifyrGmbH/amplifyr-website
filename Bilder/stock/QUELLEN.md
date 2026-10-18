@@ -41,3 +41,5 @@ Nachtrag (Bild + Zitat, Platzhalter bis eigene Fotos vorliegen, alle CC0):
 | `zitat-kmu-*` | Hand hält Smartphone, Foto: Frederik Lipfert | https://unsplash.com/photos/ufgQeGgv6ts (Unsplash-Lizenz) |
 | `handwerk-hero-*` | Baustelle mit Kränen in Andermatt (Kopfbild Handwerk), Foto: Steffen Lemmerzahl | https://unsplash.com/photos/jmWFNK7ZvbY (Unsplash-Lizenz) |
 | `blog-hero-*` | Laptop, Notizbuch und Kaffee im Licht, Foto: sonia jahandari | https://unsplash.com/photos/Iz_dQ_t_9HE (Unsplash-Lizenz) |
+| `slogan-base-*` | Bauarbeiter auf Bewehrungsstahl, Foto: Toni Reed | https://unsplash.com/photos/dSjrv4w1g1Q (Unsplash-Lizenz) |
+| `slogan-race-*` | Prime Tower Zürich in der Abenddämmerung, Foto: Janesca | https://unsplash.com/photos/gN0GY4XBE34 (Unsplash-Lizenz) |
