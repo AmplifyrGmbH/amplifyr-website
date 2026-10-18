@@ -70,6 +70,13 @@ function buildAssetMap(includes) {
   return assets;
 }
 
+// Contentful-Originale sind oft mehrere MB gross — über die Images-API
+// skaliert und als WebP ausliefern.
+function cfImg(url, width) {
+  if (!url || url.indexOf('images.ctfassets.net') === -1) return url;
+  return url + (url.indexOf('?') === -1 ? '?' : '&') + 'w=' + width + '&fm=webp&q=72&fit=fill';
+}
+
 
 // ── Blog-Übersicht laden (blog.html) ─────────────────────────
 
@@ -80,7 +87,7 @@ function renderBlogCard(item, assets) {
   var date   = formatDate(f.date);
   var imgRef = f.coverImage || f.titelbild;
   var imgId  = imgRef && imgRef.sys ? imgRef.sys.id : null;
-  var imgUrl = imgId && assets[imgId] ? assets[imgId] : null;
+  var imgUrl = cfImg(imgId && assets[imgId] ? assets[imgId] : null, 800);
   var teaser = typeof f.teaser === 'string'
     ? f.teaser
     : extractPlainText(f.teaser).slice(0, 160);
@@ -229,7 +236,7 @@ function loadBlogPost() {
       var assets = buildAssetMap(data.includes);
       var imgRef = f.coverImage || f.titelbild;
       var imgId  = imgRef && imgRef.sys ? imgRef.sys.id : null;
-      var imgUrl = imgId && assets[imgId] ? assets[imgId] : null;
+      var imgUrl = cfImg(imgId && assets[imgId] ? assets[imgId] : null, 800);
 
       // Teaser
       var teaserRaw  = f.teaser;
@@ -245,7 +252,7 @@ function loadBlogPost() {
       var bodyHtml = bodyRaw ? renderRichText(bodyRaw) : '';
 
       // Meta-Tags dynamisch setzen
-      document.title = title + ' | Amplifyr Blog';
+      document.title = title + ' | amplifyr Blog';
       var metaDesc = document.getElementById('meta-desc');
       if (metaDesc && teaserRaw) {
         metaDesc.setAttribute('content', typeof teaserRaw === 'string'

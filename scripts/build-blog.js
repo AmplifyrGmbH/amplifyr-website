@@ -61,6 +61,15 @@ function buildAssetMap(includes) {
   return map;
 }
 
+// Contentful liefert Originaldateien aus (teils mehrere MB). Die Images-API
+// skaliert und komprimiert on the fly — ohne das wiegt eine Blog-Seite
+// schnell ein Vielfaches des Rests der Website.
+function cfImg(url, width) {
+  if (!url || url.indexOf('images.ctfassets.net') === -1) return url;
+  const sep = url.indexOf('?') === -1 ? '?' : '&';
+  return url + sep + 'w=' + width + '&fm=webp&q=72&fit=fill';
+}
+
 function formatDate(dateStr) {
   if (!dateStr) return '';
   return new Date(dateStr).toLocaleDateString('de-CH', {
@@ -129,13 +138,11 @@ function extractBlock(html, re, label) {
 }
 
 function extractChrome(blogHtmlSrc) {
-  const gtmHead   = extractBlock(blogHtmlSrc, /<!-- Google Tag Manager -->[\s\S]*?<!-- End Google Tag Manager -->/, 'GTM Head-Snippet');
-  const gtmBody   = extractBlock(blogHtmlSrc, /<!-- Google Tag Manager \(noscript\) -->[\s\S]*?<!-- End Google Tag Manager \(noscript\) -->/, 'GTM Body-Snippet');
   const headCommon = extractBlock(blogHtmlSrc, /<!-- Favicons -->[\s\S]*?(?=\n<\/head>)/, 'Head-Assets (Favicons/Fonts/CSS)');
   const header    = extractBlock(blogHtmlSrc, /<header id="site-header"[\s\S]*?<\/header>/, 'Header');
-  const mobileMenu = extractBlock(blogHtmlSrc, /<nav class="mobile-menu"[\s\S]*?<\/nav>/, 'Mobile-Menü');
-  const footer    = extractBlock(blogHtmlSrc, /<footer>[\s\S]*?<\/footer>/, 'Footer');
-  return { gtmHead, gtmBody, headCommon, header, mobileMenu, footer };
+  const mobileMenu = extractBlock(blogHtmlSrc, /<nav [^>]*class="[^"]*\bmobile-menu\b[^"]*"[\s\S]*?<\/nav>/, 'Mobile-Menü');
+  const footer    = extractBlock(blogHtmlSrc, /<footer[\s>][\s\S]*?<\/footer>/, 'Footer');
+  return { headCommon, header, mobileMenu, footer };
 }
 
 // ── Post-Seite generieren ─────────────────────────────────────
@@ -170,8 +177,9 @@ function generatePostHtml(f, slug, assets, chrome) {
   // Cover image
   const imgRef = f.coverImage || f.titelbild;
   const imgId  = imgRef && imgRef.sys ? imgRef.sys.id : null;
-  const imgUrl = imgId && assets[imgId] ? assets[imgId] : null;
-  const ogImg  = imgUrl || (BASE_URL + '/Logos/Open_Graph_Image_Amplifyr.webp');
+  const imgRaw = imgId && assets[imgId] ? assets[imgId] : null;
+  const imgUrl = cfImg(imgRaw, 1200);
+  const ogImg  = cfImg(imgRaw, 1200) || (BASE_URL + '/Logos/Open_Graph_Image_Amplifyr.webp');
   const coverHtml = imgUrl
     ? '<img class="post-cover" src="' + esc(imgUrl) + '" alt="' + esc(title) + '" width="1200" height="630" loading="eager" decoding="async">'
     : '';
@@ -187,10 +195,10 @@ function generatePostHtml(f, slug, assets, chrome) {
     dateModified:  dateIso,
     url: postUrl,
     image: ogImg,
-    author: { '@type': 'Organization', name: 'Amplifyr', url: BASE_URL },
+    author: { '@type': 'Organization', name: 'amplifyr', url: BASE_URL },
     publisher: {
       '@type': 'Organization',
-      name: 'Amplifyr',
+      name: 'amplifyr',
       url: BASE_URL,
       logo: { '@type': 'ImageObject', url: BASE_URL + '/Logos/amplifyr_logo/amplifyr-logo-blau-hellblau.svg' }
     },
@@ -210,21 +218,20 @@ function generatePostHtml(f, slug, assets, chrome) {
   return '<!DOCTYPE html>\n'
     + '<html lang="de-CH">\n'
     + '<head>\n'
-    + chrome.gtmHead + '\n'
     + '  <meta charset="UTF-8">\n'
     + '  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n\n'
-    + '  <title>' + esc(title) + ' | Amplifyr Blog</title>\n'
+    + '  <title>' + esc(title) + ' | amplifyr Blog</title>\n'
     + '  <meta name="description" content="' + esc(metaDescText) + '">\n'
     + '  <link rel="canonical" href="' + postUrl + '">\n'
     + '  <meta name="robots" content="index,follow">\n\n'
     + '  <meta property="og:type"        content="article">\n'
     + '  <meta property="og:url"         content="' + postUrl + '">\n'
-    + '  <meta property="og:title"       content="' + esc(title) + ' | Amplifyr Blog">\n'
+    + '  <meta property="og:title"       content="' + esc(title) + ' | amplifyr Blog">\n'
     + '  <meta property="og:description" content="' + esc(metaDescText) + '">\n'
     + '  <meta property="og:image"       content="' + esc(ogImg) + '">\n'
     + '  <meta property="og:locale"      content="de_CH">\n'
     + '  <meta name="twitter:card"        content="summary_large_image">\n'
-    + '  <meta name="twitter:title"       content="' + esc(title) + ' | Amplifyr Blog">\n'
+    + '  <meta name="twitter:title"       content="' + esc(title) + ' | amplifyr Blog">\n'
     + '  <meta name="twitter:description" content="' + esc(metaDescText) + '">\n'
     + '  <meta name="twitter:image"       content="' + esc(ogImg) + '">\n\n'
     + '  <script type="application/ld+json">\n' + articleSchema + '\n  </script>\n'
@@ -232,7 +239,6 @@ function generatePostHtml(f, slug, assets, chrome) {
     + chrome.headCommon + '\n'
     + '</head>\n'
     + '<body>\n'
-    + chrome.gtmBody + '\n\n'
     + chrome.header + '\n\n'
     + chrome.mobileMenu + '\n\n'
     + '  <main>\n'
@@ -261,7 +267,7 @@ function generatePostHtml(f, slug, assets, chrome) {
     + '    </div>\n'
     + '  </main>\n\n'
     + chrome.footer + '\n\n'
-    + '  <script defer src="/main.js"></script>\n'
+    + '  <script defer src="/site.js"></script>\n'
     + '</body>\n'
     + '</html>\n';
 }
@@ -274,7 +280,7 @@ function generateCardHtml(f, slug, assets) {
   const cat    = f.category || f.kategorie || '';
   const imgRef = f.coverImage || f.titelbild;
   const imgId  = imgRef && imgRef.sys ? imgRef.sys.id : null;
-  const imgUrl = imgId && assets[imgId] ? assets[imgId] : null;
+  const imgUrl = cfImg(imgId && assets[imgId] ? assets[imgId] : null, 800);
   const teaser = typeof f.teaser === 'string'
     ? f.teaser
     : extractText(f.teaser).slice(0, 160);
@@ -362,6 +368,17 @@ async function main() {
   );
   fs.writeFileSync(distBlogHtml, blogHtml, 'utf8');
   console.log('  + blog/index.html');
+
+  // ── Vorschau für die Startseite: die drei neusten Karten als HTML-Fragment ───
+  // Die Startseite lädt /blog/preview.html (gleiche Domain) statt Contentful
+  // im Browser abzufragen. So braucht die Startseite keinen Zugriffsschlüssel.
+  const preview = data.items.slice(0, 3)
+    .map(item => generateCardHtml(item.fields, item.fields.slug || item.sys.id, assets)
+      .replace('<h2 class="blog-card-title">', '<h3 class="blog-card-title">')
+      .replace('</h2>', '</h3>'))
+    .join('\n');
+  fs.writeFileSync(path.join(distBlogDir, 'preview.html'), preview + '\n', 'utf8');
+  console.log('  + blog/preview.html');
 
   console.log('\nFertig. ' + data.items.length + ' Posts generiert.');
 }

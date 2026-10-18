@@ -28,3 +28,15 @@ jobs:
           local-dir: ./
           server-dir: /www/amplifyr.ch/
           state-name: .ftp-deploy-sync-state-v3.json
+          # Nur die Website hochladen, keine Arbeitsdateien
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            .github/**
+            scripts/**
+            archiv/**
+            **/*.md
+            **/*.py
+            dev-router.php
+            _blog-dist/**

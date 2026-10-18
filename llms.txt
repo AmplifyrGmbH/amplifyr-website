@@ -1,23 +1,24 @@
-# Amplifyr GmbH
+# amplifyr GmbH
 
-> Digitalisierungspartner für die Bau- und Immobilienbranche in der Schweiz. Amplifyr übernimmt IT, Software, KI und den digitalen Auftritt aus einer Hand — für Handwerksbetriebe und Immobilienverwaltungen, von der Entwicklung bis zum laufenden Betrieb.
+> Technologiepartner für die Bau- und Immobilienbranche in der Schweiz: Wo Technik und Business-Denken zusammenkommen, um die Bau- und Immobilienbranche zu digitalisieren. Amplifyr übernimmt Büroarbeit, Automatisierung mit KI, individuelle Software, IT-Sicherheit und Website aus einer Hand, für Handwerksbetriebe, Immobilienverwaltungen und KMU, von der Planung bis zum laufenden Betrieb.
 
-Drei Gründer und Geschäftsführer: Timo Steinfort, David Staub, Sinan Sen. Telefon: +41 44 244 59 95. Adresse: Badenerstrasse 580, 8048 Zürich, Schweiz. E-Mail: info@amplifyr.ch
+Drei Gründer und Geschäftsführer: Timo Steinfort, David Staub, Sinan Sen. Telefon: +41 44 244 59 95. Adresse: Badenerstrasse 580, 8048 Zürich, Schweiz. E-Mail: info@amplifyr.ch. Bürozeiten: Montag bis Freitag, 08:00 bis 19:00.
 
 ## Hauptseiten
 
-- [Startseite](https://www.amplifyr.ch/): Digitalisierungspartner für die Bau- und Immobilienbranche — Überblick über alle Leistungen
-- [Handwerker](https://www.amplifyr.ch/handwerker): Digitale Auftragsabwicklung, Website, KI-Chatbot und IT für Handwerksbetriebe
-- [IT-Lösungen](https://www.amplifyr.ch/it-solutions): IT-Outsourcing, Managed Services und Support für Schweizer KMU
-- [Digitaler Auftritt](https://www.amplifyr.ch/webdesign): Websites, die arbeiten — Webdesign, SEO und Google Ads
-- [Über uns](https://www.amplifyr.ch/ueber-uns): Team, Gründer und Unternehmensgeschichte
-- [Kontakt & Anfrage](https://www.amplifyr.ch/formular): Kontaktformular und kostenloses Erstgespräch anfragen
-- [Blog](https://www.amplifyr.ch/blog): Einblicke aus dem Unternehmertum bei Amplifyr
+- [Startseite](https://www.amplifyr.ch/): Überblick, Ansatz, Team und Kontakt
+- [Handwerk](https://www.amplifyr.ch/handwerker): Ganzheitliche Digitalisierung für Handwerksbetriebe, von der Akquise bis zur Rechnung aus einer Hand
+- [Bewirtschaftung](https://www.amplifyr.ch/bewirtschaftung): Digitalisierung für Immobilienverwaltungen und Bewirtschaftungen: Abläufe, Software, IT und Erreichbarkeit aus einer Hand, ohne das Kernsystem zu ersetzen
+- [Für KMU](https://www.amplifyr.ch/kmu): Dieselbe ganzheitliche Dienstleistung für alle anderen KMU: Abläufe, Software, IT und Website aus einer Hand
+- [Vorgehen](https://www.amplifyr.ch/vorgehen): So läuft die Zusammenarbeit, vom kostenlosen Erstgespräch bis zum laufenden Betrieb
+- [Über uns](https://www.amplifyr.ch/ueber-uns): Team und Mission
+- [Kontakt](https://www.amplifyr.ch/kontakt): Termin buchen, Telefon, WhatsApp, E-Mail, Kontaktformular, Direktnummern des Teams, Kundenportal und Fernwartung
+- [Blog](https://www.amplifyr.ch/blog): Einblicke aus dem Unternehmertum bei amplifyr
 
 ## Profile
 
-- [LinkedIn](https://www.linkedin.com/company/amplifyr.ch): Amplifyr auf LinkedIn
-- [Instagram](https://www.instagram.com/amplifyr.ch): Amplifyr auf Instagram
+- [LinkedIn](https://www.linkedin.com/company/amplifyr.ch): amplifyr auf LinkedIn
+- [Instagram](https://www.instagram.com/amplifyr.ch): amplifyr auf Instagram
 - [Google Business](https://www.google.com/maps/place/Amplifyr/@46.7865913,5.5840627,7z/data=!3m1!4b1!4m6!3m5!1s0x6d39d9653619bf27:0x3904551a053f23e1!8m2!3d46.8131873!4d8.224119!16s%2Fg%2F11nc27408b): Google-Unternehmensprofil
-- [local.ch](https://www.local.ch/de/d/uitikon-waldegg/8142/informatikberatung/amplifyr-gmbh-ynGCJ_bt1_3XVfH6abKyhQ): Branchenverzeichnis-Eintrag
-- [search.ch](https://search.ch/tel/uitikon-waldegg/mettlenstrasse-11/amplifyr-gmbh): Branchenverzeichnis-Eintrag
+- [local.ch](https://www.local.ch/de/d/zuerich/8048/informatikberatung/amplifyr-gmbh-ynGCJ_bt1_3XVfH6abKyhQ): Branchenverzeichnis-Eintrag
+- [search.ch](https://search.ch/tel/zuerich/badenerstrasse-580/amplifyr-gmbh): Branchenverzeichnis-Eintrag

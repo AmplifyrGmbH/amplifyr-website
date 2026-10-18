@@ -6,7 +6,7 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 16px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
@@ -42,25 +42,19 @@ body {
 
 .lk-logo {
   display: inline-block;
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: #1a2744;
-  text-decoration: none;
-  line-height: 1;
-  margin-bottom: 10px;
+  line-height: 0;
+  margin-bottom: 14px;
 }
-
-.lk-logo-fyr {
-  font-style: italic;
-  color: #B0C4DE;
+.lk-logo img {
+  display: block;
+  width: 190px;
+  height: auto;
 }
 
 .lk-tagline {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: #445269;
-  margin-top: 4px;
+  margin-top: 2px;
 }
 
 .lk-address {
@@ -242,6 +236,16 @@ body {
   background: rgba(176,196,222,0.15);
 }
 
+.lk-person-photo {
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 18%;
+  background: #dce5f2;
+}
+
 .lk-person-info {
   flex: 1;
   display: flex;
@@ -250,16 +254,17 @@ body {
 }
 
 .lk-person-name {
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 1rem;
-  font-weight: 700;
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
   color: #1a2744;
   line-height: 1.2;
 }
 
 .lk-person-role {
-  font-size: 0.78rem;
-  color: #8290ab;
+  font-size: 0.76rem;
+  line-height: 1.35;
+  color: #6b7a99;
 }
 
 .lk-person-chevron {
@@ -342,8 +347,8 @@ body {
 
 /* ---- Desktop ---- */
 @media (min-width: 540px) {
-  .lk-logo { font-size: 2.6rem; }
-  .lk-tagline { font-size: 0.9rem; }
+  .lk-logo img { width: 230px; }
+  .lk-tagline { font-size: 0.95rem; }
   .lk-btn { padding: 16px 20px; }
   .lk-person { padding: 0; } /* mobile: no outer padding, inner handles spacing */
 }
@@ -354,7 +359,13 @@ body {
     flex-direction: row;
     align-items: stretch;
   }
-  .lk-person { flex: 1; }
+  /* Gleich hohe Karten: Kopf und Linkliste auf einer Höhe, egal wie lang die Rolle ist */
+  .lk-person { flex: 1; display: flex; flex-direction: column; }
+  .lk-person-toggle { align-items: flex-start; }
+  .lk-person-info { min-height: 46px; justify-content: center; }
+  .lk-person-body { flex: 1; }
+  .lk-person-body-inner { height: 100%; display: flex; flex-direction: column; }
+  .lk-person-body-inner .lk-links { flex: 1; }
 
   .lk-links--company {
     grid-template-columns: repeat(4, 1fr);
@@ -387,4 +398,11 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .lk-btn { transition: none; }
+}
+
+/* Klickflächen für Adresse und Fusszeile vergrössern (Touch) */
+.lk-address, .lk-footer-link {
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
 }
