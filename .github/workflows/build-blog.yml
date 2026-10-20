@@ -1,17 +1,31 @@
 name: Build & Deploy Blog
 
 # Wird ausgelöst durch:
-#   1. Contentful-Webhook beim Publizieren eines Posts
+#   1. Zeitplan alle 30 Minuten (Fallback, falls der Webhook ausfällt)
+#   2. Contentful-Webhook beim Publizieren eines Posts
 #      → Contentful: Settings > Webhooks > URL:
 #        https://api.github.com/repos/AmplifyrGmbH/amplifyr-website/dispatches
 #        Method: POST  |  Header: Authorization: Bearer [GITHUB_PAT]
 #        Body: {"event_type": "contentful-publish"}
-#   2. Manuell über GitHub Actions > "Run workflow"
+#   3. Push auf build-relevante Dateien
+#   4. Manuell über GitHub Actions > "Run workflow"
 
 on:
   repository_dispatch:
     types: [contentful-publish]
+  schedule:
+    - cron: '*/30 * * * *'
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/build-blog.js'
+      - 'blog.html'
+      - '.github/workflows/build-blog.yml'
   workflow_dispatch:
+
+concurrency:
+  group: blog-deploy
+  cancel-in-progress: false
 
 jobs:
   build-blog:
